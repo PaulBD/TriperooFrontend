@@ -1,0 +1,13 @@
+.DS_Store
+config.codekit
+*.sublime-workspace
+node_modules/
+/static/css/main.css
+/dist/
+^css/
+^fonts/
+^img/
+
+^svg/
+^bundle.js
+/.idea
