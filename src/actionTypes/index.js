@@ -1,2 +1,3 @@
-export const SEARCH_HOTELS = 'SEARCH_HOTELS';
+// Newsletter
 export const SAVE_NEWSLETTER = 'SAVE_NEWSLETTER';
+export const FAILED_NEWSLETTER = 'FAILED_NEWSLETTER';

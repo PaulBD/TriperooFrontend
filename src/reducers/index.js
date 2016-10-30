@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import hotelSearchReducer from './hotelSearchReducer';
+import newsletterReducer from './newsletterReducer';
 import {routerReducer} from 'react-router-redux';
 
 const rootReducer = combineReducers({
-  hotelSearchReducer,
+  newsletterReducer,
   routing: routerReducer
 });
 

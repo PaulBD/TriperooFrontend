@@ -6,7 +6,8 @@ export default {
     children: '',
     adults: ''
   },
-  newsletter: {
-  	emailAddress: ''
+  footerNewsletter: {
+  	emailAddress: '',
+    isSuccess: false
   }
 };

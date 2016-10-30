@@ -4,7 +4,7 @@
   "description": "triperoo",
   "scripts": {
     "prestart": "babel-node tools/startMessage.js",
-    "start": "npm-run-all --parallel open:src lint:watch test:watch",
+    "start": "npm-run-all --parallel open:src lint:watch",
     "open:src": "babel-node tools/srcServer.js",
     "lint": "node_modules/.bin/esw webpack.config.* src tools",
     "lint:watch": "npm run lint -- --watch",
@@ -14,6 +14,7 @@
   "author": "Cory House",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.15.2",
     "babel-polyfill": "6.7.4",
     "bootstrap": "3.3.6",
     "copy-webpack-plugin": "^4.0.0",
@@ -27,6 +28,7 @@
     "react-router": "2.3.0",
     "react-router-redux": "4.0.4",
     "redux": "3.5.2",
+    "redux-form": "^6.1.1",
     "redux-thunk": "2.0.1",
     "toastr": "2.1.2"
   },

@@ -1,9 +1,14 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import { Link } from "react-router";
-import Newsletter from './newsletter';
+import Newsletter from "./newsletter";
 
 class Footer extends React.Component {
+   constructor(props, context) {
+     super(props, context);
+  }
+
    render() {
+
       return (
 		<footer id="main-footer">
             <div className="container">
@@ -33,7 +38,7 @@ class Footer extends React.Component {
                     </div>
 
                     <div className="col-md-3">
-                    	<Newsletter />
+                      <Newsletter />
                     </div>
                     <div className="col-md-2">
                         <ul className="list list-footer">
@@ -58,4 +63,4 @@ class Footer extends React.Component {
    }
 }
 
-export default Footer; 
+export default Footer;

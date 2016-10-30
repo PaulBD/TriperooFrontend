@@ -1,9 +1,9 @@
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react';
 
 import Header from '../components/header';
 import Footer from '../components/footer';
 
-const App = (props) => {
+export const App = (props) => {
   return (
     <div>
     <Header />
