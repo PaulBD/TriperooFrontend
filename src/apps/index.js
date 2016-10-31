@@ -5,8 +5,8 @@ import Footer from '../components/footer';
 
 export const App = (props) => {
   return (
-    <div>
-    <Header />
+    <div className="global-wrap">
+    <Header showHeader={true} />
       {props.children}
     <Footer />
     </div>
@@ -15,6 +15,7 @@ export const App = (props) => {
 
 App.propTypes = {
   children: PropTypes.element
+
 };
 
 export default App;
