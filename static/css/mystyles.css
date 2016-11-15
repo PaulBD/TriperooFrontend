@@ -1,3 +1,24 @@
 /*YOUR CUSTOM STYLES*/
 
 .notFoundBg { background-image:url(/static/img/1300x900.png); }
+.fuerteventura { background-image:url(/static/img/locations/Fuerteventura.jpg); }
+
+.map { width:100%; height:500px; }
+
+.percent91 { width:91%; }
+.percent6 { width:6%; }
+.percent5 { width:5%; }
+.percent3 { width:3%; }
+.percent1 { width:1%; }
+
+.homeSearchIcon { top:0 !important;}
+
+.card-block .commentStar { padding: 10px 0; }
+
+.tagCollection .tag { margin-right: 5px; padding: 4px; background-color: #efefef; color: #333; font-weight:normal; }
+
+.commentCardTestimonial { margin: 20px 0; }
+
+.facebookBtn { width: 280px; }
+
+.signupText { font-size: 30px;font-weight:bold; padding-top:10px;}

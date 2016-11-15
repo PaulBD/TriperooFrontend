@@ -8,7 +8,7 @@ export default function configureStore(initialState) {
 
     // thunk middleware can also accept an extra argument to be passed to each thunk action
     // https://github.com/gaearon/redux-thunk#injecting-a-custom-argument
-    thunkMiddleware,
+    thunkMiddleware
   ];
 
   return createStore(rootReducer, initialState, compose(

@@ -7,7 +7,7 @@ export default {
     adults: ''
   },
   footerNewsletter: {
-  	emailAddress: '',
+    emailAddress: '',
     isSuccess: false
   }
 };

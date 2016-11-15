@@ -2148,7 +2148,7 @@ img.pp-img {
 .header-top {
   padding: 10px 0;
   max-height: 60px;
-  background: #4d4d4d;
+  background: #262626;
 }
 @media (max-width:992px) {
   .header-top {
@@ -2159,14 +2159,14 @@ img.pp-img {
   display: block;
 }
 .logo img {
-  width: auto;
+  width: 160px;
 }
 .top-user-area {
   font-size: 12px;
   position: relative;
 }
 .top-user-area > ul >li {
-  line-height: 40px;
+  line-height: 30px;
 }
 .top-user-area .top-user-area-list {
   position: absolute;
@@ -2444,7 +2444,7 @@ footer#main-footer .form-control:focus {
   text-decoration: underline;
 }
 header#main-header {
-  border-bottom: 2px solid #ed8323;
+  border-bottom: 1px solid #ffffff;
 }
 .main-header-search {
   top: 4px;

@@ -7,7 +7,7 @@ import Comments from '../../components/recentComments';
 import TwitterFeed from '../../components/twitterFeed';
 import FacebookFeed from '../../components/facebookFeed';
 // Since this component is simple and static, there's no parent container for it.
-export default class AoutPage extends React.Component {
+export default class AboutPage extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
@@ -55,8 +55,7 @@ export default class AoutPage extends React.Component {
               </div>
           </div>
       </div>
-
-          <div className="gap"></div>
+      <div className="gap"></div>
     </div>
-      )};
+  )};
 };
