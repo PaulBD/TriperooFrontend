@@ -10779,8 +10779,6 @@ img.mfp-img {
   color: #8f8f8f;
 }
 .comment .comment-like {
-  float: right;
-  opacity: 0.3;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
   filter: alpha(opacity=30);
   -webkit-transition: 0.2s;
@@ -10789,7 +10787,6 @@ img.mfp-img {
   -ms-transition: 0.2s;
   transition: 0.2s;
   font-size: 12px;
-  font-weight: bold;
 }
 .comment .comment-like [class^="fa fa-"] {
   font-weight: normal;
@@ -10798,9 +10795,7 @@ img.mfp-img {
   [class^="fa fa-"]: 13px;
 }
 .comment:hover .comment-like {
-  opacity: 1;
-  -ms-filter: none;
-  filter: none;
+
 }
 .fontawesome-icon-list .fa-hover {
   margin-bottom: 10px;

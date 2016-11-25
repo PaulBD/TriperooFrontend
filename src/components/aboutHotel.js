@@ -35,7 +35,7 @@ export default class AboutHotel extends React.Component {
                     <li><i className="im im-bar"></i><span className="booking-item-feature-title">Bar/Lounge</span>
                     </li>
                 </ul>
-                </div>
+            </div>
        	);
 	}
 }

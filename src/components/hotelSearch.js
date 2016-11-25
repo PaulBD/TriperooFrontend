@@ -3,15 +3,9 @@ import React from "react";
 export default class HotelSearch extends React.Component {
     render(){
     return (
-<form>
+<form className="hotelSearch">
                 <div className="row">
-                    <div className="col-md-4">
-                        <div className="form-group form-group-icon-left"><i className="fa fa-map-marker input-icon input-icon-hightlight"></i>
-                            <label>Where</label>
-                            <input className="typeahead form-control" placeholder="City, Hotel Name or U.S. Zip Code" type="text" />
-                        </div>
-                    </div>
-                    <div className="col-md-4">
+                    <div className="col-md-6">
                         <div className="input-daterange" data-date-format="MM d, D">
                             <div className="row">
                                 <div className="col-md-6">
@@ -29,7 +23,7 @@ export default class HotelSearch extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-md-6">
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="form-group form-group- form-group-select-plus">

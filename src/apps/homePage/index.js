@@ -8,6 +8,7 @@ import RecentQuestions from '../../components/recentQuestions';
 import HomePageFeature from '../../components/homePageFeature';
 import HomePageCopy from '../../components/homePageCopy';
 import LastMinuteDeal from '../../components/lastMinuteDeal';
+import FacebookSignup from '../../components/facebookSignup';
 
 const HomePage = () => {
   return (
@@ -51,14 +52,7 @@ const HomePage = () => {
             <div className="gap gap-small"></div>
             <hr />
             <div className="gap"></div>
-            <div className="row">
-                <div className="col-md-6 text-xs-right">
-                    <h5 className="signupText">Join Now to get started</h5>
-                </div>
-                <div className="col-md-6 text-xs-left">
-                    <img src="/static/img/fbsignup.png" className="facebookBtn" />
-                </div>
-            </div>
+            <FacebookSignup />
             <div className="gap"></div>
         </div>
 	</div>

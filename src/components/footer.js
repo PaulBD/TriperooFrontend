@@ -51,7 +51,7 @@ class Footer extends React.Component {
                     </div>
                     <div className="col-md-4">
                         <h4>Have Questions?</h4>
-                        <h4 className="text-color">+1-202-555-0173</h4>
+                        <h4 className="text-color">+44-000-000-0000</h4>
                         <h4><a href="mailto:triperoo.co.uk" className="text-color">support@triperoo.co.uk</a></h4>
                         <p>24/7 Dedicated Customer Support</p>
                     </div>
