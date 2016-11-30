@@ -1,12 +1,5 @@
 import React from 'react';
-import HotelSearch from '../../components/hotelSearch';
-import HotelThumb from '../../components/hotelThumb';
-import TopHotels from '../../components/topHotels';
-import TopRestaurants from '../../components/topRestaurants';
-import TopAttractions from '../../components/topAttractions';
 import FacebookSignup from '../../components/facebookSignup';
-import CityNavigation from '../../components/cityNavigation';
-import CitySubHeader from '../../components/citySubHeader';
 
 export default class RestaurantPage extends React.Component {
 
@@ -17,7 +10,6 @@ export default class RestaurantPage extends React.Component {
   render(){
   return (
     <div>
-        <CitySubHeader />
 
         <div className="gap gap-small"></div>
 

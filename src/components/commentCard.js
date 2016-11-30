@@ -23,14 +23,14 @@ var CommendCard = React.createClass({
                 </ul>
             </div>
             <p className="card-text">
-            Some quick example text to build 
-            on the card title and make up the bulk of the cards content.
+                Some quick example text to build 
+                on the card title and make up the bulk of the cards content.
             </p>
             <p className="tagCollection">
-            <strong>Recommended For:</strong><br />
-            <span className="tag tag-default">Default</span> 
-            <span className="tag tag-default">Default</span> 
-            <span className="tag tag-default">Default</span> 
+                <strong>Recommended For:</strong><br />
+                <span className="tag tag-default">Default</span> 
+                <span className="tag tag-default">Default</span> 
+                <span className="tag tag-default">Default</span> 
             </p>
           </div>
         </div> 

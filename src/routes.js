@@ -8,16 +8,20 @@ import AboutPage from './apps/info/aboutPage';
 import TermsPage from './apps/info/termsPage';
 import PrivacyPage from './apps/info/privacyPage';
 import NotFoundPage from './apps/notFoundPage';
-import CityPage from './apps/city';
+import City from './apps/city';
+import Country from './apps/country';
+import Holidays from './apps/holiday';
+import Hotels from './apps/hotel';
+import Flights from './apps/flight';
+import TravelExtras from './apps/travelExtras';
+import CarHire from './apps/travelExtras/car-hire';
+
 import AttractionPage from './apps/attraction';
 import RestaurantPage from './apps/restaurant';
 import PubPage from './apps/pub';
 import ReviewPage from './apps/review';
-import HotelPage from './apps/hotel';
-import Holidays from './apps/holiday';
-import Hotels from './apps/hotel/search-hotels';
-import Flights from './apps/flight';
-import TravelExtras from './apps/travelExtras';
+import HotelPage from './apps/hotel/city-search';
+import FlightPage from './apps/flight/country-flights';
 
 export default (
   <Route path="/" component={Container}>
@@ -26,16 +30,26 @@ export default (
     <Route path="/about-us" component={AboutPage}/>
     <Route path="/terms" component={TermsPage}/>
     <Route path="/privacy-policy" component={PrivacyPage}/>
-    <Route path="/city" component={CityPage}/>
-    <Route path="/city/attractions" component={AttractionPage}/>
-    <Route path="/city/hotels" component={HotelPage}/>
-    <Route path="/city/restaurants" component={RestaurantPage}/>
-    <Route path="/city/pubs" component={PubPage}/>
-    <Route path="/city/reviews" component={ReviewPage}/>
+
+    <Route path="/place/:country" component={Country}/>
+    <Route path="/place/:country/:city" component={City}/>
+
+    <Route path="/place/:country/:city/attractions" component={AttractionPage}/>
+    <Route path="/place/:country/:city/hotels" component={HotelPage}/>
+    <Route path="/place/:country/:city/restaurants" component={RestaurantPage}/>
+    <Route path="/place/:country/:city/pubs" component={PubPage}/>
+    <Route path="/place/:country/:city/reviews" component={ReviewPage}/>
+
+    <Route path="/place/:country/all/flights" component={FlightPage}/>
+    <Route path="/place/:country/all/hotels" component={HotelPage}/>
+    <Route path="/place/:country/attractions" component={AttractionPage}/>
+    <Route path="/place/:country/:city/reviews" component={ReviewPage}/>
+    
     <Route path="/holidays" component={Holidays}/>
     <Route path="/hotels" component={Hotels}/>
     <Route path="/flights" component={Flights}/>
     <Route path="/travel-extras" component={TravelExtras}/>
+    <Route path="/travel-extras/car-hire" component={CarHire}/>
     <Route path="*" component={NotFoundPage}/>
   </Route>
 );

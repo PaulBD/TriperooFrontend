@@ -1,21 +1,19 @@
 import React from 'react';
-import SearchHome from '../../components/searchhome';
+import SearchHome from '../../components/homePage/search';
 import TrendingNow from '../../components/trendingNow';
 import HotDeals from '../../components/hotDeals';
 import Recommendations from '../../components/recommendations';
 import TopDestinations from '../../components/topDestinations';
 import RecentQuestions from '../../components/recentQuestions';
-import HomePageFeature from '../../components/homePageFeature';
-import HomePageCopy from '../../components/homePageCopy';
+import HomePageFeature from '../../components/homePage/feature';
+import HomePageCopy from '../../components/homePage/copy';
 import LastMinuteDeal from '../../components/lastMinuteDeal';
 import FacebookSignup from '../../components/facebookSignup';
 
 const HomePage = () => {
   return (
 	<div>
-        <div className="top-area show-onload">
-            <HomePageFeature />
-        </div>
+        <HomePageFeature />
         <div className="container">
             <SearchHome />
             <div className="gap"></div>

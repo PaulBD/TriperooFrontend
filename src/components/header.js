@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 class Header extends React.Component {
     constructor(props, context) {
-       super(props, context);
+      super(props, context);
     }
 
     render() {
@@ -29,9 +29,9 @@ class Header extends React.Component {
                               <li><Link to="hotels" title="Hotels">Hotels</Link></li>
                               <li><Link to="flights" title="Flights">Flights</Link></li>
                               <li><Link to="travel-extras" title="Travel Extras">Travel Extras</Link></li>
-                              <li><a href="#">Write A Review</a></li>
-                              <li><Link to="register" title="Sign Up">Sign Up</Link></li>
-                              <li><Link to="login" title="Log In">Log In</Link></li>
+                              <li><a href="#" data-toggle="modal" data-target="#reviewModel" title="Write a Review">Write a Review</a></li>
+                              <li><a href="#" data-toggle="modal" data-target="#signupModel" title="Sign Up">Sign Up</a></li>
+                              <li><a href="#" data-toggle="modal" data-target="#loginModel" title="Log In">Log In</a></li>
                             </ul>
                           </div>
                         </div>

@@ -30,7 +30,7 @@ export default {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new CopyWebpackPlugin([ { from: 'static/css', to: 'static/css' }, { from: 'static/img', to: 'static/img'}, {from: 'static/fonts', to: 'static/fonts'} ])
+    new CopyWebpackPlugin([ { from: 'static/css', to: 'static/css' }, { from: 'static/js', to: 'static/js' }, { from: 'static/img', to: 'static/img'}, {from: 'static/fonts', to: 'static/fonts'} ])
   ],
   resolve: {
     extensions: ['', '.js', '.jsx']
@@ -41,6 +41,7 @@ export default {
       assetsSubDirectory: 'static'
     },
     loaders: [
+      { test: /\.js?$/, exclude: /node_modules|vendor\.js/, loader: 'babel', query: babelConfig },
       { test: /\.jsx?$/, exclude: /node_modules|vendor\.js/, loader: 'babel', query: babelConfig },
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.css$/, exclude: /node_modules/, loader: ExtractTextPlugin.extract("style-loader", "css-loader") },

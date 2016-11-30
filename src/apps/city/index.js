@@ -1,22 +1,24 @@
 import React from 'react';
-import HotelSearch from '../../components/hotelSearch';
-import HotelThumb from '../../components/hotelThumb';
-import TopHotels from '../../components/topHotels';
-import TopRestaurants from '../../components/topRestaurants';
-import TopAttractions from '../../components/topAttractions';
+import HotelSearch from '../../components/hotel/searchForm';
+
+import HotelThumb from '../../components/hotel/thumb';
+import TopHotels from '../../components/hotel/topHotels';
+import TopRestaurants from '../../components/restaurant/topRestaurants';
+import TopAttractions from '../../components/attraction/topAttractions';
 import FacebookSignup from '../../components/facebookSignup';
-import CityNavigation from '../../components/cityNavigation';
-import TopPlacesInCity from '../../components/topPlacesInCity';
-import CityOverview from '../../components/cityOverview';
-import WhatsOn from '../../components/whatsOn';
-import CityMap from '../../components/cityMap';
-import CityReviews from '../../components/cityReviews';
 import TopReviewers from '../../components/topReviewers'
 import ReviewButton from '../../components/reviewButton'
 import ReviewOverview from '../../components/reviewOverview'
-import CityHeader from '../../components/cityHeader'
 
-export default class CityPage extends React.Component {
+import WhatsOn from '../../components/city/whatsOn';
+import TopPlacesInCity from '../../components/city/topPlacesInCity';
+import CityOverview from '../../components/city/overview';
+import Navigation from '../../components/city/navigation';
+import Reviews from '../../components/city/reviews';
+import Map from '../../components/city/map';
+import Header from '../../components/city/header'
+
+export default class CityHome extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
@@ -25,14 +27,11 @@ export default class CityPage extends React.Component {
   render(){
   return (
     <div>
-        <CityHeader />
-
+        <Header />
         <div className="container">
-            <CityNavigation />
+            <Navigation />
             <div className="gap gap-small"></div>
         </div>
-
-
         <div className="container">
             <div className="row">
                 <div className="col-md-8">
@@ -69,7 +68,7 @@ export default class CityPage extends React.Component {
                     </div>
                     <div className="gap-small"></div>
 
-                    <CityMap />
+                    <Map />
                     <div className="gap"></div>
                 </div>
             </div>
@@ -79,7 +78,7 @@ export default class CityPage extends React.Component {
             <div className="gap"></div>
             <div className="row">
                 <div className="col-md-8">
-                    <CityReviews />
+                    <Reviews />
                 </div>
                 <div className="col-md-4">
                     <ReviewOverview />

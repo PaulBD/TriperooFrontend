@@ -1,6 +1,6 @@
 import React from 'react';
-import HotelSearch from '../../components/hotelSearch';
-import HotelFeature from '../../components/hotelFeature';
+import HotelSearch from '../../components/hotel/searchForm';
+import HotelFeature from '../../components/hotel/feature';
 
 
 import TrendingNow from '../../components/trendingNow';
@@ -9,7 +9,6 @@ import Recommendations from '../../components/recommendations';
 import TopDestinations from '../../components/topDestinations';
 import LastMinuteDeal from '../../components/lastMinuteDeal';
 import FacebookSignup from '../../components/facebookSignup';
-import HolidayCopy from '../../components/holidayCopy';
 
 // Since this component is simple and static, there's no parent container for it.
 export default class SearchHotels extends React.Component {
@@ -21,16 +20,16 @@ export default class SearchHotels extends React.Component {
   render(){
     return (
       <div>
-        <div className="top-area show-onload">
-            <HotelFeature />
-        </div>
+        
+        <HotelFeature />
+
         <div className="container">            
           <div className="search-tabs search-tabs-bg search-tabs-to-top">
                 <div className="tabbable">
                   <div className="tab-content">
                       <div className="tab-pane fade in active" id="tab-1">
-                          <h2 className="text-xs-center">Compare & Save on Winter Sun</h2>
-                          <p className="text-xs-center">We compare holiday deals to help you save money</p>
+                          <h2 className="text-xs-center">Compare & Save on Cheap Hotels</h2>
+                          <p className="text-xs-center">Great deals from a selection of hotel companies only a click away.</p>
                           <p>&nbsp;</p>
                             <form className="hotelSearch">
                               <div className="row">

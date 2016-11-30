@@ -1,6 +1,7 @@
 import React from 'react';
-import HolidaySearch from '../../components/holidaySearch';
-import HolidayFeature from '../../components/holidayFeature';
+import Search from '../../components/holiday/search';
+import Feature from '../../components/holiday/feature';
+import Copy from '../../components/holiday/copy';
 
 
 import TrendingNow from '../../components/trendingNow';
@@ -9,7 +10,6 @@ import Recommendations from '../../components/recommendations';
 import TopDestinations from '../../components/topDestinations';
 import LastMinuteDeal from '../../components/lastMinuteDeal';
 import FacebookSignup from '../../components/facebookSignup';
-import HolidayCopy from '../../components/holidayCopy';
 
 // Since this component is simple and static, there's no parent container for it.
 export default class Holidays extends React.Component {
@@ -21,9 +21,9 @@ export default class Holidays extends React.Component {
   render(){
     return (
       <div>
-            <HolidayFeature />
+        <Feature />
         <div className="container">
-            <HolidaySearch />
+            <Search />
         </div>
         <div className="container">
           <div className="row row-wrap text-xs-center">
@@ -70,7 +70,7 @@ export default class Holidays extends React.Component {
         <LastMinuteDeal /> 
         <div className="container">
             <div className="gap gap"></div>
-            <HolidayCopy />
+            <Copy />
             <div className="gap gap-small"></div>
             <hr />
             <div className="gap"></div>

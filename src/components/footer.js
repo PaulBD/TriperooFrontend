@@ -43,8 +43,6 @@ class Footer extends React.Component {
                     <div className="col-md-2">
                         <ul className="list list-footer">
                             <li><Link to="about-us">About Us</Link></li>
-                            <li><a href="#">Travel News</a>
-                            </li>
                             <li><Link to="privacy-policy">Privacy Policy</Link></li>
                             <li><Link to="terms">Terms of Use</Link></li>
                         </ul>
