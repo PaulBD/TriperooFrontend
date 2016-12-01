@@ -1,7 +1,8 @@
 import React from 'react';
+import CitySubHeader from '../../components/city/subHeader';
 import FacebookSignup from '../../components/facebookSignup';
 
-export default class AttractionHome extends React.Component {
+export default class ReviewPage extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
@@ -10,6 +11,7 @@ export default class AttractionHome extends React.Component {
   render(){
   return (
     <div>
+        <CitySubHeader type="reviews" />
 
         <div className="gap gap-small"></div>
 

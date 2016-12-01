@@ -1,7 +1,8 @@
 import React from 'react';
+import CitySubHeader from '../../components/city/subHeader';
 import FacebookSignup from '../../components/facebookSignup';
 
-export default class ReviewPage extends React.Component {
+export default class PubPage extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
@@ -10,6 +11,7 @@ export default class ReviewPage extends React.Component {
   render(){
   return (
     <div>
+        <CitySubHeader pageType="pub" />
 
         <div className="gap gap-small"></div>
 

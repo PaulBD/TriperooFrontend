@@ -8,14 +8,14 @@ export default class TopPlacesInCountry extends React.Component {
                 <div className="row">
 
                     <div className="col-md-6">
-                        <a className="hover-img" href="#">
+                        <a className="hover-img" href="/place/united-kindom/chester">
                             <img src="/static/img/800x600.png" alt="Image Alternative text" title="The Big Showoff-Take 2" />
                             <h5 className="hover-title-center">Mauris euismod nascetur</h5>
                         </a>
                     </div>
 
                     <div className="col-md-6">
-                        <a className="hover-img" href="#">
+                        <a className="hover-img" href="/place/united-kindom/chester">
                             <img src="/static/img/800x600.png" alt="Image Alternative text" title="The Big Showoff-Take 2" />
                             <h5 className="hover-title-center">Mauris euismod nascetur</h5>
                         </a>
@@ -25,14 +25,14 @@ export default class TopPlacesInCountry extends React.Component {
                 <div className="row">
 
                     <div className="col-md-6">
-                        <a className="hover-img" href="#">
+                        <a className="hover-img" href="/place/united-kindom/chester">
                             <img src="/static/img/800x600.png" alt="Image Alternative text" title="The Big Showoff-Take 2" />
                             <h5 className="hover-title-center">Mauris euismod nascetur</h5>
                         </a>
                     </div>
 
                     <div className="col-md-6">
-                        <a className="hover-img" href="#">
+                        <a className="hover-img" href="/place/united-kindom/chester">
                             <img src="/static/img/800x600.png" alt="Image Alternative text" title="The Big Showoff-Take 2" />
                             <h5 className="hover-title-center">Mauris euismod nascetur</h5>
                         </a>
@@ -42,21 +42,21 @@ export default class TopPlacesInCountry extends React.Component {
                 <div className="row">
 
                     <div className="col-md-4">
-                        <a className="hover-img" href="#">
+                        <a className="hover-img" href="/place/united-kindom/chester">
                             <img src="/static/img/800x600.png" alt="Image Alternative text" title="The Big Showoff-Take 2" />
                             <h5 className="hover-title-center">Mauris euismod nascetur</h5>
                         </a>
                     </div>
 
                     <div className="col-md-4">
-                        <a className="hover-img" href="#">
+                        <a className="hover-img" href="/place/united-kindom/chester">
                             <img src="/static/img/800x600.png" alt="Image Alternative text" title="The Big Showoff-Take 2" />
                             <h5 className="hover-title-center">Mauris euismod nascetur</h5>
                         </a>
                     </div>
 
                     <div className="col-md-4">
-                        <a className="hover-img" href="#">
+                        <a className="hover-img" href="/place/united-kindom/chester">
                             <img src="/static/img/800x600.png" alt="Image Alternative text" title="The Big Showoff-Take 2" />
                             <h5 className="hover-title-center">Mauris euismod nascetur</h5>
                         </a>

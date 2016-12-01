@@ -30,6 +30,7 @@
     "redux": "3.5.2",
     "redux-form": "^6.1.1",
     "redux-thunk": "2.0.1",
+    "title-case": "^2.1.0",
     "toastr": "2.1.2"
   },
   "devDependencies": {

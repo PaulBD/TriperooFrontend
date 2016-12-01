@@ -22,4 +22,4 @@ var HotelPageFeature = React.createClass({
     }
 });
 
-export default HotelFeature;
+export default HotelPageFeature;

@@ -16,12 +16,15 @@ import Flights from './apps/flight';
 import TravelExtras from './apps/travelExtras';
 import CarHire from './apps/travelExtras/car-hire';
 
-import AttractionPage from './apps/attraction';
-import RestaurantPage from './apps/restaurant';
-import PubPage from './apps/pub';
-import ReviewPage from './apps/review';
+import AttractionPage from './apps/attraction/city-search';
+import RestaurantPage from './apps/restaurant/city-search';
+import PubPage from './apps/pub/city-search';
+import ReviewPage from './apps/review/city-search';
 import HotelPage from './apps/hotel/city-search';
+
 import FlightPage from './apps/flight/country-flights';
+
+import HotelDetail from './apps/hotel/detail';
 
 export default (
   <Route path="/" component={Container}>
@@ -44,6 +47,8 @@ export default (
     <Route path="/place/:country/all/hotels" component={HotelPage}/>
     <Route path="/place/:country/attractions" component={AttractionPage}/>
     <Route path="/place/:country/:city/reviews" component={ReviewPage}/>
+
+    <Route path="/places/:country/:city/hotels/:hotelName" component={HotelDetail}/>
     
     <Route path="/holidays" component={Holidays}/>
     <Route path="/hotels" component={Hotels}/>

@@ -1,9 +1,14 @@
-import React from "react";
+import React, {Component, PropTypes} from 'react';
+var titleCase = require('title-case');
 
-export default class CityHeader extends React.Component {
+class CityHeader extends React.Component {
+    constructor(props, context) {
+        super(props, context);
+    }
+
 	render(){
 	return (
-        <div className="top-area show-onload infoPage">
+<div className="top-area show-onload infoPage">
             <div className="bg-holder full text-white">
                 <div className="bg-mask"></div>
                 <div className="bg-img chester"></div>
@@ -14,9 +19,9 @@ export default class CityHeader extends React.Component {
                               <li className="breadcrumb-item"><a href="/">Home</a></li>
                               <li className="breadcrumb-item"><a href="/place/united-kingdom">United Kingdom</a></li>
                               <li className="breadcrumb-item"><a href="/place/united-kingdom/chester">Chester</a></li>
-                              <li className="breadcrumb-item active">Hotels</li>
+                              <li className="breadcrumb-item active">{titleCase(this.props.pageType)}</li>
                             </ol>
-                            <h1>Chester</h1>
+                            <h1>{titleCase(this.props.pageType)}</h1>
                         </div>
                         <div className="col-md-4 col-xs-5">
                         <ul className="list text-xs-right list-inline cityNav">
@@ -59,3 +64,14 @@ export default class CityHeader extends React.Component {
        	);
 	}
 }
+
+CityHeader.propTypes = {
+  pageType: PropTypes.func.isRequired,
+  city: PropTypes.func.isRequired,
+  country: PropTypes.func.isRequired
+};
+CityHeader.defaultProps = {
+
+};
+
+export default CityHeader;

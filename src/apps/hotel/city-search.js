@@ -16,7 +16,7 @@ export default class HotelPage extends React.Component {
   render(){
   return (
     <div>
-        <CitySubHeader />
+        <CitySubHeader pageType="hotel" />
 
         <div className="gap gap-small"></div>
 

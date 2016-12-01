@@ -1,7 +1,8 @@
 import React from 'react';
 import FacebookSignup from '../../components/facebookSignup';
+import CitySubHeader from '../../components/city/subHeader';
 
-export default class PubPage extends React.Component {
+export default class AttractionHome extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
@@ -11,6 +12,7 @@ export default class PubPage extends React.Component {
   return (
     <div>
 
+        <CitySubHeader pageType="attraction" />
         <div className="gap gap-small"></div>
 
         <div className="container">

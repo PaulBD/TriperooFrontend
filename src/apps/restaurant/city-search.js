@@ -1,4 +1,5 @@
 import React from 'react';
+import CitySubHeader from '../../components/city/subHeader';
 import FacebookSignup from '../../components/facebookSignup';
 
 export default class RestaurantPage extends React.Component {
@@ -10,6 +11,7 @@ export default class RestaurantPage extends React.Component {
   render(){
   return (
     <div>
+        <CitySubHeader pageType="restaurant" />
 
         <div className="gap gap-small"></div>
 
