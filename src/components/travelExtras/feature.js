@@ -1,9 +1,8 @@
 import React from "react";
 
-var TravelPageFeature = React.createClass({
-      render: function() {
-
-        return (
+export default class TravelPageFeature extends React.Component {
+    render(){
+    return (
         <div className="bg-holder full text-xs-center text-white travelPage">
             <div className="bg-mask"></div>
             <div className="bg-img airportLounge"></div>
@@ -18,6 +17,4 @@ var TravelPageFeature = React.createClass({
         </div>
         );
     }
-});
-
-export default TravelPageFeature;
+}

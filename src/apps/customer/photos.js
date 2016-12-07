@@ -223,5 +223,6 @@ export default class Photos extends React.Component {
                 </div>
             </div>
         </div>
-    )};
-};
+    );
+  }
+}

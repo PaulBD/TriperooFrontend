@@ -9,5 +9,8 @@ export default {
   footerNewsletter: {
     emailAddress: '',
     isSuccess: false
+  },
+  searchHomePage: {
+    searchValue: ''
   }
 };

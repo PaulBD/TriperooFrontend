@@ -83,6 +83,6 @@ export default class HotelSummaryIcons extends React.Component {
                 </li>
             </ul>
         </div>
-       	);
+        );
 	}
 }

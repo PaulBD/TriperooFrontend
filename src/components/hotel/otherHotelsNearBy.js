@@ -29,6 +29,6 @@ export default class OtherHotelsNearBy extends React.Component {
                 </li>
             </ul>
         </div>
-       	);
-	}
+        );
+    }
 }

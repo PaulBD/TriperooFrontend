@@ -1,9 +1,8 @@
 import React from "react";
 
-var Overview = React.createClass({
-      render: function() {
-
-        return (
+export default class Overview extends React.Component {
+    render(){
+    return (
             <div>
                 <h4>Why Chester?</h4>
                 <p>Chester is a city in northwestern, England, lying on the River Dee, close to the 
@@ -18,6 +17,4 @@ var Overview = React.createClass({
             </div>
         );
     }
-});
-
-export default Overview;
+}

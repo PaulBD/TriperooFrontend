@@ -2,8 +2,8 @@ import React from "react";
 import WriteReview from './writeReview';
 
 export default class Reviews extends React.Component {
-	render(){
-	return (
+    render(){
+    return (
         <div>
 
                 <ul className="booking-item-reviews list">
@@ -938,6 +938,6 @@ export default class Reviews extends React.Component {
                     <WriteReview />
                 </div>
             </div>
-       	);
-	}
+        );
+    }
 }

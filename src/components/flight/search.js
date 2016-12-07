@@ -1,9 +1,8 @@
 import React from "react";
 
-var Search = React.createClass({
-      render: function() {
-
-        return (
+export default class Search extends React.Component {
+    render(){
+    return (
         <div className="search-tabs search-tabs-bg search-tabs-to-top">
             <div className="tabbable">
                 <div className="tab-content">
@@ -100,6 +99,4 @@ var Search = React.createClass({
         </div>
       );
     }
-});
-
-export default Search;
+}

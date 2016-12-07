@@ -50,6 +50,6 @@ export default class SubHeader extends React.Component {
                 </div>
             </div>
         </div>
-       	);
-	}
+        );
+    }
 }

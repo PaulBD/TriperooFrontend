@@ -23,6 +23,6 @@ export default class GuestRating extends React.Component {
                 </p>
             </div>
         </div>
-       	);
-	}
+        );
+    }
 }

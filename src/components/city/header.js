@@ -1,8 +1,8 @@
 import React from "react";
 
 export default class Header extends React.Component {
-	render(){
-	return (
+    render(){
+    return (
         <div className="top-area show-onload cityPage">
             <div className="bg-holder full text-xs-center text-white">
                 <div className="bg-mask"></div>
@@ -21,6 +21,6 @@ export default class Header extends React.Component {
                 </div>
             </div>
         </div>
-       	);
-	}
+        );
+    }
 }

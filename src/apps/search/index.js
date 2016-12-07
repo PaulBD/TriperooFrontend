@@ -764,5 +764,6 @@ export default class SearchResults extends React.Component {
             </div>
             <div className="gap"></div>
         </div>
-  )};
-};
+      );
+   }
+}

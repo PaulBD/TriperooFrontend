@@ -30,6 +30,6 @@ export default class HotelList extends React.Component {
             </div>
         </div>
         </Link>
-       	);
-	}
+        );
+    }
 }

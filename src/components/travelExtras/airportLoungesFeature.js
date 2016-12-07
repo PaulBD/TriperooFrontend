@@ -1,9 +1,8 @@
 import React from "react";
 
-var AirportLoungesFeature = React.createClass({
-      render: function() {
-
-        return (
+export default class AirportLoungesFeature extends React.Component {
+    render(){
+    return (
         <div className="bg-holder full text-xs-center text-white holidayPage">
             <div className="bg-mask"></div>
             <div className="bg-img carHire"></div>
@@ -18,6 +17,4 @@ var AirportLoungesFeature = React.createClass({
         </div>
         );
     }
-});
-
-export default AirportLoungesFeature;
+}

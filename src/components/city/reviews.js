@@ -1,9 +1,8 @@
 import React from "react";
 
-var Reviews = React.createClass({
-      render: function() {
-
-        return (
+export default class Reviews extends React.Component {
+    render(){
+    return (
             <div>
             <h3>Member Reviews (14)</h3>
             <ul className="booking-item-reviews list">
@@ -395,6 +394,4 @@ var Reviews = React.createClass({
             </div>
         );
     }
-});
-
-export default Reviews;
+}

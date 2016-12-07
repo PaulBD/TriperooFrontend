@@ -1,9 +1,8 @@
 import React from "react";
 
-var Navigation = React.createClass({
-      render: function() {
-
-        return (
+export default class Navigation extends React.Component {
+    render(){
+    return (
             <div className="search-tabs search-tabs-bg search-tabs-to-top">
                 <div className="tabbable">
                     <div className="tab-content">
@@ -48,6 +47,4 @@ var Navigation = React.createClass({
             </div> 
         );
     }
-});
-
-export default Navigation;
+}

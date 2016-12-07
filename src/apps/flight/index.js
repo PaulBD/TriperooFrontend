@@ -17,34 +17,35 @@ export default class FlightsPage extends React.Component {
   
   render(){
     return (
-    <div>
-        <Feature />
-        <div className="container">
-            <Search />
-        </div>
-        <div className="container">
-            <TopDestinations />
-            <div className="gap"></div>
-            <div className="row">
-                <div className="col-md-4">
-                    <TrendingNow />
-                </div>
-                <div className="col-md-4">
-                    <HotDeals />
-                </div>
-                <div className="col-md-4">
-                    <Recommendations />
+        <div>
+            <Feature />
+            <div className="container">
+                <Search />
+            </div>
+            <div className="container">
+                <TopDestinations />
+                <div className="gap"></div>
+                <div className="row">
+                    <div className="col-md-4">
+                        <TrendingNow />
+                    </div>
+                    <div className="col-md-4">
+                        <HotDeals />
+                    </div>
+                    <div className="col-md-4">
+                        <Recommendations />
+                    </div>
                 </div>
             </div>
-        </div>
-        <div className="container">
-            <div className="gap gap-small"></div>
-            <hr />
+            <div className="container">
+                <div className="gap gap-small"></div>
+                <hr />
+                <div className="gap"></div>
+                <FacebookSignup />
+                <div className="gap"></div>
+            </div>
             <div className="gap"></div>
-            <FacebookSignup />
-            <div className="gap"></div>
         </div>
-        <div className="gap"></div>
-    </div>
-  )};
-};
+    );
+  }
+}

@@ -1,9 +1,8 @@
 import React from "react";
 
-var HotDeals = React.createClass({
-      render: function() {
-
-        return (
+export default class HotDeals extends React.Component {
+    render(){
+    return (
         <div>
             <h3>Hot Deals <small ><a href="#">view all</a></small></h3>
             <ul className="booking-list">
@@ -89,6 +88,4 @@ var HotDeals = React.createClass({
             </div>    
         );
     }
-});
-
-export default HotDeals;
+}

@@ -48,6 +48,6 @@ export default class HotelThumb extends React.Component {
                         </div>
                     </div>
                     */
-       	);
+        );
 	}
 }

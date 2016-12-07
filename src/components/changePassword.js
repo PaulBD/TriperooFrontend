@@ -1,8 +1,8 @@
 import React from "react";
 
 export default class ChangePassword extends React.Component {
-	render(){
-	return (
+    render(){
+    return (
         <form>
             <div className="form-group form-group-icon-left"><i className="fa fa-lock input-icon"></i>
                 <label>Current Password</label>
@@ -19,6 +19,6 @@ export default class ChangePassword extends React.Component {
             <hr />
             <input className="btn btn-primary" type="submit" value="Change Password" />
         </form>
-       	);
-	}
+        );
+    }
 }

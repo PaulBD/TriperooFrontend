@@ -1,9 +1,8 @@
 import React from "react";
 
-var FacebookSignup = React.createClass({
-      render: function() {
-
-        return (
+export default class FacebookSignup extends React.Component {
+    render(){
+    return (
             <div className="row">
                 <div className="col-md-6 text-xs-right">
                     <h5 className="signupText">Join Now to get started</h5>
@@ -16,6 +15,4 @@ var FacebookSignup = React.createClass({
             </div>  
         );
     }
-});
-
-export default FacebookSignup;
+}

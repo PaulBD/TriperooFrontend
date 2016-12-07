@@ -1,11 +1,9 @@
 import React from "react";
 import CommentCard from './commentCard';
 
-
-var RecentQuestions = React.createClass({
-      render: function() {
-
-        return (
+export default class RecentQuestions extends React.Component {
+    render(){
+    return (
         <div>
             <h3 className="mb20">Share The Knowledge</h3>
             <p>Community is the heart of everything we do, share tips on where to go and what<br />to do with other like-minded people and help others discover amazing places.</p>
@@ -25,6 +23,4 @@ var RecentQuestions = React.createClass({
         </div>    
         );
     }
-});
-
-export default RecentQuestions;
+}

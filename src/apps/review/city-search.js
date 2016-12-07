@@ -9,25 +9,23 @@ export default class ReviewPage extends React.Component {
   }
   
   render(){
-  return (
-    <div>
-        <CitySubHeader type="reviews" />
-
-        <div className="gap gap-small"></div>
-
-        <div className="container">
-            <div className="row">
-                
-            </div>
-        </div>
-        
-        <div className="container">
-            <div className="gap gap-small"></div>
-            <hr />
-            <div className="gap"></div>
-            <FacebookSignup />
-            <div className="gap"></div>
-        </div>
-    </div>
-  )};
-};
+    return (
+      <div>
+          <CitySubHeader type="reviews" />
+          <div className="gap gap-small"></div>
+          <div className="container">
+              <div className="row">
+                  
+              </div>
+          </div>
+          <div className="container">
+              <div className="gap gap-small"></div>
+              <hr />
+              <div className="gap"></div>
+              <FacebookSignup />
+              <div className="gap"></div>
+          </div>
+      </div>
+       );
+   }
+}

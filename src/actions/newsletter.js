@@ -1,5 +1,5 @@
 import * as types from '../actionTypes/';
-import axios from 'axios'
+import axios from 'axios';
 import dateHelper from '../utils/dateHelper';
 
 
@@ -19,12 +19,12 @@ export function saveNewsletter(settings, emailAddress) {
     .catch(function (error) {
       console.log(error);
     });
-    */
 
     return dispatcher({
           type : types.FAILED_NEWSLETTER,
           error : 'Incorrect email address'
         });
+    */
 
     /*return dispatch({
       type: types.SAVE_NEWSLETTER,

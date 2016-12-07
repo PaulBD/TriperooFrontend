@@ -43,6 +43,6 @@ export default class TravellerRating extends React.Component {
                 </li>
             </ul>
         </div>
-       	);
-	}
+        );
+    }
 }

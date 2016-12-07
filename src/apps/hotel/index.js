@@ -49,5 +49,6 @@ export default class SearchHotels extends React.Component {
             <div className="gap"></div>
         </div>
       </div>
-  )};
-};
+      );
+   }
+}

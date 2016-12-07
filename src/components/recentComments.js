@@ -38,6 +38,6 @@ export default class RecentComments extends React.Component {
                 </li>
             </ul>
         </div>
-       	);
-	}
+        );
+    }
 }

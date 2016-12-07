@@ -1,9 +1,4 @@
 import React, {PropTypes} from 'react';
-import { Link } from "react-router";
-
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import actions from '../actions/newsletter';
 
 class Newsletter extends React.Component {
    constructor(props, context) {
@@ -17,13 +12,9 @@ class Newsletter extends React.Component {
     e.preventDefault();
 
     console.log(this.refs.emailAddress.value);
-
-    //this.props.saveNewsletter(this.props.footerNewsletter, this.refs.emailAddress.value);
   }
 
    render() {
-
-    //const {footerNewsletter} = this.props;
 
       return (
           <div>
@@ -38,11 +29,5 @@ class Newsletter extends React.Component {
       );
    }
 }
-
-Newsletter.propTypes = {
-  //saveNewsletter: PropTypes.func.isRequired,
-  //footerNewsletter: PropTypes.object.isRequired,
-  //error: PropTypes.object.isRequired
-};
 
 export default Newsletter;

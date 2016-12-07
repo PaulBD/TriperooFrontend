@@ -45,6 +45,6 @@ export default class Copy extends React.Component {
                 </a>
             </div>
         </div>
-       	);
-	}
+        );
+    }
 }

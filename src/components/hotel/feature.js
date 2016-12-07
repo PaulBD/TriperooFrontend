@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router";
 
-var HotelPageFeature = React.createClass({
-      render: function() {
-
-        return (
+export default class HotelPageFeature extends React.Component {
+    render(){
+    return (
         <div className="bg-holder full text-xs-center text-white holidayPage">
             <div className="bg-mask"></div>
             <div className="bg-img hotelRoom"></div>
@@ -20,6 +19,4 @@ var HotelPageFeature = React.createClass({
         </div>
         );
     }
-});
-
-export default HotelPageFeature;
+}

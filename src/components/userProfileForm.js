@@ -1,9 +1,10 @@
 import React from "react";
 
-export default class UserProfileForm extends React.Component {
+class UserProfileForm extends React.Component {
     render(){
     return (
-        <form action="">
+        <div>
+        <form>
             <h4>Personal Infomation</h4>
             <div className="form-group form-group-icon-left"><i className="fa fa-user input-icon"></i>
                 <label>First Name</label>
@@ -47,9 +48,12 @@ export default class UserProfileForm extends React.Component {
                 <label>Country</label>
                 <input className="form-control" value="United Kingdom" type="text" />
             </div>
-            <hr>
-            <input type="submit" className="btn btn-primary" value="Save Changes">
+            <hr />
+            <input type="submit" className="btn btn-primary" value="Save Changes" />
         </form>
+        </div>
         );
     }
 }
+
+export default UserProfileForm;

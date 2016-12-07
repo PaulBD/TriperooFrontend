@@ -1,9 +1,8 @@
 import React from "react";
 
-var CommendCard = React.createClass({
-      render: function() {
-
-        return (
+export default class CommentCard extends React.Component {
+    render(){
+    return (
         <div className="card text-xs-left">
           <img src="/static/img/coffee.jpg" alt="Card image" />
 
@@ -36,6 +35,4 @@ var CommendCard = React.createClass({
         </div> 
         );
     }
-});
-
-export default CommendCard;
+}

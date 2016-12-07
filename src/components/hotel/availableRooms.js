@@ -337,6 +337,6 @@ export default class AvailableRooms extends React.Component {
             </li>
         </ul>
     </div>
-       	);
+        );
 	}
 }

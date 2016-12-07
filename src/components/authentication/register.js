@@ -1,9 +1,9 @@
 import React from "react";
 
-var Register = React.createClass({
-      render: function() {
-        return (
-          <div className="modal fade" id="signupModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+export default class Register extends React.Component {
+    render(){
+    return (
+          <div className="modal fade" id="signupModel" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div className="modal-dialog modelAuthentication" role="document">
               <div className="modal-content">
                 <div className="modal-body">
@@ -48,6 +48,4 @@ var Register = React.createClass({
           </div>
         );
     }
-});
-
-export default Register;
+}

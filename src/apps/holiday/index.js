@@ -78,5 +78,6 @@ export default class Holidays extends React.Component {
             <div className="gap"></div>
         </div>
       </div>
-  )};
-};
+    );
+  }
+}

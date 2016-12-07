@@ -1,9 +1,8 @@
 import React from "react";
 
-var Recommendations = React.createClass({
-      render: function() {
-
-        return (
+export default class Recommendations extends React.Component {
+    render(){
+    return (
         <div>
             <h3>Special for You <small ><a href="#">view all</a></small></h3>
                     <ul className="booking-list">
@@ -89,6 +88,4 @@ var Recommendations = React.createClass({
             </div>    
         );
     }
-});
-
-export default Recommendations;
+}

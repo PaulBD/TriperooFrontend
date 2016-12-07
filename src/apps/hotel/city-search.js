@@ -5,7 +5,7 @@ import CitySubHeader from '../../components/city/subHeader';
 import HotelSearch from '../../components/hotel/searchForm';
 import HotelThumb from '../../components/hotel/thumb';
 import CityMap from '../../components/city/map';
-import ReviewButton from '../../components/reviewButton'
+import ReviewButton from '../../components/reviewButton';
 
 export default class HotelPage extends React.Component {
 
@@ -14,73 +14,71 @@ export default class HotelPage extends React.Component {
   }
   
   render(){
-  return (
-    <div>
-        <CitySubHeader pageType="hotel" />
-
-        <div className="gap gap-small"></div>
-
-        <div className="container">
-            <div className="row">
-                <div className="col-md-8">
-                  <HotelSearch />
-
-                  <div className="gap gap-small"></div>
-                  <h3 className="mb20">Hotels in Chester</h3>
-                  <div className="row row-wrap">
-                      <div className="col-md-4">
-                        <HotelThumb />
-                      </div>
-                      <div className="col-md-4">
-                        <HotelThumb />
-                      </div>
-                      <div className="col-md-4">
-                        <HotelThumb />
-                      </div>
-                      <div className="col-md-4">
-                        <HotelThumb />
-                      </div>
-                      <div className="col-md-4">
-                        <HotelThumb />
-                      </div>
-                      <div className="col-md-4">
-                        <HotelThumb />
-                      </div>
-                      <div className="col-md-4">
-                        <HotelThumb />
-                      </div>
-                      <div className="col-md-4">
-                        <HotelThumb />
-                      </div>
-                      <div className="col-md-4">
-                        <HotelThumb />
-                      </div>
-                      <div className="col-md-4">
-                        <HotelThumb />
-                      </div>
-                      <div className="col-md-4">
-                        <HotelThumb />
-                      </div>
-                      <div className="col-md-4">
-                        <HotelThumb />
-                      </div>
-                    </div>
-                </div>
-                <div className="col-md-4">
-                    <ReviewButton />
+    return (
+      <div>
+          <CitySubHeader pageType="hotel" />
+          <div className="gap gap-small"></div>
+          <div className="container">
+              <div className="row">
+                  <div className="col-md-8">
+                    <HotelSearch />
                     <div className="gap gap-small"></div>
-                    <CityMap />
+                    <h3 className="mb20">Hotels in Chester</h3>
+                    <div className="row row-wrap">
+                        <div className="col-md-4">
+                          <HotelThumb />
+                        </div>
+                        <div className="col-md-4">
+                          <HotelThumb />
+                        </div>
+                        <div className="col-md-4">
+                          <HotelThumb />
+                        </div>
+                        <div className="col-md-4">
+                          <HotelThumb />
+                        </div>
+                        <div className="col-md-4">
+                          <HotelThumb />
+                        </div>
+                        <div className="col-md-4">
+                          <HotelThumb />
+                        </div>
+                        <div className="col-md-4">
+                          <HotelThumb />
+                        </div>
+                        <div className="col-md-4">
+                          <HotelThumb />
+                        </div>
+                        <div className="col-md-4">
+                          <HotelThumb />
+                        </div>
+                        <div className="col-md-4">
+                          <HotelThumb />
+                        </div>
+                        <div className="col-md-4">
+                          <HotelThumb />
+                        </div>
+                        <div className="col-md-4">
+                          <HotelThumb />
+                        </div>
+                      </div>
+                  </div>
+                  <div className="col-md-4">
+                      <ReviewButton />
+                      <div className="gap gap-small"></div>
+                      <CityMap />
 
-                </div>
-            </div>
-        </div>
-        <div className="container">
-            <div className="gap gap-small"></div>
-            <hr />
-            <div className="gap"></div>
-            <FacebookSignup />
-            <div className="gap"></div>
-        </div>
-    </div>
-  )};
-};
+                  </div>
+              </div>
+          </div>
+          <div className="container">
+              <div className="gap gap-small"></div>
+              <hr />
+              <div className="gap"></div>
+              <FacebookSignup />
+              <div className="gap"></div>
+          </div>
+      </div>
+      );
+   }
+}

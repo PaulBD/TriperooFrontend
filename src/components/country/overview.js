@@ -1,9 +1,8 @@
 import React from "react";
 
-var Overview = React.createClass({
-      render: function() {
-
-        return (
+export default class Overview extends React.Component {
+    render(){
+    return (
             <div>
                 <h4>Why United Kingdom?</h4>
                 <p>The UK is a bit damp and has trouble mustering up a season that looks and feels 
@@ -20,6 +19,4 @@ var Overview = React.createClass({
             </div>
         );
     }
-});
-
-export default Overview;
+}

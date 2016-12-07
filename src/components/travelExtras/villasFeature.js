@@ -1,9 +1,8 @@
 import React from "react";
 
-var VillasFeature = React.createClass({
-      render: function() {
-
-        return (
+export default class VillasFeature extends React.Component {
+    render(){
+    return (
         <div className="bg-holder full text-xs-center text-white holidayPage">
             <div className="bg-mask"></div>
             <div className="bg-img carHire"></div>
@@ -18,6 +17,4 @@ var VillasFeature = React.createClass({
         </div>
         );
     }
-});
-
-export default VillasFeature;
+}

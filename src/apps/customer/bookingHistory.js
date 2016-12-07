@@ -163,5 +163,6 @@ export default class BookingHistory extends React.Component {
                 </div>
             </div>
         </div>
-    )};
-};
+    );
+  }
+}

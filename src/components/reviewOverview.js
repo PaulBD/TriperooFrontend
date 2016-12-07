@@ -1,9 +1,8 @@
 import React from "react";
 
-var ReviewOverview = React.createClass({
-      render: function() {
-
-        return (
+export default class ReviewOverview extends React.Component {
+    render(){
+    return (
             <div className="row greyBg commentOverview">
                 <div className="col-md-6">
                     <ul className="icon-group">
@@ -21,6 +20,4 @@ var ReviewOverview = React.createClass({
             </div>
         );
     }
-});
-
-export default ReviewOverview;
+}

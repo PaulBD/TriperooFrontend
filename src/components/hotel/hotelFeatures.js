@@ -36,6 +36,6 @@ export default class HotelFeatures extends React.Component {
                     </li>
                 </ul>
             </div>
-       	);
-	}
+        );
+    }
 }

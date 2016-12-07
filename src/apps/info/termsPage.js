@@ -15,12 +15,10 @@ export default class TermsPage extends React.Component {
   
   render(){
     return (
-
         <div className="container">
           <div className="container">
             <h1 className="page-title">Terms</h1>
           </div>
-
           <div className="container">
               <div className="row">
                   <div className="col-md-9">
@@ -35,28 +33,21 @@ export default class TermsPage extends React.Component {
                       <p>Vitae eleifend duis convallis porta gravida auctor phasellus luctus ante et dignissim sagittis leo aptent malesuada nibh convallis cras velit himenaeos dis pretium interdum bibendum elementum morbi dignissim dis habitant senectus curabitur placerat consequat est nunc ad ornare commodo luctus curabitur mi aliquet aliquam nec sollicitudin fames cubilia elit donec nostra cum nullam porta dignissim tortor porta turpis quam pretium ultricies varius massa maecenas et id dictumst mattis donec fringilla ac parturient posuere id phasellus erat elementum nullam lacus cursus rhoncus parturient vitae praesent quisque nascetur molestie quis dignissim vel sit odio metus tristique auctor dictumst primis ad viverra quisque etiam in rutrum donec cras non dis suscipit risus ridiculus lacus mus cursus luctus donec pellentesque rhoncus sem quam vulputate mus hendrerit risus ultrices a elementum massa est at aenean parturient in egestas senectus lectus convallis lectus dui neque sit dignissim facilisis fames feugiat laoreet pharetra felis vitae ornare lacus sodales non sapien curae nisl nec habitant velit semper pretium et ipsum dolor in amet nunc vestibulum lacus nulla dis sollicitudin diam luctus dolor ante lobortis neque enim facilisis penatibus integer lacinia semper nibh ullamcorper feugiat faucibus non nec amet ac mus hac diam nulla ridiculus proin sem iaculis condimentum</p>
                       <h3>Pharetra morbi volutpat torquent orci</h3>
                       <p>Luctus pharetra volutpat nisl dis curae primis aliquet sapien pellentesque velit tristique taciti tincidunt adipiscing pharetra massa at quisque fermentum faucibus ultrices mi fames himenaeos pellentesque curabitur nisl etiam a volutpat phasellus convallis diam tempus malesuada mauris torquent dapibus montes mollis iaculis porta ridiculus rutrum fusce sed parturient habitant a gravida curabitur senectus blandit parturient quam fames sem nec interdum id torquent litora nibh curae morbi cum etiam duis malesuada viverra ultricies pellentesque vestibulum sed mattis augue penatibus venenatis malesuada nam semper facilisis taciti posuere convallis curae auctor non sodales iaculis blandit taciti pellentesque faucibus id nam scelerisque sapien ultricies euismod viverra diam dictum curabitur laoreet facilisi conubia purus taciti malesuada eget cum malesuada nunc libero vestibulum aptent aliquam eros facilisi purus mus odio praesent facilisi molestie amet fringilla ultricies sem leo pulvinar gravida pulvinar felis adipiscing risus curae nulla rutrum vehicula interdum sit consectetur arcu fusce turpis nisl sollicitudin euismod fringilla habitant mi condimentum at vehicula sem conubia neque maecenas ultrices donec sodales nam nec phasellus fermentum et vulputate in viverra dolor tortor platea fames libero malesuada justo elit nostra metus ullamcorper etiam rutrum dictum aenean himenaeos morbi dolor commodo vulputate accumsan sapien vitae consectetur quisque placerat vulputate dolor torquent blandit ac eget vulputate pretium habitant parturient cursus sem tempor ligula a at ultrices commodo nibh potenti feugiat morbi molestie litora leo eu ullamcorper montes consectetur eros fringilla per placerat velit tincidunt aptent vulputate gravida curae lacinia imperdiet tempus erat vulputate posuere mollis quisque magna facilisi sagittis ridiculus consequat</p>
-                  </div>
-                  <div className="col-md-3">
-                      <aside className="sidebar-right">
-                          
-                        <Search />
-
-                          <SideNavigation />
-
-                          <PopularPosts />
-
-                          <Comments />
-
-                          <TwitterFeed />
-
-                          <FacebookFeed />
-
-                      </aside>
-                  </div>
-              </div>
-          </div>
-
-              <div className="gap"></div>
+                </div>
+                <div className="col-md-3">
+                    <aside className="sidebar-right">
+                      <Search />
+                      <SideNavigation />
+                      <PopularPosts />
+                      <Comments />
+                      <TwitterFeed />
+                      <FacebookFeed />
+                    </aside>
+                </div>
+            </div>
         </div>
-      )};
-};
+        <div className="gap"></div>
+      </div>
+      );
+   }
+}

@@ -38,6 +38,6 @@ export default class PopularPosts extends React.Component {
                 </li>
             </ul>
         </div>          
-	    );
-	}
+        );
+    }
 }

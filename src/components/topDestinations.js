@@ -1,9 +1,8 @@
 import React from "react";
 
-var TopDestinations = React.createClass({
-      render: function() {
-
-        return (
+export default class TopDestinations extends React.Component {
+    render(){
+    return (
         <div>
             <h3 className="mb20">Our Top Destinations</h3>
             <div className="row row-wrap">
@@ -32,6 +31,4 @@ var TopDestinations = React.createClass({
         </div>   
         );
     }
-});
-
-export default TopDestinations;
+}

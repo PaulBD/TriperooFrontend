@@ -1,9 +1,9 @@
 import React from "react";
 
-var Login = React.createClass({
-      render: function() {
-        return (
-          <div className="modal fade" id="loginModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+export default class Login extends React.Component {
+    render(){
+    return (
+          <div className="modal fade" id="loginModel" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div className="modal-dialog modelAuthentication" role="document">
               <div className="modal-content">
                 <div className="modal-body">
@@ -40,6 +40,4 @@ var Login = React.createClass({
           </div>
         );
     }
-});
-
-export default Login;
+}

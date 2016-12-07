@@ -26,9 +26,9 @@ export default class UpdateProfile extends React.Component {
                             <ChangePassword />
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
-    )};
-};
+    );
+  }
+}

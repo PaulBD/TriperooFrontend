@@ -1,13 +1,10 @@
 import React from "react";
 
 export default class LastMinuteDeal extends React.Component {
-    
-
 	render(){
-        var style = {
+        let style = {
             backgroundImage: 'url("/static/img/locations/popular-destinations/peninsula.jpg")'
         };
-
 	return (
         <div className="bg-holder">
             <div className="bg-mask"></div>
@@ -30,6 +27,6 @@ export default class LastMinuteDeal extends React.Component {
                 </div>
             </div>
         </div>
-       	);
-	}
+        );
+    }
 }

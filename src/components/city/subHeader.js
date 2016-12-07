@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-var titleCase = require('title-case');
+let titleCase = require('title-case');
 
 class CityHeader extends React.Component {
     constructor(props, context) {
@@ -8,7 +8,7 @@ class CityHeader extends React.Component {
 
 	render(){
 	return (
-<div className="top-area show-onload infoPage">
+        <div className="top-area show-onload infoPage">
             <div className="bg-holder full text-white">
                 <div className="bg-mask"></div>
                 <div className="bg-img chester"></div>
@@ -61,8 +61,8 @@ class CityHeader extends React.Component {
                 </div>
             </div>
         </div>
-       	);
-	}
+        );
+    }
 }
 
 CityHeader.propTypes = {

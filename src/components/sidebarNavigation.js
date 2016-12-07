@@ -24,6 +24,6 @@ export default class SideNavigation extends React.Component {
                 </li>
             </ul>
         </div>            
-	    );
-	}
+        );
+    }
 }

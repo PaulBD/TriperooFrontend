@@ -15,12 +15,10 @@ export default class PrivacyPage extends React.Component {
   
   render(){
     return (
-
       <div className="container">
         <div className="container">
           <h1 className="page-title">Privacy</h1>
         </div>
-
         <div className="container">
             <div className="row">
                 <div className="col-md-9">
@@ -38,25 +36,18 @@ export default class PrivacyPage extends React.Component {
                 </div>
                 <div className="col-md-3">
                     <aside className="sidebar-right">
-                        
                       <Search />
-
-                        <SideNavigation />
-
-                        <PopularPosts />
-
-                        <Comments />
-
-                        <TwitterFeed />
-
-                        <FacebookFeed />
-
+                      <SideNavigation />
+                      <PopularPosts />
+                      <Comments />
+                      <TwitterFeed />
+                      <FacebookFeed />
                     </aside>
                 </div>
             </div>
         </div>
-
-            <div className="gap"></div>
+        <div className="gap"></div>
       </div>
-      )};
-};
+      );
+   }
+}
