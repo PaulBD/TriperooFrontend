@@ -1,9 +1,11 @@
-export default function searchReducer(state = [], action) {
+import initialState from './initialState';
+
+export default function searchReducer(state = initialState.searches, action) {
 	switch(action.type) {
-		case 'SEARCH_HOMEPAGE':
-			return [...state,
-				Object.assign({}, action.list)
-			];
+		case 'LOAD_SEARCH_SUCCESS':
+			return action.searches;
+		case 'CLEAR_SEARCHES':
+			return action.searches;
 		default:
 			return state;
 	}

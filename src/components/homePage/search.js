@@ -2,36 +2,36 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as searchActions from '../../actions/searchActions';
+import SearchList from './searchList';
+import {browserHistory} from 'react-router';
 
 class SearchComponent extends React.Component {
   constructor(props, context) {
       super(props, context);
 
-      this.state = {
-        search: { searchValue: '', searchList: [] }
-      };
+      this.state = { searches: [] };
 
       this.onSearchValue = this.onSearchValue.bind(this);
       this.onSubmitRedirect = this.onSubmitRedirect.bind(this);
   }
 
   onSearchValue(event) {
-    const search = this.state.search;
-    search.searchValue = event.target.value;
-    this.setState({search: search});
+    let val = event.target.value;
+    this.props.actions.clearSearches();
+
+    if (val.length > 2) {
+      this.props.actions.loadSearches(val);
+    }
   }
 
   onSubmitRedirect(event) {
-    this.props.dispatch(searchActions.search(this.state.search));
-  }
-
-  searchRow(search, index) {
-    return <div key={index}>{search.searchValue}</div>;
+    event.preventDefault();
+    browserHistory.push('/search-result?v=' + this.refs.search.value);
   }
 
   render() {
 
-    const {search} = this.props;
+    const {searches} = this.props;
 
     return (
       <div className="search-tabs search-tabs-bg search-tabs-to-top">
@@ -45,17 +45,19 @@ class SearchComponent extends React.Component {
                 <div className="row">
                   <div className="col-md-3 text-xs-center">&nbsp;</div>
                   <div className="col-md-6 text-xs-center">
-                    <div className="form-group form-group-lg form-group-icon-left homeSearch"><i className="fa fa-search input-icon homeSearchIcon"></i>
-                      <input className="typeahead form-control" placeholder="Search anywhere in the world" ref="homeSearch" name="homeSearch" onChange={this.onSearchValue} />
+                    <div className="input-group">
+                      <div className="form-group form-group-lg form-group-icon-left homeSearch"><i className="fa fa-search input-icon homeSearchIcon"></i>
+                        <input className="typeahead form-control" placeholder="Search anywhere in the world" ref="search" name="search" onChange={this.onSearchValue} autoComplete="off" />
+                        <SearchList searches={searches} />
+                      </div>
+                      <span className="input-group-btn">
+                        <button className="btn btn-primary btnSearch" type="button">Search</button>
+                      </span>
                     </div>
                   </div>
                   <div className="col-md-3 text-xs-center">&nbsp;</div>
-                  <div className="col-md-12 text-xs-center">
-                    <button className="btn btn-primary btn-lg" type="submit">Discover Your Destination</button>
-                  </div>
                 </div>
               </form>
-              {this.props.search.map(this.searchRow)}
             </div>
           </div>
         </div>
@@ -65,14 +67,13 @@ class SearchComponent extends React.Component {
 }
 
 SearchComponent.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  search: PropTypes.object.isRequired,
+  searches: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    search: state.search
+    searches: state.searches
   };
 }
 

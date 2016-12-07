@@ -8,7 +8,7 @@ import Register from '../components/authentication/register';
 export const App = (props) => {
 	return (
 		<div className="global-wrap">
-			<Header showHeader={1} />
+			<Header showHeader={true} />
 			{props.children}
 			<Footer />
 			<Login />
