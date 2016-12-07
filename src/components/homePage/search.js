@@ -17,10 +17,12 @@ class SearchComponent extends React.Component {
 
   onSearchValue(event) {
     let val = event.target.value;
-    this.props.actions.clearSearches();
 
     if (val.length > 2) {
       this.props.actions.loadSearches(val);
+    }
+    else {
+      this.props.actions.clearSearches();
     }
   }
 
@@ -48,11 +50,11 @@ class SearchComponent extends React.Component {
                     <div className="input-group">
                       <div className="form-group form-group-lg form-group-icon-left homeSearch"><i className="fa fa-search input-icon homeSearchIcon"></i>
                         <input className="typeahead form-control" placeholder="Search anywhere in the world" ref="search" name="search" onChange={this.onSearchValue} autoComplete="off" />
-                        <SearchList searches={searches} />
                       </div>
                       <span className="input-group-btn">
                         <button className="btn btn-primary btnSearch" type="button">Search</button>
-                      </span>
+                      </span>                        <SearchList searches={searches} />
+
                     </div>
                   </div>
                   <div className="col-md-3 text-xs-center">&nbsp;</div>
