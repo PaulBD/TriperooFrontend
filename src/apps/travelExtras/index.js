@@ -5,7 +5,7 @@ import TrendingDeals from '../../components/trendingDeals';
 import HotDeals from '../../components/hotDeals';
 import SpecialDeals from '../../components/specialDeals';
 
-import FacebookSignup from '../../components/facebookSignup';
+import FacebookSignup from '../../components/common/facebookSignup';
 import LastMinuteDeal from '../../components/lastMinuteDeal';
 
 export default class TravelExtras extends React.Component {

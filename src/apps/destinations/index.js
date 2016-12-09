@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 import TopDestinations from '../../components/topDestinations';
-import FacebookSignup from '../../components/facebookSignup';
+import FacebookSignup from '../../components/common/facebookSignup';
 import WorldCities from '../../components/worldCities';
 import Feature from '../../components/common/feature';
 

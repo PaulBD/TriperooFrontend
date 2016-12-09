@@ -1,6 +1,6 @@
 import React from 'react';
 import CottagesFeature from '../../components/travelExtras/cottagesFeature';
-import FacebookSignup from '../../components/facebookSignup';
+import FacebookSignup from '../../components/common/facebookSignup';
 
 export default class Cottages extends React.Component {
     componentDidMount() {

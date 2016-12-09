@@ -1,6 +1,6 @@
 import React from 'react';
 import CitySubHeader from '../../components/city/subHeader';
-import FacebookSignup from '../../components/facebookSignup';
+import FacebookSignup from '../../components/common/facebookSignup';
 
 export default class PubPage extends React.Component {
 

@@ -5,7 +5,7 @@ import HotelThumb from '../../components/hotel/thumb';
 import TopHotels from '../../components/hotel/topHotels';
 import TopRestaurants from '../../components/restaurant/topRestaurants';
 import TopAttractions from '../../components/attraction/topAttractions';
-import FacebookSignup from '../../components/facebookSignup';
+import FacebookSignup from '../../components/common/facebookSignup';
 import TopReviewers from '../../components/topReviewers';
 import ReviewButton from '../../components/reviewButton';
 import ReviewOverview from '../../components/reviewOverview';

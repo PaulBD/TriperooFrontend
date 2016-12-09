@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FacebookSignup from '../../components/facebookSignup';
+import FacebookSignup from '../../components/common/facebookSignup';
 import CitySubHeader from '../../components/city/subHeader';
 import HotelSearch from '../../components/hotel/searchForm';
 import HotelThumb from '../../components/hotel/thumb';

@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import newsletterReducer from './newsletterReducer';
+import newsletter from './newsletterReducer';
 import searches from './searchReducer';
 import features from './featureReducer';
 import hotDeals from './hotDealReducer';
@@ -10,7 +10,7 @@ import comments from './commentReducer';
 import {routerReducer} from 'react-router-redux';
 
 const rootReducer = combineReducers({
-  newsletterReducer,
+  newsletter,
   searches,
   features,
   hotDeals,

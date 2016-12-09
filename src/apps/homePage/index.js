@@ -12,7 +12,7 @@ import TopDestinations from '../../components/topDestinations';
 import RecentQuestions from '../../components/comments/questions';
 
 import HomePageCopy from '../../components/homePage/copy';
-import FacebookSignup from '../../components/facebookSignup';
+import FacebookSignup from '../../components/common/facebookSignup';
 
 const HomePage = () => {
 

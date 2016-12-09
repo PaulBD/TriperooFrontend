@@ -8,7 +8,7 @@ import HotDeals from '../../components/hotDeals';
 import SpecialDeals from '../../components/specialDeals';
 
 import LastMinuteDeal from '../../components/lastMinuteDeal';
-import FacebookSignup from '../../components/facebookSignup';
+import FacebookSignup from '../../components/common/facebookSignup';
 
 // Since this component is simple and static, there's no parent container for it.
 export default class SearchHotels extends React.Component {

@@ -9,7 +9,7 @@ import SpecialDeals from '../../components/specialDeals';
 
 import TopDestinations from '../../components/topDestinations';
 import LastMinuteDeal from '../../components/lastMinuteDeal';
-import FacebookSignup from '../../components/facebookSignup';
+import FacebookSignup from '../../components/common/facebookSignup';
 
 // Since this component is simple and static, there's no parent container for it.
 export default class Holidays extends React.Component {
