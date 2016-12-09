@@ -1,9 +1,10 @@
 import React from 'react';
 import Feature from '../../components/travelExtras/feature';
 
-import TrendingNow from '../../components/trendingNow';
+import TrendingDeals from '../../components/trendingDeals';
 import HotDeals from '../../components/hotDeals';
-import Recommendations from '../../components/recommendations';
+import SpecialDeals from '../../components/specialDeals';
+
 import FacebookSignup from '../../components/facebookSignup';
 import LastMinuteDeal from '../../components/lastMinuteDeal';
 
@@ -159,18 +160,18 @@ export default class TravelExtras extends React.Component {
             <div className="gap"></div>
           <LastMinuteDeal /> 
           <div className="container">
-            <div className="gap"></div>
-            <div className="row">
-                <div className="col-md-4">
-                    <TrendingNow />
-                </div>
-                <div className="col-md-4">
-                    <HotDeals />
-                </div>
-                <div className="col-md-4">
-                    <Recommendations />
-                </div>
-            </div>
+                <div className="gap"></div>
+              <div className="row">
+                  <div className="col-md-4">
+                      <TrendingDeals searchType="trending"/>
+                  </div>
+                  <div className="col-md-4">
+                      <HotDeals searchType="hot" />
+                  </div>
+                  <div className="col-md-4">
+                      <SpecialDeals searchType="special"/>
+                  </div>
+              </div>
           </div>
           <div className="container">
               <div className="gap gap-small"></div>

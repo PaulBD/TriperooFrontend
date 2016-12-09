@@ -3,10 +3,10 @@ import Feature from '../../components/common/feature';
 import Search from '../../components/hotel/search';
 import TopDestinations from '../../components/hotel/topDestinations';
 
-
-import TrendingNow from '../../components/trendingNow';
+import TrendingDeals from '../../components/trendingDeals';
 import HotDeals from '../../components/hotDeals';
-import Recommendations from '../../components/recommendations';
+import SpecialDeals from '../../components/specialDeals';
+
 import LastMinuteDeal from '../../components/lastMinuteDeal';
 import FacebookSignup from '../../components/facebookSignup';
 
@@ -30,13 +30,13 @@ export default class SearchHotels extends React.Component {
           <div className="gap"></div>
           <div className="row">
               <div className="col-md-4">
-                  <TrendingNow />
+                  <TrendingDeals searchType="trending"/>
               </div>
               <div className="col-md-4">
-                  <HotDeals />
+                  <HotDeals searchType="hot" />
               </div>
               <div className="col-md-4">
-                  <Recommendations />
+                  <SpecialDeals searchType="special"/>
               </div>
           </div>
           <div className="gap gap-small"></div>

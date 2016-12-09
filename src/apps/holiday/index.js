@@ -3,10 +3,10 @@ import Search from '../../components/holiday/search';
 import Feature from '../../components/common/feature';
 import Copy from '../../components/holiday/copy';
 
-
-import TrendingNow from '../../components/trendingNow';
+import TrendingDeals from '../../components/trendingDeals';
 import HotDeals from '../../components/hotDeals';
-import Recommendations from '../../components/recommendations';
+import SpecialDeals from '../../components/specialDeals';
+
 import TopDestinations from '../../components/topDestinations';
 import LastMinuteDeal from '../../components/lastMinuteDeal';
 import FacebookSignup from '../../components/facebookSignup';
@@ -27,42 +27,18 @@ export default class Holidays extends React.Component {
         </div>
         <div className="container">
           <div className="row row-wrap text-xs-center">
-            <div className="gap"></div>
-            <h3 className="mb20">Our Top Holidays Destinations</h3>
-            <div className="row row-wrap">
-                <div className="col-md-4">
-                    <div className="thumb">
-                        <a className="hover-img" href="/city">
-                            <img src="/static/img/locations/popular-destinations/london.png" alt="London" /><i className="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
-                        </a>
-                    </div>
-                </div>
-                <div className="col-md-4">
-                    <div className="thumb">
-                        <a className="hover-img" href="/city">
-                            <img src="/static/img/locations/popular-destinations/dubai.png" alt="Dubai"/><i className="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
-                        </a>
-                    </div>
-                </div>
-                <div className="col-md-4">
-                    <div className="thumb">
-                        <a className="hover-img" href="/city">
-                            <img src="/static/img/locations/popular-destinations/newyork.png" alt="New York" /><i className="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+              <TopDestinations />
           </div>
           <div className="gap"></div>
           <div className="row">
               <div className="col-md-4">
-                  <TrendingNow />
+                  <TrendingDeals searchType="trending"/>
               </div>
               <div className="col-md-4">
-                  <HotDeals />
+                  <HotDeals searchType="hot" />
               </div>
               <div className="col-md-4">
-                  <Recommendations />
+                  <SpecialDeals searchType="special"/>
               </div>
           </div>
           <div className="gap gap-small"></div>

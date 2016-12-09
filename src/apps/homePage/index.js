@@ -4,15 +4,19 @@ import LastMinuteFeature from '../../components/common/lastMinuteFeature';
 
 import Search from '../../components/homePage/search';
 
-import TrendingNow from '../../components/trendingNow';
+import TrendingDeals from '../../components/trendingDeals';
 import HotDeals from '../../components/hotDeals';
-import Recommendations from '../../components/recommendations';
+import SpecialDeals from '../../components/specialDeals';
+
 import TopDestinations from '../../components/topDestinations';
-import RecentQuestions from '../../components/recentQuestions';
+import RecentQuestions from '../../components/comments/questions';
+
 import HomePageCopy from '../../components/homePage/copy';
 import FacebookSignup from '../../components/facebookSignup';
 
 const HomePage = () => {
+
+
   return (
 	<div>
         <Feature featureType="homePage" />
@@ -24,7 +28,7 @@ const HomePage = () => {
             </div>
             <div className="gap gap-small"></div>
             <div className="row row-wrap text-xs-center">
-                <RecentQuestions />
+                <RecentQuestions searchType='' searchId={0} limit={3} offset={0} />
             </div>
             <div className="gap"></div>
         </div>
@@ -36,13 +40,13 @@ const HomePage = () => {
 
             <div className="row">
                 <div className="col-md-4">
-                    <TrendingNow />
+                    <TrendingDeals searchType="trending"/>
                 </div>
                 <div className="col-md-4">
-                    <HotDeals />
+                    <HotDeals searchType="hot" />
                 </div>
                 <div className="col-md-4">
-                    <Recommendations />
+                    <SpecialDeals searchType="special"/>
                 </div>
             </div>
             <div className="gap gap-small"></div>

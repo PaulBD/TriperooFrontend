@@ -1,5 +1,9 @@
 export default {
   searches: [],
   features: [],
-  lastMinute: []
+  lastMinute: [],
+  trendingDeals: [],
+  hotDeals: [],
+  specialDeals: [],
+  comments: []
 };

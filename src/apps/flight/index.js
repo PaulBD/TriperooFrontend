@@ -3,9 +3,10 @@ import Feature from '../../components/common/feature';
 import Search from '../../components/flight/search';
 import TopDestinations from '../../components/flight/topDestinations';
 
-import TrendingNow from '../../components/trendingNow';
+import TrendingDeals from '../../components/trendingDeals';
 import HotDeals from '../../components/hotDeals';
-import Recommendations from '../../components/recommendations';
+import SpecialDeals from '../../components/specialDeals';
+
 import FacebookSignup from '../../components/facebookSignup';
 
 // Since this component is simple and static, there's no parent container for it.
@@ -25,17 +26,17 @@ export default class FlightsPage extends React.Component {
             <div className="container">
                 <TopDestinations />
                 <div className="gap"></div>
-                <div className="row">
-                    <div className="col-md-4">
-                        <TrendingNow />
-                    </div>
-                    <div className="col-md-4">
-                        <HotDeals />
-                    </div>
-                    <div className="col-md-4">
-                        <Recommendations />
-                    </div>
-                </div>
+              <div className="row">
+                  <div className="col-md-4">
+                      <TrendingDeals searchType="trending"/>
+                  </div>
+                  <div className="col-md-4">
+                      <HotDeals searchType="hot" />
+                  </div>
+                  <div className="col-md-4">
+                      <SpecialDeals searchType="special"/>
+                  </div>
+              </div>
             </div>
             <div className="container">
                 <div className="gap gap-small"></div>
