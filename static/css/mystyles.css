@@ -2,18 +2,14 @@
 body { margin: 0; }
 
 .notFoundBg { background-image:url(/static/img/1300x900.png); }
-.fuerteventura { background-image:url(/static/img/locations/Fuerteventura.jpg); }
 .chester { background-image:url(/static/img/locations/city/united-kingdom/chester.jpg); }
-.winterSun { background-image:url(/static/img/winter-sun.jpeg); }
 
-.hotelRoom { background-image:url(/static/img/hotelRoom.jpg); }
-.flight { background-image:url(/static/img/flight.jpg); }
 .airportLounge { background-image:url(/static/img/airportLounge.jpg); }
 .carHire { background-image:url(/static/img/carHire.jpg); }
 
-.destinationMain { background-image:url(/static/img/destinationMain2.jpg); background-position: center bottom; }
-
 .map { width:100%; height:500px; }
+
+.grey { color: #ccc;}
 
 .hidden { display:none; }
 
@@ -37,7 +33,7 @@ body { margin: 0; }
 
 .cityPage, .holidayPage { height: 500px !important; }
 .travelPage { height: 300px !important; }
-.cityPage h1, .holidayPage h1, .travelPage h1 { font-size: 80px; }
+.cityPage h1, .holidayPage h1, .travelPage h1 { font-size: 80px; width: 70%; }
 .holidayPage .full-center { top: 40% !important;}
 
 .infoPage { height: 100px !important; }

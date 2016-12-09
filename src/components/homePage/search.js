@@ -8,27 +8,38 @@ import {browserHistory} from 'react-router';
 class SearchComponent extends React.Component {
   constructor(props, context) {
       super(props, context);
-
       this.state = { searches: [] };
-
       this.onSearchValue = this.onSearchValue.bind(this);
+      this.onBlurValue = this.onBlurValue.bind(this);
       this.onSubmitRedirect = this.onSubmitRedirect.bind(this);
   }
 
   onSearchValue(event) {
-    let val = event.target.value;
+    event.preventDefault();
 
+    let val = event.target.value;
     if (val.length > 2) {
-      this.props.actions.loadSearches(val);
+
+      this.props.actions.loadSearches(val, this.props.searchType);
     }
     else {
       this.props.actions.clearSearches();
     }
   }
 
+  onBlurValue(event) {
+    event.preventDefault();
+    this.props.actions.clearSearches();
+  }
+
   onSubmitRedirect(event) {
     event.preventDefault();
-    browserHistory.push('/search-result?v=' + this.refs.search.value);
+
+    let val = event.target.value;
+    
+    if (val.length > 2) {
+      browserHistory.push('/search-result?v=' + val);
+    }
   }
 
   render() {
@@ -49,12 +60,12 @@ class SearchComponent extends React.Component {
                   <div className="col-md-6 text-xs-center">
                     <div className="input-group">
                       <div className="form-group form-group-lg form-group-icon-left homeSearch"><i className="fa fa-search input-icon homeSearchIcon"></i>
-                        <input className="typeahead form-control" placeholder="Search anywhere in the world" ref="search" name="search" onChange={this.onSearchValue} autoComplete="off" />
+                        <input className="typeahead form-control" placeholder="Search anywhere in the world" ref="search" name="search" onChange={this.onSearchValue} onBlur={this.onBlurValue} autoComplete="off" />
                       </div>
                       <span className="input-group-btn">
                         <button className="btn btn-primary btnSearch" type="button">Search</button>
-                      </span>                        <SearchList searches={searches} />
-
+                      </span>                        
+                      <SearchList searches={searches} />
                     </div>
                   </div>
                   <div className="col-md-3 text-xs-center">&nbsp;</div>
@@ -70,7 +81,8 @@ class SearchComponent extends React.Component {
 
 SearchComponent.propTypes = {
   searches: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  searchType: PropTypes.string.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
@@ -78,7 +90,6 @@ function mapStateToProps(state, ownProps) {
     searches: state.searches
   };
 }
-
 
 function mapDispatchToProps(dispatch) {
   return {

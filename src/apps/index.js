@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 
-import Header from '../components/header';
-import Footer from '../components/footer';
+import Header from '../components/common/header';
+import Footer from '../components/common/footer';
 import Login from '../components/authentication/login';
 import Register from '../components/authentication/register';
 

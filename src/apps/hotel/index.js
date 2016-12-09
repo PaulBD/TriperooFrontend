@@ -1,5 +1,5 @@
 import React from 'react';
-import HotelFeature from '../../components/hotel/feature';
+import Feature from '../../components/common/feature';
 import Search from '../../components/hotel/search';
 import TopDestinations from '../../components/hotel/topDestinations';
 
@@ -20,8 +20,7 @@ export default class SearchHotels extends React.Component {
   render(){
     return (
       <div>
-        
-        <HotelFeature />
+        <Feature featureType="hotel" />
 
         <div className="container">            
           <Search />

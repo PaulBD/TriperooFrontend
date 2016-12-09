@@ -3,6 +3,7 @@ import {Link} from 'react-router';
 import TopDestinations from '../../components/topDestinations';
 import FacebookSignup from '../../components/facebookSignup';
 import WorldCities from '../../components/worldCities';
+import Feature from '../../components/common/feature';
 
 export default class DestinationHome extends React.Component {
     componentDidMount() {
@@ -12,22 +13,7 @@ export default class DestinationHome extends React.Component {
     render(){
       return (
     <div>
-        <div className="bg-holder full text-xs-center text-white holidayPage">
-            <div className="bg-mask"></div>
-            <div className="bg-img destinationMain"></div>
-            <div className="bg-front full-center">
-                <div className="owl-cap">
-                    <h1 className="owl-cap-title fittext">Pick a destination<br />to start exploring!</h1>
-                    <div className="owl-cap-price">
-                      <small>Photos, maps, and advice from your friends and people like you</small>
-                    </div>
-                    <Link to="city" className="btn btn-white btn-ghost">
-                      <i className="fa fa-angle-right"></i> Whisk Me Away
-                    </Link>
-                </div>
-            </div>
-        </div>
-
+        <Feature featureType="destination" />
         <div className="container">
           <div className="search-tabs search-tabs-bg search-tabs-to-top"> 
             <div className="tab-content">

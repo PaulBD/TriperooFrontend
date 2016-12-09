@@ -34,7 +34,7 @@ const searches = [
 ];
 
 class SearchApi {
-	static getSearch(value) {
+	static getSearch(value, searchType) {
 		return new Promise((resolve, reject) => {
 			setTimeout(() => {
 
@@ -43,7 +43,14 @@ class SearchApi {
         for (let index = 0; index < size; index++) {
           let v = searches[index]['value'];
           if (v.toString().toLowerCase().indexOf(value.toLowerCase()) !== -1) {
-            filteredList.push(searches[index]);
+            if (searchType === 'all') {
+              filteredList.push(searches[index]);
+            } else {
+              let y = searches[index]['type'];
+              if (y.toString().toLowerCase().indexOf(searchType.toLowerCase()) !== -1) {
+                filteredList.push(searches[index]);
+              }
+            }
           }
         }
 

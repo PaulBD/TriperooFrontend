@@ -1,6 +1,6 @@
 import React from 'react';
 import Search from '../../components/holiday/search';
-import Feature from '../../components/holiday/feature';
+import Feature from '../../components/common/feature';
 import Copy from '../../components/holiday/copy';
 
 
@@ -21,7 +21,7 @@ export default class Holidays extends React.Component {
   render(){
     return (
       <div>
-        <Feature />
+        <Feature featureType="holiday" />
         <div className="container">
             <Search />
         </div>

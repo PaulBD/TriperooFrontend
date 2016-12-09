@@ -1,21 +1,23 @@
 import React from 'react';
-import SearchHome from '../../components/homePage/search';
+import Feature from '../../components/common/feature';
+import LastMinuteFeature from '../../components/common/lastMinuteFeature';
+
+import Search from '../../components/homePage/search';
+
 import TrendingNow from '../../components/trendingNow';
 import HotDeals from '../../components/hotDeals';
 import Recommendations from '../../components/recommendations';
 import TopDestinations from '../../components/topDestinations';
 import RecentQuestions from '../../components/recentQuestions';
-import HomePageFeature from '../../components/homePage/feature';
 import HomePageCopy from '../../components/homePage/copy';
-import LastMinuteDeal from '../../components/lastMinuteDeal';
 import FacebookSignup from '../../components/facebookSignup';
 
 const HomePage = () => {
   return (
 	<div>
-        <HomePageFeature />
+        <Feature featureType="homePage" />
         <div className="container">
-            <SearchHome />
+            <Search searchType="all" />
             <div className="gap"></div>
             <div className="row row-wrap text-xs-center">
                 <TopDestinations />
@@ -27,7 +29,7 @@ const HomePage = () => {
             <div className="gap"></div>
         </div>
 
-        <LastMinuteDeal />
+        <LastMinuteFeature featureType="lastMinute" />
 
         <div className="container">
             <div className="gap"></div>

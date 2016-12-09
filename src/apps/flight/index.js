@@ -1,5 +1,5 @@
 import React from 'react';
-import Feature from '../../components/flight/feature';
+import Feature from '../../components/common/feature';
 import Search from '../../components/flight/search';
 import TopDestinations from '../../components/flight/topDestinations';
 
@@ -18,7 +18,7 @@ export default class FlightsPage extends React.Component {
   render(){
     return (
         <div>
-            <Feature />
+            <Feature featureType="flight" />
             <div className="container">
                 <Search />
             </div>
