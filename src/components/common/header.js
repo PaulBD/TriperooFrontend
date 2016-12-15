@@ -43,7 +43,6 @@ class Header extends React.Component {
         } else {
           header = (<header id="main-header" className="hide">&nbsp;</header>);
         }
-
         return (
           <div>
            {header}

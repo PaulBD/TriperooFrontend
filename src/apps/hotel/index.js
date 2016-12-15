@@ -23,7 +23,7 @@ export default class SearchHotels extends React.Component {
         <Feature featureType="hotel" />
 
         <div className="container">            
-          <Search />
+          <Search searchType="all" />
         </div>
         <div className="container">
           <TopDestinations />

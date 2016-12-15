@@ -3,13 +3,17 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as trendingDealActions from '../actions/trendingDealActions';
 import DealList from './common/dealList';
+import Loader from './common/loadingDots';
 
 class TrendingDeals extends React.Component {
   constructor(props, context) {
       super(props, context);
-      this.state = { trendingDeals: [] };
+      this.state = { trendingDeals: [], isLoading: true };
+  }
 
+  componentDidMount() {
       this.props.actions.loadTrendingDeals();
+      this.state = { isLoading: false };
   }
 
   render() {
@@ -20,6 +24,7 @@ class TrendingDeals extends React.Component {
         <div>
             <h3>Trending Now <small ><a href="/holidays/trending-now">view all</a></small></h3>
             <DealList deals={trendingDeals} />
+            <Loader showLoader={this.state.isLoading} />
         </div>    
     );
   }

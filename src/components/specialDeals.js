@@ -3,17 +3,20 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as specialDealActions from '../actions/specialDealActions';
 import DealList from './common/dealList';
+import Loader from './common/loadingDots';
 
 class SpecialDeals extends React.Component {
   constructor(props, context) {
       super(props, context);
       this.state = { specialDeals: [], isLoading: true };
+  }
 
+  componentDidMount() {
       this.props.actions.loadSpecialDeals();
+      this.state = { isLoading: false };
   }
 
   render() {
-    this.state = { isLoading: false };
 
     const {specialDeals} = this.props;
 
@@ -21,6 +24,7 @@ class SpecialDeals extends React.Component {
         <div>
             <h3>Special Deals <small ><a href="/holidays/special-deals">view all</a></small></h3>
             <DealList deals={specialDeals} />
+            <Loader showLoader={this.state.isLoading} />
         </div>    
     );
   }

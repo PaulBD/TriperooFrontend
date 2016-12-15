@@ -3,20 +3,6 @@ import React, {PropTypes} from 'react';
 class LoadingDots extends React.Component {
   constructor(props, context) {
     super(props, context);
-
-    this.state = {frame: 1};
-  }
-
-  componentDidMount() {
-    this.interval = setInterval(() => {
-      this.setState({  
-        frame: this.state.frame + 1
-      });
-    }, this.props.interval);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval);
   }
 
   render() {
@@ -25,31 +11,29 @@ class LoadingDots extends React.Component {
       display: 'none'
     };
 
-    if (this.props.searchCount < 2)
+    if (this.props.showLoader)
     {
       style.display = 'block';
     }
 
-    let dots = this.state.frame % (this.props.dots + 1);
-    let text = '';
-    while (dots > 0) {
-      text += '.';
-      dots--;
-    }
-    return <span {...this.props} style={style}>{text}&nbsp;</span>;
+    return (
+    <div className="spinner" style={style}>
+      <div className="rect1"></div>
+      <div className="rect2"></div>
+      <div className="rect3"></div>
+      <div className="rect4"></div>
+      <div className="rect5"></div>
+    </div>
+    );
   }
 }
 
 LoadingDots.defaultProps = {
-  interval: 300, 
-  dots: 3, 
-  searchCount: 0
+  showLoader: false
 };
 
 LoadingDots.propTypes = {
-  interval: PropTypes.number,
-  dots: PropTypes.number,
-  searchCount: PropTypes.number
+  showLoader: PropTypes.boolean
 };
 
 export default LoadingDots;

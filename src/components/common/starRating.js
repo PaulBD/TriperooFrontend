@@ -2,26 +2,26 @@ import React, {PropTypes} from "react";
 
 class StarRating extends React.Component {
   render(){
-    var greyStars = 0;
-    var maxStars = 5;
+    let greyStarsNumber = 0;
+    let maxStars = 5;
 
-    greyStars = maxStars - this.props.starRating;
+    greyStarsNumber = maxStars - this.props.starRating;
 
-    var tmpYellow = [];
-    for (var i = 0; i < this.props.starRating; i++) {
+    let tmpYellow = [];
+    for (let i = 0; i < this.props.starRating; i++) {
       tmpYellow.push(i);
     }
 
-    var tmpGrey = [];
-    for (var i = 0; i < greyStars; i++) {
+    let tmpGrey = [];
+    for (let i = 0; i < greyStarsNumber; i++) {
       tmpGrey.push(i);
     }
 
-    var yellowStars = tmpYellow.map(function (i) {
+    let yellowStars = tmpYellow.map(function (i) {
       return (<li key={i}><i className="fa fa-star"></i></li>);
     });
 
-    var greyStars = tmpGrey.map(function (i) {
+    let greyStars = tmpGrey.map(function (i) {
       return (<li key={i}><i className="fa fa-star-o"></i></li>);
     });
 
