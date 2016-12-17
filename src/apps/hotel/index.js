@@ -10,7 +10,6 @@ import SpecialDeals from '../../components/specialDeals';
 import LastMinuteDeal from '../../components/lastMinuteDeal';
 import FacebookSignup from '../../components/common/facebookSignup';
 
-// Since this component is simple and static, there's no parent container for it.
 export default class SearchHotels extends React.Component {
 
   componentDidMount() {
@@ -21,7 +20,6 @@ export default class SearchHotels extends React.Component {
     return (
       <div>
         <Feature featureType="hotel" />
-
         <div className="container">            
           <Search searchType="all" />
         </div>

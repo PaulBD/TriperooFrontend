@@ -7,19 +7,23 @@ import {browserHistory} from 'react-router';
 
 class SearchComponent extends React.Component {
   constructor(props, context) {
-      super(props, context);
-      this.onSubmitRedirect = this.onSubmitRedirect.bind(this);
+    super(props, context);
+    this.state = { searchValue: '' };
+    this.onSubmitRedirect = this.onSubmitRedirect.bind(this);
+    this.handleSearchClick = this.handleSearchClick.bind(this);
   }
 
+  handleSearchClick(value) {
+    this.setState({
+      searchValue: value
+    });
+  }
 
   onSubmitRedirect(event) {
     event.preventDefault();
-
-    let val = event.target.value;
-    console.log(event.target.value);
     
-    if (val.length > 2) {
-      browserHistory.push('/search-result?v=' + val);
+    if (this.state.searchValue.length > 2) {
+      browserHistory.push('/search-result?q=' + this.state.searchValue);
     }
   }
 
@@ -39,7 +43,7 @@ class SearchComponent extends React.Component {
                   <div className="col-md-6 text-xs-center">
                     <div className="input-group">
                       <div className="form-group form-group-lg form-group-icon-left homeSearch"><i className="fa fa-search input-icon homeSearchIcon"></i>
-                        <AutoComplete searchType="all" placeholder="Search anywhere in the world" cssClass="typeahead form-control" />
+                        <AutoComplete changeValue={this.handleSearchClick} searchType="all" placeholder="Search anywhere in the world" cssClass="typeahead form-control" />
                       </div>
                       <span className="input-group-btn">
                         <button className="btn btn-primary btnSearch" type="button" onClick={this.onSubmitRedirect}>Search</button>

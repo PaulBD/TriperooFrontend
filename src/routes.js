@@ -25,6 +25,7 @@ import HotelPage from './apps/hotel/city-search';
 import FlightPage from './apps/flight/country-flights';
 
 import HotelDetail from './apps/hotel/detail';
+import HotelSearchResults from './apps/hotel/search-hotels';
 
 export default (
   <Route path="/" component={Container}>
@@ -52,6 +53,7 @@ export default (
     
     <Route path="/holidays" component={Holidays}/>
     <Route path="/hotels" component={Hotels}/>
+    <Route path="/hotels/search-results" component={HotelSearchResults}/>
     <Route path="/flights" component={Flights}/>
     <Route path="/travel-extras" component={TravelExtras}/>
     <Route path="/travel-extras/car-hire" component={CarHire}/>

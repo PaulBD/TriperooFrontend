@@ -19,6 +19,7 @@ class AutoComplete extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
+    this.props.changeValue(e.target.text.trim());
     this.setState({ selected: true, style: 'none', searchValue: e.target.text.trim() });
   }
 

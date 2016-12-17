@@ -15,8 +15,6 @@ import HomePageCopy from '../../components/homePage/copy';
 import FacebookSignup from '../../components/common/facebookSignup';
 
 const HomePage = () => {
-
-
   return (
 	<div>
         <Feature featureType="homePage" />
@@ -32,9 +30,7 @@ const HomePage = () => {
             </div>
             <div className="gap"></div>
         </div>
-
         <LastMinuteFeature featureType="lastMinute" />
-
         <div className="container">
             <div className="gap"></div>
 
@@ -50,9 +46,7 @@ const HomePage = () => {
                 </div>
             </div>
             <div className="gap gap-small"></div>
-            
             <HomePageCopy />
-
             <div className="gap gap-small"></div>
             <hr />
             <div className="gap"></div>

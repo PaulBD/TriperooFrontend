@@ -1,11 +1,12 @@
 import React from 'react';
 import HotelSearch from '../../components/hotel/searchForm';
-import HotelFeature from '../../components/hotel/feature';
+import Feature from '../../components/common/feature';
 
 
-import TrendingNow from '../../components/trendingNow';
+import TrendingDeals from '../../components/trendingDeals';
 import HotDeals from '../../components/hotDeals';
-import Recommendations from '../../components/recommendations';
+import SpecialDeals from '../../components/specialDeals';
+
 import TopDestinations from '../../components/topDestinations';
 import LastMinuteDeal from '../../components/lastMinuteDeal';
 import FacebookSignup from '../../components/common/facebookSignup';
@@ -21,7 +22,7 @@ export default class SearchHotels extends React.Component {
     return (
       <div>
         
-        <HotelFeature />
+        <Feature featureType="hotel" />
 
         <div className="container">            
           <div className="search-tabs search-tabs-bg search-tabs-to-top">
@@ -223,13 +224,13 @@ export default class SearchHotels extends React.Component {
           <div className="gap"></div>
           <div className="row">
               <div className="col-md-4">
-                  <TrendingNow />
+                  <TrendingDeals searchType="trending"/>
               </div>
               <div className="col-md-4">
-                  <HotDeals />
+                  <HotDeals searchType="hot" />
               </div>
               <div className="col-md-4">
-                  <Recommendations />
+                  <SpecialDeals searchType="special"/>
               </div>
           </div>
           <div className="gap gap-small"></div>

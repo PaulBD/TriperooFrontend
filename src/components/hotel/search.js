@@ -9,7 +9,7 @@ var moment = require('moment');
 class Search extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { searches: [], startDate: moment(), endDate: moment().add(1, 'days'), guests: 1, rooms: 1, searchValue: '' };
+    this.state = { startDate: moment(), endDate: moment().add(1, 'days'), guests: 1, rooms: 1, searchValue: '' };
     this.handleStartDateChange = this.handleStartDateChange.bind(this);
     this.handleEndDateChange = this.handleEndDateChange.bind(this);
     this.handleGuestChange = this.handleGuestChange.bind(this);
@@ -52,15 +52,12 @@ class Search extends React.Component {
     });
   }
 
-
-
   onSubmitRedirect(event) {
     event.preventDefault();
 
-    let val = event.target.value;
+    let url = '?' + this.state.searchValue + '&sDate=' + this.state.startDate + '&eDate=' + this.state.endDate + '&rooms=' + this.state.rooms + '&guests=' + this.state.guests;
 
-    alert(val);
-
+    browserHistory.push('/hotels/search-results' + url);
   }
 
 
