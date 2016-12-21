@@ -5,31 +5,31 @@ const searches = [
     id: 1,
     type: 'city',
     value: 'Chester',
-    url: '/united-kindom/chester'
+    url: '/place/123/united-kingdom/chester'
   },
   {
     id: 2,
     type: 'city',
     value: 'Chesterfield',
-    url: '/place/united-kindom/chesterfield'
+    url: '/place/234/united-kingdom/chesterfield'
   },
   {
     id: 3,
     type: 'city',
     value: 'Christchurch',
-    url: '/place/new-zealand/christchurch'
+    url: '/place/567/new-zealand/christchurch'
   },
   {
     id: 4,
     type: 'restaurant',
     value: 'Chr restaurant',
-    url: '/place/united-kindom/chester/restaurants/chr-restaurant'
+    url: '/place/123/united-kingdom/chester/restaurants/chr-restaurant'
   },
   {
     id: 5,
     type: 'hotel',
     value: 'Chester Inn Hotel',
-    url: '/place/united-kindom/chester/hotels/chester-inn-hotel'
+    url: '/place/123/united-kingdom/chester/hotels/chester-inn-hotel'
   }
 ];
 

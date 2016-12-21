@@ -1,7 +1,7 @@
 import initialState from './initialState';
 import * as types from '../actionTypes/';
 
-export default function trendingDealReducer(state = initialState.trendingDeals, action) {
+export default function trendingDealReducer(state = initialState.deals, action) {
 	switch(action.type) {
 		case types.LOAD_TRENDING_DEAL_SUCCESS:
 			return action.trendingDeals;

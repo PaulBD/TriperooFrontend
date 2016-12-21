@@ -8,12 +8,19 @@ import {browserHistory} from 'react-router';
 class SearchComponent extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { searchValue: '' };
+    this.state = { searchUrl: '' };
     this.onSubmitRedirect = this.onSubmitRedirect.bind(this);
-    this.handleSearchClick = this.handleSearchClick.bind(this);
+    this.handleSearchNameClick = this.handleSearchNameClick.bind(this);
+    this.handleSearchUrlClick = this.handleSearchUrlClick.bind(this);
   }
 
-  handleSearchClick(value) {
+  handleSearchUrlClick(value) {
+    this.setState({
+      searchUrl: value
+    });
+  }
+
+  handleSearchNameClick(value) {
     this.setState({
       searchValue: value
     });
@@ -21,9 +28,13 @@ class SearchComponent extends React.Component {
 
   onSubmitRedirect(event) {
     event.preventDefault();
-    
     if (this.state.searchValue.length > 2) {
-      browserHistory.push('/search-result?q=' + this.state.searchValue);
+      if (this.state.searchUrl.length > 0) {
+        browserHistory.push(this.state.searchUrl);
+      }
+      else {
+        browserHistory.push('/search-result?q=' + this.state.searchValue);
+      }
     }
   }
 
@@ -43,7 +54,7 @@ class SearchComponent extends React.Component {
                   <div className="col-md-6 text-xs-center">
                     <div className="input-group">
                       <div className="form-group form-group-lg form-group-icon-left homeSearch"><i className="fa fa-search input-icon homeSearchIcon"></i>
-                        <AutoComplete changeValue={this.handleSearchClick} searchType="all" placeholder="Search anywhere in the world" cssClass="typeahead form-control" />
+                        <AutoComplete changeValue={this.handleSearchNameClick} changeUrl={this.handleSearchUrlClick} searchType="all" placeholder="Search anywhere in the world" cssClass="typeahead form-control" />
                       </div>
                       <span className="input-group-btn">
                         <button className="btn btn-primary btnSearch" type="button" onClick={this.onSubmitRedirect}>Search</button>

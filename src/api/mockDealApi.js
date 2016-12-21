@@ -3,6 +3,9 @@ import delay from './delay';
 const deals = [
   {
     id: 1,
+    cityId: 123,
+    countryId: 123,
+    type: 'attraction',
     featureType: 'hot',
     title: 'Holiday Inn JFK 22',
     subTitle: 'from £327',
@@ -13,6 +16,9 @@ const deals = [
   },
   {
     id: 2,
+    cityId: 123,
+    countryId: 123,
+    type: 'attraction',
     featureType: 'hot',
     title: 'Holiday Inn JFK 42',
     subTitle: 'from £387',
@@ -23,6 +29,9 @@ const deals = [
   },
   {
     id: 3,
+    cityId: 123,
+    countryId: 123,
+    type: 'attraction',
     featureType: 'hot',
     title: 'Holiday Inn JFK 11',
     subTitle: 'from £327',
@@ -33,6 +42,9 @@ const deals = [
   },
   {
     id: 4,
+    cityId: 123,
+    countryId: 123,
+    type: 'restaurant',
     featureType: 'trending',
     title: 'Holiday Inn JFK 1',
     subTitle: 'from £3107',
@@ -43,6 +55,9 @@ const deals = [
   },
   {
     id: 5,
+    cityId: 123,
+    countryId: 123,
+    type: 'restaurant',
     featureType: 'trending',
     title: 'Holiday Inn JFK 4',
     subTitle: 'from £317',
@@ -53,6 +68,9 @@ const deals = [
   },
   {
     id: 6,
+    cityId: 123,
+    countryId: 123,
+    type: 'restaurant',
     featureType: 'trending',
     title: 'Holiday Inn JFK 1',
     subTitle: 'from £327',
@@ -63,6 +81,9 @@ const deals = [
   },
   {
     id: 7,
+    cityId: 123,
+    countryId: 123,
+    type: 'hotel',
     featureType: 'special',
     title: 'Holiday Inn JFK 1',
     subTitle: 'from £387',
@@ -74,6 +95,9 @@ const deals = [
   },
   {
     id: 8,
+    cityId: 123,
+    countryId: 123,
+    type: 'hotel',
     featureType: 'special',
     title: 'Holiday Inn JFK 2',
     subTitle: 'from £387',
@@ -84,6 +108,9 @@ const deals = [
   },
   {
     id: 9,
+    cityId: 123,
+    countryId: 123,
+    type: 'hotel',
     featureType: 'special',
     title: 'Holiday Inn JFK 3',
     subTitle: 'from £347',
@@ -112,6 +139,24 @@ class DealApi {
 			}, delay);
 		});
 	}
+
+  static getDealListByPlace(id, placeType, type) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+
+        let filteredList = [];
+        let size = deals.length;
+        for (let index = 0; index < size; index++) {
+          let v = deals[index]['type'];
+          if (v.toString().toLowerCase().indexOf(type.toLowerCase()) !== -1) {
+            filteredList.push(deals[index]);
+          }
+        }
+
+        resolve(Object.assign([], filteredList));
+      }, delay);
+    });
+  }
 }
 
 export default DealApi;

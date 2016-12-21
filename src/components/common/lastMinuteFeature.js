@@ -50,7 +50,6 @@ class LastMinuteFeatureComponent extends React.Component {
           </div>
         </div>
       );
-
     }
     else { 
       return (

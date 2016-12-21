@@ -4,9 +4,7 @@ import LastMinuteFeature from '../../components/common/lastMinuteFeature';
 
 import Search from '../../components/homePage/search';
 
-import TrendingDeals from '../../components/trendingDeals';
-import HotDeals from '../../components/hotDeals';
-import SpecialDeals from '../../components/specialDeals';
+import Deals from '../../components/deals/list';
 
 import TopDestinations from '../../components/topDestinations';
 import RecentQuestions from '../../components/comments/questions';
@@ -35,14 +33,14 @@ const HomePage = () => {
             <div className="gap"></div>
 
             <div className="row">
-                <div className="col-md-4">
-                    <TrendingDeals searchType="trending"/>
+                <div className="col-md-4"> 
+                    <Deals searchType="trending" title="Trending Now"/>
                 </div>
                 <div className="col-md-4">
-                    <HotDeals searchType="hot" />
+                    <Deals searchType="hot" title="Hot Deals" />
                 </div>
                 <div className="col-md-4">
-                    <SpecialDeals searchType="special"/>
+                    <Deals searchType="special" title="Special Deals"/>
                 </div>
             </div>
             <div className="gap gap-small"></div>

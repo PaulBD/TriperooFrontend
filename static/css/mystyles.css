@@ -2,7 +2,6 @@
 body { margin: 0; }
 
 .notFoundBg { background-image:url(/static/img/1300x900.png); }
-.chester { background-image:url(/static/img/locations/city/united-kingdom/chester.jpg); }
 
 .airportLounge { background-image:url(/static/img/airportLounge.jpg); }
 .carHire { background-image:url(/static/img/carHire.jpg); }
@@ -157,6 +156,7 @@ optgroup,option { margin-left:0px;text-align:left;}
 
 .modalForm .form-group .input-icon { top: 0; }
 .modelAuthentication { width:360px !important; }
+.modelReviewAuthentication { width:660px !important; }
 
 .smlText { font-size: 10px;line-height:1.5;}
 

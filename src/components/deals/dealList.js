@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import StarRating from './starRating';
+import StarRating from '../common/starRating';
 
 const DealList = ({deals}) => {
     return (

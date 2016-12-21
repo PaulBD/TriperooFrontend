@@ -9,17 +9,23 @@ var moment = require('moment');
 class Search extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { startDate: moment(), endDate: moment().add(1, 'days'), guests: 1, rooms: 1, searchValue: '' };
+    this.state = { startDate: moment(), endDate: moment().add(1, 'days'), guests: 1, rooms: 1, searchValue: '', searchUrl: '' };
     this.handleStartDateChange = this.handleStartDateChange.bind(this);
     this.handleEndDateChange = this.handleEndDateChange.bind(this);
     this.handleGuestChange = this.handleGuestChange.bind(this);
     this.handleRoomChange = this.handleRoomChange.bind(this);
     this.onSubmitRedirect = this.onSubmitRedirect.bind(this);
-    this.handleSearchClick = this.handleSearchClick.bind(this);
-
+    this.handleSearchNameClick = this.handleSearchNameClick.bind(this);
+    this.handleSearchUrlClick = this.handleSearchUrlClick.bind(this);
   }
 
-  handleSearchClick(value) {
+  handleSearchUrlClick(value) {
+    this.setState({
+      searchUrl: value
+    });
+  }
+
+  handleSearchNameClick(value) {
     this.setState({
       searchValue: value
     });
@@ -35,7 +41,6 @@ class Search extends React.Component {
     this.setState({
       endDate: date
     });
-
   }
 
   handleGuestChange(event) {
@@ -55,9 +60,20 @@ class Search extends React.Component {
   onSubmitRedirect(event) {
     event.preventDefault();
 
-    let url = '?' + this.state.searchValue + '&sDate=' + this.state.startDate + '&eDate=' + this.state.endDate + '&rooms=' + this.state.rooms + '&guests=' + this.state.guests;
+    let url = '?q=' + this.state.searchValue + '&sDate=' + this.state.startDate + '&eDate=' + this.state.endDate + '&rooms=' + this.state.rooms + '&guests=' + this.state.guests;
 
-    browserHistory.push('/hotels/search-results' + url);
+    if (this.state.searchUrl.length > 0) {
+
+      if (this.state.searchUrl.includes('hotels')) {
+        browserHistory.push(this.state.searchUrl + url);
+      }
+      else {
+        browserHistory.push(this.state.searchUrl + '/hotels' + url);
+      }
+    }
+    else {
+      browserHistory.push('search-results/hotels' + url);
+    }
   }
 
 
@@ -79,7 +95,7 @@ class Search extends React.Component {
                                   <div className="col-md-6">
                                     <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-map-marker input-icon"></i>
                                       <label>Destination</label>
-                                      <AutoComplete changeValue={this.handleSearchClick} searchType="all" placeholder="Enter Destination" cssClass="typeahead form-control" />
+                                      <AutoComplete changeValue={this.handleSearchNameClick} changeUrl={this.handleSearchUrlClick} searchType="all" placeholder="Enter Destination" cssClass="typeahead form-control" />
                                     </div>
                                   </div>
                                   <div className="col-md-3">

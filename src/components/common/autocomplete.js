@@ -20,6 +20,7 @@ class AutoComplete extends React.Component {
   handleClick(e) {
     e.preventDefault();
     this.props.changeValue(e.target.text.trim());
+    this.props.changeUrl(e.target.getAttribute('data-url'));
     this.setState({ selected: true, style: 'none', searchValue: e.target.text.trim() });
   }
 
@@ -76,7 +77,7 @@ class AutoComplete extends React.Component {
                 break;
               }
 
-              return (<li key={search.id} className="ui-menu-item" onClick={this.handleClick} name={search.name}><a href="#"><span><i className={icon}></i></span> {search.value}</a></li>);
+              return (<li key={search.id} className="ui-menu-item"><a href="#" onClick={this.handleClick} data-name={search.name} data-url={search.url}><span><i className={icon}></i></span> {search.value}</a></li>);
               })
             }
           </ul>
@@ -90,6 +91,7 @@ AutoComplete.propTypes = {
   searches: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
   changeValue: PropTypes.func,
+  changeUrl: PropTypes.func,
   searchType: PropTypes.string,
   cssClass: PropTypes.string,
   placeholder: PropTypes.string
