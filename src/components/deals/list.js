@@ -36,32 +36,39 @@ class Deals extends React.Component {
   render() {
 
     let deals = '';
+    let url = '';
 
     switch (this.props.searchType)
     {
       case "trending":
         deals = (<DealList deals={this.props.trendingDeals} />);
+        url = '/holidays/trending-now';
         break;
       case "hot":
         deals = (<DealList deals={this.props.hotDeals} />);
+        url = '/holidays/hot-deals';
         break;
       case "special":
         deals = (<DealList deals={this.props.specialDeals} />);
+        url = '/holidays/special-deals';
         break;
       case "topHotels":
         deals = (<DealList deals={this.props.hotelDeals} />);
+        url = this.props.path + '/hotels/top-hotels';
         break;
       case "topAttractions":
         deals = (<DealList deals={this.props.attractionDeals} />);
+        url = this.props.path + '/attractions/top-attractions';
         break;
       case "topRestaurants":
         deals = (<DealList deals={this.props.restaurantDeals} />);
+        url = this.props.path + '/restaurants/top-restaurants';
         break;
     }
 
     return (
         <div>
-            <h3>{this.props.title} <small><a href="/holidays/trending-now">view all</a></small></h3>
+            <h3>{this.props.title} <small><a href={url}>view all</a></small></h3>
             {deals}
             <Loader showLoader={this.state.isLoading} />
         </div>    
@@ -85,7 +92,8 @@ Deals.propTypes = {
 
   searchType: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  id: PropTypes.number
+  id: PropTypes.number,
+  path: PropTypes.string
 };
 
 function mapStateToProps(state, ownProps) {
@@ -95,7 +103,8 @@ function mapStateToProps(state, ownProps) {
     specialDeals: state.specialDeals,
     hotelDeals: state.hotelDeals,
     restaurantDeals: state.restaurantDeals,
-    attractionDeals: state.attractionDeals
+    attractionDeals: state.attractionDeals,
+    path: ownProps.location.pathname
   };
 }
 
