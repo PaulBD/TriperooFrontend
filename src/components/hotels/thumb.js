@@ -4,7 +4,6 @@ import { Link } from "react-router";
 export default class HotelThumb extends React.Component {
 	render(){
 	return (
-        <Link to="hotel">
         <div className="thumb">
             <a className="hover-img" href="#">
                 <img src="/static/img/800x600.png" alt="Image Alternative text" title="Gaviota en el Top" />
@@ -17,7 +16,6 @@ export default class HotelThumb extends React.Component {
                 </div>
             </a>
         </div>
-        </Link>
 /*
         <div className="col-md-3">
                     <div className="thumb">

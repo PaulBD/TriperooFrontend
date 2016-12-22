@@ -1,10 +1,9 @@
 import React from 'react';
-import HotelSearch from '../../components/hotel/searchForm';
+import HotelSearch from '../../components/hotels/searchForm';
 import Feature from '../../components/common/feature';
 
 import Deals from '../../components/deals/list';
 
-import TopDestinations from '../../components/topDestinations';
 import LastMinuteDeal from '../../components/lastMinuteDeal';
 import FacebookSignup from '../../components/common/facebookSignup';
 

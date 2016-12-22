@@ -21,24 +21,24 @@ const PlaceList = ({places}) => {
 				{
 					case 2:
 					case 4:
-			  			spacer = <div className="gap gap-small"></div>;
-			  			break;
+						spacer = <div className="gap gap-small"></div>;
+						break;
 				}
 
 				return (
 					<div key={place.id}>
-                    	<Place  name={place.name} imageUrl={place.imageUrl} url={place.url} cssClass={cssClass} />
-                    	{spacer}
+						<Place  name={place.name} imageUrl={place.imageUrl} url={place.url} cssClass={cssClass} />
+						{spacer}
 					</div>
 				);
 			})
 		}
 		</div>
 	);
-}
+};
 
 PlaceList.propTypes = {
-  places: PropTypes.array.isRequired
+	places: PropTypes.array.isRequired
 };
 
 export default PlaceList;

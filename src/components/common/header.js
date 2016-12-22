@@ -24,11 +24,11 @@ class Header extends React.Component {
                       <div className="col-md-7">
                           <div className="top-user-area clearfix">
                             <ul className="top-user-area-list list list-horizontal list-border">
-                              <li><Link to="explore-destinations" title="Destinations">Destinations</Link></li>
-                              <li><Link to="holidays" title="Holidays">Holidays</Link></li>
-                              <li><Link to="hotels" title="Hotels">Hotels</Link></li>
-                              <li><Link to="flights" title="Flights">Flights</Link></li>
-                              <li><Link to="travel-extras" title="Travel Extras">Travel Extras</Link></li>
+                              <li><a href="/explore-destinations" title="Destinations">Destinations</a></li>
+                              <li><a href="/holidays" title="Holidays">Holidays</a></li>
+                              <li><a href="/hotels" title="Hotels">Hotels</a></li>
+                              <li><a href="/flights" title="Flights">Flights</a></li>
+                              <li><a href="/travel-extras" title="Travel Extras">Travel Extras</a></li>
                               <li><a href="#" data-toggle="modal" data-target="#reviewModel" title="Write a Review">Write a Review</a></li>
                               <li><a href="#" data-toggle="modal" data-target="#signupModel" title="Sign Up">Sign Up</a></li>
                               <li><a href="#" data-toggle="modal" data-target="#loginModel" title="Log In">Log In</a></li>

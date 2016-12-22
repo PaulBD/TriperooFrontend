@@ -31,6 +31,12 @@ class Newsletter extends React.Component {
   }
 }
 
+
+Newsletter.propTypes = {
+  newsletter: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired
+};
+
 function mapStateToProps(state, ownProps) {
   return {
     newsletter: state.newsletter

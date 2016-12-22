@@ -13,7 +13,7 @@ import Loader from '../common/loadingDots';
 class Deals extends React.Component {
   constructor(props, context) {
       super(props, context);
-      this.state = { deals: [], isLoading: true };
+      this.state = { deals: [], isLoading: 1 };
   }
 
   componentDidMount() {
@@ -30,7 +30,7 @@ class Deals extends React.Component {
         break;
     }
 
-    this.state = { isLoading: false };
+    this.state = { isLoading: 0 };
   }
 
   render() {
@@ -104,7 +104,7 @@ function mapStateToProps(state, ownProps) {
     hotelDeals: state.hotelDeals,
     restaurantDeals: state.restaurantDeals,
     attractionDeals: state.attractionDeals,
-    path: ownProps.location.pathname
+    path: ownProps.location !== undefined && ownProps.location.pathname !== undefined ? ownProps.location.pathname : ''
   };
 }
 

@@ -2,18 +2,18 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as lastMinuteActions from '../../actions/lastMinuteActions';
-import StarRating from './starRating';
-import Loader from './loadingDots';
+import StarRating from '../common/starRating';
+import Loader from '../common/loadingDots';
 
-class LastMinuteFeatureComponent extends React.Component {
+class LastMinuteDeal extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { isLoading: true };
+    this.state = { isLoading: 1 };
   }
 
   componentDidMount() {
     this.props.actions.loadFeatures(this.props.featureType);
-    this.state = { isLoading: false };
+    this.state = { isLoading: 0 };
   }
 
   render() {
@@ -59,7 +59,7 @@ class LastMinuteFeatureComponent extends React.Component {
   }
 }
 
-LastMinuteFeatureComponent.propTypes = {
+LastMinuteDeal.propTypes = {
   lastMinute: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
   featureType: PropTypes.string.isRequired
@@ -77,4 +77,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LastMinuteFeatureComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(LastMinuteDeal);

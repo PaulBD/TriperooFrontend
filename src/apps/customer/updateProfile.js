@@ -1,7 +1,7 @@
 import React from 'react';
-import UserProfile from '../../components/userProfile';
-import UserProfileForm from '../../components/userProfileForm';
-import ChangePassword from '../../components/changePassword';
+import UserProfile from '../../components/customers/userProfile';
+import UserProfileForm from '../../components/customers/userProfileForm';
+import ChangePassword from '../../components/customers/changePassword';
 // Since this component is simple and static, there's no parent container for it.
 export default class UpdateProfile extends React.Component {
 

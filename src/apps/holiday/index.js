@@ -1,11 +1,11 @@
 import React from 'react';
-import Search from '../../components/holiday/search';
+import Search from '../../components/holidays/search';
 import Feature from '../../components/common/feature';
-import Copy from '../../components/holiday/copy';
+import Copy from '../../components/holidays/copy';
 
 import Deals from '../../components/deals/list';
 
-import TopDestinations from '../../components/topDestinations';
+import FeaturePlaces from '../../components/places/featurePlaces';
 import LastMinuteDeal from '../../components/lastMinuteDeal';
 import FacebookSignup from '../../components/common/facebookSignup';
 
@@ -22,10 +22,9 @@ export default class Holidays extends React.Component {
         <Feature featureType="holiday" />
         <div className="container">
             <Search />
-        </div>
-        <div className="container">
-          <div className="row row-wrap text-xs-center">
-              <TopDestinations />
+                <div className="gap"></div>
+                <div className="row row-wrap text-xs-center">
+              <FeaturePlaces />
           </div>
           <div className="gap"></div>
           <div className="row">

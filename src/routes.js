@@ -8,7 +8,10 @@ import AboutPage from './apps/info/aboutPage';
 import TermsPage from './apps/info/termsPage';
 import PrivacyPage from './apps/info/privacyPage';
 import NotFoundPage from './apps/notFoundPage';
-import Place from './apps/place';
+
+import PlaceHome from './apps/place';
+import PlaceSearch from './apps/place/search';
+
 import Holidays from './apps/holiday';
 import Hotels from './apps/hotel';
 import Flights from './apps/flight';
@@ -34,20 +37,15 @@ export default (
     <Route path="/terms" component={TermsPage}/>
     <Route path="/privacy-policy" component={PrivacyPage}/>
 
-    <Route path="/place/(:countryId)/:country" component={Place}/>
-    <Route path="/place/(:cityId)/:country/:city" component={Place}/>
+    <Route path="/places/(:countryId)/(:country)" component={PlaceHome}/>
+    <Route path="/places/(:cityId)/(:country)/(:city)" component={PlaceHome}/>
+    <Route path="/places/(:cityId)/(:country)/(:city)/(:type)" component={PlaceSearch}/>
 
-    <Route path="/place/:cityId/:country/:city/attractions" component={AttractionPage}/>
-    <Route path="/place/:cityId/:country/:city/hotels" component={HotelPage}/>
-    <Route path="/place/:cityId/:country/:city/restaurants" component={RestaurantPage}/>
-    <Route path="/place/:cityId/:country/:city/pubs" component={PubPage}/>
-    <Route path="/place/:cityId/:country/:city/reviews" component={ReviewPage}/>
+    <Route path="/places/:country/all/flights" component={FlightPage}/>
+    <Route path="/places/:country/all/hotels" component={HotelPage}/>
+    <Route path="/places/:country/attractions" component={AttractionPage}/>
 
-    <Route path="/place/:country/all/flights" component={FlightPage}/>
-    <Route path="/place/:country/all/hotels" component={HotelPage}/>
-    <Route path="/place/:country/attractions" component={AttractionPage}/>
-
-    <Route path="/places/:cityId/:country/:city/hotels/:hotelName" component={HotelDetail}/>
+    <Route path="/places/:cityId/:country/:city/hotels/123/:hotelName" component={HotelDetail}/>
     
     <Route path="/holidays" component={Holidays}/>
     <Route path="/hotels" component={Hotels}/>

@@ -3,7 +3,9 @@ export default {
   features: [],
   lastMinute: [],
   deals: [],
-  comments: [],
+  questions: [],
+  hotels: [],
+  reviews: [],
   place:  {
     id: 0,
     type: "",

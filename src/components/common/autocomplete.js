@@ -14,7 +14,7 @@ class AutoComplete extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ selected: false, style: 'none', searchValue: '', isOpen: false });
+    this.setState({ selected: false, style: 'none', searchValue: this.props.searchValue, isOpen: false });
   }
 
   handleClick(e) {
@@ -87,6 +87,10 @@ class AutoComplete extends React.Component {
   }
 }
 
+AutoComplete.defaultProps = {
+  searchValue: ''
+};
+
 AutoComplete.propTypes = {
   searches: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
@@ -94,7 +98,8 @@ AutoComplete.propTypes = {
   changeUrl: PropTypes.func,
   searchType: PropTypes.string,
   cssClass: PropTypes.string,
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
+  searchValue: PropTypes.string
 };
 
 function mapStateToProps(state, ownProps) {

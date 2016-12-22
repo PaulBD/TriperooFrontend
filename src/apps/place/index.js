@@ -5,16 +5,19 @@ import * as placeActions from '../../actions/placeActions';
 
 import FacebookSignup from '../../components/common/facebookSignup';
 
-import RecentQuestions from '../../components/recentQuestions';
-import ReviewButton from '../../components/reviewButton';
+import RecentReviews from '../../components/reviews/reviews';
+
+import RecentQuestions from '../../components/questions/questions';
+import QuestionButton from '../../components/questions/askButton';
 
 import Deals from '../../components/deals/list';
 
 import TopPlaces from '../../components/places/topPlaces';
 import PlaceOverview from '../../components/places/overview';
 import Navigation from '../../components/places/navigation';
-import Reviews from '../../components/country/reviews';
+
 import Header from '../../components/places/header';
+let titleCase = require('title-case');
 
 class PlaceHome extends React.Component {
     constructor(props, context) {
@@ -29,6 +32,8 @@ class PlaceHome extends React.Component {
 
         this.props.actions.loadPlace(id, type);
         this.state = { isLoading: false, id: id, type: type, name: name };
+
+        document.title = 'Explore, Plan, Book in ' + titleCase(name);
     }
       
     render(){
@@ -58,9 +63,11 @@ class PlaceHome extends React.Component {
                         <TopPlaces name={this.state.name} {...this.props} />
                     </div>
                     <div className="col-md-4">
-                        <ReviewButton id={this.state.id} type={this.state.type} name={this.state.name} />
+                        <QuestionButton id={this.state.id} type={this.state.type} name={this.state.name} />
                         <div className="gap-small"></div>
-                        <PlaceOverview id={this.state.id} type={this.state.type} name={this.state.name} overview={overview} />
+                        <RecentQuestions searchId={this.state.id} searchType={this.state.type} limit={3} offset={0} />
+                        <PlaceOverview id={this.state.id} type={this.state.type} name={this.state.name} overview={overview} showMore={1} />
+                        <div className="gap-small"></div>
                     </div>
                     <div className="gap"></div>
                 </div>
@@ -89,8 +96,8 @@ class PlaceHome extends React.Component {
 
             <div className="container">
                 <div className="gap"></div>
-                <div className="row">
-                    <RecentQuestions />
+                <div className="row row-wrap text-xs-center">
+                    <RecentReviews searchId={this.state.id} searchType={this.state.type} limit={3} offset={0} showTitle={1} />
                 </div>
             </div>
             <div className="container">

@@ -9,7 +9,9 @@ import restaurantDeals from './restaurantDealReducer';
 import attractionDeals from './attractionDealReducer';
 import hotelDeals from './hotelDealReducer';
 import lastMinute from './lastMinuteReducer';
-import comments from './commentReducer';
+import questions from './questionReducer';
+import hotels from './hotelsReducer';
+import reviews from './reviewReducer';
 import place from './placeReducer';
 import places from './placeListReducer';
 import {routerReducer} from 'react-router-redux';
@@ -25,7 +27,9 @@ const rootReducer = combineReducers({
   attractionDeals,
   hotelDeals,
   lastMinute,
-  comments,
+  questions,
+  reviews,
+  hotels,
   place,
   places,
   routing: routerReducer

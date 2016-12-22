@@ -5,9 +5,9 @@ const places = [
     id: 1,
     cityId: 123,
     countryId: 123,
-    name: "Lorem Ipsum Dolar sit amet",
-    url: '/places/123/united-kingdom/hotels/test',
-    imageUrl: '/static/img/800x600.png'
+    name: "Chester",
+    url: '/places/123/united-kingdom/chester',
+    imageUrl: '/static/img/locations/city/united-kingdom/chester.jpg'
   },
   {
     id: 2,

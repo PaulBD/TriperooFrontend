@@ -5,11 +5,11 @@ import Weather from '../common/weather';
 class Header extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { isLoading: true };
+    this.state = { isLoading: 1 };
   }
 
   componentDidMount() {
-    this.state = { isLoading: false };
+    this.state = { isLoading: 0 };
   }
 
   render() {
@@ -26,7 +26,7 @@ class Header extends React.Component {
               <Weather id={this.props.id} type={this.props.type} />
               <h1 className="owl-cap-title fittext">{this.props.place.name}</h1>
               <div className="owl-cap-price">
-                  <small>{this.props.place.country} / {this.props.place.county}</small>
+                  <small><a href={this.props.place.countryUrl}>{this.props.place.country}</a> / {this.props.place.county}</small>
               </div>
           </div>);
       }

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default class TopDestinations extends React.Component {
+export default class FeaturePlaces extends React.Component {
     render(){
     return (
         <div>

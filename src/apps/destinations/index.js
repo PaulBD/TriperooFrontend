@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router';
-import TopDestinations from '../../components/topDestinations';
+import FeaturePlaces from '../../components/places/featurePlaces';
 import FacebookSignup from '../../components/common/facebookSignup';
-import WorldCities from '../../components/worldCities';
+import WorldCities from '../../components/common/worldCities';
 import Feature from '../../components/common/feature';
 
 export default class DestinationHome extends React.Component {
@@ -44,7 +44,7 @@ export default class DestinationHome extends React.Component {
              <hr />
             <div className="gap gap-small"></div>
             <div className="container text-xs-center">
-              <TopDestinations />
+              <FeaturePlaces />
             </div>
             <div className="container">
                 <div className="gap gap-small"></div>

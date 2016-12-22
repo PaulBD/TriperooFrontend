@@ -4,8 +4,8 @@ import Search from '../../components/sidebarSearch';
 import SideNavigation from '../../components/sidebarNavigation';
 import PopularPosts from '../../components/popularPosts';
 import Comments from '../../components/recentComments';
-import TwitterFeed from '../../components/twitterFeed';
-import FacebookFeed from '../../components/facebookFeed';
+import TwitterFeed from '../../components/social/twitterFeed';
+import FacebookFeed from '../../components/social/facebookFeed';
 // Since this component is simple and static, there's no parent container for it.
 export default class PrivacyPage extends React.Component {
 

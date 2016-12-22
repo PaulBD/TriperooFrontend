@@ -10,7 +10,7 @@ export default class Search extends React.Component {
                             <h2 className="text-xs-center">Compare & Save on Winter Sun</h2>
                             <p className="text-xs-center">We compare holiday deals to help you save money</p>
                             <p>&nbsp;</p>
-    						<form>
+                            <form>
                                 <div className="row">
                                     <div className="col-md-3">
                                         <div className="form-group form-group-lg form-group-icon-left select"><i className="fa fa-map-marker input-icon"></i>
@@ -144,9 +144,9 @@ export default class Search extends React.Component {
                                         </div>
                                     </div>
                                     <div className="col-md-12 text-xs-center">
-    									<button className="btn btn-primary btn-lg" type="submit">
-    										<i className="fa fa-search"></i>Search Holidays
-    									</button>
+                                        <button className="btn btn-primary btn-lg" type="submit">
+                                            <i className="fa fa-search"></i>Search Holidays
+                                        </button>
                                     </div>
                                 </div>
                             </form>

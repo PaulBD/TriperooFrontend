@@ -1,18 +1,18 @@
 import React from 'react';
-import Breadcrumb from '../../components/breadcrumb';
-import ImageGallery from '../../components/hotel/imageGallery';
-import GuestRating from '../../components/hotel/guestRating';
+import Breadcrumb from '../../components/legacy/breadcrumb';
+import ImageGallery from '../../components/hotels/imageGallery';
+import GuestRating from '../../components/hotels/guestRating';
 import TravellerRating from '../../components/travellerRating';
-import HotelSummaryIcons from '../../components/hotel/summaryIcons';
-import AvailableRooms from '../../components/hotel/availableRooms';
-import AboutHotel from '../../components/hotel/hotelFeatures';
-import Reviews from '../../components/reviews';
-import HotelsNearBy from '../../components/hotel/otherHotelsNearBy';
+import HotelSummaryIcons from '../../components/hotels/summaryIcons';
+import AvailableRooms from '../../components/hotels/availableRooms';
+import AboutHotel from '../../components/hotels/hotelFeatures';
+import Reviews from '../../components/legacy/reviews';
+import HotelsNearBy from '../../components/hotels/otherHotelsNearBy';
 
 export default class HotelDetails extends React.Component {
 
   componentDidMount() {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0); 
   }
   
   render(){

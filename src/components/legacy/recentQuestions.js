@@ -6,7 +6,7 @@ export default class RecentQuestions extends React.Component {
     return (
         <div>
             <h3 className="mb20">Share The Knowledge</h3>
-            <p>Community is the heart of everything we do, share tips on where to go and what<br />to do with other like-minded people and help others discover amazing places.</p>
+            <p>Community is the heart of everything we do, share tips on where to go and what to do with other like-minded people and help others discover amazing places.</p>
             
             <div className="gap gap-small"></div>
             <div className="row row-wrap">

@@ -2,10 +2,10 @@ import React from 'react';
 
 import FacebookSignup from '../../components/common/facebookSignup';
 import CitySubHeader from '../../components/country/subHeader';
-import HotelSearch from '../../components/hotel/searchForm';
-import HotelThumb from '../../components/hotel/thumb';
+import HotelSearch from '../../components/hotels/searchForm';
+import HotelThumb from '../../components/hotels/thumb';
 import CityMap from '../../components/city/map';
-import ReviewButton from '../../components/reviewButton';
+import QuestionButton from '../../components/questions/askButton';
 
 export default class CountryFlights extends React.Component {
 
@@ -64,7 +64,7 @@ export default class CountryFlights extends React.Component {
                       </div>
                   </div>
                   <div className="col-md-4">
-                      <ReviewButton />
+                      <QuestionButton />
                       <div className="gap gap-small"></div>
                       <CityMap />
                   </div>

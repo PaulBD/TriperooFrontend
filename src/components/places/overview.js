@@ -2,18 +2,55 @@ import React, {PropTypes} from 'react';
 let titleCase = require('title-case');
 
 class Overview extends React.Component {
+    constructor(props, context) {
+        super(props, context);
+        this.state = { isLoading: true, overview: '', showMore: 1 };
+        this.onHandleTextClick = this.onHandleTextClick.bind(this);
+    }
+
+    onHandleTextClick(event) {
+        event.preventDefault();
+        if (this.state.showMore) {
+            this.setState({ showMore: 0 });
+        }
+        else {
+            this.setState({ showMore: 1 });
+        }
+    }
+
     render(){
-    return (
+
+        let overview = this.props.overview;
+
+        let showMore = 'Read Less';
+
+        if (this.state.showMore == 1)
+        {
+            if (overview.length > 480)
+            {
+                overview = overview.substring(0, 480) + '...';
+                showMore = 'Read More';
+            }
+        }
+
+        return (
             <div>
                 <h4>Why {titleCase(this.props.name)}?</h4>
-                {this.props.overview}
+                <p>{overview}</p>
+                <p><a href="#" onClick={this.onHandleTextClick}>{showMore}</a></p>
             </div>
         );
     }
 }
+
+Overview.defaultProps = {
+    showMore: false
+};
+
 Overview.propTypes = {
   name: PropTypes.string.isRequired,
-  overview: PropTypes.string.isRequired
+  overview: PropTypes.string.isRequired,
+  showMore: PropTypes.number
 };
 
 export default Overview;

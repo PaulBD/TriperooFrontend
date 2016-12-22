@@ -1,5 +1,5 @@
 import React from 'react';
-import UserProfile from '../../components/userProfile';
+import UserProfile from '../../components/customers/userProfile';
 // Since this component is simple and static, there's no parent container for it.
 export default class BookingHistory extends React.Component {
 

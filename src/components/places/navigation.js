@@ -7,11 +7,11 @@ let titleCase = require('title-case');
 class Navigation extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { isLoading: true };
+    this.state = { isLoading: 1 };
   }
 
   componentDidMount() {
-    this.state = { isLoading: false };
+    this.state = { isLoading: 0 };
   }
 
   render() {
@@ -23,13 +23,13 @@ class Navigation extends React.Component {
                   <h2 className="text-xs-center">Explore, Plan &amp; Book Your Visit to {titleCase(this.props.name)}</h2>
                   <div className="gap gap-small"></div>
                   <ul className="list text-xs-center list-inline user-profile-statictics mb30 l30">
-                    <Item item={this.props.place.data.hotels} cssClass="fa fa-bed user-profile-statictics-icon" />
-                    <Item item={this.props.place.data.flights} cssClass="fa fa-plane user-profile-statictics-icon" />
-                    <Item item={this.props.place.data.attractions} cssClass="fa fa-ticket user-profile-statictics-icon" />
-                    <Item item={this.props.place.data.restaurants} cssClass="fa fa-cutlery user-profile-statictics-icon" />
-                    <Item item={this.props.place.data.bars} cssClass="fa fa-glass user-profile-statictics-icon" />
-                    <Item item={this.props.place.data.reviews} cssClass="fa fa-comment user-profile-statictics-icon" />
-                    <Item item={this.props.place.data.questions} cssClass="fa fa-question user-profile-statictics-icon" />
+                    <Item item={this.props.place.data.hotels} showCount={1} showName={1} cssClass="fa fa-bed user-profile-statictics-icon" />
+                    <Item item={this.props.place.data.flights} showCount={1} showName={1} cssClass="fa fa-plane user-profile-statictics-icon" />
+                    <Item item={this.props.place.data.attractions} showCount={1} showName={1} cssClass="fa fa-ticket user-profile-statictics-icon" />
+                    <Item item={this.props.place.data.restaurants} showCount={1} showName={1} cssClass="fa fa-cutlery user-profile-statictics-icon" />
+                    <Item item={this.props.place.data.bars} showCount={1} showName={1} cssClass="fa fa-glass user-profile-statictics-icon" />
+                    <Item item={this.props.place.data.reviews} showCount={1} showName={1} cssClass="fa fa-comment user-profile-statictics-icon" />
+                    <Item item={this.props.place.data.questions} showCount={1} showName={1} cssClass="fa fa-question user-profile-statictics-icon" />
                   </ul>                        
                 </div>
               </div>
@@ -45,7 +45,7 @@ Navigation.defaultProps = {
 
 Navigation.propTypes = {
     place: PropTypes.object.isRequired,
-    name: PropTypes.string,
+    name: PropTypes.string
 };
 
 

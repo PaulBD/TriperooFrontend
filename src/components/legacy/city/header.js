@@ -8,12 +8,12 @@ import Weather from '../common/weather';
 class Header extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { isLoading: true };
+    this.state = { isLoading: 1 };
   }
 
   componentDidMount() {
     this.props.actions.loadPlace(this.props.id, this.props.type);
-    this.state = { isLoading: false };
+    this.state = { isLoading: 0 };
   }
 
   render() {

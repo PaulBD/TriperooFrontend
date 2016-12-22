@@ -1,7 +1,7 @@
 import React from 'react';
 import Feature from '../../components/common/feature';
-import Search from '../../components/flight/search';
-import TopDestinations from '../../components/flight/topDestinations';
+import Search from '../../components/flights/search';
+import TopDestinations from '../../components/flights/topDestinations';
 
 import Deals from '../../components/deals/list';
 

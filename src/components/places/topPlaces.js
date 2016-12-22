@@ -9,7 +9,7 @@ let titleCase = require('title-case');
 class TopPlaces extends React.Component {
     constructor(props, context) {
         super(props, context);
-        this.state = { isLoading: true, places: [] };
+        this.state = { isLoading: 1, places: [] };
     }
 
     componentDidMount() {
@@ -17,7 +17,7 @@ class TopPlaces extends React.Component {
         let type = this.props.cityId != 0 ? "city" : "country";
         let name = this.props.cityId != 0 ? this.props.city : this.props.country;
         this.props.actions.loadTopPlaces(id, type);
-        this.state = { isLoading: false };
+        this.state = { isLoading: 0 };
     }
 
     render(){
