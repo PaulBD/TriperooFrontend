@@ -6,9 +6,9 @@ import * as placeActions from '../../actions/placeActions';
 import PlaceSubHeader from '../../components/places/subHeader';
 
 import FacebookSignup from '../../components/common/facebookSignup';
-import HotelSearch from '../../components/hotel/searchForm';
-import Hotels from '../../components/hotel/hotels';
-import HotelThumb from '../../components/hotel/thumb';
+import HotelSearch from '../../components/hotels/searchForm';
+import Hotels from '../../components/hotels/hotels';
+import HotelThumb from '../../components/hotels/thumb';
 import CityMap from '../../components/city/map';
 
 import QuestionButton from '../../components/questions/askButton';
@@ -20,6 +20,7 @@ class PlaceSearch extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = { isLoading: 1, id: 0, type: '', name: '' };
+      this.onSubmitRedirect = this.onSubmitRedirect.bind(this);
     }
 
     componentDidMount() {
@@ -33,6 +34,12 @@ class PlaceSearch extends React.Component {
 
         document.title = 'Explore ' + this.props.type + ' in ' + titleCase(name);
     }
+
+  onSubmitRedirect(e) {
+    console.log("t": e);
+    alert(e);
+
+  }
   
   render(){
     return (
@@ -43,7 +50,7 @@ class PlaceSearch extends React.Component {
           <div className="container">
               <div className="row">
                   <div className="col-md-12">
-                    <HotelSearch {...this.props} city={this.props.city} />
+                    <HotelSearch {...this.props} city={this.props.city} onSubmit={this.onSubmitRedirect}/>
                   </div>
                   <div className="col-md-8">
                     <div className="gap gap-small"></div>

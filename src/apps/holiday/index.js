@@ -6,7 +6,7 @@ import Copy from '../../components/holidays/copy';
 import Deals from '../../components/deals/list';
 
 import FeaturePlaces from '../../components/places/featurePlaces';
-import LastMinuteDeal from '../../components/lastMinuteDeal';
+import LastMinuteDeal from '../../components/deals/lastMinuteDeal';
 import FacebookSignup from '../../components/common/facebookSignup';
 
 // Since this component is simple and static, there's no parent container for it.
@@ -40,7 +40,7 @@ export default class Holidays extends React.Component {
           </div>
           <div className="gap gap-small"></div>
         </div>
-        <LastMinuteDeal /> 
+        <LastMinuteDeal featureType="lastMinute" />
         <div className="container">
             <div className="gap gap"></div>
             <Copy />

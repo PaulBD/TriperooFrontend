@@ -125,9 +125,9 @@ class SearchForm extends React.Component {
           browserHistory.push('/search-results/hotels' + url);
         }
     }
-    }
+  }
 
-    render(){
+  render(){
 
     return (
         <form className="hotelSearch" onSubmit={this.onSubmitRedirect}>

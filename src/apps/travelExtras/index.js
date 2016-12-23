@@ -4,7 +4,7 @@ import Feature from '../../components/travelExtras/feature';
 import Deals from '../../components/deals/list';
 
 import FacebookSignup from '../../components/common/facebookSignup';
-import LastMinuteDeal from '../../components/lastMinuteDeal';
+import LastMinuteDeal from '../../components/deals/lastMinuteDeal';
 
 export default class TravelExtras extends React.Component {
       componentDidMount() {
@@ -156,7 +156,7 @@ export default class TravelExtras extends React.Component {
                 </div>
             </div>
             <div className="gap"></div>
-          <LastMinuteDeal /> 
+            <LastMinuteDeal featureType="lastMinute" />
           <div className="container">
             <div className="gap"></div>
               <div className="row">

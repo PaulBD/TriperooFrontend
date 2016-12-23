@@ -2,7 +2,7 @@ import React from 'react';
 import Breadcrumb from '../../components/legacy/breadcrumb';
 import ImageGallery from '../../components/hotels/imageGallery';
 import GuestRating from '../../components/hotels/guestRating';
-import TravellerRating from '../../components/travellerRating';
+import TravellerRating from '../../components/legacy/travellerRating';
 import HotelSummaryIcons from '../../components/hotels/summaryIcons';
 import AvailableRooms from '../../components/hotels/availableRooms';
 import AboutHotel from '../../components/hotels/hotelFeatures';

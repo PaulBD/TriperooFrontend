@@ -1,9 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router';
-import Search from '../../components/sidebarSearch';
-import SideNavigation from '../../components/sidebarNavigation';
-import PopularPosts from '../../components/popularPosts';
-import Comments from '../../components/recentComments';
+import Search from '../../components/legacy/sidebarSearch';
+import SideNavigation from '../../components/legacy/sidebarNavigation';
+import PopularPosts from '../../components/legacy/popularPosts';
+import Comments from '../../components/legacy/recentComments';
 import TwitterFeed from '../../components/social/twitterFeed';
 import FacebookFeed from '../../components/social/facebookFeed';
 // Since this component is simple and static, there's no parent container for it.
