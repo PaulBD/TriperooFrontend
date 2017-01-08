@@ -34,8 +34,10 @@ const SearchList = ({places}) => {
                 tags = (<TagList tags={place.tags.tag} maxTags={4} />);
             }
 
+            let placeId = "place-" + place.ref;
+
             return (
-                <div key={place.ref}>
+                <div key={place.ref} id={placeId}>
                     <a href={place.url}>
                         <div className="booking-item booking-item-small">
                             <div className="row">

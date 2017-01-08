@@ -258,3 +258,9 @@ optgroup,option { margin-left:0px;text-align:left;}
     -webkit-transform: scaleY(1.0);
   }
 }
+
+.map {  width: 100%; height: 500px; }
+.mapMarker { background-image: url('/static/img/map-marker.png');background-repeat:no-repeat; background-size:20px 20px; background-position: center; width: 50px; height: 30px;margin-left:-25px;margin-top:-15px;}
+.mapInfo { z-index:999; background-color: #fff; border: solid 1px #cc0000; border-radius: 4px; padding:4px;margin-top:-1px;line-height:10px; position:absolute; width:50px;text-align:center;}
+
+.hoverActive .booking-item { border: 1px solid #ed8323;}

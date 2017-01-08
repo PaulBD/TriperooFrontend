@@ -20,6 +20,7 @@
     "copy-webpack-plugin": "^4.0.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "fs": "0.0.1-security",
+    "google-map-react": "^0.22.3",
     "html-webpack-plugin": "^2.24.0",
     "jquery": "2.2.3",
     "json-loader": "^0.5.4",

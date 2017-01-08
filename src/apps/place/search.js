@@ -10,7 +10,6 @@ import SearchList from '../../components/places/searchList';
 
 import FacebookSignup from '../../components/common/facebookSignup';
 import HotelSearch from '../../components/hotels/searchForm';
-import HotelThumb from '../../components/hotels/thumb';
 import CityMap from '../../components/places/map';
 
 import QuestionButton from '../../components/questions/askButton';
@@ -32,7 +31,7 @@ class PlaceSearch extends React.Component {
     let type = this.props.cityId != 0 ? "city" : "country";
     let name = this.props.cityId != 0 ? this.props.city : this.props.country;
 
-    this.props.actions.loadPlace(id, type);
+    this.props.placeActions.loadPlace(id, type);
 
     this.props.hotelActions.loadHotels(id, type);
 
@@ -46,6 +45,17 @@ class PlaceSearch extends React.Component {
   }
   
   render(){
+    let lng = 0;
+    let lat = 0;
+
+    if (this.props.place.latitude !== undefined && this.props.place.latitude !== '') {
+      lat = parseFloat(this.props.place.latitude);
+    }
+
+    if (this.props.place.longitude !== undefined && this.props.place.longitude !== '') {
+      lng = parseFloat(this.props.place.longitude);
+    }
+
     return (
       <div>
           <PlaceSubHeader pageType={this.props.type} place={this.props.place} city={this.props.city} country={this.props.country} />
@@ -63,7 +73,7 @@ class PlaceSearch extends React.Component {
                   </div>
                   <div className="col-md-4">
                     <div className="gap gap-small"></div>
-                    <CityMap  />
+                    <CityMap center={[lat, lng]} places={this.props.hotels} />
                     <div className="gap-small"></div>
                     <QuestionButton id={this.state.id} type={this.state.type} name={this.state.name} />
                     <div className="gap-small"></div>
@@ -91,7 +101,7 @@ PlaceSearch.propTypes = {
     type: PropTypes.string,
     place: PropTypes.object.isRequired,
     hotels: PropTypes.object.isRequired,
-    actions: PropTypes.object.isRequired,
+    placeActions: PropTypes.object.isRequired,
     hotelActions: PropTypes.object.isRequired
 };
 
@@ -109,7 +119,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(placeActions, dispatch),
+    placeActions: bindActionCreators(placeActions, dispatch),
     hotelActions: bindActionCreators(hotelActions, dispatch)
   };
 }
