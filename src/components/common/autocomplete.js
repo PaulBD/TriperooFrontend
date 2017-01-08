@@ -3,13 +3,14 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {browserHistory} from 'react-router';
 import * as searchActions from '../../actions/searchActions';
+import Loader from '../common/loadingDots';
 
 class AutoComplete extends React.Component {
 
   constructor(props, context) {
     super(props, context);
     this.handleClick = this.handleClick.bind(this);
-    this.state = { cssStyle: 'none', searches: this.props.searches };
+    this.state = { cssStyle: 'none', searches: this.props.searches, isLoading: 1 };
     this.onSearchValue = this.onSearchValue.bind(this);
   }
 
@@ -28,11 +29,12 @@ class AutoComplete extends React.Component {
     event.preventDefault();
 
     if (event.target.value.length > 2) {
+        this.setState({ isLoading: 1 });
         this.props.actions.loadSearches(event.target.value, this.props.searchType);
-        this.setState({ selected: false, style: 'block', searchValue: event.target.value.trim(), isOpen: true });
+        this.setState({ selected: false, style: 'block', searchValue: event.target.value.trim(), isOpen: true, isLoading: 0 });
     }
     else {
-        this.setState({ selected: false, style: 'none', searchValue: event.target.value, isOpen: false });
+        this.setState({ selected: false, style: 'none', searchValue: event.target.value, isOpen: false, isLoading: 0 });
     }
   }
 
@@ -45,6 +47,12 @@ class AutoComplete extends React.Component {
     let style = {
       display: this.state.style
     };
+
+    if (searchCount == 0) {
+      style = {
+        display: 'none'
+      };
+    }
 
     return (
       <div>

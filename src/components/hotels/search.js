@@ -11,7 +11,7 @@ class Search extends React.Component {
                       <h2 className="text-xs-center">Compare & Save on Hotels</h2>
                       <p className="text-xs-center">Great deals from a selection of hotel companies only a click away</p>
                       <p>&nbsp;</p>
-                      <SearchForm />
+                      <SearchForm useFunction={0} />
                     </div>
                 </div>
             </div>

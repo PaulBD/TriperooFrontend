@@ -26,6 +26,8 @@ class PlaceHome extends React.Component {
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0);
+
         let id = this.props.cityId != 0 ? this.props.cityId : this.props.countryId;
         let type = this.props.cityId != 0 ? "city" : "country";
         let name = this.props.cityId != 0 ? this.props.city : this.props.country;

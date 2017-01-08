@@ -1,9 +1,9 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-
 import {browserHistory} from 'react-router';
 import AutoComplete from '../common/autocomplete';
+
 let titleCase = require('title-case');
 
 let DatePicker = require('react-datepicker');
@@ -17,9 +17,9 @@ class SearchForm extends React.Component {
     this.handleEndDateChange = this.handleEndDateChange.bind(this);
     this.handleGuestChange = this.handleGuestChange.bind(this);
     this.handleRoomChange = this.handleRoomChange.bind(this);
-    this.onSubmitRedirect = this.onSubmitRedirect.bind(this);
     this.handleSearchNameClick = this.handleSearchNameClick.bind(this);
     this.handleSearchUrlClick = this.handleSearchUrlClick.bind(this);
+    this.submitForm = this.submitForm.bind(this);
   }
 
   componentDidMount() {
@@ -106,7 +106,7 @@ class SearchForm extends React.Component {
     });
   }
 
-  onSubmitRedirect(event) {
+  submitForm(event) {
     event.preventDefault();
 
     if (this.state.searchValue.length > 0) {
@@ -124,13 +124,17 @@ class SearchForm extends React.Component {
         else {
           browserHistory.push('/search-results/hotels' + url);
         }
+    }  
+
+    if (this.props.useFunction == 1) {
+      this.props.handleFormSubmit(this.state.searchValue, this.state.formattedStartDate, this.state.formattedEndDate, this.state.rooms, this.state.guests);
     }
   }
 
   render(){
 
     return (
-        <form className="hotelSearch" onSubmit={this.onSubmitRedirect}>
+        <form className="hotelSearch" onSubmit={this.submitForm}>
           <div className="row">
             <div className="col-md-7">
               <div className="input-daterange" data-date-format="MM d, D">
@@ -214,22 +218,26 @@ class SearchForm extends React.Component {
 }
 
 SearchForm.defaultProps = {
-    searchValue: '',
-    sDate: moment(), 
-    eDate: moment().add(1, 'days'),
-    rooms: '1', 
-    guests: '1',
-    searchUrl: ''
+  searchValue: '',
+  sDate: moment(), 
+  eDate: moment().add(1, 'days'),
+  rooms: '1', 
+  guests: '1',
+  searchUrl: '',
+  useFunction: 0
 };
 
 SearchForm.propTypes = {
-    searchValue: PropTypes.string,
-    sDate:  PropTypes.string,
-    eDate: PropTypes.string,
-    rooms: PropTypes.string, 
-    guests: PropTypes.string,
-    city: PropTypes.string,
-    searchUrl: PropTypes.string
+  doSearch: PropTypes.func,
+  handleFormSubmit: PropTypes.func,
+  searchValue: PropTypes.string,
+  sDate:  PropTypes.string,
+  eDate: PropTypes.string,
+  rooms: PropTypes.string, 
+  guests: PropTypes.string,
+  city: PropTypes.string,
+  searchUrl: PropTypes.string,
+  useFunction: PropTypes.boolean
 };
 
 function mapStateToProps(state, ownProps) {

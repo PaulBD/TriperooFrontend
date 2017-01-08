@@ -17,3 +17,18 @@ export function loadHotels(id, placeType) {
 		});
 	};
 }
+
+export function searchHotelSuccess(hotels) {
+	return {type: types.SEARCH_HOTEL_SUCCESS, hotels};
+}
+
+export function searchHotels(searchValue, startDate, endDate, rooms, guests) {
+	return dispatch => {
+		dispatch(beginAjaxCall());
+		return HotelApi.getHotelsBySearch(searchValue, startDate, endDate, rooms, guests).then(hotels => {
+			dispatch(searchHotelSuccess(hotels));
+		}).catch(error => {
+			throw(error);
+		});
+	};
+}

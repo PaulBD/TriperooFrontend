@@ -5,7 +5,14 @@ class StarRating extends React.Component {
     let greyStarsNumber = 0;
     let maxStars = 5;
 
-    greyStarsNumber = maxStars - this.props.starRating;
+    let stars = 0;
+
+    if (this.props.starRating !== '') {
+      stars = this.props.starRating;
+    }
+
+
+    greyStarsNumber = maxStars - stars;
 
     let tmpYellow = [];
     for (let i = 0; i < this.props.starRating; i++) {
@@ -35,7 +42,7 @@ class StarRating extends React.Component {
 }
 
 StarRating.propTypes = {
-  starRating: PropTypes.number.isRequired,
+  starRating: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired
 };
 

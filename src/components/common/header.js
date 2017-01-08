@@ -17,7 +17,7 @@ class Header extends React.Component {
                     <div className="row">
                       <div className="col-md-3">
                         <Link to="/" className="logo">
-                          <img src="/static/img/logo-invert.png" alt="Triperoo - Explore the world" />
+                          <img src="/static/img/logo-invert-v2.png" alt="Triperoo - Explore the world" />
                         </Link>
                       </div>
                       <div className="col-md-2 col-md-offset-2">&nbsp;</div>

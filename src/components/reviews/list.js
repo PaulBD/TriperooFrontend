@@ -26,7 +26,7 @@ const ReviewList = ({reviews}) => {
                 <p className="card-text">
                     {review.reviewer.comment}
                 </p>
-                <TagList tags={review.place.tags} />
+                <TagList tags={review.place.tags} maxTags={5} />
               </div>
             </div> 
           </div>

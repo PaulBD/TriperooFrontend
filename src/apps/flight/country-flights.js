@@ -4,7 +4,7 @@ import FacebookSignup from '../../components/common/facebookSignup';
 import CitySubHeader from '../../components/country/subHeader';
 import HotelSearch from '../../components/hotels/searchForm';
 import HotelThumb from '../../components/hotels/thumb';
-import CityMap from '../../components/city/map';
+import CityMap from '../../components/places/map';
 import QuestionButton from '../../components/questions/askButton';
 
 export default class CountryFlights extends React.Component {

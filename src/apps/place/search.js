@@ -2,14 +2,16 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as placeActions from '../../actions/placeActions';
+import * as hotelActions from '../../actions/hotelActions';
 
 import PlaceSubHeader from '../../components/places/subHeader';
+import Loader from '../../components/common/loadingDots';
+import SearchList from '../../components/places/searchList';
 
 import FacebookSignup from '../../components/common/facebookSignup';
 import HotelSearch from '../../components/hotels/searchForm';
-import Hotels from '../../components/hotels/hotels';
 import HotelThumb from '../../components/hotels/thumb';
-import CityMap from '../../components/city/map';
+import CityMap from '../../components/places/map';
 
 import QuestionButton from '../../components/questions/askButton';
 import RecentQuestions from '../../components/questions/questions';
@@ -17,28 +19,30 @@ import RecentQuestions from '../../components/questions/questions';
 let titleCase = require('title-case');
 
 class PlaceSearch extends React.Component {
-    constructor(props, context) {
-        super(props, context);
-        this.state = { isLoading: 1, id: 0, type: '', name: '' };
-      this.onSubmitRedirect = this.onSubmitRedirect.bind(this);
-    }
+  constructor(props, context) {
+    super(props, context);
+    this.state = { isLoading: 1, id: 0, type: '', name: '' };
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+  }
 
-    componentDidMount() {
-        let id = this.props.cityId != 0 ? this.props.cityId : this.props.countryId;
-        let type = this.props.cityId != 0 ? "city" : "country";
-        let name = this.props.cityId != 0 ? this.props.city : this.props.country;
+  componentDidMount() {
+    window.scrollTo(0, 0);
+    
+    let id = this.props.cityId != 0 ? this.props.cityId : this.props.countryId;
+    let type = this.props.cityId != 0 ? "city" : "country";
+    let name = this.props.cityId != 0 ? this.props.city : this.props.country;
 
-        this.props.actions.loadPlace(id, type);
+    this.props.actions.loadPlace(id, type);
 
-        this.state = { isLoading: 0, id: id, type: type, name: name };
+    this.props.hotelActions.loadHotels(id, type);
 
-        document.title = 'Explore ' + this.props.type + ' in ' + titleCase(name);
-    }
+    this.state = { isLoading: 0, id: id, type: type, name: name };
 
-  onSubmitRedirect(e) {
-    console.log("t": e);
-    alert(e);
+    document.title = 'Explore ' + this.props.type + ' in ' + titleCase(name);
+  }
 
+  handleFormSubmit(searchValue, formattedStartDate, formattedEndDate, rooms, guests) {
+    this.props.hotelActions.searchHotels(searchValue, formattedStartDate, formattedEndDate, rooms, guests);
   }
   
   render(){
@@ -50,15 +54,16 @@ class PlaceSearch extends React.Component {
           <div className="container">
               <div className="row">
                   <div className="col-md-12">
-                    <HotelSearch {...this.props} city={this.props.city} onSubmit={this.onSubmitRedirect}/>
+                    <HotelSearch {...this.props} city={this.props.city} handleFormSubmit={this.handleFormSubmit} useFunction={1} />
                   </div>
                   <div className="col-md-8">
                     <div className="gap gap-small"></div>
-                    <Hotels {...this.props} city={this.props.city} />
+                    <SearchList places={this.props.hotels} />
+                    <Loader showLoader={this.state.isLoading} />
                   </div>
                   <div className="col-md-4">
                     <div className="gap gap-small"></div>
-                    <CityMap />
+                    <CityMap  />
                     <div className="gap-small"></div>
                     <QuestionButton id={this.state.id} type={this.state.type} name={this.state.name} />
                     <div className="gap-small"></div>
@@ -85,12 +90,15 @@ PlaceSearch.propTypes = {
     city: PropTypes.string,
     type: PropTypes.string,
     place: PropTypes.object.isRequired,
-    actions: PropTypes.object.isRequired
+    hotels: PropTypes.object.isRequired,
+    actions: PropTypes.object.isRequired,
+    hotelActions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
     place: state.place,
+    hotels: state.hotels,
     countryId: ownProps.params.countryId ? parseInt(ownProps.params.countryId) : 0,
     country: ownProps.params.country,
     cityId: ownProps.params.cityId ? parseInt(ownProps.params.cityId) : 0,
@@ -101,7 +109,8 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(placeActions, dispatch)
+    actions: bindActionCreators(placeActions, dispatch),
+    hotelActions: bindActionCreators(hotelActions, dispatch)
   };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(PlaceSearch);

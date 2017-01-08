@@ -61,7 +61,7 @@ const features = [
     url: '/static/img/locations/popular-destinations/peninsula.jpg',
     backgroundImage: '/static/img/hotelRoom.jpg',
     buttonText: 'Book Now',
-    starRating: 5
+    starRating: '5'
   }
 ];
 
