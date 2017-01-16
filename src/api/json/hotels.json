@@ -21,6 +21,7 @@
 		},
 		"distance": 0.3,
 		"customerRating": 5,
+		"rank": 1,
 		"pricesFrom": "88.00",
 		"starAwardedBy": "AA",
 		"starAccommodationType": "Hotel",
@@ -125,7 +126,12 @@
 			]
 		},
 		"importantInformation": "",
-		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/7713/gallery/7713.jpg"
+		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/7713/gallery/7713.jpg",
+		"images": [
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg",
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg"
+			],
+		"reviewCount": 23
 	}, {
 		"ref": "201093",
 		"name": "ABode Chester",
@@ -148,6 +154,7 @@
 		},
 		"distance": 0.5,
 		"customerRating": 5,
+		"rank": 2,
 		"pricesFrom": "80.00",
 		"starAwardedBy": "AA",
 		"starAccommodationType": "Hotel",
@@ -254,7 +261,12 @@
 			]
 		},
 		"importantInformation": "",
-		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg"
+		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg",
+		"images": [
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg",
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg"
+			],
+		"reviewCount": 23
 	}, {
 		"ref": "199011",
 		"url": "/places/123/united-kingdom/chester/hotels/199011/george-and-dragon",
@@ -277,6 +289,7 @@
 		},
 		"distance": 0.2,
 		"customerRating": 5,
+		"rank": 3,
 		"pricesFrom": "40.00",
 		"starAwardedBy": "AA",
 		"starAccommodationType": "Inn",
@@ -350,7 +363,12 @@
 			]
 		},
 		"importantInformation": "",
-		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/199011/gallery/199011.jpg"
+		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/199011/gallery/199011.jpg",
+		"images": [
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg",
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg"
+			],
+		"reviewCount": 23
 	}, {
 		"ref": "1046",
 		"url": "/places/123/united-kingdom/chester/hotels/199011/george-and-dragon",
@@ -373,6 +391,7 @@
 		},
 		"distance": 6.6,
 		"customerRating": 5,
+		"rank": 4,
 		"pricesFrom": "45.00",
 		"starAwardedBy": "Self-Accredited",
 		"starAccommodationType": "Hotel",
@@ -484,7 +503,12 @@
 			]
 		},
 		"importantInformation": "",
-		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/1046/gallery/1046.jpg"
+		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/1046/gallery/1046.jpg",
+		"images": [
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg",
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg"
+			],
+		"reviewCount": 23
 	}, 
 	{
 		"ref": "1708",
@@ -508,6 +532,7 @@
 		},
 		"distance": 1.1,
 		"customerRating": 4,
+		"rank": 5,
 		"pricesFrom": "38.00",
 		"starAwardedBy": "Self-Accredited",
 		"starAccommodationType": "Hotel",
@@ -606,7 +631,12 @@
 			]
 		},
 		"importantInformation": "",
-		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/1708/gallery/1708.jpg"
+		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/1708/gallery/1708.jpg",
+		"images": [
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg",
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg"
+			],
+		"reviewCount": 23
 	}, 
 	{
 		"ref": "284441",
@@ -630,6 +660,7 @@
 		},
 		"distance": 0.4,
 		"customerRating": 5,
+		"rank": 6,
 		"pricesFrom": "57.38",
 		"starAwardedBy": "Self-Accredited",
 		"starAccommodationType": "Hotel",
@@ -691,7 +722,12 @@
 			]
 		},
 		"importantInformation": "",
-		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/284441/gallery/284441.jpg"
+		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/284441/gallery/284441.jpg",
+		"images": [
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg",
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg"
+			],
+		"reviewCount": 23
 	}, 
 	{
 		"ref": "73361",
@@ -715,6 +751,7 @@
 		},
 		"distance": 0.3,
 		"customerRating": 5,
+		"rank": 7,
 		"pricesFrom": "99.00",
 		"starAwardedBy": "AA",
 		"starAccommodationType": "Hotel",
@@ -800,7 +837,12 @@
 			]
 		},
 		"importantInformation": "",
-		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/73361/gallery/73361.jpg"
+		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/73361/gallery/73361.jpg",
+		"images": [
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg",
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg"
+			],
+		"reviewCount": 23
 	}, 
 	{
 		"ref": "87711",
@@ -824,6 +866,7 @@
 		},
 		"distance": 5.3,
 		"customerRating": 5,
+		"rank": 8,
 		"pricesFrom": "95.00",
 		"starAwardedBy": "Visit England",
 		"starAccommodationType": "Hotel",
@@ -927,7 +970,12 @@
 			]
 		},
 		"importantInformation": "",
-		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/87711/gallery/87711.jpg"
+		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/87711/gallery/87711.jpg",
+		"images": [
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg",
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg"
+			],
+		"reviewCount": 23
 	}, 
 	{
 		"ref": "270263",
@@ -951,6 +999,7 @@
 		},
 		"distance": 0.5,
 		"customerRating": 5,
+		"rank": 9,
 		"pricesFrom": "Full",
 		"starAwardedBy": "Self-Accredited",
 		"starAccommodationType": "Serviced Apartments",
@@ -1006,7 +1055,12 @@
 			]
 		},
 		"importantInformation": "",
-		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/270263/gallery/270263.jpg"
+		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/270263/gallery/270263.jpg",
+		"images": [
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg",
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg"
+			],
+		"reviewCount": 23
 	}, 
 	{
 		"ref": "93303",
@@ -1030,6 +1084,7 @@
 		},
 		"distance": 1,
 		"customerRating": 5,
+		"rank": 10,
 		"pricesFrom": "72.00",
 		"starAwardedBy": "Self-Accredited",
 		"starAccommodationType": "Small Hotel",
@@ -1100,7 +1155,12 @@
 			]
 		},
 		"importantInformation": "",
-		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/93303/gallery/93303.jpg"
+		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/93303/gallery/93303.jpg",
+		"images": [
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg",
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg"
+			],
+		"reviewCount": 23
 	}, 
 	{
 		"url": "/places/123/united-kingdom/chester/hotels/199011/george-and-dragon",
@@ -1193,7 +1253,12 @@
 			]
 		},
 		"importantInformation": "",
-		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/288141/gallery/288141.jpg"
+		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/288141/gallery/288141.jpg",
+		"images": [
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg",
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg"
+			],
+		"reviewCount": 23
 	}, {
 		"url": "/places/123/united-kingdom/chester/hotels/199011/george-and-dragon",
 		"ref": "453971",
@@ -1288,7 +1353,12 @@
 			]
 		},
 		"importantInformation": "",
-		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/453971/gallery/453971.jpg"
+		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/453971/gallery/453971.jpg",
+		"images": [
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg",
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg"
+			],
+		"reviewCount": 23
 	}, {
 		"url": "/places/123/united-kingdom/chester/hotels/199011/george-and-dragon",
 		"ref": "69840",
@@ -1407,7 +1477,12 @@
 			]
 		},
 		"importantInformation": "",
-		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/69840/gallery/69840.jpg"
+		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/69840/gallery/69840.jpg",
+		"images": [
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg",
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg"
+			],
+		"reviewCount": 23
 	}, {
 		"url": "/places/123/united-kingdom/chester/hotels/199011/george-and-dragon",
 		"ref": "96919",
@@ -1495,7 +1570,12 @@
 			]
 		},
 		"importantInformation": "",
-		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/96919/gallery/96919.jpg"
+		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/96919/gallery/96919.jpg",
+		"images": [
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg",
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg"
+			],
+		"reviewCount": 23
 	}, {
 		"url": "/places/123/united-kingdom/chester/hotels/199011/george-and-dragon",
 		"ref": "180873",
@@ -1611,7 +1691,12 @@
 			]
 		},
 		"importantInformation": "",
-		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/180873/gallery/180873.jpg"
+		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/180873/gallery/180873.jpg",
+		"images": [
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg",
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg"
+			],
+		"reviewCount": 23
 	}, {
 		"url": "/places/123/united-kingdom/chester/hotels/199011/george-and-dragon",
 		"ref": "279108",
@@ -1703,7 +1788,12 @@
 			]
 		},
 		"importantInformation": "",
-		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/279108/gallery/279108.jpg"
+		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/279108/gallery/279108.jpg",
+		"images": [
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg",
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg"
+			],
+		"reviewCount": 23
 	}, {
 		"url": "/places/123/united-kingdom/chester/hotels/199011/george-and-dragon",
 		"ref": "69587",
@@ -1803,7 +1893,12 @@
 			]
 		},
 		"importantInformation": "",
-		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/69587/gallery/69587.jpg"
+		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/69587/gallery/69587.jpg",
+		"images": [
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg",
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg"
+			],
+		"reviewCount": 23
 	}, {
 		"url": "/places/123/united-kingdom/chester/hotels/199011/george-and-dragon",
 		"ref": "94738",
@@ -1923,7 +2018,12 @@
 			]
 		},
 		"importantInformation": "",
-		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/94738/gallery/94738.jpg"
+		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/94738/gallery/94738.jpg",
+		"images": [
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg",
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg"
+			],
+		"reviewCount": 23
 	}, {
 		"url": "/places/123/united-kingdom/chester/hotels/199011/george-and-dragon",
 		"ref": "87788",
@@ -2045,7 +2145,12 @@
 			]
 		},
 		"importantInformation": "",
-		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/87788/gallery/87788.jpg"
+		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/87788/gallery/87788.jpg",
+		"images": [
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg",
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg"
+			],
+		"reviewCount": 23
 	}, {
 		"url": "/places/123/united-kingdom/chester/hotels/199011/george-and-dragon",
 		"ref": "198908",
@@ -2146,6 +2251,11 @@
 			]
 		},
 		"importantInformation": "",
-		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/198908/gallery/198908.jpg"
+		"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/198908/gallery/198908.jpg",
+		"images": [
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg",
+			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg"
+			],
+		"reviewCount": 23
 	}]
 }

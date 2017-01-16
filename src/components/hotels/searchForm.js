@@ -135,7 +135,7 @@ class SearchForm extends React.Component {
 
     return (
         <form className="hotelSearch" onSubmit={this.submitForm}>
-          <div className="row">
+          <div className="row row-wrap">
             <div className="col-md-7">
               <div className="input-daterange" data-date-format="MM d, D">
                 <div className="row">

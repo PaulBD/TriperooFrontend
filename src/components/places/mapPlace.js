@@ -23,20 +23,30 @@ class MapPlace extends React.Component {
 
  	render() {
 
+ 		let markerId = 'marker-' + this.props.id;
+
+ 		let style = {
+ 			display: 'none'
+ 		};
+
  		let info = '';
 
  		if (this.state.showInfo == 1) {
- 			let price = 'Full';
-
- 			if (this.props.text !== 'Full' && parseFloat(this.props.text) > 0) {
-	 			price = "£" + this.props.text;
-	 		}
-
- 			info = (<div className="mapInfo">{price}</div>);
+ 			style = {
+ 				display: 'block'
+ 			};
  		}
 
+ 		let price = 'Full';
+			
+		if (this.props.text !== 'Full' && parseFloat(this.props.text) > 0) {
+ 			price = "£" + this.props.text;
+ 		}
+
+		info = (<div className="mapInfo" style={style}>{price}</div>);
+
     	return (
-       	<div className="mapMarker" onMouseEnter={this.onMouseEnterContent} onMouseLeave={this.onMouseLeaveContent}>
+       	<div className="mapMarker" id={markerId} onMouseEnter={this.onMouseEnterContent} onMouseLeave={this.onMouseLeaveContent}>
        		{info}
        	</div>
     	);

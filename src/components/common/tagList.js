@@ -5,7 +5,6 @@ class TagList extends React.Component {
   render(){
     return (
       <p className="tagCollection">
-      <strong>Recommended For:</strong><br />
         {
           this.props.tags.slice(0, this.props.maxTags).map(tag => {
           return (

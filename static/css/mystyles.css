@@ -166,6 +166,9 @@ optgroup,option { margin-left:0px;text-align:left;}
 .modal-open[style="padding-right: 16px;"] .navbar-fixed-bottom { padding-right: 16px; }
 
 .booking-item.booking-item-small .booking-item-title { font-size: 20px; }
+.booking-item.booking-item-small .booking-item-subtitle { font-size: 14px; }
+.booking-item.booking-item-small .last-minute-rating { font-size: 16px; }
+.booking-item.booking-item-small .last-minute-rating.icon-list .fa { margin-right: 4px; }
 
 .ui-autocomplete {
   position: absolute;
@@ -264,3 +267,9 @@ optgroup,option { margin-left:0px;text-align:left;}
 .mapInfo { z-index:999; background-color: #fff; border: solid 1px #cc0000; border-radius: 4px; padding:4px;margin-top:-1px;line-height:10px; position:absolute; width:50px;text-align:center;}
 
 .hoverActive .booking-item { border: 1px solid #ed8323;}
+
+.placeItem .booking-item-price { font-size: 27px; }
+.placeItem .booking-item-price.full { width:100%; }
+.placeItem .tagCollection { margin:0; }
+
+.mapMarkerWrapper { margin: 10px 0; width:100%;}

@@ -14,7 +14,7 @@ class Map extends React.Component {
 	return (
 
 		<div className="map">
-			<GoogleMap bootstrapURLKeys={{key: "AIzaSyBmQF5rseeOF7Fifo4ACea1bkOtfePdG58" }} center={this.props.center} zoom={this.props.zoom}>
+			<GoogleMap id="placeMap" bootstrapURLKeys={{key: "AIzaSyBmQF5rseeOF7Fifo4ACea1bkOtfePdG58" }} center={this.props.center} zoom={this.props.zoom}>
 				{places}
 			</GoogleMap>
 		</div>

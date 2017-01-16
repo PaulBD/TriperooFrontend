@@ -7,7 +7,7 @@ export function loadHotelSuccess(hotels) {
 	return {type: types.LOAD_HOTEL_SUCCESS, hotels};
 }
 
-export function loadHotels(id, placeType) {
+export function loadHotels(id, placeType, sortBy, currency) {
 	return dispatch => {
 		dispatch(beginAjaxCall());
 		return HotelApi.getHotelsByLocation(id, placeType).then(hotels => {
@@ -22,7 +22,7 @@ export function searchHotelSuccess(hotels) {
 	return {type: types.SEARCH_HOTEL_SUCCESS, hotels};
 }
 
-export function searchHotels(searchValue, startDate, endDate, rooms, guests) {
+export function searchHotels(searchValue, startDate, endDate, rooms, guests, sortBy, currency) {
 	return dispatch => {
 		dispatch(beginAjaxCall());
 		return HotelApi.getHotelsBySearch(searchValue, startDate, endDate, rooms, guests).then(hotels => {

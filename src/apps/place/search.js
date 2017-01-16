@@ -11,6 +11,7 @@ import SearchList from '../../components/places/searchList';
 import FacebookSignup from '../../components/common/facebookSignup';
 import HotelSearch from '../../components/hotels/searchForm';
 import CityMap from '../../components/places/map';
+import Sort from '../../components/places/sort';
 
 import QuestionButton from '../../components/questions/askButton';
 import RecentQuestions from '../../components/questions/questions';
@@ -20,8 +21,9 @@ let titleCase = require('title-case');
 class PlaceSearch extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { isLoading: 1, id: 0, type: '', name: '' };
+    this.state = { isLoading: 1, id: 0, type: '', name: '', searchValue: '', formattedStartDate: '', formattedEndDate: '', rooms: '', guests: '', sortBy: 'recommended', currency: 'gbp' };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handleSort = this.handleSort.bind(this);
   }
 
   componentDidMount() {
@@ -33,7 +35,7 @@ class PlaceSearch extends React.Component {
 
     this.props.placeActions.loadPlace(id, type);
 
-    this.props.hotelActions.loadHotels(id, type);
+    this.props.hotelActions.loadHotels(id, type, 'recommended', "gbp");
 
     this.state = { isLoading: 0, id: id, type: type, name: name };
 
@@ -41,7 +43,13 @@ class PlaceSearch extends React.Component {
   }
 
   handleFormSubmit(searchValue, formattedStartDate, formattedEndDate, rooms, guests) {
-    this.props.hotelActions.searchHotels(searchValue, formattedStartDate, formattedEndDate, rooms, guests);
+    this.state = { searchValue, formattedStartDate, formattedEndDate, rooms, guests };
+    this.props.hotelActions.searchHotels(searchValue, formattedStartDate, formattedEndDate, rooms, guests, this.state.sortBy, this.state.currency);
+  }
+
+  handleSort(sortBy, currency) {
+    this.state = { sortBy, currency };
+    this.props.hotelActions.searchHotels(this.state.searchValue, this.state.formattedStartDate, this.state.formattedEndDate, this.state.rooms, this.state.guests, sortBy, currency);
   }
   
   render(){
@@ -67,8 +75,9 @@ class PlaceSearch extends React.Component {
                     <HotelSearch {...this.props} city={this.props.city} handleFormSubmit={this.handleFormSubmit} useFunction={1} />
                   </div>
                   <div className="col-md-8">
+                    <Sort handleSort={this.handleSort}/>
                     <div className="gap gap-small"></div>
-                    <SearchList places={this.props.hotels} />
+                    <SearchList places={this.props.hotels} pageType={this.props.type} place={this.props.city} />
                     <Loader showLoader={this.state.isLoading} />
                   </div>
                   <div className="col-md-4">
