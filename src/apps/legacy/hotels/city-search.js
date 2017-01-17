@@ -1,10 +1,10 @@
 import React from 'react';
 
 import FacebookSignup from '../../components/common/facebookSignup';
-import CitySubHeader from '../../components/places/subHeader';
+import CitySubHeader from '../../components/places/common/subHeader';
 import HotelSearch from '../../components/hotels/searchForm';
 import HotelThumb from '../../components/hotels/thumb';
-import CityMap from '../../components/places/map';
+import CityMap from '../../components/places/map/mapWrapper';
 import QuestionButton from '../../components/questions/askButton';
 
 export default class HotelPage extends React.Component {

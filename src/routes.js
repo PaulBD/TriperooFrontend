@@ -11,23 +11,16 @@ import NotFoundPage from './apps/notFoundPage';
 
 import PlaceHome from './apps/place';
 import PlaceSearch from './apps/place/search';
+import PlaceDetail from './apps/place/detail';
 
 import Holidays from './apps/holiday';
-import Hotels from './apps/hotel';
 import Flights from './apps/flight';
 import TravelExtras from './apps/travelExtras';
 import CarHire from './apps/travelExtras/car-hire';
 
-import AttractionPage from './apps/attraction/city-search';
-import RestaurantPage from './apps/restaurant/city-search';
-import PubPage from './apps/pub/city-search';
-import ReviewPage from './apps/review/city-search';
-import HotelPage from './apps/hotel/city-search';
 
-import FlightPage from './apps/flight/country-flights';
-
-import HotelDetail from './apps/hotel/detail';
-import HotelSearchResults from './apps/hotel/search-hotels';
+import Hotels from './apps/hotel';
+import HotelSearchResults from './apps/hotel/search-results';
 
 export default (
   <Route path="/" component={Container}>
@@ -40,12 +33,7 @@ export default (
     <Route path="/places/(:countryId)/(:country)" component={PlaceHome}/>
     <Route path="/places/(:cityId)/(:country)/(:city)" component={PlaceHome}/>
     <Route path="/places/(:cityId)/(:country)/(:city)/(:type)" component={PlaceSearch}/>
-
-    <Route path="/places/:country/all/flights" component={FlightPage}/>
-    <Route path="/places/:country/all/hotels" component={HotelPage}/>
-    <Route path="/places/:country/attractions" component={AttractionPage}/>
-
-    <Route path="/places/:cityId/:country/:city/hotels/123/:hotelName" component={HotelDetail}/>
+    <Route path="/places/:cityId/:country/:city/(:type)}/123/:hotelName" component={PlaceDetail}/>
     
     <Route path="/holidays" component={Holidays}/>
     <Route path="/hotels" component={Hotels}/>

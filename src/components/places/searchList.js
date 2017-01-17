@@ -26,7 +26,7 @@ class SearchList extends React.Component {
         {
             this.props.places.map(place => {
 
-            let price = returnPrice(place.pricesFrom);
+            let price = returnPrice(place.pricesFrom,this.props.pageType);
             let rank = returnRank(this.props.pageType, this.props.places.count, place);
 
             let tags = '';
@@ -36,14 +36,17 @@ class SearchList extends React.Component {
                 tags = (<TagList tags={place.tags.tag} maxTags={3} />);
             }
 
+            let placeRef = "place-"+ place.ref;
+            let imageCount = photoCount(place.images);
+
             return (
-                <li key={place.ref} >
+                <li id={placeRef}>
                     <a className="booking-item" href={place.url} onMouseEnter={() => this.onMouseEnterContent(this, place.ref)} onMouseLeave={() => this.onMouseLeaveContent(this, place.ref)}>
                         <div className="row">
                             <div className="col-md-3">
                                 <div className="booking-item-img-wrap">
                                     <img src={place.mainImage} title={place.name} />
-                                    <div className="booking-item-img-num"><i className="fa fa-picture-o"></i>{place.images.length}</div>
+                                    <div className="booking-item-img-num">{imageCount}</div>
                                 </div>
                             </div>
                             <div className="col-md-6">
@@ -75,12 +78,23 @@ SearchList.propTypes = {
   pageType: PropTypes.string.isRequired
 };
 
-function returnPrice(price) {
-    if ((price == "Full") || (price == '-1')) {
-        return '';
+function photoCount(images) {
+            if (images !== undefined) {
+            return (<span><i className="fa fa-picture-o"></i> {images.count}</span>);
+        }
+}
+
+function returnPrice(price, pageType) {
+    if (pageType == 'hotels') {
+        if ((price == "Full") || (price == '-1')) {
+            return '';
+        }
+        else {
+            return (<span><span className="booking-item-price-from">from</span><span className="booking-item-price">£{price}</span><span>/night</span><span className="btn btn-primary">Book Now</span></span>);
+        }
     }
     else {
-        return (<span><span className="booking-item-price-from">from</span><span className="booking-item-price">£{price}</span><span>/night</span><span className="btn btn-primary">Book Now</span></span>);
+        return '';
     }
 }
 

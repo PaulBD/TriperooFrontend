@@ -1,8 +1,11 @@
 {
-	"hotel": [{
+	"version": 3,
+	"status": "ok",
+	"response": {
+		"data": [{
 		"ref": "7713",
 		"url": "/places/123/united-kingdom/chester/hotels/7713/mill-hotel-spa-destinations",
-		"name": "Mill Hotel & Spa Destination - Search",
+		"name": "Mill Hotel & Spa Destination Search",
 		"starRating": "3",
 		"address": "Milton Street Chester CH1 3NF",
 		"city": "Chester",
@@ -2257,5 +2260,7 @@
 			"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg"
 			],
 		"reviewCount": 23
-	}]
+		}],
+		"count": 32
+	}
 }

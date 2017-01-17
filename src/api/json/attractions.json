@@ -1,0 +1,106 @@
+{
+	"version": 3,
+	"status": "ok",
+	"response": {
+		"data": [{
+			"type": "Place",
+		"ref": "123",
+		"pricesFrom": "88.00",
+		"url": "/places/123/united-kingdom/chester/attractions/chester-zoo",
+			"factual_Id": "604dc8f8-22e6-4d49-9e1a-552a01171962",
+			"name": "Chester Zoo",
+			"locality": "Chester",
+			"region": "Cheshire",
+			"postcode": "CH2 1LH",
+			"country": "gb",
+			"neighborhood": ["Chester", "Hoole"],
+			"tel": "01244 380280",
+			"fax": "01244 371273",
+			"website": "http://www.chesterzoo.org",
+			"coordinates": {
+				"lon": -2.88891,
+				"lat": 53.226558
+			},
+			"hours_Display": "Open Daily 10:00 AM-5:00 PM",
+			"hours": {
+				"sunday": [
+					["10:00", "17:00"]
+				],
+				"saturday": [
+					["10:00", "17:00"]
+				],
+				"tuesday": [
+					["10:00", "17:00"]
+				],
+				"friday": [
+					["10:00", "17:00"]
+				],
+				"thursday": [
+					["10:00", "17:00"]
+				],
+				"wednesday": [
+					["10:00", "17:00"]
+				],
+				"monday": [
+					["10:00", "17:00"]
+				]
+			},
+			"admin_Region": "England",
+			"post_Town": "Chester",
+			"category_Labels": [
+				["Social", "Zoos, Aquariums and Wildlife Sanctuaries"]
+			],
+			"category_Ids": [371],
+			"email": "guest.services@chesterzoo.org",
+			"mainImage": "",
+			"customerRating": 0,
+			"reviewCount": 2,
+			"tags": {
+				"tag": [
+					"Zoo",
+					"Family Fun"
+				]
+			},
+			"images": [ ]
+		}, 
+		{
+			"type": "Place",
+			"factual_Id": "2ef482d4-8204-4711-a703-6051e3df26c6",
+			"name": "Aquavision",
+			"ref": "1234",
+			"pricesFrom": "82.00",
+			"url": "/places/123/united-kingdom/chester/attractions/aquavision",
+			"address": "11 Cranleigh Crescent",
+			"locality": "Chester",
+			"region": "Cheshire",
+			"postcode": "CH1 5DR",
+			"country": "gb",
+			"neighborhood": ["Blacon"],
+			"tel": "07703 068545",
+			"fax": "01244 371589",
+			"website": "http://www.aquavisionuk.net",
+			"coordinates": {
+				"lon": -2.905829,
+				"lat": 53.202396
+			},
+			"admin_Region": "England",
+			"post_Town": "Chester",
+			"category_Labels": [
+				["Social", "Zoos, Aquariums and Wildlife Sanctuaries"]
+			],
+			"category_Ids": [371],
+			"customerRating": 0,
+			"mainImage": "",
+			"reviewCount": 2,
+			"tags": {
+				"tag": [
+					"Zoo",
+					"Family Fun"
+				]
+			},
+			"images": [ ]
+		}
+		],
+		"count": 2
+	}
+}

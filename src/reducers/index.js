@@ -10,7 +10,6 @@ import attractionDeals from './attractionDealReducer';
 import hotelDeals from './hotelDealReducer';
 import lastMinute from './lastMinuteReducer';
 import questions from './questionReducer';
-import hotels from './hotelsReducer';
 import reviews from './reviewReducer';
 import place from './placeReducer';
 import places from './placeListReducer';
@@ -29,7 +28,6 @@ const rootReducer = combineReducers({
   lastMinute,
   questions,
   reviews,
-  hotels,
   place,
   places,
   routing: routerReducer

@@ -1,4 +1,9 @@
 import delay from './delay';
+import hotels from './json/hotels.json'; 
+import attractions from './json/attractions.json';
+import pub from './json/pub.json';
+import restaurants from './json/restaurants.json';
+import hotelSearch from './json/hotelSearch.json';
 
 const places = [
   {
@@ -81,6 +86,62 @@ class PlaceListApi {
           }
         }
         
+        resolve(Object.assign([], filteredList));
+      }, delay);
+    });
+  }
+
+  static getPlacesByLocation(id, locationName, locationType, category) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+
+        let filteredList = [];
+        let size = 0;
+
+        switch (category)
+        {
+            case "hotels":
+              size = hotels.response.data.length;
+              for (let index = 0; index < size; index++) {
+                  filteredList.push(hotels.response.data[index]);
+              }
+              break;
+            case "attractions":
+              size = attractions.response.data.length;
+              for (let index = 0; index < size; index++) {
+                  filteredList.push(attractions.response.data[index]);
+              }
+              break;
+            case "bars":
+              size = pub.response.data.length;
+              console.log(size);
+              for (let index = 0; index < size; index++) {
+                  filteredList.push(pub.response.data[index]);
+              }
+              break;
+            case "restaurants":
+              size = restaurants.response.data.length;
+              for (let index = 0; index < size; index++) {
+                  filteredList.push(restaurants.response.data[index]);
+              }
+              break;
+        }
+
+        resolve(Object.assign([], filteredList));
+      }, delay);
+    });
+  }
+
+  static getHotelsBySearch(searchValue, startDate, endDate, rooms, guests) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+
+        let filteredList = [];
+        let size = hotelSearch.response.data.length;
+        for (let index = 0; index < size; index++) {
+            filteredList.push(hotelSearch.response.data[index]);
+        }
+
         resolve(Object.assign([], filteredList));
       }, delay);
     });

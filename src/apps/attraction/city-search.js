@@ -1,6 +1,6 @@
 import React from 'react';
 import FacebookSignup from '../../components/common/facebookSignup';
-import CitySubHeader from '../../components/places/subHeader';
+import CitySubHeader from '../../components/places/common/subHeader';
 
 export default class AttractionHome extends React.Component {
 

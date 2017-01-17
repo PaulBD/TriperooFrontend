@@ -9,7 +9,7 @@ import AboutHotel from '../../components/hotels/hotelFeatures';
 import Reviews from '../../components/legacy/reviews';
 import HotelsNearBy from '../../components/hotels/otherHotelsNearBy';
 
-export default class HotelDetails extends React.Component {
+export default class PlaceDetail extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0); 

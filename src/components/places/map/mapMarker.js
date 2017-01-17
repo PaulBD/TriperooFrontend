@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 
-class MapPlace extends React.Component {
+class MapMarker extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -53,9 +53,9 @@ class MapPlace extends React.Component {
   	}
 }
 
-MapPlace.propTypes = {
+MapMarker.propTypes = {
   text: PropTypes.string,
   id: PropTypes.number
 };
 
-export default MapPlace;
+export default MapMarker;

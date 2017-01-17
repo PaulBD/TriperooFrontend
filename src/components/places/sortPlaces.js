@@ -1,6 +1,4 @@
 import React, {PropTypes} from 'react';
-import GoogleMap from 'google-map-react';
-import Place from './mapPlace';
 
 class Sort extends React.Component {
   constructor(props, context) {
@@ -46,6 +44,26 @@ class Sort extends React.Component {
 
 	render(){
 
+		let currency = '';
+
+		if (this.props.pageType == 'hotels') {
+			currency = (
+
+				<div className={this.state.currencyCondition ? "nav-drop booking-sort active-drop" :"nav-drop booking-sort"}  id="currency" onClick={this.handleCurrencyDropDownList}>
+					<h5 className="booking-sort-title">
+						<a href="#">Currency: {this.state.currencyFriendly}
+							<i className="fa fa-angle-down"></i>
+							<i className="fa fa-angle-up"></i>
+						</a>
+					</h5>
+	                <ul className="nav-drop-menu">
+	                    <li><a href="#" onClick={this.handleCurrencyChange} data-ref="gbp" data-friendly="GBP">GBP</a></li>
+	                    <li><a href="#" onClick={this.handleCurrencyChange} data-ref="eur" data-friendly="EUR">EUR</a></li>
+	                </ul>
+	            </div>
+			);
+		};
+
 	return (
 
 		<div className="sort">
@@ -66,25 +84,15 @@ class Sort extends React.Component {
                 </ul>
             </div>
 
-			<div className={this.state.currencyCondition ? "nav-drop booking-sort active-drop" :"nav-drop booking-sort"}  id="currency" onClick={this.handleCurrencyDropDownList}>
-				<h5 className="booking-sort-title">
-					<a href="#">Currency: {this.state.currencyFriendly}
-						<i className="fa fa-angle-down"></i>
-						<i className="fa fa-angle-up"></i>
-					</a>
-				</h5>
-                <ul className="nav-drop-menu">
-                    <li><a href="#" onClick={this.handleCurrencyChange} data-ref="gbp" data-friendly="GBP">GBP</a></li>
-                    <li><a href="#" onClick={this.handleCurrencyChange} data-ref="eur" data-friendly="EUR">EUR</a></li>
-                </ul>
-            </div>
+			{currency}
 		</div>
 		);
 	}
 }
 
 Sort.propTypes = {
-  handleSort: PropTypes.func
+  handleSort: PropTypes.func,
+  pageType: PropTypes.string.isRequired
 };
 
 export default Sort;

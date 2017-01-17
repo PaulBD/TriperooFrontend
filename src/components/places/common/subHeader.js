@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
-import initialState from '../../reducers/initialState';
-import Item from './navigationItem';
+import initialState from '../../../reducers/initialState';
+import Item from '../navigation/navigationItem';
 
 let titleCase = require('title-case');
 
@@ -21,7 +21,24 @@ class SubHeader extends React.Component {
         let style = {
             backgroundImage: 'url(' + url + ')'
         };
-	return (
+
+        let places = '';
+
+        if ((this.props.place !== undefined) && (this.props.place.data.hotels.count > 0)) {
+          places = (
+            <ul className="list text-xs-right list-inline cityNav">
+                <Item item={this.props.place.data.hotels} showCount={0} showName={0} isActive={this.props.pageType == 'hotels' ? 1 : 0} cssClass="fa fa-bed user-profile-statictics-icon" />
+                <Item item={this.props.place.data.flights} showCount={0} showName={0} isActive={this.props.pageType == 'flights' ? 1 : 0} cssClass="fa fa-plane user-profile-statictics-icon" />
+                <Item item={this.props.place.data.attractions} showCount={0} showName={0} isActive={this.props.pageType == 'attractions' ? 1 : 0} cssClass="fa fa-ticket user-profile-statictics-icon" />
+                <Item item={this.props.place.data.restaurants} showCount={0} showName={0} isActive={this.props.pageType == 'restaurants' ? 1 : 0} cssClass="fa fa-cutlery user-profile-statictics-icon" />
+                <Item item={this.props.place.data.bars} showCount={0} showName={0} isActive={this.props.pageType == 'bars' ? 1 : 0} cssClass="fa fa-glass user-profile-statictics-icon" />
+                <Item item={this.props.place.data.reviews} showCount={0} showName={0} isActive={this.props.pageType == 'reviews' ? 1 : 0} cssClass="fa fa-comment user-profile-statictics-icon" />
+                <Item item={this.props.place.data.questions} showCount={0} showName={0} isActive={this.props.pageType == 'questions' ? 1 : 0} cssClass="fa fa-question user-profile-statictics-icon" />
+            </ul> 
+          );
+        }
+
+	   return (
         <div className="top-area show-onload infoPage">
             <div className="bg-holder full text-white">
                 <div className="bg-mask"></div>
@@ -38,15 +55,7 @@ class SubHeader extends React.Component {
                             <h1>{titleCase(this.props.pageType)}</h1>
                         </div>
                         <div className="col-md-4 col-xs-5">
-                            <ul className="list text-xs-right list-inline cityNav">
-                                <Item item={this.props.place.data.hotels} showCount={0} showName={0} isActive={this.props.pageType == 'hotels' ? 1 : 0} cssClass="fa fa-bed user-profile-statictics-icon" />
-                                <Item item={this.props.place.data.flights} showCount={0} showName={0} isActive={this.props.pageType == 'flights' ? 1 : 0} cssClass="fa fa-plane user-profile-statictics-icon" />
-                                <Item item={this.props.place.data.attractions} showCount={0} showName={0} isActive={this.props.pageType == 'attractions' ? 1 : 0} cssClass="fa fa-ticket user-profile-statictics-icon" />
-                                <Item item={this.props.place.data.restaurants} showCount={0} showName={0} isActive={this.props.pageType == 'restaurants' ? 1 : 0} cssClass="fa fa-cutlery user-profile-statictics-icon" />
-                                <Item item={this.props.place.data.bars} showCount={0} showName={0} isActive={this.props.pageType == 'bars' ? 1 : 0} cssClass="fa fa-glass user-profile-statictics-icon" />
-                                <Item item={this.props.place.data.reviews} showCount={0} showName={0} isActive={this.props.pageType == 'reviews' ? 1 : 0} cssClass="fa fa-comment user-profile-statictics-icon" />
-                                <Item item={this.props.place.data.questions} showCount={0} showName={0} isActive={this.props.pageType == 'questions' ? 1 : 0} cssClass="fa fa-question user-profile-statictics-icon" />
-                            </ul>     
+                            {places}
                         </div>
                     </div>
                 </div>

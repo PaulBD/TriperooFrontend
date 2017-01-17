@@ -1,5 +1,5 @@
 import React from 'react';
-import CitySubHeader from '../../components/places/subHeader';
+import CitySubHeader from '../../components/places/common/subHeader';
 import FacebookSignup from '../../components/common/facebookSignup';
 
 export default class RestaurantPage extends React.Component {

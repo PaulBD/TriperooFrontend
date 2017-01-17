@@ -1,8 +1,8 @@
 import React from 'react';
-import CitySubHeader from '../../components/places/subHeader';
+import CitySubHeader from '../../components/places/common/subHeader';
 import FacebookSignup from '../../components/common/facebookSignup';
 
-export default class ReviewPage extends React.Component {
+export default class PubPage extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
@@ -11,7 +11,7 @@ export default class ReviewPage extends React.Component {
   render(){
     return (
       <div>
-          <CitySubHeader type="reviews" />
+          <CitySubHeader pageType="pub" />
           <div className="gap gap-small"></div>
           <div className="container">
               <div className="row">
@@ -26,6 +26,6 @@ export default class ReviewPage extends React.Component {
               <div className="gap"></div>
           </div>
       </div>
-       );
+      );
    }
 }

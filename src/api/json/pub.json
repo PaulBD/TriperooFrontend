@@ -1,0 +1,98 @@
+{
+	"version": 3,
+	"status": "ok",
+	"response": {
+		"data": [{
+			"type": "Place",
+			"factual_Id": "42c4d108-07c3-4c79-88b3-344050e59a1e",
+			"name": "Handbridge Pub & Dining",
+			"address": "66 Handbridge",
+			"locality": "Chester",
+			"region": "Cheshire",
+			"postcode": "CH4 7JF",
+			"country": "gb",
+			"neighborhood": ["Handbridge"],
+			"tel": "01244 676194",
+			"website": "http://www.handbridge.org.uk",
+			"coordinates": {
+				"lon": -2.887924,
+				"lat": 53.183248
+			},
+			"hours_Display": "Mon 4:00 PM-10:00 PM; Tue 4:00 PM-11:00 PM; Wed 11:00 AM-3:00 PM, 4:00 PM-11:00 PM; Thu-Sat 11:00 AM-11:00 PM; Sun 11:00 AM-10:00 PM",
+			"hours": {
+				"sunday": [
+					["11:00", "22:00"]
+				],
+				"saturday": [
+					["11:00", "23:00"]
+				],
+				"tuesday": [
+					["16:00", "23:00"]
+				],
+				"friday": [
+					["11:00", "23:00"]
+				],
+				"thursday": [
+					["11:00", "23:00"]
+				],
+				"wednesday": [
+					["11:00", "15:00"],
+					["16:00", "23:00"]
+				],
+				"monday": [
+					["16:00", "22:00"]
+				]
+			},
+			"admin_Region": "England",
+			"post_Town": "Chester",
+			"category_Labels": [
+				["Social", "Food and Dining", "Restaurants"],
+				["Social", "Bars"]
+			],
+			"category_Ids": [347, 312],
+			"email": "enquiries@handbridge.org.uk",
+			"customerRating": 0,
+			"mainImage": "",
+			"reviewCount": 2,
+			"tags": {
+				"tag": [
+					"Bars",
+					"Restaurant"
+				]
+			},
+			"images": [ ]
+		}, {
+			"type": "Place",
+			"factual_Id": "1f8cca85-d6ac-45e2-afa6-d0be675957a6",
+			"name": "Saltney Ferry Pub",
+			"address": "1 Mainwaring Dr",
+			"locality": "Chester",
+			"region": "Cheshire",
+			"postcode": "CH4 0AX",
+			"country": "gb",
+			"neighborhood": ["Chester"],
+			"tel": "01244 680063",
+			"website": "http://www.chestertourist.com/pubs.htm",
+			"coordinates": {
+				"lon": -2.942836,
+				"lat": 53.176387
+			},
+			"admin_Region": "England",
+			"post_Town": "Chester",
+			"category_Labels": [
+				["Social", "Bars"]
+			],
+			"category_Ids": [312],
+			"customerRating": 0,
+			"mainImage": "",
+			"reviewCount": 2,
+			"tags": {
+				"tag": [
+					"Bars"
+				]
+			},
+			"images": [ ]
+		}],
+		"count": 20
+	}
+}

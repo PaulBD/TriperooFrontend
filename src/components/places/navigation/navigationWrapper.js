@@ -1,10 +1,10 @@
 import React, {PropTypes} from 'react';
-import Loader from '../common/loadingDots';
+import Loader from '../../common/loadingDots';
 import Item from './navigationItem';
-import initialState from '../../reducers/initialState';
+import initialState from '../../../reducers/initialState';
 let titleCase = require('title-case');
 
-class Navigation extends React.Component {
+class NavigationWrapper extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = { isLoading: 1 };
@@ -49,14 +49,14 @@ class Navigation extends React.Component {
   }
 }
 
-Navigation.defaultProps = {
+NavigationWrapper.defaultProps = {
   place: initialState.place
 };
 
-Navigation.propTypes = {
+NavigationWrapper.propTypes = {
     place: PropTypes.object.isRequired,
     name: PropTypes.string
 };
 
 
-export default Navigation;
+export default NavigationWrapper;

@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
-import Loader from '../common/loadingDots';
-import Weather from '../common/weather';
+import Loader from '../../common/loadingDots';
+import Weather from '../../common/weather';
 
 class Header extends React.Component {
   constructor(props, context) {
@@ -28,7 +28,8 @@ class Header extends React.Component {
               <div className="owl-cap-price">
                   <small><a href={this.props.place.countryUrl}>{this.props.place.country}</a> / {this.props.place.county}</small>
               </div>
-          </div>);
+          </div>
+        );
       }
       else {
         html = (

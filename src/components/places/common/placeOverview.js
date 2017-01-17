@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 let titleCase = require('title-case');
 
-class Overview extends React.Component {
+class PlaceOverview extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = { isLoading: true, overview: '', showMore: 1 };
@@ -43,14 +43,14 @@ class Overview extends React.Component {
     }
 }
 
-Overview.defaultProps = {
+PlaceOverview.defaultProps = {
     showMore: false
 };
 
-Overview.propTypes = {
+PlaceOverview.propTypes = {
   name: PropTypes.string.isRequired,
   overview: PropTypes.string.isRequired,
   showMore: PropTypes.number
 };
 
-export default Overview;
+export default PlaceOverview;

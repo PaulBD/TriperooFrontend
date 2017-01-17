@@ -13,10 +13,10 @@ import QuestionButton from '../../components/questions/askButton';
 import Deals from '../../components/deals/list';
 
 import TopPlaces from '../../components/places/topPlaces';
-import PlaceOverview from '../../components/places/overview';
-import Navigation from '../../components/places/navigation';
+import PlaceOverview from '../../components/places/common/placeOverview';
+import NavigationWrapper from '../../components/places/navigation/navigationWrapper';
 
-import Header from '../../components/places/header';
+import Header from '../../components/places/common/header';
 let titleCase = require('title-case');
 
 class PlaceHome extends React.Component {
@@ -56,7 +56,7 @@ class PlaceHome extends React.Component {
         <div>
             <Header id={this.state.id} type={this.state.type} place={this.props.place}  />
             <div className="container">
-                <Navigation name={this.state.name} place={this.props.place} />
+                <NavigationWrapper name={this.state.name} place={this.props.place} />
                 <div className="gap gap-small"></div>
             </div>
             <div className="container">
