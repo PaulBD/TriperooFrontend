@@ -34,7 +34,7 @@ export function loadPlaces(id, locationName, locationType, category, sortBy, cur
 }
 
 export function searchHotelsSuccess(places) {
-	return {type: types.SEARCH_HOTELS_SUCCESS, places};
+	return {type: types.SEARCH_HOTEL_SUCCESS, places};
 }
 
 export function searchHotels(searchValue, startDate, endDate, rooms, guests, sortBy, currency) {

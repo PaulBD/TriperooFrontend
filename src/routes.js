@@ -33,7 +33,7 @@ export default (
     <Route path="/places/(:countryId)/(:country)" component={PlaceHome}/>
     <Route path="/places/(:cityId)/(:country)/(:city)" component={PlaceHome}/>
     <Route path="/places/(:cityId)/(:country)/(:city)/(:type)" component={PlaceSearch}/>
-    <Route path="/places/:cityId/:country/:city/(:type)}/123/:hotelName" component={PlaceDetail}/>
+    <Route path="/places/(:cityId)/(:country)/(:city)/(:type)/(:placeId)/(:placeName)" component={PlaceDetail}/>
     
     <Route path="/holidays" component={Holidays}/>
     <Route path="/hotels" component={Hotels}/>

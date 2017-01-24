@@ -1,0 +1,42 @@
+{
+  "id": 123,
+  "type": "country",
+  "name": "United Kingdom",
+  "imageUrl": "/ static / img / locations / city / united - kingdom / chester.jpg ",
+  "url": "/place/united-kingdom",
+  "overview": "What is the United Kingdom? For some, the UK is a blueblood manor home in the Cotswolds. For others, its the international melting pot of hip - and - happening Manchester.For visitors, it's almost anything you like. Want to visit isolated castle ruins and hike through a moon-like landscape? Head to northern Scotland. Want to get literary? Stop in London's City Center tocatch a performance at Shakespeare's Globe Theatre or visit Jane Austen's favorite sites in Bath.How about a trip back in time ? Witness the grandeur of York's medieval cathedral, Edinburgh's perfectly preserved 1000 - year - old castle, or go way, way back, to pre - historic monoliths at Stonehenge.But don't forget the natural beauty.Northern Ireland 's Causeway Coast offers a rugged and scenic landscape, interspersed with darling villages.Hikers flock to Wales Snowdonia National Park or England 's Pennines to take part in one of the UK's favorite pastimes.No trip to the UK is complete without spending a few nights in a traditional pub drinking with the locals and trying out the local dishes which, these days, often means curry or noodles.",
+  "latitude": "53.1934",
+  "longitude": "-2.8931",
+  "data": {
+    "hotels": {
+      "url": "/places/123/united-kingdom/search-hotels",
+      "name": "Hotels",
+      "count": 0
+    },
+    "flights ": {
+      "url": "/places/123/united-kingdom/search-flights",
+      "name": "Flights",
+      "count": 0
+    },
+    "restaurants": {
+      "url": "/places/123/united-kingdom/search-restaurants",
+      "name": "Restaurants",
+      "count": 0
+    },
+    "attractions": {
+      "url": "/places/123/united-kingdom/search-attractions",
+      "name": "Attractions",
+      "count": 0
+    },
+    "reviews": {
+      "url": "/places/123/united-kingdom/read-reviews",
+      "name": "Reviews",
+      "count": 0
+    },
+    "questions": {
+      "url": "/places/123/united-kingdom/ask-questions",
+      "name": "Questions",
+      "count": 0
+    }
+  }
+}

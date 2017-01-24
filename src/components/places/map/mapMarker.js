@@ -4,9 +4,9 @@ class MapMarker extends React.Component {
 
 	constructor(props) {
 		super(props);
-    	this.onMouseEnterContent = this.onMouseEnterContent.bind(this);
-    	this.onMouseLeaveContent = this.onMouseLeaveContent.bind(this);
-    	this.state = { showInfo: 0, id: this.props.id };
+		this.onMouseEnterContent = this.onMouseEnterContent.bind(this);
+		this.onMouseLeaveContent = this.onMouseLeaveContent.bind(this);
+		this.state = { showInfo: 0, id: this.props.id };
 	}
 
 	onMouseEnterContent(e) {
@@ -21,41 +21,41 @@ class MapMarker extends React.Component {
 		html.className = "";
 	}
 
- 	render() {
+	render() {
 
- 		let markerId = 'marker-' + this.props.id;
+		let markerId = 'marker-' + this.props.id;
 
- 		let style = {
- 			display: 'none'
- 		};
+		let style = {
+			display: 'none'
+		};
 
- 		let info = '';
+		let info = '';
 
- 		if (this.state.showInfo == 1) {
- 			style = {
- 				display: 'block'
- 			};
- 		}
+		if (this.state.showInfo == 1) {
+			style = {
+				display: 'block'
+			};
+		}
 
- 		let price = 'Full';
+		let price = 'Full';
 			
 		if (this.props.text !== 'Full' && parseFloat(this.props.text) > 0) {
- 			price = "£" + this.props.text;
- 		}
+			price = "£" + this.props.text;
+		}
 
 		info = (<div className="mapInfo" style={style}>{price}</div>);
 
-    	return (
-       	<div className="mapMarker" id={markerId} onMouseEnter={this.onMouseEnterContent} onMouseLeave={this.onMouseLeaveContent}>
-       		{info}
-       	</div>
-    	);
-  	}
+		return (
+		<div className="mapMarker" id={markerId} onMouseEnter={this.onMouseEnterContent} onMouseLeave={this.onMouseLeaveContent}>
+			{info}
+		</div>
+		);
+	}
 }
 
 MapMarker.propTypes = {
-  text: PropTypes.string,
-  id: PropTypes.number
+	text: PropTypes.string,
+	id: PropTypes.number
 };
 
 export default MapMarker;

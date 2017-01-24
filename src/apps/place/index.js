@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as placeActions from '../../actions/placeActions';
+import * as areaActions from '../../actions/areaActions';
 
 import FacebookSignup from '../../components/common/facebookSignup';
 
@@ -32,7 +32,8 @@ class PlaceHome extends React.Component {
         let type = this.props.cityId != 0 ? "city" : "country";
         let name = this.props.cityId != 0 ? this.props.city : this.props.country;
 
-        this.props.actions.loadPlace(id, type);
+        this.props.actions.loadArea(id, type);
+
         this.state = { isLoading: false, id: id, type: type, name: name };
 
         document.title = 'Explore, Plan, Book in ' + titleCase(name);
@@ -43,9 +44,9 @@ class PlaceHome extends React.Component {
     let overview = ''; 
     let url = '';
 
-    if (this.props.place !== undefined && this.props.place.overview !== undefined) {
-        overview = this.props.place.overview;
-        url = this.props.place.imageUrl;
+    if (this.props.area !== undefined && this.props.area.overview !== undefined) {
+        overview = this.props.area.overview;
+        url = this.props.area.imageUrl;
     }
 
     let style = {
@@ -54,9 +55,9 @@ class PlaceHome extends React.Component {
     
     return (
         <div>
-            <Header id={this.state.id} type={this.state.type} place={this.props.place}  />
+            <Header id={this.state.id} type={this.state.type} place={this.props.area}  />
             <div className="container">
-                <NavigationWrapper name={this.state.name} place={this.props.place} />
+                <NavigationWrapper name={this.state.name} place={this.props.area} />
                 <div className="gap gap-small"></div>
             </div>
             <div className="container">
@@ -119,13 +120,13 @@ PlaceHome.propTypes = {
     country: PropTypes.string,
     cityId: PropTypes.number,
     city: PropTypes.string,
-    place: PropTypes.object.isRequired,
+    area: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    place: state.place,
+    area: state.area,
     countryId: ownProps.params.countryId ? parseInt(ownProps.params.countryId) : 0,
     country: ownProps.params.country,
     cityId: ownProps.params.cityId ? parseInt(ownProps.params.cityId) : 0,
@@ -135,7 +136,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(placeActions, dispatch)
+    actions: bindActionCreators(areaActions, dispatch)
   };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(PlaceHome);

@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as placeActions from '../../actions/placeActions';
+import * as areaActions from '../../actions/areaActions';
 import * as placesActions from '../../actions/placesActions';
 
 import PlaceSubHeader from '../../components/places/common/subHeader';
@@ -33,7 +33,9 @@ class PlaceSearch extends React.Component {
     let locationType = this.props.cityId != 0 ? "city" : "country";
     let locationName = this.props.cityId != 0 ? this.props.city : this.props.country;
 
-    this.props.placeActions.loadPlace(id, locationType);
+    this.props.areaActions.loadArea(id, locationType);
+    console.log(this.props.area);
+
     this.props.placesActions.loadPlaces(id, locationName, locationType, this.props.type, 'recommended', "gbp");
 
     this.state = { isLoading: 0, id: id, type: locationType, name: locationName };
@@ -59,12 +61,12 @@ class PlaceSearch extends React.Component {
     let lat = 0;
     let search = '';
 
-    if (this.props.place.latitude !== undefined && this.props.place.latitude !== '') {
-      lat = parseFloat(this.props.place.latitude);
+    if (this.props.area.latitude !== undefined && this.props.area.latitude !== '') {
+      lat = parseFloat(this.props.area.latitude);
     }
 
-    if (this.props.place.longitude !== undefined && this.props.place.longitude !== '') {
-      lng = parseFloat(this.props.place.longitude);
+    if (this.props.area.longitude !== undefined && this.props.area.longitude !== '') {
+      lng = parseFloat(this.props.area.longitude);
     }
 
     if (this.props.type == 'hotels') {
@@ -75,7 +77,7 @@ class PlaceSearch extends React.Component {
 
     return (
       <div>
-          <PlaceSubHeader pageType={this.props.type} place={this.props.place} city={this.props.city} country={this.props.country} />
+          <PlaceSubHeader {...this.props} pageType={this.props.type} area={this.props.area} />
 
           <div className="gap gap-small"></div>
           <div className="container">
@@ -86,7 +88,7 @@ class PlaceSearch extends React.Component {
                   <div className="col-md-8">
                     <Sort handleSort={this.handleSort} pageType={this.props.type} />
                     <div className="gap gap-small"></div>
-                    <SearchList places={this.props.places} pageType={this.props.type} place={this.props.city} />
+                    <SearchList places={this.props.places} pageType={this.props.type} area={this.props.city} />
                     <Loader showLoader={this.state.isLoading} />
                   </div>
                   <div className="col-md-4">
@@ -117,15 +119,15 @@ PlaceSearch.propTypes = {
     cityId: PropTypes.number,
     city: PropTypes.string,
     type: PropTypes.string,
-    place: PropTypes.object.isRequired,
+    area: PropTypes.object.isRequired,
+    areaActions: PropTypes.object.isRequired,
     places: PropTypes.object.isRequired,
-    placeActions: PropTypes.object.isRequired,
     placesActions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    place: state.place,
+    area: state.area,
     places: state.places,
     countryId: ownProps.params.countryId ? parseInt(ownProps.params.countryId) : 0,
     country: ownProps.params.country,
@@ -137,7 +139,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    placeActions: bindActionCreators(placeActions, dispatch),
+    areaActions: bindActionCreators(areaActions, dispatch),
     placesActions: bindActionCreators(placesActions, dispatch)
   };
 }

@@ -1,10 +1,10 @@
 import initialState from './initialState';
 import * as types from '../actionTypes/';
 
-export default function placeReducer(state = initialState.place, action) {
+export default function areaReducer(state = initialState.area, action) {
 	switch(action.type) {
-		case types.LOAD_PLACE_SUCCESS:
-			return action.place;
+		case types.LOAD_AREA_SUCCESS:
+			return action.area;
 		default:
 			return state;
 	}

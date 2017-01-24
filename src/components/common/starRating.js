@@ -42,7 +42,7 @@ class StarRating extends React.Component {
 }
 
 StarRating.propTypes = {
-  starRating: PropTypes.string.isRequired,
+  starRating: PropTypes.number.isRequired,
   className: PropTypes.string.isRequired
 };
 

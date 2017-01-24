@@ -273,3 +273,7 @@ optgroup,option { margin-left:0px;text-align:left;}
 .placeItem .tagCollection { margin:0; }
 
 .mapMarkerWrapper { margin: 10px 0; width:100%;}
+
+.booking-item-details .booking-item-header { padding-top: 0; border-top: none; }
+
+.form-group .input-icon.homeSearchIcon { line-height: 42px; }

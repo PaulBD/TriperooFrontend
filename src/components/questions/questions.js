@@ -13,6 +13,8 @@ class Questions extends React.Component {
   }
 
   componentDidMount() {
+console.log(this.props.searchId);
+
     this.state = { isLoading: 0 };
       if (this.props.searchType == 'place' && this.props.searchId > 0) {
         this.props.actions.loadQuestions(this.props.searchType, this.props.searchId, this.props.limit, this.props.offset);

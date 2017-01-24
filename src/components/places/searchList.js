@@ -27,10 +27,10 @@ class SearchList extends React.Component {
             this.props.places.map(place => {
 
             let price = returnPrice(place.pricesFrom,this.props.pageType);
-            let rank = returnRank(this.props.pageType, this.props.places.count, place);
+            let rank = returnRank(this.props.pageType, this.props.places.count, location);
 
             let tags = '';
-            let distance = returnDistance(place.distance, this.props.place);
+            let distance = returnDistance(place.distance, this.props.location);
 
             if (place.tags !== undefined) {
                 tags = (<TagList tags={place.tags.tag} maxTags={3} />);
@@ -40,7 +40,7 @@ class SearchList extends React.Component {
             let imageCount = photoCount(place.images);
 
             return (
-                <li id={placeRef}>
+                <li id={placeRef} key={placeRef}>
                     <a className="booking-item" href={place.url} onMouseEnter={() => this.onMouseEnterContent(this, place.ref)} onMouseLeave={() => this.onMouseLeaveContent(this, place.ref)}>
                         <div className="row">
                             <div className="col-md-3">
@@ -74,7 +74,7 @@ class SearchList extends React.Component {
 
 SearchList.propTypes = {
   places: PropTypes.array.isRequired,
-  place: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
   pageType: PropTypes.string.isRequired
 };
 
@@ -86,7 +86,7 @@ function photoCount(images) {
 
 function returnPrice(price, pageType) {
     if (pageType == 'hotels') {
-        if ((price == "Full") || (price == '-1')) {
+        if ((price == "Full") || (price == '-1')) { 
             return '';
         }
         else {
@@ -98,17 +98,17 @@ function returnPrice(price, pageType) {
     }
 }
 
-function returnRank(pageType, placeCount, place) {
+function returnRank(pageType, placeCount, location) {
     if (pageType == 'hotels') {
-        if (place.rank !== undefined) {
-            return (<p className="booking-item-subtitle">Ranked {place.rank} of {placeCount} hotels in {titleCase(place)}</p>);
+        if (location.rank !== undefined) {
+            return (<p className="booking-item-subtitle">Ranked {location.rank} of {placeCount} hotels in {titleCase(location)}</p>);
         }
     }
 }
 
-function returnDistance(distance, place) {
+function returnDistance(distance, location) {
     if (distance !== undefined) {
-        return (<p className="booking-item-address"><i className="fa fa-map-marker"></i> {distance}miles from {titleCase(place)} center</p>);
+        return (<p className="booking-item-address"><i className="fa fa-map-marker"></i> {distance}miles from {titleCase(location)} center</p>);
     }
 }
 

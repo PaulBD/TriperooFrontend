@@ -6,7 +6,8 @@ export default {
   questions: [],
   hotels: [],
   reviews: [],
-  place:  {
+  placeDetail: {},
+  area:  {
     id: 0,
     type: "",
     name: "",

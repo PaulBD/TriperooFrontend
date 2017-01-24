@@ -1,4 +1,12 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as areaActions from '../../actions/areaActions';
+import * as placeDetailActions from '../../actions/placeDetailActions';
+
+import PlaceSubHeader from '../../components/places/common/subHeader';
+
+
 import Breadcrumb from '../../components/legacy/breadcrumb';
 import ImageGallery from '../../components/hotels/imageGallery';
 import GuestRating from '../../components/hotels/guestRating';
@@ -9,27 +17,42 @@ import AboutHotel from '../../components/hotels/hotelFeatures';
 import Reviews from '../../components/legacy/reviews';
 import HotelsNearBy from '../../components/hotels/otherHotelsNearBy';
 
-export default class PlaceDetail extends React.Component {
+let titleCase = require('title-case');
+
+class PlaceDetail extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+
+  }
 
   componentDidMount() {
     window.scrollTo(0, 0); 
+    
+    let id = this.props.cityId != 0 ? this.props.cityId : this.props.countryId;
+    let locationType = this.props.cityId != 0 ? "city" : "country";
+    let locationName = this.props.cityId != 0 ? this.props.city : this.props.country;
+
+    this.props.areaActions.loadArea(id, locationType);
+    this.props.placeDetailActions.loadPlace(this.props.placeId, this.props.type);
+
+    document.title = titleCase(this.props.placeName) + ' in ' + titleCase(locationName);
   }
   
   render(){
+    console.log(this.props.placeDetail);
       return (
+        <div>
+        <PlaceSubHeader pageType={this.props.type} locationName={this.props.placeDetail.name} place={this.props.place} city={this.props.city} country={this.props.country} />
+
         <div className="container">
-            <Breadcrumb />
             <div className="booking-item-details">
                 <header className="booking-item-header">
                     <div className="row">
                         <div className="col-md-9">
-                            <h2 className="lh1em">InterContinental New York Barclay</h2>
-                            <p className="lh1em text-small"><i className="fa fa-map-marker"></i> 6782 Sarasea Circle, Siesta Key, FL 34242</p>
+                            <p className="lh1em text-small"><i className="fa fa-map-marker"></i> {this.props.placeDetail.address}</p>
                             <ul className="list list-inline text-small">
-                                <li><a href="#"><i className="fa fa-envelope"></i> Hotel E-mail</a>
-                                </li>
-                                <li><a href="#"><i className="fa fa-home"></i> Hotel Website</a>
-                                </li>
+                                <li><a href="#"><i className="fa fa-envelope"></i> Hotel E-mail</a></li>
+                                <li><a href="#"><i className="fa fa-home"></i> Hotel Website</a></li>
                                 <li><i className="fa fa-phone"></i> +1 (163) 493-1463</li>
                             </ul>
                         </div>
@@ -89,8 +112,44 @@ export default class PlaceDetail extends React.Component {
                         <HotelsNearBy />
                     </div>
                 </div>
-            </div>
+            </div>        </div>
         </div>
       );
    }
 }
+
+PlaceDetail.propTypes = {
+    countryId: PropTypes.number,
+    country: PropTypes.string,
+    cityId: PropTypes.number,
+    city: PropTypes.string,
+    type: PropTypes.string,
+    placeId: PropTypes.number,
+    placeName: PropTypes.string,
+    area: PropTypes.object.isRequired,
+    areaActions: PropTypes.object.isRequired,
+    placeDetail: PropTypes.object.isRequired,
+    placeDetailActions: PropTypes.object.isRequired
+};
+
+function mapStateToProps(state, ownProps) {
+  return {
+    area: state.area,
+    placeDetail: state.placeDetail,
+    placeName: ownProps.params.placeName,
+    placeId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0,
+    countryId: ownProps.params.countryId ? parseInt(ownProps.params.countryId) : 0,
+    country: ownProps.params.country,
+    cityId: ownProps.params.cityId ? parseInt(ownProps.params.cityId) : 0,
+    city: ownProps.params.city,    
+    type: ownProps.params.type
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    areaActions: bindActionCreators(areaActions, dispatch),
+    placeDetailActions: bindActionCreators(placeDetailActions, dispatch)
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(PlaceDetail);
