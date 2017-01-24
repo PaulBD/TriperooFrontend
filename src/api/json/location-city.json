@@ -21,8 +21,8 @@
       "name": "Restaurants",
       "count": 63
     },
-    "bars": {
-      "url": "/places/123/united-kingdom/chester/bars",
+    "nightlife": {
+      "url": "/places/123/united-kingdom/chester/nightlife",
       "name": "Bars",
       "count": 61
     },

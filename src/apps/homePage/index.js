@@ -3,7 +3,7 @@ import Feature from '../../components/common/feature';
 import LastMinuteDeal from '../../components/deals/lastMinuteDeal';
 import Search from '../../components/search/homePage';
 import Deals from '../../components/deals/list';
-import FeaturePlaces from '../../components/places/featurePlaces';
+import FeatureLocations from '../../components/locations/featureLocations';
 import RecentReviews from '../../components/reviews/reviews';
 import FacebookSignup from '../../components/common/facebookSignup';
 
@@ -18,7 +18,7 @@ const HomePage = () => {
                 <Search searchType="all" />
                 <div className="gap"></div>
                 <div className="row row-wrap text-xs-center">
-                    <FeaturePlaces />
+                    <FeatureLocations />
                 </div>
                 <div className="gap gap-small"></div>
                 <div className="row row-wrap text-xs-center">

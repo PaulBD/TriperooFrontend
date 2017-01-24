@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as areaActions from '../../actions/areaActions';
+import * as locationActions from '../../actions/locationActions';
 import * as placesActions from '../../actions/placesActions';
 
 import PlaceSubHeader from '../../components/places/common/subHeader';
@@ -33,8 +33,7 @@ class PlaceSearch extends React.Component {
     let locationType = this.props.cityId != 0 ? "city" : "country";
     let locationName = this.props.cityId != 0 ? this.props.city : this.props.country;
 
-    this.props.areaActions.loadArea(id, locationType);
-    console.log(this.props.area);
+    this.props.locationActions.loadLocation(id, locationType);
 
     this.props.placesActions.loadPlaces(id, locationName, locationType, this.props.type, 'recommended', "gbp");
 
@@ -77,7 +76,7 @@ class PlaceSearch extends React.Component {
 
     return (
       <div>
-          <PlaceSubHeader {...this.props} pageType={this.props.type} area={this.props.area} />
+          <PlaceSubHeader {...this.props} pageType={this.props.type} area={this.props.area} locationName={this.props.type} />
 
           <div className="gap gap-small"></div>
           <div className="container">
@@ -120,7 +119,7 @@ PlaceSearch.propTypes = {
     city: PropTypes.string,
     type: PropTypes.string,
     area: PropTypes.object.isRequired,
-    areaActions: PropTypes.object.isRequired,
+    locationActions: PropTypes.object.isRequired,
     places: PropTypes.object.isRequired,
     placesActions: PropTypes.object.isRequired
 };
@@ -139,7 +138,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    areaActions: bindActionCreators(areaActions, dispatch),
+    locationActions: bindActionCreators(locationActions, dispatch),
     placesActions: bindActionCreators(placesActions, dispatch)
   };
 }

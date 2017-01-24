@@ -2,7 +2,7 @@ import delay from './delay';
 
 import hotel from './json/hotel.json'; 
 
-class PlaceDetailApi {
+class PlaceApi {
 	static getPlace(id, type) {
 		return new Promise((resolve, reject) => {
 			setTimeout(() => {
@@ -12,4 +12,4 @@ class PlaceDetailApi {
 	}
 }
 
-export default PlaceDetailApi;
+export default PlaceApi;

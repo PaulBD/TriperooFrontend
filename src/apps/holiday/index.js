@@ -5,7 +5,7 @@ import Copy from '../../components/holidays/copy';
 
 import Deals from '../../components/deals/list';
 
-import FeaturePlaces from '../../components/places/featurePlaces';
+import FeatureLocations from '../../components/locations/featureLocations';
 import LastMinuteDeal from '../../components/deals/lastMinuteDeal';
 import FacebookSignup from '../../components/common/facebookSignup';
 
@@ -21,21 +21,21 @@ export default class Holidays extends React.Component {
       <div>
         <Feature featureType="holiday" />
         <div className="container">
-            <Search />
-                <div className="gap"></div>
-                <div className="row row-wrap text-xs-center">
-              <FeaturePlaces />
+          <Search />
+          <div className="gap"></div>
+            <div className="row row-wrap text-xs-center">
+            <FeatureLocations />
           </div>
           <div className="gap"></div>
           <div className="row">
             <div className="col-md-4"> 
-                <Deals searchType="trending" title="Trending Now"/>
+              <Deals searchType="trending" title="Trending Now"/>
             </div>
             <div className="col-md-4">
-                <Deals searchType="hot" title="Hot Deals" />
+              <Deals searchType="hot" title="Hot Deals" />
             </div>
             <div className="col-md-4">
-                <Deals searchType="special" title="Special Deals"/>
+              <Deals searchType="special" title="Special Deals"/>
             </div>
           </div>
           <div className="gap gap-small"></div>

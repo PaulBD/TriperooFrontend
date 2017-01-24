@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as areaActions from '../../actions/areaActions';
+import * as locationActions from '../../actions/locationActions';
 
 import FacebookSignup from '../../components/common/facebookSignup';
 
@@ -11,15 +11,15 @@ import RecentQuestions from '../../components/questions/questions';
 import QuestionButton from '../../components/questions/askButton';
 
 import Deals from '../../components/deals/list';
-
 import TopPlaces from '../../components/places/topPlaces';
-import PlaceOverview from '../../components/places/common/placeOverview';
 import NavigationWrapper from '../../components/places/navigation/navigationWrapper';
 
-import Header from '../../components/places/common/header';
+import Overview from '../../components/locations/overview';
+import Header from '../../components/locations/header';
+
 let titleCase = require('title-case');
 
-class PlaceHome extends React.Component {
+class LocationHome extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = { isLoading: true, id: 0, type: '', name: '' };
@@ -32,7 +32,7 @@ class PlaceHome extends React.Component {
         let type = this.props.cityId != 0 ? "city" : "country";
         let name = this.props.cityId != 0 ? this.props.city : this.props.country;
 
-        this.props.actions.loadArea(id, type);
+        this.props.locationActions.loadLocation(id, type);
 
         this.state = { isLoading: false, id: id, type: type, name: name };
 
@@ -69,7 +69,7 @@ class PlaceHome extends React.Component {
                         <QuestionButton id={this.state.id} type={this.state.type} name={this.state.name} />
                         <div className="gap-small"></div>
                         <RecentQuestions searchId={this.state.id} searchType={this.state.type} limit={3} offset={0} />
-                        <PlaceOverview id={this.state.id} type={this.state.type} name={this.state.name} overview={overview} showMore={1} />
+                        <Overview id={this.state.id} type={this.state.type} name={this.state.name} overview={overview} showMore={1} />
                         <div className="gap-small"></div>
                     </div>
                     <div className="gap"></div>
@@ -115,13 +115,13 @@ class PlaceHome extends React.Component {
   }
 }
 
-PlaceHome.propTypes = {
+LocationHome.propTypes = {
     countryId: PropTypes.number,
     country: PropTypes.string,
     cityId: PropTypes.number,
     city: PropTypes.string,
     area: PropTypes.object.isRequired,
-    actions: PropTypes.object.isRequired
+    locationActions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
@@ -136,7 +136,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(areaActions, dispatch)
+    locationActions: bindActionCreators(locationActions, dispatch)
   };
 }
-export default connect(mapStateToProps, mapDispatchToProps)(PlaceHome);
+export default connect(mapStateToProps, mapDispatchToProps)(LocationHome);

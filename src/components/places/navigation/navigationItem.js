@@ -5,6 +5,7 @@ class NavigationItem extends React.Component {
 
 	let count = '';
 	let name = '';
+	let navItem = '';
 
 	if (this.props.showCount == 1) {
 		if (this.props.item !== undefined && this.props.item.count > 0) {
@@ -18,32 +19,22 @@ class NavigationItem extends React.Component {
 
 	if (this.props.item !== undefined && this.props.item.name.length > 0) {
 
-		if (this.props.isActive == 1)
-		{
-			return (
-				<li>
-					<a href={this.props.item.url} className="active">
-						<i className={this.props.cssClass}></i>
-						{count}
-						{name}
-					</a>
-				</li>
-				);
-			}
-		else {
-			return (
-				<li>
-					<a href={this.props.item.url}>
-						<i className={this.props.cssClass}></i>
-						{count}
-						{name}
-					</a>
-				</li>
-				);
-		}
-	} else { 
-		return false;
-		}
+    var className = this.props.isActive ? 'active' : '';
+
+    	navItem = (
+    		<a href={this.props.item.url} className={className}>
+				<i className={this.props.cssClass}></i>
+				{count}
+				{name}
+			</a>
+		);
+	}
+	
+	return (
+		<li>
+			{navItem}
+		</li>
+		);
 	}
 }
 

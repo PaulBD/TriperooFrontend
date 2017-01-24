@@ -4,9 +4,9 @@
 	"response": {
 		"data": [{
 			"type": "Place",
-		"ref": "123",
-		"pricesFrom": "88.00",
-		"url": "/places/123/united-kingdom/chester/attractions/chester-zoo",
+			"ref": "123",
+			"pricesFrom": "88.00",
+			"url": "/places/123/united-kingdom/chester/attractions/1/chester-zoo",
 			"factual_Id": "604dc8f8-22e6-4d49-9e1a-552a01171962",
 			"name": "Chester Zoo",
 			"locality": "Chester",
@@ -69,7 +69,7 @@
 			"name": "Aquavision",
 			"ref": "1234",
 			"pricesFrom": "82.00",
-			"url": "/places/123/united-kingdom/chester/attractions/aquavision",
+			"url": "/places/123/united-kingdom/chester/attractions/2/aquavision",
 			"address": "11 Cranleigh Crescent",
 			"locality": "Chester",
 			"region": "Cheshire",

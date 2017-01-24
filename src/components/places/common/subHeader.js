@@ -40,7 +40,7 @@ class SubHeader extends React.Component {
                 <Item item={this.props.area.data.flights} showCount={0} showName={0} isActive={this.props.pageType == 'flights' ? 1 : 0} cssClass="fa fa-plane user-profile-statictics-icon" />
                 <Item item={this.props.area.data.attractions} showCount={0} showName={0} isActive={this.props.pageType == 'attractions' ? 1 : 0} cssClass="fa fa-ticket user-profile-statictics-icon" />
                 <Item item={this.props.area.data.restaurants} showCount={0} showName={0} isActive={this.props.pageType == 'restaurants' ? 1 : 0} cssClass="fa fa-cutlery user-profile-statictics-icon" />
-                <Item item={this.props.area.data.bars} showCount={0} showName={0} isActive={this.props.pageType == 'bars' ? 1 : 0} cssClass="fa fa-glass user-profile-statictics-icon" />
+                <Item item={this.props.area.data.nightlife} showCount={0} showName={0} isActive={this.props.pageType == 'nightlife' ? 1 : 0} cssClass="fa fa-glass user-profile-statictics-icon" />
                 <Item item={this.props.area.data.reviews} showCount={0} showName={0} isActive={this.props.pageType == 'reviews' ? 1 : 0} cssClass="fa fa-comment user-profile-statictics-icon" />
                 <Item item={this.props.area.data.questions} showCount={0} showName={0} isActive={this.props.pageType == 'questions' ? 1 : 0} cssClass="fa fa-question user-profile-statictics-icon" />
             </ul> 
@@ -48,11 +48,16 @@ class SubHeader extends React.Component {
         }
 
         if ((this.props.area !== undefined) && (this.props.area.data.hotels.count > 0)) {
-            breadcrumb = returnBreadcrumb(this.props.area.countryUrl, this.props.area.country, this.props.area.url, this.props.area.name, placeUrl, this.props.pageType);
+            breadcrumb = returnBreadcrumb(this.props.area.countryUrl, this.props.area.country, this.props.area.url, this.props.area.name, placeUrl, this.props.pageType, this.props.locationName);
         }
         
         if ((this.props.area !== undefined) && (this.props.area.data.hotels.count > 0)) {
-            pageType = titleCase(this.props.pageType);
+            if (this.props.locationName != this.props.pageType) {
+                pageType = titleCase(this.props.locationName);
+            }
+            else {
+                pageType = titleCase(this.props.pageType);
+            }
         }
 
 	    return (
@@ -77,18 +82,32 @@ class SubHeader extends React.Component {
     }
 }
 
-function returnBreadcrumb(countryUrl, countryName, cityUrl, cityName, placeUrl, pageType) {
+function returnBreadcrumb(countryUrl, countryName, cityUrl, cityName, placeUrl, pageType, locationName) {
 
     if ((cityName !== undefined) && (countryName !== undefined))
     {
-        return (
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item"><a href="/">Home</a></li>
-              <li className="breadcrumb-item"><a href={countryUrl}>{countryName}</a></li>
-              <li className="breadcrumb-item"><a href={cityUrl}>{cityName}</a></li>
-              <li className="breadcrumb-item active"><a href={placeUrl}>{titleCase(pageType)}</a></li>
-            </ol>
-        );
+        if (pageType == locationName){
+            return (
+                <ol className="breadcrumb">
+                  <li className="breadcrumb-item"><a href="/">Home</a></li>
+                  <li className="breadcrumb-item"><a href={countryUrl}>{countryName}</a></li>
+                  <li className="breadcrumb-item"><a href={cityUrl}>{cityName}</a></li>
+                  <li className="breadcrumb-item active">{titleCase(pageType)}</li>
+                </ol>
+            );
+
+        }
+        else {
+            return (
+                <ol className="breadcrumb">
+                  <li className="breadcrumb-item"><a href="/">Home</a></li>
+                  <li className="breadcrumb-item"><a href={countryUrl}>{countryName}</a></li>
+                  <li className="breadcrumb-item"><a href={cityUrl}>{cityName}</a></li>
+                  <li className="breadcrumb-item"><a href={placeUrl}>{titleCase(pageType)}</a></li>
+                  <li className="breadcrumb-item active">{titleCase(locationName)}</li>
+                </ol>
+            );
+        }
     } else { return ''; }
 }
 
@@ -102,6 +121,7 @@ SubHeader.propTypes = {
     countryName: PropTypes.string,
     countryId: PropTypes.number,
     cityName: PropTypes.string,
+    locationName: PropTypes.string,
     cityId: PropTypes.number
 };
 

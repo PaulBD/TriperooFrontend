@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
-import FeaturePlaces from '../../components/places/featurePlaces';
+import FeatureLocations from '../../components/locations/featureLocations';
 import FacebookSignup from '../../components/common/facebookSignup';
 import WorldCities from '../../components/common/worldCities';
 import Feature from '../../components/common/feature';
@@ -44,7 +44,7 @@ export default class DestinationHome extends React.Component {
              <hr />
             <div className="gap gap-small"></div>
             <div className="container text-xs-center">
-              <FeaturePlaces />
+              <FeatureLocations />
             </div>
             <div className="container">
                 <div className="gap gap-small"></div>

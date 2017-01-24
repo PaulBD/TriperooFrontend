@@ -9,9 +9,9 @@ import TermsPage from './apps/info/termsPage';
 import PrivacyPage from './apps/info/privacyPage';
 import NotFoundPage from './apps/notFoundPage';
 
-import PlaceHome from './apps/place';
+import LocationHome from './apps/location';
 import PlaceSearch from './apps/place/search';
-import PlaceDetail from './apps/place/detail';
+import Place from './apps/place/detail';
 
 import Holidays from './apps/holiday';
 import Flights from './apps/flight';
@@ -30,10 +30,10 @@ export default (
     <Route path="/terms" component={TermsPage}/>
     <Route path="/privacy-policy" component={PrivacyPage}/>
 
-    <Route path="/places/(:countryId)/(:country)" component={PlaceHome}/>
-    <Route path="/places/(:cityId)/(:country)/(:city)" component={PlaceHome}/>
+    <Route path="/places/(:countryId)/(:country)" component={LocationHome}/>
+    <Route path="/places/(:cityId)/(:country)/(:city)" component={LocationHome}/>
     <Route path="/places/(:cityId)/(:country)/(:city)/(:type)" component={PlaceSearch}/>
-    <Route path="/places/(:cityId)/(:country)/(:city)/(:type)/(:placeId)/(:placeName)" component={PlaceDetail}/>
+    <Route path="/places/(:cityId)/(:country)/(:city)/(:type)/(:placeId)/(:placeName)" component={Place}/>
     
     <Route path="/holidays" component={Holidays}/>
     <Route path="/hotels" component={Hotels}/>

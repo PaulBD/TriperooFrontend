@@ -1,8 +1,8 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as areaActions from '../../actions/areaActions';
-import * as placeDetailActions from '../../actions/placeDetailActions';
+import * as locationActions from '../../actions/locationActions';
+import * as placeActions from '../../actions/placeActions';
 
 import PlaceSubHeader from '../../components/places/common/subHeader';
 
@@ -19,7 +19,7 @@ import HotelsNearBy from '../../components/hotels/otherHotelsNearBy';
 
 let titleCase = require('title-case');
 
-class PlaceDetail extends React.Component {
+class Place extends React.Component {
   constructor(props, context) {
     super(props, context);
 
@@ -28,28 +28,28 @@ class PlaceDetail extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0); 
     
-    let id = this.props.cityId != 0 ? this.props.cityId : this.props.countryId;
+    let id = this.props.cityId;
     let locationType = this.props.cityId != 0 ? "city" : "country";
     let locationName = this.props.cityId != 0 ? this.props.city : this.props.country;
 
-    this.props.areaActions.loadArea(id, locationType);
-    this.props.placeDetailActions.loadPlace(this.props.placeId, this.props.type);
+    this.props.locationActions.loadLocation(id, locationType);
+    this.props.placeActions.loadPlace(this.props.placeId, this.props.type);
 
     document.title = titleCase(this.props.placeName) + ' in ' + titleCase(locationName);
   }
   
   render(){
-    console.log(this.props.placeDetail);
+    console.log(this.props.place);
       return (
         <div>
-        <PlaceSubHeader pageType={this.props.type} locationName={this.props.placeDetail.name} place={this.props.place} city={this.props.city} country={this.props.country} />
+        <PlaceSubHeader {...this.props}  pageType={this.props.type} locationName={this.props.place.name} area={this.props.area} city={this.props.city} country={this.props.country} />
 
         <div className="container">
             <div className="booking-item-details">
                 <header className="booking-item-header">
                     <div className="row">
                         <div className="col-md-9">
-                            <p className="lh1em text-small"><i className="fa fa-map-marker"></i> {this.props.placeDetail.address}</p>
+                            <p className="lh1em text-small"><i className="fa fa-map-marker"></i> {this.props.place.address}</p>
                             <ul className="list list-inline text-small">
                                 <li><a href="#"><i className="fa fa-envelope"></i> Hotel E-mail</a></li>
                                 <li><a href="#"><i className="fa fa-home"></i> Hotel Website</a></li>
@@ -118,8 +118,7 @@ class PlaceDetail extends React.Component {
    }
 }
 
-PlaceDetail.propTypes = {
-    countryId: PropTypes.number,
+Place.propTypes = {
     country: PropTypes.string,
     cityId: PropTypes.number,
     city: PropTypes.string,
@@ -127,18 +126,20 @@ PlaceDetail.propTypes = {
     placeId: PropTypes.number,
     placeName: PropTypes.string,
     area: PropTypes.object.isRequired,
-    areaActions: PropTypes.object.isRequired,
-    placeDetail: PropTypes.object.isRequired,
-    placeDetailActions: PropTypes.object.isRequired
+    locationActions: PropTypes.object.isRequired,
+    place: PropTypes.object.isRequired,
+    placeActions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
+
+    console.log(ownProps);
+
   return {
     area: state.area,
-    placeDetail: state.placeDetail,
+    place: state.place,
     placeName: ownProps.params.placeName,
     placeId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0,
-    countryId: ownProps.params.countryId ? parseInt(ownProps.params.countryId) : 0,
     country: ownProps.params.country,
     cityId: ownProps.params.cityId ? parseInt(ownProps.params.cityId) : 0,
     city: ownProps.params.city,    
@@ -148,8 +149,8 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    areaActions: bindActionCreators(areaActions, dispatch),
-    placeDetailActions: bindActionCreators(placeDetailActions, dispatch)
+    locationActions: bindActionCreators(locationActions, dispatch),
+    placeActions: bindActionCreators(placeActions, dispatch)
   };
 }
-export default connect(mapStateToProps, mapDispatchToProps)(PlaceDetail);
+export default connect(mapStateToProps, mapDispatchToProps)(Place);

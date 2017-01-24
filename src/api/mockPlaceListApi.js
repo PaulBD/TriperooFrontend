@@ -1,7 +1,7 @@
 import delay from './delay';
 import hotels from './json/hotels.json'; 
 import attractions from './json/attractions.json';
-import pub from './json/pub.json';
+import nightlife from './json/nightlife.json';
 import restaurants from './json/restaurants.json';
 import hotelSearch from './json/hotelSearch.json';
 
@@ -112,11 +112,10 @@ class PlaceListApi {
                   filteredList.push(attractions.response.data[index]);
               }
               break;
-            case "bars":
-              size = pub.response.data.length;
-              console.log(size);
+            case "nightlife":
+              size = nightlife.response.data.length;
               for (let index = 0; index < size; index++) {
-                  filteredList.push(pub.response.data[index]);
+                  filteredList.push(nightlife.response.data[index]);
               }
               break;
             case "restaurants":

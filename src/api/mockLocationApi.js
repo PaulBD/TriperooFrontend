@@ -3,8 +3,8 @@ import delay from './delay';
 import locationCity from './json/location-city.json';
 import locationCountry from './json/location-country.json';
 
-class AreaApi {
-	static getArea(id, type) {
+class LocationApi {
+	static getLocation(id, type) {
 		return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (type === 'city') {
@@ -17,4 +17,4 @@ class AreaApi {
 	}
 }
 
-export default AreaApi;
+export default LocationApi;

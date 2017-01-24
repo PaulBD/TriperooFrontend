@@ -13,7 +13,7 @@ import questions from './questionReducer';
 import reviews from './reviewReducer';
 import area from './areaReducer';
 import places from './placeListReducer';
-import placeDetail from './placeDetailReducer';
+import place from './placeReducer';
 import {routerReducer} from 'react-router-redux';
 
 const rootReducer = combineReducers({
@@ -31,7 +31,7 @@ const rootReducer = combineReducers({
   reviews,
   area,
   places,
-  placeDetail,
+  place,
   routing: routerReducer
 });
 

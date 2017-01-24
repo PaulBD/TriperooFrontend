@@ -4,6 +4,7 @@
 	"response": {
 		"data": [{
 			"type": "Place",
+			"url": "/places/123/united-kingdom/chester/nightlife/1/chester-zoo",
 			"factual_Id": "42c4d108-07c3-4c79-88b3-344050e59a1e",
 			"name": "Handbridge Pub & Dining",
 			"address": "66 Handbridge",
@@ -63,6 +64,7 @@
 			"images": [ ]
 		}, {
 			"type": "Place",
+			"url": "/places/123/united-kingdom/chester/nightlife/1/chester-zoo",
 			"factual_Id": "1f8cca85-d6ac-45e2-afa6-d0be675957a6",
 			"name": "Saltney Ferry Pub",
 			"address": "1 Mainwaring Dr",
