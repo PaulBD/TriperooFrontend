@@ -12,7 +12,7 @@ const deals = [
     price: '£327',
     imageUrl: '/static/img/hotel1.jpg',
     url: '/united-states/new-york/hotels/holiday-inn-jfk',
-    starRating: '3'
+    starRating: 3
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const deals = [
     price: '£387',
     imageUrl: '/static/img/hotel.jpg',
     url: '/united-states/new-york/hotels/holiday-inn-jfk',
-    starRating: '5'
+    starRating: 5
   },
   {
     id: 3,
@@ -38,7 +38,7 @@ const deals = [
     price: '£327',
     imageUrl: '/static/img/hotel2.jpg',
     url: '/united-states/new-york/hotels/holiday-inn-jfk',
-    starRating: '2'
+    starRating: 2
   },
   {
     id: 4,
@@ -51,7 +51,7 @@ const deals = [
     price: '£307',
     imageUrl: '/static/img/hotel2.jpg',
     url: '/united-states/new-york/hotels/holiday-inn-jfk',
-    starRating: '3'
+    starRating: 3
   },
   {
     id: 5,
@@ -64,7 +64,7 @@ const deals = [
     price: '£317',
     imageUrl: '/static/img/hotel.jpg',
     url: '/united-states/new-york/hotels/holiday-inn-jfk',
-    starRating: '5'
+    starRating: 5
   },
   {
     id: 6,
@@ -77,7 +77,7 @@ const deals = [
     price: '£327',
     imageUrl: '/static/img/hotel2.jpg',
     url: '/united-states/new-york/hotels/holiday-inn-jfk',
-    starRating: '2'
+    starRating: 2
   },
   {
     id: 7,
@@ -91,7 +91,7 @@ const deals = [
     price: '£347',
     imageUrl: '/static/img/hotel1.jpg',
     url: '/united-states/new-york/hotels/holiday-inn-jfk',
-    starRating: '3'
+    starRating: 3
   },
   {
     id: 8,
@@ -104,7 +104,7 @@ const deals = [
     price: '£387',
     imageUrl: '/static/img/hotel.jpg',
     url: '/united-states/new-york/hotels/holiday-inn-jfk',
-    starRating: '5'
+    starRating: 5
   },
   {
     id: 9,
@@ -117,7 +117,7 @@ const deals = [
     price: '£347',
     imageUrl: '/static/img/hotel2.jpg',
     url: '/united-states/new-york/hotels/holiday-inn-jfk',
-    starRating: '2'
+    starRating: 2
   }
 ];
 
