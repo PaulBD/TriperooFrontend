@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import currency from './currencyReducer';
 import newsletter from './newsletterReducer';
 import searches from './searchReducer';
 import features from './featureReducer';
@@ -17,6 +18,7 @@ import place from './placeReducer';
 import {routerReducer} from 'react-router-redux';
 
 const rootReducer = combineReducers({
+  currency,
   newsletter,
   searches,
   features,

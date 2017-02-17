@@ -7,11 +7,15 @@ import Deals from '../../components/deals/list';
 
 import LastMinuteDeal from '../../components/deals/lastMinuteDeal';
 import FacebookSignup from '../../components/common/facebookSignup';
+import BulletPoints from '../../components/common/bulletPoints';
+import TrustedPartners from '../../components/common/trustedPartners';
 
 export default class SearchHotels extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
+    
+    document.title = 'Explore, Plan, Book - Get the best deals from top travel websites';
   }
   
   render(){
@@ -28,23 +32,15 @@ export default class SearchHotels extends React.Component {
         <LastMinuteDeal featureType="lastMinute" />
         <div className="container">
           <div className="gap"></div>
-          <div className="row">
-            <div className="col-md-4"> 
-                <Deals searchType="trending" title="Trending Now"/>
-            </div>
-            <div className="col-md-4">
-                <Deals searchType="hot" title="Hot Deals" />
-            </div>
-            <div className="col-md-4">
-                <Deals searchType="special" title="Special Deals"/>
-            </div>
-          </div>
+          <BulletPoints />
           <div className="gap gap-small"></div>
-        </div>
-        <div className="container">
-            <div className="gap"></div>
-            <FacebookSignup />
-            <div className="gap"></div>
+          <hr />
+          <div className="gap"></div>
+          <FacebookSignup />
+          <div className="gap"></div>
+          <hr />
+          <TrustedPartners />
+          <div className="gap"></div>
         </div>
       </div>
       );

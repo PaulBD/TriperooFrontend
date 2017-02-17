@@ -44,15 +44,16 @@ class LocationHome extends React.Component {
     let overview = ''; 
     let url = '';
 
-    if (this.props.area !== undefined && this.props.area.overview !== undefined) {
-        overview = this.props.area.overview;
+    if (this.props.area !== undefined && this.props.area.description !== undefined && this.props.area.description.en !== undefined) {
+        overview = this.props.area.description.en;
         url = this.props.area.imageUrl;
     }
 
     let style = {
         backgroundImage: 'url(' + url + ')'
-    };
+    }; 
     
+
     return (
         <div>
             <Header id={this.state.id} type={this.state.type} place={this.props.area}  />

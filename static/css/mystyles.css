@@ -24,6 +24,8 @@ select.searchSelect:not([size]):not([multiple]) {
 .percent3 { width:3%; }
 .percent1 { width:1%; }
 
+.infoImg { background-position: bottom; width:50%;}
+
 .homeSearchIcon { top:0 !important;}
 .homeSearch .ui-autocomplete { top: 44px; }
 
@@ -38,8 +40,8 @@ select.searchSelect:not([size]):not([multiple]) {
 .signupText { font-size: 30px;font-weight:bold; padding-top:10px;}
 
 .cityPage, .holidayPage { height: 500px !important; }
-.travelPage { height: 300px !important; }
-.cityPage h1, .holidayPage h1, .travelPage h1 { font-size: 80px; width: 70%; }
+.travelPage, .infoPageWrapper { height: 300px !important; }
+.cityPage h1, .holidayPage h1, .travelPage h1, .infoPageWrapper h1 { font-size: 600%; width: 70%; }
 .holidayPage .full-center { top: 40% !important;}
 
 .infoPage { height: 100px !important; }
@@ -277,3 +279,13 @@ optgroup,option { margin-left:0px;text-align:left;}
 .booking-item-details .booking-item-header { padding-top: 0; border-top: none; }
 
 .form-group .input-icon.homeSearchIcon { line-height: 42px; }
+
+.trustedPartner { font-size: 12px;}
+.cards { width: 30px; margin-left:8px; }
+.partners { height: 20px; width: auto; margin-right: 8px;}
+
+.hide { display:none;}
+
+.infoList li.active, .infoList li.active:hover { background-color: #333; }
+.infoList li.active a { color: #ffffff;}
+

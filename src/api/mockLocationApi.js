@@ -1,20 +1,17 @@
-import delay from './delay';
-
-import locationCity from './json/location-city.json';
-import locationCountry from './json/location-country.json';
+import axios from 'axios';
 
 class LocationApi {
-	static getLocation(id, type) {
-		return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (type === 'city') {
-          resolve(Object.assign([], locationCity));
-        } else {
-          resolve(Object.assign([], locationCountry));
-        }
-			}, delay);
-		});
-	}
+  static getLocation(id, type) {
+    return new Promise((resolve, reject) => {
+      axios.get('http://localhost/api/v1/location/' + type + '/' + id)
+        .then(function (response) {
+          resolve(Object.assign([], response.data.triperoo));
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    });
+  }
 }
 
 export default LocationApi;

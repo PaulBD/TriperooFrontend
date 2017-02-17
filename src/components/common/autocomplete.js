@@ -66,10 +66,8 @@ class AutoComplete extends React.Component {
               switch (search.type)
               {
                 case 'city':
-                  icon = 'fa fa-map-marker';
-                break;
                 case 'country':
-                  icon = 'fa fa-global';
+                  icon = 'fa fa-map-marker';
                 break;
                 case 'hotel':
                   icon = 'fa fa-bed';
@@ -85,7 +83,7 @@ class AutoComplete extends React.Component {
                 break;
               }
 
-              return (<li key={search.id} className="ui-menu-item"><a href="#" onClick={this.handleClick} data-name={search.name} data-url={search.url}><span><i className={icon}></i></span> {search.value}</a></li>);
+              return (<li key={search.documentId} className="ui-menu-item"><a href="#" onClick={this.handleClick} data-name={search.name} data-url={search.url}><span><i className={icon}></i></span> {search.searchName}</a></li>);
               })
             }
           </ul>

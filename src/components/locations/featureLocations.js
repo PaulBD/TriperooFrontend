@@ -3,7 +3,7 @@ import React from "react";
 export default class FeaturePlaces extends React.Component {
     render(){
     return (
-        <div>
+            <div className="col-md-12">
             <h3 className="mb20">Our Top Destinations</h3>
             <div className="row row-wrap">
                 <div className="col-md-4">

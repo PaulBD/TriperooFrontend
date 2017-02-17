@@ -24,7 +24,7 @@ class Header extends React.Component {
         html = (
           <div className="owl-cap">
               <Weather id={this.props.id} type={this.props.type} />
-              <h1 className="owl-cap-title fittext">{this.props.place.name}</h1>
+              <h1 className="owl-cap-title fittext">{this.props.place.name.en}</h1>
               <div className="owl-cap-price">
                   <small><a href={this.props.place.countryUrl}>{this.props.place.country}</a> / {this.props.place.county}</small>
               </div>
@@ -34,7 +34,7 @@ class Header extends React.Component {
       else {
         html = (
           <div className="owl-cap">
-              <h1 className="owl-cap-title fittext">{this.props.place.name}</h1>
+              <h1 className="owl-cap-title fittext">{this.props.place.name.en}</h1>
           </div>
         );
       }

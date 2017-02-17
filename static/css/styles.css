@@ -2414,7 +2414,7 @@ footer#main-footer {
   background: #262626;
   padding: 60px 0 30px 0;
   color: #e6e6e6;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.4em;
 }
 footer#main-footer .logo {
@@ -2442,6 +2442,7 @@ footer#main-footer .form-control:focus {
 .list-footer > li > a:hover {
   text-decoration: underline;
 }
+
 header#main-header {
   border-bottom: 1px solid #ffffff;
 }

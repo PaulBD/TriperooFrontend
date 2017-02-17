@@ -26,7 +26,7 @@ class Reviews extends React.Component {
       html = (
         <div>
           <h3 className="mb20">Share The Knowledge</h3>
-          <p>Community is the heart of everything we do, share tips on where to go and what<br />to do with other like-minded people and help others discover amazing places.</p>
+          <p>Community is the heart of everything we do, share tips on where to go and what to do with other<br />like-minded people and help others discover amazing places, even earn commission whilst you do it!</p>
         </div>
       );
     }

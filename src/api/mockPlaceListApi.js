@@ -8,7 +8,7 @@ import hotelSearch from './json/hotelSearch.json';
 const places = [
   {
     id: 1,
-    cityId: 123,
+    cityId: 3329,
     countryId: 123,
     name: "Chester",
     url: '/places/123/united-kingdom/chester',

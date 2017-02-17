@@ -46,7 +46,10 @@ class SearchComponent extends React.Component {
           <div className="tab-content">
             <div className="tab-pane fade in active" id="tab-1">
               <h2 className="text-xs-center">Explore, Plan &amp; Book</h2>
-              <p className="text-xs-center">Get the best deals from the top travel websites, plus reviews on the best hotels, restaurants, attractions &amp; more</p>
+              <p className="text-xs-center">
+              Get the best deals from the top travel websites, plus reviews on the best hotels, restaurants, attractions 
+              &amp; more from local experts!
+              </p>
               <p>&nbsp;</p>
               <form >
                 <div className="row">
@@ -64,6 +67,7 @@ class SearchComponent extends React.Component {
                   <div className="col-md-3 text-xs-center">&nbsp;</div>
                 </div>
               </form>
+              <p>&nbsp;</p>
             </div>
           </div>
         </div>

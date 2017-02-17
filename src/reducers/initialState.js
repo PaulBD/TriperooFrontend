@@ -1,4 +1,5 @@
 export default {
+  currency: 'GBP',
   searches: [],
   features: [],
   lastMinute: [],
