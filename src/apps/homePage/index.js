@@ -1,5 +1,6 @@
 import React from 'react';
 import Feature from '../../components/common/feature';
+import LocalExpert from '../../components/common/localExpert';
 import LastMinuteDeal from '../../components/deals/lastMinuteDeal';
 import Search from '../../components/search/homePage';
 import Deals from '../../components/deals/list';
@@ -26,6 +27,7 @@ const HomePage = () => {
                 <div className="row row-wrap text-xs-center">
                     <RecentReviews searchType='' searchId={0} limit={3} offset={0} showTitle={1} />
                 </div>
+                <LocalExpert />
                 <div className="gap"></div>
             </div>
             <LastMinuteDeal featureType="lastMinute" />

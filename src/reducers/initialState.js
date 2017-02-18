@@ -1,4 +1,11 @@
 export default {
+  newsletter: {
+    "emailAddress": '',
+    "status": 200,
+    "errors": {
+
+    }
+  },
   currency: 'GBP',
   searches: [],
   features: [],

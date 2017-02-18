@@ -1,6 +1,8 @@
 /*YOUR CUSTOM STYLES*/
 body { margin: 0; }
 
+.error { color: red;}
+
 .notFoundBg { background-image:url(/static/img/1300x900.png); }
 
 .airportLounge { background-image:url(/static/img/airportLounge.jpg); }
@@ -14,7 +16,12 @@ select.searchSelect:not([size]):not([multiple]) {
     height: calc(2.8rem - 2px);
 }
 
+.communityImg { border: solid 1px #ccc; width:75%; float:right; }
+
 .formBtn { margin-top:28px; padding-top: 10px; padding-bottom: 10px;}
+
+.exampleTrip { height: 38px !important; color: #fff !important; line-height: 14px !important;font-size:10px; padding: 4px 7px !important;}
+.exampleTrip .price { float:right; font-size:16px;font-weight:bold;}
 
 .hidden { display:none; }
 
@@ -43,6 +50,8 @@ select.searchSelect:not([size]):not([multiple]) {
 .travelPage, .infoPageWrapper { height: 300px !important; }
 .cityPage h1, .holidayPage h1, .travelPage h1, .infoPageWrapper h1 { font-size: 600%; width: 70%; }
 .holidayPage .full-center { top: 40% !important;}
+
+.infoImg { background-position: center top !important; }
 
 .infoPage { height: 100px !important; }
 .infoPage h1 { font-size: 28px; text-align: left; margin-top: 40px; z-index: 999; position: absolute; font-weight: bold; }
