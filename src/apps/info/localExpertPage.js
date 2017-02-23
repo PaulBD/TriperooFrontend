@@ -32,7 +32,7 @@ export default class LocalExpertPage extends React.Component {
           <div className="row row-wrap">
             <div className="gap gap-small"></div>
             <div className="col-md-7">
-                <h4>Become A Local Expert!</h4>
+              <h4>Become A Local Expert!</h4>
               <p><strong>STEP 1</strong><br />
               Sign up as a Triperoo Agent and earn a commission by booking hotels and flights for friends and family, just like a travel agent.</p>
               <p><strong>STEP 2</strong><br />
@@ -90,7 +90,7 @@ export default class LocalExpertPage extends React.Component {
                       </div>
                   </div>
               </div>
-            </div>
+            </div> 
 
             <div className="col-md-5">
               <h4>Benefits of being a Triperoo Agent</h4>

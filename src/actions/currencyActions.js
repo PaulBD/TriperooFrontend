@@ -7,6 +7,7 @@ export function saveCurrencySuccess(currency) {
 
 export function saveCurrency(currency) {
 	return dispatch => {
+		localStorage.setItem('currency', currency);
 		return dispatch(saveCurrencySuccess(currency));
 	};
 }

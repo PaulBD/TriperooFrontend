@@ -6,6 +6,7 @@ export default {
 
     }
   },
+  customer: {},
   currency: 'GBP',
   searches: [],
   features: [],

@@ -298,3 +298,7 @@ optgroup,option { margin-left:0px;text-align:left;}
 .infoList li.active, .infoList li.active:hover { background-color: #333; }
 .infoList li.active a { color: #ffffff;}
 
+.form-danger { color: #fff; padding: 5px 10px; margin-bottom: 25px; border-radius: 5px; }
+
+.my-facebook-button-class { background-image: url(/static/img/fbcontinue.png); background-color: none !important; width:280px; height: 52px; background-size: 100% 100%; border:none; }
+.my-facebook-button-class:hover { cursor:hand; }

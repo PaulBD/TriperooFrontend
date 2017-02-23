@@ -9,21 +9,24 @@ export default class FeaturePlaces extends React.Component {
                 <div className="col-md-4">
                     <div className="thumb">
                         <a className="hover-img" href="/place/united-kingdom/london">
-                            <img src="/static/img/locations/popular-destinations/london.png" alt="London" /><i className="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
+                            <img src="/static/img/locations/popular-destinations/london.png" alt="London" />
+                             <h5 className="hover-title hover-hold">London</h5>
                         </a>
                     </div>
                 </div>
                 <div className="col-md-4">
                     <div className="thumb">
                         <a className="hover-img" href="/place/middle-east/dubai">
-                            <img src="/static/img/locations/popular-destinations/dubai.png" alt="Dubai"/><i className="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
+                            <img src="/static/img/locations/popular-destinations/dubai.png" alt="Dubai"/>
+                             <h5 className="hover-title hover-hold">Dubai</h5>
                         </a>
                     </div>
                 </div>
                 <div className="col-md-4">
                     <div className="thumb">
                         <a className="hover-img" href="/united-states/new-york">
-                            <img src="/static/img/locations/popular-destinations/newyork.png" alt="New York" /><i className="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
+                            <img src="/static/img/locations/popular-destinations/new-york.png" alt="New York" />
+                             <h5 className="hover-title hover-hold">New York</h5>
                         </a>
                     </div>
                 </div>
