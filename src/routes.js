@@ -23,6 +23,11 @@ import TravelExtras from './apps/travelExtras';
 import CarHire from './apps/travelExtras/car-hire';
 
 
+import CustomerProfile from './apps/customer/updateProfile';
+import CustomerPhotos from './apps/customer/photos';
+import BookingHistory from './apps/customer/bookingHistory';
+
+
 import Hotels from './apps/hotel';
 import HotelSearchResults from './apps/hotel/search-results';
 
@@ -48,7 +53,13 @@ export default (
     <Route path="/hotels/search-results" component={HotelSearchResults}/>
     <Route path="/flights" component={Flights}/>
     <Route path="/travel-extras" component={TravelExtras}/>
+    <Route path="/customer/profile" component={CustomerProfile}/>
+    <Route path="/customer/photos" component={CustomerPhotos}/>
+    <Route path="/customer/booking-history" component={BookingHistory}/>
+
+
     <Route path="/travel-extras/car-hire" component={CarHire}/>
+
     <Route path="*" component={NotFoundPage}/>
   </Route>
 );

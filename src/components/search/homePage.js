@@ -8,7 +8,7 @@ import {browserHistory} from 'react-router';
 class SearchComponent extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { searchUrl: '' };
+    this.state = { searchUrl: '', searchValue: '' };
     this.onSubmitRedirect = this.onSubmitRedirect.bind(this);
     this.handleSearchNameClick = this.handleSearchNameClick.bind(this);
     this.handleSearchUrlClick = this.handleSearchUrlClick.bind(this);

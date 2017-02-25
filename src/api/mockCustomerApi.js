@@ -8,7 +8,7 @@ class CustomerApi {
           password
       })
       .then(response => {
-        resolve(Object.assign([], response.data.triperooCustomers));
+        resolve(Object.assign([], response.data));
       })
       .catch(function (error) {
         reject(error);
@@ -16,16 +16,51 @@ class CustomerApi {
     });
   }
 
-  static loginFacebookCustomer(emailAddress, facebookId, name, image) {
+  static loginFacebookCustomer(emailAddress, facebookId, name, ImageUrl, currentCity) {
     return new Promise((resolve, reject) => {
       axios.post('http://localhost/api/v1/authorize/facebook', {
           emailAddress,
           facebookId,
           name,
-          image
+          ImageUrl,
+          currentCity
       })
       .then(response => {
-        resolve(Object.assign([], response.data.triperooCustomers));
+        resolve(Object.assign([], response.data));
+      })
+      .catch(function (error) {
+        reject(error);
+      });
+    });
+  }
+
+  static registerCustomer(emailAddress, password, firstName, lastName, currentCity) {
+    return new Promise((resolve, reject) => {
+      axios.post('http://localhost/api/v1/register', {
+          emailAddress,
+          password,
+          firstName,
+          lastName,
+          currentCity
+      })
+      .then(response => {    
+      console.log(response); 
+        resolve(Object.assign([], response.data));
+      })
+      .catch(function (error) {
+        reject(error);
+      });
+    });
+  }
+
+
+  static resetPassword(emailAddress) {
+    return new Promise((resolve, reject) => {
+      axios.post('http://localhost/api/v1/reset-password', {
+          emailAddress
+      })
+      .then(response => {
+        resolve(Object.assign([], response.data));
       })
       .catch(function (error) {
         reject(error);

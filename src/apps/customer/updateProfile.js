@@ -12,6 +12,7 @@ export default class UpdateProfile extends React.Component {
   render(){
     return (
         <div className="container">
+            <div className="gap gap"></div>
             <div className="row">
                 <div className="col-md-3">
                     <UserProfile />

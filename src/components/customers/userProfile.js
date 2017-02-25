@@ -10,10 +10,11 @@ export default class UserProfile extends React.Component {
 				<p>Member Since May 2012</p>
 			</div>
 			<ul className="list user-profile-nav">
-				<li><a href="user-profile.html"><i className="fa fa-user"></i>Overview</a></li>
+				<li><a href="/customer/profile"><i className="fa fa-user"></i>Overview</a></li>
+				<li><a href="/customer/profile"><i className="fa fa-user"></i>Update Profile</a></li>
+				<li><a href="/customer/photos"><i className="fa fa-camera"></i>My Travel Photos</a></li>
+				<li><a href="/customer/booking-history"><i className="fa fa-clock-o"></i>Booking History</a></li>
 				<li><a href="user-profile-settings.html"><i className="fa fa-cog"></i>Settings</a></li>
-				<li><a href="user-profile-photos.html"><i className="fa fa-camera"></i>My Travel Photos</a></li>
-				<li><a href="user-profile-booking-history.html"><i className="fa fa-clock-o"></i>Booking History</a></li>
 				<li><a href="user-profile-cards.html"><i className="fa fa-credit-card"></i>Credit/Debit Cards</a></li>
 				<li><a href="user-profile-wishlist.html"><i className="fa fa-heart-o"></i>Wishlist</a></li>
 			</ul>

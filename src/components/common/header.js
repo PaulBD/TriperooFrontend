@@ -9,14 +9,19 @@ import { Link } from "react-router";
 class Header extends React.Component {
   constructor(props, context) {
     super(props, context);
+    this.openProfileMenu = this.openProfileMenu.bind(this);
     this.openCurrencyMenu = this.openCurrencyMenu.bind(this);
     this.onLogout = this.onLogout.bind(this);
     this.selectCurrency = this.selectCurrency.bind(this);
-    this.state = { currency: 'GBP', currencyIcon: '£', isMenuActive: 0 };
+    this.state = { currency: 'GBP', currencyIcon: '£', isCurrencyMenuActive: 0, isProfileMenuActive: 0 };
+  }
+
+  openProfileMenu(e) {
+    this.setState({ isProfileMenuActive: 1 });
   }
 
   openCurrencyMenu(e) {
-    this.setState({ isMenuActive: 1 });
+    this.setState({ isCurrencyMenuActive: 1 });
   }
 
   onLogout(e) {
@@ -24,7 +29,7 @@ class Header extends React.Component {
   }
 
   selectCurrency(e) {
-    this.setState({ currency: e.target.getAttribute('data-name'), currencyIcon: e.target.getAttribute('data-currency'), isMenuActive:0 });
+    this.setState({ currency: e.target.getAttribute('data-name'), currencyIcon: e.target.getAttribute('data-currency'), isCurrencyMenuActive:0 });
     this.props.curActions.saveCurrency(e.target.getAttribute('data-name'));
   }
 
@@ -40,8 +45,16 @@ class Header extends React.Component {
               <li><a href="/flights" title="Flights">Flights</a></li>
               <li><a href="/travel-extras" title="Travel Extras">Travel Extras</a></li>
               <li><a href="#" data-toggle="modal" data-target="#reviewModel" title="Write a Review">Write a Review</a></li>
+              <li className={this.state.isProfileMenuActive ? 'nav-drop active-drop' : 'nav-drop'}><a href="#" onClick={this.openProfileMenu}>Persons Name<i className="fa fa-angle-down"></i>
+                <i className="fa fa-angle-up"></i></a>
+                <ul className="list nav-drop-menu headerList">
+                  <li><a href="/customer/profile"><i className="fa fa-user"></i>Update Profile</a></li>
+                  <li><a href="/customer/photos"><i className="fa fa-camera"></i>My Travel Photos</a></li>
+                  <li><a href="/customer/booking-history"><i className="fa fa-clock-o"></i>Booking History</a></li>
+                </ul>
+              </li>
               <li><a href="#" onClick={this.onLogout} title="Log Out">Log Out</a></li>
-              <li className={this.state.isMenuActive ? 'nav-drop active-drop' : 'nav-drop'}><a href="#" onClick={this.openCurrencyMenu}>{this.state.currency} {this.state.currencyIcon}<i className="fa fa-angle-down"></i>
+              <li className={this.state.isCurrencyMenuActive ? 'nav-drop active-drop' : 'nav-drop'}><a href="#" onClick={this.openCurrencyMenu}>{this.state.currency} {this.state.currencyIcon}<i className="fa fa-angle-down"></i>
                 <i className="fa fa-angle-up"></i></a>
                 <ul className="list nav-drop-menu">
                   <li><a href="#" onClick={this.selectCurrency} data-name="GBP" data-currency="£">GBP<span className="right">£</span></a></li>

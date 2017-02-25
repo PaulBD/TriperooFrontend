@@ -1,34 +1,63 @@
-import React from "react";
+import React, {PropTypes} from 'react';
+import { browserHistory } from 'react-router';
+import FacebookLogin from 'react-facebook-login';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as customerActions from '../../actions/customerActions';
+import Loader from '../common/loadingDots';
+import AutoComplete from '../common/autocomplete';
 
 class Register extends React.Component {
 
   constructor(props, context) {
     super(props, context);
-    this.submitForm = this.submitForm.bind(this);
+
+    this.submitStandardForm = this.submitStandardForm.bind(this);
     this.submitFacebookForm = this.submitFacebookForm.bind(this);
+
     this.handleCityChange = this.handleCityChange.bind(this);
     this.handleEmailAddressChange = this.handleEmailAddressChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
-    this.handleNameChange = this.handleNameChange.bind(this);
-    this.state = { username: '', password: '', name: '', city: '', errors:{}, isLoading: 0 };
+    this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
+    this.handleLastNameChange = this.handleLastNameChange.bind(this);
+
+    this.handleSearchUrlClick = this.handleSearchUrlClick.bind(this);
+    this.handleCityIdChange = this.handleCityIdChange.bind(this);
+
+    this.state = { emailAddress: '', password: '', firstName: '', lastName: '', currentCity: '', currentCityId: '', errors:'' };
   }
 
-  submitFacebookForm(e) {
-    e.preventDefault();
+  submitFacebookForm(response) {
+    const creds = { emailAddress: response.email, facebookId: response.userID, name: response.name, imageUrl: response.picture.data.url, currentCityId: 1};
+    this.props.actions.loginFacebookUser(creds);
   }
 
-  submitForm(e) {
+  submitStandardForm(e) {
     e.preventDefault();
+
+    if ((this.state.firstName.length > 0) && (this.state.lastName.length > 0) && (this.state.currentCity.length > 0) && (this.state.emailAddress.length > 0) && (this.state.password.length > 0))
+    {
+      const creds = { emailAddress: this.state.emailAddress.trim(), password: this.state.password.trim(), firstName: this.state.firstName.trim(), lastName: this.state.lastName.trim(), currentCityId: this.state.currentCityId };
+      this.props.actions.registerUser(creds);
+    }
+    else {
+      this.setState({ errors: 'Please complete the registration form' });
+    }
   }
 
-  handleNameChange(e) {
+  handleFirstNameChange(e) {
     e.preventDefault();
-    this.setState({ name: e.target.value });
+    this.setState({ firstName: e.target.value });
+  }
+
+  handleLastNameChange(e) {
+    e.preventDefault();
+    this.setState({ lastName: e.target.value });
   }
 
   handleEmailAddressChange(e) {
     e.preventDefault();
-    this.setState({ username: e.target.value });
+    this.setState({ emailAddress: e.target.value });
   }
 
   handlePasswordChange(e) {
@@ -36,31 +65,63 @@ class Register extends React.Component {
     this.setState({ password: e.target.value });
   }
 
-  handleCityChange(e) {
-    e.preventDefault();
-    this.setState({ city: e.target.value });
+  handleCityChange(value) {
+    this.setState({ currentCity: value });
   }
 
+  handleCityIdChange(value) {
+    this.setState({ currentCityId: value });
+  }
+
+  handleSearchUrlClick(value) { }
+
+
   render(){
+
+    if (this.props.isAuthenticated)
+    {
+      let event = new MouseEvent('click', { 'view': window, 'bubbles': true, 'cancelable': false });
+      let node = document.getElementById('closeRegistration');
+
+      if (event != null && node != null)
+      {
+        node.dispatchEvent(event); 
+      }
+    }
+
     return (
           <div className="modal fade" id="signupModel" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div className="modal-dialog modelAuthentication" role="document">
-              <div className="modal-content">
+              <div className={this.props.isFetching ? "modal-content hide" : "modal-content"}>
                 <div className="modal-body">
                   <div className="row">
+                      <div className={this.state.errors.length > 0 ? 'col-md-12' : 'col-md-12 hide'}>
+                        <div className="bg-danger form-danger">
+                        {this.state.errors}
+                        </div>
+                      </div>
+                      <div className={this.props.errorMessage != undefined && this.props.errorMessage.length > 0 ? 'col-md-12' : 'col-md-12 hide'}>
+                        <div className="bg-danger form-danger">
+                        {this.props.errorMessage}
+                        </div>
+                      </div>
+
                     <div className="gap gap-small"></div>
                     <div className="col-md-12 text-xs-center">
-                      <img src="/static/img/fbsignupV2.png" className="facebookBtn" />
+                      <FacebookLogin appId="347205502054817" autoLoad={false} fields="name,email,picture"  cssClass="my-facebook-button-class" textButton="" callback={this.submitFacebookForm} />
                     </div>
                     <div className="gap gap-small"></div>
                     <div className="col-md-12  text-xs-center signupSeperator">
                       <strong>or</strong>
                       <hr />
                     </div>
-                    <form className="modalForm"  onSubmit={this.submitForm}>
+                    <form className="modalForm"  onSubmit={this.submitStandardForm}>
                       <div className="col-md-12">
                           <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-user input-icon input-icon-hightlight"></i>
-                              <input className="form-control" placeholder="Enter Full Name" type="text" onChange={this.handleNameChange} />
+                              <input className="form-control" placeholder="Enter First Name" type="text" onChange={this.handleFirstNameChange} />
+                          </div>
+                          <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-user input-icon input-icon-hightlight"></i>
+                              <input className="form-control" placeholder="Enter Last Name" type="text" onChange={this.handleLastNameChange} />
                           </div>
                           <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-envelope input-icon input-icon-hightlight"></i>
                               <input className="form-control" placeholder="Enter Email Address" type="text" onChange={this.handleEmailAddressChange} />
@@ -69,9 +130,9 @@ class Register extends React.Component {
                               <input className="form-control" type="password" placeholder="Enter Password" onChange={this.handlePasswordChange} />
                           </div>
                           <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-map-marker input-icon input-icon-hightlight"></i>
-                              <input className="form-control" placeholder="Current City" type="text" onChange={this.handleCityChange} />
+                            <AutoComplete changeId={this.handleCityIdChange}  changeValue={this.handleCityChange} changeUrl={this.handleSearchUrlClick} searchType="city" placeholder="Current Location" cssClass="typeahead form-control" />
                           </div>
-                          <p className="smlText">By clicking "Create My Account," you are agreeing to the Terms of Service above and the Privacy Policy. You'll 
+                          <p className="smlText">By clicking "Create My Account," you are agreeing to the Terms of Service and the Privacy Policy. You'll 
                           also receive email updates about your account, sent to you by Triperoo. You can opt out in Account Settings.</p>
                       </div>
                       <div className="col-md-12 text-xs-center">
@@ -81,8 +142,11 @@ class Register extends React.Component {
                   </div>
                 </div>
                 <div className="modal-footer text-xs-center">
-                  <a href="#" data-dismiss="modal">Close</a>
+                  <a href="#" data-dismiss="modal" id="closeRegistration">Close</a>
                 </div>
+              </div>
+              <div className={this.props.isFetching ? "modal-content" : "modal-content hide"}>
+                  <Loader showLoader={this.props.isFetching} />
               </div>
             </div>
           </div>
@@ -91,12 +155,28 @@ class Register extends React.Component {
 }
 
 Register.defaultProps = {
-
+  isAuthenticated: false
 };
 
 Register.propTypes = {
-
+  actions: PropTypes.object.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  isFetching: PropTypes.bool.isRequired,
+  errorMessage: PropTypes.string
 };
 
+function mapStateToProps(state, ownProps) {
+  return {
+    isAuthenticated: state.customer.isAuthenticated,
+    isFetching: state.customer.isFetching,
+    errorMessage: state.customer.errorMessage
+  };
+}
 
-export default Register;
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(customerActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
