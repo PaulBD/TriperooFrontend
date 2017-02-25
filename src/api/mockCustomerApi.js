@@ -44,7 +44,6 @@ class CustomerApi {
           currentCity
       })
       .then(response => {    
-      console.log(response); 
         resolve(Object.assign([], response.data));
       })
       .catch(function (error) {

@@ -37,7 +37,7 @@ export function requestResetPassword(creds) {
 }
 
 export function receiveResetPassword() {
-	return { type: types.PASSWORD_SUCCESS, isFetching: false, isAuthenticated: true, hasSentPassword: true };
+	return { type: types.PASSWORD_SUCCESS, isFetching: false, isAuthenticated: false, hasSentPassword: true };
 }
 
 export function resetPasswordError(message) {
@@ -51,13 +51,15 @@ export function requestLogout() {
 }
 
 export function receiveLogout() {
-	return { type: types.LOGOUT_SUCCESS, isFetching: false, isAuthenticated: false };
+	console.log('LOGOUT SUCCESS');
+	return { type: types.LOGOUT_SUCCESS, isFetching: false, isAuthenticated: false, hasSentPassword: true };
 }
 
 export function logoutUser() {
 	return dispatch => {
 		dispatch(requestLogout());
 		localStorage.removeItem('id_token');
+		console.log('dispatch');
 		dispatch(receiveLogout());
 	}; 
 }
@@ -66,12 +68,18 @@ export function loginUser(creds) {
 	return dispatch => {
 		dispatch(requestLogin(creds));
 		dispatch(beginAjaxCall());
-		return CustomerApi.loginCustomer(creds.emailAddress, creds.password).then(token => {
-			localStorage.setItem('id_token', token);
-			dispatch(receiveLogin(token));
-		}).catch(error => {
-			dispatch(loginError(error.response.data));
-		});
+		if ((creds.emailAddress.length > 0) && (creds.password.length > 0))
+		{
+			return CustomerApi.loginCustomer(creds.emailAddress, creds.password).then(token => {
+				localStorage.setItem('id_token', token);
+				dispatch(receiveLogin(token));
+			}).catch(error => {
+				dispatch(loginError(error.response.data));
+			});
+		}
+		else {
+			dispatch(resetPasswordError("Please sepcify valid credentials"));
+		}
 	};
 }
 
@@ -79,12 +87,18 @@ export function loginFacebookUser(creds) {
 	return dispatch => {
 		dispatch(requestLogin(creds));
 		dispatch(beginAjaxCall());
-		return CustomerApi.loginFacebookCustomer(creds.emailAddress, creds.facebookId, creds.name, creds.imageUrl, creds.currentCityId).then(token => {
-			localStorage.setItem('id_token', token);
-			dispatch(receiveLogin(token));
-		}).catch(error => {
-			dispatch(loginError(error.response.data));
-		});
+		if ((creds.emailAddress.length > 0) && (creds.facebookId.length > 0))
+		{
+			return CustomerApi.loginFacebookCustomer(creds.emailAddress, creds.facebookId, creds.name, creds.imageUrl, creds.currentCityId).then(token => {
+				localStorage.setItem('id_token', token);
+				dispatch(receiveLogin(token));
+			}).catch(error => {
+				dispatch(loginError(error.response.data));
+			});		
+		}
+		else {
+			dispatch(resetPasswordError("Please sepcify a valid email address"));
+		}
 	};
 }
 
@@ -92,13 +106,18 @@ export function registerUser(creds) {
 	return dispatch => {
 		dispatch(requestRegistration(creds));
 		dispatch(beginAjaxCall());
-		return CustomerApi.registerCustomer(creds.emailAddress, creds.password, creds.firstName, creds.lastName, creds.currentCityId).then(token => {
-			localStorage.setItem('id_token', token);
-			dispatch(receiveRegistration(token));
-		}).catch(error => {
-			console.log(error);
-			dispatch(registrationError(error.response.data));
-		});
+		if ((creds.firstName.length > 0) && (creds.lastName.length > 0) && (creds.currentCityId.length > 0) && (creds.emailAddress.length > 0) && (creds.password.length > 0))
+    	{
+			return CustomerApi.registerCustomer(creds.emailAddress, creds.password, creds.firstName, creds.lastName, creds.currentCityId).then(token => {
+				localStorage.setItem('id_token', token);
+				dispatch(receiveRegistration(token));
+			}).catch(error => {
+				dispatch(registrationError(error.response.data));
+			});
+		}
+		else {
+			dispatch(resetPasswordError("Please complete the registration form"));
+		}
 	};
 }
 
@@ -106,10 +125,16 @@ export function resetPassword(creds) {
 	return dispatch => {
 		dispatch(requestResetPassword(creds));
 		dispatch(beginAjaxCall());
-		return CustomerApi.resetPassword(creds.emailAddress).then(response => {
-			dispatch(receiveResetPassword());
-		}).catch(error => {
-			dispatch(resetPasswordError(error.response.data));
-		});
+		if (creds.emailAddress.length > 0)
+		{
+			return CustomerApi.resetPassword(creds.emailAddress).then(response => {
+				dispatch(receiveResetPassword());
+			}).catch(error => {
+				dispatch(resetPasswordError(error.response.data));
+			});
+		}
+		else {
+			dispatch(resetPasswordError("Please sepcify a valid email address"));
+		}
 	};
 }

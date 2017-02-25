@@ -34,15 +34,8 @@ class Register extends React.Component {
 
   submitStandardForm(e) {
     e.preventDefault();
-
-    if ((this.state.firstName.length > 0) && (this.state.lastName.length > 0) && (this.state.currentCity.length > 0) && (this.state.emailAddress.length > 0) && (this.state.password.length > 0))
-    {
-      const creds = { emailAddress: this.state.emailAddress.trim(), password: this.state.password.trim(), firstName: this.state.firstName.trim(), lastName: this.state.lastName.trim(), currentCityId: this.state.currentCityId };
-      this.props.actions.registerUser(creds);
-    }
-    else {
-      this.setState({ errors: 'Please complete the registration form' });
-    }
+    const creds = { emailAddress: this.state.emailAddress.trim(), password: this.state.password.trim(), firstName: this.state.firstName.trim(), lastName: this.state.lastName.trim(), currentCityId: this.state.currentCityId };
+    this.props.actions.registerUser(creds);
   }
 
   handleFirstNameChange(e) {

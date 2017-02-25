@@ -30,28 +30,14 @@ class Login extends React.Component {
 
   submitStandardForm(e) {
     e.preventDefault();
-
-    if ((this.state.emailAddress.length > 0) && (this.state.password.length > 0))
-    {
-      const creds = { emailAddress: this.state.emailAddress.trim(), password: this.state.password.trim() };
-      this.props.actions.loginUser(creds);
-    }
-    else {
-      this.setState({ errors: 'Please enter a valid email address & password' });
-    }
+    const creds = { emailAddress: this.state.emailAddress.trim(), password: this.state.password.trim() };
+    this.props.actions.loginUser(creds);
   }
 
   submitResetPasswordForm(e) {
     e.preventDefault();
-
-    if (this.state.emailAddress.length > 0)
-    {
-      const creds = { emailAddress: this.state.emailAddress.trim() };
-      this.props.actions.resetPassword(creds);
-    }
-    else {
-      this.setState({ errors: 'Please enter a valid email address' });
-    }
+    const creds = { emailAddress: this.state.emailAddress.trim() };
+    this.props.actions.resetPassword(creds);
   }
 
   handleEmailAddressChange(e) {
@@ -66,12 +52,13 @@ class Login extends React.Component {
 
   changeForgotPassword(e) {
     e.preventDefault();
-    this.setState({ isForgotPassword: true });
+    this.props.actions.resetAuthentication();
+    this.setState({ isForgotPassword: true, errors: '' });
   }
 
   changeLogin(e) {
     e.preventDefault();
-    this.setState({ isForgotPassword: false });
+    this.setState({ isForgotPassword: false, errors: '' });
   }
 
   render(){
@@ -90,17 +77,13 @@ class Login extends React.Component {
     }
   }
 
+
   return (
     <div className="modal fade" id="loginModel" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div className={this.state.isForgotPassword ? "modal-dialog modelAuthentication hide" : "modal-dialog modelAuthentication" } role="document">
+      <div className={this.state.isForgotPassword ? "modal-dialog modelAuthentication hide" : "modal-dialog modelAuthentication"} role="document">
         <div className={this.props.isFetching ? "modal-content hide" : "modal-content"}>
           <div className="modal-body">
             <div className="row">
-              <div className={this.state.errors.length > 0 ? 'col-md-12' : 'col-md-12 hide'}>
-                <div className="bg-danger form-danger">
-                {this.state.errors}
-                </div>
-              </div>
               <div className={this.props.errorMessage != undefined && this.props.errorMessage.length > 0 ? 'col-md-12' : 'col-md-12 hide'}>
                 <div className="bg-danger form-danger">
                 {this.props.errorMessage}
@@ -116,7 +99,6 @@ class Login extends React.Component {
                 <hr />
               </div>
               <form className="modalForm" onSubmit={this.submitStandardForm}>
-
                 <div className="col-md-12">
                     <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-envelope input-icon input-icon-hightlight"></i>
                         <input className="form-control" placeholder="Enter Email Address" type="text" onChange={this.handleEmailAddressChange} text={emailAddress}/>
@@ -143,15 +125,10 @@ class Login extends React.Component {
             <Loader showLoader={this.props.isFetching} />
         </div>
       </div>
-      <div className={this.state.isForgotPassword ? "modal-dialog modelAuthentication " : "modal-dialog modelAuthentication hide" } role="document">
+      <div className={this.state.isForgotPassword ? "modal-dialog modelAuthentication " : "modal-dialog modelAuthentication hide"} role="document">
         <div className={this.props.isFetching ? "modal-content hide" : "modal-content"}>
           <div className="modal-body">
             <div className="row">
-              <div className={this.state.errors.length > 0 ? 'col-md-12' : 'col-md-12 hide'}>
-                <div className="bg-danger form-danger">
-                {this.state.errors}
-                </div>
-              </div>
               <div className={this.props.errorMessage != undefined && this.props.errorMessage.length > 0 ? 'col-md-12' : 'col-md-12 hide'}>
                 <div className="bg-danger form-danger">
                 {this.props.errorMessage}
@@ -206,6 +183,9 @@ Login.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
+
+  console.log(state.customer);
+
   return {
     isFetching: state.customer.isFetching,
     isAuthenticated: state.customer.isAuthenticated,
