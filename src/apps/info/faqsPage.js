@@ -1,9 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router';
-import SocialButtons from "../../components/common/socialButtons";
-import FacebookSignup from '../../components/common/facebookSignup';
-import BulletPoints from '../../components/common/bulletPoints';
-import TrustedPartners from '../../components/common/trustedPartners';
+import SocialButtons from "../../components/content/static/socialButtons";
+import FacebookSignup from '../../components/authentication/facebookSignup';
+import BulletPoints from '../../components/content/static/bulletPoints';
+import TrustedPartners from '../../components/content/static/trustedPartners';
 
 // Since this component is simple and static, there's no parent container for it.
 export default class FAQsPage extends React.Component {
@@ -17,6 +17,7 @@ export default class FAQsPage extends React.Component {
     window.scrollTo(0, 0);
     document.title = 'Frequently Asked Questions';
   }
+  
   handleClick(e) {
     e.preventDefault();
     this.setState({ item: e.target.getAttribute('data-name') });

@@ -1,6 +1,6 @@
-import DealApi from '../api/mockDealApi';
-import {beginAjaxCall} from './ajaxStatusActions';
-import * as types from '../actionTypes/';
+import DealApi from '../../api/legacy/mockDealApi';
+import {beginAjaxCall} from '../ajaxStatusActions';
+import * as types from '../../actionTypes/';
 
 export function loadDealSuccess(trendingDeals) {
 	return {type: types.LOAD_TRENDING_DEAL_SUCCESS, trendingDeals};

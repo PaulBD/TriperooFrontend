@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router';
 import FacebookLogin from 'react-facebook-login';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as customerActions from '../../actions/customerActions';
+import * as authenticationActions from '../../actions/authenticationActions';
 import Loader from '../common/loadingDots';
 
 class Login extends React.Component {
@@ -52,7 +52,6 @@ class Login extends React.Component {
 
   changeForgotPassword(e) {
     e.preventDefault();
-    this.props.actions.resetAuthentication();
     this.setState({ isForgotPassword: true, errors: '' });
   }
 
@@ -76,8 +75,7 @@ class Login extends React.Component {
       node.dispatchEvent(event); 
     }
   }
-
-
+  
   return (
     <div className="modal fade" id="loginModel" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div className={this.state.isForgotPassword ? "modal-dialog modelAuthentication hide" : "modal-dialog modelAuthentication"} role="document">
@@ -183,20 +181,17 @@ Login.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-
-  console.log(state.customer);
-
   return {
-    isFetching: state.customer.isFetching,
-    isAuthenticated: state.customer.isAuthenticated,
-    errorMessage: state.customer.errorMessage,
-    hasSentPassword: state.customer.hasSentPassword
+    isFetching: state.authentication.isFetching,
+    isAuthenticated: state.authentication.isAuthenticated,
+    errorMessage: state.authentication.errorMessage,
+    hasSentPassword: state.authentication.hasSentPassword
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(customerActions, dispatch)
+    actions: bindActionCreators(authenticationActions, dispatch)
   };
 }
 

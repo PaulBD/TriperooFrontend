@@ -10,7 +10,7 @@ class AutoComplete extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.handleClick = this.handleClick.bind(this);
-    this.state = { cssStyle: 'none', searches: this.props.searches, isLoading: 1 };
+    this.state = { cssStyle: 'none', searches: this.props.searches, isLoading: true };
     this.onSearchValue = this.onSearchValue.bind(this);
   }
 
@@ -23,6 +23,7 @@ class AutoComplete extends React.Component {
     this.props.changeValue(e.target.text.trim());
     this.props.changeUrl(e.target.getAttribute('data-url'));
     this.props.changeId(e.target.getAttribute('data-id'));
+    this.props.changeType(e.target.getAttribute('data-type'));
     this.setState({ selected: true, style: 'none', searchValue: e.target.text.trim() });
   }
 
@@ -30,13 +31,14 @@ class AutoComplete extends React.Component {
     event.preventDefault();
 
     if (event.target.value.length > 2) {
-        this.setState({ isLoading: 1 });
+        this.setState({ isLoading: true });
         this.props.actions.loadSearches(event.target.value, this.props.searchType);
-        this.setState({ selected: false, style: 'block', searchValue: event.target.value.trim(), isOpen: true, isLoading: 0 });
+        this.setState({ selected: false, style: 'block', searchValue: event.target.value,  isOpen: true, isLoading: false });
     }
     else {
-        this.setState({ selected: false, style: 'none', searchValue: event.target.value, isOpen: false, isLoading: 0 });
+        this.setState({ selected: false, style: 'none', searchValue: event.target.value, isOpen: false, isLoading: false });
     }
+    
   }
 
   render() {
@@ -84,7 +86,7 @@ class AutoComplete extends React.Component {
                 break;
               }
 
-              return (<li key={search.documentId} className="ui-menu-item"><a href="#" onClick={this.handleClick} data-name={search.name} data-url={search.url} data-id={search.documentId}><span><i className={icon}></i></span> {search.searchName}</a></li>);
+              return (<li key={search.documentId} className="ui-menu-item"><a href="#" onClick={this.handleClick} data-type={search.type} data-name={search.name} data-url={search.url} data-id={search.documentId}><span><i className={icon}></i></span> {search.searchName}</a></li>);
               })
             }
           </ul>
@@ -101,6 +103,7 @@ AutoComplete.defaultProps = {
 AutoComplete.propTypes = {
   searches: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
+  changeType: PropTypes.func,
   changeValue: PropTypes.func,
   changeUrl: PropTypes.func,
   changeId: PropTypes.func,

@@ -1,9 +1,9 @@
 import delay from './delay';
-import hotels from './json/hotels.json'; 
-import attractions from './json/attractions.json';
-import nightlife from './json/nightlife.json';
-import restaurants from './json/restaurants.json';
-import hotelSearch from './json/hotelSearch.json';
+import hotels from './json/mock/hotels.json'; 
+import attractions from './json/mock/attractions.json';
+import nightlife from './json/mock/nightlife.json';
+import restaurants from './json/mock/restaurants.json';
+import hotelSearch from './json/mock/hotelSearch.json';
 
 const places = [
   {

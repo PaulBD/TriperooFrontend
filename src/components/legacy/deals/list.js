@@ -2,18 +2,18 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-import * as trendingDealActions from '../../actions/trendingDealActions';
-import * as hotDealActions from '../../actions/hotDealActions';
-import * as specialDealActions from '../../actions/specialDealActions';
-import * as dealActions from '../../actions/dealActions';
+import * as trendingDealActions from '../../../actions/legacy/trendingDealActions';
+import * as hotDealActions from '../../../actions/legacy/hotDealActions';
+import * as specialDealActions from '../../../actions/legacy/specialDealActions';
+import * as dealActions from '../../../actions/dealActions';
 
 import DealList from './dealList';
-import Loader from '../common/loadingDots';
+import Loader from '../../common/loadingDots';
 
 class Deals extends React.Component {
   constructor(props, context) {
       super(props, context);
-      this.state = { deals: [], isLoading: 1 };
+      this.state = { deals: [], isLoading: true };
   }
 
   componentDidMount() {
@@ -30,7 +30,7 @@ class Deals extends React.Component {
         break;
     }
 
-    this.state = { isLoading: 0 };
+    this.state = { isLoading: false };
   }
 
   render() {

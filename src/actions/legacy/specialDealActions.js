@@ -1,6 +1,6 @@
-import DealApi from '../api/mockDealApi';
-import {beginAjaxCall} from './ajaxStatusActions';
-import * as types from '../actionTypes/';
+import DealApi from '../../api/legacy/mockDealApi';
+import {beginAjaxCall} from '../ajaxStatusActions';
+import * as types from '../../actionTypes/';
 
 export function loadDealSuccess(specialDeals) {
 	return {type: types.LOAD_SPECIAL_DEAL_SUCCESS, specialDeals};

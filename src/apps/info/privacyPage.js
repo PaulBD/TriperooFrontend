@@ -1,8 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
-import SocialButtons from "../../components/common/socialButtons";
+import SocialButtons from "../../components/content/static/socialButtons";
 
-// Since this component is simple and static, there's no parent container for it.
 export default class PrivacyPage extends React.Component {
 
   componentDidMount() {

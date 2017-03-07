@@ -2,8 +2,9 @@ import React, {PropTypes} from 'react';
 
 import Header from '../components/common/header';
 import Footer from '../components/common/footer';
-import Login from '../components/authentication/login';
-import Register from '../components/authentication/register';
+import LoginPopup from '../components/authentication/login';
+import RegisterPopup from '../components/authentication/register';
+import ReviewPopup from '../components/reviews/addNew';
 
 export const App = (props) => {
 	return (
@@ -11,8 +12,9 @@ export const App = (props) => {
 			<Header showHeader={true} />
 			{props.children}
 			<Footer />
-			<Login />
-			<Register />
+			<LoginPopup />
+			<RegisterPopup />
+			<ReviewPopup />
 		</div>
 	);
 };

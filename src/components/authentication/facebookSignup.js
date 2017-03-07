@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router';
 import FacebookLogin from 'react-facebook-login';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as customerActions from '../../actions/customerActions';
+import * as authenticationActions from '../../actions/authenticationActions';
 
 class FacebookSignup extends React.Component {
     constructor(props, context) {
@@ -56,15 +56,15 @@ FacebookSignup.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   return {
-    isFetching: state.customer.isFetching,
-    isAuthenticated: state.customer.isAuthenticated,
-    errorMessage: state.customer.errorMessage
+    isFetching: state.authentication.isFetching,
+    isAuthenticated: state.authentication.isAuthenticated,
+    errorMessage: state.authentication.errorMessage
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(customerActions, dispatch)
+    actions: bindActionCreators(authenticationActions, dispatch)
   };
 }
 

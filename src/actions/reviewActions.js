@@ -1,33 +1,35 @@
-import ReviewApi from '../api/mockReviewApi';
+import ReviewApi from '../api/reviewApi';
 import {beginAjaxCall} from './ajaxStatusActions';
 import * as types from '../actionTypes/';
 
-export function loadReviewSuccess(reviews) {
-	return {type: types.LOAD_REVIEWS_SUCCESS, reviews};
+
+export function receiveReview(review) {
+	return {type: types.REVIEW_REQUEST, isSending: true, hasPosted: false, review};
 }
 
-export function loadReviews(type, id, limit, offset) {
+export function reviewSuccess() {
+	return {type: types.POST_REVIEW_SUCCESS, isSending: false, hasPosted: true};
+}
+
+export function reviewError(message) {
+	return {type: types.POST_REVIEW_FAILURE, isSending: false, hasPosted: false, message};
+}
+
+export function postReview(review) {
+
 	return dispatch => {
+		dispatch(receiveReview(review));
 		dispatch(beginAjaxCall());
-		return ReviewApi.getReviews(type, id, limit, offset).then(reviews => {
-			dispatch(loadReviewSuccess(reviews));
-		}).catch(error => {
-			throw(error);
-		});
-	};
-}
-
-export function loadGenericReviewSuccess(reviews) {
-	return {type: types.LOAD_GENERIC_REVIEWS_SUCCESS, reviews};
-}
-
-export function loadGenericReviews(type, id, limit, offset) {
-	return dispatch => {
-		dispatch(beginAjaxCall());
-		return ReviewApi.getGenericReviews(type, id, limit, offset).then(reviews => {
-			dispatch(loadGenericReviewSuccess(reviews));
-		}).catch(error => {
-			throw(error);
-		});
+		if ((review.comment.length > 0) && (review.PlaceReference.length))
+    	{
+			return ReviewApi.postReview(review).then(review => {
+				dispatch(reviewSuccess());
+			}).catch(error => {
+				dispatch(reviewError(error.response.data));
+			});
+		}
+		else {
+			dispatch(reviewError("Please complete the review form"));
+		}
 	};
 }

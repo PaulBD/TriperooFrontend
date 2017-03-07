@@ -1,6 +1,6 @@
 import React from 'react';
 import CruisesFeature from '../../components/travelExtras/cruisesFeature';
-import FacebookSignup from '../../components/common/facebookSignup';
+import FacebookSignup from '../../components/authentication/facebookSignup';
 
 export default class Cruises extends React.Component {
     componentDidMount() {

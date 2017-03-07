@@ -6,37 +6,26 @@ import * as newsletterActions from '../../actions/newsletterActions';
 class Newsletter extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { savedNewsletter: 0, formError: 0 };
     this.saveNewsletter = this.saveNewsletter.bind(this);
   }
 
   saveNewsletter(e) {
     e.preventDefault();
+    this.props.actions.saveNewsletter(this.refs.emailAddress.value.trim());
 
-    let email = this.refs.emailAddress.value.trim();
-
-    if (email.length > 0)
-    {
-      this.props.actions.saveNewsletter(email);
-      this.state = { savedNewsletter: 1, formError: 0 };
-    }
-    else {
-      this.state = { formError: 1 };
-    }
   }
 
   render() {
-
     let form = (
       <form onSubmit={this.saveNewsletter}>
-        <label className={this.state.formError ? 'error' : ''}>Enter your E-mail Address</label>
+        <label className={this.props.errorMessage ? 'error orange' : ''}>{this.props.errorMessage}</label>
         <input type="text" className="form-control" ref="emailAddress" name="emailAddress" />
         <p className="mt5"><small>*We Never Send Spam</small></p>
         <input type="submit" className="btn btn-primary" value="Subscribe" />
       </form>
     );
 
-    if (this.state.savedNewsletter)
+    if (this.props.hasSaved)
     {
       form = ('We have added your email to our mailing list!');
     }
@@ -52,12 +41,16 @@ class Newsletter extends React.Component {
 
 Newsletter.propTypes = {
   newsletter: PropTypes.object.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  errorMessage: PropTypes.string,
+  hasSaved: PropTypes.bool
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    newsletter: state.newsletter
+    newsletter: state.newsletter,
+    errorMessage: state.newsletter.errorMessage,
+    hasSaved: state.newsletter.hasSaved
   };
 }
 

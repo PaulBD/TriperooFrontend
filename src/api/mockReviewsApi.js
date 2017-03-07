@@ -1,4 +1,6 @@
 import delay from './delay';
+import axios from 'axios';
+import baseUrl from './baseApi';
 
 const reviews = [
   {
@@ -99,31 +101,8 @@ const reviews = [
   }
 ];
 
-class ReviewApi {
-	static getReviews(type, id, limit, offset) {
-		return new Promise((resolve, reject) => {
-			setTimeout(() => {
-
-        let filteredList = [];
-        let size = reviews.length;
-
-        if (limit < size) {
-          size = limit;
-        }
-
-        for (let index = 0; index < size; index++) {
-          let v = reviews[index]['place.id'];
-          if (v == id) {
-            filteredList.push(reviews[index]);
-          }
-        }
-
-				resolve(Object.assign([], filteredList));
-			}, delay);
-		});
-	}
-
-    static getGenericReviews(type, id, limit, offset) {
+class ReviewsApi {
+  static getReviews(type, id, limit, offset) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
 
@@ -162,4 +141,4 @@ class ReviewApi {
   }
 }
 
-export default ReviewApi;
+export default ReviewsApi;

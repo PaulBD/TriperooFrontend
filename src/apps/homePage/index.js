@@ -1,14 +1,14 @@
 import React from 'react';
-import Feature from '../../components/common/feature';
-import LocalExpert from '../../components/common/localExpert';
-import LastMinuteDeal from '../../components/deals/lastMinuteDeal';
+import FeaturedHeader from '../../components/content/dynamic/featuredHeader';
+import LocalExpert from '../../components/content/static/localExpert';
+import BulletPoints from '../../components/content/static/bulletPoints';
+import TrustedPartners from '../../components/content/static/trustedPartners';
+
+import LastMinuteDeal from '../../components/content/dynamic/lastMinuteDeal';
 import Search from '../../components/search/homePage';
-import Deals from '../../components/deals/list';
-import FeatureLocations from '../../components/locations/featureLocations';
-import RecentReviews from '../../components/reviews/reviews';
-import FacebookSignup from '../../components/common/facebookSignup';
-import BulletPoints from '../../components/common/bulletPoints';
-import TrustedPartners from '../../components/common/trustedPartners';
+import TopDestinations from '../../components/content/dynamic/topDestinations';
+import ReviewList from '../../components/reviews/list';
+import FacebookSignup from '../../components/authentication/facebookSignup';
 
 const HomePage = () => {
 
@@ -16,16 +16,16 @@ const HomePage = () => {
 
     return (
         <div>
-            <Feature featureType="homePage" />
+            <FeaturedHeader headerType="homePage" />
             <div className="container">
                 <Search searchType="all" />
                 <div className="gap"></div>
                 <div className="row row-wrap text-xs-center">
-                    <FeatureLocations />
+                    <TopDestinations destinationCount={3} title="Our Top Destinations" />
                 </div>
                 <div className="gap gap-small"></div>
                 <div className="row row-wrap text-xs-center">
-                    <RecentReviews searchType='' searchId={0} limit={3} offset={0} showTitle={1} />
+                    <ReviewList searchType='' searchId={0} limit={3} offset={0} showTitle={true} />
                 </div>
                 <LocalExpert />
                 <div className="gap"></div>

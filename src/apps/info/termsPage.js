@@ -6,7 +6,7 @@ import PopularPosts from '../../components/legacy/popularPosts';
 import Comments from '../../components/legacy/recentComments';
 import TwitterFeed from '../../components/social/twitterFeed';
 import FacebookFeed from '../../components/social/facebookFeed';
-// Since this component is simple and static, there's no parent container for it.
+
 export default class TermsPage extends React.Component {
 
   componentDidMount() {

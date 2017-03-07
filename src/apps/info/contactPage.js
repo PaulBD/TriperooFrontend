@@ -1,17 +1,17 @@
 import React from 'react';
 import {Link} from 'react-router';
-import SocialButtons from "../../components/common/socialButtons";
-import FeatureLocations from '../../components/locations/featureLocationssml';
-import FacebookSignup from '../../components/common/facebookSignup';
-import BulletPoints from '../../components/common/bulletPoints';
-import TrustedPartners from '../../components/common/trustedPartners';
+import SocialButtons from "../../components/content/static/socialButtons";
+import TopDestinations from '../../components/content/dynamic/topDestinations';
+import FacebookSignup from '../../components/authentication/facebookSignup';
+import BulletPoints from '../../components/content/static/bulletPoints';
+import TrustedPartners from '../../components/content/static/trustedPartners';
 
 // Since this component is simple and static, there's no parent container for it.
 export default class ContactPage extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    document.title = 'Contact';
+    document.title = 'Contact Triperoo';
   }
   
   render(){
@@ -49,7 +49,7 @@ export default class ContactPage extends React.Component {
               <p><SocialButtons /></p>
             </div>
             <div className="col-md-5">
-              <FeatureLocations />
+              <TopDestinations destinationCount={9}  />
             </div>
           </div>
         </div>

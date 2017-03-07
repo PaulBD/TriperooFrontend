@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router';
 import FacebookLogin from 'react-facebook-login';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as customerActions from '../../actions/customerActions';
+import * as authenticationActions from '../../actions/authenticationActions';
 import Loader from '../common/loadingDots';
 import AutoComplete from '../common/autocomplete';
 
@@ -16,13 +16,14 @@ class Register extends React.Component {
     this.submitFacebookForm = this.submitFacebookForm.bind(this);
 
     this.handleCityChange = this.handleCityChange.bind(this);
+    this.handleCityIdChange = this.handleCityIdChange.bind(this);
+    this.handleTypeChange = this.handleTypeChange.bind(this);
+    this.handleSearchUrlClick = this.handleSearchUrlClick.bind(this);
+
     this.handleEmailAddressChange = this.handleEmailAddressChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
     this.handleLastNameChange = this.handleLastNameChange.bind(this);
-
-    this.handleSearchUrlClick = this.handleSearchUrlClick.bind(this);
-    this.handleCityIdChange = this.handleCityIdChange.bind(this);
 
     this.state = { emailAddress: '', password: '', firstName: '', lastName: '', currentCity: '', currentCityId: '', errors:'' };
   }
@@ -67,6 +68,7 @@ class Register extends React.Component {
   }
 
   handleSearchUrlClick(value) { }
+  handleTypeChange(value) {}
 
 
   render(){
@@ -123,7 +125,7 @@ class Register extends React.Component {
                               <input className="form-control" type="password" placeholder="Enter Password" onChange={this.handlePasswordChange} />
                           </div>
                           <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-map-marker input-icon input-icon-hightlight"></i>
-                            <AutoComplete changeId={this.handleCityIdChange}  changeValue={this.handleCityChange} changeUrl={this.handleSearchUrlClick} searchType="city" placeholder="Current Location" cssClass="typeahead form-control" />
+                            <AutoComplete changeType={this.handleTypeChange} changeId={this.handleCityIdChange} changeValue={this.handleCityChange} changeUrl={this.handleSearchUrlClick} searchType="city" placeholder="Current Location" cssClass="typeahead form-control" />
                           </div>
                           <p className="smlText">By clicking "Create My Account," you are agreeing to the Terms of Service and the Privacy Policy. You'll 
                           also receive email updates about your account, sent to you by Triperoo. You can opt out in Account Settings.</p>
@@ -160,15 +162,15 @@ Register.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   return {
-    isAuthenticated: state.customer.isAuthenticated,
-    isFetching: state.customer.isFetching,
-    errorMessage: state.customer.errorMessage
+    isAuthenticated: state.authentication.isAuthenticated,
+    isFetching: state.authentication.isFetching,
+    errorMessage: state.authentication.errorMessage
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(customerActions, dispatch)
+    actions: bindActionCreators(authenticationActions, dispatch)
   };
 }
 

@@ -1,30 +1,31 @@
 import React from 'react';
 import Search from '../../components/holidays/search';
-import Feature from '../../components/common/feature';
+import FeaturedHeader from '../../components/content/dynamic/featuredHeader';
+import TopDestinations from '../../components/content/dynamic/topDestinations';
 import Copy from '../../components/holidays/copy';
 
-import Deals from '../../components/deals/list';
+import Deals from '../../components/legacy/deals/list';
 
-import FeatureLocations from '../../components/locations/featureLocations';
-import LastMinuteDeal from '../../components/deals/lastMinuteDeal';
-import FacebookSignup from '../../components/common/facebookSignup';
+import LastMinuteDeal from '../../components/content/dynamic/lastMinuteDeal';
+import FacebookSignup from '../../components/authentication/facebookSignup';
 
 // Since this component is simple and static, there's no parent container for it.
 export default class Holidays extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
+    document.title = 'Search for holidays';
   }
   
   render(){
     return (
       <div>
-        <Feature featureType="holiday" />
+        <FeaturedHeader headerType="holiday" />
         <div className="container">
           <Search />
           <div className="gap"></div>
             <div className="row row-wrap text-xs-center">
-            <FeatureLocations />
+            <TopDestinations destinationCount={3} title="Our Top Destinations" />
           </div>
           <div className="gap"></div>
           <div className="row">

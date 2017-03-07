@@ -1,0 +1,47 @@
+[
+	{
+		"name": "London",
+		"url": "/place/united-kingdom/london",
+		"image": "/static/img/locations/popular-destinations/london.png"
+	}, 
+	{
+		"name": "Dubai",
+		"url": "/place/6070029/unitedarabemirates/dubai",
+		"image": "/static/img/locations/popular-destinations/dubai.png"
+	}, 
+	{
+		"name": "New York",
+		"url": "/place/united-states/new-york",
+		"image": "/static/img/locations/popular-destinations/new-york.png"
+	}, 
+	{
+		"name": "Rome",
+		"url": "/place/1500776/italy/rome",
+		"image": "/static/img/locations/popular-destinations/rome.jpg"
+	}, 
+	{
+		"name": "Barcelona",
+		"url": "/place/3858073/spain/barcelona",
+		"image": "/static/img/locations/popular-destinations/barcelona.jpg"
+	}, 
+	{
+		"name": "Paris",
+		"url": "/place/957085/france/paris",
+		"image": "/static/img/locations/popular-destinations/paris.jpg"
+	}, 
+	{
+		"name": "Madrid",
+		"url": "/place/1500776/italy/rome",
+		"image": "/static/img/locations/popular-destinations/rome.jpg"
+	}, 
+	{
+		"name": "Venice",
+		"url": "/place/3858073/spain/barcelona",
+		"image": "/static/img/locations/popular-destinations/barcelona.jpg"
+	}, 
+	{
+		"name": "Dublin",
+		"url": "/place/957085/france/paris",
+		"image": "/static/img/locations/popular-destinations/paris.jpg"
+	}
+]

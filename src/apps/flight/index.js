@@ -1,23 +1,24 @@
 import React from 'react';
-import Feature from '../../components/common/feature';
+import FeaturedHeader from '../../components/content/dynamic/featuredHeader';
 import Search from '../../components/flights/search';
 import TopDestinations from '../../components/flights/topDestinations';
 
-import Deals from '../../components/deals/list';
+import Deals from '../../components/legacy/deals/list';
 
-import FacebookSignup from '../../components/common/facebookSignup';
+import FacebookSignup from '../../components/authentication/facebookSignup';
 
 // Since this component is simple and static, there's no parent container for it.
 export default class FlightsPage extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
+    document.title = 'Search for flights';
   }
   
   render(){
     return (
         <div>
-            <Feature featureType="flight" />
+            <FeaturedHeader headerType="flight" />
             <div className="container">
                 <Search />
             </div>

@@ -1,0 +1,49 @@
+{
+	"reviews": [{
+		"id": 1,
+		"featureType": "restaurant",
+		"reviewer": {
+			"name": "Paul Billington-Dykes",
+			"starRating": 3,
+			"comment": "Some quick example text to build on the card title and make up the bulk of the cards content.",
+			"profileUrl": "/people/paul-billington-dykes",
+			"profilePic": "/static/img/50x50.png"
+		},
+		"place": {
+			"id": 345,
+			"cityId": 123,
+			"countryId": 123,
+			"name": "Coffee Shop 123",
+			"address": "3 Lion Court, Chester Ch4 0GN",
+			"image": "/static/img/coffee.jpg",
+			"tags": [
+				"Default",
+				"Deafult1",
+				"Def"
+			]
+		}
+	}, {
+		"id": 1,
+		"featureType": "restaurant",
+		"reviewer": {
+			"name": "Paul Billington-Dykes",
+			"starRating": 3,
+			"comment": "Some quick example text to build on the card title and make up the bulk of the cards content.",
+			"profileUrl": "/people/paul-billington-dykes",
+			"profilePic": "/static/img/50x50.png"
+		},
+		"place": {
+			"id": 345,
+			"cityId": 123,
+			"countryId": 123,
+			"name": "Coffee Shop 123",
+			"address": "3 Lion Court, Chester Ch4 0GN",
+			"image": "/static/img/coffee.jpg",
+			"tags": [
+				"Default",
+				"Deafult1",
+				"Def"
+			]
+		}
+	}]
+}

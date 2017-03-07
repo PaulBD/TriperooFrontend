@@ -3,14 +3,14 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as locationActions from '../../actions/locationActions';
 
-import FacebookSignup from '../../components/common/facebookSignup';
+import FacebookSignup from '../../components/authentication/facebookSignup';
 
-import RecentReviews from '../../components/reviews/reviews';
+import ReviewList from '../../components/reviews/list';
 
 import RecentQuestions from '../../components/questions/questions';
 import QuestionButton from '../../components/questions/askButton';
 
-import Deals from '../../components/deals/list';
+import Deals from '../../components/legacy/deals/list';
 import TopPlaces from '../../components/places/topPlaces';
 import NavigationWrapper from '../../components/places/navigation/navigationWrapper';
 
@@ -101,7 +101,7 @@ class LocationHome extends React.Component {
             <div className="container">
                 <div className="gap"></div>
                 <div className="row row-wrap text-xs-center">
-                    <RecentReviews searchId={this.state.id} searchType={this.state.type} limit={3} offset={0} showTitle={1} />
+                    <ReviewList searchId={this.state.id} searchType={this.state.type} limit={3} offset={0} showTitle={1} />
                 </div>
             </div>
             <div className="container">

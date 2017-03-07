@@ -1,10 +1,10 @@
 import React from 'react';
 import Feature from '../../components/travelExtras/feature';
 
-import Deals from '../../components/deals/list';
+import Deals from '../../components/legacy/deals/list';
 
-import FacebookSignup from '../../components/common/facebookSignup';
-import LastMinuteDeal from '../../components/deals/lastMinuteDeal';
+import FacebookSignup from '../../components/authentication/facebookSignup';
+import LastMinuteDeal from '../../components/content/dynamic/lastMinuteDeal';
 
 export default class TravelExtras extends React.Component {
       componentDidMount() {

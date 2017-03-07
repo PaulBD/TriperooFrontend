@@ -1,25 +1,79 @@
 import React, {PropTypes} from 'react';
 
 class TagList extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+
+    this.selectTag = this.selectTag.bind(this);
+    this.getIndex = this.getIndex.bind(this);
+
+    this.state = { selectedTags:[] };
+  }
+
+  selectTag(e) {
+    let selectedTags = this.state.selectedTags;
+    let isAlreadyInList = false;
+    let newTag = e.target.getAttribute('data-name');
+
+    for (var i = 0; i < selectedTags.length; i++) {
+      if (selectedTags[i].text == newTag)
+      {
+        isAlreadyInList = true;
+        selectedTags.splice(i, 1);
+      }
+    }
+
+    if (!isAlreadyInList)
+    {
+      selectedTags.push({id: selectedTags.length + 1, text: newTag });
+    }
+    
+    this.setState({selectedTags: selectedTags});
+
+    this.props.returnTags(selectedTags);
+  }
+
+  getIndex(value, arr) {
+    for(var i = 0; i < arr.length; i++) {
+        if(arr[i].text === value) {
+            return i;
+        }
+    }
+    return -1; //to handle the case where the value doesn't exist
+  }
   
   render(){
     return (
       <p className="tagCollection">
         {
           this.props.tags.slice(0, this.props.maxTags).map(tag => {
-          return (
-            <span className="tag tag-default" key={tag}>{tag}</span> 
-            );
+            if (this.props.readOnly)
+            {
+              return (
+                <span className="tag tag-default" key={tag}>{tag} {this.state.selectedTags.includes(tag)}</span> 
+              );
+            }
+            else {
+              return (
+                <span className={this.getIndex(tag, this.state.selectedTags) > -1 ? "tag tag-default selected" : "tag tag-default"} key={tag} onClick={this.selectTag} data-name={tag}>{tag} {this.state.selectedTags.includes(tag)}</span> 
+              );
+            }
           })
         }
       </p>
     );
   }
-};
+}
+
+TagList.defaultProps = {
+  readOnly: true
+}
 
 TagList.propTypes = {
+  returnTags: PropTypes.func,
   tags: PropTypes.array.isRequired,
-  maxTags: PropTypes.number.isRequired
+  maxTags: PropTypes.number.isRequired,
+  readOnly: PropTypes.bool
 };
 
 export default TagList;

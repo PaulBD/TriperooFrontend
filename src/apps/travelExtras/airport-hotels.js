@@ -1,6 +1,6 @@
 import React from 'react';
 import AirportHotelsFeature from '../../components/travelExtras/airportHotelsFeature';
-import FacebookSignup from '../../components/common/facebookSignup';
+import FacebookSignup from '../../components/authentication/facebookSignup';
 
 export default class AirportHotels extends React.Component {
     componentDidMount() {

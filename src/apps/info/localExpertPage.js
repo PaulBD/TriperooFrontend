@@ -1,12 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router';
-import SocialButtons from "../../components/common/socialButtons";
+import SocialButtons from "../../components/content/static/socialButtons";
 
 export default class LocalExpertPage extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    document.title = 'Become a Local Expert';
+    document.title = 'Become a Local Expert! Earn money and respect from your travel recommendations.';
   }
   
   render(){
@@ -45,7 +45,6 @@ export default class LocalExpertPage extends React.Component {
                       <div className="thumb">
                           <a className="hover-img" href="/place/united-kingdom/london">
                               <img src="/static/img/locations/popular-destinations/london.png" alt="London" />
-                              <i className="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
                               <h5 className="hover-title hover-hold exampleTrip">
                                 Weekend Break to London<br />3 nights - 2 people
                                 <span className="price">£50.00</span>
@@ -57,7 +56,6 @@ export default class LocalExpertPage extends React.Component {
                       <div className="thumb">
                           <a className="hover-img" href="/place/middle-east/dubai">
                               <img src="/static/img/locations/popular-destinations/dubai.png" alt="Dubai" />
-                              <i className="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
                               <h5 className="hover-title hover-hold exampleTrip">
                                 Short Break to Dubai<br />5 nights - 2 people
                                 <span className="price">£120.00</span>
@@ -68,8 +66,7 @@ export default class LocalExpertPage extends React.Component {
                   <div className="col-md-6">
                       <div className="thumb">
                           <a className="hover-img" href="/united-states/new-york">
-                              <img src="/static/img/locations/popular-destinations/london.png" alt="Maldives" />
-                              <i className="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
+                              <img src="/static/img/locations/popular-destinations/maldives.png" alt="Maldives" />
                               <h5 className="hover-title hover-hold exampleTrip">
                                 Long Haul to Maldives<br />14 nights - 2 people
                                 <span className="price">£200.00</span>
@@ -80,13 +77,12 @@ export default class LocalExpertPage extends React.Component {
                   <div className="col-md-6">
                       <div className="thumb">
                           <a className="hover-img" href="/united-states/new-york">
-                              <img src="/static/img/locations/popular-destinations/london.png" alt="Paris" />
-                              <i className="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
+                              <img src="/static/img/locations/popular-destinations/paris.jpg" alt="Paris" />
                               <h5 className="hover-title hover-hold exampleTrip">
                                 Business Trip to Paris<br />2 nights - 1 person
                                 <span className="price">£20.00</span>
                               </h5>
-                          </a>>
+                          </a>
                       </div>
                   </div>
               </div>

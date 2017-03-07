@@ -1,6 +1,7 @@
-import CustomerApi from '../api/mockCustomerApi';
+import CustomerApi from '../api/authenticationApi';
 import {beginAjaxCall} from './ajaxStatusActions';
 import * as types from '../actionTypes/';
+var stringify = require('json-stable-stringify');
 
 // Login
 
@@ -59,7 +60,6 @@ export function logoutUser() {
 	return dispatch => {
 		dispatch(requestLogout());
 		localStorage.removeItem('id_token');
-		console.log('dispatch');
 		dispatch(receiveLogout());
 	}; 
 }
@@ -71,14 +71,14 @@ export function loginUser(creds) {
 		if ((creds.emailAddress.length > 0) && (creds.password.length > 0))
 		{
 			return CustomerApi.loginCustomer(creds.emailAddress, creds.password).then(token => {
-				localStorage.setItem('id_token', token);
+				localStorage.setItem('id_token', stringify(transformAuthentication(token)));
 				dispatch(receiveLogin(token));
 			}).catch(error => {
 				dispatch(loginError(error.response.data));
 			});
 		}
 		else {
-			dispatch(resetPasswordError("Please sepcify valid credentials"));
+			dispatch(loginError("Please specify valid credentials"));
 		}
 	};
 }
@@ -90,14 +90,14 @@ export function loginFacebookUser(creds) {
 		if ((creds.emailAddress.length > 0) && (creds.facebookId.length > 0))
 		{
 			return CustomerApi.loginFacebookCustomer(creds.emailAddress, creds.facebookId, creds.name, creds.imageUrl, creds.currentCityId).then(token => {
-				localStorage.setItem('id_token', token);
+				localStorage.setItem('id_token', stringify(transformAuthentication(token)));
 				dispatch(receiveLogin(token));
 			}).catch(error => {
 				dispatch(loginError(error.response.data));
 			});		
 		}
 		else {
-			dispatch(resetPasswordError("Please sepcify a valid email address"));
+			dispatch(registrationError("Please sepcify a valid email address"));
 		}
 	};
 }
@@ -109,14 +109,14 @@ export function registerUser(creds) {
 		if ((creds.firstName.length > 0) && (creds.lastName.length > 0) && (creds.currentCityId.length > 0) && (creds.emailAddress.length > 0) && (creds.password.length > 0))
     	{
 			return CustomerApi.registerCustomer(creds.emailAddress, creds.password, creds.firstName, creds.lastName, creds.currentCityId).then(token => {
-				localStorage.setItem('id_token', token);
+				localStorage.setItem('id_token', stringify(transformAuthentication(token)));
 				dispatch(receiveRegistration(token));
 			}).catch(error => {
 				dispatch(registrationError(error.response.data));
 			});
 		}
 		else {
-			dispatch(resetPasswordError("Please complete the registration form"));
+			dispatch(registrationError("Please complete the registration form"));
 		}
 	};
 }
@@ -137,4 +137,9 @@ export function resetPassword(creds) {
 			dispatch(resetPasswordError("Please sepcify a valid email address"));
 		}
 	};
+}
+
+export function transformAuthentication(response)
+{
+	return  { "token": response.token, "userName": response.userName, "userImage": response.userImage };
 }

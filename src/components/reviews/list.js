@@ -1,44 +1,67 @@
 import React, {PropTypes} from 'react';
-import StarRating from '../common/starRating';
-import TagList from '../common/tagList';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as reviewsActions from '../../actions/reviewsActions';
+import ReviewCard from './card';
 
-const ReviewList = ({reviews}) => {
-  
-  return (
+class Reviews extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+    this.state = { reviews: [] };
+  }
 
-    <div className="row row-wrap">
-      {
-        reviews.map(review => {
-        return (
-          <div className="col-md-4" key={review.id}>
-            <div className="card text-xs-left">
-              <img src={review.place.image} alt={review.place.name} />
+  componentWillMount() { 
+    this.props.actions.loadReviews(this.props.searchType, this.props.searchId, this.props.limit, this.props.offset);
+  }
 
-              <div className="card-block testimonial">
-                <h4 className="card-title">{review.place.name}</h4>
-                <h6 className="card-subtitle text-muted">{review.place.address}</h6>
-                
-                <div className="testimonial-author commentCardTestimonial">
-                    <img src={review.reviewer.profilePic} alt={review.reviewer.name} />
-                    <p className="testimonial-author-name"><a href={review.reviewer.profileUrl}>{review.reviewer.name}</a>'s review</p>
-                    <StarRating starRating={review.reviewer.starRating} className="icon-list list-inline-block mb0 last-minute-rating"/>
-                </div>
-                <p className="card-text">
-                    {review.reviewer.comment}
-                </p>
-                <TagList tags={review.place.tags} maxTags={5} />
-              </div>
-            </div> 
-          </div>
-          );
-        })
-      }
-    </div>
-  );
+    render(){
+    const {reviews} = this.props;
+
+    let title = null;
+
+    if (this.props.showTitle) {
+      title = (
+        <div>
+          <h3 className="mb20">Share The Knowledge</h3>
+          <p>Community is the heart of everything we do, share tips on where to go and what to do with other<br />like-minded people and help others discover amazing places, even earn commission whilst you do it!</p>
+        </div>
+      );
+    }
+
+    return (
+        <div>
+            {title}
+            <div className="gap gap-small"></div>
+            <ReviewCard reviews={reviews} maxTags={5} />
+        </div>    
+        );
+    }
+}
+
+Reviews.defaultProps = {
+  showTitle: true
 };
 
-ReviewList.propTypes = {
-  reviews: PropTypes.array.isRequired
+Reviews.propTypes = {
+  reviews: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired,
+  searchType: PropTypes.string.isRequired,
+  searchId: PropTypes.number.isRequired,
+  limit: PropTypes.number.isRequired,
+  offset: PropTypes.number.isRequired,
+  showTitle: PropTypes.bool
 };
 
-export default ReviewList;
+function mapStateToProps(state, ownProps) {
+  return {
+    reviews: state.reviews
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(reviewsActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Reviews);

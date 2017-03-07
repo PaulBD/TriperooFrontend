@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import customer from './customerReducer';
+import authentication from './authenticationReducer';
 import currency from './currencyReducer';
 import newsletter from './newsletterReducer';
 import searches from './searchReducer';
-import features from './featureReducer';
+import header from './headerReducer';
 import hotDeals from './hotDealReducer';
 import specialDeals from './specialDealReducer';
 import trendingDeals from './trendingDealReducer';
@@ -12,18 +12,20 @@ import attractionDeals from './attractionDealReducer';
 import hotelDeals from './hotelDealReducer';
 import lastMinute from './lastMinuteReducer';
 import questions from './questionReducer';
-import reviews from './reviewReducer';
+import reviews from './reviewsReducer';
+import review from './reviewReducer';
 import area from './areaReducer';
 import places from './placeListReducer';
 import place from './placeReducer';
+import destinations from './topDestinationsReducer';
 import {routerReducer} from 'react-router-redux';
 
 const rootReducer = combineReducers({
-  customer,
+  authentication,
   currency,
   newsletter,
   searches,
-  features,
+  header,
   hotDeals,
   specialDeals,
   trendingDeals,
@@ -33,9 +35,11 @@ const rootReducer = combineReducers({
   lastMinute,
   questions,
   reviews,
+  review,
   area,
   places,
   place,
+  destinations,
   routing: routerReducer
 });
 

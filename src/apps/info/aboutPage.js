@@ -1,17 +1,17 @@
 import React from 'react';
 import {Link} from 'react-router';
-import SocialButtons from "../../components/common/socialButtons";
-import FeatureLocations from '../../components/locations/featureLocationssml';
-import FacebookSignup from '../../components/common/facebookSignup';
-import BulletPoints from '../../components/common/bulletPoints';
-import TrustedPartners from '../../components/common/trustedPartners';
+import SocialButtons from "../../components/content/static/socialButtons";
+import TopDestinations from '../../components/content/dynamic/topDestinations';
+import FacebookSignup from '../../components/authentication/facebookSignup';
+import BulletPoints from '../../components/content/static/bulletPoints';
+import TrustedPartners from '../../components/content/static/trustedPartners';
 
 // Since this component is simple and static, there's no parent container for it.
 export default class AboutPage extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    document.title = 'About';
+    document.title = 'About Triperoo';
   }
   
   render(){
@@ -34,7 +34,7 @@ export default class AboutPage extends React.Component {
       <div className="container">
         <div className="row row-wrap">
             <div className="gap gap-small"></div>
-            <div className="col-md-7">
+            <div className="col-md-6">
               <h2 className="title">Triperoo's mission is to help people explore, plan and book vacation's.</h2>
               <p>We want to distrupt the travel space by helping our customers explore the world 
               and using that knowledge to earn money by recommending other users on where to visit.</p>
@@ -46,8 +46,8 @@ export default class AboutPage extends React.Component {
               out of your trip.</p>
               <p><SocialButtons /></p>
             </div>
-            <div className="col-md-5">
-              <FeatureLocations />
+            <div className="col-md-6">
+              <TopDestinations destinationCount={9}  />
             </div>
           </div>
         </div>

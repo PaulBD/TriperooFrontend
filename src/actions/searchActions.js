@@ -1,4 +1,4 @@
-import SearchApi from '../api/mockSearchApi';
+import SearchApi from '../api/searchApi';
 import {beginAjaxCall} from './ajaxStatusActions';
 import * as types from '../actionTypes/';
 

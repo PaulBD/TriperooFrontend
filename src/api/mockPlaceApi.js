@@ -1,6 +1,6 @@
 import delay from './delay';
 
-import hotel from './json/hotel.json'; 
+import hotel from './json/mock/hotel.json'; 
 
 class PlaceApi {
 	static getPlace(id, type) {

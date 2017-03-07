@@ -1,4 +1,4 @@
-import DealApi from '../api/mockDealApi';
+import DealApi from '../api/legacy/mockDealApi';
 import {beginAjaxCall} from './ajaxStatusActions';
 import * as types from '../actionTypes/';
 

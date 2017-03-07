@@ -1,9 +1,10 @@
 import axios from 'axios';
+import baseUrl from './baseApi';
 
-class CustomerApi {
+class AuthenticationApi {
   static loginCustomer(emailAddress, password) {
     return new Promise((resolve, reject) => {
-      axios.post('http://localhost/api/v1/authorize', {
+      axios.post(baseUrl + '/authorize', {
           emailAddress,
           password
       })
@@ -18,7 +19,7 @@ class CustomerApi {
 
   static loginFacebookCustomer(emailAddress, facebookId, name, ImageUrl, currentCity) {
     return new Promise((resolve, reject) => {
-      axios.post('http://localhost/api/v1/authorize/facebook', {
+      axios.post(baseUrl + '/authorize/facebook', {
           emailAddress,
           facebookId,
           name,
@@ -36,7 +37,7 @@ class CustomerApi {
 
   static registerCustomer(emailAddress, password, firstName, lastName, currentCity) {
     return new Promise((resolve, reject) => {
-      axios.post('http://localhost/api/v1/register', {
+      axios.post(baseUrl + '/register', {
           emailAddress,
           password,
           firstName,
@@ -55,7 +56,7 @@ class CustomerApi {
 
   static resetPassword(emailAddress) {
     return new Promise((resolve, reject) => {
-      axios.post('http://localhost/api/v1/reset-password', {
+      axios.post(baseUrl + '/reset-password', {
           emailAddress
       })
       .then(response => {
@@ -68,4 +69,4 @@ class CustomerApi {
   }
 }
 
-export default CustomerApi;
+export default AuthenticationApi;

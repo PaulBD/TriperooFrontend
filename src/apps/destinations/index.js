@@ -1,19 +1,19 @@
 import React from 'react';
-import {Link} from 'react-router';
-import FeatureLocations from '../../components/locations/featureLocations';
-import FacebookSignup from '../../components/common/facebookSignup';
-import WorldCities from '../../components/common/worldCities';
-import Feature from '../../components/common/feature';
+import TopDestinations from '../../components/content/dynamic/topDestinations';
+import FeaturedHeader from '../../components/content/dynamic/featuredHeader';
+import WorldCities from '../../components/content/static/worldCities';
+import FacebookSignup from '../../components/authentication/facebookSignup';
 
 export default class DestinationHome extends React.Component {
     componentDidMount() {
       window.scrollTo(0, 0);
+      document.title = 'Explore the world! Pick a destination and start exploring';
     }
     
     render(){
       return (
     <div>
-        <Feature featureType="destination" />
+        <FeaturedHeader headerType="destination" />
         <div className="container">
           <div className="search-tabs search-tabs-bg search-tabs-to-top"> 
             <div className="tab-content">
@@ -44,7 +44,7 @@ export default class DestinationHome extends React.Component {
              <hr />
             <div className="gap gap-small"></div>
             <div className="container text-xs-center">
-              <FeatureLocations />
+              <TopDestinations destinationCount={3} title="Our Top Destinations" />
             </div>
             <div className="container">
                 <div className="gap gap-small"></div>

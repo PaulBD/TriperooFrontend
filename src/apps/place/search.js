@@ -8,7 +8,7 @@ import PlaceSubHeader from '../../components/places/common/subHeader';
 import Loader from '../../components/common/loadingDots';
 import SearchList from '../../components/places/searchList';
 
-import FacebookSignup from '../../components/common/facebookSignup';
+import FacebookSignup from '../../components/authentication/facebookSignup';
 import HotelSearch from '../../components/hotels/searchForm';
 import Map from '../../components/places/map/mapWrapper';
 import Sort from '../../components/places/sortPlaces';

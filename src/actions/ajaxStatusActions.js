@@ -5,6 +5,6 @@ export function beginAjaxCall() {
 }
 
 export function ajaxCallError() {
-  return {type: types.AJAX_CALL_ERROR};
+  return {type: types.AJAX_CALL_ERROR}; 
 }
 

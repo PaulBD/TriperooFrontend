@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import { Link } from "react-router";
 import Newsletter from "./newsletter";
-import SocialButtons from "./socialButtons";
+import SocialButtons from "../content/static/socialButtons";
 
 class Footer extends React.Component {
    constructor(props, context) {

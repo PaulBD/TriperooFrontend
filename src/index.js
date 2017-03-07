@@ -5,9 +5,9 @@ import { Router, browserHistory } from 'react-router';
 import routes from './routes';
 import configureStore from './store';
 import { syncHistoryWithStore } from 'react-router-redux';
-import {loadHotDeals} from './actions/hotDealActions';
-import {loadTrendingDeals} from './actions/trendingDealActions';
-import {loadSpecialDeals} from './actions/specialDealActions';
+import {loadHotDeals} from './actions/legacy/hotDealActions';
+import {loadTrendingDeals} from './actions/legacy/trendingDealActions';
+import {loadSpecialDeals} from './actions/legacy/specialDealActions'; 
 
 const store = configureStore();
 store.dispatch(loadHotDeals());

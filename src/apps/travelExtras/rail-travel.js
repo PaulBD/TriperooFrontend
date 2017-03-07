@@ -1,6 +1,6 @@
 import React from 'react';
 import RailTravelFeature from '../../components/travelExtras/railTravelFeature';
-import FacebookSignup from '../../components/common/facebookSignup';
+import FacebookSignup from '../../components/authentication/facebookSignup';
 
 export default class RailTravel extends React.Component {
     componentDidMount() {

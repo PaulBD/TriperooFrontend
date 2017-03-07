@@ -11,7 +11,7 @@ class LoadingDots extends React.Component {
       display: 'none'
     };
 
-    if (this.props.showLoader == 1)
+    if (this.props.showLoader)
     {
       style.display = 'block';
     }
@@ -33,7 +33,7 @@ LoadingDots.defaultProps = {
 };
 
 LoadingDots.propTypes = {
-  showLoader: PropTypes.number
+  showLoader: PropTypes.bool
 };
 
 export default LoadingDots;

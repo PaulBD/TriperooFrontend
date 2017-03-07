@@ -2,6 +2,7 @@
 body { margin: 0; }
 
 .error { color: red;}
+.error.orange { color: #ed8323;}
 
 .notFoundBg { background-image:url(/static/img/1300x900.png); }
 
@@ -38,7 +39,7 @@ select.searchSelect:not([size]):not([multiple]) {
 
 .card-block .commentStar { padding: 10px 0; }
 
-.tagCollection .tag { margin-right: 5px; padding: 4px; background-color: #efefef; color: #333; font-weight:normal; }
+.tagCollection .tag { margin: 0px 5px 4px 0px; padding: 4px 7px; font-size: 12px; background-color: #efefef; color: #333; font-weight:normal; }
 
 .commentCardTestimonial { margin: 20px 0; }
 
@@ -304,4 +305,99 @@ optgroup,option { margin-left:0px;text-align:left;}
 .my-facebook-button-class:hover { cursor: pointer;  }
 
 .headerList .fa { margin-right: 8px; }
-.headerList { width:160px; }
+.headerList { width:160px; left:30px !important; }
+
+#reviewModel .form-group .input-icon { top: 0px ;}
+
+.react-rater {
+  font-size: 22px; }
+.react-rater a {
+    cursor: pointer;
+    color: #ccc; }
+.react-rater a.will-be-active {
+      color: #ffdd99; }
+.react-rater a.is-active {
+      color: #fc6; }
+.react-rater a.is-active-half:before {
+      color: #fc6;}
+.react-rater a.is-disabled {
+      cursor: default; }
+
+
+      div.ReactTags__tagInput {
+  width: 200px;
+  border-radius: 2px;
+  display: inline-block;
+}
+div.ReactTags__tagInput input, 
+div.ReactTags__tagInput input:focus {
+  margin: 0;
+  font-size: 12px;
+  width: 100%;
+  border: 1px solid #eee;
+  padding: 8px 10px ;
+  display: block;
+}
+
+/* Styles for selected tags */
+div.ReactTags__selected span.ReactTags__tag {
+  border: 1px solid #ddd;
+  background: #eee;
+  font-size: 11px;
+  display: inline-block;
+  padding: 3px 6px;
+  margin: 0 5px;
+  cursor: move;
+  border-radius: 2px;
+}
+div.ReactTags__selected a.ReactTags__remove {
+  color: #aaa;
+  margin-left: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Styles for suggestions */
+div.ReactTags__suggestions {
+  position: absolute;
+}
+div.ReactTags__suggestions ul {
+  list-style-type: none;
+  box-shadow: .05em .01em .5em rgba(0,0,0,.2);
+  background: white;
+  width: 220px;
+  padding: 0;
+  margin: 0;
+}
+div.ReactTags__suggestions li {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 5px;
+  margin: 0;
+}
+div.ReactTags__suggestions li mark {
+  text-decoration: underline;
+  background: none;
+  font-weight: 600;
+}
+div.ReactTags__suggestions ul li.active {
+  background: #b7cfe0;
+  cursor: pointer;
+}
+
+.tagCollection .tag:hover {
+  background-color: #666666 !important;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.tagCollection .tag.selected {
+  background-color: #ef8f39 !important;
+  color: #ffffff;
+}
+
+.orange { color: #ef8f39; }
+.starRating { margin-right:5px; }
+
+.featureLocation { margin-bottom: 30px; }
+
+.profileImg { width:30px !important; margin-right:10px; }
