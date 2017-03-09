@@ -21,7 +21,7 @@ class TagList extends React.Component {
     let newTag = e.target.getAttribute('data-name');
 
     for (let i = 0; i < selectedTags.length; i++) {
-      if (selectedTags[i].text == newTag)
+      if (selectedTags[i] == newTag)
       {
         isAlreadyInList = true;
         selectedTags.splice(i, 1);
@@ -30,7 +30,8 @@ class TagList extends React.Component {
 
     if (!isAlreadyInList)
     {
-      selectedTags.push({id: selectedTags.length + 1, text: newTag });
+      //selectedTags.push({id: selectedTags.length + 1, text: newTag });
+      selectedTags.push(newTag);
     }
     
     this.setState({selectedTags: selectedTags});
@@ -40,7 +41,7 @@ class TagList extends React.Component {
 
   getIndex(value, arr) {
     for(let i = 0; i < arr.length; i++) {
-        if(arr[i].text === value) {
+        if(arr[i] === value) {
             return i;
         }
     }
@@ -72,7 +73,8 @@ class TagList extends React.Component {
 
 TagList.defaultProps = {
   readOnly: true,
-  selectedTags: []
+  selectedTags: [],
+  tags:[]
 };
 
 TagList.propTypes = {

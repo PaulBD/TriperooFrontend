@@ -10,32 +10,32 @@ class Reviews extends React.Component {
     this.state = { reviews: [] };
   }
 
-  componentWillMount() { 
+  componentWillMount() {
     this.props.actions.loadReviews(this.props.searchType, this.props.limit, this.props.offset);
   }
 
-    render(){
-    const {reviews} = this.props;
+  render(){
+  const {reviews} = this.props;
 
-    let title = null;
+  let title = null;
 
-    if (this.props.showTitle) {
-      title = (
-        <div>
-          <h3 className="mb20">Share The Knowledge</h3>
-          <p>Community is the heart of everything we do, share tips on where to go and what to do with other<br />like-minded people and help others discover amazing places, even earn commission whilst you do it!</p>
-        </div>
+  if (this.props.showTitle) {
+    title = (
+      <div>
+        <h3 className="mb20">Share The Knowledge</h3>
+        <p>Community is the heart of everything we do, share tips on where to go and what to do with other<br />like-minded people and help others discover amazing places, even earn commission whilst you do it!</p>
+      </div>
+    );
+  }
+
+  return (
+      <div>
+          {title}
+          <div className="gap gap-small"></div>
+          <ReviewCard reviews={reviews} maxTags={5} />
+      </div>    
       );
-    }
-
-    return (
-        <div>
-            {title}
-            <div className="gap gap-small"></div>
-            <ReviewCard reviews={reviews} maxTags={5} />
-        </div>    
-        );
-    }
+  }
 }
 
 Reviews.defaultProps = {

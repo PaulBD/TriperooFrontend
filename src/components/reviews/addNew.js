@@ -61,7 +61,7 @@ class ReviewPopup extends React.Component {
     let event = new MouseEvent('click', { 'view': window, 'bubbles': true, 'cancelable': false });
     let node = document.getElementById('closeReview');
 
-    const review = { "PlaceReference": this.state.searchId, "PlaceType": this.state.searchType, "StarRating": this.state.rating, "comment": this.refs.comment.value.trim(), "tags": this.state.selectedTags };
+    const review = { "reference": this.state.searchId, "PlaceType": this.state.searchType, "StarRating": this.state.rating, "comment": this.refs.comment.value.trim(), "tags": this.state.selectedTags };
     this.props.actions.postReview(review, this, event, node);
 }
 

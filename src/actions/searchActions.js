@@ -18,11 +18,9 @@ export function loadSearches(value, searchType) {
 	return dispatch => {
 		dispatch(beginAjaxCall());
 		return SearchApi.getSearch(value, searchType).then(searches => {
-			console.log(searches);
 			dispatch(loadSearchesSuccess(searches));
 		}).catch(error => {
-			console.log(error);
-				dispatch(searchError(error));
+			dispatch(searchError(error));
 		});
 	};
 }
