@@ -10,46 +10,46 @@ export default class WorldCities extends React.Component {
       <div className="col-md-4 left">
         <h4>Afica</h4>
         <ul>
-          <li><a href="/place/africa/cape-town">Cape Town</a></li>
-          <li><a href="/place/africa/cairo">Cairo</a></li>
-          <li><a href="/place/africa/casablanca">Casablanca</a></li>
+          <li><a href="/place/9053507/africa/capetown">Cape Town</a></li>
+          <li><a href="/place/683374/africa/cairo">Cairo</a></li>
+          <li><a href="/place/4712065/africa/casablanc">Casablanca</a></li>
           <li><a href="/place/africa/fes">Fes</a></li>
-          <li><a href="/place/africa/johannesburg">Johannesburg</a></li>
+          <li><a href="/place/9064394/africa/johannesburg">Johannesburg</a></li>
           <li><a href="/place/africa/luxor">Luxor</a></li>
-          <li><a href="/place/africa/marrakech">Marrakech</a></li>
-          <li><a href="/place/africa/nairobi">Nairobi</a></li>
-          <li><a href="/place/africa/sharm-el-sheikh">Sharm El Sheikh</a></li>
-          <li><a href="/place/africa/tunis">Tunis</a></li>
+          <li><a href="/place/1719221/africa/marrakech">Marrakech</a></li>
+          <li><a href="/place/1543704/africa/nairobi">Nairobi</a></li>
+          <li><a href="/place/6878936/africa/sharmelsheikh">Sharm El Sheikh</a></li>
+          <li><a href="/place/8795693/africa/tunis">Tunis</a></li>
         </ul>
 
         <div className="gap gap-small"></div>
         <h4>Asia</h4>
         <ul>
-          <li><a href="/place/asia/bangkok">Bangkok</a></li>
-          <li><a href="/place/asia/beijing">Beijing</a></li>
+          <li><a href="/place/2638367/asia/bangkok">Bangkok</a></li>
+          <li><a href="/place/392959/asia/beijing">Beijing</a></li>
           <li><a href="/place/asia/hong-kong">Hong Kong</a></li>
-          <li><a href="/place/asia/jakarta">Jakarta</a></li>
-          <li><a href="/place/asia/kuala-lumpur">Kuala Lumpur</a></li>
+          <li><a href="/place/7259038/asia/jakarta">Jakarta</a></li>
+          <li><a href="/place/4952761/asia/kualalumpur">Kuala Lumpur</a></li>
           <li><a href="/place/asia/seoul">Seoul</a></li>
           <li><a href="/place/asia/singapore">Singapore</a></li>
-          <li><a href="/place/asia/shanghai">Shanghai</a></li>
+          <li><a href="/place/569258/asia/shanghai">Shanghai</a></li>
           <li><a href="/place/asia/taipei">Taipei</a></li>
-          <li><a href="/place/asia/tokyo">Tokyo</a></li>
+          <li><a href="/place/1546429/asia/tokyo">Tokyo</a></li>
         </ul>
 
         <div className="gap gap-small"></div>
         <h4>Australia & Pacific Islands</h4>
         <ul>
-          <li><a href="/place/australia-pacific-islands/adelaide">Adelaide</a></li>
-          <li><a href="/place/australia-pacific-islands/auckland">Auckland</a></li>
-          <li><a href="/place/australia-pacific-islands/bisbane">Brisbane</a></li>
-          <li><a href="/place/australia-pacific-islands/christchurch">Christchurch</a></li>
-          <li><a href="/place/australia-pacific-islands/melbourne">Melbourne</a></li>
-          <li><a href="/place/australia-pacific-islands/perth">Perth</a></li>
-          <li><a href="/place/australia-pacific-islands/queenstown">Queenstown</a></li>
+          <li><a href="/place/6248547/australia-pacific-islands/adelaide">Adelaide</a></li>
+          <li><a href="/place/8081963/australia-pacific-islands/auckland">Auckland</a></li>
+          <li><a href="/place/184680/australia-pacific-islands/bisbane">Brisbane</a></li>
+          <li><a href="/place/8082124/australia-pacific-islands/christchurch">Christchurch</a></li>
+          <li><a href="/place/6258578/australia-pacific-islands/melbourne">Melbourne</a></li>
+          <li><a href="/place/170019/australia-pacific-islands/perth">Perth</a></li>
+          <li><a href="/place/2000996/australia-pacific-islands/queenstown">Queenstown</a></li>
           <li><a href="/place/australia-pacific-islands/rotorua">Rotorua</a></li>
-          <li><a href="/place/australia-pacific-islands/sydney">Sydney</a></li>
-          <li><a href="/place/australia-pacific-islands/wellington">Wellington</a></li>
+          <li><a href="/place/6140468/australia-pacific-islands/sydney">Sydney</a></li>
+          <li><a href="/place/8064780/australia-pacific-islands/wellington">Wellington</a></li>
         </ul>
         <div className="gap gap-small"></div>
         <h4>Canada</h4>
@@ -97,16 +97,17 @@ export default class WorldCities extends React.Component {
         <div className="gap gap-small"></div>
          <h4>Europe</h4>
         <ul>
-          <li><a href="/place/europe/amsterdam">Amsterdam</a></li>
-          <li><a href="/place/europe/barcelona">Barcelona</a></li>
-          <li><a href="/place/europe/berlin">Berlin</a></li>
-          <li><a href="/place/europe/istanbul">Istanbul</a></li>
+          <li><a href="/place/1999401/europe/amsterdam">Amsterdam</a></li>
+          <li><a href="/place/3858073/europe/barcelona">Barcelona</a></li>
+          <li><a href="/place/759111/europe/berlin">Berlin</a></li>
+          <li><a href="/place/7341448/europe/dublin">Dublin</a></li>
+          <li><a href="/place/2754576/europe/istanbul">Istanbul</a></li>
           <li><a href="/place/europe/london">London</a></li>
-          <li><a href="/place/europe/madrid">Madrid</a></li>
-          <li><a href="/place/europe/paris">Paris</a></li>
-          <li><a href="/place/europe/prague">Prague</a></li>
-          <li><a href="/place/europe/rome">Rome</a></li>
-          <li><a href="/place/europe/venice">Venice</a></li>
+          <li><a href="/place/774948/europe/madrid">Madrid</a></li>
+          <li><a href="/place/957085/europe/paris">Paris</a></li>
+          <li><a href="/place/685233/europe/prague">Prague</a></li>
+          <li><a href="/place/1500776/europe/rome">Rome</a></li>
+          <li><a href="/place/7535297/europe/venice">Venice</a></li>
         </ul>
 
         <div className="gap gap-small"></div>
@@ -119,7 +120,7 @@ export default class WorldCities extends React.Component {
           <li><a href="/place/north-america/houston">Houston</a></li>
           <li><a href="/place/north-america/miami">Miami</a></li>
           <li><a href="/place/north-america/los-angeles">Los Angeles</a></li>
-          <li><a href="/place/north-america/los-vegas">Los Vegas</a></li>
+          <li><a href="/place/north-america/las-vegas">Las Vegas</a></li>
           <li><a href="/place/north-america/new-york">New York</a></li>
           <li><a href="/place/north-america/new-orleans">New Orleans</a></li>
           <li><a href="/place/north-america/orlando">Orlando</a></li>
@@ -158,30 +159,30 @@ export default class WorldCities extends React.Component {
         <div className="gap gap-small"></div>
         <h4>Middle East</h4>
         <ul>
-          <li><a href="/place/middle-east/dubai">Dubai</a></li>
-          <li><a href="/place/middle-east/tel-aviv">Tel Aviv</a></li>
-          <li><a href="/place/middle-east/jerusalem">Jerusalem</a></li>
+          <li><a href="/place/6070029/middle-east/dubai">Dubai</a></li>
+          <li><a href="/place/1311384/middle-east/tel-aviv">Tel Aviv</a></li>
+          <li><a href="/place/1288158/middle-east/jerusalem">Jerusalem</a></li>
           <li><a href="/place/middle-east/tehran">Tehran</a></li>
-          <li><a href="/place/middle-east/abu-dhabi">Abu Dhabi</a></li>
-          <li><a href="/place/middle-east/doha">Doha</a></li>
-          <li><a href="/place/middle-east/beirut">Beirut</a></li>
-          <li><a href="/place/middle-east/riyad">Riyadh</a></li>
-          <li><a href="/place/middle-east/manama">Manama</a></li>
+          <li><a href="/place/6069880/middle-east/abu-dhabi">Abu Dhabi</a></li>
+          <li><a href="/place/8361934/middle-east/doha">Doha</a></li>
+          <li><a href="/place/7692376/middle-east/beirut">Beirut</a></li>
+          <li><a href="/place/5584473/middle-east/riyad">Riyadh</a></li>
+          <li><a href="/place/6275313/middle-east/manama">Manama</a></li>
           <li><a href="/place/middle-east/amman">Amman</a></li>
         </ul>
         <div className="gap gap-small"></div>
         <h4>South America</h4>
         <ul>
-          <li><a href="/place/south-america/buenos-aires">Buenos Aires</a></li>
+          <li><a href="/place/156767/south-america/buenos-aires">Buenos Aires</a></li>
           <li><a href="/place/south-america/rio">Rio</a></li>
           <li><a href="/place/south-america/sao-paulo">São Paulo</a></li>
-          <li><a href="/place/south-america/lima">Lima</a></li>
-          <li><a href="/place/south-america/santiago">Santiago</a></li>
+          <li><a href="/place/8092305/south-america/lima">Lima</a></li>
+          <li><a href="/place/408765/south-america/santiago">Santiago</a></li>
           <li><a href="/place/south-america/porto-alegre">Porto Alegre</a></li>
-          <li><a href="/place/south-america/cusco">Cusco</a></li>
-          <li><a href="/place/south-america/bogota">Bogota</a></li>
-          <li><a href="/place/south-america/cartagena">Cartagena</a></li>
-          <li><a href="/place/south-america/quito">Quito</a></li>
+          <li><a href="/place/8069092/south-america/cusco">Cusco</a></li>
+          <li><a href="/place/6471639/south-america/bogota">Bogota</a></li>
+          <li><a href="/place/6646656/south-america/cartagena">Cartagena</a></li>
+          <li><a href="/place/707572/south-america/quito">Quito</a></li>
         </ul>
       </div>
     </div>

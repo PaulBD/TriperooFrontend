@@ -6,6 +6,8 @@ export default function searchReducer(state = initialState.searches, action) {
 			return action.searches;
 		case 'CLEAR_SEARCHES':
 			return action.searches;
+		case 'SEARCH_ERROR':
+			return action.searches;
 		default:
 			return state;
 	}

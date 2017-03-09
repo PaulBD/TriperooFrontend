@@ -6,6 +6,7 @@ class SearchApi {
     return new Promise((resolve, reject) => {
       axios.get(baseUrl + '/locations/search?q=' + value + '&type=' + searchType)
         .then(function (response) {
+          console.log(response);
           resolve(Object.assign([], response.data.triperooCommon.places));
         })
         .catch(function (error) {

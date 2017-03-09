@@ -15,7 +15,7 @@ export function reviewError(message) {
 	return {type: types.POST_REVIEW_FAILURE, isSending: false, hasPosted: false, message};
 }
 
-export function postReview(review) {
+export function postReview(review, state, event, node) {
 
 	return dispatch => {
 		dispatch(receiveReview(review));
@@ -24,6 +24,12 @@ export function postReview(review) {
     	{
 			return ReviewApi.postReview(review).then(review => {
 				dispatch(reviewSuccess());
+				state.setState({ wizardStep: 1, searchName: '', searchId: '', errors:'', searchType: '', selectedTags: [], rating: 0, comment: '' });    
+
+				if (event != null && node != null)
+				{
+					node.dispatchEvent(event); 
+				}
 			}).catch(error => {
 				dispatch(reviewError(error.response.data));
 			});

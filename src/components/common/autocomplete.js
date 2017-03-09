@@ -10,12 +10,9 @@ class AutoComplete extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.handleClick = this.handleClick.bind(this);
-    this.state = { cssStyle: 'none', searches: this.props.searches, isLoading: true };
+    this.state = { cssStyle: 'none', searches: this.props.searches, isLoading: true, searchValue: this.props.searchValue };
+    
     this.onSearchValue = this.onSearchValue.bind(this);
-  }
-
-  componentDidMount() {
-    this.setState({ selected: false, style: 'none', searchValue: this.props.searchValue, isOpen: false });
   }
 
   handleClick(e) {
@@ -24,21 +21,30 @@ class AutoComplete extends React.Component {
     this.props.changeUrl(e.target.getAttribute('data-url'));
     this.props.changeId(e.target.getAttribute('data-id'));
     this.props.changeType(e.target.getAttribute('data-type'));
-    this.setState({ selected: true, style: 'none', searchValue: e.target.text.trim() });
+
+    if (this.props.isAppSearch)
+    {
+      this.setState({ selected: true, style: 'none', searchValue: e.target.text.trim() });
+    }
+    else {
+      this.setState({ selected: true, style: 'none', searchValue: '' });
+    }
   }
 
   onSearchValue(event) {
     event.preventDefault();
 
+
+    this.setState({ searchValue: event.target.value });
+
     if (event.target.value.length > 2) {
         this.setState({ isLoading: true });
         this.props.actions.loadSearches(event.target.value, this.props.searchType);
-        this.setState({ selected: false, style: 'block', searchValue: event.target.value,  isOpen: true, isLoading: false });
+        this.setState({ selected: false, style: 'block', isOpen: true, isLoading: false });
     }
     else {
-        this.setState({ selected: false, style: 'none', searchValue: event.target.value, isOpen: false, isLoading: false });
+        this.setState({ selected: false, style: 'none', isOpen: false, isLoading: false });
     }
-    
   }
 
   render() {
@@ -97,7 +103,8 @@ class AutoComplete extends React.Component {
 }
 
 AutoComplete.defaultProps = {
-  searchValue: ''
+  searchValue: '',
+  isAppSearch: true
 };
 
 AutoComplete.propTypes = {
@@ -110,7 +117,8 @@ AutoComplete.propTypes = {
   searchType: PropTypes.string,
   cssClass: PropTypes.string,
   placeholder: PropTypes.string,
-  searchValue: PropTypes.string
+  searchValue: PropTypes.string,
+  isAppSearch: PropTypes.bool
 };
 
 function mapStateToProps(state, ownProps) {

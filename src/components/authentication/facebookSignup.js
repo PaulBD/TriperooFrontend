@@ -19,26 +19,34 @@ class FacebookSignup extends React.Component {
     }
 
     render(){
-    return (
-        <div className="row">
-            <div className={this.state.errors.length > 0 ? 'col-md-12' : 'col-md-12 hide'}>
-                <div className="bg-danger form-danger">
-                {this.state.errors}
-                </div>
-            </div>
-            <div className={this.props.errorMessage != undefined && this.props.errorMessage.length > 0 ? 'col-md-12' : 'col-md-12 hide'}>
-                <div className="bg-danger form-danger">
-                {this.props.errorMessage}
-                </div>
-            </div>
-            <div className="col-md-6 text-xs-right">
-                <h5 className="signupText">Join Now to get started</h5>
-            </div>
-            <div className="col-md-6 text-xs-left">
-                <FacebookLogin appId="347205502054817" autoLoad={false} fields="name,email,picture"  cssClass="my-facebook-button-class" textButton="" callback={this.submitFacebookForm} />
-            </div>
-        </div>  
-        );
+
+    if (!this.props.isAuthenticated) {
+      return (
+        <div>
+          <div className="row">
+              <div className={this.state.errors.length > 0 ? 'col-md-12' : 'col-md-12 hide'}>
+                  <div className="bg-danger form-danger">
+                  {this.state.errors}
+                  </div>
+              </div>
+              <div className={this.props.errorMessage != undefined && this.props.errorMessage.length > 0 ? 'col-md-12' : 'col-md-12 hide'}>
+                  <div className="bg-danger form-danger">
+                  {this.props.errorMessage}
+                  </div>
+              </div>
+              <div className="col-md-6 text-xs-right">
+                  <h5 className="signupText">Join Now to get started</h5>
+              </div>
+              <div className="col-md-6 text-xs-left">
+                  <FacebookLogin appId="347205502054817" autoLoad={false} fields="name,email,picture"  cssClass="my-facebook-button-class" textButton="" callback={this.submitFacebookForm} />
+              </div>
+          </div> 
+          <div className="gap"></div>
+          <hr /> 
+        </div>
+      );
+  }
+  else { return null; }
     }
 }
 

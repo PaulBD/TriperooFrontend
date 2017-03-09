@@ -11,7 +11,7 @@ class Reviews extends React.Component {
   }
 
   componentWillMount() { 
-    this.props.actions.loadReviews(this.props.searchType, this.props.searchId, this.props.limit, this.props.offset);
+    this.props.actions.loadReviews(this.props.searchType, this.props.limit, this.props.offset);
   }
 
     render(){

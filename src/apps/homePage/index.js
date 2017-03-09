@@ -25,7 +25,6 @@ const HomePage = () => {
                 </div>
                 <div className="gap gap-small"></div>
                 <div className="row row-wrap text-xs-center">
-                    <ReviewList searchType='' searchId={0} limit={3} offset={0} showTitle={true} />
                 </div>
                 <LocalExpert />
                 <div className="gap"></div>
@@ -38,8 +37,6 @@ const HomePage = () => {
                 <hr />
                 <div className="gap"></div>
                 <FacebookSignup />
-                <div className="gap"></div>
-                <hr />
                 <TrustedPartners />
                 <div className="gap"></div>
             </div>

@@ -114,8 +114,7 @@ class Header extends React.Component {
                       <img src="/static/img/logo-invert-v3.png" alt="Triperoo - Explore the world" />
                     </Link>
                   </div>
-                  <div className="col-md-2 col-md-offset-2">&nbsp;</div>
-                  <div className="col-md-7">
+                  <div className="col-md-9">
                       <div className="top-user-area clearfix">
                        {menu}
                       </div>

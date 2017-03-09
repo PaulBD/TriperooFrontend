@@ -15,12 +15,17 @@ class ReviewPopup extends React.Component {
     this.handleSearchUrlClick = this.handleSearchUrlClick.bind(this);
     this.handleSearchTypeChange = this.handleSearchTypeChange.bind(this);
     this.undoReviewSelection = this.undoReviewSelection.bind(this);
+    this.handleCommentChange = this.handleCommentChange.bind(this);
 
     this.addTags = this.addTags.bind(this);
     this.onRate = this.onRate.bind(this);
     this.submitReview = this.submitReview.bind(this);
    
     this.state = { searchName: '', searchId: '', searchType: '', errors:'', comment: '', tags:["Adventure","Arty","Backpackers","Budget","Business","Family","Foodies","Eco","History","Local Culture","Luxury","Nightlife","Outdoor","Solo","Spiritual","Students","Trendsters","Vegetarian","Wellness" ], selectedTags:[], rating: 0, wizardStep: 1 };
+  }
+
+  handleCommentChange(e) {
+    this.setState({ comment: e.target.value });
   }
 
   handleSearchNameChange(value) {
@@ -53,22 +58,14 @@ class ReviewPopup extends React.Component {
   submitReview(e) {
     e.preventDefault();
     
+    let event = new MouseEvent('click', { 'view': window, 'bubbles': true, 'cancelable': false });
+    let node = document.getElementById('closeReview');
+
     const review = { "PlaceReference": this.state.searchId, "PlaceType": this.state.searchType, "StarRating": this.state.rating, "comment": this.refs.comment.value.trim(), "tags": this.state.selectedTags };
-    this.props.actions.postReview(review);
-    this.setState({ wizardStep: 1 });
+    this.props.actions.postReview(review, this, event, node);
 }
 
-  render(){
-
-  if (this.state.searchId.length > 0 && this.props.hasPosted) {
-      let event = new MouseEvent('click', { 'view': window, 'bubbles': true, 'cancelable': false });
-      let node = document.getElementById('closeReview');
-
-      if (event != null && node != null)
-      {
-        node.dispatchEvent(event);     
-      }
-    }
+  render(){    
     return (
           <div className="modal fade" id="reviewModel" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div className="modal-dialog modelReviewAuthentication" role="document">
@@ -77,12 +74,11 @@ class ReviewPopup extends React.Component {
                   <div className="row">
                     <div className="col-md-12">
                       <h3>Find a place to review</h3>
-                      <p>{this.state.searchName}</p>
                       <p>Search for a place you'd like to review. (e.g London Eye, W Hotel, Barcelona)</p>
                     </div>
                     <div className="col-md-12">
                         <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-map-marker input-icon input-icon-hightlight"></i>
-                           <AutoComplete changeId={this.handleSearchIdChange} changeValue={this.handleSearchNameChange} changeType={this.handleSearchTypeChange} changeUrl={this.handleSearchUrlClick} searchType="all" placeholder="Search anywhere in the world" cssClass="typeahead form-control" searchValue={this.state.searchName} />
+                           <AutoComplete isAppSearch={false} changeId={this.handleSearchIdChange} changeValue={this.handleSearchNameChange} changeType={this.handleSearchTypeChange} changeUrl={this.handleSearchUrlClick} searchType="all" placeholder="Search anywhere in the world" cssClass="typeahead form-control" searchValue={this.state.searchName} />
                         </div>
                     </div>
                   </div>
@@ -111,13 +107,13 @@ class ReviewPopup extends React.Component {
                       <div className="col-md-12">
                         <div className="form-group">
                             <label>Your Review</label>
-                            <textarea ref="comment" className="form-control" rows="6"></textarea>
+                            <textarea ref="comment" className="form-control" rows="6" value={this.state.comment} onChange={this.handleCommentChange}></textarea>
                         </div>
                       </div>
                       <div className="col-md-12">
                         <div className="form-group">
                             <label>Recommended For</label>
-                            <TagList tags={this.state.tags} maxTags={30} readOnly={false} returnTags={this.addTags} />
+                            <TagList tags={this.state.tags} selectedTags={this.state.selectedTags} maxTags={30} readOnly={false} returnTags={this.addTags} />
                         </div>
                       </div>
                       <div className="col-md-12 text-xs-center">

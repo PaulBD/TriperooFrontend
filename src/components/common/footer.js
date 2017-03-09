@@ -1,15 +1,47 @@
 import React, {PropTypes} from 'react';
-import { Link } from "react-router";
+import { Link, browserHistory } from "react-router";
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as authenticationActions from '../../actions/authenticationActions';
+
 import Newsletter from "./newsletter";
 import SocialButtons from "../content/static/socialButtons";
 
 class Footer extends React.Component {
    constructor(props, context) {
      super(props, context);
+    this.onLogout = this.onLogout.bind(this);
   }
 
-   render() {
+  onLogout(e) {
+    this.props.authActions.logoutUser();
+  }
 
+  render() {
+    let menu = '';
+
+    if (this.props.isAuthenticated) {
+      menu = (<ul className="list list-footer">
+                <li><a href="/explore-destinations" title="Destinations">Destinations</a></li>
+                <li><a href="/hotels" title="Hotels">Hotels</a></li>
+                <li><a href="/flights" title="Flights">Flights</a></li>
+                <li><a href="/travel-extras" title="Travel Extras">Travel Extras</a></li>
+                <li><a href="#" onClick={this.onLogout} title="Log Out">Log Out</a></li>
+              </ul>
+            );
+    }
+    else {
+      menu = (<ul className="list list-footer">
+                <li><a href="/explore-destinations" title="Destinations">Destinations</a></li>
+                <li><a href="/hotels" title="Hotels">Hotels</a></li>
+                <li><a href="/flights" title="Flights">Flights</a></li>
+                <li><a href="/travel-extras" title="Travel Extras">Travel Extras</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#reviewModel" title="Write a Review">Write a Review</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#signupModel" title="Sign Up">Sign Up</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#loginModel" title="Log In">Log In</a></li>
+              </ul>
+            );
+    }
       return (
 		<footer id="main-footer">
             <div className="container">
@@ -17,15 +49,7 @@ class Footer extends React.Component {
                     <div className="col-md-4">
                         <div className="row">
                             <div className="col-md-6">
-                                <ul className="list list-footer">
-                                  <li><a href="/explore-destinations" title="Destinations">Destinations</a></li>
-                                  <li><a href="/hotels" title="Hotels">Hotels</a></li>
-                                  <li><a href="/flights" title="Flights">Flights</a></li>
-                                  <li><a href="/travel-extras" title="Travel Extras">Travel Extras</a></li>
-                                  <li><a href="#" data-toggle="modal" data-target="#reviewModel" title="Write a Review">Write a Review</a></li>
-                                  <li><a href="#" data-toggle="modal" data-target="#signupModel" title="Sign Up">Sign Up</a></li>
-                                  <li><a href="#" data-toggle="modal" data-target="#loginModel" title="Log In">Log In</a></li>
-                                </ul>
+                                {menu}
                             </div>
                             <div className="col-md-6">
                                 <ul className="list list-footer">
@@ -56,4 +80,23 @@ class Footer extends React.Component {
    }
 }
 
-export default Footer;
+
+Footer.propTypes = {
+  authActions: PropTypes.object.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired
+};
+
+function mapStateToProps(state, ownProps) {
+  return {
+    isAuthenticated: state.authentication.isAuthenticated
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    authActions: bindActionCreators(authenticationActions, dispatch)
+  };
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Footer);
