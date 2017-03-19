@@ -56,7 +56,7 @@ class TagList extends React.Component {
             if (this.props.readOnly)
             {
               return (
-                <span className="tag tag-default" key={tag}>{tag} {this.state.selectedTags.includes(tag)}</span> 
+                <span className="tagReadOnly tag-default" key={tag}>{tag} {this.state.selectedTags.includes(tag)}</span> 
               );
             }
             else {

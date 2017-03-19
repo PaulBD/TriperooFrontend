@@ -40,10 +40,10 @@ export default (
     <Route path="/privacy-policy" component={PrivacyPage}/>
     <Route path="/contact" component={ContactPage}/>
     <Route path="/faqs" component={FAQsPage}/>
-    <Route path="/become-a-local-expert" component={LocalExpertPage}/>
+    <Route path="/become-a-triperoo-agent" component={LocalExpertPage}/>
     <Route path="/support" component={SupportPage}/>
 
-    <Route path="/place/(:countryId)/(:country)" component={LocationHome}/>
+    <Route path="/(:placeId)/visit/(:placeName)" component={LocationHome}/>
     <Route path="/place/(:cityId)/(:country)/(:city)" component={LocationHome}/>
     <Route path="/place/(:cityId)/(:country)/(:city)/(:type)" component={PlaceSearch}/>
     <Route path="/place/(:cityId)/(:country)/(:city)/(:type)/(:placeId)/(:placeName)" component={Place}/>

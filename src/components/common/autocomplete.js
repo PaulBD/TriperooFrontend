@@ -19,15 +19,15 @@ class AutoComplete extends React.Component {
     e.preventDefault();
     this.props.changeValue(e.target.text.trim());
     this.props.changeUrl(e.target.getAttribute('data-url'));
-    this.props.changeId(e.target.getAttribute('data-id'));
+    this.props.changeId(parseInt(e.target.getAttribute('data-id')));
     this.props.changeType(e.target.getAttribute('data-type'));
 
     if (this.props.isAppSearch)
     {
-      this.setState({ selected: true, style: 'none', searchValue: e.target.text.trim() });
+      this.setState({ selected: true, style: 'none', isOpen: false, searchValue: e.target.text.trim() });
     }
     else {
-      this.setState({ selected: true, style: 'none', searchValue: '' });
+      this.setState({ selected: true, style: 'none', isOpen: false, searchValue: '' });
     }
   }
 
@@ -74,25 +74,26 @@ class AutoComplete extends React.Component {
 
               switch (search.type)
               {
-                case 'city':
-                case 'country':
+                case 'Vicinity':
+                case 'City':
+                case 'Country':
                   icon = 'fa fa-map-marker';
                 break;
-                case 'hotel':
+                case 'Hotel':
                   icon = 'fa fa-bed';
                 break;
-                case 'restaurant':
+                case 'Restaurant':
                   icon = 'fa fa-cutlery';
                 break;
-                case 'attraction':
+                case 'Attraction':
                   icon = 'fa fa-ticket';
                 break;
-                case 'bar':
+                case 'Bar':
                   icon = 'fa fa-glass';
                 break;
               }
 
-              return (<li key={search.documentId} className="ui-menu-item"><a href="#" onClick={this.handleClick} data-type={search.type} data-name={search.name} data-url={search.url} data-id={search.documentId}><span><i className={icon}></i></span> {search.searchName}</a></li>);
+              return (<li key={search.inventoryReference} className="ui-menu-item"><a href="#" onClick={this.handleClick} data-type={search.type} data-name={search.name} data-url={search.url} data-id={search.inventoryReference}><span><i className={icon}></i></span> {search.name}</a></li>);
               })
             }
           </ul>

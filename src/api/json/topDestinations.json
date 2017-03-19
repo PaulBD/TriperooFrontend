@@ -1,47 +1,47 @@
 [
 	{
 		"name": "London",
-		"url": "/place/europe/london",
-		"image": "/static/img/locations/popular-destinations/london.png"
+		"url": "/2114/visit/london-england-united-kingdom",
+		"image": "/static/img/locations/london-england-united-kingdom.png"
 	}, 
 	{
 		"name": "Dubai",
-		"url": "/place/6070029/middle-east/dubai",
-		"image": "/static/img/locations/popular-destinations/dubai.png"
+		"url": "/6053839/visit/dubai-united-arab-emirates",
+		"image": "/static/img/locations/dubai-united-arab-emirates.png"
 	}, 
 	{
 		"name": "New York",
-		"url": "/place/north-america/new-york",
-		"image": "/static/img/locations/popular-destinations/new-york.png"
+		"url": "/2621/visit/new-york-new-york-united-states-of-america",
+		"image": "/static/img/locations/new-york-new-york-united-states-of-america.png"
 	}, 
 	{
 		"name": "Rome",
-		"url": "/place/1500776/europe/rome",
-		"image": "/static/img/locations/popular-destinations/rome.png"
+		"url": "/3023/visit/rome-italy",
+		"image": "/static/img/locations/rome-italy.png"
 	}, 
 	{
 		"name": "Barcelona",
-		"url": "/place/3858073/europe/barcelona",
-		"image": "/static/img/locations/popular-destinations/barcelona.jpg"
+		"url": "/513/visit/barcelona-spain",
+		"image": "/static/img/locations/barcelona-spain.jpg"
 	}, 
 	{
 		"name": "Paris",
-		"url": "/place/957085/europe/paris",
-		"image": "/static/img/locations/popular-destinations/paris.jpg"
+		"url": "/2734/visit/paris-france",
+		"image": "/static/img/locations/paris-france.png"
 	}, 
 	{
 		"name": "Madrid",
-		"url": "/place/774948/europe/madrid",
-		"image": "/static/img/locations/popular-destinations/madrid.png"
+		"url": "/2198/visit/madrid-spain",
+		"image": "/static/img/locations/madrid-spain.png"
 	}, 
 	{
 		"name": "Venice",
-		"url": "/place/7535297/europe/venice",
-		"image": "/static/img/locations/popular-destinations/venice.png"
+		"url": "/3687/visit/venice-italy",
+		"image": "/static/img/locations/venice-italy.png"
 	}, 
 	{
 		"name": "Dublin",
-		"url": "/place/7341448/europe/dublin",
-		"image": "/static/img/locations/popular-destinations/dublin.png"
+		"url": "/1069/visit/dublin-ireland",
+		"image": "/static/img/locations/dublin-ireland.png"
 	}
 ]

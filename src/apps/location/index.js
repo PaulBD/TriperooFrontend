@@ -22,88 +22,28 @@ let titleCase = require('title-case');
 class LocationHome extends React.Component {
     constructor(props, context) {
         super(props, context);
-        this.state = { isLoading: true, id: 0, type: '', name: '' };
+        this.state = { isLoading: true};
     }
 
     componentDidMount() {
         window.scrollTo(0, 0);
 
-        let id = this.props.cityId != 0 ? this.props.cityId : this.props.countryId;
-        let type = this.props.cityId != 0 ? "city" : "country";
-        let name = this.props.cityId != 0 ? this.props.city : this.props.country;
+        let id = this.props.placeId;
 
-        this.props.locationActions.loadLocation(id, type);
+        this.props.locationActions.loadLocation(id);
 
-        this.state = { isLoading: false, id: id, type: type, name: name };
+        this.setState({ isLoading: false});
 
-        document.title = 'Explore, Plan, Book in ' + titleCase(name);
     }
       
     render(){
 
-    let overview = ''; 
-    let url = '';
-
-    if (this.props.area !== undefined && this.props.area.description !== undefined && this.props.area.description.en !== undefined) {
-        overview = this.props.area.description.en;
-        url = this.props.area.imageUrl;
-    }
-
-    let style = {
-        backgroundImage: 'url(' + url + ')'
-    }; 
-    
+    document.title = 'Explore, Plan, Book in ' + titleCase(this.props.location.nameShort);
 
     return (
         <div>
-            <Header id={this.state.id} type={this.state.type} place={this.props.area}  />
-            <div className="container">
-                <NavigationWrapper name={this.state.name} place={this.props.area} />
-                <div className="gap gap-small"></div>
-            </div>
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-8">
-                        <TopPlaces name={this.state.name} {...this.props} />
-                    </div>
-                    <div className="col-md-4">
-                        <QuestionButton id={this.state.id} type={this.state.type} name={this.state.name} />
-                        <div className="gap-small"></div>
-                        <RecentQuestions searchId={this.state.id} searchType={this.state.type} limit={3} offset={0} />
-                        <Overview id={this.state.id} type={this.state.type} name={this.state.name} overview={overview} showMore={1} />
-                        <div className="gap-small"></div>
-                    </div>
-                    <div className="gap"></div>
-                </div>
-            </div>
-            <div className="bg-holder cityBg">
-                <div className="bg-mask"></div>
-                <div className="bg-blur" style={style}></div>
-                <div className="bg-content">
-                    <div className="container">
-                        <div className="gap"></div>
-                        <div className="row">
-                            <div className="col-md-4"> 
-                                <Deals searchType="topRestaurants" title="Top Restaurants" id={this.state.id} {...this.props} />
-                            </div>
-                            <div className="col-md-4">
-                                <Deals searchType="topAttractions" title="Top Attractions" id={this.state.id} {...this.props} />
-                            </div>
-                            <div className="col-md-4">
-                                <Deals searchType="topHotels" title="Top Hotels" id={this.state.id} {...this.props} />
-                            </div>
-                        </div>
-                        <div className="gap"></div>
-                    </div>
-                </div>
-            </div>
+            <Header id={this.props.placeId} location={this.props.location}  />
 
-            <div className="container">
-                <div className="gap"></div>
-                <div className="row row-wrap text-xs-center">
-                    <ReviewList searchId={this.state.id} searchType={this.state.type} limit={3} offset={0} showTitle={1} />
-                </div>
-            </div>
             <div className="container">
                 <div className="gap gap-small"></div>
                 <hr />
@@ -117,21 +57,15 @@ class LocationHome extends React.Component {
 }
 
 LocationHome.propTypes = {
-    countryId: PropTypes.number,
-    country: PropTypes.string,
-    cityId: PropTypes.number,
-    city: PropTypes.string,
-    area: PropTypes.object.isRequired,
+    placeId: PropTypes.number,
+    location: PropTypes.object,
     locationActions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    area: state.area,
-    countryId: ownProps.params.countryId ? parseInt(ownProps.params.countryId) : 0,
-    country: ownProps.params.country,
-    cityId: ownProps.params.cityId ? parseInt(ownProps.params.cityId) : 0,
-    city: ownProps.params.city
+    location: state.location,
+    placeId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0
   };
 }
 

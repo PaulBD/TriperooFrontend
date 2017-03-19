@@ -17,6 +17,9 @@ select.searchSelect:not([size]):not([multiple]) {
     height: calc(2.8rem - 2px);
 }
 
+.reviewBg { background-size: 100%; }
+h4.card-title { font-size: 18px;}
+
 .communityImg { border: solid 1px #ccc; width:75%; float:right; }
 
 .formBtn { margin-top:28px; padding-top: 10px; padding-bottom: 10px;}
@@ -39,7 +42,7 @@ select.searchSelect:not([size]):not([multiple]) {
 
 .card-block .commentStar { padding: 10px 0; }
 
-.tagCollection .tag { margin: 0px 5px 4px 0px; padding: 4px 7px; font-size: 12px; background-color: #efefef; color: #333; font-weight:normal; }
+.tagCollection .tag, .tagCollection .tagReadOnly { margin: 0px 5px 4px 0px; padding: 4px 7px; font-size: 12px; background-color: #efefef; color: #333; font-weight:normal; }
 
 .commentCardTestimonial { margin: 20px 0; }
 
@@ -400,4 +403,11 @@ div.ReactTags__suggestions ul li.active {
 
 .featureLocation { margin-bottom: 30px; }
 
-.profileImg { width:30px !important; margin-right:10px; }
+.profileImg, .profileImgLge { width:30px !important; margin-right:10px; }
+.profileImgLge { width:46px !important; }
+
+.reviewCard { height: 510px !important; }
+
+.cardBg { width: 100%; height: 160px;}
+
+.cardAddress { font-size: 12px !important; line-height: normal !important; }

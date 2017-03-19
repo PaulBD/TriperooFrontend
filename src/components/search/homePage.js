@@ -67,8 +67,8 @@ class SearchComponent extends React.Component {
               <p>&nbsp;</p>
               <form >
                 <div className="row">
-                  <div className="col-md-3 text-xs-center">&nbsp;</div>
-                  <div className="col-md-6 text-xs-center">
+                  <div className="col-md-2 text-xs-center">&nbsp;</div>
+                  <div className="col-md-8 text-xs-center">
                     <div className="input-group">
                       <div className="form-group form-group-lg form-group-icon-left homeSearch"><i className="fa fa-search input-icon homeSearchIcon"></i>
                         <AutoComplete changeValue={this.handleSearchNameClick} changeUrl={this.handleSearchUrlClick} changeId={this.handleSearchIdClick} changeType={this.handleSearchTypeClick} searchType="all" placeholder="Search anywhere in the world" cssClass="typeahead form-control" />
@@ -78,7 +78,7 @@ class SearchComponent extends React.Component {
                       </span>                        
                     </div>
                   </div>
-                  <div className="col-md-3 text-xs-center">&nbsp;</div>
+                  <div className="col-md-2 text-xs-center">&nbsp;</div>
                 </div>
               </form>
               <p>&nbsp;</p>

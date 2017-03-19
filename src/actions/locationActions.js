@@ -1,16 +1,16 @@
-import LocationApi from '../api/mockLocationApi';
+import LocationApi from '../api/locationApi';
 import {beginAjaxCall} from './ajaxStatusActions';
 import * as types from '../actionTypes/';
 
-export function loadLocationSuccess(area) {
-	return {type: types.LOAD_AREA_SUCCESS, area: area};
+export function loadLocationSuccess(location) {
+	return {type: types.LOAD_LOCATION_SUCCESS, location};
 }
 
-export function loadLocation(id, type) {
+export function loadLocation(id) {
 	return dispatch => {
 		dispatch(beginAjaxCall());
-		return LocationApi.getLocation(id, type).then(area => {
-			dispatch(loadLocationSuccess(area));
+		return LocationApi.getLocation(id).then(location => {
+			dispatch(loadLocationSuccess(location));
 		}).catch(error => {
 			throw(error);
 		});

@@ -4,13 +4,12 @@ import baseUrl from './baseApi';
 class SearchApi {
   static getSearch(value, searchType) {
     return new Promise((resolve, reject) => {
-      axios.get(baseUrl + '/locations/search?q=' + value + '&type=' + searchType)
+      axios.get(baseUrl + '/autocomplete?searchvalue=' + value + '&searchtype=' + searchType)
         .then(function (response) {
-          console.log(response);
-          resolve(Object.assign([], response.data.triperooCommon.places));
+          resolve(Object.assign([], response.data.locations));
         })
         .catch(function (error) {
-          console.log(error);
+          reject(error);
         });
     });
   }

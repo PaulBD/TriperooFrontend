@@ -5,28 +5,28 @@ import Weather from '../common/weather';
 class Header extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { isLoading: 1 };
+    this.state = { isLoading: true };
   }
 
   componentDidMount() {
-    this.state = { isLoading: 0 };
+    this.state = { isLoading: false };
   }
 
   render() {
 
       let style = {
-        backgroundImage: 'url(' + this.props.place.imageUrl + ')'
+        backgroundImage: 'url(' + this.props.location.image + ')'
       };
 
       let html = null;
 
-      if (this.props.type == "city") {
+      if (this.props.location.type == "City") {
         html = (
           <div className="owl-cap">
-              <Weather id={this.props.id} type={this.props.type} />
-              <h1 className="owl-cap-title fittext">{this.props.place.name.en}</h1>
+              <Weather id={this.props.id} type={this.props.location.type} />
+              <h1 className="owl-cap-title fittext">{this.props.location.nameShort}</h1>
               <div className="owl-cap-price">
-                  <small><a href={this.props.place.countryUrl}>{this.props.place.country}</a> / {this.props.place.county}</small>
+                  <small>{this.props.location.name}</small>
               </div>
           </div>
         );
@@ -34,7 +34,7 @@ class Header extends React.Component {
       else {
         html = (
           <div className="owl-cap">
-              <h1 className="owl-cap-title fittext">{this.props.place.name.en}</h1>
+              <h1 className="owl-cap-title fittext">{this.props.location.nameShort}</h1>
           </div>
         );
       }
@@ -57,13 +57,12 @@ class Header extends React.Component {
 }
 
 Header.defaultProps = {
-  place:{}
+  location:{}
 };
 
 Header.propTypes = {
     id: PropTypes.number.isRequired,
-    type: PropTypes.string.isRequired,
-    place: PropTypes.object.isRequired
+    location: PropTypes.object.isRequired
 };
 
 export default Header;

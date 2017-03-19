@@ -1,14 +1,15 @@
 import axios from 'axios';
+import baseUrl from './baseApi';
 
 class LocationApi {
-  static getLocation(id, type) {
+  static getLocation(id) {
     return new Promise((resolve, reject) => {
-      axios.get('http://localhost/api/v1/location/' + type + '/' + id)
+      axios.get(baseUrl + '/location?id=' + id)
         .then(function (response) {
-          resolve(Object.assign([], response.data.triperoo));
+          resolve(Object.assign([], response.data));
         })
         .catch(function (error) {
-          console.log(error);
+          reject(error);
         });
     });
   }

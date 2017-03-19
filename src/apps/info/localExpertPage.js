@@ -6,7 +6,7 @@ export default class LocalExpertPage extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    document.title = 'Become a Local Expert! Earn money and respect from your travel recommendations.';
+    document.title = 'Become a Triperoo Agent! Earn money and respect from your travel recommendations.';
   }
   
   render(){
@@ -21,9 +21,9 @@ export default class LocalExpertPage extends React.Component {
           <div style={style} className="bg-img infoImg" ></div>
           <div className="bg-front full-center">
             <div className="owl-cap">
-                <h1 className="owl-cap-title fittext">Become a Local Expert</h1>
+                <h1 className="owl-cap-title fittext">Become a Triperoo Agent</h1>
                 <div className="owl-cap-price">
-                  <small>Earn money and respect from your travel recommendations</small>
+                  <small>Earn commission and respect from your travel recommendations</small>
                 </div>
             </div>
           </div>
@@ -32,18 +32,22 @@ export default class LocalExpertPage extends React.Component {
           <div className="row row-wrap">
             <div className="gap gap-small"></div>
             <div className="col-md-7">
-              <h4>Become A Local Expert!</h4>
-              <p><strong>STEP 1</strong><br />
-              Sign up as a Triperoo Agent and earn a commission by booking hotels and flights for friends and family, just like a travel agent.</p>
-              <p><strong>STEP 2</strong><br />
-              Qualify as a Local Expert and help fellow travelers from across the globe with your local recommendations.</p>
-            
-              <h4>What You Can Earn As a Travel Agent</h4>
+                <h4>Become A Triperoo Agent!</h4>
+                <p><strong>STEP 1</strong><br />
+                Sign up to Triperoo and add 5 reviews to qualify to become a Triperoo Agent.</p>
+
+                <p><strong>STEP 2</strong><br />
+                Start to earn commission by booking hotels and flights for friends and family, just like a travel agent.</p>
+                
+                <p><strong>STEP 3</strong><br />
+                Increase your commission by signing up friends and family as agents and help fellow travelers from across the globe with your local recommendations.</p>
+                
+              <h4>What You Can Earn As An Agent</h4>
               <p>Some examples of what you can earn as a Triperoo Agent.</p>
               <div className="row row-wrap">
                   <div className="col-md-6">
                       <div className="thumb">
-                          <a className="hover-img" href="/place/united-kingdom/london">
+                          <a className="hover-img" href="/place/europe/london">
                               <img src="/static/img/locations/popular-destinations/london.png" alt="London" />
                               <h5 className="hover-title hover-hold exampleTrip">
                                 Weekend Break to London<br />3 nights - 2 people
@@ -54,7 +58,7 @@ export default class LocalExpertPage extends React.Component {
                   </div>
                   <div className="col-md-6">
                       <div className="thumb">
-                          <a className="hover-img" href="/place/middle-east/dubai">
+                          <a className="hover-img" href="/place/6070029/middle-east/dubai">
                               <img src="/static/img/locations/popular-destinations/dubai.png" alt="Dubai" />
                               <h5 className="hover-title hover-hold exampleTrip">
                                 Short Break to Dubai<br />5 nights - 2 people
@@ -65,7 +69,7 @@ export default class LocalExpertPage extends React.Component {
                   </div>
                   <div className="col-md-6">
                       <div className="thumb">
-                          <a className="hover-img" href="/united-states/new-york">
+                          <a className="hover-img" href="/place/indian-ocean/maldives">
                               <img src="/static/img/locations/popular-destinations/maldives.png" alt="Maldives" />
                               <h5 className="hover-title hover-hold exampleTrip">
                                 Long Haul to Maldives<br />14 nights - 2 people
@@ -76,8 +80,8 @@ export default class LocalExpertPage extends React.Component {
                   </div>
                   <div className="col-md-6">
                       <div className="thumb">
-                          <a className="hover-img" href="/united-states/new-york">
-                              <img src="/static/img/locations/popular-destinations/paris.jpg" alt="Paris" />
+                          <a className="hover-img" href="/place/united-states/new-york">
+                              <img src="/static/img/locations/popular-destinations/paris.png" alt="Paris" />
                               <h5 className="hover-title hover-hold exampleTrip">
                                 Business Trip to Paris<br />2 nights - 1 person
                                 <span className="price">£20.00</span>

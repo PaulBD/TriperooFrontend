@@ -14,7 +14,7 @@ import lastMinute from './lastMinuteReducer';
 import questions from './questionReducer';
 import reviews from './reviewsReducer';
 import review from './reviewReducer';
-import area from './areaReducer';
+import location from './locationReducer';
 import places from './placeListReducer';
 import place from './placeReducer';
 import destinations from './topDestinationsReducer';
@@ -36,7 +36,7 @@ const rootReducer = combineReducers({
   questions,
   reviews,
   review,
-  area,
+  location,
   places,
   place,
   destinations,

@@ -21,7 +21,7 @@ class ReviewPopup extends React.Component {
     this.onRate = this.onRate.bind(this);
     this.submitReview = this.submitReview.bind(this);
    
-    this.state = { searchName: '', searchId: '', searchType: '', errors:'', comment: '', tags:["Adventure","Arty","Backpackers","Budget","Business","Family","Foodies","Eco","History","Local Culture","Luxury","Nightlife","Outdoor","Solo","Spiritual","Students","Trendsters","Vegetarian","Wellness" ], selectedTags:[], rating: 0, wizardStep: 1 };
+    this.state = { searchName: '', searchId: 0, searchType: '', errors:'', comment: '', tags:["Adventure","Arty","Backpackers","Budget","Business","Family","Foodies","Eco","History","Local Culture","Luxury","Nightlife","Outdoor","Solo","Spiritual","Students","Trendsters","Vegetarian","Wellness" ], selectedTags:[], rating: 0, wizardStep: 1 };
   }
 
   handleCommentChange(e) {
@@ -61,7 +61,7 @@ class ReviewPopup extends React.Component {
     let event = new MouseEvent('click', { 'view': window, 'bubbles': true, 'cancelable': false });
     let node = document.getElementById('closeReview');
 
-    const review = { "reference": this.state.searchId, "PlaceType": this.state.searchType, "StarRating": this.state.rating, "comment": this.refs.comment.value.trim(), "tags": this.state.selectedTags };
+    const review = { "inventoryReference": this.state.searchId, "ReviewType": this.state.searchType, "StarRating": this.state.rating, "comment": this.refs.comment.value.trim(), "tags": this.state.selectedTags };
     this.props.actions.postReview(review, this, event, node);
 }
 

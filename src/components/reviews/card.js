@@ -4,29 +4,35 @@ import TagList from '../common/tagList';
 import Loader from '../common/loadingDots';
 
 const ReviewList = ({reviews}) => {
-  if (reviews.length > 0) {
+
+  if (reviews != undefined && reviews.length > 0) {
     return (
       <div className="row row-wrap">
         {
-          reviews.map(review => {
-          return (
-            <div className="col-md-4" key={review.triperooReviews.reviewReference}>
-              <div className="card text-xs-left">
-                <img src={review.triperooReviews.placeImage} alt={review.triperooReviews.placeName} />
 
+          reviews.map(review => {
+
+          let style = {
+            backgroundImage: 'url(' + review.imageUrl + ')'
+          };
+          return (
+            <div className="col-md-4" key={review.reviewReference}>
+              <div className="card reviewCard text-xs-left">
+              <div className="cardBg reviewBg" style={style}></div>
+               
                 <div className="card-block testimonial">
-                  <h4 className="card-title">{review.triperooReviews.placeName}</h4>
-                  <h6 className="card-subtitle text-muted">{review.triperooReviews.placeAddress}</h6>
+                  <h4 className="card-title"><a href={review.placeUrl}>{review.placeNameShort != null && review.placeNameShort.length > 35 ? review.placeNameShort.substring(0, 35) + '...' : review.placeNameShort}</a></h4>
+                  <p className="card-subtitle text-muted cardAddress">{review.placeAddress}</p>
                   
                   <div className="testimonial-author commentCardTestimonial">
-                      <img src={review.triperooReviews.profileImage ? review.triperooReviews.profileImage : '/static/img/userProfileImg.png'} alt={review.triperooReviews.customerName} className="origin round profileImg"/>
-                      <p className="testimonial-author-name"><a href={review.triperooReviews.profileUrl}>{review.triperooReviews.customerName}</a>'s review</p>
-                      <StarRating starRating={review.triperooReviews.starRating} className="icon-list list-inline-block mb0 last-minute-rating"/>
+                      <img src={review.customerImageUrl ? review.customerImageUrl : '/static/img/userProfileImg.png'} alt={review.customerName} className="origin round profileImgLge" onError={(e)=>{e.target.src='/static/img/userProfileImg.png'}} />
+                      <p className="testimonial-author-name"><a href={review.customerProfileUrl}>{review.customerName}</a>'s review</p>
+                      <StarRating starRating={review.starRating} className="icon-list list-inline-block mb0 last-minute-rating"/>
                   </div>
                   <p className="card-text">
-                      {review.triperooReviews.comment}
+                      {review.comment}
                   </p>
-                  <TagList tags={review.triperooReviews.tags} maxTags={5} readOnly={true} />
+                  <TagList tags={review.tags} maxTags={5} readOnly={true} />
                 </div>
               </div> 
             </div>

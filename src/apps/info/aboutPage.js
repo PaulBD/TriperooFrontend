@@ -37,7 +37,7 @@ export default class AboutPage extends React.Component {
             <div className="col-md-6">
               <h2 className="title">Triperoo's mission is to help people explore, plan and book vacation's.</h2>
               <p>We want to distrupt the travel space by helping our customers explore the world 
-              and using that knowledge to earn money by recommending other users on where to visit.</p>
+              and using that knowledge to earn commission by recommending other users on where to visit.</p>
 
               <p>We also believe that 
               being able to plan and book your trip without any stress is important as using our unique technology so 

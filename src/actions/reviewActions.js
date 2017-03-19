@@ -20,7 +20,7 @@ export function postReview(review, state, event, node) {
 	return dispatch => {
 		dispatch(receiveReview(review));
 		dispatch(beginAjaxCall());
-		if ((review.comment.length > 0) && (review.reference.length))
+		if ((review.comment.length > 0) && (review.inventoryReference > 0))
     	{
 			return ReviewApi.postReview(review).then(review => {
 				dispatch(reviewSuccess());

@@ -26,7 +26,7 @@ class TopDestinations extends React.Component {
             {
             destinations.map(item => {
                 return (
-                    <div className="col-md-4 featureLocation">
+                    <div className="col-md-4 featureLocation" key={item.name}>
                         <a className="hover-img" href={item.url}>
                             <img src={item.image} alt="London" />
                             <h5 className="hover-title hover-hold">{item.name}</h5>
