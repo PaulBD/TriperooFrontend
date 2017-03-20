@@ -6,20 +6,19 @@ import {bindActionCreators} from 'redux';
 import * as authenticationActions from '../../actions/authenticationActions';
 
 class FacebookSignup extends React.Component {
-    constructor(props, context) {
-        super(props, context);
+  constructor(props, context) {
+      super(props, context);
 
-        this.submitFacebookForm = this.submitFacebookForm.bind(this);
-        this.state = { emailAddress: '', password: '', errors:'', isLoading: 0 };
-    }
+      this.submitFacebookForm = this.submitFacebookForm.bind(this);
+      this.state = { emailAddress: '', password: '', errors:'', isLoading: 0 };
+  }
 
-    submitFacebookForm(response) {
-        const creds = { emailAddress: response.email, facebookId: response.userID, name: response.name, imageUrl: response.picture.data.url, currentCityId: 1};
-        this.props.actions.loginFacebookUser(creds);
-    }
+  submitFacebookForm(response) {
+      const creds = { emailAddress: response.email, facebookId: response.userID, name: response.name, imageUrl: response.picture.data.url, currentCityId: 1};
+      this.props.actions.loginFacebookUser(creds);
+  }
 
-    render(){
-
+  render(){
     if (!this.props.isAuthenticated) {
       return (
         <div>
@@ -45,9 +44,11 @@ class FacebookSignup extends React.Component {
           <hr /> 
         </div>
       );
-  }
-  else { return null; }
     }
+    else { 
+      return null; 
+    }
+  }
 }
 
 FacebookSignup.defaultProps = {

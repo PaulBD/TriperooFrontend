@@ -1,32 +1,27 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as questionActions from '../../actions/questionActions';
+import * as questionActions from '../../actions/questionsActions';
 import QuestionList from './list';
 import {browserHistory} from 'react-router';
 import Loader from '../common/loadingDots';
 
 class Questions extends React.Component {
   constructor(props, context) {
-      super(props, context);
-    this.state = { isLoading: 1 };
+    super(props, context);
+    this.state = { isLoading: true };
   }
 
   componentDidMount() {
-console.log(this.props.searchId);
-
-    this.state = { isLoading: 0 };
-      if (this.props.searchType == 'place' && this.props.searchId > 0) {
-        this.props.actions.loadQuestions(this.props.searchType, this.props.searchId, this.props.limit, this.props.offset);
-      }
-      else {
-        this.props.actions.loadGenericQuestions(this.props.searchType, this.props.searchId, this.props.limit, this.props.offset);
-      }
+    this.props.actions.loadQuestions(this.props.id, this.props.limit, this.props.offset);
+    this.state = { isLoading: false };
   }
-    render(){
+  render(){
     const {questions} = this.props;
 
-    return (
+    if (questions.length > 0)
+    {
+      return (
         <div className="sidebar-widget">
             <h4>Recent Questions</h4>
             <QuestionList questions={questions} />
@@ -34,13 +29,14 @@ console.log(this.props.searchId);
         </div>    
         );
     }
+    else { return null; }
+  }
 }
 
 Questions.propTypes = {
   questions: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
-  searchType: PropTypes.string.isRequired,
-  searchId: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
   limit: PropTypes.number.isRequired,
   offset: PropTypes.number.isRequired
 };

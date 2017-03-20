@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
 import initialState from '../../../reducers/initialState';
-import Item from '../navigation/navigationItem';
+import Item from '../../locations/navigation/navigationItem';
 
 let titleCase = require('title-case');
 

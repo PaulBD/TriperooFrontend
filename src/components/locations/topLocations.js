@@ -2,40 +2,40 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as locationsActions from '../../actions/locationsActions';
-import PlaceList from './placeList';
+import LocationList from './locationList';
 import Loader from '../common/loadingDots';
 let titleCase = require('title-case');
 
-class TopPlaces extends React.Component {
+class TopLocations extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = { isLoading: true };
     }
 
     componentDidMount() {
-        this.props.actions.loadLocations(this.props.placeId, this.props.searchType, 6, 0);
-        this.state = { isLoading: false };
+        this.props.actions.loadLocations(this.props.placeId, this.props.searchType, 7, 0);
+        this.setState({ isLoading: false });
     }
 
     render(){
-    const {locations} = this.props;
-        return (
+    return (
             <div>
                 <h3>Our Top Places In {titleCase(this.props.name)}</h3>
-                <PlaceList locations={locations} />
+                <LocationList locations={this.props.locations} />
                 <Loader showLoader={this.state.isLoading} />
             </div>
         );
     }
 }
 
-TopPlaces.defaultProps = {
+TopLocations.defaultProps = {
     name: '',
     searchType: '',
-    placeId: 0
+    placeId: 0,
+    locations: []
 };
 
-TopPlaces.propTypes = {
+TopLocations.propTypes = {
     placeId: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     searchType: PropTypes.string.isRequired,
@@ -56,4 +56,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TopPlaces);
+export default connect(mapStateToProps, mapDispatchToProps)(TopLocations);

@@ -19,7 +19,9 @@ class TopPlaces extends React.Component {
 
     render(){
     const {locations} = this.props;
-        return (
+
+        console.log(this.props.locations);
+    return (
             <div>
                 <h3>Our Top Places In {titleCase(this.props.name)}</h3>
                 <PlaceList locations={locations} />

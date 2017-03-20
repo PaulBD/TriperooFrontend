@@ -11,17 +11,24 @@ export function clearSearches() {
 }
 
 export function searchError(error) {
-	return {type: types.SEARCH_ERROR, searches: [], error: error};
+	return {type: types.SEARCH_ERROR, searches: [], error};
 }
 
 export function loadSearches(value, searchType) {
 	return dispatch => {
-		dispatch(beginAjaxCall());
-		return SearchApi.getSearch(value, searchType).then(searches => {
-			dispatch(loadSearchesSuccess(searches));
-		}).catch(error => {
-			dispatch(searchError(error));
-		});
+
+		if (value.length > 0)
+		{
+			dispatch(beginAjaxCall());
+			return SearchApi.getSearch(value, searchType).then(searches => {
+				dispatch(loadSearchesSuccess(searches));
+			}).catch(error => {
+				dispatch(searchError(error));
+			});
+		}
+		else {
+			dispatch(searchError('No search value specified')); 
+		}
 	};
 }
 

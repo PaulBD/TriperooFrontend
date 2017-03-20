@@ -47,8 +47,8 @@ export default class LocalExpertPage extends React.Component {
               <div className="row row-wrap">
                   <div className="col-md-6">
                       <div className="thumb">
-                          <a className="hover-img" href="/place/europe/london">
-                              <img src="/static/img/locations/popular-destinations/london.png" alt="London" />
+                          <a className="hover-img" href="/2114/visit/london-england-united-kingdom">
+                              <img src="/static/img/locations/london-england-united-kingdom.png" alt="London" />
                               <h5 className="hover-title hover-hold exampleTrip">
                                 Weekend Break to London<br />3 nights - 2 people
                                 <span className="price">£50.00</span>
@@ -58,8 +58,8 @@ export default class LocalExpertPage extends React.Component {
                   </div>
                   <div className="col-md-6">
                       <div className="thumb">
-                          <a className="hover-img" href="/place/6070029/middle-east/dubai">
-                              <img src="/static/img/locations/popular-destinations/dubai.png" alt="Dubai" />
+                          <a className="hover-img" href="/6053839/visit/dubai-united-arab-emirates">
+                              <img src="/static/img/locations/dubai-united-arab-emirates.png" alt="Dubai" />
                               <h5 className="hover-title hover-hold exampleTrip">
                                 Short Break to Dubai<br />5 nights - 2 people
                                 <span className="price">£120.00</span>
@@ -70,7 +70,7 @@ export default class LocalExpertPage extends React.Component {
                   <div className="col-md-6">
                       <div className="thumb">
                           <a className="hover-img" href="/place/indian-ocean/maldives">
-                              <img src="/static/img/locations/popular-destinations/maldives.png" alt="Maldives" />
+                              <img src="/static/img/locations/maldives.png" alt="Maldives" />
                               <h5 className="hover-title hover-hold exampleTrip">
                                 Long Haul to Maldives<br />14 nights - 2 people
                                 <span className="price">£200.00</span>
@@ -80,8 +80,8 @@ export default class LocalExpertPage extends React.Component {
                   </div>
                   <div className="col-md-6">
                       <div className="thumb">
-                          <a className="hover-img" href="/place/united-states/new-york">
-                              <img src="/static/img/locations/popular-destinations/paris.png" alt="Paris" />
+                          <a className="hover-img" href="/2734/visit/paris-france">
+                              <img src="static/img/locations/paris-france.png" alt="Paris" />
                               <h5 className="hover-title hover-hold exampleTrip">
                                 Business Trip to Paris<br />2 nights - 1 person
                                 <span className="price">£20.00</span>

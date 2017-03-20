@@ -1,12 +1,12 @@
 import React, {PropTypes} from 'react';
 import Place from './place';
 
-const PlaceList = ({places}) => {
+const PlaceList = ({locations}) => {
 		let i = 0;
 	return (
 		<div className="row">
 			{
-			places.map(place => {				
+			locations.map(location => {				
 
 				i += 1;
 				let cssClass = "col-md-6";
@@ -26,8 +26,8 @@ const PlaceList = ({places}) => {
 				}
 
 				return (
-					<div key={place.id}>
-						<Place  name={place.name} imageUrl={place.imageUrl} url={place.url} cssClass={cssClass} />
+					<div key={location.inventoryReference}>
+						<Place  name={location.nameShort} imageUrl={location.image} url={location.url} cssClass={cssClass} />
 						{spacer}
 					</div>
 				);

@@ -29,26 +29,27 @@ class AutoComplete extends React.Component {
     else {
       this.setState({ selected: true, style: 'none', isOpen: false, searchValue: '' });
     }
+    
+    // Reset Search
+    this.props.actions.loadSearches('', this.props.searchType);
   }
 
   onSearchValue(event) {
     event.preventDefault();
 
-
     this.setState({ searchValue: event.target.value });
 
     if (event.target.value.length > 2) {
-        this.setState({ isLoading: true });
-        this.props.actions.loadSearches(event.target.value, this.props.searchType);
-        this.setState({ selected: false, style: 'block', isOpen: true, isLoading: false });
+      this.setState({ isLoading: true });
+      this.props.actions.loadSearches(event.target.value, this.props.searchType);
+      this.setState({ selected: false, style: 'block', isOpen: true, isLoading: false });
     }
     else {
-        this.setState({ selected: false, style: 'none', isOpen: false, isLoading: false });
+      this.setState({ selected: false, style: 'none', isOpen: false, isLoading: false });
     }
   }
 
   render() {
-
     const {searches} = this.props.searches;
 
     let searchCount = this.props.searches.length; 

@@ -1,13 +1,17 @@
 import initialState from './initialState';
 import * as types from '../actionTypes/';
 
-export default function commentReducer(state = initialState.questions, action) {
-	switch(action.type) {
-		case types.LOAD_QUESTIONS_SUCCESS:
-			return action.questions;
-		case types.LOAD_GENERIC_QUESTIONS_SUCCESS:
-			return action.questions;
-		default:
-			return state;
-	}
+export default function questionReducer(state = { isSending: false, hasPosted: false }, action) {
+    switch(action.type) {
+        case types.QUESTION_REQUEST:
+            return Object.assign({}, state, { isSending: true, hasPosted: false, question: action.question });
+        case types.POST_QUESTION_SUCCESS:
+            return Object.assign({}, state, { isSending: false, hasPosted: true, errorMessage: '' });
+        case types.POST_QUESTION_FAILURE:
+            return Object.assign({}, state, { isSending: false, hasPosted: false, errorMessage: action.message }); 
+        case types.CLEAR_QUESTION:
+            return Object.assign({}, state, { isSending: false, hasPosted: false, question: '' });
+        default:
+            return state;
+    }
 }

@@ -7,27 +7,26 @@ let titleCase = require('title-case');
 class NavigationWrapper extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { isLoading: 1 };
+    this.state = { isLoading: true };
   }
 
   componentDidMount() {
-    this.state = { isLoading: 0 };
+    this.state = { isLoading: false };
   }
 
   render() {
 
     let places = '';
 
-    if ((this.props.place !== undefined) && (this.props.place.data.hotels.count > 0)) {
+    if (this.props.location !== undefined) {
       places = (
         <ul className="list text-xs-center list-inline user-profile-statictics mb30 l30">
-          <Item item={this.props.place.data.hotels} showCount={1} showName={1} cssClass="fa fa-bed user-profile-statictics-icon" />
-          <Item item={this.props.place.data.flights} showCount={1} showName={1} cssClass="fa fa-plane user-profile-statictics-icon" />
-          <Item item={this.props.place.data.attractions} showCount={1} showName={1} cssClass="fa fa-ticket user-profile-statictics-icon" />
-          <Item item={this.props.place.data.restaurants} showCount={1} showName={1} cssClass="fa fa-cutlery user-profile-statictics-icon" />
-          <Item item={this.props.place.data.bars} showCount={1} showName={1} cssClass="fa fa-glass user-profile-statictics-icon" />
-          <Item item={this.props.place.data.reviews} showCount={1} showName={1} cssClass="fa fa-comment user-profile-statictics-icon" />
-          <Item item={this.props.place.data.questions} showCount={1} showName={1} cssClass="fa fa-question user-profile-statictics-icon" />
+          <Item item="Hotels" parentUrl={this.props.location.url} showCount={true} showName={true} cssClass="fa fa-bed user-profile-statictics-icon" />
+          <Item item="Attractions" parentUrl={this.props.location.url} showCount={true} showName={true} cssClass="fa fa-ticket user-profile-statictics-icon" />
+          <Item item="Restaurants" parentUrl={this.props.location.url} showCount={true} showName={true} cssClass="fa fa-cutlery user-profile-statictics-icon" />
+          <Item item="Nightlife" parentUrl={this.props.location.url} showCount={true} showName={true} cssClass="fa fa-glass user-profile-statictics-icon" />
+          <Item item="Reviews" parentUrl={this.props.location.url} showCount={true} showName={true} cssClass="fa fa-comment user-profile-statictics-icon" />
+          <Item item="Questions" parentUrl={this.props.location.url} showCount={true} showName={true} cssClass="fa fa-question user-profile-statictics-icon" />
         </ul> 
       );
     }
@@ -50,11 +49,11 @@ class NavigationWrapper extends React.Component {
 }
 
 NavigationWrapper.defaultProps = {
-  place: initialState.place
+  location: {}
 };
 
 NavigationWrapper.propTypes = {
-    place: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
     name: PropTypes.string
 };
 

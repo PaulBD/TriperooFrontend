@@ -20,16 +20,16 @@ export default class DestinationHome extends React.Component {
                 <div className="tab-pane fade in active" id="tab-1">
                   <div className="worldMap">
                     <ul className="regionList">
-                      <li className="UnitedStates"><small></small><a className="openList" href="/place/united-states">United States</a></li>
-                      <li className="Africa"><small></small><a className="openList" href="/place/africa">Africa</a></li>
-                      <li className="Asia"><small></small><a className="openList" href="/place/asia">Asia</a></li>
-                      <li className="Australia"><small></small><a className="openList" href="/place/australia-the-pacific-islands">Australia &amp; the Pacific Islands</a></li>
-                      <li className="Caribbean"><small></small><a className="openList" href="/place/caribbean">Caribbean</a></li>
-                      <li className="Europe"><small></small><a className="openList" href="/place/europe">Europe</a></li>
-                      <li className="Mexico"><small></small><a className="openList" href="/place/mexico">Mexico</a></li>
-                      <li className="CentralAmerica"><small></small><a className="openList" href="/place/mexico-central-america">Central America</a></li>
-                      <li className="Canada"><small></small><a className="openList" href="/place/canada">Canada</a></li>
-                      <li className="MiddleEast"><small></small><a className="openList" href="/place/middle-east">Middle East</a></li>
+                      <li className="UnitedStates"><small></small><a className="openList" href="/201/visit/united-states-of-america">United States</a></li>
+                      <li className="Africa"><small></small><a className="openList" href="#">Africa</a></li>
+                      <li className="Asia"><small></small><a className="openList" href="#">Asia</a></li>
+                      <li className="Australia"><small></small><a className="openList" href="#">Australia &amp; the Pacific Islands</a></li>
+                      <li className="Caribbean"><small></small><a className="openList" href="#">Caribbean</a></li>
+                      <li className="Europe"><small></small><a className="openList" href="#">Europe</a></li>
+                      <li className="Mexico"><small></small><a className="openList" href="/117/visit/mexico">Mexico</a></li>
+                      <li className="CentralAmerica"><small></small><a className="openList" href="#">Central America</a></li>
+                      <li className="Canada"><small></small><a className="openList" href="/31/visit/canada">Canada</a></li>
+                      <li className="MiddleEast"><small></small><a className="openList" href="#">Middle East</a></li>
                     </ul>
                   </div>
                 </div>

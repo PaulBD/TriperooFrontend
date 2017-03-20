@@ -63,7 +63,7 @@ class ReviewPopup extends React.Component {
 
     const review = { "inventoryReference": this.state.searchId, "ReviewType": this.state.searchType, "StarRating": this.state.rating, "comment": this.refs.comment.value.trim(), "tags": this.state.selectedTags };
     this.props.actions.postReview(review, this, event, node);
-}
+  }
 
   render(){    
     return (

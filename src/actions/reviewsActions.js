@@ -6,10 +6,10 @@ export function loadReviewsSuccess(reviews) {
 	return {type: types.LOAD_REVIEWS_SUCCESS, reviews};
 }
 
-export function loadReviews(type, limit, offset) {
+export function loadReviews(id, type, limit, offset) {
 	return dispatch => {
 		dispatch(beginAjaxCall());
-		return ReviewApi.getReviews(type, limit, offset).then(reviews => {
+		return ReviewApi.getReviews(id, type, limit, offset).then(reviews => {
 			dispatch(loadReviewsSuccess(reviews));
 		}).catch(error => {
 			throw(error);

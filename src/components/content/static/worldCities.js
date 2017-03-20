@@ -10,179 +10,179 @@ export default class WorldCities extends React.Component {
       <div className="col-md-4 left">
         <h4>Afica</h4>
         <ul>
-          <li><a href="/place/9053507/africa/capetown">Cape Town</a></li>
-          <li><a href="/place/683374/africa/cairo">Cairo</a></li>
-          <li><a href="/place/4712065/africa/casablanc">Casablanca</a></li>
-          <li><a href="/place/africa/fes">Fes</a></li>
-          <li><a href="/place/9064394/africa/johannesburg">Johannesburg</a></li>
-          <li><a href="/place/africa/luxor">Luxor</a></li>
-          <li><a href="/place/1719221/africa/marrakech">Marrakech</a></li>
-          <li><a href="/place/1543704/africa/nairobi">Nairobi</a></li>
-          <li><a href="/place/6878936/africa/sharmelsheikh">Sharm El Sheikh</a></li>
-          <li><a href="/place/8795693/africa/tunis">Tunis</a></li>
+          <li><a href="/910/visit/cape-town-south-africa">Cape Town</a></li>
+          <li><a href="/767/visit/cairo-egypt">Cairo</a></li>
+          <li><a href="/774/visit/casablanca-morocco">Casablanca</a></li>
+          <li><a href="/181312/visit/fes-morocco">Fes</a></li>
+          <li><a href="/178272/visit/johannesburg-south-africa">Johannesburg</a></li>
+          <li><a href="/2181/visit/luxor-egypt">Luxor</a></li>
+          <li><a href="/2938/visit/marrakech-morocco">Marrakech</a></li>
+          <li><a href="/2523/visit/nairobi-kenya">Nairobi</a></li>
+          <li><a href="/6051298/visit/sharm-el-sheikh-egypt">Sharm El Sheikh</a></li>
+          <li><a href="/3570/visit/tunis-tunisia">Tunis</a></li>
         </ul>
 
         <div className="gap gap-small"></div>
         <h4>Asia</h4>
         <ul>
-          <li><a href="/place/2638367/asia/bangkok">Bangkok</a></li>
-          <li><a href="/place/392959/asia/beijing">Beijing</a></li>
-          <li><a href="/place/asia/hong-kong">Hong Kong</a></li>
-          <li><a href="/place/7259038/asia/jakarta">Jakarta</a></li>
-          <li><a href="/place/4952761/asia/kualalumpur">Kuala Lumpur</a></li>
-          <li><a href="/place/asia/seoul">Seoul</a></li>
-          <li><a href="/place/asia/singapore">Singapore</a></li>
-          <li><a href="/place/569258/asia/shanghai">Shanghai</a></li>
-          <li><a href="/place/asia/taipei">Taipei</a></li>
-          <li><a href="/place/1546429/asia/tokyo">Tokyo</a></li>
+          <li><a href="/604/visit/bangkok-thailand">Bangkok</a></li>
+          <li><a href="/597/visit/beijing-china">Beijing</a></li>
+          <li><a href="/184245/visit/hong-kong-hong-kong">Hong Kong</a></li>
+          <li><a href="/1704/visit/jakarta-indonesia">Jakarta</a></li>
+          <li><a href="/1951/visit/kuala-lumpur-malaysia">Kuala Lumpur</a></li>
+          <li><a href="/3124/visit/seoul-south-korea">Seoul</a></li>
+          <li><a href="/161/visit/singapore">Singapore</a></li>
+          <li><a href="/6218624/visit/shangqiu-china">Shangqiu</a></li>
+          <li><a href="/3518/visit/taipei-taiwan">Taipei</a></li>
+          <li><a href="/3593/visit/tokyo-japan">Tokyo</a></li>
         </ul>
 
         <div className="gap gap-small"></div>
         <h4>Australia & Pacific Islands</h4>
         <ul>
-          <li><a href="/place/6248547/australia-pacific-islands/adelaide">Adelaide</a></li>
-          <li><a href="/place/8081963/australia-pacific-islands/auckland">Auckland</a></li>
-          <li><a href="/place/184680/australia-pacific-islands/bisbane">Brisbane</a></li>
-          <li><a href="/place/8082124/australia-pacific-islands/christchurch">Christchurch</a></li>
-          <li><a href="/place/6258578/australia-pacific-islands/melbourne">Melbourne</a></li>
-          <li><a href="/place/170019/australia-pacific-islands/perth">Perth</a></li>
-          <li><a href="/place/2000996/australia-pacific-islands/queenstown">Queenstown</a></li>
-          <li><a href="/place/australia-pacific-islands/rotorua">Rotorua</a></li>
-          <li><a href="/place/6140468/australia-pacific-islands/sydney">Sydney</a></li>
-          <li><a href="/place/8064780/australia-pacific-islands/wellington">Wellington</a></li>
+          <li><a href="/292/visit/adelaide-south-australia-australia">Adelaide</a></li>
+          <li><a href="/346/visit/auckland-new-zealand">Auckland</a></li>
+          <li><a href="#">Brisbane</a></li>
+          <li><a href="/828/visit/christchurch-new-zealand">Christchurch</a></li>
+          <li><a href="/2261/visit/melbourne-victoria-australia">Melbourne</a></li>
+          <li><a href="/6354222/visit/perth-tasmania-australia">Perth</a></li>
+          <li><a href="/3611/visit/queenstown-tasmania-australia">Queenstown</a></li>
+          <li><a href="/3027/visit/rotorua-new-zealand">Rotorua</a></li>
+          <li><a href="/3341/visit/sydney-new-south-wales-australia">Sydney</a></li>
+          <li><a href="/3798/visit/wellington-new-zealand">Wellington</a></li>
         </ul>
         <div className="gap gap-small"></div>
         <h4>Canada</h4>
         <ul>
-          <li><a href="/place/canada/calgary">Calgary</a></li>
-          <li><a href="/place/canada/edmonton">Edmonton</a></li>
-          <li><a href="/place/canada/lake-louise">Lake Louise</a></li>
-          <li><a href="/place/canada/montreal">Montreal</a></li>
-          <li><a href="/place/canada/ottawa">Ottawa</a></li>
-          <li><a href="/place/canada/quebec">Quebec</a></li>
-          <li><a href="/place/canada/toronto">Toronto</a></li>
-          <li><a href="/place/canada/vancouver">Vancouver</a></li>
-          <li><a href="/place/canada/victoria">Victoria</a></li>
-          <li><a href="/place/canada/whistler">Whistler</a></li>
+          <li><a href="/4132/visit/calgary-alberta-canada">Calgary</a></li>
+          <li><a href="/3927/visit/edmonton-alberta-canada">Edmonton</a></li>
+          <li><a href="/10115/visit/lake-louise-alberta-canada">Lake Louise</a></li>
+          <li><a href="/4005/visit/montreal-quebec-canada">Montreal</a></li>
+          <li><a href="/4025/visit/ottawa-ontario-canada">Ottawa</a></li>
+          <li><a href="/4043/visit/quebec-quebec-canada">Quebec</a></li>
+          <li><a href="/4089/visit/toronto-ontario-canada">Toronto</a></li>
+          <li><a href="/4106/visit/vancouver-british-columbia-canada">Vancouver</a></li>
+          <li><a href="#">Victoria</a></li>
+          <li><a href="/4115/visit/whistler-british-columbia-canada">Whistler</a></li>
         </ul>
       </div>
       <div className="col-md-4 left">
         <h4>Carribean</h4>
         <ul>
-          <li><a href="/place/carribean/frederiksted">Frederiksted</a></li>
-          <li><a href="/place/carribean/charlotte-amalie">Charlotte Amalie</a></li>
-          <li><a href="/place/carribean/chistiansted">Christiansted</a></li>
-          <li><a href="/place/carribean/cruz-bay">Cruz Bay</a></li>
-          <li><a href="/place/carribean/havana">Havana</a></li>
-          <li><a href="/place/carribean/nassau">Nassau</a></li>
-          <li><a href="/place/carribean/providenciales">Providenciales</a></li>
-          <li><a href="/place/carribean/punta-cana">Punta Cana</a></li>
-          <li><a href="/place/carribean/san-juan">San Juan</a></li>
-          <li><a href="/place/carribean/willemstad">Willemstad</a></li>
+          <li><a href="#">Frederiksted</a></li>
+          <li><a href="/3289/visit/charlotte-amalie-st-thomas-u.s-virgin-islands">Charlotte Amalie</a></li>
+          <li><a href="#">Christiansted</a></li>
+          <li><a href="/9874/visit/cruz-bay-st-john-u.s-virgin-islands">Cruz Bay</a></li>
+          <li><a href="/6349479/visit/havana-cuba">Havana</a></li>
+          <li><a href="#">Nassau</a></li>
+          <li><a href="/2822/visit/providenciales-providenciales-turks-and-caicos">Providenciales</a></li>
+          <li><a href="#">Punta Cana</a></li>
+          <li><a href="#">San Juan</a></li>
+          <li><a href="/937/visit/willemstad-curacao">Willemstad</a></li>
         </ul>            
         <div className="gap gap-small"></div>
         <h4>Central America</h4>
         <ul>
-          <li><a href="/place/central-america/panama-city">Panama City</a></li>
-          <li><a href="/place/central-america/san-jose">San Jose</a></li>
-          <li><a href="/place/central-america/tamarindo">Tamarindo</a></li>
-          <li><a href="/place/central-america/jaca">Jaco</a></li>
-          <li><a href="/place/central-america/manuel-antonio">Manuel Antonio</a></li>
-          <li><a href="/place/central-america/la-fortuna">La Fortuna</a></li>
-          <li><a href="/place/central-america/granada">Granada</a></li>
-          <li><a href="/place/central-america/quepos">Quepos</a></li>
-          <li><a href="/place/central-america/antigua">Antigua</a></li>
-          <li><a href="/place/central-america/san-pedro">San Pedro</a></li>
+          <li><a href="/2897/visit/panama-city-panama">Panama City</a></li>
+          <li><a href="/6254893/visit/san-jose-montanita-ecuador">San Jose</a></li>
+          <li><a href="/500187/visit/tamarindo-costa-rica">Tamarindo</a></li>
+          <li><a href="/500665/visit/jaco-costa-rica">Jaco</a></li>
+          <li><a href="/601060/visit/manuel-antonio-costa-rica">Manuel Antonio</a></li>
+          <li><a href="/6047145/visit/la-fortuna-alajuela-costa-rica">La Fortuna</a></li>
+          <li><a href="/6159987/visit/granada-cali-colombia">Granada</a></li>
+          <li><a href="/3868/visit/quepos-costa-rica">Quepos</a></li>
+          <li><a href="/11729/visit/antigua-antigua-and-barbuda">Antigua</a></li>
+          <li><a href="/6050539/visit/san-pedro-ecuador">San Pedro</a></li>
         </ul>
         <div className="gap gap-small"></div>
          <h4>Europe</h4>
         <ul>
-          <li><a href="/place/1999401/europe/amsterdam">Amsterdam</a></li>
-          <li><a href="/place/3858073/europe/barcelona">Barcelona</a></li>
-          <li><a href="/place/759111/europe/berlin">Berlin</a></li>
-          <li><a href="/place/7341448/europe/dublin">Dublin</a></li>
-          <li><a href="/place/2754576/europe/istanbul">Istanbul</a></li>
-          <li><a href="/place/europe/london">London</a></li>
-          <li><a href="/place/774948/europe/madrid">Madrid</a></li>
-          <li><a href="/place/957085/europe/paris">Paris</a></li>
-          <li><a href="/place/685233/europe/prague">Prague</a></li>
-          <li><a href="/place/1500776/europe/rome">Rome</a></li>
-          <li><a href="/place/7535297/europe/venice">Venice</a></li>
+          <li><a href="/378/visit/amsterdam-netherlands">Amsterdam</a></li>
+          <li><a href="/513/visit/barcelona-spain">Barcelona</a></li>
+          <li><a href="/536/visit/berlin-germany">Berlin</a></li>
+          <li><a href="/1069/visit/dublin-ireland">Dublin</a></li>
+          <li><a href="/1639/visit/istanbul-turkey">Istanbul</a></li>
+          <li><a href="/2114/visit/london-england-united-kingdom">London</a></li>
+          <li><a href="/2198/visit/madrid-spain">Madrid</a></li>
+          <li><a href="/2734/visit/paris-france">Paris</a></li>
+          <li><a href="/2872/visit/prague-czech-republic">Prague</a></li>
+          <li><a href="/3023/visit/rome-italy">Rome</a></li>
+          <li><a href="/3687/visit/venice-italy">Venice</a></li>
         </ul>
 
         <div className="gap gap-small"></div>
         <h4>North America</h4>
         <ul>
-          <li><a href="/place/north-america/atlanta">Atlanta</a></li>
-          <li><a href="/place/north-america/boston">Boston</a></li>
-          <li><a href="/place/north-america/chicargo">Chicargo</a></li>
-          <li><a href="/place/north-america/denver">Denver</a></li>
-          <li><a href="/place/north-america/houston">Houston</a></li>
-          <li><a href="/place/north-america/miami">Miami</a></li>
-          <li><a href="/place/north-america/los-angeles">Los Angeles</a></li>
-          <li><a href="/place/north-america/las-vegas">Las Vegas</a></li>
-          <li><a href="/place/north-america/new-york">New York</a></li>
-          <li><a href="/place/north-america/new-orleans">New Orleans</a></li>
-          <li><a href="/place/north-america/orlando">Orlando</a></li>
-          <li><a href="/place/north-america/pheonix">Pheonix</a></li>
-          <li><a href="/place/north-america/philidelphia">Philidelphia</a></li>
-          <li><a href="/place/north-america/san-diego">San Diego</a></li>
-          <li><a href="/place/north-america/san-francisco">San Francisco</a></li>
-          <li><a href="/place/north-america/washington-d-c">Washington D.C</a></li>
+          <li><a href="/441/visit/atlanta-georgia-united-states-of-america">Atlanta</a></li>
+          <li><a href="/660/visit/boston-massachusetts-united-states-of-america">Boston</a></li>
+          <li><a href="/829/visit/chicago-illinois-united-states-of-america">Chicago</a></li>
+          <li><a href="/996/visit/denver-colorado-united-states-of-america">Denver</a></li>
+          <li><a href="/1503/visit/houston-texas-united-states-of-america">Houston</a></li>
+          <li><a href="/2297/visit/miami-florida-united-states-of-america">Miami</a></li>
+          <li><a href="/2011/visit/los-angeles-california-united-states-of-america">Los Angeles</a></li>
+          <li><a href="/2008/visit/las-vegas-nevada-united-states-of-america">Las Vegas</a></li>
+          <li><a href="/2621/visit/new-york-new-york-united-states-of-america">New York</a></li>
+          <li><a href="/2434/visit/new-orleans-louisiana-united-states-of-america">New Orleans</a></li>
+          <li><a href="/2693/visit/orlando-florida-united-states-of-america">Orlando</a></li>
+          <li><a href="#">Pheonix</a></li>
+          <li><a href="/6340112/visit/philadelphia-new-york-united-states-of-america">Philadelphia</a></li>
+          <li><a href="/3073/visit/san-diego-california-united-states-of-america">San Diego</a></li>
+          <li><a href="/3132/visit/san-francisco-california-united-states-of-america">San Francisco</a></li>
+          <li><a href="#">Washington D.C</a></li>
         </ul>
         <div className="gap gap-small"></div>
       </div>
       <div className="col-md-4 left">
         <h4>Mexico</h4>
         <ul>
-          <li><a href="/place/mexico/cabo-san-lucas">Cabo San Lucas</a></li>
-          <li><a href="/place/mexico/cancun">Cancun</a></li>
-          <li><a href="/place/mexico/tulum">Tulum</a></li>
-          <li><a href="/place/mexico/cozumel">Cozumel</a></li>
-          <li><a href="/place/mexico/guadalajra">Guadalajara</a></li>
-          <li><a href="/place/mexico/isla-mujeres">Isla Mujeres</a></li>
-          <li><a href="/place/mexico/merida">Merida</a></li>
-          <li><a href="/place/mexico/mexico-city">Mexico City</a></li>
-          <li><a href="/place/mexico/monterrey">Monterrey</a></li>
-          <li><a href="/place/mexico/nuevo-vallarta">Nuevo Vallarta</a></li>
-          <li><a href="/place/mexico/ooaxaca-de-juarez">Oaxaca de Juarez</a></li>
-          <li><a href="/place/mexico/playa-del-carmen">Playa del Carmen</a></li>
-          <li><a href="/place/mexico/puerto-aventuras">Puerto Aventuras</a></li>
-          <li><a href="/place/mexico/puerto-morelos">Puerto Morelos</a></li>
-          <li><a href="/place/mexico/puerto-penasco">Puerto Penasco</a></li>
-          <li><a href="/place/mexico/puerto-vallarta">Puerto Vallarta</a></li>
-          <li><a href="/place/mexico/san-jose-del-cabo">San Jose del Cabo</a></li>
-          <li><a href="/place/mexico/san-miguel-de-allende">San Miguel de Allende</a></li>
-          <li><a href="/place/mexico/sayulita">Sayulita</a></li>
-          <li><a href="/place/mexico/zihuatanejo">Zihuatanejo</a></li>
+          <li><a href="/9631/visit/cabo-san-lucas-baja-california-sur-mexico">Cabo San Lucas</a></li>
+          <li><a href="/935/visit/cancun-quintana-roo-mexico">Cancun</a></li>
+          <li><a href="/182189/visit/tulum-quintana-roo-mexico">Tulum</a></li>
+          <li><a href="/180033/visit/cozumel-quintana-roo-mexico">Cozumel</a></li>
+          <li><a href="/6051264/visit/guadalajara-jalisco-mexico">Guadalajara</a></li>
+          <li><a href="/7925/visit/isla-mujeres-quintana-roo-mexico">Isla Mujeres</a></li>
+          <li><a href="/2298/visit/merida-yucatan-mexico">Merida</a></li>
+          <li><a href="/2265/visit/mexico-city-distrito-federal-mexico">Mexico City</a></li>
+          <li><a href="/6052121/visit/monterrey-nuevo-leon-mexico">Monterrey</a></li>
+          <li><a href="/500691/visit/nuevo-vallarta-nayarit-mexico">Nuevo Vallarta</a></li>
+          <li><a href="/2631/visit/oaxaca-oaxaca-mexico">Oaxaca</a></li>
+          <li><a href="/601751/visit/playa-del-carmen-quintana-roo-mexico">Playa del Carmen</a></li>
+          <li><a href="/601363/visit/puerto-aventuras-quintana-roo-mexico">Puerto Aventuras</a></li>
+          <li><a href="/180137/visit/puerto-morelos-quintana-roo-mexico">Puerto Morelos</a></li>
+          <li><a href="/9456/visit/puerto-penasco-sonora-mexico">Puerto Penasco</a></li>
+          <li><a href="/2914/visit/puerto-vallarta-jalisco-mexico">Puerto Vallarta</a></li>
+          <li><a href="/8650/visit/san-jose-del-cabo-baja-california-sur-mexico">San Jose del Cabo</a></li>
+          <li><a href="/9796/visit/san-miguel-de-allende-guanajuato-mexico">San Miguel de Allende</a></li>
+          <li><a href="/601105/visit/sayulita-nayarit-mexico">Sayulita</a></li>
+          <li><a href="/6177/visit/zihuatanejo-guerrero-mexico">Zihuatanejo</a></li>
         </ul>
         <div className="gap gap-small"></div>
         <h4>Middle East</h4>
         <ul>
-          <li><a href="/place/6070029/middle-east/dubai">Dubai</a></li>
-          <li><a href="/place/1311384/middle-east/tel-aviv">Tel Aviv</a></li>
-          <li><a href="/place/1288158/middle-east/jerusalem">Jerusalem</a></li>
-          <li><a href="/place/middle-east/tehran">Tehran</a></li>
-          <li><a href="/place/6069880/middle-east/abu-dhabi">Abu Dhabi</a></li>
-          <li><a href="/place/8361934/middle-east/doha">Doha</a></li>
-          <li><a href="/place/7692376/middle-east/beirut">Beirut</a></li>
-          <li><a href="/place/5584473/middle-east/riyad">Riyadh</a></li>
-          <li><a href="/place/6275313/middle-east/manama">Manama</a></li>
-          <li><a href="/place/middle-east/amman">Amman</a></li>
+          <li><a href="/6053839/visit/dubai-united-arab-emirates">Dubai</a></li>
+          <li><a href="/3477/visit/tel-aviv-israel">Tel Aviv</a></li>
+          <li><a href="/1727/visit/jerusalem-israel">Jerusalem</a></li>
+          <li><a href="#">Tehran</a></li>
+          <li><a href="/453/visit/abu-dhabi-united-arab-emirates">Abu Dhabi</a></li>
+          <li><a href="/6269113/visit/doha-qatar">Doha</a></li>
+          <li><a href="/542/visit/beirut-lebanon">Beirut</a></li>
+          <li><a href="/3051/visit/riyadh-saudi-arabia">Riyadh</a></li>
+          <li><a href="/490/visit/manama-bahrain">Manama</a></li>
+          <li><a href="/6269089/visit/amman-jordan">Amman</a></li>
         </ul>
         <div className="gap gap-small"></div>
         <h4>South America</h4>
         <ul>
-          <li><a href="/place/156767/south-america/buenos-aires">Buenos Aires</a></li>
-          <li><a href="/place/south-america/rio">Rio</a></li>
-          <li><a href="/place/south-america/sao-paulo">São Paulo</a></li>
-          <li><a href="/place/8092305/south-america/lima">Lima</a></li>
-          <li><a href="/place/408765/south-america/santiago">Santiago</a></li>
-          <li><a href="/place/south-america/porto-alegre">Porto Alegre</a></li>
-          <li><a href="/place/8069092/south-america/cusco">Cusco</a></li>
-          <li><a href="/place/6471639/south-america/bogota">Bogota</a></li>
-          <li><a href="/place/6646656/south-america/cartagena">Cartagena</a></li>
-          <li><a href="/place/707572/south-america/quito">Quito</a></li>
+          <li><a href="/716/visit/buenos-aires-argentina">Buenos Aires</a></li>
+          <li><a href="/2998/visit/rio-de-janeiro-brazil">Rio de Janeiro</a></li>
+          <li><a href="#">São Paulo</a></li>
+          <li><a href="/2077/visit/lima-peru">Lima</a></li>
+          <li><a href="/3095/visit/santiago-chile">Santiago</a></li>
+          <li><a href="/6143664/visit/porto-alegre-brazil">Porto Alegre</a></li>
+          <li><a href="/941/visit/cusco-peru">Cusco</a></li>
+          <li><a href="/653/visit/bogota-colombia">Bogota</a></li>
+          <li><a href="/6140796/visit/cartagena-colombia">Cartagena</a></li>
+          <li><a href="/3623/visit/quito-ecuador">Quito</a></li>
         </ul>
       </div>
     </div>

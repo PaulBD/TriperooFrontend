@@ -18,7 +18,7 @@ export default class BulletPoints extends React.Component {
                 <a href="/hotels">
                     <div className="mb30 thumb"><i className="fa fa-bed box-icon-left round box-icon-big box-icon-border animate-icon-top-to-bottom"></i>
                         <div className="thumb-caption">
-                            <h4 className="thumb-title">200,000 Hotels</h4>
+                            <h4 className="thumb-title">500,000 Hotels</h4>
                             <p className="thumb-desc">Search from our huge selection of hotels worldwide</p>
                         </div>
                     </div>

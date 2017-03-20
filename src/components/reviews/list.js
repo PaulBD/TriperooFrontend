@@ -11,7 +11,7 @@ class Reviews extends React.Component {
   }
 
   componentWillMount() {
-    this.props.actions.loadReviews(this.props.searchType, this.props.limit, this.props.offset);
+    this.props.actions.loadReviews(this.props.searchId, this.props.searchType, this.props.limit, this.props.offset);
   }
 
   render(){
@@ -39,7 +39,11 @@ class Reviews extends React.Component {
 }
 
 Reviews.defaultProps = {
-  showTitle: true
+  showTitle: true,
+  searchType: 'all',
+  searchId: 0,
+  limit: 0,
+  offset: 0
 };
 
 Reviews.propTypes = {

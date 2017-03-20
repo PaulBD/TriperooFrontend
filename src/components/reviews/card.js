@@ -5,11 +5,10 @@ import Loader from '../common/loadingDots';
 
 const ReviewList = ({reviews}) => {
 
-  if (reviews != undefined && reviews.length > 0) {
+  if (reviews != undefined && reviews.length > -1) {
     return (
       <div className="row row-wrap">
         {
-
           reviews.map(review => {
 
           let style = {
