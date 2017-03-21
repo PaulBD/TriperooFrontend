@@ -73,11 +73,17 @@ class AutoComplete extends React.Component {
               this.props.searches.map(search => {
               let icon = '';
 
-              switch (search.type)
+              switch (search.regionType)
               {
-                case 'Vicinity':
+                case 'Continent':
+                  icon = 'fa fa-globe';
+                break;
                 case 'City':
                 case 'Country':
+                case 'Province (State)':
+                case 'Multi - Region(within a country)':
+                case 'Multi-Region (within a country)':
+                case 'Multi-City (Vicinity)':
                   icon = 'fa fa-map-marker';
                 break;
                 case 'Hotel':
@@ -92,9 +98,13 @@ class AutoComplete extends React.Component {
                 case 'Bar':
                   icon = 'fa fa-glass';
                 break;
+                case "Point of Interest Shadow":
+                case 'Point of Interest':
+                  icon = 'fa fa-compass';
+                break;
               }
 
-              return (<li key={search.inventoryReference} className="ui-menu-item"><a href="#" onClick={this.handleClick} data-type={search.type} data-name={search.name} data-url={search.url} data-id={search.inventoryReference}><span><i className={icon}></i></span> {search.name}</a></li>);
+              return (<li key={search.regionID} className="ui-menu-item"><a href="#" onClick={this.handleClick} data-type={search.regionType} data-name={search.regionNameLong} data-url={search.url} data-id={search.regionID}><span><i className={icon}></i></span> {search.regionNameLong}</a></li>);
               })
             }
           </ul>

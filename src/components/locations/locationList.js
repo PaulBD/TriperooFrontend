@@ -28,8 +28,8 @@ const LocationList = ({locations}) => {
 					<div key={location.inventoryReference}>
 						<div className={cssClass}>
 							<a className="hover-img" href={location.url}>
-								<img src={location.image ? location.image : '/static/img/400x300.png'}  alt={location.nameShort} onError={(e)=>{e.target.src='/static/img/400x300.png'}} />
-								<h5 className="hover-title hover-hold">{location.nameShort}</h5>
+								<img src={location.image ? location.image : '/static/img/400x300.png'}  alt={location.regionName} onError={(e)=>{e.target.src='/static/img/400x300.png'}} />
+								<h5 className="hover-title hover-hold">{location.regionName}</h5>
 							</a>
 						</div>
 						{spacer}

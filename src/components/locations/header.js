@@ -20,13 +20,13 @@ class Header extends React.Component {
 
       let html = null;
 
-      if (this.props.location.type == "City") {
+      if (this.props.location.regionType == "City") {
         html = (
           <div className="owl-cap">
-              <Weather id={this.props.id} type={this.props.location.type} />
-              <h1 className="owl-cap-title fittext">{this.props.location.nameShort}</h1>
+              <Weather id={this.props.regionID} type={this.props.location.regionType} />
+              <h1 className="owl-cap-title fittext">{this.props.location.regionName}</h1>
               <div className="owl-cap-price">
-                  <small>{this.props.location.name}</small>
+                  <small>{this.props.location.regionNameLong}</small>
               </div>
           </div>
         );
@@ -34,7 +34,7 @@ class Header extends React.Component {
       else {
         html = (
           <div className="owl-cap">
-              <h1 className="owl-cap-title fittext">{this.props.location.nameShort}</h1>
+              <h1 className="owl-cap-title fittext">{this.props.location.regionName}</h1>
           </div>
         );
       }

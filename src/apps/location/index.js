@@ -27,23 +27,23 @@ class LocationHome extends React.Component {
     }
       
     render(){
-    document.title = 'Explore, Plan, Book in ' + titleCase(this.props.location.nameShort);
+    document.title = 'Explore, Plan, Book in ' + titleCase(this.props.location.regionName);
     return (
         <div>
             <Header id={this.props.placeId} location={this.props.location}  />
             <div className="container">
-                <NavigationWrapper name={this.props.location.nameShort} location={this.props.location} />
+                <NavigationWrapper name={this.props.location.regionName} location={this.props.location} />
                 <div className="gap gap-small"></div>
             </div>
             <div className="container">
                 <div className="row">
                     <div className="col-md-8">
-                        <TopPlaces name={this.props.location.nameShort} searchType={this.props.location.type} {...this.props} />
+                        <TopPlaces name={this.props.location.regionName} searchType={this.props.location.regionType} {...this.props} />
                     </div>
                     <div className="col-md-4">
-                        <QuestionButton id={this.props.placeId} type={this.props.location.type} name={this.props.location.name} nameShort={this.props.location.nameShort}  />
-                        <RecentQuestions id={this.props.placeId} type={this.props.location.type} limit={3} offset={0} />
-                        <Overview id={this.props.placeId} type={this.props.location.type} name={this.props.location.nameShort} overview={this.props.location.overview} showMore={true} />
+                        <QuestionButton id={this.props.placeId} type={this.props.location.regionType} name={this.props.location.regionNameLong} nameShort={this.props.location.regionName}  />
+                        <RecentQuestions id={this.props.placeId} type={this.props.location.regionType} limit={3} offset={0} />
+                        <Overview id={this.props.placeId} type={this.props.location.regionType} name={this.props.location.regionName} overview={this.props.location.overview} showMore={true} />
                         <div className="gap-small"></div>
                     </div>
                     <div className="gap"></div>
