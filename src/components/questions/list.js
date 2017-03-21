@@ -8,12 +8,12 @@ const QuestionList = ({questions}) => {
         {
           questions.map(question => {
           return (
-              <li key={question.questionReference }>
-                  <a href={question.customerProfileUrl }>
-                  <img src={question.customerImageUrl ? question.customerImageUrl : '/static/img/userProfileImg.png'} alt={question.customerName} className="origin round profileImgLge" onError={(e)=>{e.target.src='/static/img/userProfileImg.png'}} />
+              <li key={question.questionReference}>
+                  <a href={question.customerProfileUrl}>
+                  <img src={question.customerImageUrl ? question.customerImageUrl : '/static/img/userProfileImg.png'} alt={question.customerName} className="origin round profileImgLge" onError={(e)=>{e.target.src='/static/img/userProfileImg.png';}} />
                       </a>
                   <div className="thumb-list-item-caption">
-                      <p className="thumb-list-item-meta">{ question.friendlyDate }</p>
+                      <p className="thumb-list-item-meta">{question.friendlyDate}</p>
                       <h4 className="thumb-list-item-title"><a href={question.customerProfileUrl}>{question.customerName}</a></h4>
                       <p className="thumb-list-item-desciption">{question.question.substring(0, 50)}...</p>
                   </div>

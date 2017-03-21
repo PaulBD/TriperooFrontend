@@ -53,7 +53,6 @@ class SearchComponent extends React.Component {
   }
 
   render() {
-
     return (
       <div className="search-tabs search-tabs-bg search-tabs-to-top">
         <div className="tabbable">

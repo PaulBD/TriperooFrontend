@@ -14,6 +14,14 @@ const LocationList = ({locations}) => {
 					cssClass = "col-md-4";
 				}
 
+				if (locations != null)
+				{
+					if ((locations.length == 3) || (locations.length == 6))
+					{
+						cssClass = "col-md-4";
+					}
+				}
+
 				let spacer = '';
 
 				switch (i)
@@ -25,15 +33,13 @@ const LocationList = ({locations}) => {
 				}
 
 				return (
-					<div key={location.inventoryReference}>
-						<div className={cssClass}>
+						<div className={cssClass} key={location.regionID}>
 							<a className="hover-img" href={location.url}>
 								<img src={location.image ? location.image : '/static/img/400x300.png'}  alt={location.regionName} onError={(e)=>{e.target.src='/static/img/400x300.png'}} />
 								<h5 className="hover-title hover-hold">{location.regionName}</h5>
 							</a>
-						</div>
 						{spacer}
-					</div>
+						</div>
 				);
 			})
 		}

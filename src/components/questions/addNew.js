@@ -29,7 +29,7 @@ class QuestionPopup extends React.Component {
 
   render(){
     return (
-      <div className="modal fade" id="reviewModel" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div className="modal fade" id="questionModel" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div className="modal-dialog modelReviewAuthentication" role="document">
           <div className="modal-content">
             <div className={this.state.wizardStep == 1 ? "modal-body" : "modal-body hide"}>

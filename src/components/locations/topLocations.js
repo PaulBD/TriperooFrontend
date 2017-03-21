@@ -18,13 +18,19 @@ class TopLocations extends React.Component {
     }
 
     render(){
-    return (
-            <div>
-                <h3>Our Top Places In {titleCase(this.props.name)}</h3>
-                <LocationList locations={this.props.locations} />
-                <Loader showLoader={this.state.isLoading} />
-            </div>
-        );
+        if ((this.props.locations != null) && (this.props.locations.length > 0))
+        {
+            return (
+                <div>
+                    <h3>Some Locations In {titleCase(this.props.name)}...</h3>
+                    <LocationList locations={this.props.locations} />
+                    <Loader showLoader={this.state.isLoading} />
+                </div>
+            );
+        }
+        else {
+            return null;
+        }
     }
 }
 

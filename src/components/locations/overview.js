@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 let titleCase = require('title-case');
 
-class overview extends React.Component {
+class Overview extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = { isLoading: true, overview: '', showMore: 1 };
@@ -48,16 +48,16 @@ class overview extends React.Component {
     }
 }
 
-overview.defaultProps = {
+Overview.defaultProps = {
     showMore: false,
     name: '',
     overview: ''
 };
 
-overview.propTypes = {
+Overview.propTypes = {
   name: PropTypes.string.isRequired,
   overview: PropTypes.string.isRequired,
   showMore: PropTypes.bool
 };
 
-export default overview;
+export default Overview;

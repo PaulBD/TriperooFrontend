@@ -10,9 +10,9 @@ class AskQuestionButton extends React.Component {
         if (this.props.isAuthenticated) {
             return (
                 <div>
-                    <a href="#" className="btn btn-info questionBtn" data-toggle="modal" data-target="#reviewModel" >
+                    <a href="#" className="btn btn-info questionBtn" data-toggle="modal" data-target="#questionModel" >
                         <i className="fa fa-question-circle"></i>
-                        Ask a question about {titleCase(this.props.nameShort)}
+                        Ask a question about {this.props.nameShort.length > 15 ? "this location" : titleCase(this.props.nameShort)}
                     </a>
                     <QuestionPopup id={this.props.id} name={titleCase(this.props.name)} type={this.props.type} />
                     <div className="gap-small"></div>
@@ -24,7 +24,9 @@ class AskQuestionButton extends React.Component {
 }
 
 AskQuestionButton.defaultProps = {
-  isAuthenticated: false
+  isAuthenticated: false,
+  nameShort: '',
+  name: ''
 };
 
 

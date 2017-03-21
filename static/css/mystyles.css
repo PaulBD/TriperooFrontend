@@ -12,6 +12,7 @@ body { margin: 0; }
 .map { width:100%; height:500px; }
 
 .grey { color: #ccc;}
+.greyBg { background-color: #efefef; }
 
 select.searchSelect:not([size]):not([multiple]) {
     height: calc(2.8rem - 2px);
@@ -19,6 +20,12 @@ select.searchSelect:not([size]):not([multiple]) {
 
 .reviewBg { background-size: 100%; }
 h4.card-title { font-size: 18px;}
+
+.weatherSml { font-size: 24px; }
+.weather .units { margin-top: -4px; line-height:16px; }
+
+.statText { margin-top:10px; }
+.statStars { padding: 24px 0px 0px 20px; }
 
 .communityImg { border: solid 1px #ccc; width:75%; float:right; }
 
