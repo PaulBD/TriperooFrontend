@@ -1,82 +1,91 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as headerActions from '../../../actions/headerActions';
+import * as hotelDealsActions from '../../../actions/hotelDealsActions';
 import StarRating from '../../common/starRating';
 import Loader from '../../common/loadingDots';
 
 class LastMinuteDeal extends React.Component {
   constructor(props, context) {
     super(props, context);
+    this.state = { isLoading: true };
   }
 
   componentDidMount() {
-    this.props.actions.loadLastMinuteDeal(this.props.featureType);
+    this.props.actions.loadHotelDealsByLocation(this.props.location, 1, 0);
+    this.setState({ isLoading: false });
   }
 
   render() {
 
-    const {header} = this.props;
+    const {hotelDeals} = this.props;
 
     let showLoader = true;
     let style = {};
     let price = '';
 
-    if (header)
+    if (hotelDeals.length > 0)
     {
       showLoader = false;
       
       style = {
-        backgroundImage: 'url(' + header.backgroundImage + ')'
+        backgroundImage: 'url(' + hotelDeals[0].merchant_image_url + ')'
       };
 
-      price = header.price;
+      price = hotelDeals.price;
 
-      if (price !== '') {
-        price = <h5>{price}</h5>;
+      if ((price !== '') && (price !== '00.00')) {
+        price = <p className="mb20">{price}</p>;
       }
-    }
+    
 
-    return (
+      return (
         <div className="bg-holder">
           <div className="bg-mask"></div>
           <div className="bg-parallax" style={style}></div>
           <div className="bg-content">
             <div className="container">
               <div className="gap gap-big text-xs-center text-white">
-                  <h2 className="text-uc mb20">{header.headline}</h2>
-                  <StarRating starRating={header.starRating ? header.starRating : 0} className="icon-list list-inline-block mb0 last-minute-rating" />
-                  <h5 className="last-minute-title">{header.title}</h5>
-                  <p className="last-minute-date">{header.subTitle}</p>
-                  <p className="mb20">{header.price}</p><a className="btn btn-lg btn-white btn-ghost" href={header.url}>{header.buttonText} <i className="fa fa-angle-right"></i></a>
+                  <h5 className="last-minute-title">{hotelDeals[0].product_name}</h5>
+                  <h3>{hotelDeals[0].description}</h3>
+                  {price}
+                  <a className="btn btn-lg btn-white btn-ghost" href={hotelDeals[0].aw_deep_link} target="_blank">View Deal <i className="fa fa-angle-right"></i></a>
+                  <br />
+                  <small>Clicking this link will redirect you to Travelzoo</small>
               </div>
             </div>
           </div>
           <Loader showLoader={showLoader} />
         </div>
       );
+    }
+    else 
+    {
+      return (<Loader showLoader={this.state.isLoading} />);
+    }
   }
 }
 
 LastMinuteDeal.defaultProps = {
-  header: {}
+  hotelDeals: []
 };
 
 LastMinuteDeal.propTypes = {
-  header: PropTypes.object.isRequired,
+  hotelDeals: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
-  featureType: PropTypes.string.isRequired
+  location: PropTypes.string.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    header: state.lastMinute[0]
+    isFetching: state.locationsList.isFetching ? state.locationsList.isFetching : false,
+    hotelDeals: state.hotelDeals.hotelDeals ? state.hotelDeals.hotelDeals : []
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(headerActions, dispatch)
+    actions: bindActionCreators(hotelDealsActions, dispatch)
   };
 }
 

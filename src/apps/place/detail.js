@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as locationActions from '../../actions/locationActions';
-import * as placeActions from '../../actions/placeActions';
+import * as placeActions from '../../actions/legacy/placeActions';
 
 import PlaceSubHeader from '../../components/places/common/subHeader';
 
@@ -32,7 +32,7 @@ class Place extends React.Component {
     let locationType = this.props.cityId != 0 ? "city" : "country";
     let locationName = this.props.cityId != 0 ? this.props.city : this.props.country;
 
-    this.props.locationActions.loadLocation(id, locationType);
+    this.props.locationActions.loadLocationById(id, locationType);
     this.props.placeActions.loadPlace(this.props.placeId, this.props.type);
 
     document.title = titleCase(this.props.placeName) + ' in ' + titleCase(locationName);

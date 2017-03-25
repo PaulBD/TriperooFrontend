@@ -1,10 +1,14 @@
-import initialState from './initialState';
 import * as types from '../actionTypes/';
 
-export default function locationReducer(state = {}, action) {
+export default function locationReducer(state = { isFetching: false }, action) {
 	switch(action.type) {
-		case types.LOAD_LOCATION_SUCCESS:
-			return action.location;
+		case types.LOCATION_CONTENT_REQUEST:
+			return Object.assign({}, state, { isFetching: true });
+		case types.LOCATION_CONTENT_SUCCESS:
+			return Object.assign({}, state, { isFetching: false, errorMessage: '', location: action.location });
+		case types.LOCATION_CONTENT_FAILURE:
+			return Object.assign({}, state, { isFetching: false, errorMessage: action.message });
+			
 		default:
 			return state;
 	}

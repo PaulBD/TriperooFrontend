@@ -7,15 +7,15 @@ import FacebookSignup from '../../components/authentication/facebookSignup';
 import ReviewList from '../../components/reviews/textList';
 import RecentQuestions from '../../components/questions/questions';
 import QuestionButton from '../../components/questions/askButton';
-import TopPlaces from '../../components/locations/topLocations';
+import TopLocations from '../../components/locations/topLocations';
 import NavigationWrapper from '../../components/locations/navigation/navigationWrapper';
-import Overview from '../../components/locations/overview';
+import Summary from '../../components/locations/summary';
 import Header from '../../components/locations/header';
 import LocationStats from '../../components/locations/stats';
-import WeatherFull from '../../components/common/weatherFull';
-
-
+import WeatherForcast from '../../components/weather/forecast';
 import LastMinuteDeal from '../../components/content/dynamic/lastMinuteDeal';
+import Loader from '../../components/common/loadingDots';
+import Events from '../../components/events/byLocation';
 
 import Deals from '../../components/legacy/deals/list';
 
@@ -24,78 +24,89 @@ let titleCase = require('title-case');
 class LocationHome extends React.Component {
     constructor(props, context) {
         super(props, context);
+        this.state = { isLoading: true };
     }
 
     componentDidMount() {
         window.scrollTo(0, 0);
-        this.props.locationActions.loadLocation(this.props.placeId);
+        this.props.locationActions.loadLocationById(this.props.locationId);
+        this.setState({ isLoading: false });
     }
       
     render(){
-        console.log(this.props.location);
-    document.title = 'Explore, Plan, Book in ' + titleCase(this.props.location.regionName);
-    return (
-        <div>
-            <Header id={this.props.placeId} location={this.props.location}  />
-            <div className="container">
-                <NavigationWrapper name={this.props.location.regionName} location={this.props.location} />
-                <div className="gap gap-small"></div>
-            </div>
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-8">
-                        <TopPlaces name={this.props.location.regionName} searchType={this.props.location.regionType} {...this.props} />
-                    </div>
-                    <div className="col-md-4">
-                        <QuestionButton id={this.props.placeId} type={this.props.location.regionType} name={this.props.location.regionNameLong} nameShort={this.props.location.regionName}  />
-                        <RecentQuestions id={this.props.placeId} type={this.props.location.regionType} limit={3} offset={0} />
-                        <div className="gap-small"></div>
-                        <Overview id={this.props.placeId} type={this.props.location.regionType} name={this.props.location.regionName} overview={this.props.location.summary} showMore={true} />
-                        <div className="gap-small"></div>
-                        <WeatherFull />
-                    </div>
+        document.title = 'Explore, Plan, Book in ' + titleCase(this.props.location.regionName);
+        if (this.props.location.regionName != undefined)
+        {
+            return (
+            <div>
+                <Header id={this.props.locationId} location={this.props.location}  />
+                <div className="container">
+                    <NavigationWrapper name={this.props.location.regionName} location={this.props.location} />
+                    <div className="gap gap-small"></div>
                 </div>
-            </div>   
-            <div className="gap"></div>
-            <LastMinuteDeal featureType="lastMinute" /> 
-            <div className="gap"></div>  
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-8">
-                        <ReviewList searchId={this.props.placeId} searchType={this.props.location.type} limit={3} offset={0} showTitle={false} />
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <TopLocations locationId={this.props.locationId} name={this.props.location.regionName} locationType={this.props.location.regionType} {...this.props} />
+                        </div>
+                        <div className="col-md-8">
+                            <Summary locationName={this.props.location.regionName} summary={this.props.location.summary} />
+                        </div>
+                        <div className="col-md-4">
+                            <QuestionButton locationId={this.props.locationId} locationName={this.props.location.regionNameLong} locationNameShort={this.props.location.regionName} locationType={this.props.location.regionType}/>
+                            <RecentQuestions locationId={this.props.locationId} locationName={this.props.location.regionName} limit={3} offset={0} />
+                        </div>
                     </div>
-                    <div className="col-md-4">
-                        <LocationStats likeCount={this.props.location.likeCount} reviewCount={this.props.location.reviewCount} averageReviewScore={this.props.location.averageReviewScore} />
-
-                        <a href="#" className="btn btn-info questionBtn" data-toggle="modal" data-target="#reviewModel" >
-                            <i className="fa fa-comments"></i>
-                            Write a Review
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div className="container">
-                <hr />
+                </div> 
                 <div className="gap"></div>
+                <LastMinuteDeal location={this.props.location.regionName} /> 
+                <div className="gap"></div>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-8">
+                            <ReviewList locationId={this.props.locationId} locationName={this.props.location.regionName} locationType="" limit={3} offset={0} showTitle={false} />
+                        </div>
+                        <div className="col-md-4">
+                            <a href="#" className="btn btn-info questionBtn" data-toggle="modal" data-target="#reviewModel" >
+                                <i className="fa fa-comments"></i>
+                                Write a Review
+                            </a>
+                            <div className="gap gap-small"></div>
+                            <LocationStats likeCount={this.props.location.likeCount} reviewCount={this.props.location.reviewCount} averageReviewScore={this.props.location.averageReviewScore} />
+                            <div className="gap gap-small"></div>
+                            <WeatherForcast locationId={this.props.locationId} />
+                        </div>
+                    </div>
+                </div>
+                <div className="gap"></div>
+                <Events locationName={this.props.location.regionName} baseUrl={this.props.location.url} />
                 <FacebookSignup />
-                <div className="gap"></div>
             </div>
-        </div>
-    );
+        );
+    } 
+    else {
+        return (<Loader showLoader={this.props.isFetching} />);
+    }
   }
 }
 
+LocationHome.defaultProps = {
+    isFetching: false
+};
+
 LocationHome.propTypes = {
-    placeId: PropTypes.number,
+    locationId: PropTypes.number,
     location: PropTypes.object,
-    locationActions: PropTypes.object.isRequired
+    locationActions: PropTypes.object.isRequired,
+    isFetching: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
-  return {
-    location: state.location,
-    placeId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0
-  };
+     return {
+        isFetching: state.location.isFetching ? state.location.isFetching : false,
+        location: state.location.location ? state.location.location : {},
+        locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0
+    };
 }
 
 function mapDispatchToProps(dispatch) {

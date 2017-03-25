@@ -5,7 +5,7 @@ import {bindActionCreators} from 'redux';
 import * as trendingDealActions from '../../../actions/legacy/trendingDealActions';
 import * as hotDealActions from '../../../actions/legacy/hotDealActions';
 import * as specialDealActions from '../../../actions/legacy/specialDealActions';
-import * as dealActions from '../../../actions/dealActions';
+import * as dealActions from '../../../actions/legacy/dealActions';
 
 import DealList from './dealList';
 import Loader from '../../common/loadingDots';

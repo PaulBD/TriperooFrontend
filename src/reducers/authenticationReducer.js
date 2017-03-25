@@ -1,4 +1,3 @@
-import initialState from './initialState';
 import * as types from '../actionTypes/';
 
 export default function customerReducer(state = { isFetching: false, isAuthenticated: localStorage.getItem('id_token') ? true : false }, action) {

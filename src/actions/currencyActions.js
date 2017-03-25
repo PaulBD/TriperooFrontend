@@ -1,6 +1,8 @@
-import {beginAjaxCall} from './ajaxStatusActions';
 import * as types from '../actionTypes/';
 
+// ****************************************
+// Save Currency
+// ****************************************
 export function saveCurrencySuccess(currency) {
 	return {type: types.SAVE_CURRENCY_SUCCESS, currency};
 }

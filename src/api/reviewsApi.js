@@ -1,13 +1,15 @@
 import axios from 'axios';
 import baseUrl from './baseApi';
 
-
 class ReviewsApi {
-  static getReviews(id, type, limit, offset) {
+  // ****************************************
+  // Return reviews by location id
+  // ****************************************
+  static getReviewsByLocationId(locationId, reviewType, limit, offset) {
     return new Promise((resolve, reject) => {
       axios({
         method: 'get',
-        url:  baseUrl + '/reviews/' + type + '?id=' + id + '&limit=' + limit + '&offset=' + offset
+        url:  baseUrl + '/reviews?type=' + reviewType + '&id=' + locationId + '&limit=' + limit + '&offset=' + offset
       })
       .then(response => {
         resolve(Object.assign([], response.data));

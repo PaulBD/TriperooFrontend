@@ -1,18 +1,28 @@
 import WeatherApi from '../api/weatherApi';
-import {beginAjaxCall} from './ajaxStatusActions';
 import * as types from '../actionTypes/';
 
-export function loadCurrentWeatherSuccess(weather) {
-	return {type: types.LOAD_CURRENT_WEATHER_SUCCESS, weather};
+// ****************************************
+// Load Weather by latitude / longitude
+// ****************************************
+export function requestWeather() {
+	return { type: types.WEATHER_REQUEST, isFetching: true };
 }
 
-export function loadCurrentWeather(id) {
+export function weatherSuccess(weather) {
+	return {type: types.WEATHER_SUCCESS, isFetching: false, weather};
+}
+
+export function weatherFailure(message) {
+	return {type: types.WEATHER_FAILURE, isFetching: false,  message};
+}
+
+export function loadCurrentWeather(latitude, longitude, language) {
 	return dispatch => {
-		dispatch(beginAjaxCall());
-		return WeatherApi.getCurrentWeather(id).then(weather => {
-			dispatch(loadCurrentWeatherSuccess(weather));
+		dispatch(requestWeather());
+		return WeatherApi.getCurrentWeather(latitude, longitude, language).then(weather => {
+			dispatch(weatherSuccess(weather));
 		}).catch(error => {
-			throw(error);
+			dispatch(weatherFailure(error));
 		});
 	};
 }

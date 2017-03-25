@@ -2,6 +2,10 @@ import axios from 'axios';
 import baseUrl from './baseApi';
 
 class QuestionApi {
+
+  // ****************************************
+  // Post new question
+  // ****************************************
   static postQuestion(question) {
     return new Promise((resolve, reject) => {
       axios({

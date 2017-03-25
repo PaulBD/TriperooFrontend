@@ -18,7 +18,7 @@ export default class FlightsPage extends React.Component {
   render(){
     return (
         <div>
-            <FeaturedHeader headerType="flight" />
+            <FeaturedHeader contentType="flight" />
             <div className="container">
                 <Search />
             </div>

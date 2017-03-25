@@ -9,41 +9,51 @@ import Loader from '../common/loadingDots';
 class Questions extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { isLoading: true };
   }
 
   componentDidMount() {
-    this.props.actions.loadQuestions(this.props.id, this.props.limit, this.props.offset);
-    this.state = { isLoading: false };
+    this.props.actions.loadQuestionsByLocationId(this.props.locationId, this.props.limit, this.props.offset);
   }
   render(){
     const {questions} = this.props;
 
-    if (questions.length > 0)
+    let questionText = '';
+
+    if (questions.length == 0)
     {
-      return (
-        <div className="sidebar-widget">
-            <h4>Recent Questions</h4>
-            <QuestionList questions={questions} />
-            <Loader showLoader={this.state.isLoading} />
-        </div>    
-        );
+      questionText= (<p>Be the first to ask a local expert a question about {this.props.locationName}.</p>);
     }
-    else { return null; }
+
+    return (
+      <div className="sidebar-widget">
+          <h4>Recent Questions</h4>
+          <QuestionList questions={questions} locationName={this.props.locationName} />
+          <Loader showLoader={this.props.isFetching} />
+          {questionText}
+      </div>    
+      );
   }
 }
+
+Questions.defaultProps = {
+  questions: [],
+  isFetching: false
+};
 
 Questions.propTypes = {
   questions: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
-  id: PropTypes.number.isRequired,
+  locationId: PropTypes.number.isRequired,
+  locationName: PropTypes.string.isRequired,
   limit: PropTypes.number.isRequired,
-  offset: PropTypes.number.isRequired
+  offset: PropTypes.number.isRequired,
+  isFetching: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    questions: state.questions
+    isFetching: state.questions.isFetching ? state.questions.isFetching : false,
+    questions: state.questions.questions ? state.questions.questions : []
   };
 }
 

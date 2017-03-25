@@ -1,7 +1,4 @@
 import React, {PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import * as searchActions from '../../actions/searchActions';
 import AutoComplete from '../common/autocomplete';
 import {browserHistory} from 'react-router';
 

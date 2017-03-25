@@ -2,9 +2,12 @@ import axios from 'axios';
 import baseUrl from './baseApi';
 
 class LocationApi {
-  static getLocation(id) {
+  // ****************************************
+  // Return location details by location id
+  // ****************************************
+  static getLocation(locationId) {
     return new Promise((resolve, reject) => {
-      axios.get(baseUrl + '/location?id=' + id)
+      axios.get(baseUrl + '/location?id=' + locationId)
         .then(function (response) {
           resolve(Object.assign({}, response.data));
         })

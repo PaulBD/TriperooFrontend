@@ -1,23 +1,28 @@
 import LocationsApi from '../api/locationsApi';
-import {beginAjaxCall} from './ajaxStatusActions';
 import * as types from '../actionTypes/';
 
-export function locationRequest() {
-	return {type: types.REVIEW_REQUEST, locations: []};
+// ****************************************
+// Load Location by parent location id
+// ****************************************
+export function requestChildLocationsContent() {
+	return {type: types.CHILD_LOCATION_CONTENT_REQUEST, isFetching: true };
 }
 
-export function loadLocationsSuccess(locations) {
-	return {type: types.LOAD_LOCATIONS_SUCCESS, locations};
+export function childLocationContentSuccess(locationsList) {
+	return {type: types.CHILD_LOCATION_CONTENT_SUCCESS, isFetching: false, locationsList};
 }
 
-export function loadLocations(parentId, type, limit, offset) {
+export function childLocationContentError(errorMessage) {
+	return {type: types.CHILD_LOCATION_CONTENT_FAILURE, isFetching: false,  errorMessage};
+}
+
+export function loadLocationsByParentLocationId(parentId, type, limit, offset) {
 	return dispatch => {
-		dispatch(locationRequest());
-		dispatch(beginAjaxCall());
-		return LocationsApi.getLocations(parentId, type, limit, offset).then(locations => {
-			dispatch(loadLocationsSuccess(locations));
+		dispatch(requestChildLocationsContent());
+		return LocationsApi.getLocationsByParentId(parentId, type, limit, offset).then(locationsList => {
+			dispatch(childLocationContentSuccess(locationsList));
 		}).catch(error => {
-			throw(error);
+			dispatch(childLocationContentError(error.response.data));
 		});
 	};
 }

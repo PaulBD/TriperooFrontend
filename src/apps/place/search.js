@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as locationActions from '../../actions/locationActions';
-import * as placesActions from '../../actions/placesActions';
+import * as placesActions from '../../actions/legacy/placesActions';
 
 import PlaceSubHeader from '../../components/places/common/subHeader';
 import Loader from '../../components/common/loadingDots';
@@ -33,7 +33,7 @@ class PlaceSearch extends React.Component {
     let locationType = this.props.cityId != 0 ? "city" : "country";
     let locationName = this.props.cityId != 0 ? this.props.city : this.props.country;
 
-    this.props.locationActions.loadLocation(id, locationType);
+    this.props.locationActions.loadLocationById(id, locationType);
 
     this.props.placesActions.loadPlaces(id, locationName, locationType, this.props.type, 'recommended', "gbp");
 

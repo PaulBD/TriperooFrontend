@@ -14,9 +14,26 @@ body { margin: 0; }
 .grey { color: #ccc;}
 .greyBg { background-color: #efefef; }
 
+.events { padding: 20px 0; }
+
 select.searchSelect:not([size]):not([multiple]) {
     height: calc(2.8rem - 2px);
 }
+
+.eventCard { height:225px; }
+
+.slick-next:before, .slick-prev:before {
+color: #333 !important;
+  }
+
+.last-minute-title { font-weight:bold;}
+.booking-item-reviews .gap-small { margin: 7px 0 7px 0; }
+
+.weatherIcon { top: -15px; position: relative; width:32px !important; height: 32px; }
+.weatherIconSml { width:25px ;}
+
+.weatherTbl tr td { font-size: 12px !important; padding: .50rem; border:none;}
+.weatherTbl tbody { border-top: 1px solid #eceeef !important; }
 
 .reviewBg { background-size: 100%; }
 h4.card-title { font-size: 18px;}

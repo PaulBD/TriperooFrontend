@@ -9,12 +9,10 @@ let titleCase = require('title-case');
 class TopLocations extends React.Component {
     constructor(props, context) {
         super(props, context);
-        this.state = { isLoading: true };
     }
 
     componentDidMount() {
-        this.props.actions.loadLocations(this.props.placeId, this.props.searchType, 7, 0);
-        this.setState({ isLoading: false });
+        this.props.actions.loadLocationsByParentLocationId(this.props.locationId, this.props.locationType, 6, 0);
     }
 
     render(){
@@ -22,9 +20,9 @@ class TopLocations extends React.Component {
         {
             return (
                 <div>
-                    <h3>Some Locations In {titleCase(this.props.name)}...</h3>
+                    <h3>Popular In {titleCase(this.props.name)}...</h3>
                     <LocationList locations={this.props.locations} />
-                    <Loader showLoader={this.state.isLoading} />
+                    <Loader showLoader={this.props.isFetching} />
                 </div>
             );
         }
@@ -37,22 +35,25 @@ class TopLocations extends React.Component {
 TopLocations.defaultProps = {
     name: '',
     searchType: '',
-    placeId: 0,
-    locations: []
+    locationId: 0,
+    locations: [],
+    isFetching: false
 };
 
 TopLocations.propTypes = {
-    placeId: PropTypes.number.isRequired,
+    locationId: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-    searchType: PropTypes.string.isRequired,
+    locationType: PropTypes.string.isRequired,
     locations: PropTypes.array.isRequired,
-    actions: PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    isFetching: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    locations: state.locations,
-    placeId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0
+    isFetching: state.locationsList.isFetching ? state.locationsList.isFetching : false,
+    locations: state.locationsList.locationsList ? state.locationsList.locationsList : [],
+    locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0
   };
 }
 

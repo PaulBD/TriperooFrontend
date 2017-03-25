@@ -12,9 +12,9 @@ class AskQuestionButton extends React.Component {
                 <div>
                     <a href="#" className="btn btn-info questionBtn" data-toggle="modal" data-target="#questionModel" >
                         <i className="fa fa-question-circle"></i>
-                        Ask a question about {this.props.nameShort.length > 15 ? "this location" : titleCase(this.props.nameShort)}
+                        Ask a question about {this.props.locationNameShort.length > 15 ? "this location" : titleCase(this.props.locationNameShort)}
                     </a>
-                    <QuestionPopup id={this.props.id} name={titleCase(this.props.name)} type={this.props.type} />
+                    <QuestionPopup id={this.props.locationId} name={titleCase(this.props.locationName)} type={this.props.locationType} />
                     <div className="gap-small"></div>
                 </div>
                 );
@@ -31,10 +31,10 @@ AskQuestionButton.defaultProps = {
 
 
 AskQuestionButton.propTypes = {
-    id: PropTypes.number,
-    name: PropTypes.string,
-    nameShort: PropTypes.string,
-    type: PropTypes.string,
+    locationId: PropTypes.number,
+    locationName: PropTypes.string,
+    locationNameShort: PropTypes.string,
+    locationType: PropTypes.string,
     isAuthenticated: PropTypes.bool.isRequired
 };
 

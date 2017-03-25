@@ -1,18 +1,28 @@
 import QuestionsApi from '../api/questionsApi';
-import {beginAjaxCall} from './ajaxStatusActions';
 import * as types from '../actionTypes/';
 
-export function loadQuestionSuccess(questions) {
-	return {type: types.LOAD_QUESTIONS_SUCCESS, questions};
+// ****************************************
+// List Questions By location id
+// ****************************************
+export function receiveQuestions() {
+	return {type: types.LOAD_QUESTION_REQUEST, isFetching: true};
 }
 
-export function loadQuestions(id, limit, offset) {
+export function loadQuestionSuccess(questions) {
+	return {type: types.LOAD_QUESTIONS_SUCCESS, isFetching: false, questions};
+}
+
+export function loadQuestionsFailure(message) {
+	return {type: types.LOAD_QUESTIONS_FAILURE, isFetching: false, message};
+}
+
+export function loadQuestionsByLocationId(locationId, limit, offset) {
 	return dispatch => {
-		dispatch(beginAjaxCall());
-		return QuestionsApi.getQuestions(id, limit, offset).then(questions => {
+		dispatch(receiveQuestions());
+		return QuestionsApi.getQuestionsByLocationId(locationId, limit, offset).then(questions => {
 			dispatch(loadQuestionSuccess(questions));
 		}).catch(error => {
-			throw(error);
+			dispatch(loadQuestionsFailure(error.response.data));
 		});
 	};
 }

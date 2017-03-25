@@ -7,11 +7,6 @@ let titleCase = require('title-case');
 class NavigationWrapper extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { isLoading: true };
-  }
-
-  componentDidMount() {
-    this.state = { isLoading: false };
   }
 
   render() {
@@ -38,8 +33,7 @@ class NavigationWrapper extends React.Component {
             <div className="tab-pane fade in active text-xs-center" id="tab-1">
               <h2 className="text-xs-center">Explore, Plan &amp; Book Your Visit to {titleCase(this.props.name)}</h2>
               <div className="gap gap-small"></div>
-              {places}
-              <Loader showLoader={this.state.isLoading} />                       
+              {places}                    
             </div>
           </div>
         </div>

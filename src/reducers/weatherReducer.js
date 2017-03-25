@@ -3,8 +3,13 @@ import * as types from '../actionTypes/';
 
 export default function weatherReducer(state = {}, action) {
 	switch(action.type) {
-		case types.LOAD_CURRENT_WEATHER_SUCCESS:
-			return action.weather;
+		case types.WETAHER_REQUEST:
+			return Object.assign({}, state, { isFetching: true });
+		case types.WEATHER_SUCCESS:
+			return Object.assign({}, state, { isFetching: false, errorMessage: '', weather: action.weather });
+		case types.WEATHER_FAILURE:
+			return Object.assign({}, state, { isFetching: false, errorMessage: action.message });
+			
 		default:
 			return state;
 	}

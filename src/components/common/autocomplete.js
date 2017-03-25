@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {browserHistory} from 'react-router';
-import * as searchActions from '../../actions/searchActions';
+import * as autocompleteActions from '../../actions/autocompleteActions';
 import Loader from '../common/loadingDots';
 
 class AutoComplete extends React.Component {
@@ -31,7 +31,7 @@ class AutoComplete extends React.Component {
     }
     
     // Reset Search
-    this.props.actions.loadSearches('', this.props.searchType);
+    this.props.actions.searchLocations('', this.props.searchType);
   }
 
   onSearchValue(event) {
@@ -41,7 +41,7 @@ class AutoComplete extends React.Component {
 
     if (event.target.value.length > 2) {
       this.setState({ isLoading: true });
-      this.props.actions.loadSearches(event.target.value, this.props.searchType);
+      this.props.actions.searchLocations(event.target.value, this.props.searchType);
       this.setState({ selected: false, style: 'block', isOpen: true, isLoading: false });
     }
     else {
@@ -50,9 +50,7 @@ class AutoComplete extends React.Component {
   }
 
   render() {
-    const {searches} = this.props.searches;
-
-    let searchCount = this.props.searches.length; 
+    let searchCount = this.props.autocompleteList.length; 
 
     let style = {
       display: this.state.style
@@ -70,7 +68,7 @@ class AutoComplete extends React.Component {
         <div style={style}>
           <ul className="ui-autocomplete">
             {
-              this.props.searches.map(search => {
+              this.props.autocompleteList.map(search => {
               let icon = '';
 
               switch (search.regionType)
@@ -116,11 +114,12 @@ class AutoComplete extends React.Component {
 
 AutoComplete.defaultProps = {
   searchValue: '',
-  isAppSearch: true
+  isAppSearch: true,
+  isFetching: false
 };
 
 AutoComplete.propTypes = {
-  searches: PropTypes.array.isRequired,
+  autocompleteList: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
   changeType: PropTypes.func,
   changeValue: PropTypes.func,
@@ -130,18 +129,21 @@ AutoComplete.propTypes = {
   cssClass: PropTypes.string,
   placeholder: PropTypes.string,
   searchValue: PropTypes.string,
-  isAppSearch: PropTypes.bool
+  isAppSearch: PropTypes.bool,
+  isFetching: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
+
   return {
-    searches: state.searches
+    isFetching: state.locationsList.isFetching ? state.locationsList.isFetching : false,
+    autocompleteList: state.autocomplete.autocompleteList ? state.autocomplete.autocompleteList : []
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(searchActions, dispatch)
+    actions: bindActionCreators(autocompleteActions, dispatch)
   };
 }
 

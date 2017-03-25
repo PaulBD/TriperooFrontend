@@ -1,7 +1,7 @@
 import React from 'react';
 import FeaturedHeader from '../../components/content/dynamic/featuredHeader';
 import Search from '../../components/hotels/search';
-import TopDestinations from '../../components/content/dynamic/topDestinations';
+import Destinations from '../../components/content/dynamic/destinations';
 
 import Deals from '../../components/legacy/deals/list';
 
@@ -21,12 +21,12 @@ export default class SearchHotels extends React.Component {
   render(){
     return (
       <div>
-        <FeaturedHeader headerType="hotel" />
+        <FeaturedHeader contentType="hotel" />
         <div className="container">            
           <Search searchType="all" />
         </div>
         <div className="container">
-          <TopDestinations destinationCount={6} title="Our Top Hotel Destinations" />
+          <Destinations destinationCount={6} title="Our Top Hotel Destinations" />
           <div className="gap"></div>
         </div>
         <LastMinuteDeal featureType="lastMinute" />

@@ -1,18 +1,28 @@
 import LocationApi from '../api/locationApi';
-import {beginAjaxCall} from './ajaxStatusActions';
 import * as types from '../actionTypes/';
 
-export function loadLocationSuccess(location) {
-	return {type: types.LOAD_LOCATION_SUCCESS, location};
+// ****************************************
+// Load Location by location id
+// ****************************************
+export function requestLocationContent() {
+	return {type: types.LOCATION_CONTENT_REQUEST, isFetching: true };
 }
 
-export function loadLocation(id) {
+export function loadLocationContentSuccess(location) {
+	return {type: types.LOCATION_CONTENT_SUCCESS, isFetching: false, location};
+}
+
+export function locationContentFailure(errorMessage) {
+	return {type: types.LOCATION_CONTENT_FAILURE, isFetching: false,  errorMessage};
+}
+
+export function loadLocationById(locationId) {
 	return dispatch => {
-		dispatch(beginAjaxCall());
-		return LocationApi.getLocation(id).then(location => {
-			dispatch(loadLocationSuccess(location));
+		dispatch(requestLocationContent());
+		return LocationApi.getLocation(locationId).then(location => {
+			dispatch(loadLocationContentSuccess(location));
 		}).catch(error => {
-			throw(error);
+			dispatch(locationContentFailure(error.response.data));
 		});
 	};
 }

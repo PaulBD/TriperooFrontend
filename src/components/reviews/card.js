@@ -29,7 +29,7 @@ const ReviewList = ({reviews}) => {
                       <StarRating starRating={review.starRating} className="icon-list list-inline-block mb0 last-minute-rating"/>
                   </div>
                   <p className="card-text">
-                      {review.comment}
+                      {review.comment.length > 220 ? review.comment.substring(0, 220) + '...' : review.comment}
                   </p>
                   <TagList tags={review.tags} maxTags={5} readOnly={true} />
                 </div>

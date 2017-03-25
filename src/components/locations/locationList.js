@@ -5,10 +5,10 @@ const LocationList = ({locations}) => {
 	return (
 		<div className="row">
 			{
-			locations.map(location => {				
+			locations.map(location => {
 
 				i += 1;
-				let cssClass = "col-md-6";
+				let cssClass = "col-md-4";
 
 				if (i > 4) {
 					cssClass = "col-md-4";
@@ -26,8 +26,8 @@ const LocationList = ({locations}) => {
 
 				switch (i)
 				{
-					case 2:
-					case 4:
+					case 3:
+					case 6:
 						spacer = <div className="gap gap-small"></div>;
 						break;
 				}

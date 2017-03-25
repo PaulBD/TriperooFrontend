@@ -1,5 +1,5 @@
 import DealApi from '../../api/legacy/mockDealApi';
-import {beginAjaxCall} from '../ajaxStatusActions';
+import {beginAjaxCall} from './ajaxStatusActions';
 import * as types from '../../actionTypes/';
 
 export function loadDealSuccess(trendingDeals) {

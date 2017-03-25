@@ -1,5 +1,5 @@
 import React from 'react';
-import TopDestinations from '../../components/content/dynamic/topDestinations';
+import Destinations from '../../components/content/dynamic/destinations';
 import FeaturedHeader from '../../components/content/dynamic/featuredHeader';
 import WorldCities from '../../components/content/static/worldCities';
 import FacebookSignup from '../../components/authentication/facebookSignup';
@@ -44,7 +44,7 @@ export default class DestinationHome extends React.Component {
              <hr />
             <div className="gap gap-small"></div>
             <div className="container text-xs-center">
-              <TopDestinations destinationCount={3} title="Our Top Destinations" />
+              <Destinations destinationCount={3} title="Our Top Destinations" />
             </div>
             <div className="container">
                 <div className="gap gap-small"></div>

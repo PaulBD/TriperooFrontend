@@ -1,55 +1,69 @@
 import React, {PropTypes} from 'react';
-import StarRating from '../common/starRating';
-import TagList from '../common/tagList';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as reviewActions from '../../actions/reviewActions';
+
 import Loader from '../common/loadingDots';
+import ReviewItem from './reviewItem';
 
-const ReviewList = ({reviews}) => {
+class ReviewList extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+  }
 
-  if (reviews != undefined && reviews.length > -1) {
-    return (
-      <div className="row row-wrap">
-        {
-          reviews.map(review => {
-
-          let style = {
-            backgroundImage: 'url(' + review.imageUrl + ')'
-          };
-          return (
-            <div className="col-md-12" key={review.reviewReference}>
-
-<div className="row">
-<div className="col-md-4">
-<div className="testimonial-author commentCardTestimonial">
-                      <img src={review.customerImageUrl ? review.customerImageUrl : '/static/img/userProfileImg.png'} alt={review.customerName} className="origin round profileImgLge" onError={(e)=>{e.target.src='/static/img/userProfileImg.png'}} />
-                      <p className="testimonial-author-name"><a href={review.customerProfileUrl}>{review.customerName}</a>'s review</p>
-                      <StarRating starRating={review.starRating} className="icon-list list-inline-block mb0 last-minute-rating"/>
-                  </div>
-</div>
-<div className="col-md-8">
-
-<p className="card-text">
-                      {review.comment}
-                  </p>
-                  <TagList tags={review.tags} maxTags={5} readOnly={true} />
-</div>
-</div>
-
-
-
-            </div>
-            );
-          })
-        }
-      </div>
-    );
-  } 
-  else {
-    return (<Loader showLoader={true} />);
+  render() {
+    if (this.props.reviews != undefined && this.props.reviews.length > -1) {
+      if (this.props.reviews.length > 0)
+      {
+        return (
+          <ul className="booking-item-reviews list">
+            {
+              this.props.reviews.map(function (review, i) {
+                return (<ReviewItem key={i} review={review} />);
+              })
+            }
+          </ul>
+        );
+      }
+      else {
+        return (<p>There are no reviews available for {this.props.locationName}. Be the first to post a review.</p>);
+      }
+    } 
+    else {
+      return (<Loader showLoader={true} />);
+    }
   }
 };
 
-ReviewList.propTypes = {
-  reviews: PropTypes.array.isRequired
+ReviewList.defaultProps = {
+  isSending: false,
+  hasPosted: false
 };
 
-export default ReviewList;
+ReviewList.propTypes = {
+  locationName: PropTypes.string.isRequired,
+  locationId: PropTypes.number.isRequired,
+  reviews: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired,
+  isSending: PropTypes.bool.isRequired,
+  errorMessage: PropTypes.string,
+  hasPosted: PropTypes.bool
+};
+
+function mapStateToProps(state, ownProps) {
+  return {
+    isSending: state.review.isFetching,
+    errorMessage: state.review.errorMessage,
+    hasPosted: state.review.hasPosted,
+    reviews: state.reviews 
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(reviewActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ReviewList);
+

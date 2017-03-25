@@ -12,6 +12,7 @@ import FAQsPage from './apps/info/faqsPage';
 import LocalExpertPage from './apps/info/localExpertPage';
 import SupportPage from './apps/info/supportPage';
 import NotFoundPage from './apps/notFoundPage';
+import EventHome from './apps/events';
 
 import LocationHome from './apps/location';
 import PlaceSearch from './apps/place/search';
@@ -44,6 +45,7 @@ export default (
     <Route path="/support" component={SupportPage}/>
 
     <Route path="/(:placeId)/visit/(:placeName)" component={LocationHome}/>
+    <Route path="/(:placeId)/visit/(:placeName)/all-events-this-week" component={EventHome}/>
     <Route path="/place/(:cityId)/(:country)/(:city)" component={LocationHome}/>
     <Route path="/place/(:cityId)/(:country)/(:city)/(:type)" component={PlaceSearch}/>
     <Route path="/place/(:cityId)/(:country)/(:city)/(:type)/(:placeId)/(:placeName)" component={Place}/>

@@ -1,7 +1,7 @@
 import React from 'react';
 import Search from '../../components/holidays/search';
 import FeaturedHeader from '../../components/content/dynamic/featuredHeader';
-import TopDestinations from '../../components/content/dynamic/topDestinations';
+import Destinations from '../../components/content/dynamic/destinations';
 import Copy from '../../components/holidays/copy';
 
 import Deals from '../../components/legacy/deals/list';
@@ -20,12 +20,12 @@ export default class Holidays extends React.Component {
   render(){
     return (
       <div>
-        <FeaturedHeader headerType="holiday" />
+        <FeaturedHeader contentType="holiday" />
         <div className="container">
           <Search />
           <div className="gap"></div>
             <div className="row row-wrap text-xs-center">
-            <TopDestinations destinationCount={3} title="Our Top Destinations" />
+            <Destinations destinationCount={3} title="Our Top Destinations" />
           </div>
           <div className="gap"></div>
           <div className="row">

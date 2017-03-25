@@ -1,15 +1,9 @@
 import React, {PropTypes} from 'react';
-import Loader from '../common/loadingDots';
-import Weather from '../common/weather';
+import WeatherSummary from '../weather/summary';
 
 class Header extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { isLoading: true };
-  }
-
-  componentDidMount() {
-    this.state = { isLoading: false };
   }
 
   render() {
@@ -23,7 +17,7 @@ class Header extends React.Component {
       if (this.props.location.regionType == "City") {
         html = (
           <div className="owl-cap">
-              <Weather id={this.props.id} type={this.props.location.regionType} />
+              <WeatherSummary id={this.props.id} type={this.props.location.regionType} />
               <h1 className="owl-cap-title fittext">{this.props.location.regionName}</h1>
               <div className="owl-cap-price">
                   <small>{this.props.location.regionNameLong}</small>
@@ -46,7 +40,6 @@ class Header extends React.Component {
                 <div className="bg-img" style={style}></div>
                 <div className="bg-front full-center">
                     {html}
-                    <Loader showLoader={this.state.isLoading} />
                     <div className="gap gap"></div>
                 </div>
             </div>

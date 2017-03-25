@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as headerActions from '../../../actions/headerActions';
+import * as headerContentActions from '../../../actions/headerContentActions';
 import Loader from '../../common/loadingDots';
 
 class FeaturedHeader extends React.Component {
@@ -10,7 +10,7 @@ class FeaturedHeader extends React.Component {
   }
 
   componentWillMount() {
-    this.props.actions.loadHeader(this.props.headerType);
+    this.props.actions.loadHeaderContent(this.props.contentType);
   }
 
   render() {
@@ -63,18 +63,25 @@ FeaturedHeader.defaultProps = {
 FeaturedHeader.propTypes = {
   header: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
-  headerType: PropTypes.string.isRequired
+  contentType: PropTypes.string.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
-  return {
-    header: state.header[0]
-  };
+
+  if (state.header.header)
+  {
+    return {
+      header: state.header.header[0]
+    };
+  }
+  else {
+    return { header: {} };
+  }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(headerActions, dispatch)
+    actions: bindActionCreators(headerContentActions, dispatch)
   };
 }
 

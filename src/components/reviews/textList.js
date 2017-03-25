@@ -11,7 +11,7 @@ class Reviews extends React.Component {
   }
 
   componentWillMount() {
-    this.props.actions.loadReviews(this.props.searchId, this.props.searchType, this.props.limit, this.props.offset);
+    this.props.actions.loadReviewsByLocationId(this.props.locationId, this.props.locationType, this.props.limit, this.props.offset);
   }
 
   render(){
@@ -19,10 +19,10 @@ class Reviews extends React.Component {
 
   return (
       <div className="row">
-          <h4>Reviews</h4>
+          <h4>Member Reviews</h4>
           <hr />
           <div className="gap gap-small"></div>
-          <ReviewList reviews={reviews} maxTags={5} />
+          <ReviewList reviews={this.props.reviews} locationId={this.props.locationId} locationName={this.props.locationName}/>
       </div>    
       );
   }
@@ -30,8 +30,8 @@ class Reviews extends React.Component {
 
 Reviews.defaultProps = {
   showTitle: true,
-  searchType: 'all',
-  searchId: 0,
+  locationType: 'all',
+  locationId: 0,
   limit: 0,
   offset: 0
 };
@@ -39,8 +39,9 @@ Reviews.defaultProps = {
 Reviews.propTypes = {
   reviews: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
-  searchType: PropTypes.string.isRequired,
-  searchId: PropTypes.number.isRequired,
+  locationType: PropTypes.string.isRequired,
+  locationName: PropTypes.string.isRequired,
+  locationId: PropTypes.number.isRequired,
   limit: PropTypes.number.isRequired,
   offset: PropTypes.number.isRequired,
   showTitle: PropTypes.bool

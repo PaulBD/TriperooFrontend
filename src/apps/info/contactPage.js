@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 import SocialButtons from "../../components/content/static/socialButtons";
-import TopDestinations from '../../components/content/dynamic/topDestinations';
+import Destinations from '../../components/content/dynamic/destinations';
 import FacebookSignup from '../../components/authentication/facebookSignup';
 import BulletPoints from '../../components/content/static/bulletPoints';
 import TrustedPartners from '../../components/content/static/trustedPartners';
@@ -49,7 +49,7 @@ export default class ContactPage extends React.Component {
               <p><SocialButtons /></p>
             </div>
             <div className="col-md-5">
-              <TopDestinations destinationCount={9}  />
+              <Destinations destinationCount={9}  />
             </div>
           </div>
         </div>

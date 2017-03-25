@@ -1,29 +1,34 @@
-import NewsletterApi from '../api/mockNewsletterApi';
-import {beginAjaxCall} from './ajaxStatusActions';
+import NewsletterApi from '../api/newsletterApi';
 import * as types from '../actionTypes/';
 
-export function saveNewsletterSuccess(newsletter) {
-  return {type: types.SAVE_NEWSLETTER_SUCCESS, newsletter: newsletter, hasSaved: true, errorMessage: ''};
+// ****************************************
+// Save Newsletter
+// ****************************************
+export function requestNewsletter() {
+  return { type: types.NEWSLETTER_REQUEST, isFetching: true };
 }
 
-export function saveNewsletterError(message) {
-  return {type: types.SAVE_NEWSLETTER_ERROR, hasSaved: false, errorMessage: message};
+export function newsletterSuccess(newsletter) {
+  return {type: types.NEWSLETTER_SUCCESS, newsletter: newsletter, hasSaved: true, errorMessage: ''};
+}
+
+export function newsletterFailure(message) {
+  return {type: types.NEWSLETTER_FAILURE, hasSaved: false, errorMessage: message};
 }
 
 export function saveNewsletter(emailAddress) {
   return dispatch => {
-    dispatch(beginAjaxCall());
+    dispatch(requestNewsletter());
     if (emailAddress.length > 0)
     {
       return NewsletterApi.saveNewsletter(emailAddress).then(newsletter => {
-        dispatch(saveNewsletterSuccess(newsletter));
+        dispatch(newsletterSuccess(newsletter));
       }).catch(error => {
-        dispatch(saveNewsletterError(error.response.data));
+        dispatch(newsletterFailure(error.response.data));
       });
     }
     else {
-      console.log('Err');
-      dispatch(saveNewsletterError("Please specify a valid email Address"));
+      dispatch(newsletterFailure("Please specify a valid email Address"));
     }
   };
 }

@@ -21,7 +21,9 @@ class FacebookSignup extends React.Component {
   render(){
     if (!this.props.isAuthenticated) {
       return (
-        <div>
+        <div className="container">
+          <hr />
+          <div className="gap"></div>
           <div className="row">
               <div className={this.state.errors.length > 0 ? 'col-md-12' : 'col-md-12 hide'}>
                   <div className="bg-danger form-danger">

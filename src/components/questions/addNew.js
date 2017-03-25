@@ -56,16 +56,16 @@ class QuestionPopup extends React.Component {
                 </form>
               </div>
             </div>
+            <div className={this.state.wizardStep == 2 ? "modal-body" : "modal-body hide"}>
+              <div className="row">
+                <div className="col-md-12">
+                  <h3>Thanks for the Question</h3>
+                  <p>Thank you for posting your question. Please click <a href="#" data-dismiss="modal" id="closeReview">here</a> to close the window.</p>
+                </div>
+              </div>
+            </div>
             <div className="modal-footer text-xs-center">
               <a href="#" data-dismiss="modal">Close</a>
-            </div>
-          </div>
-          <div className={this.state.wizardStep == 2 ? "modal-body" : "modal-body hide"}>
-            <div className="row">
-              <div className="col-md-12">
-                <h3>Thanks for the Question</h3>
-                <p>Thank you for posting your question. Please click <a href="#" data-dismiss="modal" id="closeReview">here</a> to close the window.</p>
-              </div>
             </div>
           </div>
         </div>
