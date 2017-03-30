@@ -1,5 +1,5 @@
 import initialState from './initialState';
-import * as types from '../actionTypes/';
+import * as types from '../../actionTypes/';
 
 export default function placeReducer(state = initialState.places, action) {
 	switch(action.type) {

@@ -2472,7 +2472,7 @@ header#main-header {
   list-style: none;
   padding: 0;
   overflow: hidden;
-  display: block;
+  display: inline-block;
   font-size: 12px;
   -webkit-border-radius: 0;
   border-radius: 0;
@@ -2485,6 +2485,7 @@ header#main-header {
 .pagination > li > a {
   border: none;
   color: #ed8323;
+  padding: 5px;
   -webkit-border-radius: 0 !important;
   border-radius: 0 !important;
   -webkit-transition: 0.2s;
@@ -2500,6 +2501,7 @@ header#main-header {
 .pagination > li.active > a,
 .pagination > li.active > a:hover {
   background: #ed8323;
+  color: #fff;
 }
 .pagination > li.dots {
   line-height: 16px;

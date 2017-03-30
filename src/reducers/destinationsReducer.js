@@ -1,4 +1,3 @@
-import initialState from './initialState';
 import * as types from '../actionTypes/';
 
 export default function destinationsReducer(state = { isFetching: false }, action) {

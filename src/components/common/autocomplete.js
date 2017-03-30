@@ -10,7 +10,7 @@ class AutoComplete extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.handleClick = this.handleClick.bind(this);
-    this.state = { cssStyle: 'none', searches: this.props.searches, isLoading: true, searchValue: this.props.searchValue };
+    this.state = { cssStyle: 'none', selected: false, isLoading: true, isOpen: false, searchValue: this.props.searchValue };
     
     this.onSearchValue = this.onSearchValue.bind(this);
   }
@@ -24,10 +24,10 @@ class AutoComplete extends React.Component {
 
     if (this.props.isAppSearch)
     {
-      this.setState({ selected: true, style: 'none', isOpen: false, searchValue: e.target.text.trim() });
+      this.setState({ selected: true, cssStyle: 'none', isOpen: false, searchValue: e.target.text.trim() });
     }
     else {
-      this.setState({ selected: true, style: 'none', isOpen: false, searchValue: '' });
+      this.setState({ selected: true, cssStyle: 'none', isOpen: false, searchValue: '' });
     }
     
     // Reset Search
@@ -42,10 +42,10 @@ class AutoComplete extends React.Component {
     if (event.target.value.length > 2) {
       this.setState({ isLoading: true });
       this.props.actions.searchLocations(event.target.value, this.props.searchType);
-      this.setState({ selected: false, style: 'block', isOpen: true, isLoading: false });
+      this.setState({ selected: false, cssStyle: 'block', isOpen: true, isLoading: false });
     }
     else {
-      this.setState({ selected: false, style: 'none', isOpen: false, isLoading: false });
+      this.setState({ selected: false, cssStyle: 'none', isOpen: false, isLoading: false });
     }
   }
 
@@ -53,7 +53,7 @@ class AutoComplete extends React.Component {
     let searchCount = this.props.autocompleteList.length; 
 
     let style = {
-      display: this.state.style
+      display: this.state.cssStyle
     };
 
     if (searchCount == 0) {

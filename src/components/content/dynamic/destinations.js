@@ -7,12 +7,10 @@ import Loader from '../../common/loadingDots';
 class Destinations extends React.Component {
     constructor(props, context) {
         super(props, context);
-        this.state = { isLoading: true, places: [] };
     }
 
     componentDidMount() {
-        this.props.actions.loadDestinations(this.props.destinationCount);
-        this.setState({ isLoading: false });
+        this.props.actions.loadDestinations(this.props.destinationCount, this.props.contentType);
     }
 
     render(){
@@ -40,20 +38,25 @@ class Destinations extends React.Component {
 	}
 }
 
+
+Destinations.defaultProps = {
+  destinationList: [],
+  destinationCount: 0,
+  contentType: ''
+};
+
 Destinations.propTypes = {
     title: PropTypes.string,
+    actions: PropTypes.object.isRequired,
     destinationCount: PropTypes.number.isRequired,
-    destinationList: PropTypes.array.isRequired
+    destinationList: PropTypes.array.isRequired,
+    contentType: PropTypes.string.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
-    if (state.destinations.destinationList)
-    {
-        return { destinationList: state.destinations.destinationList };
-    }
-    else {
-        return { destinationList: [] }
-    }
+    return { 
+        destinationList: state.destinations.destinationList ? state.destinations.destinationList : []
+    };
 }
 
 function mapDispatchToProps(dispatch) {

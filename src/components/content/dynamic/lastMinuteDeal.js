@@ -8,26 +8,21 @@ import Loader from '../../common/loadingDots';
 class LastMinuteDeal extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { isLoading: true };
   }
 
   componentDidMount() {
     this.props.actions.loadHotelDealsByLocation(this.props.location, 1, 0);
-    this.setState({ isLoading: false });
   }
 
   render() {
 
     const {hotelDeals} = this.props;
 
-    let showLoader = true;
     let style = {};
     let price = '';
 
     if (hotelDeals.length > 0)
     {
-      showLoader = false;
-      
       style = {
         backgroundImage: 'url(' + hotelDeals[0].merchant_image_url + ')'
       };
@@ -37,7 +32,6 @@ class LastMinuteDeal extends React.Component {
       if ((price !== '') && (price !== '00.00')) {
         price = <p className="mb20">{price}</p>;
       }
-    
 
       return (
         <div className="bg-holder">
@@ -55,25 +49,38 @@ class LastMinuteDeal extends React.Component {
               </div>
             </div>
           </div>
-          <Loader showLoader={showLoader} />
         </div>
       );
     }
     else 
     {
-      return (<Loader showLoader={this.state.isLoading} />);
+      return (
+        <div className="bg-holder">
+          <div className="bg-mask"></div>
+          <div className="bg-parallax"></div>
+            <div className="bg-content">
+            <div className="container">
+              <div className="gap gap-big text-xs-center text-white loadingHotelDeal">
+                <Loader showLoader={this.props.isFetching} />
+              </div>
+            </div>
+          </div>
+        </div>
+      );
     }
   }
 }
 
 LastMinuteDeal.defaultProps = {
-  hotelDeals: []
+  hotelDeals: [],
+  isFetching: false
 };
 
 LastMinuteDeal.propTypes = {
   hotelDeals: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
-  location: PropTypes.string.isRequired
+  location: PropTypes.string.isRequired,
+  isFetching: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state, ownProps) {

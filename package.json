@@ -30,6 +30,7 @@
     "react-datepicker": "^0.39.0",
     "react-dom": "15.0.1",
     "react-facebook-login": "3.4.3",
+    "react-js-pagination": "^2.0.2",
     "react-rating": "^0.6.5",
     "react-redux": "4.4.5",
     "react-responsive-carousel": "^3.1.3",

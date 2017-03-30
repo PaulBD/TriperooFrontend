@@ -13,12 +13,12 @@ class NavigationItem extends React.Component {
 
 		if (this.props.item !== undefined && this.props.item.length > 0) {
 
-	    var className = this.props.isActive ? 'active' : '';
+		let className = this.props.isActive ? 'active' : '';
 
-	    var url = '/' + this.props.parentUrl + '/' + this.props.item.toLowerCase();
+		let url = '/' + this.props.parentUrl + '/' + this.props.item.toLowerCase();
 
-    	navItem = (
-    		<a href={url} className={className}>
+		navItem = (
+			<a href={url} className={className}>
 				<i className={this.props.cssClass}></i>
 				{name}
 			</a>

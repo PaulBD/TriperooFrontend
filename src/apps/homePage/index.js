@@ -25,7 +25,7 @@ const HomePage = () => {
                 </div>
                 <div className="gap gap-small"></div>
                 <div className="row row-wrap text-xs-center">
-                    <ReviewList locationType='all' locationId={0} limit={3} offset={0} showTitle={true} />
+                    <ReviewList locationType="all" locationId={0} limit={3} offset={0} showTitle={true} />
                 </div>
                 <LocalExpert />
                 <div className="gap"></div>

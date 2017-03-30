@@ -13,7 +13,7 @@ export default class DestinationHome extends React.Component {
     render(){
       return (
     <div>
-        <FeaturedHeader headerType="destination" />
+        <FeaturedHeader contentType="destination" />
         <div className="container">
           <div className="search-tabs search-tabs-bg search-tabs-to-top"> 
             <div className="tab-content">

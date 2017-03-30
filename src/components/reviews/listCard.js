@@ -33,37 +33,20 @@ class ReviewList extends React.Component {
       return (<Loader showLoader={true} />);
     }
   }
-};
+}
 
 ReviewList.defaultProps = {
   isSending: false,
-  hasPosted: false
+  hasPosted: false,
+  reviews: []
 };
 
 ReviewList.propTypes = {
   locationName: PropTypes.string.isRequired,
   locationId: PropTypes.number.isRequired,
-  reviews: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired,
-  isSending: PropTypes.bool.isRequired,
-  errorMessage: PropTypes.string,
-  hasPosted: PropTypes.bool
+  reviews: PropTypes.array.isRequired
 };
 
-function mapStateToProps(state, ownProps) {
-  return {
-    isSending: state.review.isFetching,
-    errorMessage: state.review.errorMessage,
-    hasPosted: state.review.hasPosted,
-    reviews: state.reviews 
-  };
-}
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(reviewActions, dispatch)
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ReviewList);
+export default ReviewList;
 

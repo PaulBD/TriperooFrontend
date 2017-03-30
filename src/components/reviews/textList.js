@@ -19,10 +19,10 @@ class Reviews extends React.Component {
 
   return (
       <div className="row">
-          <h4>Member Reviews</h4>
-          <hr />
-          <div className="gap gap-small"></div>
-          <ReviewList reviews={this.props.reviews} locationId={this.props.locationId} locationName={this.props.locationName}/>
+        <h4>Member Reviews</h4>
+        <hr />
+        <div className="gap gap-small"></div>
+        <ReviewList reviews={this.props.reviews} locationId={this.props.locationId} locationName={this.props.locationName}/>
       </div>    
       );
   }
@@ -33,7 +33,9 @@ Reviews.defaultProps = {
   locationType: 'all',
   locationId: 0,
   limit: 0,
-  offset: 0
+  offset: 0,
+  isFetching: false,
+  reviews: []
 };
 
 Reviews.propTypes = {
@@ -44,12 +46,14 @@ Reviews.propTypes = {
   locationId: PropTypes.number.isRequired,
   limit: PropTypes.number.isRequired,
   offset: PropTypes.number.isRequired,
-  showTitle: PropTypes.bool
+  showTitle: PropTypes.bool,
+  isFetching: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    reviews: state.reviews
+    reviews: state.reviewList ? state.reviewList.reviewList : [],
+    isFetching: state.reviewList ? state.reviewList.isFetching : false
   };
 }
 

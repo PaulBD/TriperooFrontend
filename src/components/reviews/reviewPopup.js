@@ -16,7 +16,6 @@ class ReviewPopup extends React.Component {
     this.handleSearchTypeChange = this.handleSearchTypeChange.bind(this);
     this.undoReviewSelection = this.undoReviewSelection.bind(this);
     this.handleCommentChange = this.handleCommentChange.bind(this);
-
     this.addTags = this.addTags.bind(this);
     this.onRate = this.onRate.bind(this);
     this.submitReview = this.submitReview.bind(this);

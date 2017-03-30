@@ -5,7 +5,7 @@ import * as types from '../actionTypes/';
 // List Questions By location id
 // ****************************************
 export function receiveQuestions() {
-	return {type: types.LOAD_QUESTION_REQUEST, isFetching: true};
+	return {type: types.LOAD_QUESTIONS_REQUEST, isFetching: true};
 }
 
 export function loadQuestionSuccess(questions) {

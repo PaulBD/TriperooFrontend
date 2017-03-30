@@ -1,4 +1,3 @@
-import initialState from './initialState';
 import * as types from '../actionTypes/';
 
 export default function newsletterReducer(state = { hasSaved: false, newsletter: {}, errorMessage: '' }, action) {

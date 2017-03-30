@@ -1,7 +1,6 @@
-import initialState from './initialState';
 import * as types from '../actionTypes/';
 
-export default function questionsReducer(state = initialState.questions, action) {
+export default function questionsReducer(state = { isFetching: false }, action) {
 	switch(action.type) {
 		case types.LOAD_QUESTIONS_REQUEST:
             return Object.assign({}, state, { isFetching: true });

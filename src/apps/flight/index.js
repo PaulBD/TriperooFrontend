@@ -1,9 +1,7 @@
 import React from 'react';
 import FeaturedHeader from '../../components/content/dynamic/featuredHeader';
 import Search from '../../components/flights/search';
-import TopDestinations from '../../components/flights/topDestinations';
-
-import Deals from '../../components/legacy/deals/list';
+import Destinations from '../../components/content/dynamic/destinations';
 
 import FacebookSignup from '../../components/authentication/facebookSignup';
 
@@ -23,19 +21,7 @@ export default class FlightsPage extends React.Component {
                 <Search />
             </div>
             <div className="container">
-                <TopDestinations />
-                <div className="gap"></div>
-              <div className="row">
-                <div className="col-md-4"> 
-                    <Deals searchType="trending" title="Trending Now"/>
-                </div>
-                <div className="col-md-4">
-                    <Deals searchType="hot" title="Hot Deals" />
-                </div>
-                <div className="col-md-4">
-                    <Deals searchType="special" title="Special Deals"/>
-                </div>
-              </div>
+                <Destinations title="Our Top Flight Destinations" destinationCount={6} contentType="flights" />
             </div>
             <div className="container">
                 <div className="gap gap-small"></div>

@@ -53,12 +53,12 @@ class Footer extends React.Component {
                             </div>
                             <div className="col-md-6">
                                 <ul className="list list-footer">
-                                    <li><Link to="about-us">About Us</Link></li>
-                                    <li><Link to="become-a-local-expert">Become a Local Expert</Link></li>
-                                    <li><Link to="support">Support</Link></li>
-                                    <li><Link to="faqs">FAQs</Link></li>
-                                    <li><Link to="privacy-policy">Privacy Policy</Link></li>
-                                    <li><Link to="contact">Contact</Link></li>
+                                    <li><a href="/about-us">About Us</a></li>
+                                    <li><a href="/become-a-local-expert">Become a Local Expert</a></li>
+                                    <li><a href="/support">Support</a></li>
+                                    <li><a href="/faqs">FAQs</a></li>
+                                    <li><a href="/privacy-policy">Privacy Policy</a></li>
+                                    <li><a href="/contact">Contact</a></li>
                                 </ul>
                             </div>
                         </div>

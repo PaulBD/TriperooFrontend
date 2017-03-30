@@ -1,10 +1,9 @@
 import React, {PropTypes} from 'react';
-import { browserHistory } from 'react-router';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as currencyActions from '../../actions/currencyActions';
 import * as authenticationActions from '../../actions/authenticationActions';
-import { Link } from "react-router";
+import { Link, browserHistory } from "react-router";
 
 class Header extends React.Component {
   constructor(props, context) {

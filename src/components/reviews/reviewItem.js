@@ -7,11 +7,16 @@ class ReviewItem extends React.Component {
   constructor(props, context) {
     super(props, context);
         this.state = { showMore: false };
-        this.onHandleTextClick = this.onHandleTextClick.bind(this);
+        this.handleTextClick = this.handleTextClick.bind(this);
+        this.handleMissingImage = this.handleMissingImage.bind(this);
     }
 
-    onHandleTextClick(event) {
-        event.preventDefault();
+    handleMissingImage(e) {
+        e.target.src='/static/img/userProfileImg.png';
+    }
+
+    handleTextClick(e) {
+        e.preventDefault();
         if (this.state.showMore) {
             this.setState({ showMore: false });
         }
@@ -42,7 +47,7 @@ class ReviewItem extends React.Component {
     {
       link = (
         <div className="booking-item-review-expand">
-          <a className="booking-item-review-expand-more" href="#" onClick={this.onHandleTextClick}>{showMore} <i className="fa fa-angle-down"></i></a>
+          <a className="booking-item-review-expand-more" href="#" onClick={this.handleTextClick}>{showMore} <i className="fa fa-angle-down"></i></a>
         </div>
       );
     }
@@ -53,7 +58,7 @@ class ReviewItem extends React.Component {
             <div className="col-md-2">
                 <div className="booking-item-review-person">
                     <a className="booking-item-review-person-avatar round" href={review.customerProfileUrl}>
-                        <img src={review.customerImageUrl ? review.customerImageUrl : '/static/img/userProfileImg.png'} alt={review.customerName} onError={(e)=>{e.target.src='/static/img/userProfileImg.png'}}/>
+                        <img src={review.customerImageUrl ? review.customerImageUrl : '/static/img/userProfileImg.png'} alt={review.customerName} onError={this.handleMissingImage}/>
                     </a>
                     <p className="booking-item-review-person-name">
                       <a href={review.customerProfileUrl}>{review.customerName}</a>

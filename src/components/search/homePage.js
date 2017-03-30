@@ -6,7 +6,7 @@ class SearchComponent extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = { searchUrl: '', searchValue: '', searchId: '' };
-    this.onSubmitRedirect = this.onSubmitRedirect.bind(this);
+    this.redirectToLocation = this.redirectToLocation.bind(this);
     this.handleSearchNameClick = this.handleSearchNameClick.bind(this);
     this.handleSearchUrlClick = this.handleSearchUrlClick.bind(this);
     this.handleSearchIdClick = this.handleSearchIdClick.bind(this);
@@ -37,7 +37,7 @@ class SearchComponent extends React.Component {
     });
   }
 
-  onSubmitRedirect(event) {
+  redirectToLocation(event) {
     event.preventDefault();
     if (this.state.searchValue.length > 2) {
       if (this.state.searchUrl.length > 0) {
@@ -70,7 +70,7 @@ class SearchComponent extends React.Component {
                         <AutoComplete changeValue={this.handleSearchNameClick} changeUrl={this.handleSearchUrlClick} changeId={this.handleSearchIdClick} changeType={this.handleSearchTypeClick} searchType="all" placeholder="Search anywhere in the world" cssClass="typeahead form-control" />
                       </div>
                       <span className="input-group-btn">
-                        <button className="btn btn-primary btnSearch" type="button" onClick={this.onSubmitRedirect}>Search</button>
+                        <button className="btn btn-primary btnSearch" type="button" onClick={this.redirectToLocation}>Search</button>
                       </span>                        
                     </div>
                   </div>

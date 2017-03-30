@@ -9,6 +9,20 @@ export default function eventsReducer(state = { isFetching: false }, action) {
 			return Object.assign({}, state, { isFetching: false, errorMessage: '', locationEvents: action.locationEvents });
 		case types.EVENT_CONTENT_FAILURE:
 			return Object.assign({}, state, { isFetching: false, errorMessage: action.message });
+		
+		case types.EVENTS_BY_CATEGORY_REQUEST:
+			return Object.assign({}, state, { isFetching: true });
+		case types.EVENTS_BY_CATEGORY_SUCCESS:
+			return Object.assign({}, state, { isFetching: false, errorMessage: '', locationEvents: action.locationEvents });
+		case types.EVENTS_BY_CATEGORY_FAILURE:
+			return Object.assign({}, state, { isFetching: false, errorMessage: action.message });
+			
+		case types.EVENT_CATEGORY_REQUEST:
+			return Object.assign({}, state, { isFetching: true });
+		case types.EVENT_CATEGORY_SUCCESS:
+			return Object.assign({}, state, { isFetching: false, errorMessage: '', eventCategoryList: action.eventCategories });
+		case types.EVENT_CATEGORY_FAILURE:
+			return Object.assign({}, state, { isFetching: false, errorMessage: action.message });
 			
 		default:
 			return state;

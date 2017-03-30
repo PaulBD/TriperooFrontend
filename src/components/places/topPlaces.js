@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as locationsActions from '../../actions/locationsActions';
-import PlaceList from './placeList';
+import PlaceList from '../legacy/placeList';
 import Loader from '../common/loadingDots';
 let titleCase = require('title-case');
 

@@ -1,8 +1,6 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-
-import initialState from '../../../reducers/initialState';
 import Item from '../../locations/navigation/navigationItem';
 
 let titleCase = require('title-case');
@@ -11,7 +9,6 @@ class SubHeader extends React.Component {
     constructor(props, context) {
         super(props, context);
     }
-
 
 	render(){    
 
@@ -60,24 +57,24 @@ class SubHeader extends React.Component {
             }
         }
 
-	    return (
-        <div className="top-area show-onload infoPage">
-            <div className="bg-holder full text-white">
-                <div className="bg-mask"></div>
-                <div className="bg-img" style={style}></div>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-8 col-xs-7">
-                            {breadcrumb}
-                            <h1>{pageType}</h1>
-                        </div>
-                        <div className="col-md-4 col-xs-5">
-                            {places}
+        return (
+            <div className="top-area show-onload infoPage">
+                <div className="bg-holder full text-white">
+                    <div className="bg-mask"></div>
+                    <div className="bg-img" style={style}></div>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-8 col-xs-7">
+                                {breadcrumb}
+                                <h1>{pageType}</h1>
+                            </div>
+                            <div className="col-md-4 col-xs-5">
+                                {places}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         );
     }
 }
@@ -112,7 +109,7 @@ function returnBreadcrumb(countryUrl, countryName, cityUrl, cityName, placeUrl, 
 }
 
 SubHeader.defaultProps = {
-    area: initialState.area
+    area: {}
 };
 
 SubHeader.propTypes = {

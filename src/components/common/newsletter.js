@@ -12,7 +12,6 @@ class Newsletter extends React.Component {
   saveNewsletter(e) {
     e.preventDefault();
     this.props.actions.saveNewsletter(this.refs.emailAddress.value.trim());
-
   }
 
   render() {

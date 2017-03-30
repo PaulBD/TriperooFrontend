@@ -31,16 +31,24 @@ class Summary extends React.Component {
 	}
 }
 
+
+Summary.defaultProps = {
+	weather: {},
+	isFetching: false
+};
+
 Summary.propTypes = {
 	id: PropTypes.number.isRequired,
 	type: PropTypes.string.isRequired,
 	weather: PropTypes.object.isRequired,
-	actions: PropTypes.object.isRequired
+	actions: PropTypes.object.isRequired,
+	isFetching: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
 	return {
-		weather: state.weather
+		isFetching: state.weather.isFetching ? state.weather.isFetching : false,
+		weather: state.weather.weather ? state.weather.weather : {}
 	};
 }
 

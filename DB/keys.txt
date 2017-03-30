@@ -1,0 +1,41 @@
+CREATE INDEX `inventory_autocompleteSearch_SecondaryIndexes` ON `TriperooCommon`(`regionId`)
+CREATE INDEX `inventory_autocompleteName_SecondaryIndexes` ON `TriperooCommon`(`regionName`)
+CREATE INDEX `inventory_inventoryReference_SecondaryIndexes` ON `TriperooCommon`(`letterIndex`)
+CREATE INDEX `reviews_inventoryReference_SecondaryIndexes` ON `TriperooReviews`(`inventoryReference`)
+
+
+CREATE PRIMARY INDEX `triperooCommon_PrimaryIndex` ON `TriperooCommon`
+CREATE PRIMARY INDEX `triperooReviews_PrimaryIndex` ON `TriperooReviews`
+CREATE PRIMARY INDEX `triperooDeals_PrimaryIndex` ON `TriperooDeals`
+
+
+CREATE INDEX `common_parentRegionID_SecondaryIndexes` ON `TriperooCommon`(`parentRegionID`)
+CREATE INDEX `common_regionID_SecondaryIndexes` ON `TriperooCommon`(`regionID`)
+CREATE INDEX `common_letterIndex_SecondaryIndexes` ON `TriperooCommon`(`letterIndex`)
+CREATE INDEX `deals_location_SecondaryIndexes` ON `TriperooDeals`(`location`)
+
+// Update Afria Priority List
+UPDATE TriperooCommon SET listingPriority = -1 WHERE regionID = 910 or regionID = 767 or regionID = 774 or regionID = 181312 or regionID = 178272 or regionID = 2181 or regionID = 2938 or regionID = 2523 or regionID = 6051298 or regionID = 3570
+
+//Asia
+UPDATE TriperooCommon SET listingPriority = -1 WHERE regionID = 604 or regionID = 597 or regionID = 184245 or regionID = 1704 or regionID = 1951 or regionID = 3124 or regionID = 161 or regionID = 6218624 or regionID = 3518 or regionID = 3593
+
+//Australasia
+UPDATE TriperooCommon SET listingPriority = -1 WHERE regionID = 292 or regionID = 346 or regionID = 828 or regionID = 2261 or regionID = 6354222 or regionID = 3611 or regionID = 3027 or regionID = 3341 or regionID = 3798
+
+UPDATE TriperooCommon SET listingPriority = -1 WHERE regionID = 4132 or regionID = 3927 or regionID = 10115 or regionID = 4005 or regionID = 4025 or regionID = 4043 or regionID = 4089 or regionID = 4106 or regionID = 4115
+
+UPDATE TriperooCommon SET listingPriority = -1 WHERE regionID = 3289 or regionID = 9874 or regionID = 6349479 or regionID = 2822 or regionID = 937
+
+UPDATE TriperooCommon SET listingPriority = -1 WHERE regionID = 2897 or regionID = 6254893 or regionID = 500187 or regionID = 50065 or regionID = 601060 or regionID = 6047145 or regionID = 3868 or regionID = 11729 or regionID = 6050539
+
+//Europe
+UPDATE TriperooCommon SET listingPriority = -1 WHERE regionID = 378 or regionID = 513 or regionID = 536 or regionID = 1069 or regionID = 1639 or regionID = 2114 or regionID = 2198 or regionID = 2734 or regionID = 2872 or regionID = 3023 or regionID = 3687
+
+/N.America
+UPDATE TriperooCommon SET listingPriority = -1 WHERE regionID = 441 or regionID = 660 or regionID = 829 or regionID = 996 or regionID = 1503 or regionID = 2297 or regionID = 2011 or regionID = 2008 or regionID = 2621 or regionID = 2424 or regionID = 2693 or regionID = 6340112 or regionID = 3073 or regionID = 3132
+
+UPDATE TriperooCommon SET listingPriority = -1 WHERE regionID = 9631 or regionID = 935 or regionID = 182189 or regionID = 180033 or regionID = 6051264 or regionID = 7925 or regionID = 2298 or regionID = 2265 or regionID = 6052121 or regionID = 500691 or regionID = 2631 or regionID = 601751 or regionID = 601363 or regionID = 180137 or regionID = 9456 or regionID = 2914 or regionID = 8650 or regionID = 9796 or regionID = 601105 or regionID = 6177
+
+UPDATE TriperooCommon SET listingPriority = -1 WHERE regionID = 6053839 or regionID = 3477 or regionID = 1727 or regionID = 453 or regionID = 6269113 or regionID = 542 or regionID = 3051 or regionID = 490 or regionID = 6269089 or regionID = 716 or regionID = 2998 or regionID = 2077 or regionID = 3095 or regionID = 6142664 or regionID = 941 or regionID = 653 or regionID = 6140796 or regionID = 3623
+

@@ -6,11 +6,18 @@ class DestinationsApi {
   // Return hardcoded destinations from json 
   // destinations.json
   // ****************************************
-  static getDestinations(size) {
+  static getDestinations(size, contentType) {
     return new Promise((resolve, reject) => {
 	    let filteredList = [];
 	    for (let index = 0; index < size; index++) {
-	        filteredList.push(topDestinations[index]);
+        if (contentType == '') {
+          filteredList.push(topDestinations[index]);
+        } else {
+          let v = topDestinations[index]['contentType'];
+          if (v.includes(contentType)) {
+            filteredList.push(topDestinations[index]);
+          }
+        }
 	    }
 		resolve(Object.assign([], filteredList));
     });

@@ -16,14 +16,69 @@ export function eventContentFailure(message) {
 	return {type: types.EVENT_CONTENT_FAILURE, isFetching: false,  message};
 }
 
-export function loadEvents(locationName, pageSize, pageNumber) {
+export function loadEvents(locationId, pageSize, pageNumber) {
 	return dispatch => {
 		dispatch(requestEventContent());
-		return EventsApi.getEventsByLocationName(locationName, pageSize, pageNumber).then(locationEvents => {
+		return EventsApi.getEventsByLocationId(locationId, 'all', pageSize, pageNumber).then(locationEvents => {
 			dispatch(loadEventContentSuccess(locationEvents));
 		}).catch(error => {
-			console.log(error);
 			dispatch(eventContentFailure(error.response.data));
+		});
+	};
+}
+
+// ****************************************
+// Load Events by Location Name & Category
+// Name
+// ****************************************
+export function requestEventByCategory() {
+	return { type: types.EVENTS_BY_CATEGORY_REQUEST, isFetching: true };
+}
+
+export function eventByCategorySuccess(locationEvents) {
+	return {type: types.EVENTS_BY_CATEGORY_SUCCESS, isFetching: false, locationEvents};
+}
+
+export function eventByCategoryFailure(message) {
+	return {type: types.EVENTS_BY_CATEGORY_FAILURE, isFetching: false,  message};
+}
+
+
+export function loadEventsByCategory(locationId, categoryName, pageSize, pageNumber) {
+	return dispatch => {
+		dispatch(requestEventByCategory());
+		return EventsApi.getEventsByLocationId(locationId, categoryName, pageSize, pageNumber).then(locationEvents => {
+			dispatch(eventByCategorySuccess(locationEvents));
+		}).catch(error => {
+			console.log(error);
+			dispatch(eventByCategoryFailure(error.response.data));
+		});
+	};
+}
+
+// ****************************************
+// Load Event Categories
+// ****************************************
+export function requestEventCategories() {
+	return { type: types.EVENT_CATEGORY_REQUEST, isFetching: true };
+}
+
+export function loadEventCategoriesSuccess(eventCategories) {
+	return {type: types.EVENT_CATEGORY_SUCCESS, isFetching: false, eventCategories};
+}
+
+export function eventCategoriesFailure(errorMessage) {
+	return {type: types.EVENT_CATEGORY_FAILURE, isFetching: false,  errorMessage};
+}
+
+export function loadEventCategories() {
+	return dispatch => {
+		dispatch(requestEventCategories());
+		return EventsApi.getEventCategories().then(eventCategories => {
+			dispatch(loadEventCategoriesSuccess(eventCategories));
+		}).catch(error => {
+			console.log(error);
+			dispatch(eventCategoriesFailure('Unable to load event categories'));
 		});
 	};
 }

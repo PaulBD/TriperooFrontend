@@ -24,13 +24,11 @@ let titleCase = require('title-case');
 class LocationHome extends React.Component {
     constructor(props, context) {
         super(props, context);
-        this.state = { isLoading: true };
     }
 
     componentDidMount() {
         window.scrollTo(0, 0);
         this.props.locationActions.loadLocationById(this.props.locationId);
-        this.setState({ isLoading: false });
     }
       
     render(){
@@ -79,7 +77,7 @@ class LocationHome extends React.Component {
                     </div>
                 </div>
                 <div className="gap"></div>
-                <Events locationName={this.props.location.regionName} baseUrl={this.props.location.url} />
+                <Events locationId={this.props.locationId} locationName={this.props.location.regionName} baseUrl={this.props.location.url}/>
                 <FacebookSignup />
             </div>
         );

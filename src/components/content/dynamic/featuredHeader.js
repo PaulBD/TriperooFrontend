@@ -67,16 +67,7 @@ FeaturedHeader.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-
-  if (state.header.header)
-  {
-    return {
-      header: state.header.header[0]
-    };
-  }
-  else {
-    return { header: {} };
-  }
+  return { header: state.header.header ? state.header.header[0] : {} };
 }
 
 function mapDispatchToProps(dispatch) {

@@ -18,9 +18,9 @@ class Forecast extends React.Component {
 		let content = "";
 		if ((this.props.weather != undefined) && (this.props.weather.daily != undefined)&& (this.props.weather.daily.data.length > 0))
 		{
-			var tmp = [];
+			let tmp = [];
 
-			for (var i = 1; i < 6; i++) {
+			for (let i = 1; i < 6; i++) {
 				tmp.push(this.props.weather.daily.data[i]);
 			}
 
@@ -32,7 +32,7 @@ class Forecast extends React.Component {
 					<tbody key={weather.time}>
 						<tr>
 							<td colSpan="2">
-								<Timestamp time={weather.time} format='date' includeDay/>
+								<Timestamp time={weather.time} format="date" includeDay/>
 							</td>
 							<td className="text-xs-center"><small>Min</small></td>
 							<td className="text-xs-center"><small>Max</small></td>
@@ -51,9 +51,9 @@ class Forecast extends React.Component {
 
 			return (
 				<div className="sidebar-widget weather">
-		            <h4>5 Day Forecast</h4>
-		            <table className="table weatherTbl">
-					  	{content}
+					<h4>5 Day Forecast</h4>
+					<table className="table weatherTbl">
+						{content}
 					</table>
 					<p className="text-xs-right"><small>Powered by DarkSky</small></p>
 				</div>
@@ -74,8 +74,8 @@ Forecast.propTypes = {
 
 function mapStateToProps(state, ownProps) {
 	return {
-    	isFetching: state.weather.isFetching ? state.weather.isFetching : false,
-    	weather: state.weather.weather ? state.weather.weather : {},
+		isFetching: state.weather.isFetching ? state.weather.isFetching : false,
+		weather: state.weather.weather ? state.weather.weather : {}
 	};
 }
 

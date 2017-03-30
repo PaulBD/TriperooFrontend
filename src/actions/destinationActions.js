@@ -14,10 +14,10 @@ export function destinationFailure(message) {
 	return {type: types.DESTINATIONS_FAILURE, isFetching: false, message};
 }
 
-export function loadDestinations(size) {
+export function loadDestinations(size, contentType) {
 	return dispatch => {
 		dispatch(destinationRequest());
-		return DestinationsApi.getDestinations(size).then(destinations => {
+		return DestinationsApi.getDestinations(size, contentType).then(destinations => {
 			dispatch(destinationSuccess(destinations));
 		}).catch(error => {
 			dispatch(destinationFailure(error));

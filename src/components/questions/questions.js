@@ -14,6 +14,7 @@ class Questions extends React.Component {
   componentDidMount() {
     this.props.actions.loadQuestionsByLocationId(this.props.locationId, this.props.limit, this.props.offset);
   }
+  
   render(){
     const {questions} = this.props;
 

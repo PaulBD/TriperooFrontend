@@ -1,5 +1,5 @@
 import initialState from './initialState';
-import * as types from '../actionTypes/';
+import * as types from '../../actionTypes/';
 
 export default function lastMinuteReducer(state = initialState.lastMinute, action) {
 	switch(action.type) {

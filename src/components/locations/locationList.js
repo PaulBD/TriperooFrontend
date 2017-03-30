@@ -1,11 +1,21 @@
 import React, {PropTypes} from 'react';
 
-const LocationList = ({locations}) => {
+class LocationList extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+    this.handleMissingImage = this.handleMissingImage.bind(this);
+  }
+
+  handleMissingImage(e) {
+      e.target.src='/static/img/400x300.png';
+  }
+
+  render() {
 	let i = 0;
 	return (
 		<div className="row">
 			{
-			locations.map(location => {
+			this.props.locations.map(location => {
 
 				i += 1;
 				let cssClass = "col-md-4";
@@ -14,9 +24,9 @@ const LocationList = ({locations}) => {
 					cssClass = "col-md-4";
 				}
 
-				if (locations != null)
+				if (this.props.locations != null)
 				{
-					if ((locations.length == 3) || (locations.length == 6))
+					if ((this.props.locations.length == 3) || (this.props.locations.length == 6))
 					{
 						cssClass = "col-md-4";
 					}
@@ -35,7 +45,7 @@ const LocationList = ({locations}) => {
 				return (
 						<div className={cssClass} key={location.regionID}>
 							<a className="hover-img" href={location.url}>
-								<img src={location.image ? location.image : '/static/img/400x300.png'}  alt={location.regionName} onError={(e)=>{e.target.src='/static/img/400x300.png'}} />
+								<img src={location.image ? location.image : '/static/img/400x300.png'}  alt={location.regionName} onError={this.handleMissingImage} />
 								<h5 className="hover-title hover-hold">{location.regionName}</h5>
 							</a>
 						{spacer}
@@ -45,6 +55,11 @@ const LocationList = ({locations}) => {
 		}
 		</div>
 	);
+	}
+}
+
+LocationList.defaultProps = {
+  locations: []
 };
 
 LocationList.propTypes = {

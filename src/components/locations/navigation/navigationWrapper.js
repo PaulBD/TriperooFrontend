@@ -1,7 +1,6 @@
 import React, {PropTypes} from 'react';
 import Loader from '../../common/loadingDots';
 import Item from './navigationItem';
-import initialState from '../../../reducers/initialState';
 let titleCase = require('title-case');
 
 class NavigationWrapper extends React.Component {

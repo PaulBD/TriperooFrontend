@@ -5,17 +5,17 @@ class LocationStats extends React.Component {
   render(){
     return (
         <div className="sidebar-widget greyBg">
-        	<div className="row">
-	            <div className="col-md-6">
-	            	<StarRating starRating={this.props.averageReviewScore} className="icon-list list-inline-block mb0 last-minute-rating statStars"/>
-	            </div>
-	            <div className="col-md-6">
-	            <p className="statText">
-	            	{this.props.reviewCount} review's<br />
-	            	{this.props.likeCount} people like London</p>
-	            </div>
+            <div className="row">
+                <div className="col-md-6">
+                    <StarRating starRating={this.props.averageReviewScore} className="icon-list list-inline-block mb0 last-minute-rating statStars"/>
+                </div>
+                <div className="col-md-6">
+                <p className="statText">
+                    {this.props.reviewCount} review's<br />
+                    {this.props.likeCount} people like London</p>
+                </div>
             </div>
-		</div>
+        </div>
     );
   }
 }
