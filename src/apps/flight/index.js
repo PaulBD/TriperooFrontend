@@ -2,10 +2,8 @@ import React from 'react';
 import FeaturedHeader from '../../components/content/dynamic/featuredHeader';
 import Search from '../../components/flights/search';
 import Destinations from '../../components/content/dynamic/destinations';
-
 import FacebookSignup from '../../components/authentication/facebookSignup';
 
-// Since this component is simple and static, there's no parent container for it.
 export default class FlightsPage extends React.Component {
 
   componentDidMount() {

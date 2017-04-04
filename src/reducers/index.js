@@ -13,6 +13,7 @@ import location from './locationReducer';
 import locationsList from './locationsReducer';
 import weather from './weatherReducer';
 import locationEvents from './eventsReducer';
+import flights from './flightsReducer';
 import destinations from './destinationsReducer';
 
 import attractionDeals from './legacy/attractionDealReducer';
@@ -23,6 +24,7 @@ import place from './legacy/placeReducer';
 import restaurantDeals from './legacy/restaurantDealReducer';
 import specialDeals from './legacy/specialDealReducer';
 import trendingDeals from './legacy/trendingDealReducer';
+import airportParking from './airportParkingReducer';
 
 import {routerReducer} from 'react-router-redux';
 
@@ -50,6 +52,8 @@ const rootReducer = combineReducers({
   weather,
   destinations,
   locationEvents,
+  flights,
+  airportParking,
   routing: routerReducer
 });
 

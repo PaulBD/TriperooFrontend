@@ -14,11 +14,15 @@ class DestinationsApi {
           filteredList.push(topDestinations[index]);
         } else {
           let v = topDestinations[index]['contentType'];
+          console.log(topDestinations[index]['name']);
+
           if (v.includes(contentType)) {
             filteredList.push(topDestinations[index]);
           }
         }
 	    }
+
+      console.log(filteredList);
 		resolve(Object.assign([], filteredList));
     });
   }

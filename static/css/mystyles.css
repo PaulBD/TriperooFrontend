@@ -440,3 +440,100 @@ div.ReactTags__suggestions ul li.active {
 .cardBg { width: 100%; height: 160px;}
 
 .cardAddress { font-size: 12px !important; line-height: normal !important; }
+
+/* Flights */
+.flightWrapper { border: solid 1px #efefef; padding:20px; }
+
+.points-list {
+    position: relative;
+    display: inline-block;
+}
+
+.dotted-route {
+    display: block;
+    border-top-color: #cccccc;
+    border-top: 2px dotted #ccc;
+    margin-top: -6px;
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    top: 50%;
+    display: none;
+}
+
+.points-box {
+    position: relative;
+    width: 350px;
+    display: inline-block;
+}
+
+.point:first-child {
+    float: none;
+}
+
+.point {
+    position: relative;
+    display: inline-block;
+    height: 80px;
+    width: 40px;
+    text-align: center;
+    float: right;
+}
+
+.route {
+    border-top-color: #ee6600;
+}
+
+.route {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    right: 20px;
+    height: 0;
+    font-size: 0;
+    border-top: 2px solid #ee6600;
+    margin-top: -3px;
+}
+
+.code {
+    font-family: 'SourceSansPro-Semibold', Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    color: #666666;
+    position: relative;
+    display: inline-block;
+}
+
+.circle {
+    background: #ffffff;
+    border: 2px solid #ee6600;
+    border-radius: 32px;
+    width: 20px;
+    height: 20px;
+    display: block;
+    position: absolute;
+    z-index: 1;
+    margin-left: -10px;
+    margin-top: -12px;
+    border-color: #ee6600;
+    top: 50%;
+    left: 50%;
+}
+
+.time {
+    font-family: 'SourceSansPro-Regular', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    color: #999999;
+    font-size: 13px;
+    line-height: 13px;
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+/* Airport Parking */
+.airportParking { height:520px;}
+.airportParking .card-title { height: 40px; }
+
+.airportSearch { background-color: #efefef; border-radius: 5px; padding:10px;}

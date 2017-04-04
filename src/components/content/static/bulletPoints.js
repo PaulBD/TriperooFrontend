@@ -8,8 +8,8 @@ export default class BulletPoints extends React.Component {
                 <a href="#" data-toggle="modal" data-target="#signupModel">
                     <div className="mb30 thumb"><i className="fa fa-users box-icon-left round box-icon-big box-icon-border animate-icon-top-to-bottom"></i>
                         <div className="thumb-caption">
-                            <h4 className="thumb-title">Triperoo Agents</h4>
-                            <p className="thumb-desc">Earn commission and help other travellers get it right!</p>
+                            <h4 className="thumb-title">Ask Questions</h4>
+                            <p className="thumb-desc">Get travel advisor from people who've been there!</p>
                         </div>
                     </div>
                 </a>

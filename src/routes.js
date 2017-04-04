@@ -20,7 +20,9 @@ import Place from './apps/place/detail';
 
 import Holidays from './apps/holiday';
 import Flights from './apps/flight';
+import FlightSearchResults from './apps/flight/searchResults';
 import TravelExtras from './apps/travelExtras';
+import AirportParkingResults from './apps/travelExtras/airportParkingResults';
 import CarHire from './apps/travelExtras/car-hire';
 
 
@@ -54,7 +56,9 @@ export default (
     <Route path="/hotels" component={Hotels}/>
     <Route path="/hotels/search-results" component={HotelSearchResults}/>
     <Route path="/flights" component={Flights}/>
+    <Route path="/flights/results" component={FlightSearchResults} />
     <Route path="/travel-extras" component={TravelExtras}/>
+    <Route path="/travel-extras/airport-parking/search-results" component={AirportParkingResults}/>
     <Route path="/customer/profile" component={CustomerProfile}/>
     <Route path="/customer/photos" component={CustomerPhotos}/>
     <Route path="/customer/booking-history" component={BookingHistory}/>

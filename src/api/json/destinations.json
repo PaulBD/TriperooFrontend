@@ -26,7 +26,7 @@
 	{
 		"name": "Barcelona",
 		"url": "/513/visit/barcelona-spain",
-		"image": "/static/img/locations/barcelona-spain.jpg",
+		"image": "/static/img/locations/barcelona-spain.png",
 		"contentType": "flights"
 	}, 
 	{
@@ -52,5 +52,17 @@
 		"url": "/1069/visit/dublin-ireland",
 		"image": "/static/img/locations/dublin-ireland.png",
 		"contentType": ""
+	}, 
+	{ 
+		"name": "Ibiza",
+		"url": "/1559/visit/ibiza-spain",
+		"image": "/static/img/locations/dublin-ireland.png",
+		"contentType": "flights"
+	}, 
+	{
+		"name": "Las Vegas",
+		"url": "/2008/visit/las-vegas-nevada-united-states-of-america",
+		"image": "/static/img/locations/las-vegas-nevada-united-states-of-america.png",
+		"contentType": "flights"
 	}
 ]
