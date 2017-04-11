@@ -33,12 +33,15 @@ class Overview extends React.Component {
                     summary = summary.substring(0, 870) + '...';
                     showMore = 'Read More';
                 }
+                else {
+                    showMore = '';
+                }
             }
 
             return (
                 <div>
                     <h4>Why {titleCase(this.props.locationName)}?</h4>
-                    <p>{summary}</p>
+                    <p dangerouslySetInnerHTML={{__html: summary}}></p>
                     <p><a href="#" onClick={this.onHandleTextClick}>{showMore}</a></p>
                 </div>
             );

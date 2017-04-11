@@ -21,8 +21,12 @@ export function loadAiportParking(airport, dropoffDate, dropoffTime, pickupDate,
 		dispatch(requestAirportParkingContent());
 		return AiportParkingApi.loadAiportParking(airport, dropoffDate, dropoffTime, pickupDate, pickupTime, language).then(airportParking => {
 			dispatch(aiportParkingSuccess(airportParking));
-			localStorage.setItem('he_token', airportParking.apI_Reply.request.token);
+			if (airportParking.apI_Reply.request != undefined)
+			{
+				localStorage.setItem('he_token', airportParking.apI_Reply.request.token);
+			}
 		}).catch(error => {
+			console.log(error);
 			dispatch(aiportParkingFailure(error.response.data));
 		});
 	};

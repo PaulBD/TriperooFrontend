@@ -4,8 +4,7 @@ import eventCategories from './json/eventCategories.json';
 
 class AirportParkingApi {
   // ****************************************
-  // Return events using Eventful using 
-  // location id
+  // Return airport parking from HolidayExtras
   // ****************************************
   static loadAiportParking(airport, dropoffDate, dropoffTime, pickupDate, pickupTime, language) {
     return new Promise((resolve, reject) => {

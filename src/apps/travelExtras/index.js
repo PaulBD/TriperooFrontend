@@ -1,23 +1,20 @@
 import React from 'react';
 import Feature from '../../components/travelExtras/feature';
-
-import Deals from '../../components/legacy/deals/list';
-
 import FacebookSignup from '../../components/authentication/facebookSignup';
 import LastMinuteDeal from '../../components/content/dynamic/lastMinuteDeal';
+import BulletPoints from '../../components/content/static/bulletPoints';
+import TrustedPartners from '../../components/content/static/trustedPartners';
 
 export default class TravelExtras extends React.Component {
       componentDidMount() {
         window.scrollTo(0, 0);
+        document.title = 'Travel Extras - Make huge savings on all of your holiday must-haves';
+  
       }
       render(){
         return (
           <div>
             <Feature />
-              <div className="gap"></div>
-            <div className="container text-xs-center">
-                <h4>Make huge savings on all of your holiday must-haves</h4>
-            </div>
             <div className="gap"></div>
             <div className="container">
                 <div className="row">
@@ -38,7 +35,7 @@ export default class TravelExtras extends React.Component {
                     <div className="col-md-4">
                         <div className="thumb">
                             <a className="hover-img" href="/travel-extras/airport-transfers">
-                                <img src="/static/img/airportTranfers.jpg" alt="Airport Transfers" />
+                                <img src="/static/img/airportTransfer.jpg" alt="Airport Transfers" />
                                 <div className="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">
                                     <div className="text-small">
                                         <h5>Airport Transfers</h5>
@@ -156,28 +153,17 @@ export default class TravelExtras extends React.Component {
                 </div>
             </div>
             <div className="gap"></div>
-            <LastMinuteDeal featureType="lastMinute" />
-          <div className="container">
-            <div className="gap"></div>
-              <div className="row">
-                <div className="col-md-4"> 
-                    <Deals searchType="trending" title="Trending Now"/>
-                </div>
-                <div className="col-md-4">
-                    <Deals searchType="hot" title="Hot Deals" />
-                </div>
-                <div className="col-md-4">
-                    <Deals searchType="special" title="Special Deals"/>
-                </div>
-              </div>
-          </div>
-          <div className="container">
-              <div className="gap gap-small"></div>
-              <hr />
-              <div className="gap"></div>
-              <FacebookSignup />
-              <div className="gap"></div>
-          </div>
+            <LastMinuteDeal location="London" />
+            <div className="container">
+                <div className="gap"></div>
+                <BulletPoints />
+                <div className="gap gap-small"></div>
+                <hr />
+                <div className="gap"></div>
+                <FacebookSignup />
+                <TrustedPartners />
+                <div className="gap"></div>
+            </div>
         </div>
       );
    }

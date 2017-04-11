@@ -1,23 +1,35 @@
-import React from 'react';
-import VillasFeature from '../../components/travelExtras/villasFeature';
-import FacebookSignup from '../../components/authentication/facebookSignup';
+import React, {PropTypes} from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import Header from '../../components/travelExtras/header';
 
 export default class Villas extends React.Component {
-    componentDidMount() {
-      window.scrollTo(0, 0);
-    }
-    render(){
-      return (
-        <div>
-          
-          <VillasFeature />
-          
-          <div className="container">
-              <div className="gap"></div>
-              <FacebookSignup />
-              <div className="gap"></div>
-          </div>
+  constructor(props, context) {
+    super(props, context);
+    this.state = { showSmallHeader: false };
+  }
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+  render(){
+    return (
+    <div>
+      <Header contentType="villas" headerTitle="Villas" subHeaderTitle="Excellent alternative from a package holiday" showSmallHeader={this.state.showSmallHeader} />
+      <div className="gap"></div>
+      <div className="container">
+        <div className="row"> 
+        
         </div>
-      );
-   }
+      </div>
+      <div className="gap"></div>
+      <div className="container">
+        <div className="row">            
+
+        </div>
+      </div>
+      <div className="gap"></div>
+    </div>
+    );
+  }
 }

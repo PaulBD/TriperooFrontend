@@ -15,7 +15,7 @@ class NavigationItem extends React.Component {
 
 		let className = this.props.isActive ? 'active' : '';
 
-		let url = '/' + this.props.parentUrl + '/' + this.props.item.toLowerCase();
+		let url = this.props.parentUrl + '/' + this.props.item.toLowerCase();
 
 		navItem = (
 			<a href={url} className={className}>
