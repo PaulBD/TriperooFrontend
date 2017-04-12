@@ -5,11 +5,19 @@ class AirportHotelApi {
   // ****************************************
   // Return airport hotels from HolidayExtras
   // ****************************************
-  static loadAiportHotels(airport, arrivalDate, departDate, flightDate, nights, roomType, secondRoomType, parkingDays, language) {
+  static loadAiportHotels(airport, arrivalDate, departDate, dropOffCarDate, collectCarDate, nights, roomType, secondRoomType, parkingDays, language) {
     return new Promise((resolve, reject) => {
+
+      let url = baseUrl + '/airportHotels?locationName=' + airport + '&arrivalDate=' + arrivalDate + '&departDate=' + departDate + '&nights=' + nights  + '&roomType=' + roomType  + '&secondRoomType=' + secondRoomType + '&parkingDays=' + parkingDays + '&language=' + language;
+
+      if (collectCarDate != null)
+      {
+        url += '&dropOffCarDate=' + dropOffCarDate + '&collectCarDate=' + collectCarDate;
+      }
+
       axios({
         method: 'get',
-        url:  baseUrl + '/airportHotels?locationName=' + airport + '&arrivalDate=' + arrivalDate + '&departDate=' + departDate + '&flightDate=' + flightDate + '&nights=' + nights  + '&roomType=' + roomType  + '&secondRoomType=' + secondRoomType + '&parkingDays=' + parkingDays + '&language=' + language
+        url:  url
       })
       .then(response => {
         resolve(Object.assign({}, response.data));
@@ -18,8 +26,7 @@ class AirportHotelApi {
         reject(error);
       });
     });
-  };
-
+  }
 }
 
 export default AirportHotelApi;

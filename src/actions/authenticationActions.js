@@ -1,6 +1,6 @@
 import CustomerApi from '../api/authenticationApi';
 import * as types from '../actionTypes/';
-var stringify = require('json-stable-stringify');
+let stringify = require('json-stable-stringify');
 
 // ****************************************
 // Login
@@ -72,7 +72,7 @@ export function registerUser(creds) {
 	return dispatch => {
 		dispatch(requestRegistration(creds));
 		if ((creds.firstName.length > 0) && (creds.lastName.length > 0) && (creds.currentCityId.length > 0) && (creds.emailAddress.length > 0) && (creds.password.length > 0))
-    	{
+		{
 			return CustomerApi.registerCustomer(creds.emailAddress, creds.password, creds.firstName, creds.lastName, creds.currentCityId).then(token => {
 				localStorage.setItem('id_token', stringify(transformAuthentication(token)));
 				dispatch(receiveRegistration(token));

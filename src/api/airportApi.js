@@ -8,8 +8,7 @@ class AirportApi {
   // ****************************************
   static getAirports() {
     return new Promise((resolve, reject) => {
-	    
-		  resolve(Object.assign([], airportList));
+    resolve(Object.assign([], airportList));
     });
   }
 }

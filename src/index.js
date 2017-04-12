@@ -25,6 +25,12 @@ if (triperooCookie == '' || triperooCookie == undefined)
 
 render(
   <Provider store={store}>
-    <Router onUpdate={ReactGA.pageview(window.location.hash)} history={history} routes={routes} />
+    <Router onUpdate={logPageView} history={history} routes={routes} />
   </Provider>, document.getElementById('app')
 );
+
+// Setup Google Analytics
+function logPageView() {
+  ReactGA.set({ page: window.location.pathname });
+  ReactGA.pageview(window.location.pathname);
+}

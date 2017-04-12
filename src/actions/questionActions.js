@@ -21,7 +21,7 @@ export function postQuestion(question, state, event, node) {
 	return dispatch => {
 		dispatch(postQuestionInitialize(question));
 		if ((question.question.length > 0) && (question.inventoryReference > 0))
-    	{
+		{
 			return QuestionApi.postQuestion(question).then(question => {
 				dispatch(postQuestionSuccess());
 				state.setState({ wizardStep: 1, errors:'', question: '' });    

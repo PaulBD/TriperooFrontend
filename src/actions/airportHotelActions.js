@@ -16,10 +16,10 @@ export function aiportHotelFailure(message) {
 	return {type: types.AIRPORT_HOTEL_FAILURE, isFetching: false,  message};
 }
 
-export function loadAiportHotels(airport, arrivalDate, departDate, flightDate, nights, roomType, secondRoomType, parkingDays, language) {
+export function loadAiportHotels(airport, arrivalDate, departDate, dropOffCarDate, collectCarDate, nights, roomType, secondRoomType, parkingDays, language) {
 	return dispatch => {
 		dispatch(requestAirportHotelContent());
-		return AiportHotelApi.loadAiportHotels(airport, arrivalDate, departDate, flightDate, nights, roomType, secondRoomType, parkingDays, language).then(airportHotels => {
+		return AiportHotelApi.loadAiportHotels(airport, arrivalDate, departDate, dropOffCarDate, collectCarDate, nights, roomType, secondRoomType, parkingDays, language).then(airportHotels => {
 			dispatch(aiportHotelSuccess(airportHotels));
 			if (airportHotels.apI_Reply.request != undefined)
 			{

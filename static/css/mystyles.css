@@ -533,13 +533,18 @@ div.ReactTags__suggestions ul li.active {
 }
 
 /* Airport Parking */
-.airportParking { height:520px;}
+.airportParking { min-height:590px;}
 .airportParking .card-title { height: 60px; }
 
 .airportSearch { background-color: #efefef; border-radius: 5px; padding:10px;}
 
-.card-title.price {
+.airportParking .card-title.price {
     color: #ed8323;
     font-weight: 500;
     font-size: 20px;
+    height: auto;
 }
+
+.airportParking .card-text small { font-size: 11px; }
+
+label a { float:right;}

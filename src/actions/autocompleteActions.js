@@ -1,4 +1,4 @@
-import AutocompleteApi from '../api/AutocompleteApi';
+import AutocompleteApi from '../api/autocompleteApi';
 import * as types from '../actionTypes/';
 
 // ****************************************
@@ -6,7 +6,7 @@ import * as types from '../actionTypes/';
 // ****************************************
 
 export function autocompleteRequest() {
-	return {type: types.AUTOCOMPLETE_REQUEST, };
+	return {type: types.AUTOCOMPLETE_REQUEST };
 }
 export function autocompleteSuccess(autocompleteList) {
 	return {type: types.AUTOCOMPLETE_SUCCESS, autocompleteList};

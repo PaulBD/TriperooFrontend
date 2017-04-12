@@ -20,7 +20,7 @@ export function postReview(review, state, event, node) {
 	return dispatch => {
 		dispatch(postReviewInitialize(review));
 		if ((review.comment.length > 0) && (review.inventoryReference > 0))
-    	{
+		{
 			return ReviewApi.postReview(review).then(review => {
 				dispatch(postReviewSuccess());
 				state.setState({ wizardStep: 1, searchName: '', searchId: '', errors:'', searchType: '', selectedTags: [], rating: 0, comment: '' });    
@@ -58,7 +58,7 @@ export function likeReview(reviewReference) {
 	return dispatch => {
 		dispatch(likeReviewInitialize(reviewReference));
 		if (reviewReference.length > 0)
-    	{
+		{
 			return ReviewApi.likeReview(reviewReference).then(review => {
 				dispatch(likeReviewSuccess());
 			}).catch(error => {

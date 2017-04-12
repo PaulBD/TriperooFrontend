@@ -22,14 +22,6 @@ class AirportParkingSearchForm extends React.Component {
     let dropOffDate = moment().add(1, 'Days');
     let pickUpDate = moment().add(7, 'days');
 
-    if (this.props.dDate !== undefined) {
-        dropOffDate = new moment(this.props.dDate);
-    }
-
-    if (this.props.pDate !== undefined) {
-        pickUpDate = new moment(this.props.pDate);
-    }
-
     this.setState({ pickUpDate: pickUpDate, dropOffDate: dropOffDate });
   }
 
@@ -61,83 +53,108 @@ class AirportParkingSearchForm extends React.Component {
   }
 
   render(){
+    let style = {
+        backgroundImage: 'url(/static/img/' + this.props.contentType + '.jpg'
+    };
       return (
-      <div className="col-md-12">
-        <form className="airportSearch" onSubmit={this.submitForm}>
-          <div className="row">
-            <div className="col-md-3">
-              <div className="row">
-                <div className="col-md-12">
-                  <div className="form-group form-group-icon-left"><i className="fa fa-map-marker input-icon"></i>
-                    <label>Airport</label>
-                      <AirportList cssClass="form-control searchSelect" name="airport" selectedValue={this.state.airport} changeValue={this.handleAirportChange} />
+      <div>
+        <div className="bg-holder full text-xs-center text-white holidayPage">
+          <div className="bg-mask"></div>
+          <div className="bg-img" style={style}></div>
+          <div className="bg-front full-center">
+              <div className="owl-cap">
+                  <h1 className="owl-cap-title fittext">{this.props.headerTitle}</h1>
+                  <div className="owl-cap-price">
+                    <small>{this.props.subHeaderTitle}</small>
                   </div>
-                </div>
               </div>
-            </div>
-            <div className="col-md-9">
-              <div className="row">
-                <div className="col-md-9">
+          </div>
+        </div>
+      <div className="container">
+        <div className="search-tabs search-tabs-bg search-tabs-to-top">
+          <div className="tabbable">
+            <div className="tab-content">
+              <div className="tab-pane fade in active" id="tab-1">
+                <form onSubmit={this.submitForm}>
                   <div className="row">
-                    <div className="col-md-6">
+                    <div className="col-md-3">
                       <div className="row">
-                        <div className="col-md-7">
-                          <div className="form-group form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
-                            <label>Drop off Date</label>
-                            <DatePicker name="dropOffDate" dateFormat="DD/MM/YYYY"  selected={this.state.dropOffDate} onChange={this.handleDropOffDateChange} className="form-control" />
-                          </div>
-                         </div>
-                        <div className="col-md-5">
-                          <div className="form-group form-group-select-plus">
-                            <label>Drop off time</label>
-                            <TimeDropDownList cssClass="form-control searchSelect" name="dropOffTime" value={this.state.dropOffTime} changeValue={this.handleDropOffTimeChange} />
+                        <div className="col-md-12">
+                          <div className="form-group form-group-icon-left"><i className="fa fa-map-marker input-icon"></i>
+                            <label>Flying from?</label>
+                              <AirportList cssClass="form-control searchSelect" name="airport" selectedValue={this.state.airport} changeValue={this.handleAirportChange} />
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-9">
                       <div className="row">
-                        <div className="col-md-7">
-                          <div className="form-group form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
-                              <label>Pick up Date</label>
-                              <DatePicker name="pickUpDate" dateFormat="DD/MM/YYYY"  selected={this.state.pickUpDate} onChange={this.handlePickUpDateChange} className="form-control" />
+                        <div className="col-md-9">
+                          <div className="row">
+                            <div className="col-md-6">
+                              <div className="row">
+                                <div className="col-md-7">
+                                  <div className="form-group form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
+                                    <label>Drop off Date</label>
+                                    <DatePicker name="dropOffDate" dateFormat="DD/MM/YYYY"  selected={this.state.dropOffDate} onChange={this.handleDropOffDateChange} className="form-control" />
+                                  </div>
+                                 </div>
+                                <div className="col-md-5">
+                                  <div className="form-group form-group-select-plus">
+                                    <label>Drop off time</label>
+                                    <TimeDropDownList cssClass="form-control searchSelect" name="dropOffTime" value={this.state.dropOffTime} changeValue={this.handleDropOffTimeChange} />
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                        </div>
-                        <div className="col-md-5">
-                          <div className="form-group form-group-select-plus">
-                            <label>Pick up Time</label>
-                            <TimeDropDownList cssClass="form-control searchSelect" name="pickUpTime" value={this.state.pickUpTime} changeValue={this.handlePickUpTimeChange} />
+                            <div className="col-md-6">
+                              <div className="row">
+                                <div className="col-md-7">
+                                  <div className="form-group form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
+                                      <label>Pick up Date</label>
+                                      <DatePicker name="pickUpDate" dateFormat="DD/MM/YYYY"  selected={this.state.pickUpDate} onChange={this.handlePickUpDateChange} className="form-control" />
+                                    </div>
+                                </div>
+                                <div className="col-md-5">
+                                  <div className="form-group form-group-select-plus">
+                                    <label>Pick up Time</label>
+                                    <TimeDropDownList cssClass="form-control searchSelect" name="pickUpTime" value={this.state.pickUpTime} changeValue={this.handlePickUpTimeChange} />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
+                        </div>
+                        <div className="col-md-3">
+                          <button className="btn btn-primary btn-lg formBtn" type="submit">
+                            <i className="fa fa-search"></i>Search
+                          </button>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="col-md-3">
-                  <button className="btn btn-primary btn-lg formBtn" type="submit">
-                    <i className="fa fa-search"></i>Search
-                  </button>
+                </form>
+
                 </div>
               </div>
             </div>
           </div>
-        </form>
+        </div>
       </div>
     );
   }
 }
 
 AirportParkingSearchForm.defaultProps = {
-  dDate: moment().add(1, 'days'), 
-  pDate: moment().add(7, 'days'),
   airport: ''
 };
 
 AirportParkingSearchForm.propTypes = {
-  dDate:  PropTypes.string.isRequired,
-  pDate: PropTypes.string.isRequired,
   airport: PropTypes.string.isRequired,
-  handleFormSubmit: PropTypes.func
+  handleFormSubmit: PropTypes.func,
+  headerTitle:  PropTypes.string.isRequired,
+  subHeaderTitle:  PropTypes.string.isRequired,
+  contentType:  PropTypes.string.isRequired,
 };
 
 export default AirportParkingSearchForm;

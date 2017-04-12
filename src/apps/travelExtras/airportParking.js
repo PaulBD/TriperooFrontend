@@ -4,7 +4,6 @@ import {bindActionCreators} from 'redux';
 import * as airportParkingActions from '../../actions/airportParkingActions';
 import AirportParkingCard from '../../components/travelExtras/airportParking/card';
 import AirportParkingSearchForm from '../../components/travelExtras/airportParking/searchForm';
-import Header from '../../components/travelExtras/header';
 import AirportParkingBulletPoints from '../../components/content/static/airportParkingBulletPoints';
 import Loader from '../../components/common/loadingDots';
 let moment = require('moment');
@@ -37,13 +36,7 @@ class AirportParking extends React.Component {
   render(){
     return (
       <div>
-        <Header contentType="airportParking" headerTitle="Airport Parking" subHeaderTitle="Pre-book your airport parking and save up to 60%" showSmallHeader={this.state.showSmallHeader} />
-        <div className="gap"></div>
-        <div className="container">
-          <div className="row"> 
-            <AirportParkingSearchForm airport={this.state.defaultAirport} handleFormSubmit={this.searchForm}/>
-          </div>
-        </div>
+        <AirportParkingSearchForm airport={this.state.defaultAirport} handleFormSubmit={this.searchForm} contentType="airportParking" headerTitle="Airport Parking" subHeaderTitle="Pre-book your airport parking and save up to 60%"/>
         <div className="gap"></div>
         <div className="container">
           <div className="row">            

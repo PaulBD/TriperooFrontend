@@ -4,8 +4,8 @@ import ReactGA from 'react-ga';
 
 class AirportParkingCard extends React.Component {
     constructor(props, context) {
-        super(props, context);
-        this.trackClick = this.trackClick.bind(this);
+      super(props, context);
+      this.trackClick = this.trackClick.bind(this);
     }
 
     trackClick() {
@@ -13,8 +13,6 @@ class AirportParkingCard extends React.Component {
     }
 
     render(){
-
-      console.log(this.props.airportParking);
 
       let url = 'https://app.holidayextras.co.uk/carparks/upgrades?';
       url += 'from=' + this.props.searchRequest.arrivalDate + " " + this.props.searchRequest.arrivalTime;
@@ -24,13 +22,6 @@ class AirportParkingCard extends React.Component {
       url += '&location=' + this.props.location;
       url += '&request_id=' + cookie.load('triperooUserId');
       url += '&operator_initials=PBD';
-
-      let transferTrim = 195;
-
-      if (this.props.airportParking.advance_Purchase)
-      {
-        transferTrim = 130;
-      }
 
       let image = 'http://secure.holidayextras.co.uk' + this.props.airportParking.tripappImagesList[0];
       return (
@@ -51,8 +42,9 @@ class AirportParkingCard extends React.Component {
                 </div>
               </div>
               {this.props.airportParking.advance_Purchase ? <p className="tagCollection"><span className="tag tag-default selected">No refunds or amendments</span></p> : ''}
-               <p className="card-text mb-1"><i className="fa fa-clock-o"></i> Transfers {this.props.airportParking.tripappTransferTip}</p>
-
+               <p className="card-text mb-1"><small><i className="fa fa-clock-o"></i> Transfers {this.props.airportParking.tripappTransferTip}</small></p>
+              {this.props.airportParking.advance_Purchase ? '' : this.props.airportParking.sellpoint_Security ? <p className="card-text mb-1"><small><i className="fa fa-lock"></i> {this.props.airportParking.sellpoint_Security}</small></p> : ''}
+              {this.props.airportParking.advance_Purchase ? '' : this.props.airportParking.sellpoint_Location ? <p className="card-text mb-1"><small><i className="fa fa-map-marker"></i> {this.props.airportParking.sellpoint_Location}</small></p> : ''}
             </div>
           </div>
         </div>

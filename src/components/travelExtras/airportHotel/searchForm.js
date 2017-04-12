@@ -8,105 +8,203 @@ import AirportList from '../../common/airportList';
 class AirportHotelSearchForm extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { checkInDate: moment().add(1, 'days'), checkOutDate: moment().add(2, 'days'), nights: calculateDays(moment().add(1, 'days'), moment().add(2, 'days')), formattedCheckInDate: moment().add(1, 'days').format('YYYY-MM-DD'), formattedCheckOutDate: moment().add(2, 'days').format('YYYY-MM-DD'), airport: 'LGW', flightDate: moment().add(8, 'days'), formattedFlightDate: moment().add(8, 'days').format('YYYY-MM-DD'), roomType: 'T20', secondRoomType: '', parkingDays: calculateDays(moment().add(2, 'days'), moment().add(8, 'days')) };
+    this.state = { includeSecondRoom: 'No', includeParking: 'Yes', checkInDate: moment().add(1, 'days'), checkOutDate: moment().add(2, 'days'), nights: calculateDays(moment().add(1, 'days'), moment().add(7, 'days')), formattedCheckInDate: moment().add(1, 'days').format('YYYY-MM-DD'), formattedCheckOutDate: moment().add(2, 'days').format('YYYY-MM-DD'), airport: 'LGW', collectCarDate: moment().add(8, 'days'), formattedCollectCarDate: moment().add(8, 'days').format('YYYY-MM-DD'), dropOffCarDate: moment().add(1, 'days'), formattedDropOffCarDate: moment().add(1, 'days').format('YYYY-MM-DD'), roomType: 'T20', secondRoomType: '', parkingDays: calculateDays(moment().add(2, 'days'), moment().add(8, 'days')) };
     this.handleCheckInDateChange = this.handleCheckInDateChange.bind(this);
     this.handleCheckOutDateChange = this.handleCheckOutDateChange.bind(this);
     this.handleRoomChange = this.handleRoomChange.bind(this);
+    this.handleSecondRoomChange = this.handleSecondRoomChange.bind(this);
+    this.addSecondRoom = this.addSecondRoom.bind(this);
+    this.removeSecondRoom = this.removeSecondRoom.bind(this);
     this.handleCollectCarChange = this.handleCollectCarChange.bind(this);
+    this.handleDropOffCarChange = this.handleDropOffCarChange.bind(this);
     this.handleAirportChange = this.handleAirportChange.bind(this);
+    this.handleHideCollectCar = this.handleHideCollectCar.bind(this);
     this.submitForm = this.submitForm.bind(this);
   }
 
   handleCheckInDateChange(date) {
     let sDate = date.format('YYYY-MM-DD');
-    this.setState({ formattedCheckInDate: sDate, checkInDate: date, nights: calculateDays(date, this.state.checkOutDate) });
+    this.setState({ formattedCheckInDate: sDate, checkInDate: date });
   }
 
   handleCheckOutDateChange(date) {
     let sDate = date.format('YYYY-MM-DD');
-    this.setState({ formattedCheckOutDate: sDate, checkOutDate: date, nights: calculateDays(this.state.checkInDate, date) });
+    this.setState({ formattedCheckOutDate: sDate, checkOutDate: date });
   }
 
   handleCollectCarChange(date) {
     let sDate = date.format('YYYY-MM-DD');
-    this.setState({ formattedFlightDate: sDate, flightDate: date, parkingDays: calculateDays(this.state.checkOutDate, date) });
+    this.setState({ formattedCollectCarDate: sDate, collectCarDate: date, parkingDays: calculateDays(this.state.collectCarDate, date) });
+  }
+
+  handleDropOffCarChange(date) {
+    let sDate = date.format('YYYY-MM-DD');
+    this.setState({ formattedDropOffCarDate: sDate, dropOffCarDate: date, parkingDays: calculateDays(this.state.dropOffCarDate, date) });
   }
 
   handleRoomChange(value) {
     this.setState({ roomType: value });
   }
 
+  handleSecondRoomChange(value) {
+    this.setState({ secondRoomType: value });
+  }
+
+  addSecondRoom(e) {
+    e.preventDefault();
+    this.setState({ includeSecondRoom: 'Yes', secondRoomType: 'T20' });
+  }
+
+  removeSecondRoom(e) {
+    e.preventDefault();
+    this.setState({ includeSecondRoom: 'No', secondRoomType: '' });
+  }
+
   handleAirportChange(value) {
     this.setState({ airport: value });
   }
 
-  submitForm(event) {
-    event.preventDefault();
-    this.props.handleFormSubmit(this.state.airport, this.state.formattedCheckInDate, this.state.formattedCheckOutDate, this.state.formattedFlightDate, this.state.nights, this.state.roomType, this.state.secondRoomType, this.state.parkingDays);
+  handleHideCollectCar(e) {
+    this.setState({ includeParking: e.target.value });
+  }
+
+  submitForm(e) {
+    e.preventDefault();
+
+    let collectCarDate = this.state.formattedCollectCarDate;
+    let dropOffCarDate = this.state.formattedDropOffCarDate;
+    let parkingDays = this.state.parkingDays;
+
+    if (this.state.includeParking == 'No') {
+      collectCarDate = null;
+      dropOffCarDate = null;
+      parkingDays = 0;
+    }
+
+    this.props.handleFormSubmit(this.state.airport, this.state.formattedCheckInDate, this.state.formattedCheckOutDate, dropOffCarDate, collectCarDate, this.state.nights, this.state.roomType, this.state.secondRoomType, parkingDays);
   }
 
   render(){
-      return (
-      <div className="col-md-12">
-        <form className="airportSearch" onSubmit={this.submitForm}>
-          <div className="row">
-            <div className="col-md-3">
-              <div className="row">
-                <div className="col-md-12">
-                  <div className="form-group form-group-icon-left"><i className="fa fa-map-marker input-icon"></i>
-                    <label>Airport</label>
-                      <AirportList cssClass="form-control searchSelect" name="airport" selectedValue={this.state.airport} changeValue={this.handleAirportChange} />
+    let style = {
+        backgroundImage: 'url(/static/img/' + this.props.contentType + '.jpg'
+    };
+    return (
+      <div>
+        <div className="bg-holder full text-xs-center text-white holidayPage">
+          <div className="bg-mask"></div>
+          <div className="bg-img" style={style}></div>
+          <div className="bg-front full-center">
+              <div className="owl-cap">
+                  <h1 className="owl-cap-title fittext">{this.props.headerTitle}</h1>
+                  <div className="owl-cap-price">
+                    <small>{this.props.subHeaderTitle}</small>
                   </div>
-                </div>
               </div>
-            </div>
-            <div className="col-md-9">
-              <div className="row">
-                <div className="col-md-9">
+          </div>
+        </div>
+      <div className="container">
+        <div className="search-tabs search-tabs-bg search-tabs-to-top">
+          <div className="tabbable">
+            <div className="tab-content">
+              <div className="tab-pane fade in active" id="tab-1">
+                <form onSubmit={this.submitForm}>
                   <div className="row">
-                    <div className="col-md-7">
+                    <div className="col-md-3">
                       <div className="row">
-                        <div className="col-md-6">
-                          <div className="form-group form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
-                            <label>Check In</label>
-                            <DatePicker name="dropOffDate" dateFormat="DD/MM/YYYY"  selected={this.state.checkInDate} onChange={this.handleCheckInDateChange} className="form-control" />
+                        <div className="col-md-12">
+                          <div className="form-group form-group-icon-left"><i className="fa fa-map-marker input-icon"></i>
+                            <label>Flying From?</label>
+                              <AirportList cssClass="form-control searchSelect" name="airport" selectedValue={this.state.airport} changeValue={this.handleAirportChange} />
                           </div>
-                         </div>
-                        <div className="col-md-6">
-                          <div className="form-group form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
-                              <label>Check Out</label>
-                              <DatePicker name="pickUpDate" dateFormat="DD/MM/YYYY"  selected={this.state.checkOutDate} onChange={this.handleCheckOutDateChange} className="form-control" />
+                        </div>
+                        <div className="col-md-12">
+                          <div className="form-group form-group-icon-left"><i className="fa fa-car input-icon input-icon-hightlight"></i>
+                            <label>Include Parking?</label>
+                            <select defaultValue="Yes" className="form-control" onChange={this.handleHideCollectCar}>
+                              <option key="Yes">Yes</option>
+                              <option key="No">No</option>
+                            </select>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className="col-md-5">
+                    <div className="col-md-9">
                       <div className="row">
-                        <div className="col-md-7">
-                          <div className="form-group form-group-select-plus">
-                            <label>Room Type</label>
-                            <RoomDropDownList cssClass="form-control searchSelect" name="pickUpTime" value={this.state.pickUpTime} changeValue={this.handleRoomChange} />
+                        <div className="col-md-9">
+                          <div className="row">
+                            <div className="col-md-7">
+                              <div className="row">
+                                <div className="col-md-6">
+                                  <div className="form-group form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
+                                    <label>Hotel Check In</label>
+                                    <DatePicker name="dropOffDate" dateFormat="DD/MM/YYYY"  selected={this.state.checkInDate} onChange={this.handleCheckInDateChange} className="form-control" />
+                                  </div>
+                                 </div>
+                                <div className="col-md-6">
+                                  <div className="form-group form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
+                                      <label>Hotel Check Out</label>
+                                      <DatePicker name="pickUpDate" dateFormat="DD/MM/YYYY"  selected={this.state.checkOutDate} onChange={this.handleCheckOutDateChange} className="form-control" />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="col-md-5">
+                              <div className="row">
+                                <div className="col-md-12">
+                                  <div className="form-group form-group-select-plus">
+                                    <label>Room Type</label>
+                                    <RoomDropDownList cssClass="form-control searchSelect" name="pickUpTime" value={this.state.roomType} changeValue={this.handleRoomChange} />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="row">
+                            <div className="col-md-7">
+                              <div className="row">
+                                <div className={this.state.includeParking == 'Yes' ? "col-md-6" : "col-md-6 hide"}>
+                                  <div className="form-group form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
+                                      <label>Drop Off Car</label>
+                                      <DatePicker name="dropOffCar" dateFormat="DD/MM/YYYY"  selected={this.state.dropOffCarDate} onChange={this.handleDropOffCarChange} className="form-control" />
+                                  </div>
+                                </div>
+                                <div className={this.state.includeParking == 'Yes' ? "col-md-6" : "col-md-6 hide"}>
+                                  <div className="form-group form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
+                                      <label>Collect Car</label>
+                                      <DatePicker name="collectCar" dateFormat="DD/MM/YYYY"  selected={this.state.collectCarDate} onChange={this.handleCollectCarChange} className="form-control" />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="col-md-5">
+                              <div className="row">
+                                <div className="col-md-12">
+                                <div className={this.state.includeSecondRoom == 'No' ? "form-group form-group-select-plus" : "form-group form-group-select-plus hide"}>
+                                  <p><a href="#" onClick={this.addSecondRoom}>Add second room?</a></p>
+                                </div>
+                                <div className={this.state.includeSecondRoom == 'Yes' ? "form-group form-group-select-plus" : "form-group form-group-select-plus hide"}>
+                                    <label>Second Room Type <a href="#" onClick={this.removeSecondRoom}>Remove?</a></label>
+                                    <RoomDropDownList cssClass="form-control searchSelect" name="pickUpTime" value={this.state.secondRoomType} changeValue={this.handleSecondRoomChange} />
+                                </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                        <div className="col-md-5">
-                          <div className="form-group form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
-                              <label>Collect car</label>
-                              <DatePicker name="collectCar" dateFormat="DD/MM/YYYY"  selected={this.state.flightDate} onChange={this.handleCollectCarChange} className="form-control" />
-                          </div>
+                        <div className="col-md-3">
+                          <button className="btn btn-primary btn-lg formBtn" type="submit">
+                            <i className="fa fa-search"></i>Search
+                          </button>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="col-md-3">
-                  <button className="btn btn-primary btn-lg formBtn" type="submit">
-                    <i className="fa fa-search"></i>Search
-                  </button>
+                </form>
                 </div>
               </div>
             </div>
           </div>
-        </form>
+        </div>
       </div>
     );
   }
@@ -119,14 +217,10 @@ export function calculateDays(date1, date2) {
 }
 
 AirportHotelSearchForm.defaultProps = {
-  dDate: moment().add(1, 'days'), 
-  pDate: moment().add(2, 'days'),
   airport: ''
 };
 
 AirportHotelSearchForm.propTypes = {
-  dDate:  PropTypes.string.isRequired,
-  pDate: PropTypes.string.isRequired,
   airport: PropTypes.string.isRequired,
   handleFormSubmit: PropTypes.func
 };

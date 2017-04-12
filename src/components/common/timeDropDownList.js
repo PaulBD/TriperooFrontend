@@ -24,16 +24,10 @@ class TimeDropDownList extends React.Component {
     let selectedTime = this.props.value;
 
     let timeList = times.map(function(time){
-      if (time == selectedTime)
-      {
-        return <option key={time} selected="true">{time}</option>;
-      }
-      else {
-        return <option key={time}>{time}</option>;
-      }
+      return <option key={time}>{time}</option>;
     })
     return (
-        <select className={this.props.cssClass} ref={this.props.name} name={this.props.name} selected={this.props.value} onChange={this.handleChange}>
+        <select defaultValue={selectedTime} className={this.props.cssClass} ref={this.props.name} name={this.props.name} selected={this.props.value} onChange={this.handleChange}>
           {timeList}
         </select>
         );
