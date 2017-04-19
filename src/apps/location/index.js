@@ -17,8 +17,6 @@ import LastMinuteDeal from '../../components/content/dynamic/lastMinuteDeal';
 import Loader from '../../components/common/loadingDots';
 import Events from '../../components/events/byLocation';
 
-import Deals from '../../components/legacy/deals/list';
-
 let titleCase = require('title-case');
 
 class LocationHome extends React.Component {
@@ -62,7 +60,7 @@ class LocationHome extends React.Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8">
-                            <ReviewList locationId={this.props.locationId} locationName={this.props.location.regionName} locationType="" limit={3} offset={0} showTitle={false} />
+                            <ReviewList locationId={this.props.locationId} locationName={this.props.location.regionName} locationType="" limit={10} offset={0} showTitle={true} />
                         </div>
                         <div className="col-md-4">
                             <a href="#" className="btn btn-info questionBtn" data-toggle="modal" data-target="#reviewModel" >

@@ -1,6 +1,5 @@
 import React from 'react';
 import FacebookSignup from '../../components/authentication/facebookSignup';
-import CitySubHeader from '../../components/places/common/subHeader';
 
 export default class AttractionHome extends React.Component {
 
@@ -11,8 +10,6 @@ export default class AttractionHome extends React.Component {
     render(){
     return (
       <div>
-
-          <CitySubHeader pageType="attraction" />
           <div className="gap gap-small"></div>
 
           <div className="container">

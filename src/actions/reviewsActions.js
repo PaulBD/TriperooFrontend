@@ -16,10 +16,10 @@ export function loadReviewsFailure(message) {
 	return {type: types.LOAD_REVIEWS_FAILURE, isFetching: false,  message};
 }
 
-export function loadReviewsByLocationId(locationId, reviewType, limit, offset) {
+export function loadReviewsByLocationId(locationId, reviewType, pageSize, pageNumber) {
 	return dispatch => {
 		dispatch(requestReviews());
-		return ReviewsApi.getReviewsByLocationId(locationId, reviewType, limit, offset).then(reviews => {
+		return ReviewsApi.getReviewsByLocationId(locationId, reviewType, pageSize, pageNumber).then(reviews => {
 			dispatch(loadReviewsSuccess(reviews));
 		}).catch(error => {
 			loadReviewsFailure(error.response.data);

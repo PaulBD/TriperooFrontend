@@ -7,11 +7,11 @@ class EventsApi {
   // Return events using Eventful using 
   // location id
   // ****************************************
-  static getEventsByLocationId(locationId, categoryName, limit, offset) {
+  static getEventsByLocationId(locationId, categoryName, pageSize, pageNumber) {
     return new Promise((resolve, reject) => {
       axios({
         method: 'get',
-        url:  baseUrl + '/events?locationId=' + locationId + '&categoryName=' + categoryName + '&pageSize=' + limit + '&pageNumber=' + offset
+        url:  baseUrl + '/events?locationId=' + locationId + '&categoryName=' + categoryName + '&pageSize=' + pageSize + '&pageNumber=' + pageNumber
       })
       .then(response => {
         resolve(Object.assign({}, response.data));
@@ -20,7 +20,7 @@ class EventsApi {
         reject(error);
       });
     });
-  };
+  }
 
   static getEventCategories() {
     return new Promise((resolve, reject) => {

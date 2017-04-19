@@ -19,7 +19,7 @@ class EventModal extends React.Component {
               <div className="col-md-8">
                 <p className="card-text mb-0"><i className="fa fa-clock-o"></i> {this.props.startTime}</p>
                 <p className="card-text mb-0"><i className="fa fa-map-marker"></i> {this.props.venueName}, {this.props.venueAddress}, {this.props.venueCity}</p>
-                <p className="card-text mb-2"><i className="fa fa-credit-card"></i> {this.props.ticketCost ? this.props.ticketCost : '' }</p>
+                <p className="card-text mb-2"><i className="fa fa-credit-card"></i> {this.props.ticketCost ? this.props.ticketCost : 'Unknown'}</p>
                 <p className="card-text"><strong>Description</strong><br />{this.props.eventDescription ? this.props.eventDescription.length > 520 ? this.props.eventDescription.substring(0, 520) : this.props.eventDescription : 'No description found.'}</p>
               </div>
             </div>

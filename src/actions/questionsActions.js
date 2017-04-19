@@ -16,10 +16,10 @@ export function loadQuestionsFailure(message) {
 	return {type: types.LOAD_QUESTIONS_FAILURE, isFetching: false, message};
 }
 
-export function loadQuestionsByLocationId(locationId, limit, offset) {
+export function loadQuestionsByLocationId(locationId, pageSize, pageNumber) {
 	return dispatch => {
 		dispatch(receiveQuestions());
-		return QuestionsApi.getQuestionsByLocationId(locationId, limit, offset).then(questions => {
+		return QuestionsApi.getQuestionsByLocationId(locationId, pageSize, pageNumber).then(questions => {
 			dispatch(loadQuestionSuccess(questions));
 		}).catch(error => {
 			dispatch(loadQuestionsFailure(error.response.data));

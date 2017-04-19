@@ -8,8 +8,8 @@ class DestinationsApi {
   // ****************************************
   static getDestinations(size, contentType) {
     return new Promise((resolve, reject) => {
-	    let filteredList = [];
-	    for (let index = 0; index < size; index++) {
+      let filteredList = [];
+      for (let index = 0; index < size; index++) {
         if (contentType == '') {
           filteredList.push(topDestinations[index]);
         } else {
@@ -20,10 +20,9 @@ class DestinationsApi {
             filteredList.push(topDestinations[index]);
           }
         }
-	    }
+      }
 
-      console.log(filteredList);
-		resolve(Object.assign([], filteredList));
+      resolve(Object.assign([], filteredList));
     });
   }
 }

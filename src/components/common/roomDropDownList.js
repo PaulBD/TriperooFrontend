@@ -62,11 +62,11 @@ class RoomDropDownList extends React.Component {
         "value": "F32",
         "name": "Family - 3 adults 2 children"
       }
-    ]
+    ];
 
     return (
         <select className={this.props.cssClass} ref={this.props.name} name={this.props.name} value={this.props.value} onChange={this.handleChange}>
-          { rooms.map(function(room){
+          {rooms.map(function(room){
               return <option key={room.value}>{room.name}</option>;
             })
           }

@@ -10,7 +10,7 @@ class AirportHotelCard extends React.Component {
     }
 
     trackClick() {
-      ReactGA.event({ category: 'Airport Parking', action: 'Click', label: this.props.airportParking.name });
+      ReactGA.event({ category: 'Airport Parking', action: 'Click', label: this.props.airportHotel.name });
     }
 
     render(){
@@ -71,7 +71,8 @@ AirportHotelCard.defaultProps = {
 AirportHotelCard.propTypes = {
     airportHotel: PropTypes.object.isRequired,
     searchRequest: PropTypes.object.isRequired,
-    css: PropTypes.string.isRequired
+    css: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired
 };
 
 export default AirportHotelCard;

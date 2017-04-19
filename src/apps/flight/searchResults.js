@@ -4,7 +4,6 @@ import {bindActionCreators} from 'redux';
 import * as flightActions from '../../actions/flightActions';
 import FlightCard from './flightCard';
 
-
 class SearchResults extends React.Component {
   constructor(props, context) {
       super(props, context);
@@ -17,37 +16,37 @@ class SearchResults extends React.Component {
   
   render(){
 
-console.log(this.props.flights.quotes);
+    console.log(this.props.flights.quotes);
 
     if (this.props.flights.quotes != undefined)
     {
       return (
-          <div>
-            <div className="container">
-              <div className="row">            
-                {
-                  this.props.flights.quotes.map(quote => {
-                      return (
-                        <div className="col-md-12 mb-1 flightWrapper" key={quote.quoteId}>
-                          <div className="col-md-5">
-                            <FlightCard carrierIds={quote.outboundLeg.carrierIds} inboundLocation={this.props.inboundLocation} outboundLocation={this.props.outboundLocation} carrierList={this.props.flights.carriers} isDirect={quote.outboundLeg.direct}/>
-                          </div> 
-                          <div className="col-md-5">
-                            <FlightCard carrierIds={quote.inboundLeg.carrierIds} carrierList={this.props.flights.carriers} isDirect={quote.inboundLeg.direct}/>
-                          </div>                   
-                          <div className="col-md-2 text-xs-center">
-                            <small>From</small><br />
-                            <h5 className="mb-1"><strong>{this.props.flights.currencies[0].symbol}{quote.minPrice}</strong></h5>
-                            <a href="#" target="_blank" className="btn btn-primary btnSearch">Select ></a>
-                          </div>
+        <div>
+          <div className="container">
+            <div className="row">            
+              {
+                this.props.flights.quotes.map(quote => {
+                    return (
+                      <div className="col-md-12 mb-1 flightWrapper" key={quote.quoteId}>
+                        <div className="col-md-5">
+                          <FlightCard carrierIds={quote.outboundLeg.carrierIds} inboundLocation={this.props.inboundLocation} outboundLocation={this.props.outboundLocation} carrierList={this.props.flights.carriers} isDirect={quote.outboundLeg.direct}/>
+                        </div> 
+                        <div className="col-md-5">
+                          <FlightCard carrierIds={quote.inboundLeg.carrierIds} carrierList={this.props.flights.carriers} isDirect={quote.inboundLeg.direct}/>
+                        </div>                   
+                        <div className="col-md-2 text-xs-center">
+                          <small>From</small><br />
+                          <h5 className="mb-1"><strong>{this.props.flights.currencies[0].symbol}{quote.minPrice}</strong></h5>
+                          <a href="#" target="_blank" className="btn btn-primary btnSearch">Select ></a>
                         </div>
-                      );
-                  })
-                }
-              </div>
+                      </div>
+                    );
+                })
+              }
             </div>
           </div>
-        );
+        </div>
+      );
     }
     else { 
       return null; 
@@ -56,27 +55,27 @@ console.log(this.props.flights.quotes);
 }
 
 SearchResults.defaultProps = {
-    isFetching: false,
-    flights: {},
-    inboundLocation: 'MAN',
-    outboundLocation: 'JFK'
+  isFetching: false,
+  flights: {},
+  inboundLocation: 'MAN',
+  outboundLocation: 'JFK'
 };
 
 SearchResults.propTypes = {
-    flights: PropTypes.object,
-    flightActions: PropTypes.object.isRequired,
-    isFetching: PropTypes.bool.isRequired,
-    inboundLocation: PropTypes.string.isRequired,
-    outboundLocation: PropTypes.string.isRequired
+  flights: PropTypes.object,
+  flightActions: PropTypes.object.isRequired,
+  isFetching: PropTypes.bool.isRequired,
+  inboundLocation: PropTypes.string.isRequired,
+  outboundLocation: PropTypes.string.isRequired
 };
 
 function returnCarrierName(carrierId, carrierList)
 {
   for (let index = 0; index < carrierList.length; index++) {
-      if (carrierList[index].carrierId == carrierId)
-      {
-        return carrierList[index].name;
-      }
+    if (carrierList[index].carrierId == carrierId)
+    {
+      return carrierList[index].name;
+    }
   }
 }
 
@@ -107,21 +106,20 @@ function returnCarrierImage(carrierId)
   }
 }
 
-function returnPlaceName(placeId, placeList)
-{
+function returnPlaceName(placeId, placeList) {
   for (let index = 0; index < placeList.length; index++) {
-      if (placeList[index].placeId == placeId)
-      {
-        return placeList[index].name;
-      }
+    if (placeList[index].placeId == placeId)
+    {
+      return placeList[index].name;
+    }
   }
 }
 
 function mapStateToProps(state, ownProps) {
-     return {
-        isFetching: state.flights.isFetching ? state.flights.isFetching : false,
-        flights: state.flights.flights ? state.flights.flights : {},
-    };
+  return {
+    isFetching: state.flights.isFetching ? state.flights.isFetching : false,
+    flights: state.flights.flights ? state.flights.flights : {}
+  };
 }
 
 function mapDispatchToProps(dispatch) {

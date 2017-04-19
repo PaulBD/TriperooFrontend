@@ -11,20 +11,13 @@ import reviewList from './reviewsReducer';
 import review from './reviewReducer';
 import location from './locationReducer';
 import locationsList from './locationsReducer';
+import attractionsList from './attractionsReducer';
 import weather from './weatherReducer';
 import locationEvents from './eventsReducer';
 import flights from './flightsReducer';
 import destinations from './destinationsReducer';
 import airports from './airportsReducer';
 
-import attractionDeals from './legacy/attractionDealReducer';
-import hotDeals from './legacy/hotDealReducer';
-import lastMinute from './legacy/lastMinuteReducer';
-import places from './legacy/placeListReducer';
-import place from './legacy/placeReducer';
-import restaurantDeals from './legacy/restaurantDealReducer';
-import specialDeals from './legacy/specialDealReducer';
-import trendingDeals from './legacy/trendingDealReducer';
 import airportParking from './airportParkingReducer';
 import airportHotel from './airportHotelReducer';
 
@@ -36,21 +29,14 @@ const rootReducer = combineReducers({
   newsletter,
   autocomplete,
   header,
-  hotDeals,
-  specialDeals,
-  trendingDeals,
-  restaurantDeals,
-  attractionDeals,
   hotelDeals,
-  lastMinute,
   question,
   questions,
   reviewList,
   review,
   location,
   locationsList,
-  places,
-  place,
+  attractionsList,
   weather,
   destinations,
   locationEvents,

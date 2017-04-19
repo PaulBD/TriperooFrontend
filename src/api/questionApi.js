@@ -27,7 +27,7 @@ class QuestionApi {
         reject(error);
       });
     });
-  };
+  }
 }
 
 export default QuestionApi;

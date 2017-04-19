@@ -17,7 +17,7 @@ class AirportHotels extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    document.title = 'Avoid the last minute rush by booking your vehicle space today and save a bundle on cheap airport parking with Triperoo. Compare deals today.';
+    document.title = 'Airport hotels from only £37, or £67.50 including 8 days parking. Compare deals today - Triperoo';
   
     if (this.state.airport != '')
     {

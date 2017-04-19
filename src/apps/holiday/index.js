@@ -4,8 +4,6 @@ import FeaturedHeader from '../../components/content/dynamic/featuredHeader';
 import Destinations from '../../components/content/dynamic/destinations';
 import Copy from '../../components/holidays/copy';
 
-import Deals from '../../components/legacy/deals/list';
-
 import LastMinuteDeal from '../../components/content/dynamic/lastMinuteDeal';
 import FacebookSignup from '../../components/authentication/facebookSignup';
 
@@ -27,19 +25,6 @@ export default class Holidays extends React.Component {
             <div className="row row-wrap text-xs-center">
             <Destinations destinationCount={3} title="Our Top Destinations" />
           </div>
-          <div className="gap"></div>
-          <div className="row">
-            <div className="col-md-4"> 
-              <Deals searchType="trending" title="Trending Now"/>
-            </div>
-            <div className="col-md-4">
-              <Deals searchType="hot" title="Hot Deals" />
-            </div>
-            <div className="col-md-4">
-              <Deals searchType="special" title="Special Deals"/>
-            </div>
-          </div>
-          <div className="gap gap-small"></div>
         </div>
         <LastMinuteDeal featureType="lastMinute" />
         <div className="container">

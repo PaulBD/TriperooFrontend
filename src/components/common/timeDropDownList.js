@@ -25,7 +25,8 @@ class TimeDropDownList extends React.Component {
 
     let timeList = times.map(function(time){
       return <option key={time}>{time}</option>;
-    })
+    });
+    
     return (
         <select defaultValue={selectedTime} className={this.props.cssClass} ref={this.props.name} name={this.props.name} selected={this.props.value} onChange={this.handleChange}>
           {timeList}

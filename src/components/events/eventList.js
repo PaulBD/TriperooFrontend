@@ -18,7 +18,6 @@ class EventList extends React.Component {
 
     if ((this.props.locationEvents.length > 0) && (!this.props.isFetching))
     {
-      let allEventsUrl = this.props.baseUrl + '/all-events-this-week';
       let css = this.props.cssClass;
       return (
         <div className="row">

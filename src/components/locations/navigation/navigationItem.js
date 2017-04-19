@@ -46,7 +46,7 @@ NavigationItem.propTypes = {
 	parentUrl: PropTypes.string.isRequired,
 	showCount: PropTypes.bool,
 	showName: PropTypes.bool,
-	isActive: PropTypes.number,
+	isActive: PropTypes.bool,
 	cssClass: PropTypes.string
 };
 

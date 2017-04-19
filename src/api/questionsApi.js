@@ -5,11 +5,11 @@ class QuestionsApi {
   // ****************************************
   // Return a list of questions by location id
   // ****************************************
-  static getQuestionsByLocationId(locationId, limit, offset) {
+  static getQuestionsByLocationId(locationId, pageSize, pageNumber) {
     return new Promise((resolve, reject) => {
       axios({
         method: 'get',
-        url:  baseUrl + '/questions?locationId=' + locationId + '&limit=' + limit + '&offset=' + offset
+        url:  baseUrl + '/questions?locationId=' + locationId + '&pageSize=' + pageSize + '&pageNumber=' + pageNumber
       })
       .then(response => {
         resolve(Object.assign([], response.data));
@@ -18,7 +18,7 @@ class QuestionsApi {
         reject(error);
       });
     });
-  };
+  }
 }
 
 export default QuestionsApi;

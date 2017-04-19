@@ -20,7 +20,7 @@ class FlightsApi {
         reject(error);
       });
     });
-  };
+  }
 }
 
 export default FlightsApi;

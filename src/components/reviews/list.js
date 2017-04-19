@@ -12,7 +12,7 @@ class Reviews extends React.Component {
   }
 
   componentWillMount() {
-    this.props.reviewActions.loadReviewsByLocationId(this.props.locationId, this.props.locationType, this.props.limit, this.props.offset);
+    this.props.reviewActions.loadReviewsByLocationId(this.props.locationId, this.props.locationType, this.props.pageSize, this.props.pageNumber);
   }
 
   render(){
@@ -65,8 +65,8 @@ Reviews.defaultProps = {
   showTitle: true,
   locationType: 'all',
   locationId: 0,
-  limit: 0,
-  offset: 0,
+  pageSize: 0,
+  pageNumber: 1,
   isFetching: false,
   reviews: []
 };
@@ -76,15 +76,15 @@ Reviews.propTypes = {
   reviewActions: PropTypes.object.isRequired,
   locationType: PropTypes.string.isRequired,
   locationId: PropTypes.number.isRequired,
-  limit: PropTypes.number.isRequired,
-  offset: PropTypes.number.isRequired,
+  pageSize: PropTypes.number.isRequired,
+  pageNumber: PropTypes.number.isRequired,
   showTitle: PropTypes.bool,
   isFetching: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    reviews: state.reviewList ? state.reviewList.reviewList : [],
+    reviews: state.reviewList.reviewList ? state.reviewList.reviewList.reviewDto : [],
     isFetching: state.reviewList ? state.reviewList.isFetching : false
   };
 }

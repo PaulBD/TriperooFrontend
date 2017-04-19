@@ -34,7 +34,7 @@ class EventCategories extends React.Component {
               {
                 this.props.eventCategories.map(category => {
 
-                var className = this.state.categoryName == category.name ? 'eventOptions active' : 'eventOptions';
+                let className = this.state.categoryName == category.name ? 'eventOptions active' : 'eventOptions';
 
                   return (
                     <div className={className} key={category.name}>
@@ -58,7 +58,7 @@ class EventCategories extends React.Component {
 
 EventCategories.defaultProps = {
   eventCategories: [],
-  isFetching: false,
+  isFetching: false
 };
 
 EventCategories.propTypes = {

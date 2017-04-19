@@ -5,20 +5,21 @@ class ReviewsApi {
   // ****************************************
   // Return reviews by location id
   // ****************************************
-  static getReviewsByLocationId(locationId, reviewType, limit, offset) {
+  static getReviewsByLocationId(locationId, reviewType, pageSize, pageNumber) {
+
     return new Promise((resolve, reject) => {
       axios({
         method: 'get',
-        url:  baseUrl + '/reviews?type=' + reviewType + '&id=' + locationId + '&limit=' + limit + '&offset=' + offset
+        url:  baseUrl + '/reviews?type=' + reviewType + '&locationId=' + locationId + '&pageSize=' + pageSize + '&pageNumber=' + pageNumber
       })
       .then(response => {
-        resolve(Object.assign([], response.data));
+        resolve(Object.assign({}, response.data));
       })
       .catch(function (error) {
         reject(error);
       });
     });
-  };
+  }
 }
 
 export default ReviewsApi;

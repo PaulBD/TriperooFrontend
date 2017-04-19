@@ -15,11 +15,8 @@ class ByLocation extends React.Component {
 
   render(){
 
-console.log(this.props.locatoonEvents);
-
     if (this.props.locationEvents != undefined)
     {
-
       let allEventsUrl = this.props.baseUrl + '/all-events-this-week';
 
       return (

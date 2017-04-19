@@ -19,8 +19,7 @@ class AirportParkingApi {
         reject(error);
       });
     });
-  };
-
+  }
 }
 
 export default AirportParkingApi;

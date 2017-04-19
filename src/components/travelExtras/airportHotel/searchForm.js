@@ -107,7 +107,7 @@ class AirportHotelSearchForm extends React.Component {
           <div className="tabbable">
             <div className="tab-content">
               <div className="tab-pane fade in active" id="tab-1">
-                <form onSubmit={this.submitForm}>
+                <form onSubmit={this.submitForm} className="searchForm">
                   <div className="row">
                     <div className="col-md-3">
                       <div className="row">
@@ -222,7 +222,10 @@ AirportHotelSearchForm.defaultProps = {
 
 AirportHotelSearchForm.propTypes = {
   airport: PropTypes.string.isRequired,
-  handleFormSubmit: PropTypes.func
+  handleFormSubmit: PropTypes.func,
+  headerTitle:  PropTypes.string.isRequired,
+  subHeaderTitle:  PropTypes.string.isRequired,
+  contentType:  PropTypes.string.isRequired
 };
 
 export default AirportHotelSearchForm;

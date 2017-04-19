@@ -547,4 +547,4 @@ div.ReactTags__suggestions ul li.active {
 
 .airportParking .card-text small { font-size: 11px; }
 
-label a { float:right;}
+form.searchForm label a { float:right; }

@@ -13,13 +13,13 @@ export function hotelDealsSuccess(hotelDeals) {
 }
 
 export function hotelDealsFailure(errorMessage) {
-	return {type: types.HOTEL_DEALS_FAILURE, isFetching:false, errorMessage};
+	return {type: types.HOTEL_DEALS_FAILURE, isFetching: false, errorMessage};
 }
 
-export function loadHotelDealsByLocation(location, limit, offset) {
+export function loadHotelDealsByLocation(locationName, pageSize, pageNumber) {
 	return dispatch => {
 		dispatch(hotelDealsRequest());
-		return HotelDealsApi.getHotelDealsByLocation(location, limit, offset).then(hotelDeals => {
+		return HotelDealsApi.getHotelDealsByLocation(locationName, pageSize, pageNumber).then(hotelDeals => {
 			dispatch(hotelDealsSuccess(hotelDeals));
 		}).catch(error => {
 			dispatch(hotelDealsFailure(error.response.data));

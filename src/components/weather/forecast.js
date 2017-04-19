@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as weatherActions from '../../actions/weatherActions';
 const Timestamp = require('react-timestamp');
+import Loader from '../../components/common/loadingDots';
 
 class Forecast extends React.Component {
 	constructor(props, context) {
@@ -15,9 +16,11 @@ class Forecast extends React.Component {
 
 	render()
 	{
+		let showLoader = true;
 		let content = "";
-		if ((this.props.weather != undefined) && (this.props.weather.daily != undefined)&& (this.props.weather.daily.data.length > 0))
+		if ((this.props.weather != undefined) && (this.props.weather.daily != undefined) && (this.props.weather.daily.data.length > 0))
 		{
+			showLoader = false;
 			let tmp = [];
 
 			for (let i = 1; i < 6; i++) {
@@ -52,10 +55,11 @@ class Forecast extends React.Component {
 			return (
 				<div className="sidebar-widget weather">
 					<h4>5 Day Forecast</h4>
-					<table className="table weatherTbl">
+					<table className={content != '' ? "table weatherTbl" : "table weatherTbl hide"}>
 						{content}
 					</table>
-					<p className="text-xs-right"><small>Powered by DarkSky</small></p>
+					<Loader showLoader={showLoader} />
+					<p className={content != '' ? "text-xs-right" : "text-xs-right hide"}><small>Powered by DarkSky</small></p>
 				</div>
 			);
 

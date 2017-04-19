@@ -16,24 +16,25 @@ class EventHome extends React.Component {
     this.changeEvent = this.changeEvent.bind(this);
     this.changeFriendlyCategory = this.changeFriendlyCategory.bind(this);
     this.changePage = this.changePage.bind(this);
-    this.state = { limit: 10, offset: 1, categoryName: 'all', friendlyCategory: '' };
+    this.state = { pageSize: 10, pageNumber: 0, activePageNumber: 1, categoryName: 'all', friendlyCategory: '' };
   }
 
   componentWillMount() {
+    console.log(this.props.locationId);
     this.props.locationActions.loadLocationById(this.props.locationId);
-    this.props.eventActions.loadEventsByCategory(this.props.locationId, this.state.categoryName, 10, this.state.offset);
+    this.props.eventActions.loadEventsByCategory(this.props.locationId, this.state.categoryName, this.state.pageSize, this.state.pageNumber);
   }
 
   changeEvent(value) {
     window.scrollTo(0, 0);
     this.setState({ categoryName: value });
-    this.props.eventActions.loadEventsByCategory(this.props.locationId, value, 10, this.state.offset);  
+    this.props.eventActions.loadEventsByCategory(this.props.locationId, value, this.state.pageSize, this.state.pageNumber);  
   }
 
   changePage(value) {
     window.scrollTo(0, 0);
-    this.setState({ offset: value });
-    this.props.eventActions.loadEventsByCategory(this.props.locationId, this.state.categoryName, 10, value);
+    this.setState({ pageNumber: value - 1, activePageNumber: value });
+    this.props.eventActions.loadEventsByCategory(this.props.locationId, this.state.categoryName, this.state.pageSize, value - 1);
   }
 
   changeFriendlyCategory(value) {
@@ -44,25 +45,32 @@ class EventHome extends React.Component {
     document.title = 'All events this week in ' + this.props.locationName;
 
     let intro = '';
+    let totalItems = 0;
 
     if (!this.props.isFetchingLocation)
     {
-      if (this.state.friendlyCategory == 'all')
-      { 
-        intro = 'We found ' + this.props.totalItems + ' events matching all categories.';
-      }
-      else
-      {
-        intro = 'We found ' + this.props.totalItems + ' events matching ' + this.state.friendlyCategory + '.';
+      totalItems = this.props.totalItems;
+
+      if (this.state.friendlyCategory != '') {
+        if (this.state.friendlyCategory == 'all')
+        { 
+          intro = 'We found ' + totalItems + ' events matching all categories.';
+        }
+        else
+        {
+          intro = 'We found ' + totalItems + ' events matching ' + this.state.friendlyCategory + '.';
+        }
+      } 
+      else {
+        intro = 'We found ' + totalItems + ' events in total.';
       }
     }
 
     let style = {
-      backgroundImage: 'url(/static/img/about.jpg)'
+      backgroundImage: 'url(/static/img/community.jpg)'
     };
 
-    if (this.props.location.regionName != undefined)
-    {
+
       return (
           <div>   
 
@@ -80,7 +88,6 @@ class EventHome extends React.Component {
           <div className="row row-wrap">
             <div className="gap gap-small"></div>
               <div className="col-md-9">
-                <Loader showLoader={this.props.isFetchingLocationEvents} />
                 <p>{intro}</p>
                 <EventList locationEvents={this.props.locationEvents} cssClass="col-md-6" isFetching={this.props.isFetchingLocationEvents} />
               </div>
@@ -90,7 +97,7 @@ class EventHome extends React.Component {
             </div>
             <div className="gap gap-small"></div>
             <div className="row text-xs-center">
-              <Pagination innerClass="pagination text-xs-center" activePage={this.state.offset} itemsCountPerPage={this.props.pageSize} totalItemsCount={this.props.totalItems} pageRangeDisplayed={10} onChange={this.changePage} />
+              <Pagination innerClass={totalItems > this.state.pageSize ? "pagination text-xs-center" : "hide"} activePage={this.state.activePageNumber} itemsCountPerPage={this.props.pageSize} totalItemsCount={this.props.totalItems} pageRangeDisplayed={10} onChange={this.changePage} />
             </div>
           </div>
           <div className="container">
@@ -102,9 +109,6 @@ class EventHome extends React.Component {
           </div>
         </div>
       );
-    } else {
-      return (<Loader showLoader={this.props.isFetchingLocation} />);
-    }
   }
 }
 

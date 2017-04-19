@@ -5,9 +5,9 @@ class LocationsApi {
   // ****************************************
   // Return child locations using parent id
   // ****************************************
-  static getLocationsByParentId(parentId, type, limit, offset) {
+  static getLocationsByParentId(parentLocationId, type, pageSize, pageNumber) {
     return new Promise((resolve, reject) => {
-      axios.get(baseUrl + '/locations?parentId=' + parentId + '&type=' + type + '&limit=' + limit + '&offset=' + offset)
+      axios.get(baseUrl + '/locations?parentLocationId=' + parentLocationId + '&type=' + type + '&pageSize=' + pageSize + '&pageNumber=' + pageNumber)
         .then(function (response) {
           resolve(Object.assign([], response.data));
         })

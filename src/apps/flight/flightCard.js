@@ -47,28 +47,28 @@ class FlightCard extends React.Component {
 }
 
 FlightCard.defaultProps = {
-    carrierIds: [],
-    carrierList: [],
-    isDirect: true,
-    inboundLocation: 'MAN',
-    outboundLocation: 'JFK'
+  carrierIds: [],
+  carrierList: [],
+  isDirect: true,
+  inboundLocation: 'MAN',
+  outboundLocation: 'JFK'
 };
 
 FlightCard.propTypes = {
-    carrierIds: PropTypes.array.isRequired,
-    carrierList: PropTypes.array.isRequired,
-    isDirect: PropTypes.bool.isRequired,
-    inboundLocation: PropTypes.string.isRequired,
-    outboundLocation: PropTypes.string.isRequired
+  carrierIds: PropTypes.array.isRequired,
+  carrierList: PropTypes.array.isRequired,
+  isDirect: PropTypes.bool.isRequired,
+  inboundLocation: PropTypes.string.isRequired,
+  outboundLocation: PropTypes.string.isRequired
 };
 
 function returnCarrierName(carrierId, carrierList)
 {
   for (let index = 0; index < carrierList.length; index++) {
-      if (carrierList[index].carrierId == carrierId)
-      {
-        return carrierList[index].name;
-      }
+    if (carrierList[index].carrierId == carrierId)
+    {
+      return carrierList[index].name;
+    }
   }
 }
 
@@ -102,10 +102,10 @@ function returnCarrierImage(carrierId)
 function returnPlaceName(placeId, placeList)
 {
   for (let index = 0; index < placeList.length; index++) {
-      if (placeList[index].placeId == placeId)
-      {
-        return placeList[index].name;
-      }
+    if (placeList[index].placeId == placeId)
+    {
+      return placeList[index].name;
+    }
   }
 }
 

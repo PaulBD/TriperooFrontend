@@ -3,8 +3,6 @@ import FeaturedHeader from '../../components/content/dynamic/featuredHeader';
 import Search from '../../components/hotels/search';
 import Destinations from '../../components/content/dynamic/destinations';
 
-import Deals from '../../components/legacy/deals/list';
-
 import LastMinuteDeal from '../../components/content/dynamic/lastMinuteDeal';
 import FacebookSignup from '../../components/authentication/facebookSignup';
 import BulletPoints from '../../components/content/static/bulletPoints';

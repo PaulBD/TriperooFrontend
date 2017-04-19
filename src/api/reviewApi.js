@@ -26,7 +26,7 @@ class ReviewApi {
         reject(error);
       });
     });
-  };
+  }
 
   // ****************************************
   // Like an existing review
@@ -52,7 +52,7 @@ class ReviewApi {
         reject(error);
       });
     });
-  };
+  }
 }
 
 export default ReviewApi;

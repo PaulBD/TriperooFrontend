@@ -17,7 +17,7 @@ class AirportParking extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    document.title = 'Avoid the last minute rush by booking your vehicle space today and save a bundle on cheap airport parking with Triperoo. Compare deals today.';
+    document.title = 'Quality, secured airport parking from only £5.25 per day or £41.99 per week. Compare deals today - Triperoo';
   
     if (this.state.airport != '')
     {

@@ -20,6 +20,8 @@ class Overview extends React.Component {
 
     render(){
 
+        let summaryCount = 760;
+
         let summary = this.props.summary;
 
         if ((summary != null) && (summary.length > 0))
@@ -28,9 +30,9 @@ class Overview extends React.Component {
 
             if (!this.state.showMore)
             {
-                if (summary.length > 870)
+                if (summary.length > summaryCount)
                 {
-                    summary = summary.substring(0, 870) + '...';
+                    summary = summary.substring(0, summaryCount) + '...';
                     showMore = 'Read More';
                 }
                 else {
