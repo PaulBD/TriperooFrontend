@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+let titleCase = require('title-case');
 
 class LocationList extends React.Component {
   constructor(props, context) {
@@ -7,7 +8,7 @@ class LocationList extends React.Component {
   }
 
   handleMissingImage(e) {
-      e.target.src='/static/img/400x300.png';
+      e.target.src='/static/img/placeholder.png';
   }
 
   render() {
@@ -35,11 +36,53 @@ class LocationList extends React.Component {
 						break;
 				}
 
+				let locationType = location.subClass;
+
+				switch (location.subClass)
+				{
+					case "tree":
+						locationType = 'Park / Common';
+						break;
+					case "sign":
+						locationType = 'Area of Interest';
+						break;
+					case "civic":
+						locationType = 'Important Buildings';
+						break;
+					case "anchor":
+						locationType = 'Docklands';
+						break;
+					case "icecream":
+						locationType = 'Activities';
+						break;
+					case "stadium":
+						locationType = 'Sport Venues';
+						break;
+					case "medical":
+						locationType = 'Hospitals, Medical Buildings';
+						break;
+					case "school":
+						locationType = 'Schools, Colleages, Universities';
+						break;
+					case "theater":
+						locationType = 'Theatres';
+						break;
+					case "historic":
+						locationType = 'Historic Venues';
+						break;
+
+				}
+
 				return (
 						<div className={this.props.cssClass} key={location.regionID}>
 							<a className="hover-img" href={location.url}>
-								<img src={location.image ? location.image : '/static/img/400x300.png'}  alt={location.regionName} onError={this.handleMissingImage} />
-								<h5 className="hover-title hover-hold">{location.regionName}</h5>
+								<img src={location.image ? location.image : '/static/img/placeholder.png'}  alt={location.regionName} onError={this.handleMissingImage} />
+								<div className="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">
+									<div className="text-small">
+										<h5>{location.regionName.length > 33 ? location.regionName.substring(0,33) + '...' : location.regionName}</h5>
+										<p>{titleCase(locationType)}</p>
+									</div>
+								</div>
 							</a>
 						{spacer}
 						</div>

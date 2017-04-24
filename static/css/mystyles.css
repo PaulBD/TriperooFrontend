@@ -24,7 +24,7 @@ select.searchSelect:not([size]):not([multiple]) {
 
 .eventCard { height:170px; }
 .eventOptions { font-size: 12px;}
-.eventOptions i { margin-right: 7px;}
+.eventOptions i { margin-right: 7px; width: 20px; }
 .eventOptions.active, .eventOptions.active a { color: #ed8323; }
 #eventModal h5 { color: orange } 
 #eventModal p { font-size: 12px; }

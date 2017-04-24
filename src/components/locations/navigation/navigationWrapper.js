@@ -19,9 +19,9 @@ class NavigationWrapper extends React.Component {
           <Item item="Attractions" parentUrl={this.props.location.url} showCount={true} showName={true} cssClass="fa fa-ticket user-profile-statictics-icon" />
           <Item item="Restaurants" parentUrl={this.props.location.url} showCount={true} showName={true} cssClass="fa fa-cutlery user-profile-statictics-icon" />
           <Item item="Nightlife" parentUrl={this.props.location.url} showCount={true} showName={true} cssClass="fa fa-glass user-profile-statictics-icon" />
+          <Item item="Events" parentUrl={this.props.location.url} showCount={true} showName={true} cssClass="fa fa-calendar-o user-profile-statictics-icon" />
           <Item item="Reviews" parentUrl={this.props.location.url} showCount={true} showName={true} cssClass="fa fa-comment user-profile-statictics-icon" />
-          <Item item="Questions" parentUrl={this.props.location.url} showCount={true} showName={true} cssClass="fa fa-question user-profile-statictics-icon" />
-        </ul> 
+         </ul> 
       );
     }
 

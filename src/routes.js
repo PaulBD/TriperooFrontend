@@ -31,6 +31,7 @@ import Cottages from './apps/travelExtras/cottages';
 import Cruises from './apps/travelExtras/cruises';
 import RailTravel from './apps/travelExtras/railTravel';
 import Villas from './apps/travelExtras/villas';
+import AttractionSearch from './apps/attraction/content';
 
 
 import CustomerHome from './apps/customer';
@@ -56,7 +57,8 @@ export default (
 
     <Route path="/(:placeId)/visit/(:placeName)" component={LocationHome}/>
     <Route path="/(:placeId)/visit-location/(:placeName)" component={LocationDetail}/>
-    <Route path="/(:placeId)/visit/(:placeName)/all-events-this-week" component={EventHome}/>
+    <Route path="/(:placeId)/visit/(:placeName)/events" component={EventHome}/>
+    <Route path="/(:placeId)/visit/(:placeName)/attractions" component={AttractionSearch}/>
     <Route path="/(:placeId)/visit/(:placeName)/(:contentType)" component={LocationContent}/>
 
     
