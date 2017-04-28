@@ -12,8 +12,11 @@ import review from './reviewReducer';
 import location from './locationReducer';
 import locationsList from './locationsReducer';
 import attractionsList from './attractionsReducer';
+import restaurantsList from './restaurantsReducer';
+import nightlifeList from './nightlifeReducer';
 import weather from './weatherReducer';
 import locationEvents from './eventsReducer';
+import categoryList from './categoryReducer';
 import flights from './flightsReducer';
 import destinations from './destinationsReducer';
 import airports from './airportsReducer';
@@ -37,6 +40,9 @@ const rootReducer = combineReducers({
   location,
   locationsList,
   attractionsList,
+  restaurantsList,
+  nightlifeList,
+  categoryList,
   weather,
   destinations,
   locationEvents,

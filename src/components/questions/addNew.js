@@ -23,7 +23,7 @@ class QuestionPopup extends React.Component {
     let event = new MouseEvent('click', { 'view': window, 'bubbles': true, 'cancelable': false });
     let node = document.getElementById('closeReview');
 
-    const question = { "inventoryReference": this.props.id, "question": this.refs.question.value.trim() };
+    const question = { "inventoryReference": this.props.locationId, "question": this.refs.question.value.trim() };
     this.props.actions.postQuestion(question, this, event, node);
   }
 
@@ -42,7 +42,7 @@ class QuestionPopup extends React.Component {
                   </div>
                   <div className="col-md-12">
                     <h3>Ask a Question</h3>
-                    <p>Ask a question to the community and get the best travel tips from people that have been to <strong>{this.props.name}</strong>.</p>
+                    <p>Ask a question to the community and get the best travel tips from people that have been to <strong>{this.props.locationName}</strong>.</p>
                   </div>
                   <div className="col-md-12">
                     <div className="form-group">
@@ -75,16 +75,16 @@ class QuestionPopup extends React.Component {
 }
 
 QuestionPopup.defaultProps = {
-  id: 0,
-  name: '',
+  locationId: 0,
+  locationName: '',
   isSending: false,
   hasPosted: false
 };
 
 QuestionPopup.propTypes = {
-  id: PropTypes.number,
-  name: PropTypes.string,
-  type: PropTypes.string,
+  locationId: PropTypes.number,
+  locationName: PropTypes.string,
+  locationType: PropTypes.string,
   actions: PropTypes.object.isRequired,
   isSending: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string,

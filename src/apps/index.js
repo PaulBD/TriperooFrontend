@@ -14,7 +14,7 @@ export const App = (props) => {
 			<Footer />
 			<LoginPopup />
 			<RegisterPopup />
-			<ReviewPopup />
+			<ReviewPopup modalName="reviewModel" locationId='' locationName='' locationType='' />
 		</div>
 	);
 };

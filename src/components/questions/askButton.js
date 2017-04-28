@@ -14,7 +14,7 @@ class AskQuestionButton extends React.Component {
                         <i className="fa fa-question-circle"></i>
                         Ask a question about {this.props.locationNameShort.length > 15 ? "this location" : titleCase(this.props.locationNameShort)}
                     </a>
-                    <QuestionPopup id={this.props.locationId} name={titleCase(this.props.locationName)} type={this.props.locationType} />
+                    <QuestionPopup locationId={this.props.locationId} locationName={titleCase(this.props.locationName)} locationType={this.props.locationType} />
                     <div className="gap-small"></div>
                 </div>
                 );

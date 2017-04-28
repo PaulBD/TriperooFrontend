@@ -7,7 +7,7 @@ class LocationApi {
   // ****************************************
   static getLocation(locationId) {
     return new Promise((resolve, reject) => {
-      axios.get(baseUrl + '/location?id=' + locationId)
+      axios.get(baseUrl + '/location/' + locationId)
         .then(function (response) {
           resolve(Object.assign({}, response.data));
         })

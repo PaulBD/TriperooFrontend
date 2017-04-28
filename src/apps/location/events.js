@@ -3,42 +3,36 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as eventsActions from '../../actions/eventsActions';
 import EventList from '../../components/events/eventList';
-import EventCategories from '../../components/events/eventCategories';
-import TrustedPartners from '../../components/content/static/trustedPartners';
-import FacebookSignup from '../../components/authentication/facebookSignup';
+import EventCategories from '../../components/locations/categorySideBar';
 import Pagination from "react-js-pagination";
 import Loader from '../../components/common/loadingDots';
 import * as locationActions from '../../actions/locationActions';
+import SubPageHeader from '../../components/locations/subPageHeader';
+let titleCase = require('title-case');
 
 class EventHome extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.changeEvent = this.changeEvent.bind(this);
-    this.changeFriendlyCategory = this.changeFriendlyCategory.bind(this);
     this.changePage = this.changePage.bind(this);
-    this.state = { pageSize: 10, pageNumber: 0, activePageNumber: 1, categoryName: 'all', friendlyCategory: '' };
+    this.state = { pageSize: 9, pageNumber: 0, activePageNumber: 1, categoryName: 'all', friendlyCategory: '' };
   }
 
   componentWillMount() {
-    console.log(this.props.locationId);
     this.props.locationActions.loadLocationById(this.props.locationId);
     this.props.eventActions.loadEventsByCategory(this.props.locationId, this.state.categoryName, this.state.pageSize, this.state.pageNumber);
   }
 
-  changeEvent(value) {
+  changeEvent(categoryId, catgeoryName) {
     window.scrollTo(0, 0);
-    this.setState({ categoryName: value });
-    this.props.eventActions.loadEventsByCategory(this.props.locationId, value, this.state.pageSize, this.state.pageNumber);  
+    this.setState({ categoryName: categoryId, friendlyCategory: catgeoryName });
+    this.props.eventActions.loadEventsByCategory(this.props.locationId, categoryId, this.state.pageSize, this.state.pageNumber);  
   }
 
   changePage(value) {
     window.scrollTo(0, 0);
     this.setState({ pageNumber: value - 1, activePageNumber: value });
     this.props.eventActions.loadEventsByCategory(this.props.locationId, this.state.categoryName, this.state.pageSize, value - 1);
-  }
-
-  changeFriendlyCategory(value) {
-    this.setState({ friendlyCategory: value });
   }
 
   render() {
@@ -70,45 +64,42 @@ class EventHome extends React.Component {
       backgroundImage: 'url(/static/img/community.jpg)'
     };
 
+    let resultCount =  this.props.totalItems + ' Results ';
 
-      return (
-          <div>   
+    if (this.state.friendlyCategory != '') {
+      resultCount += ' - filtered by ' + titleCase(this.state.friendlyCategory);
+    }
 
-          <div className="bg-holder full text-xs-center text-white infoPageWrapper">
-              <div className="bg-mask"></div>
-              <div style={style} className="bg-img infoImg" ></div>
-              <div className="bg-front full-center">
-                  <div className="owl-cap">
-                      <h1 className="owl-cap-title fittext">Events</h1>
-                      <h2>Events in {this.props.locationName} this week</h2>
-                  </div>
-              </div>
-          </div>
-        <div className="container">
-          <div className="row row-wrap">
-            <div className="gap gap-small"></div>
-              <div className="col-md-9">
-                <p>{intro}</p>
-                <EventList locationEvents={this.props.locationEvents} cssClass="col-md-6" isFetching={this.props.isFetchingLocationEvents} />
-              </div>
-              <div className="col-md-3">
-                <EventCategories changeCategory={this.changeEvent} changeFriendlyCategory={this.changeFriendlyCategory}/>
-              </div>
+    if (this.props.isFetchingLocationEvents)
+    {
+      resultCount = '';
+    }
+
+
+return (
+    <div>   
+      <SubPageHeader id={this.props.locationId} location={this.props.location} contentType="events" />
+      <div className="container">
+        <div className="row row-wrap">
+          <div className="gap gap-small"></div>
+          <div className="col-md-9">
+            <div className="nav-drop booking-sort">
+              {resultCount}
             </div>
-            <div className="gap gap-small"></div>
-            <div className="row text-xs-center">
-              <Pagination innerClass={totalItems > this.state.pageSize ? "pagination text-xs-center" : "hide"} activePage={this.state.activePageNumber} itemsCountPerPage={this.props.pageSize} totalItemsCount={this.props.totalItems} pageRangeDisplayed={10} onChange={this.changePage} />
-            </div>
+            <EventList locationEvents={this.props.locationEvents} cssClass="col-md-4" isFetching={this.props.isFetchingLocationEvents} />
           </div>
-          <div className="container">
-            <hr />
-            <div className="gap"></div>
-            <FacebookSignup />
-            <TrustedPartners />
-            <div className="gap"></div>
+          <div className="col-md-3">
+            <EventCategories changeCategory={this.changeEvent} contentType="events" />
           </div>
         </div>
-      );
+        <div className="gap gap-small"></div>
+        <div className="row text-xs-center">
+          <Pagination innerClass={totalItems > this.state.pageSize ? "pagination text-xs-center" : "hide"} activePage={this.state.activePageNumber} itemsCountPerPage={this.props.pageSize} totalItemsCount={this.props.totalItems} pageRangeDisplayed={10} onChange={this.changePage} />
+        </div>
+        <div className="gap gap-small"></div>
+      </div>
+    </div>
+    );
   }
 }
 
@@ -149,7 +140,7 @@ function mapStateToProps(state, ownProps) {
     totalItems: state.locationEvents.locationEvents ? parseInt(state.locationEvents.locationEvents.total_items) : 0,
     pageCount: state.locationEvents.locationEvents ? parseInt(state.locationEvents.locationEvents.page_count) : 0,
     isFetchingLocationEvents: state.locationEvents.isFetching ? state.locationEvents.isFetching : false,
-    locationEvents: state.locationEvents.locationEvents ? state.locationEvents.locationEvents.events.event : [],
+    locationEvents: state.locationEvents.locationEvents && state.locationEvents.locationEvents.events ? state.locationEvents.locationEvents.events.event : [],
     locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0
   };
 }

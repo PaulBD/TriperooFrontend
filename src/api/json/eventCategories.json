@@ -1,175 +1,152 @@
 [
 	{
+		"name": "All Events",
+		"id": "",
+		"icon": "fa fa-filter",
+		"show": 1
+	},
+	{
 		"name": "Concerts & Tour Dates",
-		"event_count": null,
 		"id": "music",
 		"icon": "fa fa-music",
 		"show": 1
 	}, {
 		"name": "Conferences & Tradeshows",
-		"event_count": null,
 		"id": "conference",
 		"icon": "fa fa-comments-o",
 		"show": 0
 	}, {
 		"name": "Comedy",
-		"event_count": null,
 		"id": "comedy",
 		"icon": "fa fa-smile-o",
 		"show": 1
 	}, {
 		"name": "Education",
-		"event_count": null,
 		"id": "learning_education",
 		"icon": "fa fa-book",
 		"show": 0
 	}, {
 		"name": "Kids & Family",
-		"event_count": null,
 		"id": "family_fun_kids",
 		"icon": "fa fa-child",
 		"show": 1
 	}, {
 		"name": "Festivals",
-		"event_count": null,
 		"id": "festivals_parades",
 		"icon": "fa fa-beer",
 		"show": 1
 	}, {
 		"name": "Film",
-		"event_count": null,
 		"id": "movies_film",
 		"icon": "fa fa-film",
 		"show": 1
 	}, {
 		"name": "Food & Wine",
-		"event_count": null,
 		"id": "food",
 		"icon": "fa fa-glass",
 		"show": 1
 	}, {
 		"name": "Fundraising & Charity",
-		"event_count": null,
 		"id": "fundraisers",
 		"icon": "fa fa-money",
 		"show": 0
 	}, {
 		"name": "Art Galleries & Exhibits",
-		"event_count": null,
 		"id": "art",
 		"icon": "fa fa-pencil",
 		"show": 1
 	}, {
 		"name": "Health & Wellness",
-		"event_count": null,
 		"id": "support",
 		"icon": "fa fa-heart",
 		"show": 0
 	}, {
 		"name": "Holiday",
-		"event_count": null,
 		"id": "holiday",
 		"icon": "fa fa-suitcase",
 		"show": 0
 	}, {
 		"name": "Literary & Books",
-		"event_count": null,
 		"id": "books",
 		"icon": "fa fa-book",
 		"show": 0
 	}, {
 		"name": "Museums & Attractions",
-		"event_count": null,
 		"id": "attractions",
 		"icon": "fa fa-institution",
 		"show": 1
 	}, {
 		"name": "Neighborhood",
-		"event_count": null,
 		"id": "community",
 		"icon": "fa fa-home",
 		"show": 0
 	}, {
 		"name": "Business & Networking",
-		"event_count": null,
 		"id": "business",
 		"icon": "fa fa-hashtag",
 		"show": 1
 	}, {
 		"name": "Nightlife & Singles",
-		"event_count": null,
 		"id": "singles_social",
 		"icon": "fa fa-group",
 		"show": 1
 	}, {
 		"name": "University & Alumni",
-		"event_count": null,
 		"id": "schools_alumni",
 		"icon": "fa fa-mortar-board",
 		"show": 1
 	}, {
 		"name": "Organizations & Meetups",
-		"event_count": null,
 		"id": "clubs_associations",
 		"icon": "fa fa-comments-o",
 		"show": 1
 	}, {
 		"name": "Outdoors & Recreation",
-		"event_count": null,
 		"id": "outdoors_recreation",
 		"icon": "fa fa-sun-o",
 		"show": 0
 	}, {
 		"name": "Performing Arts",
-		"event_count": null,
 		"id": "performing_arts",
 		"icon": "fa fa-television",
 		"show": 1
 	}, {
 		"name": "Pets",
-		"event_count": null,
 		"id": "animals",
 		"icon": "fa fa-paw",
 		"show": 0
 	}, {
 		"name": "Politics & Activism",
-		"event_count": null,
 		"id": "politics_activism",
 		"icon": "fa fa-commenting",
 		"show": 0
 	}, {
 		"name": "Sales & Retail",
-		"event_count": null,
 		"id": "sales",
 		"icon": "fa fa-shopping-cart",
 		"show": 0
 	}, {
 		"name": "Science",
-		"event_count": null,
 		"id": "science",
 		"icon": "fa fa-flask",
 		"show": 0
 	}, {
 		"name": "Religion & Spirituality",
-		"event_count": null,
 		"id": "religion_spirituality",
 		"icon": "fa fa-eye",
 		"show": 0
 	}, {
 		"name": "Sports",
-		"event_count": null,
 		"id": "sports",
 		"icon": "fa fa-futbol-o",
 		"show": 1
 	}, {
 		"name": "Technology",
-		"event_count": null,
 		"id": "technology",
 		"icon": "fa fa-laptop",
 		"show": 0
 	}, {
 		"name": "Other & Miscellaneous",
-		"event_count": null,
 		"id": "other",
 		"icon": "fa fa-minus",
 		"show": 1

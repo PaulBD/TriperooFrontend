@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as eventsActions from '../../actions/eventsActions';
-import EventList from './eventList';
+import EventList from '../events/eventList';
 
 class ByLocation extends React.Component {
   constructor(props, context) {
@@ -10,14 +10,14 @@ class ByLocation extends React.Component {
   }
 
   componentWillMount() {
-    this.props.actions.loadEvents(this.props.locationId, 3, 1);
+    this.props.actions.loadEvents(this.props.locationId, 4, 1);
   }
 
   render(){
 
     if (this.props.locationEvents != undefined)
     {
-      let allEventsUrl = this.props.baseUrl + '/all-events-this-week';
+      let allEventsUrl = this.props.baseUrl + '/events';
 
       return (
         <div className="row greyBg events">

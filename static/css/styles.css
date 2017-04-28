@@ -2409,6 +2409,7 @@ div.nav-drop {
   content: '\f105';
   font-family: 'FontAwesome';
   padding: 0 7px;
+  color: #fff !important;
 }
 footer#main-footer {
   background: #262626;

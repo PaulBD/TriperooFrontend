@@ -12,11 +12,15 @@ import FAQsPage from './apps/info/faqsPage';
 import LocalExpertPage from './apps/info/localExpertPage';
 import SupportPage from './apps/info/supportPage';
 import NotFoundPage from './apps/notFoundPage';
-import EventHome from './apps/events';
 
+import LocationEvents from './apps/location/events';
 import LocationHome from './apps/location';
 import LocationDetail from './apps/location/detail';
-import LocationContent from './apps/location/content';
+import LocationRestaurants from './apps/location/restaurants';
+import LocationNightlife from './apps/location/nightlife';
+import LocationReviews from './apps/location/reviews';
+import LocationAttractions from './apps/location/attractions';
+import LocationHotels from './apps/location/hotels';
 
 import Holidays from './apps/holiday';
 import Flights from './apps/flight';
@@ -31,7 +35,6 @@ import Cottages from './apps/travelExtras/cottages';
 import Cruises from './apps/travelExtras/cruises';
 import RailTravel from './apps/travelExtras/railTravel';
 import Villas from './apps/travelExtras/villas';
-import AttractionSearch from './apps/attraction/content';
 
 
 import CustomerHome from './apps/customer';
@@ -57,9 +60,12 @@ export default (
 
     <Route path="/(:placeId)/visit/(:placeName)" component={LocationHome}/>
     <Route path="/(:placeId)/visit-location/(:placeName)" component={LocationDetail}/>
-    <Route path="/(:placeId)/visit/(:placeName)/events" component={EventHome}/>
-    <Route path="/(:placeId)/visit/(:placeName)/attractions" component={AttractionSearch}/>
-    <Route path="/(:placeId)/visit/(:placeName)/(:contentType)" component={LocationContent}/>
+    <Route path="/(:placeId)/visit/(:placeName)/events" component={LocationEvents}/>
+    <Route path="/(:placeId)/visit/(:placeName)/reviews" component={LocationReviews}/>
+    <Route path="/(:placeId)/visit/(:placeName)/attractions" component={LocationAttractions}/>
+    <Route path="/(:placeId)/visit/(:placeName)/restaurants" component={LocationRestaurants}/>
+    <Route path="/(:placeId)/visit/(:placeName)/nightlife" component={LocationNightlife}/>
+    <Route path="/(:placeId)/visit/(:placeName)/hotels" component={LocationHotels}/>
 
     
     <Route path="/holidays" component={Holidays}/>

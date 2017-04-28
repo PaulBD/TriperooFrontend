@@ -10,12 +10,13 @@ import QuestionButton from '../../components/questions/askButton';
 import TopLocations from '../../components/locations/topLocations';
 import NavigationWrapper from '../../components/locations/navigation/navigationWrapper';
 import Summary from '../../components/locations/summary';
-import Header from '../../components/locations/header';
+import Header from '../../components/locations/homeHeader';
 import LocationStats from '../../components/locations/stats';
 import WeatherForcast from '../../components/weather/forecast';
 import LastMinuteDeal from '../../components/content/dynamic/lastMinuteDeal';
 import Loader from '../../components/common/loadingDots';
-import Events from '../../components/events/byLocation';
+import TopEvents from '../../components/locations/topEvents';
+import ReviewButton from '../../components/reviews/reviewButton';
 
 let titleCase = require('title-case');
 
@@ -63,19 +64,15 @@ class LocationHome extends React.Component {
                             <ReviewList locationId={this.props.locationId} locationName={this.props.location.regionName} locationType="" limit={10} offset={0} showTitle={true} />
                         </div>
                         <div className="col-md-4">
-                            <a href="#" className="btn btn-info questionBtn" data-toggle="modal" data-target="#reviewModel" >
-                                <i className="fa fa-comments"></i>
-                                Write a Review
-                            </a>
-                            <div className="gap gap-small"></div>
-                            <LocationStats likeCount={this.props.location.likeCount} reviewCount={this.props.location.reviewCount} averageReviewScore={this.props.location.averageReviewScore} />
+                            <ReviewButton locationId={this.props.locationId} locationName={this.props.location.regionName} locationType="" />
+                            <LocationStats likeCount={this.props.location.likeCount} locationName={this.props.location.regionName} reviewCount={this.props.location.reviewCount} averageReviewScore={this.props.location.averageReviewScore} />
                             <div className="gap gap-small"></div>
                             <WeatherForcast locationId={this.props.locationId} />
                         </div>
                     </div>
                 </div>
                 <div className="gap"></div>
-                <Events locationId={this.props.locationId} locationName={this.props.location.regionName} baseUrl={this.props.location.url}/>
+                <TopEvents locationId={this.props.locationId} locationName={this.props.location.regionName} baseUrl={this.props.location.url}/>
                 <FacebookSignup />
             </div>
         );

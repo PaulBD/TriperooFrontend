@@ -3,6 +3,11 @@ import React, {PropTypes} from 'react';
 class EventModal extends React.Component {
   constructor(props, context) {
     super(props, context);
+    this.handleMissingImage = this.handleMissingImage.bind(this);
+  }
+
+  handleMissingImage(e) {
+      e.target.src='/static/img/100x100.png';
   }
 
   render(){
@@ -13,7 +18,7 @@ class EventModal extends React.Component {
             <h3 className="card-header">{this.props.eventName}</h3>
             <div className="card-block">
               <div className="col-md-4">
-                <img className="card-img-top mb-2" src={this.props.image} />
+                <img className="card-img-top mb-2" src={this.props.image} onError={this.handleMissingImage}/>
                 <p className="card-text text-xs-center">{this.props.ticketLink ? <a href={this.props.ticketLink} className="btn btn-primary" target="_blank">Buy Tickets</a> : ''} </p>
               </div>
               <div className="col-md-8">

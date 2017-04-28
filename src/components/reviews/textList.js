@@ -31,7 +31,7 @@ class Reviews extends React.Component {
   let title = '';
 
   if (this.props.showTitle) {
-      title = (<div><h4>Member Reviews</h4><hr /><div className="gap gap-small"></div></div>);
+      title = (<div><h4>Reviews</h4><hr /><div className="gap gap-small"></div></div>);
   }
 
   return (

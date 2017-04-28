@@ -35,10 +35,10 @@ class EventCard extends React.Component {
           <div className="card text-xs-left">
             <div className="card-block eventCard">
               <div className="col-md-4">
-                <img src={image}  onError={this.handleMissingImage}/>
+                <img src={image} onError={this.handleMissingImage}/>
               </div>
               <div className="col-md-8">
-                <h4 className="card-title">{this.props.locationEvent.title.length > 30 ? this.props.locationEvent.title.substring(0, 30) + '...': this.props.locationEvent.title}</h4>
+                <h4 className="card-title">{this.props.locationEvent.title}</h4>
                 <p className="card-subtitle mb-1 text-muted cardAddress"><i className="fa fa-map-marker"></i> {this.props.locationEvent.venue_name}, {this.props.locationEvent.venue_address}, {this.props.locationEvent.city_name} {this.props.locationEvent.postal_code}</p>
                 <p className="card-subtitle mb-1 text-muted cardAddress"><i className="fa fa-clock-o"></i> {this.props.locationEvent.start_time}</p>
               </div>

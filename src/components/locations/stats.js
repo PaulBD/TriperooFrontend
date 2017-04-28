@@ -12,7 +12,7 @@ class LocationStats extends React.Component {
                 <div className="col-md-6">
                 <p className="statText">
                     {this.props.reviewCount} review's<br />
-                    {this.props.likeCount} people like London</p>
+                    {this.props.likeCount} people like {this.props.locationName}</p>
                 </div>
             </div>
         </div>
@@ -23,13 +23,15 @@ class LocationStats extends React.Component {
 LocationStats.defaultProps = {
     likeCount: 0,
     reviewCount: 0,
-    averageReviewScore: 0
+    averageReviewScore: 0,
+    locationName: ''
 };
 
 LocationStats.propTypes = {
     likeCount: PropTypes.number,
     reviewCount: PropTypes.number,
-    averageReviewScore: PropTypes.number
+    averageReviewScore: PropTypes.number,
+    locationName: PropTypes.string.isRequired
 };
 
 

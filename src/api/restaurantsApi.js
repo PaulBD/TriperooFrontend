@@ -1,13 +1,13 @@
 import axios from 'axios';
 import baseUrl from './baseApi';
 
-class AttractionsApi {
+class RestaurantsApi {
   // ****************************************
-  // Return attractions using parent id
+  // Return restaurants using parent id
   // ****************************************
-  static getAttractionsByParentLocationId(locationId, categoryName, pageSize, pageNumber) {
+  static getRestaurantsByParentLocationId(locationId, categoryName, pageSize, pageNumber) {
     return new Promise((resolve, reject) => {
-      axios.get(baseUrl + '/location/' + locationId + '/attractions?categoryName=' + categoryName + '&pageSize=' + pageSize + '&pageNumber=' + pageNumber)
+      axios.get(baseUrl + '/location/' + locationId + '/restaurants?categoryName=' + categoryName + '&pageSize=' + pageSize + '&pageNumber=' + pageNumber)
         .then(function (response) {
           resolve(Object.assign({}, response.data));
         })
@@ -15,7 +15,8 @@ class AttractionsApi {
           reject(error);
         });
     });
+
   }
 }
 
-export default AttractionsApi;
+export default RestaurantsApi;

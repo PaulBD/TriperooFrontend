@@ -23,6 +23,15 @@ class ReviewPopup extends React.Component {
     this.state = { searchName: '', searchId: 0, searchType: '', errors:'', comment: '', tags:["Adventure","Arty","Backpackers","Budget","Business","Family","Foodies","Eco","History","Local Culture","Luxury","Nightlife","Outdoor","Solo","Spiritual","Students","Trendsters","Vegetarian","Wellness" ], selectedTags:[], rating: 0, wizardStep: 1 };
   }
 
+  componentDidMount() {
+
+    console.log(this.props.locationName);
+
+    if (this.props.locationName != '') {
+      this.setState({ searchName: this.props.locationName, searchId: this.props.locationId, searfchType: this.props.locationType, wizardStep: 2 });
+    }
+  }
+
   handleCommentChange(e) {
     this.setState({ comment: e.target.value });
   }
@@ -64,9 +73,10 @@ class ReviewPopup extends React.Component {
     this.props.actions.postReview(review, this, event, node);
   }
 
-  render(){    
+  render(){ 
+  console.log(this.props.modalName);   
     return (
-          <div className="modal fade" id="reviewModel" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div className="modal fade" key={this.props.modalName} id={this.props.modalName} role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div className="modal-dialog modelReviewAuthentication" role="document">
               <div className="modal-content">
                 <div className={this.state.wizardStep == 1 ? "modal-body" : "modal-body hide"}>
@@ -122,7 +132,7 @@ class ReviewPopup extends React.Component {
                     </form>
                   </div>
                   <div className="modal-footer text-xs-center">
-                    <a href="#" onClick={this.undoReviewSelection}>Review a different location</a> | <a href="#" data-dismiss="modal">Close</a>
+                    <a href="#" onClick={this.undoReviewSelection} className="hide">Review a different location</a><a href="#" data-dismiss="modal">Close</a>
                   </div>
                 </div>
                 <div className={this.state.wizardStep == 3 ? "modal-body" : "modal-body hide"}>
@@ -141,16 +151,19 @@ class ReviewPopup extends React.Component {
 }
 
 ReviewPopup.defaultProps = {
-  id: 0,
+  locationId: 0,
+  locationName: '',
   name: '',
   isSending: false,
-  hasPosted: false
+  hasPosted: false,
+  modalName: 'reviewModel'
 };
 
 ReviewPopup.propTypes = {
-  id: PropTypes.number,
-  name: PropTypes.string,
-  type: PropTypes.string,
+  modalName: PropTypes.string.isRequired,
+  locationId: PropTypes.number,
+  locationName: PropTypes.string,
+  locationType: PropTypes.string,
   actions: PropTypes.object.isRequired,
   isSending: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string,

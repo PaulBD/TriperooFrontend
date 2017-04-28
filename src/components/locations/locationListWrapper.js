@@ -20,16 +20,16 @@ class ByLocation extends React.Component {
     }
 
     render(){
-        if ((this.props.attractions != null) && (this.props.attractions.length > 0))
+        if ((this.props.locations != null) && (this.props.locations.length > 0))
         {
             return (
                 <div>
-                    <LocationList locations={this.props.attractions} cssClass="col-md-4" />
+                    <LocationList locations={this.props.locations} cssClass="col-md-4" />
                     <Loader showLoader={this.props.isFetching} />
 
 		            <div className="gap gap-small"></div>
 		            <div className="row text-xs-center">
-		              <Pagination innerClass={this.props.attractionCount > 24 ? "pagination text-xs-center" : "hide"} activePage={this.state.activePage} itemsCountPerPage={this.state.limit} totalItemsCount={this.props.attractionCount} pageRangeDisplayed={this.state.limit} onChange={this.changePage} />
+		              <Pagination innerClass={this.props.locationCount > 24 ? "pagination text-xs-center" : "hide"} activePage={this.state.activePage} itemsCountPerPage={this.state.limit} totalItemsCount={this.props.locationCount} pageRangeDisplayed={this.state.limit} onChange={this.changePage} />
 		            </div>
 		            <div className="gap gap-small"></div>
                 </div>
@@ -42,14 +42,14 @@ class ByLocation extends React.Component {
 }
 
 ByLocation.defaultProps = {
-    attractions: [],
+    locations: [],
     isFetching: false
 };
 
 ByLocation.propTypes = {
-    attractions: PropTypes.array.isRequired,
+    locations: PropTypes.array.isRequired,
     isFetching: PropTypes.bool.isRequired,
-    attractionCount: PropTypes.number.isRequired,
+    locationCount: PropTypes.number.isRequired,
     categoryFilter: PropTypes.string,
     changePage: PropTypes.func
 };

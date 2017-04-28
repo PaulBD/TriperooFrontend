@@ -9,7 +9,7 @@ class QuestionsApi {
     return new Promise((resolve, reject) => {
       axios({
         method: 'get',
-        url:  baseUrl + '/questions?locationId=' + locationId + '&pageSize=' + pageSize + '&pageNumber=' + pageNumber
+        url:  baseUrl + '/location/' + locationId + '/questions?pageSize=' + pageSize + '&pageNumber=' + pageNumber
       })
       .then(response => {
         resolve(Object.assign([], response.data));

@@ -1,10 +1,9 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as eventsActions from '../../actions/eventsActions';
-import EventList from './eventList';
+import * as categoryActions from '../../actions/categoryActions';
 
-class EventCategories extends React.Component {
+class CategorySideBar extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.handleCategoryChange = this.handleCategoryChange.bind(this);
@@ -12,27 +11,39 @@ class EventCategories extends React.Component {
   }
 
   componentWillMount() {
-    this.props.actions.loadEventCategories();
+    switch (this.props.contentType)
+    {
+      case "attractions":
+        this.props.actions.loadAttractionCategories();
+        break;
+      case "events":
+        this.props.actions.loadEventCategories();
+        break;
+      case "restaurants":
+        this.props.actions.loadRestaurantCategories();
+        break;
+      case "nightlife":
+        this.props.actions.loadNightlifeCategories();
+        break;
+    }
   }
 
   handleCategoryChange(e) {
     e.preventDefault();
     this.setState({ categoryName: e.target.getAttribute('data-name') });
-    this.props.changeCategory(e.target.getAttribute('data-id'));
-    this.props.changeFriendlyCategory(e.target.getAttribute('data-name'));
+    this.props.changeCategory(e.target.getAttribute('data-id'), e.target.getAttribute('data-name'));
   }
 
   render(){
-    if (this.props.eventCategories.length > 0) 
+    if (this.props.categories.length > 0) 
     {
       return (
         <aside className="booking-filters text-white">
           <h3>Filter By:</h3>
           <ul className="list booking-filters-list">
             <li>
-              <div className="eventOptions"><label><i className="fa fa-bed"></i> <a href="#" onClick={this.handleCategoryChange} data-id={0} data-name="all">All Events</a></label></div>
               {
-                this.props.eventCategories.map(category => {
+                this.props.categories.map(category => {
 
                 let className = this.state.categoryName == category.name ? 'eventOptions active' : 'eventOptions';
 
@@ -56,30 +67,30 @@ class EventCategories extends React.Component {
   }
 }
 
-EventCategories.defaultProps = {
-  eventCategories: [],
+CategorySideBar.defaultProps = {
+  categories: [],
   isFetching: false
 };
 
-EventCategories.propTypes = {
-  eventCategories: PropTypes.array.isRequired,
+CategorySideBar.propTypes = {
+  categories: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
   changeCategory: PropTypes.func,
-  changeFriendlyCategory: PropTypes.func,
-  isFetching: PropTypes.bool.isRequired
+  isFetching: PropTypes.bool.isRequired,
+  contentType: PropTypes.string.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    isFetching: state.locationEvents.isFetching ? state.locationEvents.isFetching : false,
-    eventCategories: state.locationEvents.eventCategoryList ? state.locationEvents.eventCategoryList : []
+    isFetching: state.categoryList.isFetching ? state.categoryList.isFetching : false,
+    categories: state.categoryList.categoryList ? state.categoryList.categoryList : []
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(eventsActions, dispatch)
+    actions: bindActionCreators(categoryActions, dispatch)
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventCategories);
+export default connect(mapStateToProps, mapDispatchToProps)(CategorySideBar);

@@ -1,6 +1,5 @@
 import axios from 'axios';
 import baseUrl from './baseApi';
-import eventCategories from './json/eventCategories.json'; 
 
 class EventsApi {
   // ****************************************
@@ -11,7 +10,7 @@ class EventsApi {
     return new Promise((resolve, reject) => {
       axios({
         method: 'get',
-        url:  baseUrl + '/events?locationId=' + locationId + '&categoryName=' + categoryName + '&pageSize=' + pageSize + '&pageNumber=' + pageNumber
+        url:  baseUrl + '/location/' + locationId + '/events?categoryName=' + categoryName + '&pageSize=' + pageSize + '&pageNumber=' + pageNumber
       })
       .then(response => {
         resolve(Object.assign({}, response.data));
@@ -19,20 +18,6 @@ class EventsApi {
       .catch(function (error) {
         reject(error);
       });
-    });
-  }
-
-  static getEventCategories() {
-    return new Promise((resolve, reject) => {
-      let filteredList = [];
-      let size = eventCategories.length;
-      for (let index = 0; index < size; index++) {
-        if (eventCategories[index].show == 1)
-        {
-          filteredList.push(eventCategories[index]);
-        }
-      }
-      resolve(Object.assign([], filteredList));
     });
   }
 }

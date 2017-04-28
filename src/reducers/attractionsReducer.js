@@ -9,13 +9,6 @@ export default function attractionsReducer(state = { isFetching: false }, action
 		case types.ATTRACTION_CONTENT_FAILURE:
 			return Object.assign({}, state, { isFetching: false, errorMessage: action.message });
 
-		case types.ATTRACTION_CATEGORY_REQUEST:
-			return Object.assign({}, state, { isFetching: true });
-		case types.ATTRACTION_CATEGORY_SUCCESS:
-			return Object.assign({}, state, { isFetching: false, errorMessage: '', attractionCategoryList: action.attractionCategories });
-		case types.ATTRACTION_CATEGORY_FAILURE:
-			return Object.assign({}, state, { isFetching: false, errorMessage: action.message });
-			
 		default:
 			return state;
 	}
