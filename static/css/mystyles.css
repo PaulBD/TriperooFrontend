@@ -14,7 +14,7 @@ body { margin: 0; }
 .grey { color: #ccc;}
 .greyBg { background-color: #efefef; }
 
-.events { padding: 20px 0; }
+.events { padding: 20px 0; margin: 0;}
 
 select.searchSelect:not([size]):not([multiple]) {
     height: calc(2.8rem - 2px);

@@ -10,7 +10,7 @@ class ReviewsApi {
     return new Promise((resolve, reject) => {
       axios({
         method: 'get',
-        url:  baseUrl + '/reviews?type=' + reviewType + '&locationId=' + locationId + '&pageSize=' + pageSize + '&pageNumber=' + pageNumber
+        url:  baseUrl + '/location/' + locationId + '/reviews?type=' + reviewType + '&pageSize=' + pageSize + '&pageNumber=' + pageNumber
       })
       .then(response => {
         resolve(Object.assign({}, response.data));

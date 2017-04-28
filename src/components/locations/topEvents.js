@@ -20,7 +20,7 @@ class ByLocation extends React.Component {
       let allEventsUrl = this.props.baseUrl + '/events';
 
       return (
-        <div className="row greyBg events">
+        <div className="row row-nowrap greyBg events">
           <div className="container">
             <div className="row">
               <div className="col-md-12">
@@ -33,7 +33,7 @@ class ByLocation extends React.Component {
                 <p><a href={allEventsUrl}>View all events</a></p>
               </div>
               <div className="col-md-12">
-                  <EventList locationEvents={this.props.locationEvents} isFetching={this.props.isFetching} />
+                  <EventList locationEvents={this.props.locationEvents} isFetching={this.props.isFetching} cssClass='col-md-3'/>
               </div>
             </div> 
           </div> 

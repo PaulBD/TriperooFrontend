@@ -52,7 +52,7 @@ class ReviewPopup extends React.Component {
 
   undoReviewSelection(e) {
     e.preventDefault(e);
-    this.setState({ searchName: '', searchId: '', errors:'', wizardStep: 1 });
+    this.setState({ searchName: '', searchId: '', searchType:'',  errors:'', wizardStep: 1 });
   }
 
   onRate(e) {
