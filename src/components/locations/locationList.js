@@ -83,6 +83,17 @@ class LocationList extends React.Component {
 										<p>{titleCase(locationType)}</p>
 									</div>
 								</div>
+								<ul className="hover-icon-group-center-top">
+                                    <li>
+                                        <a className="fa fa-comments box-icon-normal round" href="#" title="Like"></a>
+                                    </li>
+                                    <li>
+                                        <a className="fa fa-picture-o box-icon-normal round" href="#" title="Bookmark"></a>
+                                    </li>
+                                    <li>
+                                        <a className="fa fa-bookmark box-icon-normal round" href="#" title="Review"></a>
+                                    </li>
+                                </ul>
 							</a>
 						{spacer}
 						</div>
