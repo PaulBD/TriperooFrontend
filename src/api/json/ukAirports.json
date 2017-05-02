@@ -1,0 +1,114 @@
+[
+	{
+		"code": "ABZ",
+		"name": "Aberdeen"
+	},
+	{
+		"code": "BFS",
+		"name": "Belfest International"
+	},
+	{
+		"code": "BHD",
+		"name": "Belfest City (George Best)"
+	},
+	{
+		"code": "BHX",
+		"name": "Birmingham"
+	},
+	{
+		"code": "BOH",
+		"name": "Bournemouth"
+	},
+	{
+		"code": "BRS",
+		"name": "Bristol"
+	},
+	{
+		"code": "CWL",
+		"name": "Cardiff"
+	},
+	{
+		"code": "DOV",
+		"name": "Dover"
+	},
+	{
+		"code": "DSA",
+		"name": "Doncaster-Sheffield (Robin Hood)"
+	},
+	{
+		"code": "DUB",
+		"name": "Dublin"
+	},
+	{
+		"code": "EDI",
+		"name": "Edinburgh"
+	},
+	{
+		"code": "EMA",
+		"name": "East Midlands"
+	},
+	{
+		"code": "EXT",
+		"name": "Exeter"
+	},
+	{
+		"code": "GLA",
+		"name": "Glasgow international"
+	},
+	{
+		"code": "LBA",
+		"name": "Leeds Bradford"
+	},
+	{
+		"code": "LCY",
+		"name": "London City"
+	},
+	{
+		"code": "LGW",
+		"name": "London Gatwick"
+	},
+	{
+		"code": "LHR",
+		"name": "London Heathrow"
+	},
+	{
+		"code": "LPL",
+		"name": "Liverpool (John Lennon)"
+	},
+	{
+		"code": "LIN",
+		"name": "Luton"
+	},
+	{
+		"code": "MAN",
+		"name": "Manchester"
+	},
+	{
+		"code": "MME",
+		"name": "Durham tees Valley"
+	},
+	{
+		"code": "NCL",
+		"name": "Newcastle"
+	},
+	{
+		"code": "NWI",
+		"name": "Norwich"
+	},
+	{
+		"code": "PIK",
+		"name": "Glasgow Prestwick"
+	},
+	{
+		"code": "SEN",
+		"name": "Southend"
+	},
+	{
+		"code": "SOP",
+		"name": "Southampton"
+	},
+	{
+		"code": "STN",
+		"name": "Stansted"
+	}
+]

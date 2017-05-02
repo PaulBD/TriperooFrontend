@@ -1,0 +1,68 @@
+[
+	{
+		"name": "All Attractions",
+		"id": "",
+		"icon": "fa fa-filter"
+	},
+	{
+		"name": "Museums",
+		"id": "museums",
+		"icon": "fa fa-institution"
+	}, {
+		"name": "Historic Venues",
+		"id": "historic",
+		"icon": "fa fa-history"
+	}, {
+		"name": "Theatres",
+		"id": "theater",
+		"icon": "fa fa-ticket"
+	}, {
+		"name": "Activities",
+		"id": "icecream",
+		"icon": "fa fa-camera"
+	}, {
+		"name": "Monument",
+		"id": "monument",
+		"icon": "fa fa-eye"
+	}, {
+		"name": "Area of Interest",
+		"id": "sign",
+		"icon": "fa fa-pagelines"
+	}, {
+		"name": "Important Buildings",
+		"id": "civic",
+		"icon": "fa fa-building-o"
+	}, {
+		"name": "Park / Common",
+		"id": "tree",
+		"icon": "fa fa-tree"
+	}, {
+		"name": "Shopping",
+		"id": "shopping",
+		"icon": "fa fa-shopping-bag"
+	}, {
+		"name": "Sport Venues",
+		"id": "stadium",
+		"icon": "fa fa-trophy"
+	}, {
+		"name": "Docklands",
+		"id": "anchor",
+		"icon": "fa fa-anchor"
+	}, {
+		"name": "Hospitals, Medical Buildings",
+		"id": "medical",
+		"icon": "fa fa-ambulance"
+	}, {
+		"name": "Golf Clubs",
+		"id": "golf",
+		"icon": "fa fa-flag"
+	}, {
+		"name": "Schools, Colleages, Universities",
+		"id": "school",
+		"icon": "fa fa-graduation-cap"
+	}, {
+		"name": "Businesses",
+		"id": "business",
+		"icon": "fa fa-building"
+	}
+]
