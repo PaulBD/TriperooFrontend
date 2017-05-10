@@ -24,9 +24,6 @@ class ReviewPopup extends React.Component {
   }
 
   componentDidMount() {
-
-    console.log(this.props.locationName);
-
     if (this.props.locationName != '') {
       this.setState({ searchName: this.props.locationName, searchId: this.props.locationId, searfchType: this.props.locationType, wizardStep: 2 });
     }
@@ -74,7 +71,8 @@ class ReviewPopup extends React.Component {
   }
 
   render(){ 
-  console.log(this.props.modalName);   
+  console.log(this.props.locationId);
+   
     return (
           <div className="modal fade" key={this.props.modalName} id={this.props.modalName} role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div className="modal-dialog modelReviewAuthentication" role="document">

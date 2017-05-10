@@ -5,9 +5,9 @@ class WeatherApi {
   // ****************************************
   // Return weather by location
   // ****************************************
-  static getCurrentWeather(latitude, longitude, language) {
+  static getCurrentWeather(locationId, language) {
     return new Promise((resolve, reject) => {
-      axios.get(baseUrl + '/weather?longitude=' + longitude + '&latitude=' + latitude + '&lang=' + language)
+      axios.get(baseUrl + '/location/' + locationId + '/weather?lang=' + language)
         .then(function (response) {
           resolve(Object.assign({}, response.data));
         })

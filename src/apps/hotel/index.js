@@ -27,7 +27,7 @@ export default class SearchHotels extends React.Component {
           <Destinations destinationCount={6} title="Our Top Hotel Destinations" />
           <div className="gap"></div>
         </div>
-        <LastMinuteDeal featureType="lastMinute" />
+        <LastMinuteDeal locationId={2114} />
         <div className="container">
           <div className="gap"></div>
           <BulletPoints />

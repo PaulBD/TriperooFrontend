@@ -9,6 +9,7 @@ import question from './questionReducer';
 import questions from './questionsReducer';
 import reviewList from './reviewsReducer';
 import review from './reviewReducer';
+import global from './reviewReducer';
 import location from './locationReducer';
 import locationsList from './locationsReducer';
 import attractionsList from './attractionsReducer';
@@ -23,6 +24,7 @@ import airports from './airportsReducer';
 
 import airportParking from './airportParkingReducer';
 import airportHotel from './airportHotelReducer';
+import airportLounge from './airportLoungeReducer';
 
 import {routerReducer} from 'react-router-redux';
 
@@ -37,6 +39,7 @@ const rootReducer = combineReducers({
   questions,
   reviewList,
   review,
+  global,
   location,
   locationsList,
   attractionsList,
@@ -49,6 +52,7 @@ const rootReducer = combineReducers({
   flights,
   airportParking,
   airportHotel,
+  airportLounge,
   airports,
   routing: routerReducer
 });

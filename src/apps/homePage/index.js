@@ -29,7 +29,7 @@ const HomePage = () => {
                 </div>
                 <div className="gap"></div>
             </div>
-            <LastMinuteDeal location="London" />
+            <LastMinuteDeal locationId={2114} />
             <div className="container">
                 <div className="gap"></div>
                 <BulletPoints />

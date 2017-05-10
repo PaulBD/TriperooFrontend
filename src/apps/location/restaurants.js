@@ -42,17 +42,17 @@ class RestaurantContent extends React.Component {
         {
             return (
             <div>
-                <SubPageHeader id={this.props.locationId} location={this.props.location} contentType="restaurants" />
+                <SubPageHeader location={this.props.location} contentType="restaurants" />
                 <div className="container">
                     <div className="row row-wrap">
                         <div className="gap gap-small"></div>
                         <div className="container">
                             <div className="row">
                                 <div className="col-md-9">
-                                    <div className="nav-drop booking-sort">
+                                    <div className={this.props.isFetchingRestaurants ? "hide" : "nav-drop booking-sort"}>
                                         {this.props.restaurantCount} Results {this.state.restaurantType != '' ? ' - filtered by ' + titleCase(this.state.restaurantFriendlyName) : ''}
                                     </div>
-                                    <Restaurants locationId={this.props.locationId} locations={this.props.restaurants} locationCount={this.props.restaurantCount} changePage={this.changePage} />
+                                    <Restaurants locationId={this.props.locationId} locations={this.props.restaurants} locationCount={this.props.restaurantCount} changePage={this.changePage} isFetching={this.props.isFetchingRestaurants}/>
                                 </div>
                                 <div className="col-md-3">
                                     <RestaurantCategories changeCategory={this.changeRestaurant} contentType="restaurants"  />
@@ -73,6 +73,7 @@ class RestaurantContent extends React.Component {
 
 RestaurantContent.defaultProps = {
     isFetching: false,
+    isFetchingRestaurants: true,
     attractionType: ''
 };
 
@@ -83,6 +84,7 @@ RestaurantContent.propTypes = {
     restaurantActions: PropTypes.object.isRequired,
     restaurantCount: PropTypes.number.isRequired,
     isFetching: PropTypes.bool.isRequired,
+    isFetchingRestaurants: PropTypes.bool.isRequired,
     restaurants: PropTypes.array.isRequired,
     restaurantType: PropTypes.string
 };
@@ -90,6 +92,7 @@ RestaurantContent.propTypes = {
 function mapStateToProps(state, ownProps) {
      return {
         isFetching: state.location.isFetching ? state.location.isFetching : false,
+        isFetchingRestaurants: state.restaurantsList.isFetching ? state.restaurantsList.isFetching : false,
         location: state.location.location ? state.location.location : {},
         locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0,
         restaurants: state.restaurantsList.restaurantsList ? state.restaurantsList.restaurantsList.locations : [],

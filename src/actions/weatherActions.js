@@ -16,10 +16,10 @@ export function weatherFailure(message) {
 	return {type: types.WEATHER_FAILURE, isFetching: false,  message};
 }
 
-export function loadCurrentWeather(latitude, longitude, language) {
+export function loadCurrentWeather(locationId, language) {
 	return dispatch => {
 		dispatch(requestWeather());
-		return WeatherApi.getCurrentWeather(latitude, longitude, language).then(weather => {
+		return WeatherApi.getCurrentWeather(locationId, language).then(weather => {
 			dispatch(weatherSuccess(weather));
 		}).catch(error => {
 			dispatch(weatherFailure(error));

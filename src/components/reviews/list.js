@@ -12,7 +12,13 @@ class Reviews extends React.Component {
   }
 
   componentWillMount() {
-    this.props.reviewActions.loadReviewsByLocationId(this.props.locationId, this.props.locationType, this.props.pageSize, this.props.pageNumber);
+    if (this.props.locationType != 'all' && this.props.locationId > 0)
+    {
+      this.props.reviewActions.loadReviewsByLocationId(this.props.locationId, this.props.pageSize, this.props.pageNumber);
+    }
+    else {
+      this.props.reviewActions.loadReviewsByType(this.props.locationType, this.props.pageSize, this.props.pageNumber);
+    }
   }
 
   render(){
@@ -21,12 +27,16 @@ class Reviews extends React.Component {
     let title = null;
 
     if (this.props.showTitle) {
-      title = (
-        <div>
-          <h3 className="mb20">Share The Knowledge</h3>
-          <p>Community is the heart of everything we do, share tips on where to go and what to do with other<br />like-minded people and help others discover amazing places, even earn commission whilst you do it!</p>
-        </div>
-      );
+      if (reviews.length > 0)
+      {
+        title = (
+          <div>
+            <h3 className="mb20">Share The Knowledge</h3>
+            <p>Community is the heart of everything we do, share tips on where to go and what to do with other<br />like-minded people and help others discover amazing places, even earn commission whilst you do it!</p>
+            <div className="gap gap-small"></div>
+          </div>
+        );
+      }
     }
 
     if (!this.props.isFetching)
@@ -34,7 +44,6 @@ class Reviews extends React.Component {
       return (
         <div>
             {title}
-            <div className="gap gap-small"></div>
             <ReviewCard reviews={reviews} maxTags={5} />
         </div>    
       );

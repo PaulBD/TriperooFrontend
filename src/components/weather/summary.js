@@ -9,7 +9,7 @@ class Summary extends React.Component {
 	}
 
 	componentDidMount() {
-		this.props.actions.loadCurrentWeather(42.3601, -71.0589, 'en');
+		this.props.actions.loadCurrentWeather(this.props.locationId, 'en');
 	}
 
 	render()
@@ -38,7 +38,7 @@ Summary.defaultProps = {
 };
 
 Summary.propTypes = {
-	id: PropTypes.number.isRequired,
+	locationId: PropTypes.number.isRequired,
 	type: PropTypes.string.isRequired,
 	weather: PropTypes.object.isRequired,
 	actions: PropTypes.object.isRequired,

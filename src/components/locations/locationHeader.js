@@ -52,7 +52,6 @@ LocationHeader.defaultProps = {
 };
 
 LocationHeader.propTypes = {
-    id: PropTypes.number.isRequired,
     location: PropTypes.object.isRequired,
     contentType: PropTypes.string.isRequired
 };

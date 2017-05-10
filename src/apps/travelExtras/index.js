@@ -48,12 +48,12 @@ export default class TravelExtras extends React.Component {
                     </div>
                     <div className="col-md-4">
                         <div className="thumb">
-                            <a className="hover-img" href="/travel-extras/airport-transfers">
-                                <img src="/static/img/airportTransfer.jpg" alt="Airport Transfers" />
+                            <a className="hover-img" href="/travel-extras/airport-lounges">
+                                <img src="/static/img/airportLoungeV2.jpg" alt="Airport Lounges" />
                                 <div className="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">
                                     <div className="text-small">
-                                        <h5>Airport Transfers</h5>
-                                        <p>Search the best airport and resort transfer deals</p>
+                                        <h5>Airport Lounges</h5>
+                                        <p>Start your holiday stress free and escape the airport hustle</p>
                                         <p className="mb0 btn btn-primary btn-sm">View Deals &raquo;</p>
                                     </div>
                                 </div>
@@ -79,12 +79,12 @@ export default class TravelExtras extends React.Component {
                     </div>
                     <div className="col-md-4">
                         <div className="thumb">
-                            <a className="hover-img" href="/travel-extras/airport-lounges">
-                                <img src="/static/img/airportLoungeV2.jpg" alt="Airport Lounges" />
+                            <a className="hover-img" href="/travel-extras/airport-transfers">
+                                <img src="/static/img/airportTransfer.jpg" alt="Airport Transfers" />
                                 <div className="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">
                                     <div className="text-small">
-                                        <h5>Airport Lounges</h5>
-                                        <p>Start your holiday stress free and escape the airport hustle</p>
+                                        <h5>Airport Transfers</h5>
+                                        <p>Search the best airport and resort transfer deals</p>
                                         <p className="mb0 btn btn-primary btn-sm">View Deals &raquo;</p>
                                     </div>
                                 </div>
@@ -153,7 +153,7 @@ export default class TravelExtras extends React.Component {
                 </div>
             </div>
             <div className="gap"></div>
-            <LastMinuteDeal location="London" />
+            <LastMinuteDeal locationId={2114} />
             <div className="container">
                 <div className="gap"></div>
                 <BulletPoints />

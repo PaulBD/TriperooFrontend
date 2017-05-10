@@ -8,25 +8,25 @@ export function requestAirportHotelContent() {
 	return { type: types.AIRPORT_HOTEL_REQUEST, isFetching: true };
 }
 
-export function aiportHotelSuccess(airportHotel) {
+export function airportHotelSuccess(airportHotel) {
 	return {type: types.AIRPORT_HOTEL_SUCCESS, isFetching: false, airportHotel};
 }
 
-export function aiportHotelFailure(message) {
+export function airportHotelFailure(message) {
 	return {type: types.AIRPORT_HOTEL_FAILURE, isFetching: false,  message};
 }
 
-export function loadAiportHotels(airport, arrivalDate, departDate, dropOffCarDate, collectCarDate, nights, roomType, secondRoomType, parkingDays, language) {
+export function loadAiportHotels(airportName, arrivalDate, departDate, dropOffCarDate, collectCarDate, nights, roomType, secondRoomType, parkingDays, language) {
 	return dispatch => {
 		dispatch(requestAirportHotelContent());
-		return AiportHotelApi.loadAiportHotels(airport, arrivalDate, departDate, dropOffCarDate, collectCarDate, nights, roomType, secondRoomType, parkingDays, language).then(airportHotels => {
-			dispatch(aiportHotelSuccess(airportHotels));
+		return AiportHotelApi.loadAirportHotels(airportName, arrivalDate, departDate, dropOffCarDate, collectCarDate, nights, roomType, secondRoomType, parkingDays, language).then(airportHotels => {
+			dispatch(airportHotelSuccess(airportHotels));
 			if (airportHotels.apI_Reply.request != undefined)
 			{
 				localStorage.setItem('he_token', airportHotels.apI_Reply.request.token);
 			}
 		}).catch(error => {
-			dispatch(aiportHotelFailure(error.response.data));
+			dispatch(airportHotelFailure(error.response.data));
 		});
 	};
 }

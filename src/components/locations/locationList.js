@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 let titleCase = require('title-case');
+import ReviewIcon from '../common/reviewIcon';
 
 class LocationList extends React.Component {
   constructor(props, context) {
@@ -74,29 +75,29 @@ class LocationList extends React.Component {
 				}
 
 				return (
-						<div className={this.props.cssClass} key={location.regionID}>
-							<a className="hover-img" href={location.url}>
-								<img src={location.image ? location.image : '/static/img/placeholder.png'}  alt={location.regionName} onError={this.handleMissingImage} />
-								<div className="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">
-									<div className="text-small">
-										<h5>{location.regionName.length > 33 ? location.regionName.substring(0,33) + '...' : location.regionName}</h5>
-										<p>{titleCase(locationType)}</p>
-									</div>
+					<div className={this.props.cssClass} key={location.regionID}>
+						<a className="hover-img" href={location.url}>
+							<img src={location.image ? location.image : '/static/img/placeholder.png'}  alt={location.regionName} onError={this.handleMissingImage} />
+							<div className="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">
+								<div className="text-small">
+									<h5>{location.regionName.length > 33 ? location.regionName.substring(0,33) + '...' : location.regionName}</h5>
+									<p>{titleCase(locationType)}</p>
 								</div>
-								<ul className="hover-icon-group-center-top">
-                                    <li>
-                                        <a className="fa fa-comments box-icon-normal round" href="#" title="Like"></a>
-                                    </li>
-                                    <li>
-                                        <a className="fa fa-picture-o box-icon-normal round" href="#" title="Bookmark"></a>
-                                    </li>
-                                    <li>
-                                        <a className="fa fa-bookmark box-icon-normal round" href="#" title="Review"></a>
-                                    </li>
-                                </ul>
-							</a>
-						{spacer}
-						</div>
+							</div>
+							<ul className="hover-icon-group-center-top">
+								<li>
+									<ReviewIcon locationId={location.id} key={location.id}/>
+								</li>
+								<li>
+									<a className="fa fa-picture-o box-icon-normal round" href="#" title="Take Photos"></a>
+								</li>
+								<li>
+									<a className="fa fa-bookmark box-icon-normal round" href="#" title="Bookmark"></a>
+								</li>
+							</ul>
+						</a>
+					{spacer}
+					</div>
 				);
 			})
 		}

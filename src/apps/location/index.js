@@ -36,7 +36,7 @@ class LocationHome extends React.Component {
         {
             return (
             <div>
-                <Header id={this.props.locationId} location={this.props.location}  />
+                <Header location={this.props.location}  />
                 <div className="container">
                     <NavigationWrapper name={this.props.location.regionName} location={this.props.location} />
                     <div className="gap gap-small"></div>
@@ -56,12 +56,12 @@ class LocationHome extends React.Component {
                     </div>
                 </div> 
                 <div className="gap"></div>
-                <LastMinuteDeal location={this.props.location.regionName} /> 
+                <LastMinuteDeal locationId={this.props.locationId} /> 
                 <div className="gap"></div>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8">
-                            <ReviewList locationId={this.props.locationId} locationName={this.props.location.regionName} locationType="" limit={10} offset={0} showTitle={true} />
+                            <ReviewList locationId={this.props.locationId} locationName={this.props.location.regionName} locationType="" pageSize={10} pageNumber={0} showTitle={true} />
                         </div>
                         <div className="col-md-4">
                             <ReviewButton locationId={this.props.locationId} locationName={this.props.location.regionName} locationType="" />

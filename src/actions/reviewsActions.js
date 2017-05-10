@@ -16,10 +16,21 @@ export function loadReviewsFailure(message) {
 	return {type: types.LOAD_REVIEWS_FAILURE, isFetching: false,  message};
 }
 
-export function loadReviewsByLocationId(locationId, reviewType, pageSize, pageNumber) {
+export function loadReviewsByLocationId(locationId, pageSize, pageNumber) {
 	return dispatch => {
 		dispatch(requestReviews());
-		return ReviewsApi.getReviewsByLocationId(locationId, reviewType, pageSize, pageNumber).then(reviews => {
+		return ReviewsApi.getReviewsByLocationId(locationId, pageSize, pageNumber).then(reviews => {
+			dispatch(loadReviewsSuccess(reviews));
+		}).catch(error => {
+			loadReviewsFailure(error.response.data);
+		});
+	};
+}
+
+export function loadReviewsByType(reviewType, pageSize, pageNumber) {
+	return dispatch => {
+		dispatch(requestReviews());
+		return ReviewsApi.getReviewsByType(reviewType, pageSize, pageNumber).then(reviews => {
 			dispatch(loadReviewsSuccess(reviews));
 		}).catch(error => {
 			loadReviewsFailure(error.response.data);

@@ -8,25 +8,35 @@ import Pagination from "react-js-pagination";
 class Reviews extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { reviews: [], activePage: 1, limit: 1 };
+    this.state = { reviews: [], activePage: 1};
     this.changePage = this.changePage.bind(this);
   }
 
   componentWillMount() {
-    console.log(this.props.limit);
-    this.props.actions.loadReviewsByLocationId(this.props.locationId, this.props.locationType, this.props.limit, this.props.offset);
+    if (this.props.locationType != 'all' && this.props.locationId > 0)
+    {
+      this.props.actions.loadReviewsByLocationId(this.props.locationId, this.props.pageSize, this.props.pageNumber);
+    }
+    else {
+      this.props.actions.loadReviewsByType(this.props.locationType, this.props.pageSize, this.props.pageNumber);
+    }
   }
 
   changePage(value) {
     this.setState({ activePage: value });
-    this.props.actions.loadReviewsByLocationId(this.props.locationId, this.props.locationType, this.props.limit, value - 1);
+
+    if (this.props.locationType == 'all')
+    {
+      this.props.actions.loadReviewsByLocationId(this.props.locationId, this.props.pageSize, value - 1);
+    }
+    else {
+      this.props.actions.loadReviewsByType(this.props.locationType, this.props.pageSize, value - 1);
+    }
   }
 
 
   render(){
   const {reviews} = this.props;
-
-  console.log(this.props.reviews.length);
 
   let title = '';
 
@@ -52,8 +62,8 @@ Reviews.defaultProps = {
   showTitle: true,
   locationType: 'all',
   locationId: 0,
-  limit: 0,
-  offset: 0,
+  pageSize: 0,
+  pageNumber: 0,
   isFetching: false,
   reviews: []
 };
@@ -64,17 +74,14 @@ Reviews.propTypes = {
   locationType: PropTypes.string.isRequired,
   locationName: PropTypes.string.isRequired,
   locationId: PropTypes.number.isRequired,
-  limit: PropTypes.number.isRequired,
-  offset: PropTypes.number.isRequired,
+  pageSize: PropTypes.number.isRequired,
+  pageNumber: PropTypes.number.isRequired,
   showTitle: PropTypes.bool,
   isFetching: PropTypes.bool.isRequired,
   reviewCount: PropTypes.number.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
-
-console.log(state.reviewList);
-
   return {
     reviews: state.reviewList.reviewList ? state.reviewList.reviewList.reviewDto : [],
     reviewCount: state.reviewList.reviewList ? state.reviewList.reviewList.reviewCount : 0,

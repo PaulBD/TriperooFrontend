@@ -21,7 +21,7 @@ class AirportParking extends React.Component {
   
     if (this.state.airport != '')
     {
-      this.props.airportParkingActions.loadAiportParking(this.state.airport, moment().add(1, 'days').format('YYYY-MM-DD'), '00:30', moment().add(7, 'days').format('YYYY-MM-DD'), '22:00', 'en');
+      this.props.airportParkingActions.loadAirportParking(this.state.airport, moment().add(1, 'days').format('YYYY-MM-DD'), '00:30', moment().add(7, 'days').format('YYYY-MM-DD'), '22:00', 'en');
     }
   }
 
@@ -39,13 +39,15 @@ class AirportParking extends React.Component {
         <AirportParkingSearchForm airport={this.state.defaultAirport} handleFormSubmit={this.searchForm} contentType="airportParking" headerTitle="Airport Parking" subHeaderTitle="Pre-book your airport parking and save up to 60%"/>
         <div className="gap"></div>
         <div className="container">
-          <div className="row">            
-            {
-              this.props.airportParking.apI_Reply != undefined && !this.props.isFetching ?
-                this.props.airportParking.apI_Reply.carPark.map(quote => {
-                  return (<AirportParkingCard location={this.state.airport} airportParking={quote} searchRequest={this.props.airportParking.apI_Reply.apI_Header.request} css="col-md-3" key={quote.code} />);
-                }) : this.state.airport == '' ? <AirportParkingBulletPoints /> : <Loader showLoader={true} />
-            }
+          <div className="row">  
+            <div className="col-md-12">           
+              {
+                this.props.airportParking.apI_Reply != undefined && !this.props.isFetching ?
+                  this.props.airportParking.apI_Reply.carPark.map(quote => {
+                    return (<AirportParkingCard location={this.state.airport} airportParking={quote} searchRequest={this.props.airportParking.apI_Reply.apI_Header.request} css="col-md-3" key={quote.code} />);
+                  }) : this.state.airport == '' ? <AirportParkingBulletPoints /> : <Loader showLoader={true} />
+              }
+            </div>
           </div>
         </div>
         <div className="gap"></div>

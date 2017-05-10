@@ -32,7 +32,7 @@ class LocationDetail extends React.Component {
         {
             return (
             <div>
-                <LocationHeader id={this.props.locationId} location={this.props.location}  />
+                <LocationHeader location={this.props.location}  />
                 <div className="row greyBg detailSubHeader">
                     <div className="container">
                         <div className="row row-wrap">

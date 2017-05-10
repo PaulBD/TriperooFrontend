@@ -16,10 +16,10 @@ export function hotelDealsFailure(errorMessage) {
 	return {type: types.HOTEL_DEALS_FAILURE, isFetching: false, errorMessage};
 }
 
-export function loadHotelDealsByLocation(locationName, pageSize, pageNumber) {
+export function loadHotelDealsByLocation(locationId, pageSize, pageNumber) {
 	return dispatch => {
 		dispatch(hotelDealsRequest());
-		return HotelDealsApi.getHotelDealsByLocation(locationName, pageSize, pageNumber).then(hotelDeals => {
+		return HotelDealsApi.getHotelDealsByLocation(locationId, pageSize, pageNumber).then(hotelDeals => {
 			dispatch(hotelDealsSuccess(hotelDeals));
 		}).catch(error => {
 			dispatch(hotelDealsFailure(error.response.data));

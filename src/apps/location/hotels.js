@@ -33,7 +33,7 @@ class LocationContent extends React.Component {
         {
             return (
             <div>
-                <Header id={this.props.locationId} location={this.props.location} contentType="hotels" />
+                <Header location={this.props.location} contentType="hotels" />
                 <div className="container">
                     <div className="row"> 
                         <Hotels />
@@ -57,16 +57,14 @@ LocationContent.propTypes = {
     locationId: PropTypes.number,
     location: PropTypes.object,
     locationActions: PropTypes.object.isRequired,
-    isFetching: PropTypes.bool.isRequired,
-    contentType: PropTypes.string.isRequired
+    isFetching: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
      return {
         isFetching: state.location.isFetching ? state.location.isFetching : false,
         location: state.location.location ? state.location.location : {},
-        locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0,
-        contentType: ownProps.params.contentType
+        locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0
     };
 }
 

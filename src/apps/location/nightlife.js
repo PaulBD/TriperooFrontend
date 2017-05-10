@@ -42,17 +42,17 @@ class NightlifeContent extends React.Component {
         {
             return (
             <div>
-                <SubPageHeader id={this.props.locationId} location={this.props.location} contentType="nightlife" />
+                <SubPageHeader location={this.props.location} contentType="nightlife" />
                 <div className="container">
                     <div className="row row-wrap">
                         <div className="gap gap-small"></div>
                         <div className="container">
                             <div className="row">
                                 <div className="col-md-9">
-                                    <div className="nav-drop booking-sort">
+                                    <div className={this.props.isFetchingNightlife ? "hide" : "nav-drop booking-sort"}>
                                         {this.props.nightlifeCount} Results {this.state.nightlifeType != '' ? ' - filtered by ' + titleCase(this.state.nightlifeFriendlyName) : ''}
                                     </div>
-                                    <Nightlife locationId={this.props.locationId} locations={this.props.nightlife} locationCount={this.props.nightlifeCount} changePage={this.changePage} />
+                                    <Nightlife locationId={this.props.locationId} locations={this.props.nightlife} locationCount={this.props.nightlifeCount} changePage={this.changePage} isFetching={this.props.isFetchingNightlife}/>
                                 </div>
                                 <div className="col-md-3">
                                     <NightlifeCategories changeCategory={this.changeNightlife} contentType="nightlife"  />
@@ -83,6 +83,7 @@ NightlifeContent.propTypes = {
     nightlifeActions: PropTypes.object.isRequired,
     nightlifeCount: PropTypes.number.isRequired,
     isFetching: PropTypes.bool.isRequired,
+    isFetchingNightlife: PropTypes.bool.isRequired,
     nightlife: PropTypes.array.isRequired,
     nightlifeType: PropTypes.string
 };
@@ -90,6 +91,7 @@ NightlifeContent.propTypes = {
 function mapStateToProps(state, ownProps) {
      return {
         isFetching: state.location.isFetching ? state.location.isFetching : false,
+        isFetchingNightlife: state.nightlifeList.isFetching ? state.nightlifeList.isFetching : false,
         location: state.location.location ? state.location.location : {},
         locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0,
         nightlife: state.nightlifeList.nightlifeList ? state.nightlifeList.nightlifeList.locations : [],

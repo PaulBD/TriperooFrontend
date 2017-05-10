@@ -10,7 +10,7 @@ class ByLocation extends React.Component {
   }
 
   componentWillMount() {
-    this.props.actions.loadEvents(this.props.locationId, 4, 1);
+    this.props.actions.loadEvents(this.props.locationId, 6, 0);
   }
 
   render(){
@@ -33,7 +33,7 @@ class ByLocation extends React.Component {
                 <p><a href={allEventsUrl}>View all events</a></p>
               </div>
               <div className="col-md-12">
-                  <EventList locationEvents={this.props.locationEvents} isFetching={this.props.isFetching} cssClass='col-md-3'/>
+                  <EventList locationEvents={this.props.locationEvents} isFeature={false} isFetching={this.props.isFetching} cssClass='col-md-2'/>
               </div>
             </div> 
           </div> 

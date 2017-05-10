@@ -15,7 +15,7 @@ class EventModal extends React.Component {
       <div className="modal fade" id="eventModal" role="dialog" aria-labelledby="eventModal" aria-hidden="true">
         <div className="modal-dialog modelReviewAuthentication" role="document">
           <div className="card">
-            <h3 className="card-header">{this.props.eventName}</h3>
+            <h4 className="card-header">{this.props.eventName}</h4>
             <div className="card-block">
               <div className="col-md-4">
                 <img className="card-img-top mb-2" src={this.props.image} onError={this.handleMissingImage}/>

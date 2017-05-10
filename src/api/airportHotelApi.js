@@ -5,10 +5,10 @@ class AirportHotelApi {
   // ****************************************
   // Return airport hotels from HolidayExtras
   // ****************************************
-  static loadAiportHotels(airport, arrivalDate, departDate, dropOffCarDate, collectCarDate, nights, roomType, secondRoomType, parkingDays, language) {
+  static loadAirportHotels(airportName, arrivalDate, departDate, dropOffCarDate, collectCarDate, nights, roomType, secondRoomType, parkingDays, language) {
     return new Promise((resolve, reject) => {
 
-      let url = baseUrl + '/airportHotels?locationName=' + airport + '&arrivalDate=' + arrivalDate + '&departDate=' + departDate + '&nights=' + nights  + '&roomType=' + roomType  + '&secondRoomType=' + secondRoomType + '&parkingDays=' + parkingDays + '&language=' + language;
+      let url = baseUrl + '/airport/' + airportName + '/hotels?arrivalDate=' + arrivalDate + '&departDate=' + departDate + '&nights=' + nights  + '&roomType=' + roomType  + '&secondRoomType=' + secondRoomType + '&parkingDays=' + parkingDays + '&language=' + language;
 
       if (collectCarDate != null)
       {

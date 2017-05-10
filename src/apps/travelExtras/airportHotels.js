@@ -21,7 +21,7 @@ class AirportHotels extends React.Component {
   
     if (this.state.airport != '')
     {
-      this.props.airportHotelActions.loadAiportHotels(this.state.airport, moment().add(1, 'days').format('YYYY-MM-DD'), moment().add(5, 'days').format('YYYY-MM-DD'), moment().add(1, 'days').format('YYYY-MM-DD'), 4, 'T20', '', 4, 'en');
+      this.props.airportHotelActions.loadAirportHotels(this.state.airport, moment().add(1, 'days').format('YYYY-MM-DD'), moment().add(5, 'days').format('YYYY-MM-DD'), moment().add(1, 'days').format('YYYY-MM-DD'), 4, 'T20', '', 4, 'en');
     }
   }
 
@@ -36,13 +36,15 @@ class AirportHotels extends React.Component {
         <AirportHotelSearchForm contentType="airportHotels" headerTitle="Airport Hotels" subHeaderTitle="Park up, stay overnight and let the shuttle bus drop you off" airport={this.state.airport} handleFormSubmit={this.searchForm}/>
         <div className="gap"></div>
         <div className="container">
-          <div className="row">            
-            {
-              this.props.airportHotel.apI_Reply != undefined && !this.props.isFetching ?
-                this.props.airportHotel.apI_Reply.hotel.map(quote => {
-                  return (<AirportHotelCard location={this.state.airport} airportHotel={quote} searchRequest={this.props.airportHotel.apI_Reply.apI_Header.request} css="col-md-3" key={quote.code} />);
-                }) : this.state.airport == '' ? <AirportHotelBulletPoints /> : <Loader showLoader={true} />
-            }
+          <div className="row">    
+            <div className="col-md-12">           
+              {
+                this.props.airportHotel.apI_Reply != undefined && !this.props.isFetching ?
+                  this.props.airportHotel.apI_Reply.hotel.map(quote => {
+                    return (<AirportHotelCard location={this.state.airport} airportHotel={quote} searchRequest={this.props.airportHotel.apI_Reply.apI_Header.request} css="col-md-3" key={quote.code} />);
+                  }) : this.state.airport == '' ? <AirportHotelBulletPoints /> : <Loader showLoader={true} />
+              }
+            </div>
           </div>
         </div>
         <div className="gap"></div>

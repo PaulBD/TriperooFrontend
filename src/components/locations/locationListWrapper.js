@@ -20,12 +20,11 @@ class ByLocation extends React.Component {
     }
 
     render(){
-        if ((this.props.locations != null) && (this.props.locations.length > 0))
+        if (!this.props.isFetching)
         {
             return (
                 <div>
                     <LocationList locations={this.props.locations} cssClass="col-md-4" />
-                    <Loader showLoader={this.props.isFetching} />
 
 		            <div className="gap gap-small"></div>
 		            <div className="row text-xs-center">
@@ -36,7 +35,7 @@ class ByLocation extends React.Component {
             );
         }
         else {
-            return null;
+            return (<Loader showLoader={this.props.isFetching} />);
         }
     }
 }

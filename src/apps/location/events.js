@@ -15,7 +15,7 @@ class EventHome extends React.Component {
     super(props, context);
     this.changeEvent = this.changeEvent.bind(this);
     this.changePage = this.changePage.bind(this);
-    this.state = { pageSize: 9, pageNumber: 0, activePageNumber: 1, categoryName: 'all', friendlyCategory: '' };
+    this.state = { pageSize: 12, pageNumber: 0, activePageNumber: 1, categoryName: 'all', friendlyCategory: '' };
   }
 
   componentWillMount() {
@@ -26,6 +26,7 @@ class EventHome extends React.Component {
   changeEvent(categoryId, catgeoryName) {
     window.scrollTo(0, 0);
     this.setState({ categoryName: categoryId, friendlyCategory: catgeoryName });
+
     this.props.eventActions.loadEventsByCategory(this.props.locationId, categoryId, this.state.pageSize, this.state.pageNumber);  
   }
 
@@ -39,24 +40,30 @@ class EventHome extends React.Component {
     document.title = 'All events this week in ' + this.props.locationName;
 
     let intro = '';
+    let title = '';
     let totalItems = 0;
 
     if (!this.props.isFetchingLocation)
     {
       totalItems = this.props.totalItems;
 
-      if (this.state.friendlyCategory != '') {
-        if (this.state.friendlyCategory == 'all')
+      console.log(this.state.friendlyCategory);
+
+      if (this.state.categoryName != '') {
+        if (this.state.friendlyCategory == '')
         { 
           intro = 'We found ' + totalItems + ' events matching all categories.';
+          title= '<span>Featured Events:</span> Recommended For You';
         }
         else
         {
           intro = 'We found ' + totalItems + ' events matching ' + this.state.friendlyCategory + '.';
+          title= '<span>Local:</span> ' + this.state.friendlyCategory;
         }
       } 
       else {
         intro = 'We found ' + totalItems + ' events in total.';
+          title= '<span>Featured Events:</span> Recommended For You';
       }
     }
 
@@ -75,28 +82,33 @@ class EventHome extends React.Component {
       resultCount = '';
     }
 
-
-return (
+  return (
     <div>   
-      <SubPageHeader id={this.props.locationId} location={this.props.location} contentType="events" />
+      <SubPageHeader location={this.props.location} contentType="events" />
       <div className="container">
         <div className="row row-wrap">
           <div className="gap gap-small"></div>
           <div className="col-md-9">
-            <div className="nav-drop booking-sort">
-              {resultCount}
+            <div className="row">
+              <div className="col-md-12">
+                  <h4 dangerouslySetInnerHTML={{__html: title}}></h4>
+              </div>
             </div>
-            <EventList locationEvents={this.props.locationEvents} cssClass="col-md-4" isFetching={this.props.isFetchingLocationEvents} />
+            <div className="row">
+              <div className="col-md-12">
+                <EventList locationEvents={this.props.locationEvents} isFeature={this.state.categoryName == 'all' || this.state.categoryName == ''  ? true : false} cssClass={this.state.categoryName == 'all' || this.state.categoryName == ''  ? "col-md-4" : "col-md-3"} isFetching={this.props.isFetchingLocationEvents} />
+              </div>
+              <div className="gap gap-small"></div>
+              <div className="col-md-12 text-xs-center">
+                <Pagination innerClass={this.state.categoryName == 'all' || this.state.categoryName == '' ? "hide" : totalItems > this.state.pageSize ? "pagination text-xs-center" : "hide"} activePage={this.state.activePageNumber} itemsCountPerPage={this.props.pageSize} totalItemsCount={this.props.totalItems} pageRangeDisplayed={10} onChange={this.changePage} />
+              </div>
+              <div className="gap gap-small"></div>
+            </div>
           </div>
           <div className="col-md-3">
             <EventCategories changeCategory={this.changeEvent} contentType="events" />
           </div>
         </div>
-        <div className="gap gap-small"></div>
-        <div className="row text-xs-center">
-          <Pagination innerClass={totalItems > this.state.pageSize ? "pagination text-xs-center" : "hide"} activePage={this.state.activePageNumber} itemsCountPerPage={this.props.pageSize} totalItemsCount={this.props.totalItems} pageRangeDisplayed={10} onChange={this.changePage} />
-        </div>
-        <div className="gap gap-small"></div>
       </div>
     </div>
     );

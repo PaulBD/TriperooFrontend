@@ -31,10 +31,10 @@ class ReviewsByLocation extends React.Component {
         {
             return (
             <div>
-                <Header id={this.props.locationId} location={this.props.location} contentType="reviews" />
+                <Header location={this.props.location} contentType="reviews" />
                 <div className="container">
-        <div className="row row-wrap">
-          <div className="gap gap-small"></div>
+                    <div className="row row-wrap">
+                        <div className="gap gap-small"></div>
                         <div className="container">
                             <div className="row">
                                 <div className="col-md-8">

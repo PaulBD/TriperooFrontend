@@ -26,7 +26,7 @@ export default class Holidays extends React.Component {
             <Destinations destinationCount={3} title="Our Top Destinations" />
           </div>
         </div>
-        <LastMinuteDeal featureType="lastMinute" />
+        <LastMinuteDeal locationId={2114} />
         <div className="container">
             <div className="gap gap"></div>
             <Copy />

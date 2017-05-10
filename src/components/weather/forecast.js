@@ -11,7 +11,7 @@ class Forecast extends React.Component {
 	}
 
 	componentDidMount() {
-		this.props.actions.loadCurrentWeather(42.3601, -71.0589, 'en');
+		this.props.actions.loadCurrentWeather(this.props.locationId, 'en');
 	}
 
 	render()

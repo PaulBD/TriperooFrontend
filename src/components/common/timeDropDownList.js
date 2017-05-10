@@ -28,7 +28,7 @@ class TimeDropDownList extends React.Component {
     });
     
     return (
-        <select defaultValue={selectedTime} className={this.props.cssClass} ref={this.props.name} name={this.props.name} selected={this.props.value} onChange={this.handleChange}>
+        <select className={this.props.cssClass} key={this.props.name} ref={this.props.name} name={this.props.name} value={selectedTime} onChange={this.handleChange}>
           {timeList}
         </select>
         );

@@ -79,7 +79,7 @@ class AirportParkingSearchForm extends React.Component {
                       <div className="row">
                         <div className="col-md-12">
                           <div className="form-group form-group-icon-left"><i className="fa fa-map-marker input-icon"></i>
-                            <label>Flying from?</label>
+                            <label>Flying From?</label>
                               <AirportList cssClass="form-control searchSelect" name="airport" selectedValue={this.state.airport} changeValue={this.handleAirportChange} />
                           </div>
                         </div>
@@ -93,13 +93,13 @@ class AirportParkingSearchForm extends React.Component {
                               <div className="row">
                                 <div className="col-md-7">
                                   <div className="form-group form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
-                                    <label>Drop off Date</label>
+                                    <label>Drop Off Date</label>
                                     <DatePicker name="dropOffDate" dateFormat="DD/MM/YYYY"  selected={this.state.dropOffDate} onChange={this.handleDropOffDateChange} className="form-control" />
                                   </div>
                                  </div>
                                 <div className="col-md-5">
                                   <div className="form-group form-group-select-plus">
-                                    <label>Drop off time</label>
+                                    <label>Drop Off Time</label>
                                     <TimeDropDownList cssClass="form-control searchSelect" name="dropOffTime" value={this.state.dropOffTime} changeValue={this.handleDropOffTimeChange} />
                                   </div>
                                 </div>
@@ -109,13 +109,13 @@ class AirportParkingSearchForm extends React.Component {
                               <div className="row">
                                 <div className="col-md-7">
                                   <div className="form-group form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
-                                      <label>Pick up Date</label>
+                                      <label>Pick Up Date</label>
                                       <DatePicker name="pickUpDate" dateFormat="DD/MM/YYYY"  selected={this.state.pickUpDate} onChange={this.handlePickUpDateChange} className="form-control" />
                                     </div>
                                 </div>
                                 <div className="col-md-5">
                                   <div className="form-group form-group-select-plus">
-                                    <label>Pick up Time</label>
+                                    <label>Pick Up Time</label>
                                     <TimeDropDownList cssClass="form-control searchSelect" name="pickUpTime" value={this.state.pickUpTime} changeValue={this.handlePickUpTimeChange} />
                                   </div>
                                 </div>

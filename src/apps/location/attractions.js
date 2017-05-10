@@ -38,31 +38,31 @@ class AttractionContent extends React.Component {
     render(){
         document.title = this.state.attractionType == '' ? titleCase(this.props.location.regionName) + ' Attractions' : titleCase(this.state.attractionFriendlyName) + ' in ' + titleCase(this.props.location.regionName);
 
-        if (this.props.location.regionName != undefined)
+        if (! this.props.isFetching)
         {
             return (
-            <div>
-                <SubPageHeader id={this.props.locationId} location={this.props.location} contentType="attractions" />
-                <div className="container">
-                    <div className="row row-wrap">
-                        <div className="gap gap-small"></div>
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-md-9">
-                                    <div className="nav-drop booking-sort">
-                                        {this.props.attractionCount} Results {this.state.attractionType != '' ? ' - filtered by ' + titleCase(this.state.attractionFriendlyName) : ''}
+                <div>
+                    <SubPageHeader location={this.props.location} contentType="attractions" />
+                    <div className="container">
+                        <div className="row row-wrap">
+                            <div className="gap gap-small"></div>
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-md-9">
+                                        <div className={this.props.isFetchingAttractions ? "hide" : "nav-drop booking-sort"}>
+                                            {this.props.attractionCount} Results {this.state.attractionType != '' ? ' - filtered by ' + titleCase(this.state.attractionFriendlyName) : ''}
+                                        </div>
+                                        <Attractions locationId={this.props.locationId} locations={this.props.attractions} locationCount={this.props.attractionCount} changePage={this.changePage} isFetching={this.props.isFetchingAttractions}/>
                                     </div>
-                                    <Attractions locationId={this.props.locationId} locations={this.props.attractions} locationCount={this.props.attractionCount} changePage={this.changePage} />
-                                </div>
-                                <div className="col-md-3">
-                                    <AttractionCategories changeCategory={this.changeAttraction} contentType="attractions"  />
+                                    <div className="col-md-3">
+                                        <AttractionCategories changeCategory={this.changeAttraction} contentType="attractions"  />
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <FacebookSignup />
                 </div>
-                <FacebookSignup />
-            </div>
             );
         } 
         else {
@@ -73,6 +73,7 @@ class AttractionContent extends React.Component {
 
 AttractionContent.defaultProps = {
     isFetching: false,
+    isFetchingAttractions: true,
     attractionType: ''
 };
 
@@ -83,6 +84,7 @@ AttractionContent.propTypes = {
     attractionActions: PropTypes.object.isRequired,
     attractionCount: PropTypes.number.isRequired,
     isFetching: PropTypes.bool.isRequired,
+    isFetchingAttractions: PropTypes.bool.isRequired,
     attractions: PropTypes.array.isRequired,
     attractionType: PropTypes.string
 };
@@ -90,6 +92,7 @@ AttractionContent.propTypes = {
 function mapStateToProps(state, ownProps) {
      return {
         isFetching: state.location.isFetching ? state.location.isFetching : false,
+        isFetchingAttractions: state.attractionsList.isFetching ? state.attractionsList.isFetching : false,
         location: state.location.location ? state.location.location : {},
         locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0,
         attractions: state.attractionsList.attractionsList ? state.attractionsList.attractionsList.locations : [],

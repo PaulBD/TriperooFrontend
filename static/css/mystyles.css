@@ -22,13 +22,16 @@ select.searchSelect:not([size]):not([multiple]) {
 
 .loadingHotelDeal { height: 100px; }
 
+h4 span { color: #ed8323; }
+
+.eventText { height: 100% !important; }
 .eventCard { height:170px; }
 .eventOptions { font-size: 12px;}
 .eventOptions i { margin-right: 7px; width: 20px; }
 .eventOptions.active, .eventOptions.active a { color: #ed8323; }
 #eventModal h5 { color: orange } 
 #eventModal p { font-size: 12px; }
-.eventTitle { height: 28px;}
+.eventTitle { line-height:1.2em !important; font-size:1.2em;}
 .reviewsHeader { color: #fff;
     z-index: 999;
     position: absolute;
@@ -543,8 +546,9 @@ div.ReactTags__suggestions ul li.active {
 }
 
 /* Airport Parking */
-.airportParking { min-height:590px;}
-.airportParking .card-title { height: 60px; }
+.airportParking, .airportLoungeCard { min-height:590px;}
+.airportLoungeCard { min-height:540px;}
+.airportParking .card-title, .airportLoungeCard .card-title { height: 60px; }
 
 .airportSearch { background-color: #efefef; border-radius: 5px; padding:10px;}
 

@@ -17,7 +17,7 @@ class Header extends React.Component {
       if (this.props.location.regionType == "City") {
         html = (
           <div className="owl-cap">
-              <WeatherSummary id={this.props.id} type={this.props.location.regionType} />
+              <WeatherSummary locationId={this.props.location.regionID} type={this.props.location.regionType} />
               <h1 className="owl-cap-title fittext">{this.props.location.regionName}</h1>
               <div className="owl-cap-price">
                   <small>{this.props.location.regionNameLong}</small>
@@ -54,7 +54,6 @@ Header.defaultProps = {
 };
 
 Header.propTypes = {
-    id: PropTypes.number.isRequired,
     location: PropTypes.object.isRequired
 };
 

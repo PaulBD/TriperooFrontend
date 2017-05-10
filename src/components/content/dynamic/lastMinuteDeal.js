@@ -11,7 +11,7 @@ class LastMinuteDeal extends React.Component {
   }
 
   componentDidMount() {
-    this.props.actions.loadHotelDealsByLocation(this.props.location, 1, 0);
+    this.props.actions.loadHotelDealsByLocation(this.props.locationId, 1, 0);
   }
 
   render() {
@@ -79,7 +79,7 @@ LastMinuteDeal.defaultProps = {
 LastMinuteDeal.propTypes = {
   hotelDeals: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
-  location: PropTypes.string.isRequired,
+  locationId: PropTypes.number.isRequired,
   isFetching: PropTypes.bool.isRequired
 };
 

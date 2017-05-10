@@ -3,11 +3,11 @@ import baseUrl from './baseApi';
 
 class HotelDealsApi {
   // ****************************************
-  // Return hotel deals by location name
+  // Return hotel deals by location Id
   // ****************************************
-  static getHotelDealsByLocation(locationName, pageSize, pageNumber) {
+  static getHotelDealsByLocation(locationId, pageSize, pageNumber) {
     return new Promise((resolve, reject) => {
-      axios.get(baseUrl + '/hotel/deals?locationName=' + locationName + '&pageSize=' + pageSize + '&pageNumber=' + pageNumber)
+      axios.get(baseUrl + '/location/' + locationId + '/deals/hotels?pageSize=' + pageSize + '&pageNumber=' + pageNumber)
         .then(function (response) {
           resolve(Object.assign([], response.data));
         })
