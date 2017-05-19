@@ -1,6 +1,12 @@
 /*YOUR CUSTOM STYLES*/
 body { margin: 0; }
 
+.ReactModal__Body--open {
+    overflow: hidden;
+}
+
+
+
 .error { color: red;}
 .error.orange { color: #ed8323;}
 
@@ -29,7 +35,7 @@ h4 span { color: #ed8323; }
 .eventOptions { font-size: 12px;}
 .eventOptions i { margin-right: 7px; width: 20px; }
 .eventOptions.active, .eventOptions.active a { color: #ed8323; }
-#eventModal h5 { color: orange } 
+#eventModal h5 { color: orange }
 #eventModal p { font-size: 12px; }
 .eventTitle { line-height:1.2em !important; font-size:1.2em;}
 .reviewsHeader { color: #fff;
@@ -40,7 +46,7 @@ h4 span { color: #ed8323; }
 a:hover .card { border: solid 1px #ed8323; background-color: #efefef;}
 
 .last-minute-title { font-weight:bold;}
-.booking-item-reviews .gap-small { margin: 7px 0 7px 0; } 
+.booking-item-reviews .gap-small { margin: 7px 0 7px 0; }
 
 .modelReviewAuthentication .fa.fa-map-marker { top: 0 !important;}
 
@@ -161,7 +167,7 @@ h3 small { float:right; padding-top:14px;}
 .cityNav, .countryNav { color: #fff; position:absolute;z-index:999; float:right; margin-top:30px; }
 
 /* TODO: Need to fix this for mobile */
-.cityNav .user-profile-statictics-icon, 
+.cityNav .user-profile-statictics-icon,
 .countryNav .user-profile-statictics-icon { font-size: 2rem ; color: #fff; margin-left:15px; }
 
 .hotelSearch i { margin-top: 6px; font-size: 20px; }
@@ -215,7 +221,8 @@ optgroup,option { margin-left:0px;text-align:left;}
 
 .modalForm .form-group .input-icon { top: 0; }
 .modelAuthentication { width:360px !important; }
-.modelReviewAuthentication { width:660px !important; }
+
+.modal-dialog { width: auto !important; margin: 0 !important; max-width: 100% !important;}
 
 .smlText { font-size: 10px;line-height:1.5;}
 
@@ -339,7 +346,7 @@ optgroup,option { margin-left:0px;text-align:left;}
 .cards { width: 30px; margin-left:8px; }
 .partners { height: 20px; width: auto; margin-right: 8px;}
 
-.hide { display:none;}
+.hide { display:none !important;}
 
 .infoList li.active, .infoList li.active:hover { background-color: #333; }
 .infoList li.active a { color: #ffffff;}
@@ -374,7 +381,7 @@ optgroup,option { margin-left:0px;text-align:left;}
   border-radius: 2px;
   display: inline-block;
 }
-div.ReactTags__tagInput input, 
+div.ReactTags__tagInput input,
 div.ReactTags__tagInput input:focus {
   margin: 0;
   font-size: 12px;

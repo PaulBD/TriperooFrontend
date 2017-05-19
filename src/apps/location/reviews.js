@@ -1,15 +1,15 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as locationActions from '../../actions/locationActions';
+import * as locationActions from '../../actions/location/locationActions';
 
-import FacebookSignup from '../../components/authentication/facebookSignup';
+import FacebookSignup from '../../components/customer/authentication/facebookSignup';
 import Header from '../../components/locations/subPageHeader';
 import Loader from '../../components/common/loadingDots';
 
 import ReviewList from '../../components/reviews/textList';
 import LocationStats from '../../components/locations/stats';
-import WeatherForcast from '../../components/weather/forecast';
+import WeatherForcast from '../../components/locations/weather/forecast';
 import ReviewButton from '../../components/reviews/reviewButton';
 
 let titleCase = require('title-case');
@@ -23,7 +23,7 @@ class ReviewsByLocation extends React.Component {
         window.scrollTo(0, 0);
         this.props.locationActions.loadLocationById(this.props.locationId);
     }
-      
+
     render(){
         document.title = titleCase(this.props.location.regionName) + ' reviews';
 
@@ -38,7 +38,7 @@ class ReviewsByLocation extends React.Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-md-8">
-                                    <ReviewList locationId={this.props.locationId} locationName={this.props.location.regionName} locationType="" limit={3} offset={0} showTitle={false} />
+                                    <ReviewList locationId={this.props.locationId} locationName={this.props.location.regionName} locationType="" pageSize={3} pageNumber={0} showTitle={false} />
                                 </div>
                                 <div className="col-md-4">
                                     <ReviewButton />
@@ -54,7 +54,7 @@ class ReviewsByLocation extends React.Component {
                 <FacebookSignup />
             </div>
             );
-        } 
+        }
         else {
             return (<Loader showLoader={this.props.isFetching} />);
         }

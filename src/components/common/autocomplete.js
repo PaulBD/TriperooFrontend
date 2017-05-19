@@ -1,9 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {browserHistory} from 'react-router';
-import * as autocompleteActions from '../../actions/autocompleteActions';
-import Loader from '../common/loadingDots';
+import * as locationsActions from '../../actions/location/locationsActions';
 
 class AutoComplete extends React.Component {
 
@@ -11,7 +9,7 @@ class AutoComplete extends React.Component {
     super(props, context);
     this.handleClick = this.handleClick.bind(this);
     this.state = { cssStyle: 'none', selected: false, isLoading: true, isOpen: false, searchValue: this.props.searchValue };
-    
+
     this.onSearchValue = this.onSearchValue.bind(this);
   }
 
@@ -29,9 +27,9 @@ class AutoComplete extends React.Component {
     else {
       this.setState({ selected: true, cssStyle: 'none', isOpen: false, searchValue: '' });
     }
-    
+
     // Reset Search
-    this.props.actions.searchLocations('', this.props.searchType);
+    this.props.locationsActions.searchLocations('', this.props.searchType);
   }
 
   onSearchValue(event) {
@@ -41,7 +39,7 @@ class AutoComplete extends React.Component {
 
     if (event.target.value.length > 2) {
       this.setState({ isLoading: true });
-      this.props.actions.searchLocations(event.target.value, this.props.searchType);
+      this.props.locationsActions.searchLocations(event.target.value, this.props.searchType);
       this.setState({ selected: false, cssStyle: 'block', isOpen: true, isLoading: false });
     }
     else {
@@ -50,7 +48,7 @@ class AutoComplete extends React.Component {
   }
 
   render() {
-    let searchCount = this.props.autocompleteList.length; 
+    let searchCount = this.props.autocompleteList.length;
 
     let style = {
       display: this.state.cssStyle
@@ -120,7 +118,7 @@ AutoComplete.defaultProps = {
 
 AutoComplete.propTypes = {
   autocompleteList: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired,
+  locationsActions: PropTypes.object,
   changeType: PropTypes.func,
   changeValue: PropTypes.func,
   changeUrl: PropTypes.func,
@@ -136,14 +134,14 @@ AutoComplete.propTypes = {
 function mapStateToProps(state, ownProps) {
 
   return {
-    isFetching: state.locationsList.isFetching ? state.locationsList.isFetching : false,
-    autocompleteList: state.autocomplete.autocompleteList ? state.autocomplete.autocompleteList : []
+    isFetching: state.locations.isFetching ? state.locations.isFetching : false,
+    autocompleteList: state.locations.autocompleteList ? state.locations.autocompleteList : []
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(autocompleteActions, dispatch)
+    locationsActions: bindActionCreators(locationsActions, dispatch)
   };
 }
 

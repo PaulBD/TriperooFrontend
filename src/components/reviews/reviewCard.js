@@ -22,15 +22,16 @@ class ReviewCard extends React.Component {
             let style = {
               backgroundImage: 'url(' + review.imageUrl + ')'
             };
+
             return (
               <div className="col-md-4" key={review.reviewReference}>
                 <div className="card reviewCard text-xs-left">
-                <div className="cardBg reviewBg" style={style}></div>
-                 
+                <div className="cardBg reviewBg" style={style} ></div>
+
                   <div className="card-block testimonial">
                     <h4 className="card-title"><a href={review.placeUrl}>{review.placeNameShort != null && review.placeNameShort.length > 35 ? review.placeNameShort.substring(0, 35) + '...' : review.placeNameShort}</a></h4>
                     <p className="card-subtitle text-muted cardAddress">{review.placeAddress}</p>
-                    
+
                     <div className="testimonial-author commentCardTestimonial">
                         <img src={review.customerImageUrl ? review.customerImageUrl : '/static/img/userProfileImg.png'} alt={review.customerName} className="origin round profileImgLge" onError={this.handleMissingImage} />
                         <p className="testimonial-author-name"><a href={review.customerProfileUrl}>{review.customerName}</a>'s review</p>
@@ -41,7 +42,7 @@ class ReviewCard extends React.Component {
                     </p>
                     <TagList tags={review.tags} maxTags={this.props.maxTags} readOnly={true} />
                   </div>
-                </div> 
+                </div>
               </div>
             );
           })

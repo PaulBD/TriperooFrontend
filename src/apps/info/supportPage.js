@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 import SocialButtons from "../../components/content/static/socialButtons";
 import Destinations from '../../components/content/dynamic/destinations';
-import FacebookSignup from '../../components/authentication/facebookSignup';
+import FacebookSignup from '../../components/customer/authentication/facebookSignup';
 import BulletPoints from '../../components/content/static/bulletPoints';
 import TrustedPartners from '../../components/content/static/trustedPartners';
 
@@ -12,7 +12,7 @@ export default class SupportPage extends React.Component {
     window.scrollTo(0, 0);
     document.title = 'Support';
   }
-  
+
   render(){
     let style = {
       backgroundImage: 'url(/static/img/north-wales.jpg)'
@@ -34,18 +34,18 @@ export default class SupportPage extends React.Component {
         <div className="row row-wrap">
             <div className="gap gap-small"></div>
             <div className="col-md-7">
-              <p>For any customer support questions related to your booking, these 
-              are handled direclty by LateRooms.com  or SkyScanner.com, providing dedicated, 24/7 service to 
+              <p>For any customer support questions related to your booking, these
+              are handled direclty by LateRooms.com  or SkyScanner.com, providing dedicated, 24/7 service to
               Triperoo clients.  </p>
               <h5>LateRooms.com Customer Service</h5>
-              <p>For questions related to your LateRooms.com booking, please see your confirmation email. You 
-              can use the self-service tool provided in the email through the link “Manage your booking online” to 
-              cancel your booking. To make changes to your booking, please use the customer service 
+              <p>For questions related to your LateRooms.com booking, please see your confirmation email. You
+              can use the self-service tool provided in the email through the link “Manage your booking online” to
+              cancel your booking. To make changes to your booking, please use the customer service
               number below. Lines are open 24 hours, 7 days a week.</p>
               <p>0333 0143 701</p>
               <p><a href="http://www.laterooms.com" target="_blank">www.laterooms.com</a></p>
               <h5>SkyScanner.com </h5>
-              <p>For any customer support questions related to a flight booking, these will be handled directly with the company 
+              <p>For any customer support questions related to a flight booking, these will be handled directly with the company
               you booked your flight with.</p>
               <p><a href="http://www.skyscanner.com" target="_blank">www.skyscanner.com</a></p>
             </div>

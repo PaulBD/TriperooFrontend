@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as airportParkingActions from '../../actions/airportParkingActions';
+import * as airportParkingActions from '../../actions/travelExtras/airportParkingActions';
 import AirportParkingCard from '../../components/travelExtras/airportParking/card';
 import AirportParkingSearchForm from '../../components/travelExtras/airportParking/searchForm';
 import AirportParkingBulletPoints from '../../components/content/static/airportParkingBulletPoints';
@@ -18,7 +18,7 @@ class AirportParking extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0);
     document.title = 'Quality, secured airport parking from only £5.25 per day or £41.99 per week. Compare deals today - Triperoo';
-  
+
     if (this.state.airport != '')
     {
       this.props.airportParkingActions.loadAirportParking(this.state.airport, moment().add(1, 'days').format('YYYY-MM-DD'), '00:30', moment().add(7, 'days').format('YYYY-MM-DD'), '22:00', 'en');
@@ -29,7 +29,7 @@ class AirportParking extends React.Component {
     if (airport != '')
     {
       this.setState({ airport: airport, showSmallHeader: true });
-      this.props.airportParkingActions.loadAiportParking(airport, dropOffDate, dropOffTime, pickUpDate, pickUpTime, 'en');
+      this.props.airportParkingActions.loadAirportParking(airport, dropOffDate, dropOffTime, pickUpDate, pickUpTime, 'en');
     }
   }
 
@@ -39,8 +39,8 @@ class AirportParking extends React.Component {
         <AirportParkingSearchForm airport={this.state.defaultAirport} handleFormSubmit={this.searchForm} contentType="airportParking" headerTitle="Airport Parking" subHeaderTitle="Pre-book your airport parking and save up to 60%"/>
         <div className="gap"></div>
         <div className="container">
-          <div className="row">  
-            <div className="col-md-12">           
+          <div className="row">
+            <div className="col-md-12">
               {
                 this.props.airportParking.apI_Reply != undefined && !this.props.isFetching ?
                   this.props.airportParking.apI_Reply.carPark.map(quote => {
@@ -52,7 +52,7 @@ class AirportParking extends React.Component {
         </div>
         <div className="gap"></div>
         <div className="container">
-          <div className="row text-xs-center">   
+          <div className="row text-xs-center">
             <p><small>Service provider: Holiday Extras GmbH | Aidenbachstr. 52 | 81379 München | Germany. Terms and conditions of Holiday Extras, available at <a href="http://www.holidayextras.de/images/de-hx/pdf/agb.pdf" target="_blank">http://www.holidayextras.de/images/de-hx/pdf/agb.pdf</a>, apply.</small></p>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as airportHotelActions from '../../actions/airportHotelActions';
+import * as airportHotelActions from '../../actions/travelExtras/airportHotelActions';
 import AirportHotelCard from '../../components/travelExtras/airportHotel/card';
 import AirportHotelSearchForm from '../../components/travelExtras/airportHotel/searchForm';
 import AirportHotelBulletPoints from '../../components/content/static/airportHotelBulletPoints';

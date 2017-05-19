@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as reviewsActions from '../../actions/reviewsActions';
+import * as locationReviewsActions from '../../actions/location/locationReviewsActions';
 import ReviewList from './listCard';
 import Pagination from "react-js-pagination";
 
@@ -15,10 +15,10 @@ class Reviews extends React.Component {
   componentWillMount() {
     if (this.props.locationType != 'all' && this.props.locationId > 0)
     {
-      this.props.actions.loadReviewsByLocationId(this.props.locationId, this.props.pageSize, this.props.pageNumber);
+      this.props.locationReviewsActions.loadReviewsByLocationId(this.props.locationId, this.props.pageSize, this.props.pageNumber);
     }
     else {
-      this.props.actions.loadReviewsByType(this.props.locationType, this.props.pageSize, this.props.pageNumber);
+      this.props.locationReviewsActions.loadReviewsByType(this.props.locationType, this.props.pageSize, this.props.pageNumber);
     }
   }
 
@@ -27,10 +27,10 @@ class Reviews extends React.Component {
 
     if (this.props.locationType == 'all')
     {
-      this.props.actions.loadReviewsByLocationId(this.props.locationId, this.props.pageSize, value - 1);
+      this.props.locationReviewsActions.loadReviewsByLocationId(this.props.locationId, this.props.pageSize, value - 1);
     }
     else {
-      this.props.actions.loadReviewsByType(this.props.locationType, this.props.pageSize, value - 1);
+      this.props.locationReviewsActions.loadReviewsByType(this.props.locationType, this.props.pageSize, value - 1);
     }
   }
 
@@ -70,7 +70,7 @@ Reviews.defaultProps = {
 
 Reviews.propTypes = {
   reviews: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired,
+  locationReviewsActions: PropTypes.object.isRequired,
   locationType: PropTypes.string.isRequired,
   locationName: PropTypes.string.isRequired,
   locationId: PropTypes.number.isRequired,
@@ -83,15 +83,15 @@ Reviews.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   return {
-    reviews: state.reviewList.reviewList ? state.reviewList.reviewList.reviewDto : [],
-    reviewCount: state.reviewList.reviewList ? state.reviewList.reviewList.reviewCount : 0,
-    isFetching: state.reviewList ? state.reviewList.isFetching : false
+    reviews: state.locationReviews.reviewList ? state.locationReviews.reviewList.reviewDto : [],
+    reviewCount: state.locationReviews.reviewList ? state.locationReviews.reviewList.reviewCount : 0,
+    isFetching: state.locationReviews ? state.locationReviews.isFetching : false
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(reviewsActions, dispatch)
+    locationReviewsActions: bindActionCreators(locationReviewsActions, dispatch)
   };
 }
 

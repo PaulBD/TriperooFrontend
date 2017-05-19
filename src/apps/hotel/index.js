@@ -4,7 +4,7 @@ import Search from '../../components/hotels/search';
 import Destinations from '../../components/content/dynamic/destinations';
 
 import LastMinuteDeal from '../../components/content/dynamic/lastMinuteDeal';
-import FacebookSignup from '../../components/authentication/facebookSignup';
+import FacebookSignup from '../../components/customer/authentication/facebookSignup';
 import BulletPoints from '../../components/content/static/bulletPoints';
 import TrustedPartners from '../../components/content/static/trustedPartners';
 
@@ -12,15 +12,15 @@ export default class SearchHotels extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    
+
     document.title = 'Search for hotels';
   }
-  
+
   render(){
     return (
       <div>
         <FeaturedHeader contentType="hotel" />
-        <div className="container">            
+        <div className="container">
           <Search searchType="all" />
         </div>
         <div className="container">

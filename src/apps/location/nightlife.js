@@ -1,13 +1,13 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as locationActions from '../../actions/locationActions';
-import * as nightlifeActions from '../../actions/nightlifeActions';
-import FacebookSignup from '../../components/authentication/facebookSignup';;
+import * as locationActions from '../../actions/location/locationActions';
+import * as nightlifeActions from '../../actions/location/travelContent/nightlifeActions';
+import FacebookSignup from '../../components/customer/authentication/facebookSignup';
 import Loader from '../../components/common/loadingDots';
 
-import SubPageHeader from '../../components/locations/subPageHeader'
-import NightlifeCategories from '../../components/locations/categorySideBar';
+import SubPageHeader from '../../components/locations/subPageHeader';
+import NightlifeCategories from '../../components/locations/common/categorySideBar';
 import Nightlife from '../../components/locations/locationListWrapper';
 
 let titleCase = require('title-case');
@@ -34,7 +34,7 @@ class NightlifeContent extends React.Component {
     changePage(value){
         this.props.nightlifeActions.loadNightlifeByParentLocationId(this.props.locationId, this.state.nightlifeType, this.state.pageSize, value);
     }
-      
+
     render(){
         document.title = this.state.nightlifeType == '' ? titleCase(this.props.location.regionName) + ' Nightlife' : titleCase(this.state.nightlifeFriendlyName) + ' in ' + titleCase(this.props.location.regionName);
 
@@ -64,7 +64,7 @@ class NightlifeContent extends React.Component {
                 <FacebookSignup />
             </div>
             );
-        } 
+        }
         else {
             return (<Loader showLoader={this.props.isFetching} />);
         }
@@ -87,15 +87,15 @@ NightlifeContent.propTypes = {
     nightlife: PropTypes.array.isRequired,
     nightlifeType: PropTypes.string
 };
- 
+
 function mapStateToProps(state, ownProps) {
      return {
         isFetching: state.location.isFetching ? state.location.isFetching : false,
-        isFetchingNightlife: state.nightlifeList.isFetching ? state.nightlifeList.isFetching : false,
+        isFetchingNightlife: state.nightlife.isFetching ? state.nightlife.isFetching : false,
         location: state.location.location ? state.location.location : {},
         locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0,
-        nightlife: state.nightlifeList.nightlifeList ? state.nightlifeList.nightlifeList.locations : [],
-        nightlifeCount:  state.nightlifeList.nightlifeList ? state.nightlifeList.nightlifeList.locationCount : 0
+        nightlife: state.nightlife.nightlifeList ? state.nightlife.nightlifeList.locations : [],
+        nightlifeCount:  state.nightlife.nightlifeList ? state.nightlife.nightlifeList.locationCount : 0
     };
 }
 

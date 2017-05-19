@@ -1,6 +1,6 @@
 import React from 'react';
 import Feature from '../../components/travelExtras/feature';
-import FacebookSignup from '../../components/authentication/facebookSignup';
+import FacebookSignup from '../../components/customer/authentication/facebookSignup';
 import LastMinuteDeal from '../../components/content/dynamic/lastMinuteDeal';
 import BulletPoints from '../../components/content/static/bulletPoints';
 import TrustedPartners from '../../components/content/static/trustedPartners';
@@ -9,7 +9,7 @@ export default class TravelExtras extends React.Component {
       componentDidMount() {
         window.scrollTo(0, 0);
         document.title = 'Travel Extras - Make huge savings on all of your holiday must-haves';
-  
+
       }
       render(){
         return (
@@ -60,8 +60,8 @@ export default class TravelExtras extends React.Component {
                             </a>
                         </div>
                     </div>
-                </div>      
-                <div className="gap gap-small"></div>    
+                </div>
+                <div className="gap gap-small"></div>
                 <div className="row">
                     <div className="col-md-4">
                         <div className="thumb">
@@ -105,8 +105,8 @@ export default class TravelExtras extends React.Component {
                             </a>
                         </div>
                     </div>
-                </div>  
-                <div className="gap gap-small"></div>       
+                </div>
+                <div className="gap gap-small"></div>
                 <div className="row">
                     <div className="col-md-4">
                         <div className="thumb">

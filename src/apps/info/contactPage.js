@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 import SocialButtons from "../../components/content/static/socialButtons";
 import Destinations from '../../components/content/dynamic/destinations';
-import FacebookSignup from '../../components/authentication/facebookSignup';
+import FacebookSignup from '../../components/customer/authentication/facebookSignup';
 import BulletPoints from '../../components/content/static/bulletPoints';
 import TrustedPartners from '../../components/content/static/trustedPartners';
 
@@ -13,7 +13,7 @@ export default class ContactPage extends React.Component {
     window.scrollTo(0, 0);
     document.title = 'Contact Triperoo';
   }
-  
+
   render(){
     let style = {
       backgroundImage: 'url(/static/img/north-wales.jpg)'
@@ -39,7 +39,7 @@ export default class ContactPage extends React.Component {
             <div className="gap gap-small"></div>
             <div className="col-md-7">
               <h2 className="title">Travel Inspires Us</h2>
-              <p>Triperoo is based in the beautiful location of North Wales, just on the boarder of Chester. It is 
+              <p>Triperoo is based in the beautiful location of North Wales, just on the boarder of Chester. It is
               an inspiring place to work if ever there was one.</p>
 
               <p>We have listed most questions you may have in our <Link to="faqs">FAQs</Link>.</p>

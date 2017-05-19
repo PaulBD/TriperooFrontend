@@ -5,7 +5,7 @@ import Destinations from '../../components/content/dynamic/destinations';
 import Copy from '../../components/holidays/copy';
 
 import LastMinuteDeal from '../../components/content/dynamic/lastMinuteDeal';
-import FacebookSignup from '../../components/authentication/facebookSignup';
+import FacebookSignup from '../../components/customer/authentication/facebookSignup';
 
 // Since this component is simple and static, there's no parent container for it.
 export default class Holidays extends React.Component {
@@ -14,7 +14,7 @@ export default class Holidays extends React.Component {
     window.scrollTo(0, 0);
     document.title = 'Search for holidays';
   }
-  
+
   render(){
     return (
       <div>

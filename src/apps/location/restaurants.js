@@ -1,13 +1,13 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as locationActions from '../../actions/locationActions';
-import * as restaurantActions from '../../actions/restaurantActions';
-import FacebookSignup from '../../components/authentication/facebookSignup';;
+import * as locationActions from '../../actions/location/locationActions';
+import * as restaurantActions from '../../actions/location/travelContent/restaurantActions';
+import FacebookSignup from '../../components/customer/authentication/facebookSignup';
 import Loader from '../../components/common/loadingDots';
 
-import SubPageHeader from '../../components/locations/subPageHeader'
-import RestaurantCategories from '../../components/locations/categorySideBar';
+import SubPageHeader from '../../components/locations/subPageHeader';
+import RestaurantCategories from '../../components/locations/common/categorySideBar';
 import Restaurants from '../../components/locations/locationListWrapper';
 
 let titleCase = require('title-case');
@@ -34,7 +34,7 @@ class RestaurantContent extends React.Component {
     changePage(value){
         this.props.restaurantActions.loadRestaurantsByParentLocationId(this.props.locationId, this.state.restaurantType, this.state.pageSize, value - 1);
     }
-      
+
     render(){
         document.title = this.state.restaurantType == '' ? titleCase(this.props.location.regionName) + ' Restaurants' : titleCase(this.state.restaurantFriendlyName) + ' in ' + titleCase(this.props.location.regionName);
 
@@ -64,7 +64,7 @@ class RestaurantContent extends React.Component {
                 <FacebookSignup />
             </div>
             );
-        } 
+        }
         else {
             return (<Loader showLoader={this.props.isFetching} />);
         }
@@ -88,15 +88,15 @@ RestaurantContent.propTypes = {
     restaurants: PropTypes.array.isRequired,
     restaurantType: PropTypes.string
 };
- 
+
 function mapStateToProps(state, ownProps) {
      return {
         isFetching: state.location.isFetching ? state.location.isFetching : false,
-        isFetchingRestaurants: state.restaurantsList.isFetching ? state.restaurantsList.isFetching : false,
+        isFetchingRestaurants: state.restaurants.isFetching ? state.restaurants.isFetching : false,
         location: state.location.location ? state.location.location : {},
         locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0,
-        restaurants: state.restaurantsList.restaurantsList ? state.restaurantsList.restaurantsList.locations : [],
-        restaurantCount:  state.restaurantsList.restaurantsList ? state.restaurantsList.restaurantsList.locationCount : 0
+        restaurants: state.restaurants.restaurantsList ? state.restaurants.restaurantsList.locations : [],
+        restaurantCount:  state.restaurants.restaurantsList ? state.restaurants.restaurantsList.locationCount : 0
     };
 }
 

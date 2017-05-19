@@ -1,15 +1,13 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as locationActions from '../../actions/locationActions';
+import * as locationActions from '../../actions/location/locationActions';
 
-import FacebookSignup from '../../components/authentication/facebookSignup';
+import FacebookSignup from '../../components/customer/authentication/facebookSignup';
 import Header from '../../components/locations/subPageHeader';
 import Loader from '../../components/common/loadingDots';
 
 import Hotels from '../../components/hotels/byLocation';
-import LocationStats from '../../components/locations/stats';
-import WeatherForcast from '../../components/weather/forecast';
 
 let titleCase = require('title-case');
 
@@ -22,11 +20,11 @@ class LocationContent extends React.Component {
         window.scrollTo(0, 0);
         this.props.locationActions.loadLocationById(this.props.locationId);
     }
-      
+
     render(){
         document.title = 'Hotels in ' + titleCase(this.props.location.regionName);
 
-        let content = ''
+        let content = '';
 
 
         if (this.props.location.regionName != undefined)
@@ -35,14 +33,14 @@ class LocationContent extends React.Component {
             <div>
                 <Header location={this.props.location} contentType="hotels" />
                 <div className="container">
-                    <div className="row"> 
+                    <div className="row">
                         <Hotels />
                     </div>
                 </div>
                 <FacebookSignup />
             </div>
             );
-        } 
+        }
         else {
             return (<Loader showLoader={this.props.isFetching} />);
         }

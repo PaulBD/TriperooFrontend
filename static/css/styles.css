@@ -2277,7 +2277,7 @@ div.nav-drop {
   height: 0;
   overflow: hidden;
   position: absolute;
-  z-index: 999;
+  z-index: 2000;
   left: -5px;
   color: #fff;
   -webkit-transform: translate3d(0, 10px, 0);

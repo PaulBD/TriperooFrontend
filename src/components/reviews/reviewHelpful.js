@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as reviewActions from '../../actions/reviewActions';
+import * as userReviewActions from '../../actions/customer/userReviewActions';
 import ReviewList from './listCard';
 
 class ReviewHelpful extends React.Component {
@@ -18,7 +18,7 @@ class ReviewHelpful extends React.Component {
   likeReview(e)
   {
     e.preventDefault();
-    this.props.actions.likeReview(this.props.reviewRef);
+    this.props.userReviewActions.likeReview(this.props.reviewRef);
     this.setState({ likeCount: this.state.likeCount + 1, hasClicked: true });
   }
 
@@ -46,7 +46,7 @@ ReviewHelpful.defaultProps = {
 ReviewHelpful.propTypes = {
   reviewRef: PropTypes.string.isRequired,
   likeCount: PropTypes.number.isRequired,
-  actions: PropTypes.object.isRequired,
+  userReviewActions: PropTypes.object.isRequired,
   isSending: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string,
   hasPosted: PropTypes.bool
@@ -63,7 +63,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(reviewActions, dispatch)
+    userReviewActions: bindActionCreators(userReviewActions, dispatch)
   };
 }
 

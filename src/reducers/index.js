@@ -1,59 +1,64 @@
 import { combineReducers } from 'redux';
-import authentication from './authenticationReducer';
-import currency from './currencyReducer';
-import newsletter from './newsletterReducer';
-import autocomplete from './autocompleteReducer';
-import header from './headerReducer';
-import hotelDeals from './hotelDealsReducer';
-import question from './questionReducer';
-import questions from './questionsReducer';
-import reviewList from './reviewsReducer';
-import review from './reviewReducer';
-import global from './reviewReducer';
-import location from './locationReducer';
-import locationsList from './locationsReducer';
-import attractionsList from './attractionsReducer';
-import restaurantsList from './restaurantsReducer';
-import nightlifeList from './nightlifeReducer';
-import weather from './weatherReducer';
-import locationEvents from './eventsReducer';
-import categoryList from './categoryReducer';
-import flights from './flightsReducer';
-import destinations from './destinationsReducer';
-import airports from './airportsReducer';
 
-import airportParking from './airportParkingReducer';
-import airportHotel from './airportHotelReducer';
-import airportLounge from './airportLoungeReducer';
+import currency from './common/currencyReducer';
+import content from './common/contentReducer';
+import categories from './common/categoryReducer';
+import modal from './common/modalReducer';
+
+import authentication from './customer/authenticationReducer';
+import newsletter from './customer/newsletterReducer';
+import question from './customer/questionReducer';
+import review from './customer/reviewReducer';
+import user from './customer/userReducer';
+
+import airports from './location/airportReducer';
+import attractions from './location/attractionReducer';
+import locationEvents from './location/eventReducer';
+import flights from './location/flightReducer';
+import hotels from './location/hotelReducer';
+import locationQuestions from './location/locationQuestionsReducer';
+import location from './location/locationReducer';
+import locationReviews from './location/locationReviewsReducer';
+import locations from './location/locationsReducer';
+import nightlife from './location/nightlifeReducer';
+import restaurants from './location/restaurantReducer';
+import weather from './location/weatherReducer';
+
+import airportParking from './travelExtras/airportParkingReducer';
+import airportHotel from './travelExtras/airportHotelReducer';
+import airportLounge from './travelExtras/airportLoungeReducer';
 
 import {routerReducer} from 'react-router-redux';
 
 const rootReducer = combineReducers({
-  authentication,
+
   currency,
-  newsletter,
-  autocomplete,
-  header,
-  hotelDeals,
+  content,
+  categories,
+  modal,
+
+  authentication,
   question,
-  questions,
-  reviewList,
+  newsletter,
   review,
-  global,
-  location,
-  locationsList,
-  attractionsList,
-  restaurantsList,
-  nightlifeList,
-  categoryList,
-  weather,
-  destinations,
+  user,
+
+  airports,
+  attractions,
   locationEvents,
   flights,
+  hotels,
+  locationQuestions,
+  location,
+  locationReviews,
+  locations,
+  restaurants,
+  nightlife,
+  weather,
+
   airportParking,
   airportHotel,
   airportLounge,
-  airports,
   routing: routerReducer
 });
 

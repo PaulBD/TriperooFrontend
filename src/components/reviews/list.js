@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as reviewsActions from '../../actions/reviewsActions';
+import * as locationReviewsActions from '../../actions/location/locationReviewsActions';
 import ReviewCard from './reviewCard';
 import ContentLoader from '../common/contentLoader';
 
@@ -14,10 +14,10 @@ class Reviews extends React.Component {
   componentWillMount() {
     if (this.props.locationType != 'all' && this.props.locationId > 0)
     {
-      this.props.reviewActions.loadReviewsByLocationId(this.props.locationId, this.props.pageSize, this.props.pageNumber);
+      this.props.locationReviewsActions.loadReviewsByLocationId(this.props.locationId, this.props.pageSize, this.props.pageNumber);
     }
     else {
-      this.props.reviewActions.loadReviewsByType(this.props.locationType, this.props.pageSize, this.props.pageNumber);
+      this.props.locationReviewsActions.loadReviewsByType(this.props.locationType, this.props.pageSize, this.props.pageNumber);
     }
   }
 
@@ -45,7 +45,7 @@ class Reviews extends React.Component {
         <div>
             {title}
             <ReviewCard reviews={reviews} maxTags={5} />
-        </div>    
+        </div>
       );
     }
     else {
@@ -56,10 +56,10 @@ class Reviews extends React.Component {
             <div className="row row-wrap">
               <div className="col-md-4">
                 <ContentLoader showLoader={true} />
-              </div>              
+              </div>
               <div className="col-md-4">
                 <ContentLoader showLoader={true} />
-              </div>              
+              </div>
               <div className="col-md-4">
                 <ContentLoader showLoader={true} />
               </div>
@@ -82,7 +82,7 @@ Reviews.defaultProps = {
 
 Reviews.propTypes = {
   reviews: PropTypes.array.isRequired,
-  reviewActions: PropTypes.object.isRequired,
+  locationReviewsActions: PropTypes.object.isRequired,
   locationType: PropTypes.string.isRequired,
   locationId: PropTypes.number.isRequired,
   pageSize: PropTypes.number.isRequired,
@@ -93,14 +93,14 @@ Reviews.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   return {
-    reviews: state.reviewList.reviewList ? state.reviewList.reviewList.reviewDto : [],
-    isFetching: state.reviewList ? state.reviewList.isFetching : false
+    reviews: state.locationReviews.reviewList ? state.locationReviews.reviewList.reviewDto : [],
+    isFetching: state.locationReviews ? state.locationReviews.isFetching : false
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    reviewActions: bindActionCreators(reviewsActions, dispatch)
+    locationReviewsActions: bindActionCreators(locationReviewsActions, dispatch)
   };
 }
 

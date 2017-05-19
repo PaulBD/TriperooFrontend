@@ -1,8 +1,8 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as eventsActions from '../../actions/eventsActions';
-import EventList from '../events/eventList';
+import * as eventsActions from '../../actions/location/event/eventsActions';
+import EventList from './event/eventList';
 
 class ByLocation extends React.Component {
   constructor(props, context) {
@@ -33,7 +33,7 @@ class ByLocation extends React.Component {
                 <p><a href={allEventsUrl}>View all events</a></p>
               </div>
               <div className="col-md-12">
-                  <EventList locationEvents={this.props.locationEvents} isFeature={false} isFetching={this.props.isFetching} cssClass='col-md-2'/>
+                  <EventList locationEvents={this.props.locationEvents} isFeature={false} isFetching={this.props.isFetching} cssClass="col-md-2"/>
               </div>
             </div> 
           </div> 

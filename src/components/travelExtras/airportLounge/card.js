@@ -14,8 +14,6 @@ class AirportLoungeCard extends React.Component {
 
     render(){
 
-      console.log(this.props.airportLounge);
-
       let url = 'https://app.holidayextras.co.uk/lounges/payment?';
       url += 'from=' + this.props.searchRequest.arrivalDate + " " + this.props.searchRequest.arrivalTime;
       url += '&agent=AW135';
@@ -27,8 +25,6 @@ class AirportLoungeCard extends React.Component {
       url += '&request_id=' + cookie.load('triperooUserId');
       url += '&operator_initials=PBD';
       url += '&product_type=lounges';
-
-
 
       let image = 'http://secure.holidayextras.co.uk' + this.props.airportLounge.tripappImagesList[0];
       return (

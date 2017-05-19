@@ -2,7 +2,7 @@ import React from 'react';
 import FeaturedHeader from '../../components/content/dynamic/featuredHeader';
 import Search from '../../components/flights/search';
 import Destinations from '../../components/content/dynamic/destinations';
-import FacebookSignup from '../../components/authentication/facebookSignup';
+import FacebookSignup from '../../components/customer/authentication/facebookSignup';
 
 export default class FlightsPage extends React.Component {
 
@@ -10,7 +10,7 @@ export default class FlightsPage extends React.Component {
     window.scrollTo(0, 0);
     document.title = 'Search for flights';
   }
-  
+
   render(){
     return (
         <div>

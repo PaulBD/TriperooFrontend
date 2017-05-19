@@ -2,7 +2,7 @@ import React, {PropTypes} from "react";
 
 class StarRating extends React.Component {
   render(){
-    let greyStarsNumber = 0;
+    let greyStarsNumber;
     let maxStars = 5;
 
     let stars = 0;

@@ -1,18 +1,18 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as locationActions from '../../actions/locationActions';
+import * as locationActions from '../../actions/location/locationActions';
 
-import FacebookSignup from '../../components/authentication/facebookSignup';
+import FacebookSignup from '../../components/customer/authentication/facebookSignup';
 import ReviewList from '../../components/reviews/textList';
 import RecentQuestions from '../../components/questions/questions';
-import QuestionButton from '../../components/questions/askButton';
+import QuestionButton from '../../components/questions/questionButton';
 import TopLocations from '../../components/locations/topLocations';
 import NavigationWrapper from '../../components/locations/navigation/navigationWrapper';
 import Summary from '../../components/locations/summary';
 import Header from '../../components/locations/homeHeader';
 import LocationStats from '../../components/locations/stats';
-import WeatherForcast from '../../components/weather/forecast';
+import WeatherForcast from '../../components/locations/weather/forecast';
 import LastMinuteDeal from '../../components/content/dynamic/lastMinuteDeal';
 import Loader from '../../components/common/loadingDots';
 import TopEvents from '../../components/locations/topEvents';
@@ -29,7 +29,7 @@ class LocationHome extends React.Component {
         window.scrollTo(0, 0);
         this.props.locationActions.loadLocationById(this.props.locationId);
     }
-      
+
     render(){
         document.title = 'Explore, Plan, Book in ' + titleCase(this.props.location.regionName);
         if (this.props.location.regionName != undefined)
@@ -50,21 +50,20 @@ class LocationHome extends React.Component {
                             <Summary locationName={this.props.location.regionName} summary={this.props.location.summary} />
                         </div>
                         <div className="col-md-4">
-                            <QuestionButton locationId={this.props.locationId} locationName={this.props.location.regionNameLong} locationNameShort={this.props.location.regionName} locationType={this.props.location.regionType}/>
+                            <QuestionButton locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType={this.props.location.regionType}/>
                             <RecentQuestions locationId={this.props.locationId} locationName={this.props.location.regionName} limit={3} offset={0} />
                         </div>
                     </div>
-                </div> 
+                </div>
                 <div className="gap"></div>
-                <LastMinuteDeal locationId={this.props.locationId} /> 
-                <div className="gap"></div>
+                <LastMinuteDeal locationId={this.props.locationId} />
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8">
                             <ReviewList locationId={this.props.locationId} locationName={this.props.location.regionName} locationType="" pageSize={10} pageNumber={0} showTitle={true} />
                         </div>
                         <div className="col-md-4">
-                            <ReviewButton locationId={this.props.locationId} locationName={this.props.location.regionName} locationType="" />
+                            <ReviewButton name="sidePanel" locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType="" />
                             <LocationStats likeCount={this.props.location.likeCount} locationName={this.props.location.regionName} reviewCount={this.props.location.reviewCount} averageReviewScore={this.props.location.averageReviewScore} />
                             <div className="gap gap-small"></div>
                             <WeatherForcast locationId={this.props.locationId} />
@@ -76,7 +75,7 @@ class LocationHome extends React.Component {
                 <FacebookSignup />
             </div>
         );
-    } 
+    }
     else {
         return (<Loader showLoader={this.props.isFetching} />);
     }

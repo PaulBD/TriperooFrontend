@@ -34,10 +34,18 @@ class LocationHeader extends React.Component {
                             </div>
                             <div className="col-md-4 col-xs-5 text-xs-right">
                                 <div className="gap gap-small"></div>
-                                <p className="reviewsHeader">
-                                    <StarRating starRating={4} className="icon-list list-inline-block mb0 last-minute-rating"/>
-                                    0 Reviews
-                                </p>
+                                <div className="reviewsHeader">
+                                    <StarRating starRating={this.props.location.averageReviewScore} className="icon-list list-inline-block mb0 last-minute-rating"/>
+                                    {this.props.location.reviewCount == 1 ? this.props.location.reviewCount + ' Review' : this.props.location.reviewCount + ' Reviews'}
+                                </div>
+                            </div>
+
+                            <div className="col-md-4 col-xs-5 hide">
+                              <ul className="list text-xs-right list-inline cityNav">
+                                <Item item="Reviews" parentUrl={this.props.location.url} showCount={false} showName={false} isActive={false} cssClass="fa fa-comments user-profile-statictics-icon" />
+                                <Item item="Photos" parentUrl={this.props.location.url} showCount={false} showName={false} isActive={false} cssClass="fa fa-picture-o user-profile-statictics-icon" />
+                                <Item item="Bookmark" parentUrl={this.props.location.url} showCount={false} showName={false} isActive={false} cssClass="fa fa-bookmark user-profile-statictics-icon" />
+                                </ul> 
                             </div>
                         </div>
                     </div>
@@ -52,8 +60,7 @@ LocationHeader.defaultProps = {
 };
 
 LocationHeader.propTypes = {
-    location: PropTypes.object.isRequired,
-    contentType: PropTypes.string.isRequired
+    location: PropTypes.object.isRequired
 };
 
 export default LocationHeader;

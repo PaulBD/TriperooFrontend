@@ -1,12 +1,12 @@
 import React from 'react';
-import UserProfile from '../../components/customers/userProfile';
+import UserProfile from '../../components/customer/user/userProfile';
 // Since this component is simple and static, there's no parent container for it.
 export default class Photos extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
   }
-  
+
   render(){
     return (
         <div className="container">

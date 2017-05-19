@@ -1,13 +1,13 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as locationActions from '../../actions/locationActions';
-import * as attractionsActions from '../../actions/attractionsActions';
-import FacebookSignup from '../../components/authentication/facebookSignup';;
+import * as locationActions from '../../actions/location/locationActions';
+import * as attractionActions from '../../actions/location/travelContent/attractionActions';
+import FacebookSignup from '../../components/customer/authentication/facebookSignup';
 import Loader from '../../components/common/loadingDots';
 
-import SubPageHeader from '../../components/locations/subPageHeader'
-import AttractionCategories from '../../components/locations/categorySideBar';
+import SubPageHeader from '../../components/locations/subPageHeader';
+import AttractionCategories from '../../components/locations/common/categorySideBar';
 import Attractions from '../../components/locations/locationListWrapper';
 
 let titleCase = require('title-case');
@@ -34,7 +34,7 @@ class AttractionContent extends React.Component {
     changePage(value){
         this.props.attractionActions.loadAttractionsByParentLocationId(this.props.locationId, this.state.attractionType, this.state.pageSize, value - 1);
     }
-      
+
     render(){
         document.title = this.state.attractionType == '' ? titleCase(this.props.location.regionName) + ' Attractions' : titleCase(this.state.attractionFriendlyName) + ' in ' + titleCase(this.props.location.regionName);
 
@@ -64,7 +64,7 @@ class AttractionContent extends React.Component {
                     <FacebookSignup />
                 </div>
             );
-        } 
+        }
         else {
             return (<Loader showLoader={this.props.isFetching} />);
         }
@@ -88,22 +88,22 @@ AttractionContent.propTypes = {
     attractions: PropTypes.array.isRequired,
     attractionType: PropTypes.string
 };
- 
+
 function mapStateToProps(state, ownProps) {
      return {
         isFetching: state.location.isFetching ? state.location.isFetching : false,
-        isFetchingAttractions: state.attractionsList.isFetching ? state.attractionsList.isFetching : false,
+        isFetchingAttractions: state.attractions.isFetching ? state.attractions.isFetching : false,
         location: state.location.location ? state.location.location : {},
         locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0,
-        attractions: state.attractionsList.attractionsList ? state.attractionsList.attractionsList.locations : [],
-        attractionCount:  state.attractionsList.attractionsList ? state.attractionsList.attractionsList.locationCount : 0
+        attractions: state.attractions.attractionsList ? state.attractions.attractionsList.locations : [],
+        attractionCount:  state.attractions.attractionsList ? state.attractions.attractionsList.locationCount : 0
     };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     locationActions: bindActionCreators(locationActions, dispatch),
-    attractionActions: bindActionCreators(attractionsActions, dispatch)
+    attractionActions: bindActionCreators(attractionActions, dispatch)
   };
 }
 

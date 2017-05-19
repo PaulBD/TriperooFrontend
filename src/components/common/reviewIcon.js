@@ -1,46 +1,51 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as globalActions from '../../actions/globalActions';
+import * as modalActions from '../../actions/common/modalActions';
 
 class ReviewIcon extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.openPopup = this.openPopup.bind(this);
+    this.writeReview = this.writeReview.bind(this);
   }
 
-  openPopup(e) {
+  writeReview(e) {
     e.preventDefault();
-        this.props.globalActions.openReviewModel(this.props.locationId);
+    this.props.modalActions.openReview(this.props.locationId, this.props.locationName, this.props.locationType);
   }
 
   render(){
     return (
         <div>
-          <a className="fa fa-comments box-icon-normal round" key={this.props.locationId} href="#" onClick={this.openPopup} data-toggle="modal" data-target="#reviewModel" title="Review"></a>
-        </div>    
+          <a className="fa fa-comments box-icon-normal round" key={this.props.locationId} href="#" onClick={this.writeReview} data-toggle="modal" data-target="#reviewModel" title="Review"></a>
+        </div>
       );
     }
 }
 
 ReviewIcon.defaultProps = {
-  locationId: 0
+  locationId: 0,
+  locationName: '',
+  locationType: ''
 };
 
 ReviewIcon.propTypes = {
   locationId: PropTypes.number.isRequired,
+  locationName: PropTypes.string.isRequired,
+  locationType: PropTypes.string.isRequired,
+  modalActions: PropTypes.object.isRequired,
   selectedLocationId: PropTypes.number.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
      return {
-        selectedLocationId: state.global.locationId ? state.global.locationId : 0
+        selectedLocationId: state.modal.locationId ? state.modal.locationId : 0
     };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    globalActions: bindActionCreators(globalActions, dispatch)
+    modalActions: bindActionCreators(modalActions, dispatch)
   };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ReviewIcon);

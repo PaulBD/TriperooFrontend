@@ -1,6 +1,5 @@
 import React from 'react';
 import FeaturedHeader from '../../components/content/dynamic/featuredHeader';
-import LocalExpert from '../../components/content/static/localExpert';
 import BulletPoints from '../../components/content/static/bulletPoints';
 import TrustedPartners from '../../components/content/static/trustedPartners';
 
@@ -8,7 +7,7 @@ import LastMinuteDeal from '../../components/content/dynamic/lastMinuteDeal';
 import Search from '../../components/search/homePage';
 import Destinations from '../../components/content/dynamic/destinations';
 import ReviewList from '../../components/reviews/list';
-import FacebookSignup from '../../components/authentication/facebookSignup';
+import FacebookSignup from '../../components/customer/authentication/facebookSignup';
 
 const HomePage = () => {
 
@@ -21,7 +20,7 @@ const HomePage = () => {
                 <Search searchType="all" />
                 <div className="gap"></div>
                 <div className="row row-wrap text-xs-center">
-                    <Destinations destinationCount={3} title="Our Top Destinations" />
+                    <Destinations locationCount={3} title="Our Top Destinations" />
                 </div>
                 <div className="gap gap-small"></div>
                 <div className="row row-wrap text-xs-center">

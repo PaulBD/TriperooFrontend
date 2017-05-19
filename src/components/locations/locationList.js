@@ -1,6 +1,11 @@
 import React, {PropTypes} from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as authenticationActions from '../../actions/customer/authenticationActions';
 let titleCase = require('title-case');
 import ReviewIcon from '../common/reviewIcon';
+import PhotoIcon from '../common/photoIcon';
+import BookmarkIcon from '../common/bookmarkIcon';
 
 class LocationList extends React.Component {
   constructor(props, context) {
@@ -83,18 +88,19 @@ class LocationList extends React.Component {
 									<h5>{location.regionName.length > 33 ? location.regionName.substring(0,33) + '...' : location.regionName}</h5>
 									<p>{titleCase(locationType)}</p>
 								</div>
+								<ul className={this.props.isAuthenticated ? "hover-icon-group-bottom-right" : "hide"}>
+									<li>
+										<ReviewIcon locationId={location.regionID} locationName={location.regionNameLong} locationType={location.subClass} key={location.regionID}/>
+									</li>
+									<li>
+										<PhotoIcon locationId={location.regionID} locationName={location.regionNameLong} locationType={location.subClass} key={location.regionID}/>
+									</li>
+									<li>
+										<BookmarkIcon locationId={location.regionID} locationName={location.regionNameLong} locationType={location.subClass} key={location.regionID}/>
+									</li>
+								</ul>
 							</div>
-							<ul className="hover-icon-group-center-top">
-								<li>
-									<ReviewIcon locationId={location.id} key={location.id}/>
-								</li>
-								<li>
-									<a className="fa fa-picture-o box-icon-normal round" href="#" title="Take Photos"></a>
-								</li>
-								<li>
-									<a className="fa fa-bookmark box-icon-normal round" href="#" title="Bookmark"></a>
-								</li>
-							</ul>
+
 						</a>
 					{spacer}
 					</div>
@@ -113,7 +119,23 @@ LocationList.defaultProps = {
 
 LocationList.propTypes = {
 	locations: PropTypes.array.isRequired,
-	cssClass: PropTypes.string
+	cssClass: PropTypes.string,
+  authActions: PropTypes.object.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired
 };
 
-export default LocationList;
+function mapStateToProps(state, ownProps) {
+  return {
+    currency: state.currency,
+    isAuthenticated: state.authentication.isAuthenticated
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    authActions: bindActionCreators(authenticationActions, dispatch)
+  };
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(LocationList);

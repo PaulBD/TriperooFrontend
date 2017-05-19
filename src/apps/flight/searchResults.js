@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as flightActions from '../../actions/flightActions';
+import * as flightActions from '../../actions/location/travelContent/flightActions';
 import FlightCard from './flightCard';
 
 class SearchResults extends React.Component {

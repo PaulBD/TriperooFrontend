@@ -30,10 +30,9 @@ class TagList extends React.Component {
 
     if (!isAlreadyInList)
     {
-      //selectedTags.push({id: selectedTags.length + 1, text: newTag });
       selectedTags.push(newTag);
     }
-    
+
     this.setState({selectedTags: selectedTags});
 
     this.props.returnTags(selectedTags);
@@ -45,9 +44,9 @@ class TagList extends React.Component {
             return i;
         }
     }
-    return -1; //to handle the case where the value doesn't exist
+    return -1;
   }
-  
+
   render(){
     return (
       <p className="tagCollection">
@@ -56,12 +55,12 @@ class TagList extends React.Component {
             if (this.props.readOnly)
             {
               return (
-                <span className="tagReadOnly tag-default" key={tag}>{tag} {this.state.selectedTags.includes(tag)}</span> 
+                <span className="tagReadOnly tag-default" key={tag}>{tag} {this.state.selectedTags.includes(tag)}</span>
               );
             }
             else {
               return (
-                <span className={this.getIndex(tag, this.state.selectedTags) > -1 ? "tag tag-default selected" : "tag tag-default"} key={tag} onClick={this.selectTag} data-name={tag}>{tag} {this.state.selectedTags.includes(tag)}</span> 
+                <span className={this.getIndex(tag, this.state.selectedTags) > -1 ? "tag tag-default selected" : "tag tag-default"} key={tag} onClick={this.selectTag} data-name={tag}>{tag} {this.state.selectedTags.includes(tag)}</span>
               );
             }
           })

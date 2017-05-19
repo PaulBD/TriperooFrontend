@@ -1,12 +1,12 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as eventsActions from '../../actions/eventsActions';
-import EventList from '../../components/events/eventList';
-import EventCategories from '../../components/locations/categorySideBar';
+import * as eventsActions from '../../actions/location/event/eventsActions';
+import * as locationActions from '../../actions/location/locationActions';
+
+import EventCategories from '../../components/locations/common/categorySideBar';
+import EventList from '../../components/locations/event/eventList';
 import Pagination from "react-js-pagination";
-import Loader from '../../components/common/loadingDots';
-import * as locationActions from '../../actions/locationActions';
 import SubPageHeader from '../../components/locations/subPageHeader';
 let titleCase = require('title-case');
 
@@ -27,7 +27,7 @@ class EventHome extends React.Component {
     window.scrollTo(0, 0);
     this.setState({ categoryName: categoryId, friendlyCategory: catgeoryName });
 
-    this.props.eventActions.loadEventsByCategory(this.props.locationId, categoryId, this.state.pageSize, this.state.pageNumber);  
+    this.props.eventActions.loadEventsByCategory(this.props.locationId, categoryId, this.state.pageSize, this.state.pageNumber);
   }
 
   changePage(value) {
@@ -51,7 +51,7 @@ class EventHome extends React.Component {
 
       if (this.state.categoryName != '') {
         if (this.state.friendlyCategory == '')
-        { 
+        {
           intro = 'We found ' + totalItems + ' events matching all categories.';
           title= '<span>Featured Events:</span> Recommended For You';
         }
@@ -60,7 +60,7 @@ class EventHome extends React.Component {
           intro = 'We found ' + totalItems + ' events matching ' + this.state.friendlyCategory + '.';
           title= '<span>Local:</span> ' + this.state.friendlyCategory;
         }
-      } 
+      }
       else {
         intro = 'We found ' + totalItems + ' events in total.';
           title= '<span>Featured Events:</span> Recommended For You';
@@ -83,7 +83,7 @@ class EventHome extends React.Component {
     }
 
   return (
-    <div>   
+    <div>
       <SubPageHeader location={this.props.location} contentType="events" />
       <div className="container">
         <div className="row row-wrap">
@@ -121,7 +121,6 @@ EventHome.defaultProps = {
   pageSize: 0,
   totalItems: 0,
   pageNumber: 0,
-  isFetching: false,
   locationName: '',
   isFetchingLocation: false,
   isFetchingLocationEvents: false

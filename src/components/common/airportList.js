@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as airportActions from '../../actions/airportActions';
+import * as airportActions from '../../actions/location/travelContent/airportActions';
 
 class AirportList extends React.Component {
   constructor(props, context) {

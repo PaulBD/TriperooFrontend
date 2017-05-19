@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import WeatherSummary from '../weather/summary';
+import WeatherSummary from './weather/summary';
 
 class Header extends React.Component {
   constructor(props, context) {

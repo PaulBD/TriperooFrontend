@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 import SocialButtons from "../../components/content/static/socialButtons";
 import Destinations from '../../components/content/dynamic/destinations';
-import FacebookSignup from '../../components/authentication/facebookSignup';
+import FacebookSignup from '../../components/customer/authentication/facebookSignup';
 import BulletPoints from '../../components/content/static/bulletPoints';
 import TrustedPartners from '../../components/content/static/trustedPartners';
 
@@ -13,7 +13,7 @@ export default class AboutPage extends React.Component {
     window.scrollTo(0, 0);
     document.title = 'About Triperoo';
   }
-  
+
   render(){
     let style = {
       backgroundImage: 'url(/static/img/about.jpg)'
@@ -36,13 +36,13 @@ export default class AboutPage extends React.Component {
             <div className="gap gap-small"></div>
             <div className="col-md-6">
               <h2 className="title">Triperoo's mission is to help people explore, plan and book vacation's.</h2>
-              <p>We want to distrupt the travel space by helping our customers explore the world 
+              <p>We want to distrupt the travel space by helping our customers explore the world
               and using that knowledge to earn commission by recommending other users on where to visit.</p>
 
-              <p>We also believe that 
-              being able to plan and book your trip without any stress is important as using our unique technology so 
-              we try and recommend useful products that you may need during your trip. On top of that, before you 
-              get to your destination and whilst your there, we help you plan activities to help you get the best 
+              <p>We also believe that
+              being able to plan and book your trip without any stress is important as using our unique technology so
+              we try and recommend useful products that you may need during your trip. On top of that, before you
+              get to your destination and whilst your there, we help you plan activities to help you get the best
               out of your trip.</p>
               <p><SocialButtons /></p>
             </div>

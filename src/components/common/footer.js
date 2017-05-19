@@ -1,8 +1,8 @@
 import React, {PropTypes} from 'react';
-import { Link, browserHistory } from "react-router";
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as authenticationActions from '../../actions/authenticationActions';
+import * as modalActions from '../../actions/common/modalActions';
+import * as authenticationActions from '../../actions/customer/authenticationActions';
 
 import Newsletter from "./newsletter";
 import SocialButtons from "../content/static/socialButtons";
@@ -10,7 +10,26 @@ import SocialButtons from "../content/static/socialButtons";
 class Footer extends React.Component {
    constructor(props, context) {
      super(props, context);
-    this.onLogout = this.onLogout.bind(this);
+     this.onLogout = this.onLogout.bind(this);
+     this.writeReview = this.writeReview.bind(this);
+     this.login = this.login.bind(this);
+     this.signup = this.signup.bind(this);
+  }
+
+
+  writeReview(e) {
+    e.preventDefault();
+    this.props.modalActions.openReview(0, '', '');
+  }
+
+  login(e) {
+    e.preventDefault();
+    this.props.modalActions.openLogin();
+  }
+
+  signup(e) {
+    e.preventDefault();
+    this.props.modalActions.openSignup();
   }
 
   onLogout(e) {
@@ -18,38 +37,23 @@ class Footer extends React.Component {
   }
 
   render() {
-    let menu = '';
-
-    if (this.props.isAuthenticated) {
-      menu = (<ul className="list list-footer">
-                <li><a href="/explore-destinations" title="Destinations">Destinations</a></li>
-                <li><a href="/hotels" title="Hotels">Hotels</a></li>
-                <li><a href="/flights" title="Flights">Flights</a></li>
-                <li><a href="/travel-extras" title="Travel Extras">Travel Extras</a></li>
-                <li><a href="#" onClick={this.onLogout} title="Log Out">Log Out</a></li>
-              </ul>
-            );
-    }
-    else {
-      menu = (<ul className="list list-footer">
-                <li><a href="/explore-destinations" title="Destinations">Destinations</a></li>
-                <li><a href="/hotels" title="Hotels">Hotels</a></li>
-                <li><a href="/flights" title="Flights">Flights</a></li>
-                <li><a href="/travel-extras" title="Travel Extras">Travel Extras</a></li>
-                <li><a href="#" data-toggle="modal" data-target="#reviewModel" title="Write a Review">Write a Review</a></li>
-                <li><a href="#" data-toggle="modal" data-target="#signupModel" title="Sign Up">Sign Up</a></li>
-                <li><a href="#" data-toggle="modal" data-target="#loginModel" title="Log In">Log In</a></li>
-              </ul>
-            );
-    }
-      return (
+     return (
 		<footer id="main-footer">
             <div className="container">
                 <div className="row row-wrap">
                     <div className="col-md-4">
                         <div className="row">
                             <div className="col-md-6">
-                                {menu}
+                              <ul className="list list-footer">
+                                <li><a href="/explore-destinations" title="Destinations">Destinations</a></li>
+                                <li><a href="/hotels" title="Hotels">Hotels</a></li>
+                                <li><a href="/flights" title="Flights">Flights</a></li>
+                                <li><a href="/travel-extras" title="Travel Extras">Travel Extras</a></li>
+                                <li className={this.props.isAuthenticated ? "" : "hide"}><a href="#" onClick={this.onLogout} title="Log Out">Log Out</a></li>
+                                <li className={this.props.isAuthenticated ? "" : "hide"}><a href="#" onClick={this.writeReview} title="Write a Review">Write a Review</a></li>
+                                <li className={!this.props.isAuthenticated ? "" : "hide"}><a href="#" onClick={this.signup}title="Sign Up">Sign Up</a></li>
+                                <li className={!this.props.isAuthenticated ? "" : "hide"}><a href="#" onClick={this.login} title="Log In">Log In</a></li>
+                              </ul>
                             </div>
                             <div className="col-md-6">
                                 <ul className="list list-footer">
@@ -66,7 +70,7 @@ class Footer extends React.Component {
                       <Newsletter />
                     </div>
                     <div className="col-md-4">
-                        <a className="logo" href="index.html">
+                        <a className="logo" href="/">
                             <img src="/static/img/logo-invert.png" alt="Triperoo" title="Triperoo" />
                         </a>
                         <p className="mb20">Get the best deals from the top travel websites, plus reviews on the best hotels, restaurants, attractions & more from local experts!</p>
@@ -81,6 +85,7 @@ class Footer extends React.Component {
 
 
 Footer.propTypes = {
+  modalActions: PropTypes.object.isRequired,
   authActions: PropTypes.object.isRequired,
   isAuthenticated: PropTypes.bool.isRequired
 };
@@ -93,7 +98,8 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    authActions: bindActionCreators(authenticationActions, dispatch)
+    authActions: bindActionCreators(authenticationActions, dispatch),
+    modalActions: bindActionCreators(modalActions, dispatch)
   };
 }
 

@@ -1,7 +1,4 @@
 import React, {PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import * as reviewActions from '../../actions/reviewActions';
 
 import Loader from '../common/loadingDots';
 import ReviewItem from './reviewItem';
@@ -36,8 +33,6 @@ class ReviewList extends React.Component {
 }
 
 ReviewList.defaultProps = {
-  isSending: false,
-  hasPosted: false,
   reviews: []
 };
 
