@@ -15,17 +15,17 @@ class LocationApi {
           reject(error);
         });
     });
-  }  
+  }
 
   // ****************************************
   // Update Location
   // ****************************************
-  static updateLocation(locationId, location) {
+  static updateLocation(location) {
     return new Promise((resolve, reject) => {
-      /*
+      console.log(location);
       axios({
         method: 'put',
-        url:  baseUrl + '/location/' + locationId,
+        url:  baseUrl + '/location/' + location.regionID,
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
@@ -36,12 +36,11 @@ class LocationApi {
         }
       })
       .then(response => {
-        resolve(Object.assign([], response.data));
+        resolve(Object.assign({}, response.data));
       })
       .catch(function (error) {
         reject(error);
       });
-      */
     });
   }
 }

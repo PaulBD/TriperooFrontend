@@ -38,7 +38,7 @@ class Modal extends React.Component {
     super(props, context);
     this.openModal = this.openModal.bind(this);
     this.closeModalWindow = this.closeModalWindow.bind(this);
-    this.state = { modalIsOpen: false};
+    this.state = {modalIsOpen: false};
   }
 
   openModal() {
@@ -53,7 +53,7 @@ class Modal extends React.Component {
 
   render(){
 
-    let modal;
+    let modal = (<p>Loading</p>);
 
     switch(this.props.modalType)
     {
@@ -64,7 +64,7 @@ class Modal extends React.Component {
         modal = (<QuestionModal hasPosted={false} closeModal={this.props.closeModal} locationId={this.props.modalContent.locationId} locationName={this.props.modalContent.locationName} locationType={this.props.modalContent.locationType} />);
         break;
       case "QuestionAnswer":
-        modal = (<QuestionAnswerModal question={this.props.modalContent.question} hasPosted={false} closeModal={this.props.closeModal} questionId={this.props.modalContent.questionId} />);
+        modal = (<QuestionAnswerModal question={this.props.modalContent.question} hasPosted={false} closeModal={this.props.closeModal} questionReference={this.props.modalContent.questionReference} />);
         break;
       case "Login":
         modal = (<LoginModal hasPosted={false} closeModal={this.props.closeModal} />);
@@ -73,16 +73,15 @@ class Modal extends React.Component {
         modal = (<SignupModal hasPosted={false} closeModal={this.props.closeModal} />);
         break;
       case "Bookmark":
-        modal = (<BookmarkLocationModal hasPosted={false} closeModal={this.props.closeModal} locationId={this.props.modalContent.locationId} locationName={this.props.modalContent.locationName} locationType={this.props.modalContent.locationType} />);
+        modal = (<BookmarkLocationModal hasPosted={false} closeModal={this.props.closeModal} locationId={this.props.modalContent.locationId} locationName={this.props.modalContent.locationName} locationType={this.props.modalContent.locationType} locationUrl={this.props.modalContent.locationUrl} locationImage={this.props.modalContent.locationImage} locationNameLong={this.props.modalContent.locationNameLong} removeBookmark={this.props.modalContent.removeBookmark}/>);
         break;
       case "Photo":
         modal = (<p>Photo</p>);
         break;
       case "Location":
-        modal = (<LocationModal hasPosted={false} closeModal={this.props.closeModal} locationId={this.props.modalContent.locationId} locationName={this.props.modalContent.locationName} locationType={this.props.modalContent.locationType} />);
+        modal = (<LocationModal hasPosted={false} closeModal={this.props.closeModal} locationId={this.props.modalContent.locationId} locationName={this.props.modalContent.locationName} locationType={this.props.modalContent.locationType} location={this.props.modalContent.location} />);
         break;
     }
-
 
     return (
       <ReactModal style={customStyles} isOpen={this.props.modalIsOpen} onRequestClose={this.closeModalWindow} contentLabel={this.props.modalName} shouldCloseOnOverlayClick={true} className="Modal"  >

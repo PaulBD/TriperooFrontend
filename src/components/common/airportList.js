@@ -7,10 +7,20 @@ class AirportList extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.handleChange = this.handleChange.bind(this);
+    this.state = { isLoading: false };
   }
 
   componentDidMount() {
-    this.props.airportActions.loadAirports();
+    this.loadAirports();
+  }
+
+  loadAirports() {
+    this.setState({isLoading: true})
+    this.props.airportActions.loadAirports()
+      .then(() => this.setState({isLoading: false}))
+      .catch(error => {
+        this.setState({isLoading: false});
+      });
   }
 
   handleChange(e) {
@@ -24,9 +34,10 @@ class AirportList extends React.Component {
         <select className={this.props.cssClass} ref={this.props.name} name={this.props.name} value={this.props.selectedValue} onChange={this.handleChange}>
           <option key="Select">Please Select</option>
           {
+            !this.state.isLoading ?
             this.props.airportList.map(airport  => {
               return <option key={airport.code} value={airport.code} >{airport.name}</option>;
-            })
+            }) : <option key="loading">Loading Airport</option>
           }
         </select>
       );
@@ -46,13 +57,11 @@ AirportList.propTypes = {
   selectedValue: PropTypes.string.isRequired,
   changeValue: PropTypes.func,
   airportList: PropTypes.array,
-  airportActions: PropTypes.object.isRequired,
-  isFetching: PropTypes.bool.isRequired
+  airportActions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
  return {
-    isFetching: state.airports.isFetching ? state.airports.isFetching : false,
     airportList: state.airports.airportList ? state.airports.airportList : []
   };
 }

@@ -8,14 +8,14 @@ export default function locationReducer(state = { isFetching: false }, action) {
 			return Object.assign({}, state, { isFetching: false, errorMessage: '', location: action.location });
 		case types.LOCATION_CONTENT_FAILURE:
 			return Object.assign({}, state, { isFetching: false, errorMessage: action.message });
-		
+
 		case types.LOCATION_UPDATE_REQUEST:
 			return Object.assign({}, state, { isFetching: true });
 		case types.LOCATION_UPDATE_SUCCESS:
 			return Object.assign({}, state, { isFetching: false, errorMessage: '', location: action.location });
 		case types.LOCATION_UPDATE_FAILURE:
 			return Object.assign({}, state, { isFetching: false, errorMessage: action.message });
-			
+
 		default:
 			return state;
 	}

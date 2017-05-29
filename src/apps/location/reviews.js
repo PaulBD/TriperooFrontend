@@ -5,81 +5,95 @@ import * as locationActions from '../../actions/location/locationActions';
 
 import FacebookSignup from '../../components/customer/authentication/facebookSignup';
 import Header from '../../components/locations/subPageHeader';
-import Loader from '../../components/common/loadingDots';
 
 import ReviewList from '../../components/reviews/textList';
 import LocationStats from '../../components/locations/stats';
 import WeatherForcast from '../../components/locations/weather/forecast';
 import ReviewButton from '../../components/reviews/reviewButton';
+import TriperooLoader from '../../components/common/triperooLoader';
+import Toastr from 'toastr';
 
 let titleCase = require('title-case');
 
 class ReviewsByLocation extends React.Component {
-    constructor(props, context) {
-        super(props, context);
-    }
+  constructor(props, context) {
+    super(props, context);
+    this.state = { isLoadingLocation: false };
+  }
 
-    componentDidMount() {
-        window.scrollTo(0, 0);
-        this.props.locationActions.loadLocationById(this.props.locationId);
-    }
+  componentDidMount() {
+    window.scrollTo(0, 0);
+    this.setState({isLoadingLocation: true});
+    this.loadLocation();
+  }
 
-    render(){
-        document.title = titleCase(this.props.location.regionName) + ' reviews';
+  loadLocation() {
+    this.props.locationActions.loadLocationById(this.props.locationId)
+      .then(() => this.DoSomething())
+      .catch(error => {
+        Toastr.error(error);
+        this.setState({isLoadingLocation: false});
+      });
+  }
 
-        if (this.props.location.regionName != undefined)
-        {
-            return (
-            <div>
-                <Header location={this.props.location} contentType="reviews" />
-                <div className="container">
-                    <div className="row row-wrap">
-                        <div className="gap gap-small"></div>
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-md-8">
-                                    <ReviewList locationId={this.props.locationId} locationName={this.props.location.regionName} locationType="" pageSize={3} pageNumber={0} showTitle={false} />
-                                </div>
-                                <div className="col-md-4">
-                                    <ReviewButton />
-                                    <LocationStats likeCount={this.props.location.likeCount} reviewCount={this.props.location.reviewCount} averageReviewScore={this.props.location.averageReviewScore} />
-                                    <div className="gap gap-small"></div>
-                                    <WeatherForcast locationId={this.props.locationId} />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="gap"></div>
-                    </div>
+  DoSomething() {
+    this.setState({isLoadingLocation: false});
+  }
+
+  render(){
+    document.title = titleCase(this.props.location.regionName) + ' reviews';
+
+    if (! this.state.isLoadingLocation)
+    {
+      return (
+        <div>
+          <Header location={this.props.location} contentType="reviews" />
+          <div className="container">
+            <div className="row row-wrap">
+              <div className="gap gap-small"></div>
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-8">
+                    <ReviewList locationId={this.props.locationId} locationName={this.props.location.regionName} locationType="" pageSize={3} pageNumber={0} showTitle={false} />
+                  </div>
+                  <div className="col-md-4">
+                    <ReviewButton />
+                    <LocationStats likeCount={this.props.location.likeCount} reviewCount={this.props.location.reviewCount} averageReviewScore={this.props.location.averageReviewScore} />
+                    <div className="gap gap-small"></div>
+                    <WeatherForcast locationId={this.props.locationId} />
+                  </div>
                 </div>
-                <FacebookSignup />
+              </div>
+              <div className="gap"></div>
             </div>
-            );
-        }
-        else {
-            return (<Loader showLoader={this.props.isFetching} />);
-        }
+          </div>
+          <FacebookSignup />
+        </div>
+      );
+    }
+    else {
+      return (<TriperooLoader />);
+    }
   }
 }
 
 ReviewsByLocation.defaultProps = {
-    isFetching: false
+  isFetching: false
 };
 
 ReviewsByLocation.propTypes = {
-    locationId: PropTypes.number,
-    location: PropTypes.object,
-    locationActions: PropTypes.object.isRequired,
-    isFetching: PropTypes.bool.isRequired,
-    contentType: PropTypes.string.isRequired
+  locationId: PropTypes.number,
+  location: PropTypes.object,
+  locationActions: PropTypes.object.isRequired,
+  contentType: PropTypes.string.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
-     return {
-        isFetching: state.location.isFetching ? state.location.isFetching : false,
-        location: state.location.location ? state.location.location : {},
-        locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0,
-        contentType: ownProps.params.contentType
-    };
+  return {
+    location: state.location.location ? state.location.location : {},
+    locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0,
+    contentType: ownProps.params.contentType
+  };
 }
 
 function mapDispatchToProps(dispatch) {

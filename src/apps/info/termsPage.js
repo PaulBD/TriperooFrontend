@@ -1,16 +1,12 @@
 import React from 'react';
 
-export default class TermsPage extends React.Component {
+const TermsPage = () => {
 
-  componentDidMount() {
     window.scrollTo(0, 0);
-  }
 
-  render(){
     let style = {
       backgroundImage: 'url(/static/img/north-wales.jpg)'
     };
-
 
     return (
       <div>
@@ -42,6 +38,7 @@ export default class TermsPage extends React.Component {
           </div>
         </div>
       </div>
-      );
-   }
-}
+    );
+};
+
+export default TermsPage;

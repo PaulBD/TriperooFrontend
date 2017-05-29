@@ -7,42 +7,46 @@ import AirportLoungeSearchForm from '../../components/travelExtras/airportLounge
 import AirportLoungeBulletPoints from '../../components/content/static/airportLoungeBulletPoints';
 import Loader from '../../components/common/loadingDots';
 let moment = require('moment');
+import Toastr from 'toastr';
 
 class AirportLounge extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.searchForm = this.searchForm.bind(this);
+    this.loadAirportLounges = this.loadAirportLounges.bind(this);
     this.state = { airport: '', defaultAirport: 'LGW', arrivalTime: '09:00', flightTime: '12:00', showSmallHeader: false, adults: 2, children: 0, infants: 0 };
   }
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    document.title = 'Compare and Save with 38 Lounges at 22 UK Airports. Compare deals today - Triperoo';
-  
-    if (this.state.airport != '')
-    {
-      this.props.airportLoungeActions.loadAirportLounges(this.state.airport, moment().add(1, 'days').format('YYYY-MM-DD'), '00:30', moment().add(7, 'days').format('YYYY-MM-DD'), '22:00', 'en');
-    }
+
+    this.loadAirportLounges(this.state.airport, moment().add(1, 'days').format('YYYY-MM-DD'), moment().add(5, 'days').format('YYYY-MM-DD'), moment().add(1, 'days').format('YYYY-MM-DD'), 4, 'T20', '', 4, 'en');
   }
 
-  searchForm(airport, arrivalDate, arrivalTime, flightTime, adultCount, childCount, infantCount) {
-    if (airport != '')
-    {
-      this.setState({ airport: airport, showSmallHeader: true });
-      this.props.airportLoungeActions.loadAirportLounges(airport, arrivalDate, arrivalTime, flightTime, adultCount, childCount, infantCount, 'en');
-    }
+  loadAirportLounges(airport, arrivalDate, arrivalTime, flightTime, adultCount, childCount, infantCount) {
+    this.setState({ airport: airport, showSmallHeader: true, isLoading: true });
+    this.props.airportLoungeActions.loadAirportLounges(airport, arrivalDate, arrivalTime, flightTime, adultCount, childCount, infantCount, 'en')
+      .then(() => this.DoSomething())
+      .catch(error => {
+        Toastr.error(error);
+        this.setState({isLoading: false});
+      });
+  }
+
+  DoSomething() {
+    this.setState({isLoading: false});
   }
 
   render(){
+    document.title = 'Compare and Save with 38 Lounges at 22 UK Airports. Compare deals today - Triperoo';
     return (
       <div>
-        <AirportLoungeSearchForm airport={this.state.defaultAirport} handleFormSubmit={this.searchForm} contentType="airportLoungeV2" headerTitle="Airport Lounges" subHeaderTitle="Pre-book your UK airport lounge from just £15"/>
+        <AirportLoungeSearchForm airport={this.state.defaultAirport} handleFormSubmit={this.loadAirportLounges} contentType="airportLoungeV2" headerTitle="Airport Lounges" subHeaderTitle="Pre-book your UK airport lounge from just £15"/>
         <div className="gap"></div>
         <div className="container">
-          <div className="row">  
-            <div className="col-md-12">           
+          <div className="row">
+            <div className="col-md-12">
               {
-                this.props.isError ? <p>{this.props.error}</p> : 
+                this.props.isError ? <p>{this.props.error}</p> :
                   this.props.airportLounge.apI_Reply != undefined && !this.props.isFetching && !this.props.error ?
                     this.props.airportLounge.apI_Reply.lounge.map(quote => {
                       return (<AirportLoungeCard location={this.state.airport} airportLounge={quote} searchRequest={this.props.airportLounge.apI_Reply.apI_Header.request} css="col-md-3" key={quote.code} adults={this.state.adults} children={this.state.children} infants={this.state.infants} />);
@@ -53,7 +57,7 @@ class AirportLounge extends React.Component {
         </div>
         <div className="gap"></div>
         <div className="container">
-          <div className="row text-xs-center">   
+          <div className="row text-xs-center">
             <p><small>Service provider: Holiday Extras GmbH | Aidenbachstr. 52 | 81379 München | Germany. Terms and conditions of Holiday Extras, available at <a href="http://www.holidayextras.de/images/de-hx/pdf/agb.pdf" target="_blank">http://www.holidayextras.de/images/de-hx/pdf/agb.pdf</a>, apply.</small></p>
           </div>
         </div>

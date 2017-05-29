@@ -8,17 +8,34 @@ import Header from '../../components/locations/subPageHeader';
 import Loader from '../../components/common/loadingDots';
 
 import Hotels from '../../components/hotels/byLocation';
+import TriperooLoader from '../../components/common/triperooLoader';
+import Toastr from 'toastr';
 
 let titleCase = require('title-case');
 
 class LocationContent extends React.Component {
     constructor(props, context) {
         super(props, context);
+        this.state = { isLoadingLocation: false };
     }
 
     componentDidMount() {
-        window.scrollTo(0, 0);
-        this.props.locationActions.loadLocationById(this.props.locationId);
+      window.scrollTo(0, 0);
+      this.setState({isLoadingLocation: true});
+      this.loadLocation();
+    }
+
+    loadLocation() {
+      this.props.locationActions.loadLocationById(this.props.locationId)
+        .then(() => this.DoSomething)
+        .catch(error => {
+          Toastr.error(error);
+          this.setState({isLoadingLocation: false});
+        });
+    }
+
+    DoSomething() {
+
     }
 
     render(){

@@ -7,18 +7,15 @@ import BulletPoints from '../../components/content/static/bulletPoints';
 import TrustedPartners from '../../components/content/static/trustedPartners';
 
 // Since this component is simple and static, there's no parent container for it.
-export default class ContactPage extends React.Component {
 
-  componentDidMount() {
+const ContactPage = () => {
+
     window.scrollTo(0, 0);
     document.title = 'Contact Triperoo';
-  }
 
-  render(){
     let style = {
       backgroundImage: 'url(/static/img/north-wales.jpg)'
     };
-
 
     return (
       <div>
@@ -67,6 +64,7 @@ export default class ContactPage extends React.Component {
             <div className="gap"></div>
         </div>
       </div>
-      );
-   }
-}
+    );
+};
+
+export default ContactPage;

@@ -19,16 +19,10 @@ export function newsletterFailure(message) {
 export function saveNewsletter(emailAddress) {
   return dispatch => {
     dispatch(requestNewsletter());
-    if (emailAddress.length > 0)
-    {
-      return NewsletterApi.saveNewsletter(emailAddress).then(newsletter => {
-        dispatch(newsletterSuccess(newsletter));
-      }).catch(error => {
-        dispatch(newsletterFailure(error.response.data));
-      });
-    }
-    else {
-      dispatch(newsletterFailure("Please specify a valid email Address"));
-    }
+    return NewsletterApi.saveNewsletter(emailAddress).then(newsletter => {
+      dispatch(newsletterSuccess(newsletter));
+    }).catch(error => {
+      dispatch(newsletterFailure(error.response.data));
+    });
   };
 }

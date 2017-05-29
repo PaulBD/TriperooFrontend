@@ -1,7 +1,6 @@
 import React from "react";
 
-export default class WorldCities extends React.Component {
-  render(){
+const WorldCities = () => {
   return (
     <div className="container text-xs-center cityList">
       <h3>Cities Around The World</h3>
@@ -79,7 +78,7 @@ export default class WorldCities extends React.Component {
           <li><a href="#">Punta Cana</a></li>
           <li><a href="#">San Juan</a></li>
           <li><a href="/937/visit/willemstad-curacao">Willemstad</a></li>
-        </ul>            
+        </ul>
         <div className="gap gap-small"></div>
         <h4>Central America</h4>
         <ul>
@@ -95,7 +94,7 @@ export default class WorldCities extends React.Component {
           <li><a href="/6050539/visit/san-pedro-ecuador">San Pedro</a></li>
         </ul>
         <div className="gap gap-small"></div>
-         <h4>Europe</h4>
+        <h4>Europe</h4>
         <ul>
           <li><a href="/378/visit/amsterdam-netherlands">Amsterdam</a></li>
           <li><a href="/513/visit/barcelona-spain">Barcelona</a></li>
@@ -186,6 +185,7 @@ export default class WorldCities extends React.Component {
         </ul>
       </div>
     </div>
-    );
-  }
-}
+  );
+};
+
+export default WorldCities;

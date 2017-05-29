@@ -6,47 +6,13 @@ class SearchComponent extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = { searchUrl: '', searchValue: '', searchId: '' };
-    this.redirectToLocation = this.redirectToLocation.bind(this);
-    this.handleSearchNameClick = this.handleSearchNameClick.bind(this);
-    this.handleSearchUrlClick = this.handleSearchUrlClick.bind(this);
-    this.handleSearchIdClick = this.handleSearchIdClick.bind(this);
-    this.handleSearchTypeClick = this.handleSearchTypeClick.bind(this);
+    this.onChangeAutoComplete = this.onChangeAutoComplete.bind(this);
+
   }
 
-  handleSearchUrlClick(value) {
-    this.setState({
-      searchUrl: value
-    });
-  }
-
-  handleSearchIdClick(value) {
-    this.setState({
-      searchId: value
-    });  
-  }
-
-  handleSearchNameClick(value) {
-    this.setState({
-      searchValue: value
-    });
-  }
-
-  handleSearchTypeClick(value) {
-    this.setState({
-      searchType: value
-    });
-  }
-
-  redirectToLocation(event) {
-    event.preventDefault();
-    if (this.state.searchValue.length > 2) {
-      if (this.state.searchUrl.length > 0) {
-        browserHistory.push(this.state.searchUrl);
-      }
-      else {
-        browserHistory.push('/search-result?q=' + this.state.searchValue);
-      }
-    }
+  onChangeAutoComplete(city, cityId, cityUrl, dataType)
+  {
+    browserHistory.push(cityUrl);
   }
 
   render() {
@@ -57,7 +23,7 @@ class SearchComponent extends React.Component {
             <div className="tab-pane fade in active" id="tab-1">
               <h2 className="text-xs-center">Explore, Plan &amp; Book</h2>
               <p className="text-xs-center">
-              Get the best deals from the top travel websites, plus reviews on the best hotels, restaurants, attractions 
+              Get the best deals from the top travel websites, plus reviews on the best hotels, restaurants, attractions
               &amp; more from local experts!
               </p>
               <p>&nbsp;</p>
@@ -67,11 +33,8 @@ class SearchComponent extends React.Component {
                   <div className="col-md-8 text-xs-center">
                     <div className="input-group">
                       <div className="form-group form-group-lg form-group-icon-left homeSearch"><i className="fa fa-search input-icon homeSearchIcon"></i>
-                        <AutoComplete changeValue={this.handleSearchNameClick} changeUrl={this.handleSearchUrlClick} changeId={this.handleSearchIdClick} changeType={this.handleSearchTypeClick} searchType="all" placeholder="Search anywhere in the world" cssClass="typeahead form-control" />
+                        <AutoComplete onChangeAutoComplete={this.onChangeAutoComplete} searchValue={this.state.city} searchType="all" placeholder="Search anywhere in the world" cssClass="typeahead form-control" />
                       </div>
-                      <span className="input-group-btn">
-                        <button className="btn btn-primary btnSearch" type="button" onClick={this.redirectToLocation}>Search</button>
-                      </span>                        
                     </div>
                   </div>
                   <div className="col-md-2 text-xs-center">&nbsp;</div>

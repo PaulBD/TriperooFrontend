@@ -25,7 +25,7 @@ class ReviewList extends React.Component {
       else {
         return (<p>There are no reviews available for {this.props.locationName}. Be the first to post a review.</p>);
       }
-    } 
+    }
     else {
       return (<Loader showLoader={true} />);
     }
@@ -37,8 +37,8 @@ ReviewList.defaultProps = {
 };
 
 ReviewList.propTypes = {
-  locationName: PropTypes.string.isRequired,
-  locationId: PropTypes.number.isRequired,
+  locationName: PropTypes.string,
+  locationId: PropTypes.number,
   reviews: PropTypes.array.isRequired
 };
 

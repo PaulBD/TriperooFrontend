@@ -7,36 +7,40 @@ import AirportParkingSearchForm from '../../components/travelExtras/airportParki
 import AirportParkingBulletPoints from '../../components/content/static/airportParkingBulletPoints';
 import Loader from '../../components/common/loadingDots';
 let moment = require('moment');
+import Toastr from 'toastr';
 
 class AirportParking extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.searchForm = this.searchForm.bind(this);
+    this.loadAirportParking = this.loadAirportParking.bind(this);
     this.state = { airport: '', defaultAirport: 'LGW', showSmallHeader: false };
   }
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    document.title = 'Quality, secured airport parking from only £5.25 per day or £41.99 per week. Compare deals today - Triperoo';
 
-    if (this.state.airport != '')
-    {
-      this.props.airportParkingActions.loadAirportParking(this.state.airport, moment().add(1, 'days').format('YYYY-MM-DD'), '00:30', moment().add(7, 'days').format('YYYY-MM-DD'), '22:00', 'en');
-    }
+    this.loadAirportParking(this.state.airport, moment().add(1, 'days').format('YYYY-MM-DD'), '00:30', moment().add(7, 'days').format('YYYY-MM-DD'), '22:00', 'en');
   }
 
-  searchForm(airport, dropOffDate, dropOffTime, pickUpDate, pickUpTime) {
-    if (airport != '')
-    {
-      this.setState({ airport: airport, showSmallHeader: true });
-      this.props.airportParkingActions.loadAirportParking(airport, dropOffDate, dropOffTime, pickUpDate, pickUpTime, 'en');
-    }
+  loadAirportParking(airport, dropOffDate, dropOffTime, pickUpDate, pickUpTime, language) {
+    this.setState({ airport: airport, showSmallHeader: true, isLoading: true });
+    this.props.airportParkingActions.loadAirportParking(airport, dropOffDate, dropOffTime, pickUpDate, pickUpTime, language)
+      .then(() => this.DoSomething())
+      .catch(error => {
+        Toastr.error(error);
+        this.setState({isLoading: false});
+      });
+  }
+
+  DoSomething() {
+    this.setState({isLoading: false});
   }
 
   render(){
+    document.title = 'Quality, secured airport parking from only £5.25 per day or £41.99 per week. Compare deals today - Triperoo';
     return (
       <div>
-        <AirportParkingSearchForm airport={this.state.defaultAirport} handleFormSubmit={this.searchForm} contentType="airportParking" headerTitle="Airport Parking" subHeaderTitle="Pre-book your airport parking and save up to 60%"/>
+        <AirportParkingSearchForm airport={this.state.defaultAirport} handleFormSubmit={this.loadAirportParking} contentType="airportParking" headerTitle="Airport Parking" subHeaderTitle="Pre-book your airport parking and save up to 60%"/>
         <div className="gap"></div>
         <div className="container">
           <div className="row">

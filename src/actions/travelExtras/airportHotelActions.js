@@ -16,7 +16,7 @@ export function airportHotelFailure(message) {
 	return {type: types.AIRPORT_HOTEL_FAILURE, isFetching: false,  message};
 }
 
-export function loadAiportHotels(airportName, arrivalDate, departDate, dropOffCarDate, collectCarDate, nights, roomType, secondRoomType, parkingDays, language) {
+export function loadAirportHotels(airportName, arrivalDate, departDate, dropOffCarDate, collectCarDate, nights, roomType, secondRoomType, parkingDays, language) {
 	return dispatch => {
 		dispatch(requestAirportHotelContent());
 		return AiportHotelApi.loadAirportHotels(airportName, arrivalDate, departDate, dropOffCarDate, collectCarDate, nights, roomType, secondRoomType, parkingDays, language).then(airportHotels => {

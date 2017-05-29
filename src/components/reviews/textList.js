@@ -4,22 +4,35 @@ import {bindActionCreators} from 'redux';
 import * as locationReviewsActions from '../../actions/location/locationReviewsActions';
 import ReviewList from './listCard';
 import Pagination from "react-js-pagination";
+import Toastr from 'toastr';
+import Loader from '../common/loadingDots';
 
 class Reviews extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { reviews: [], activePage: 1};
+    this.state = { reviews: [], activePage: 1, isLoadingReviews: false};
     this.changePage = this.changePage.bind(this);
   }
 
-  componentWillMount() {
-    if (this.props.locationType != 'all' && this.props.locationId > 0)
-    {
-      this.props.locationReviewsActions.loadReviewsByLocationId(this.props.locationId, this.props.pageSize, this.props.pageNumber);
-    }
-    else {
-      this.props.locationReviewsActions.loadReviewsByType(this.props.locationType, this.props.pageSize, this.props.pageNumber);
-    }
+  componentDidMount() {
+      if (this.props.locationType != 'all' && this.props.locationId > 0) {
+        this.setState({isLoadingReviews: true});
+        this.props.locationReviewsActions.loadReviewsByLocationId(this.props.locationId, this.props.pageSize, this.props.pageNumber)
+          .then(() => this.setState({isLoadingReviews: false}))
+          .catch(error => {
+            Toastr.error(error);
+            this.setState({isLoadingReviews: false});
+          });
+      }
+      else {
+        this.setState({isLoadingReviews: true});
+        this.props.locationReviewsActions.loadReviewsByType(this.props.locationType, this.props.pageSize, this.props.pageNumber)
+          .then(() => this.setState({isLoadingReviews: false}))
+          .catch(error => {
+            Toastr.error(error);
+            this.setState({isLoadingReviews: false});
+          });
+      }
   }
 
   changePage(value) {
@@ -27,34 +40,56 @@ class Reviews extends React.Component {
 
     if (this.props.locationType == 'all')
     {
-      this.props.locationReviewsActions.loadReviewsByLocationId(this.props.locationId, this.props.pageSize, value - 1);
+      this.setState({isLoadingReviews: true});
+      this.props.locationReviewsActions.loadReviewsByLocationId(this.props.locationId, this.props.pageSize, value - 1)
+        .then(() => this.setState({isLoadingReviews: false}))
+        .catch(error => {
+          Toastr.error(error);
+          this.setState({isLoadingReviews: false});
+        });
     }
     else {
-      this.props.locationReviewsActions.loadReviewsByType(this.props.locationType, this.props.pageSize, value - 1);
+      this.setState({isLoadingReviews: true});
+      this.props.locationReviewsActions.loadReviewsByType(this.props.locationType, this.props.pageSize, value - 1)
+        .then(() => this.setState({isLoadingReviews: false}))
+        .catch(error => {
+          Toastr.error(error);
+          this.setState({isLoadingReviews: false});
+        });
     }
   }
 
 
   render(){
-  const {reviews} = this.props;
 
-  let title = '';
+    let title = '';
 
-  if (this.props.showTitle) {
+    if (this.props.showTitle) {
       title = (<div><h4>Reviews</h4><hr /><div className="gap gap-small"></div></div>);
-  }
+    }
+    if (!this.state.isLoadingReviews) {
+      return (
+        <div className="row">
+          {title}
+          <ReviewList reviews={this.props.reviews} locationId={this.props.locationId} locationName={this.props.locationName}/>
 
-  return (
-      <div className="row">
-        {title}
-        <ReviewList reviews={this.props.reviews} locationId={this.props.locationId} locationName={this.props.locationName}/>
-        
-        <div className="gap gap-small"></div>
-        <div className="row text-xs-center">
-          <Pagination innerClass={this.props.reviewCount > 10 ? "pagination text-xs-center" : "hide"} activePage={this.state.activePage} itemsCountPerPage={10} totalItemsCount={this.props.reviewCount} pageRangeDisplayed={10} onChange={this.changePage} />
+          <div className="gap gap-small"></div>
+          <div className="row text-xs-center">
+            <Pagination innerClass={this.props.reviewCount > 10 ? "pagination text-xs-center" : "hide"}
+                        activePage={this.state.activePage} itemsCountPerPage={10} totalItemsCount={this.props.reviewCount}
+                        pageRangeDisplayed={10} onChange={this.changePage}/>
+          </div>
         </div>
-      </div>    
       );
+    }
+    else {
+      return (
+        <div className="row">
+          {title}
+          <Loader showLoader={true} />
+        </div>
+      );
+    }
   }
 }
 
@@ -71,9 +106,9 @@ Reviews.defaultProps = {
 Reviews.propTypes = {
   reviews: PropTypes.array.isRequired,
   locationReviewsActions: PropTypes.object.isRequired,
-  locationType: PropTypes.string.isRequired,
-  locationName: PropTypes.string.isRequired,
-  locationId: PropTypes.number.isRequired,
+  locationType: PropTypes.string,
+  locationName: PropTypes.string,
+  locationId: PropTypes.number,
   pageSize: PropTypes.number.isRequired,
   pageNumber: PropTypes.number.isRequired,
   showTitle: PropTypes.bool,

@@ -7,20 +7,36 @@ class Newsletter extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.saveNewsletter = this.saveNewsletter.bind(this);
+    this.changeEmailAddress = this.changeEmailAddress.bind(this);
+    this.state = { isPosting: false, emailAddress: '', error: '' };
+  }
+
+  changeEmailAddress(e) {
+    this.setState({emailAddress: e.target.value})
   }
 
   saveNewsletter(e) {
     e.preventDefault();
-    this.props.actions.saveNewsletter(this.refs.emailAddress.value.trim());
+    this.setState({isPosting: true, error: ''})
+    if (this.state.emailAddress.length > 0) {
+      this.props.actions.saveNewsletter(this.state.emailAddress)
+        .then(() => this.setState({isPosting: false}))
+        .catch(error => {
+          this.setState({isPosting: false, error});
+        });
+    }
+    else {
+      this.setState({isPosting: false, error: 'Please enter a valid email address'})
+    }
   }
 
   render() {
     let form = (
       <form onSubmit={this.saveNewsletter}>
-        <label className={this.props.errorMessage ? 'error orange' : ''}>{this.props.errorMessage}</label>
-        <input type="text" className="form-control" ref="emailAddress" name="emailAddress" />
+        <label className={this.state.error ? 'error orange' : ''}>{this.state.error}</label>
+        <input type="text" className="form-control" ref="emailAddress" name="emailAddress" onChange={this.changeEmailAddress}/>
         <p className="mt5"><small>*We Never Send Spam</small></p>
-        <input type="submit" className="btn btn-primary" value="Subscribe" />
+        <input type="submit" className="btn btn-primary" value={this.state.isPosting ? "Posting" : "Subscribe"} disabled={this.state.isPosting}/>
       </form>
     );
 

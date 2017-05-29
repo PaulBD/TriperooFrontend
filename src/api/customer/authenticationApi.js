@@ -22,17 +22,18 @@ class AuthenticationApi {
   }
 
   // ****************************************
-  // Log Customer into platform (via Facebook) 
+  // Log Customer into platform (via Facebook)
   // and set token
   // ****************************************
-  static loginFacebookCustomer(emailAddress, facebookId, name, imageUrl, currentCity) {
+  static loginFacebookCustomer(emailAddress, facebookId, name, imageUrl, currentCity, currentCityId) {
     return new Promise((resolve, reject) => {
       axios.post(baseUrl + '/authorize/facebook', {
           emailAddress,
           facebookId,
           name,
           imageUrl,
-          currentCity
+          currentCity,
+          currentCityId
       })
       .then(response => {
         resolve(Object.assign([], response.data));
@@ -46,16 +47,16 @@ class AuthenticationApi {
   // ****************************************
   // Register new customer
   // ****************************************
-  static registerCustomer(emailAddress, password, firstName, lastName, currentCity) {
+  static registerCustomer(emailAddress, password, name, currentCity, currentCityId) {
     return new Promise((resolve, reject) => {
       axios.post(baseUrl + '/register', {
           emailAddress,
           password,
-          firstName,
-          lastName,
-          currentCity
+          name,
+          currentCity,
+          currentCityId
       })
-      .then(response => {    
+      .then(response => {
         resolve(Object.assign([], response.data));
       })
       .catch(function (error) {

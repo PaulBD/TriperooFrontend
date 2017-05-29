@@ -41,6 +41,8 @@ import CustomerHome from './apps/customer';
 import CustomerProfile from './apps/customer/updateProfile';
 import CustomerPhotos from './apps/customer/photos';
 import BookingHistory from './apps/customer/bookingHistory';
+import CustomerReviews from './apps/customer/reviews';
+import CustomerBookmarks from './apps/customer/bookmarks';
 
 // Hotels
 import Hotels from './apps/hotel';
@@ -67,7 +69,7 @@ export default (
     <Route path="/(:placeId)/visit/(:placeName)/nightlife" component={LocationNightlife}/>
     <Route path="/(:placeId)/visit/(:placeName)/hotels" component={LocationHotels}/>
 
-    
+
     <Route path="/holidays" component={Holidays}/>
     <Route path="/hotels" component={Hotels}/>
     <Route path="/hotels/search-results" component={HotelSearchResults}/>
@@ -89,6 +91,8 @@ export default (
     <Route path="/profile/(:guid)/(:customerName)/profile" component={CustomerProfile}/>
     <Route path="/profile/(:guid)/(:customerName)/photos" component={CustomerPhotos}/>
     <Route path="/profile/(:guid)/(:customerName)/booking-history" component={BookingHistory}/>
+    <Route path="/profile/(:guid)/(:customerName)/reviews" component={CustomerReviews}/>
+    <Route path="/profile/(:guid)/(:customerName)/bookmarks" component={CustomerBookmarks}/>
 
     <Route path="*" component={NotFoundPage}/>
   </Route>

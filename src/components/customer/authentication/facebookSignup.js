@@ -1,46 +1,64 @@
 import React, {PropTypes} from 'react';
-import FacebookLogin from 'react-facebook-login';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as authenticationActions from '../../../actions/customer/authenticationActions';
+import FacebookButton from './facebookButton';
+import Toastr from 'toastr';
 
 class FacebookSignup extends React.Component {
   constructor(props, context) {
-      super(props, context);
-      this.submitFacebookForm = this.submitFacebookForm.bind(this);
+    super(props, context);
+    this.submitFacebookForm = this.submitFacebookForm.bind(this);
+    this.state = {creatingUser: false};
   }
 
   submitFacebookForm(response) {
-      const creds = { emailAddress: response.email, facebookId: response.userID, name: response.name, imageUrl: response.picture.data.url, currentCityId: 1};
-      this.props.actions.loginFacebookUser(creds);
+    this.setState({creatingUser: true})
+    this.props.actions.loginFacebookUser({ emailAddress: response.email, facebookId: response.userID, name: response.name, imageUrl: response.picture.data.url, cityId: 1, city: 'London'})
+      .then(() => this.setState({creatingUser: false}))
+      .catch(error => {
+        Toastr.error(error.response.status == 400 ? error.response.data.responseStatus.message : "An error has occurred whilst authenticating using Facebook");
+        this.setState({creatingUser: false});
+      });
   }
 
   render(){
     if (!this.props.isAuthenticated) {
       return (
-        <div className="container">
+        <div>
           <hr />
           <div className="gap"></div>
           <div className="row">
-              <div className={this.props.errorMessage != undefined && this.props.errorMessage.length > 0 ? 'col-md-12' : 'col-md-12 hide'}>
-                  <div className="bg-danger form-danger">
-                  {this.props.errorMessage}
-                  </div>
-              </div>
               <div className="col-md-6 text-xs-right">
-                  <h5 className="signupText">Join Now to get started</h5>
+                <h5 className="signupText">Join Now to get started</h5>
               </div>
               <div className="col-md-6 text-xs-left">
-                  <FacebookLogin appId="347205502054817" autoLoad={false} fields="name,email,picture"  cssClass="my-facebook-button-class" textButton="" callback={this.submitFacebookForm} />
+                <FacebookButton onCallback={this.submitFacebookForm}/>
               </div>
+            <hr />
           </div>
-          <div className="gap"></div>
-          <hr />
         </div>
       );
     }
     else {
-      return null;
+      if (this.state.creatingUser)
+      {
+        return (
+          <div>
+            <hr />
+            <div className="gap"></div>
+            <div className="row">
+              <div className="col-md-12 text-xs-center">
+                <h5 className="signupText">Creating Triperoo User...</h5>
+              </div>
+            <hr />
+          </div>
+          </div>
+        );
+      }
+      else {
+        return null;
+      }
     }
   }
 }

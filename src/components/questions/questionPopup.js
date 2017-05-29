@@ -2,20 +2,18 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as userQuestionActions from '../../actions/customer/userQuestionActions';
+import Toastr from 'toastr';
 
 class QuestionPopup extends React.Component {
   constructor(props, context) {
     super(props, context);
-
-    this.handleQuestionChange = this.handleQuestionChange.bind(this);
     this.submitQuestion = this.submitQuestion.bind(this);
     this.closeModal = this.closeModal.bind(this);
-   
-    this.state = { question: '' };
+    this.state = { question: '', isPostingQuestion: false };
   }
 
-  handleQuestionChange(e) {
-    this.setState({ question: e.target.value });
+  componentDidMount() {
+    this.props.userQuestionActions.resetQuestion();
   }
 
   closeModal(e) {
@@ -26,12 +24,20 @@ class QuestionPopup extends React.Component {
   submitQuestion(e) {
     e.preventDefault();
 
+    this.setState({isPostingQuestion: true});
     const question = { "inventoryReference": this.props.locationId, "question": this.refs.question.value.trim() };
-    console.log(question);
-    this.props.userQuestionActions.postQuestion(question);
+    this.props.userQuestionActions.postQuestion(question)
+      .then(() =>{
+        this.setState({isPostingQuestion: false});
+      })
+      .catch(error => {
+        Toastr.error(error);
+        this.setState({isPostingQuestion: false});
+      });
   }
 
   render(){
+
     return (
         <div className="modal-dialog modelReviewAuthentication" role="document">
           <div className="modal-content">
@@ -50,7 +56,7 @@ class QuestionPopup extends React.Component {
                   <div className="col-md-12">
                     <div className="form-group">
                         <label>Question</label>
-                        <textarea ref="question" className="form-control" rows="6" value={this.state.question} onChange={this.handleQuestionChange}></textarea>
+                        <textarea ref="question" className="form-control" rows="6"></textarea>
                     </div>
                   </div>
                   <div className="col-md-12 text-xs-center">
@@ -87,6 +93,7 @@ QuestionPopup.propTypes = {
   locationId: PropTypes.number,
   locationName: PropTypes.string,
   locationType: PropTypes.string,
+  locationQuestionsActions: PropTypes.object.isRequired,
   userQuestionActions: PropTypes.object.isRequired,
   isSending: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string,
@@ -95,10 +102,11 @@ QuestionPopup.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
+  console.log(state.question);
   return {
     isSending: state.question.isFetching,
     errorMessage: state.question.errorMessage,
-    hasPosted: state.question.hasPosted 
+    hasPosted: state.question.hasPosted
   };
 }
 

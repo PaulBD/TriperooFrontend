@@ -11,23 +11,23 @@ export default class AirportTransfers extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    document.title = 'Search the best airport and resort transfer deals - Triperoo Airport Transfers';
-  
+
   }
-  
+
   render(){
+    document.title = 'Search the best airport and resort transfer deals - Triperoo Airport Transfers';
     return (
     <div>
       <Header contentType="airportTransfer" headerTitle="Airport Transfers" subHeaderTitle="Search the best airport and resort transfer deals" showSmallHeader={this.state.showSmallHeader} />
       <div className="gap"></div>
       <div className="container">
-        <div className="row"> 
-        
+        <div className="row">
+
         </div>
       </div>
       <div className="gap"></div>
       <div className="container">
-        <div className="row">            
+        <div className="row">
 
         </div>
       </div>

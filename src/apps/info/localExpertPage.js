@@ -2,14 +2,11 @@ import React from 'react';
 import {Link} from 'react-router';
 import SocialButtons from "../../components/content/static/socialButtons";
 
-export default class LocalExpertPage extends React.Component {
+const LocalExpertPage = () => {
 
-  componentDidMount() {
     window.scrollTo(0, 0);
     document.title = 'Become a Triperoo Agent! Earn money and respect from your travel recommendations.';
-  }
-  
-  render(){
+
     let style = {
       backgroundImage: 'url(/static/img/community.jpg)'
     };
@@ -38,10 +35,10 @@ export default class LocalExpertPage extends React.Component {
 
                 <p><strong>STEP 2</strong><br />
                 Start to earn commission by booking hotels and flights for friends and family, just like a travel agent.</p>
-                
+
                 <p><strong>STEP 3</strong><br />
                 Increase your commission by signing up friends and family as agents and help fellow travelers from across the globe with your local recommendations.</p>
-                
+
               <h4>What You Can Earn As An Agent</h4>
               <p>Some examples of what you can earn as a Triperoo Agent.</p>
               <div className="row row-wrap">
@@ -90,13 +87,13 @@ export default class LocalExpertPage extends React.Component {
                       </div>
                   </div>
               </div>
-            </div> 
+            </div>
 
             <div className="col-md-5">
               <h4>Benefits of being a Triperoo Agent</h4>
 
-              <p>Your personalized recommendations will help other travelers find the ideal hotel in the best 
-              neighborhood. They save huge amounts of time and end up with a better trip, you earn a 
+              <p>Your personalized recommendations will help other travelers find the ideal hotel in the best
+              neighborhood. They save huge amounts of time and end up with a better trip, you earn a
               commission. You both share a great experience.</p>
               <div className="gap gap-small"></div>
               <div className="row row-wrap">
@@ -105,8 +102,8 @@ export default class LocalExpertPage extends React.Component {
                 </div>
                 <div className="col-md-8">
                   <h5>EXTRA INCOME</h5>
-                  <p>As a Triperoo Agent you will have access to Triperoo's inventory of 1.4 million hotels. You 
-                  can recommend, share, publish and book hotels for others and even for yourself and 
+                  <p>As a Triperoo Agent you will have access to Triperoo's inventory of 1.4 million hotels. You
+                  can recommend, share, publish and book hotels for others and even for yourself and
                   earn a commission per booking. Just like a travel agent.</p>
                 </div>
               </div>
@@ -116,8 +113,8 @@ export default class LocalExpertPage extends React.Component {
                 </div>
                 <div className="col-md-8">
                   <h5>FLEXIBILITY</h5>
-                  <p>You can create and share travel recommendations whenever you want, wherever you are. When 
-                  you qualify as a Local Expert, you will receive questions from other travelers on your 
+                  <p>You can create and share travel recommendations whenever you want, wherever you are. When
+                  you qualify as a Local Expert, you will receive questions from other travelers on your
                   mobile phone, adding even more flexibility.</p>
                 </div>
               </div>
@@ -127,8 +124,8 @@ export default class LocalExpertPage extends React.Component {
                 </div>
                 <div className="col-md-8">
                   <h5>POWER TO THE TRAVELER!</h5>
-                  <p>You will be helping friends and fellow travelers from across the world by matching them to 
-                  their ideal hotel, based on their wishes, budget and taste. You will take the stress out 
+                  <p>You will be helping friends and fellow travelers from across the world by matching them to
+                  their ideal hotel, based on their wishes, budget and taste. You will take the stress out
                   of travel research and put the fun back in.</p>
                 </div>
               </div>
@@ -136,6 +133,7 @@ export default class LocalExpertPage extends React.Component {
           </div>
         </div>
       </div>
-      );
-   }
-}
+    );
+  };
+
+  export default LocalExpertPage;

@@ -10,7 +10,7 @@ class AnswerPopup extends React.Component {
     this.handleAnswerChange = this.handleAnswerChange.bind(this);
     this.submitAnswer = this.submitAnswer.bind(this);
     this.closeModal = this.closeModal.bind(this);
-   
+
     this.state = { answer: '' };
   }
 
@@ -26,9 +26,8 @@ class AnswerPopup extends React.Component {
   submitAnswer(e) {
     e.preventDefault();
 
-    const answer = { "questionId": this.props.questionId, "answer": this.refs.answer.value.trim() };
-    console.log(answer);
-    this.props.actions.postAnswer(answer);
+    const answer = { "questionReference": this.props.questionReference, "answer": this.refs.answer.value.trim(), "likeCount": 0 };
+    this.props.userQuestionActions.postAnswer(answer);
   }
 
   render(){
@@ -76,13 +75,14 @@ class AnswerPopup extends React.Component {
 }
 
 AnswerPopup.defaultProps = {
-  questionId: 0,
+  questionReference: '',
   isSending: false,
   hasPosted: false
 };
 
 AnswerPopup.propTypes = {
-  questionId: PropTypes.number,
+  arrayPosition: PropTypes.number,
+  questionReference: PropTypes.string,
   question: PropTypes.string.isRequired,
   userQuestionActions: PropTypes.object.isRequired,
   isSending: PropTypes.bool.isRequired,
@@ -95,7 +95,7 @@ function mapStateToProps(state, ownProps) {
   return {
     isSending: state.question.isFetching,
     errorMessage: state.question.errorMessage,
-    hasPosted: state.question.hasPosted 
+    hasPosted: state.question.hasPosted
   };
 }
 

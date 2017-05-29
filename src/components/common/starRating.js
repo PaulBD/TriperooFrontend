@@ -11,7 +11,6 @@ class StarRating extends React.Component {
       stars = this.props.starRating;
     }
 
-
     greyStarsNumber = maxStars - stars;
 
     let tmpYellow = [];

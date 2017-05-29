@@ -31,7 +31,7 @@ export function loadLocationById(locationId) {
 // Update Location
 // ****************************************
 export function requestLocationUpdate() {
-	return {type: types.LOCATION_UPDATE_REQUEST, isFetching: true };
+	return {type: types.LOCATION_UPDATE_REQUEST, isFetching: true};
 }
 
 export function loadLocationUpdateSuccess(location) {
@@ -42,10 +42,10 @@ export function locationUpdateFailure(errorMessage) {
 	return {type: types.LOCATION_UPDATE_FAILURE, isFetching: false,  errorMessage};
 }
 
-export function updateLocation(locationId, location) {
+export function updateLocation(location) {
 	return dispatch => {
 		dispatch(requestLocationUpdate());
-		return LocationApi.updateLocation(locationId, location).then(newLocation => {
+		return LocationApi.updateLocation(location).then(newLocation => {
 			dispatch(loadLocationUpdateSuccess(newLocation));
 		}).catch(error => {
 			dispatch(locationUpdateFailure(error.response.data));

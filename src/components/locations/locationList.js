@@ -96,7 +96,7 @@ class LocationList extends React.Component {
 										<PhotoIcon locationId={location.regionID} locationName={location.regionNameLong} locationType={location.subClass} key={location.regionID}/>
 									</li>
 									<li>
-										<BookmarkIcon locationId={location.regionID} locationName={location.regionNameLong} locationType={location.subClass} key={location.regionID}/>
+										<BookmarkIcon locationNameLong={location.regionNameLong} locationUrl={location.url} locationImage={location.image} locationId={location.regionID} locationName={location.regionName} locationType={location.subClass} key={location.regionID}/>
 									</li>
 								</ul>
 							</div>

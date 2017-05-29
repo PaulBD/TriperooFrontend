@@ -4,7 +4,7 @@ import baseUrl from '../baseApi';
 class QuestionApi {
 
   // ****************************************
-  // Post new question
+  // Post question
   // ****************************************
   static postQuestion(question) {
     return new Promise((resolve, reject) => {
@@ -30,13 +30,13 @@ class QuestionApi {
   }
 
   // ****************************************
-  // Post new answer
+  // Post answer
   // ****************************************
   static postAnswer(answer) {
     return new Promise((resolve, reject) => {
       axios({
         method: 'post',
-        url:  baseUrl + '/question/' + answer.questionId + '/answer',
+        url:  baseUrl + '/question/answer',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',

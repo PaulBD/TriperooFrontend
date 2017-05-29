@@ -85,12 +85,13 @@ class Header extends React.Component {
                         <li className={!this.props.isAuthenticated ? "" : "hide"}><a href="#" onClick={this.signup} title="Sign Up">Sign Up</a></li>
                         <li className={!this.props.isAuthenticated ? "" : "hide"}><a href="#" onClick={this.login} title="Log In">Log In</a></li>
                         <li className={this.props.isAuthenticated ? "" : "hide"}><a href="#" onClick={this.writeReview} title="Write a Review">Write a Review</a></li>
-                        <li className={this.props.isAuthenticated ? this.state.isProfileMenuActive ? "nav-drop active-drop" : "nav-drop" : "hide"} onMouseEnter={this.openProfileMenu} onMouseLeave={this.closeProfileMenu}><img className="origin round profileImg" src={user ? user.userImage : '/static/img/userProfileImg.png'} /><a href="#">{user ? user.userName : ""}<i className="fa fa-angle-down"></i>
+                        <li className={this.props.isAuthenticated ? this.state.isProfileMenuActive ? "nav-drop active-drop" : "nav-drop" : "hide"} onMouseEnter={this.openProfileMenu} onMouseLeave={this.closeProfileMenu}><img className="origin round profileImg" src={user && user.userImage ? user.userImage : '/static/img/userProfileImg.png'} /><a href={user ? user.userProfile : ""}>{user ? user.userName : ""}<i className="fa fa-angle-down"></i>
                           <i className="fa fa-angle-up"></i></a>
                           <ul className="list nav-drop-menu headerList">
-                            <li><a href="/customer/profile"><i className="fa fa-user"></i>Update Profile</a></li>
-                            <li><a href="/customer/photos"><i className="fa fa-camera"></i>My Travel Photos</a></li>
-                            <li><a href="/customer/booking-history"><i className="fa fa-clock-o"></i>Booking History</a></li>
+                            <li><a href={user ? user.userProfile + "/profile" : ""}><i className="fa fa-user"></i>Update Profile</a></li>
+                            <li><a href={user ? user.userProfile + "/bookmarks" : ""}><i className="fa fa-heart-o"></i>Bookmarks</a></li>
+                            <li><a href={user ? user.userProfile + "/photos" : ""}><i className="fa fa-camera"></i>My Travel Photos</a></li>
+                            <li><a href={user ? user.userProfile + "/booking-history" : ""}><i className="fa fa-clock-o"></i>Booking History</a></li>
                           </ul>
                         </li>
                         <li className={this.props.isAuthenticated ? "" : "hide"}><a href="#" onClick={this.onLogout} title="Log Out">Log Out</a></li>

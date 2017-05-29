@@ -8,7 +8,7 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import cookie from 'react-cookie';
 const uuidV4 = require('uuid/v4');
 import ReactGA from 'react-ga';
-ReactGA.initialize('UA-61218289-1'); 
+ReactGA.initialize('UA-61218289-1');
 
 const store = configureStore();
 

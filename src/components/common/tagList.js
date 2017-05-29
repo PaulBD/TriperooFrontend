@@ -7,7 +7,6 @@ class TagList extends React.Component {
     this.selectTag = this.selectTag.bind(this);
     this.getIndex = this.getIndex.bind(this);
     this.state = { selectedTags: [] };
-
   }
 
   componentWillReceiveProps(props)

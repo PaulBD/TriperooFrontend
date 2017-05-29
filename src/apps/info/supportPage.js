@@ -6,18 +6,14 @@ import FacebookSignup from '../../components/customer/authentication/facebookSig
 import BulletPoints from '../../components/content/static/bulletPoints';
 import TrustedPartners from '../../components/content/static/trustedPartners';
 
-export default class SupportPage extends React.Component {
+const SupportPage = () => {
 
-  componentDidMount() {
     window.scrollTo(0, 0);
     document.title = 'Support';
-  }
 
-  render(){
     let style = {
       backgroundImage: 'url(/static/img/north-wales.jpg)'
     };
-
 
     return (
       <div>
@@ -68,6 +64,7 @@ export default class SupportPage extends React.Component {
             <div className="gap"></div>
         </div>
       </div>
-      );
-   }
-}
+    );
+  };
+
+  export default SupportPage;

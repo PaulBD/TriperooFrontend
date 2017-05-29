@@ -9,7 +9,6 @@ export function requestChildLocationsContent() {
 }
 
 export function childLocationContentSuccess(locationsList) {
-  console.log(locationsList);
 	return {type: types.CHILD_LOCATION_CONTENT_SUCCESS, isFetching: false, locationsList};
 }
 
@@ -42,17 +41,12 @@ export function autocompleteFailure(message) {
 	return {type: types.AUTOCOMPLETE_FAILURE, autocompleteList: [], message};
 }
 
-export function clearAutocomplete() {
-	return {type: types.AUTOCOMPLETE_CLEAR, autocompleteList: []};
-}
-
 export function searchLocations(value, searchType) {
 	return dispatch => {
 		dispatch(autocompleteRequest());
 		if (value.length > 0)
 		{
 			return LocationsApi.searchLocations(value, searchType).then(autocompleteList => {
-			  console.log(autocompleteList);
 				dispatch(autocompleteSuccess(autocompleteList));
 			}).catch(error => {
 				dispatch(autocompleteFailure(error));

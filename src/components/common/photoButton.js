@@ -37,8 +37,7 @@ class PhotoButton extends React.Component {
 PhotoButton.defaultProps = {
   locationId: 0,
   locationName: '',
-  isAuthenticated: false,
-  isFetching: false
+  isAuthenticated: false
 };
 
 PhotoButton.propTypes = {
@@ -50,13 +49,11 @@ PhotoButton.propTypes = {
   authenticationActions: PropTypes.object.isRequired,
   modalActions: PropTypes.object.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
-  isFetching: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    isFetching: state.authentication.isFetching,
     isAuthenticated: state.authentication.isAuthenticated,
     errorMessage: state.authentication.errorMessage
   };

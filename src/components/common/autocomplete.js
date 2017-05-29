@@ -8,17 +8,17 @@ class AutoComplete extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.handleClick = this.handleClick.bind(this);
-    this.state = { cssStyle: 'none', selected: false, isLoading: true, isOpen: false, searchValue: this.props.searchValue };
+    this.state = { cssStyle: 'none', selected: false, isLoading: true, isOpen: false, searchValue: '' };
 
     this.onSearchValue = this.onSearchValue.bind(this);
+  }
+  componentDidMount() {
+    this.setState({ searchValue: this.props.searchValue });
   }
 
   handleClick(e) {
     e.preventDefault();
-    this.props.changeValue(e.target.text.trim());
-    this.props.changeUrl(e.target.getAttribute('data-url'));
-    this.props.changeId(parseInt(e.target.getAttribute('data-id')));
-    this.props.changeType(e.target.getAttribute('data-type'));
+    this.props.onChangeAutoComplete(e.target.text.trim(), parseInt(e.target.getAttribute('data-id')), e.target.getAttribute('data-url'), e.target.getAttribute('data-type'));
 
     if (this.props.isAppSearch)
     {
@@ -33,6 +33,7 @@ class AutoComplete extends React.Component {
   }
 
   onSearchValue(event) {
+
     event.preventDefault();
 
     this.setState({ searchValue: event.target.value });
@@ -48,6 +49,7 @@ class AutoComplete extends React.Component {
   }
 
   render() {
+
     let searchCount = this.props.autocompleteList.length;
 
     let style = {
@@ -62,7 +64,7 @@ class AutoComplete extends React.Component {
 
     return (
       <div>
-        <input className={this.props.cssClass} placeholder={this.props.placeholder} type="text" onChange={this.onSearchValue} autoComplete="off" value={this.state.searchValue} />
+        <input className={this.props.cssClass} placeholder={this.props.placeholder} type="text" onChange={this.onSearchValue} autoComplete="off" value={this.state.searchValue ? this.state.searchValue : this.props.searchValue} />
         <div style={style}>
           <ul className="ui-autocomplete">
             {
@@ -119,10 +121,7 @@ AutoComplete.defaultProps = {
 AutoComplete.propTypes = {
   autocompleteList: PropTypes.array.isRequired,
   locationsActions: PropTypes.object,
-  changeType: PropTypes.func,
-  changeValue: PropTypes.func,
-  changeUrl: PropTypes.func,
-  changeId: PropTypes.func,
+  onChangeAutoComplete: PropTypes.func.isRequired,
   searchType: PropTypes.string,
   cssClass: PropTypes.string,
   placeholder: PropTypes.string,

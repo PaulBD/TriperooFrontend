@@ -14,7 +14,7 @@ import Header from '../../components/locations/homeHeader';
 import LocationStats from '../../components/locations/stats';
 import WeatherForcast from '../../components/locations/weather/forecast';
 import LastMinuteDeal from '../../components/content/dynamic/lastMinuteDeal';
-import Loader from '../../components/common/loadingDots';
+import Loader from '../../components/common/triperooLoader';
 import TopEvents from '../../components/locations/topEvents';
 import ReviewButton from '../../components/reviews/reviewButton';
 
@@ -47,7 +47,7 @@ class LocationHome extends React.Component {
                             <TopLocations locationId={this.props.locationId} name={this.props.location.regionName} locationType={this.props.location.regionType} {...this.props} />
                         </div>
                         <div className="col-md-8">
-                            <Summary locationName={this.props.location.regionName} summary={this.props.location.summary} />
+                            <Summary locationName={this.props.location.regionName} summary={this.props.location.summary.en} />
                         </div>
                         <div className="col-md-4">
                             <QuestionButton locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType={this.props.location.regionType}/>
@@ -77,7 +77,7 @@ class LocationHome extends React.Component {
         );
     }
     else {
-        return (<Loader showLoader={this.props.isFetching} />);
+        return (<Loader/>);
     }
   }
 }

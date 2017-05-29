@@ -1,10 +1,12 @@
 import React, {PropTypes} from 'react';
-import { browserHistory } from 'react-router';
-import FacebookLogin from 'react-facebook-login';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as authenticationActions from '../../../actions/customer/authenticationActions';
 import Loader from '../../common/loadingDots';
+import FacebookButton from './facebookButton';
+import ForgotPasswordForm from '../forms/forgotPasswordForm';
+import LoginForm from '../forms/loginForm';
+import Toastr from 'toastr';
 
 class Login extends React.Component {
   constructor(props, context) {
@@ -13,42 +15,89 @@ class Login extends React.Component {
     this.submitStandardForm = this.submitStandardForm.bind(this);
     this.submitResetPasswordForm = this.submitResetPasswordForm.bind(this);
     this.submitFacebookForm = this.submitFacebookForm.bind(this);
-
-    this.handleEmailAddressChange = this.handleEmailAddressChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
-
     this.changeForgotPassword = this.changeForgotPassword.bind(this);
     this.changeLogin = this.changeLogin.bind(this);
     this.closeLoginModal = this.closeLoginModal.bind(this);
 
-    this.state = { emailAddress: '', password: '', errors:'', isForgotPassword: false };
+    this.changeField = this.changeField.bind(this);
+
+    this.state = {
+      creds: {
+        emailAddress: '',
+        password: ''
+      },
+      errors:'',
+      isLoggingIn: false,
+      isForgotPassword: false,
+      isSendingPassword: false,
+      hasSentPassword: false
+    };
   }
 
   submitFacebookForm(response) {
-    const creds = { emailAddress: response.email, facebookId: response.userID, name: response.name, imageUrl: response.picture.data.url, currentCityId: 1};
-    this.props.actions.loginFacebookUser(creds);
+    this.setState({creatingUser: true});
+    this.props.actions.loginFacebookUser({ emailAddress: response.email, facebookId: response.userID, name: response.name, imageUrl: response.picture.data.url, cityId: 1, city: 'London'})
+      .then(() => {
+        this.setState({creatingUser: false, errors: this.props.errorMessage});
+
+        if (this.props.errorMessage == '' && this.props.errorMessage.length == 0)
+        {
+          this.closeLoginModal(null);
+        }
+      })
+      .catch(error => {
+        Toastr.error(error);
+        this.setState({creatingUser: false, errors: error});
+      });
   }
 
   submitStandardForm(e) {
     e.preventDefault();
-    const creds = { emailAddress: this.state.emailAddress.trim(), password: this.state.password.trim() };
-    this.props.actions.loginUser(creds);
+    if ((this.state.creds.emailAddress != '' && this.state.creds.emailAddress.length > 0) && (this.state.creds.password != '' && this.state.creds.password.length > 0)) {
+      this.setState({isLoggingIn: true});
+      this.props.actions.loginUser(this.state.creds)
+        .then(() => {
+          this.setState({isLoggingIn: false, errors: this.props.errorMessage});
+
+          if (this.props.errorMessage == '' && this.props.errorMessage.length == 0)
+          {
+            this.closeLoginModal(null);
+          }
+        })
+        .catch(error => {
+          Toastr.error(error);
+          this.setState({isLoggingIn: false, errors: error});
+        });
+    }
+    else {
+      this.setState({isLoggingIn: false, errors: "Please supply valid login credentials"});
+    }
   }
 
   submitResetPasswordForm(e) {
     e.preventDefault();
-    const creds = { emailAddress: this.state.emailAddress.trim() };
-    this.props.actions.resetPassword(creds);
+    if (this.state.creds.emailAddress != '' && this.state.creds.emailAddress.length > 0) {
+      this.setState({isSendingPassword: true}); //, creds: { emailAddress: this.state.creds.emailAddress, password: ''}});
+      this.props.actions.resetPassword(this.state.creds)
+        .then(() => {
+          this.setState({isSendingPassword: false, hasSentPassword: this.props.errorMessage == '' && this.props.errorMessage.length == 0, errors: this.props.errorMessage});
+        })
+        .catch(error => {
+          Toastr.error(error);
+          this.setState({isSendingPassword: false, errors: error});
+        });
+    }
+    else {
+      this.setState({isSendingPassword: false, errors: "Please supply a valid email address"});
+    }
   }
 
-  handleEmailAddressChange(e) {
-    e.preventDefault();
-    this.setState({ emailAddress: e.target.value, errors: '' });
-  }
-
-  handlePasswordChange(e) {
-    e.preventDefault();
-    this.setState({ password: e.target.value, errors: '' });
+  changeField(event) {
+    event.preventDefault();
+    const field = event.target.name;
+    let creds = this.state.creds;
+    creds[field] = event.target.value;
+    this.setState({creds: creds});
   }
 
   changeForgotPassword(e) {
@@ -69,100 +118,35 @@ class Login extends React.Component {
   }
 
   render(){
-
-  let emailAddress = this.state.emailAddress;
-  let password = this.state.password;
-
-  if (this.props.isAuthenticated)
-  {
-    this.closeLoginModal(null);
-  }
-
-  return (
-    <div>
-      <div className={this.state.isForgotPassword ? "modal-dialog modelAuthentication hide" : "modal-dialog modelAuthentication"} role="document">
-        <div className={this.props.isFetching ? "modal-content hide" : "modal-content"}>
-          <div className="modal-body">
-            <div className="row">
-              <div className={this.props.errorMessage != undefined && this.props.errorMessage.length > 0 ? 'col-md-12' : 'col-md-12 hide'}>
-                <div className="bg-danger form-danger">
-                {this.props.errorMessage}
-                </div>
-              </div>
-              <div className="gap gap-small"></div>
-              <div className="col-md-12 text-xs-center">
-                <FacebookLogin appId="347205502054817" autoLoad={false} fields="name,email,picture"  cssClass="my-facebook-button-class" textButton="" callback={this.submitFacebookForm} />
-              </div>
-              <div className="gap gap-small"></div>
-              <div className="col-md-12 text-xs-center signupSeperator">
-                <strong>or</strong>
-                <hr />
-              </div>
-              <form className="modalForm" onSubmit={this.submitStandardForm}>
-                <div className="col-md-12">
-                    <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-envelope input-icon input-icon-hightlight"></i>
-                        <input className="form-control" placeholder="Enter Email Address" type="text" onChange={this.handleEmailAddressChange} text={emailAddress}/>
-                    </div>
-                    <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-lock input-icon input-icon-hightlight"></i>
-                        <input className="form-control" type="password" placeholder="Enter Password" onChange={this.handlePasswordChange} text={password} />
-                    </div>
-                </div>
-                <div className="col-md-12 text-xs-center">
-                    <input className="btn btn-primary" type="submit" value="Login" />
-                </div>
+    return (
+      <div>
+        <div className={this.state.isForgotPassword ? "modal-dialog modelAuthentication hide" : "modal-dialog modelAuthentication"} role="document">
+          <div className={!this.state.creatingUser && !this.state.isLoggingIn ? "modal-content" : "modal-content hide"}>
+            <div className="modal-body">
+              <div className="row">
                 <div className="gap gap-small"></div>
                 <div className="col-md-12 text-xs-center">
-                    <a href="#" onClick={this.changeForgotPassword}>Forgot Password? Click here</a>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div className="modal-footer text-xs-center">
-            <a href="#"  onClick={this.closeLoginModal}>Close</a>
-          </div>
-        </div>
-        <div className={this.props.isFetching ? "modal-content" : "modal-content hide"}>
-            <Loader showLoader={this.props.isFetching} />
-        </div>
-      </div>
-      <div className={this.state.isForgotPassword ? "modal-dialog modelAuthentication " : "modal-dialog modelAuthentication hide"} role="document">
-        <div className={this.props.isFetching ? "modal-content hide" : "modal-content"}>
-          <div className="modal-body">
-            <div className="row">
-              <div className={this.props.errorMessage != undefined && this.props.errorMessage.length > 0 ? 'col-md-12' : 'col-md-12 hide'}>
-                <div className="bg-danger form-danger">
-                {this.props.errorMessage}
-                </div>
-              </div>
-              <div className={this.props.hasSentPassword ? 'col-md-12' : 'col-md-12 hide'}>
-                <div className="bg-success form-success">
-                A reset password email has been sent
-                </div>
-              </div>
-              <form className="modalForm" onSubmit={this.submitResetPasswordForm}>
-                <div className="col-md-12 text-xs-center">
-                  <p>Please enter your email address below and we'll send you an email to reset your password.</p>
-                </div>
-                <div className="col-md-12">
-                  <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-envelope input-icon input-icon-hightlight"></i>
-                    <input className="form-control" placeholder="Enter Email Address" type="text" onChange={this.handleEmailAddressChange} text={emailAddress}/>
-                  </div>
-                </div>
-                <div className="col-md-12 text-xs-center">
-                    <input className="btn btn-primary" type="submit" value="Reset Password" />
+                  <FacebookButton onCallback={this.submitFacebookForm}/>
                 </div>
                 <div className="gap gap-small"></div>
-                <div className="col-md-12 text-xs-center">
-                  <a href="#" onClick={this.changeLogin}>Return to login</a>
+                <div className="col-md-12 text-xs-center signupSeperator">
+                  <strong>or</strong>
+                  <hr />
                 </div>
-              </form>
+                <LoginForm emailAddress={this.state.creds.emailAddress} password={this.state.creds.password} isLoggingIn={this.state.isLoggingIn} onSubmit={this.submitStandardForm} onChange={this.changeField} onChangeLogin={this.changeForgotPassword} errors={this.state.errors}/>
+              </div>
+            </div>
+            <div className="modal-footer text-xs-center">
+              <a href="#" onClick={this.closeLoginModal}>Close</a>
             </div>
           </div>
+          <div className={this.state.creatingUser || this.state.isLoggingIn ? "modal-content" : "modal-content hide"}>
+            <Loader showLoader={true} />
+          </div>
         </div>
-        <div className={this.props.isFetching ? "modal-content" : "modal-content hide"}>
-            <Loader showLoader={this.props.isFetching} />
+        <div className={this.state.isForgotPassword ? "modal-dialog modelAuthentication " : "modal-dialog modelAuthentication hide"} role="document">
+          <ForgotPasswordForm emailAddress={this.state.creds.emailAddress} hasSentPassword={this.state.hasSentPassword} isSendingPassword={this.state.isSendingPassword} onSubmit={this.submitResetPasswordForm} onChange={this.changeField} onChangeLogin={this.changeLogin} errors={this.state.errors}/>
         </div>
-      </div>
       </div>
     );
   }

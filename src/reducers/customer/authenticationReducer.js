@@ -4,14 +4,14 @@ export default function authenticationReducer(state = { isFetching: false, isAut
   switch(action.type) {
 
     case types.LOGIN_REQUEST:
-      return Object.assign({}, state, { isFetching: true, isAuthenticated: false, hasSentPassword: false, user: action.creds });
+      return Object.assign({}, state, { isFetching: true, isAuthenticated: false, hasSentPassword: false });
     case types.LOGIN_SUCCESS:
       return Object.assign({}, state, { isFetching: false, isAuthenticated: true, hasSentPassword: false, errorMessage: '' });
     case types.LOGIN_FAILURE:
       return Object.assign({}, state, { isFetching: false, isAuthenticated: false, hasSentPassword: false, errorMessage: action.message });
-          
+
     case types.REGISTRATION_REQUEST:
-      return Object.assign({}, state, { isFetching: true, isAuthenticated: false, hasSentPassword: false, user: action.creds });
+      return Object.assign({}, state, { isFetching: true, isAuthenticated: false, hasSentPassword: false });
     case types.REGISTRATION_SUCCESS:
       return Object.assign({}, state, { isFetching: false, isAuthenticated: true, hasSentPassword: false, errorMessage: '' });
     case types.REGISTRATION_FAILURE:
@@ -26,7 +26,7 @@ export default function authenticationReducer(state = { isFetching: false, isAut
       return Object.assign({}, state, { isFetching: false, isAuthenticated: false, hasSentPassword: true });
     case types.PASSWORD_FAILURE:
       return Object.assign({}, state, { isFetching: false, isAuthenticated: false, hasSentPassword: false, errorMessage: action.message });
-          
+
     default:
       return state;
 	}

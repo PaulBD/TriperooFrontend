@@ -83,8 +83,8 @@ Reviews.defaultProps = {
 Reviews.propTypes = {
   reviews: PropTypes.array.isRequired,
   locationReviewsActions: PropTypes.object.isRequired,
-  locationType: PropTypes.string.isRequired,
-  locationId: PropTypes.number.isRequired,
+  locationType: PropTypes.string,
+  locationId: PropTypes.number,
   pageSize: PropTypes.number.isRequired,
   pageNumber: PropTypes.number.isRequired,
   showTitle: PropTypes.bool,

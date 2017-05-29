@@ -16,7 +16,6 @@ class Footer extends React.Component {
      this.signup = this.signup.bind(this);
   }
 
-
   writeReview(e) {
     e.preventDefault();
     this.props.modalActions.openReview(0, '', '');

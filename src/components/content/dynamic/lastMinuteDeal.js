@@ -7,10 +7,20 @@ import Loader from '../../common/loadingDots';
 class LastMinuteDeal extends React.Component {
   constructor(props, context) {
     super(props, context);
+    this.state = { isLoading: false };
   }
 
   componentDidMount() {
-    this.props.hotelActions.loadHotelDealsByLocation(this.props.locationId, 1, 0);
+    this.loadDeals();
+  }
+
+  loadDeals() {
+    this.setState({isLoading: true})
+    this.props.hotelActions.loadHotelDealsByLocation(this.props.locationId, 1, 0)
+      .then(() => this.setState({isLoading: false}))
+      .catch(error => {
+        this.setState({isLoading: false});
+      });
   }
 
   render() {
@@ -20,55 +30,35 @@ class LastMinuteDeal extends React.Component {
     let style = {};
     let price = '';
 
-    if (hotelDeals.length > 0 )
+    if (!this.state.isLoading)
     {
-      style = {
-        backgroundImage: 'url(' + hotelDeals[0].merchant_image_url + ')'
-      };
+      if (hotelDeals.length > 0) {
 
-      price = hotelDeals.price;
+        style = {
+          backgroundImage: 'url(' + hotelDeals[0].merchant_image_url + ')'
+        };
 
-      if ((price !== '') && (price !== '00.00')) {
-        price = <p className="mb20">{price}</p>;
-      }
+        price = hotelDeals.price;
 
-      return (
-        <div>
-          <div className="bg-holder">
-            <div className="bg-mask"></div>
-            <div className="bg-parallax" style={style}></div>
-            <div className="bg-content">
-              <div className="container">
-                <div className="gap gap-big text-xs-center text-white">
-                    <h5 className="last-minute-title">{hotelDeals[0].product_name}</h5>
-                    <h3>{hotelDeals[0].description}</h3>
-                    {price}
-                    <a className="btn btn-lg btn-white btn-ghost" href={hotelDeals[0].aw_deep_link} target="_blank">View Deal <i className="fa fa-angle-right"></i></a>
-                    <br />
-                    <small>Clicking this link will redirect you to Travelzoo</small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="gap"></div>
-        </div>
-      );
-    }
-    else
-    {
-      if (!this.props.isFetching) {
-        return null;
-      }
-      else {
+        if ((price !== '') && (price !== '00.00')) {
+          price = <p className="mb20">{price}</p>;
+        }
+
         return (
           <div>
             <div className="bg-holder">
               <div className="bg-mask"></div>
-              <div className="bg-parallax"></div>
+              <div className="bg-parallax" style={style}></div>
               <div className="bg-content">
                 <div className="container">
-                  <div className="gap gap-big text-xs-center text-white loadingHotelDeal">
-                    <Loader showLoader={this.props.isFetching}/>
+                  <div className="gap gap-big text-xs-center text-white">
+                    <h5 className="last-minute-title">{hotelDeals[0].product_name}</h5>
+                    <h3>{hotelDeals[0].description}</h3>
+                    {price}
+                    <a className="btn btn-lg btn-white btn-ghost" href={hotelDeals[0].aw_deep_link} target="_blank">View
+                      Deal <i className="fa fa-angle-right"></i></a>
+                    <br />
+                    <small>Clicking this link will redirect you to Travelzoo</small>
                   </div>
                 </div>
               </div>
@@ -77,25 +67,44 @@ class LastMinuteDeal extends React.Component {
           </div>
         );
       }
+      else {
+        return null;
+      }
+    }
+    else
+    {
+      return (
+        <div>
+          <div className="bg-holder">
+            <div className="bg-mask"></div>
+            <div className="bg-parallax"></div>
+            <div className="bg-content">
+              <div className="container">
+                <div className="gap gap-big text-xs-center text-white loadingHotelDeal">
+                  <Loader showLoader={true}/>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="gap"></div>
+        </div>
+      );
     }
   }
 }
 
 LastMinuteDeal.defaultProps = {
-  hotelDeals: [],
-  isFetching: false
+  hotelDeals: []
 };
 
 LastMinuteDeal.propTypes = {
   hotelDeals: PropTypes.array.isRequired,
   hotelActions: PropTypes.object.isRequired,
-  locationId: PropTypes.number.isRequired,
-  isFetching: PropTypes.bool.isRequired
+  locationId: PropTypes.number.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    isFetching: state.hotels.isFetching ? state.hotels.isFetching : false,
     hotelDeals: state.hotels.hotelDeals ? state.hotels.hotelDeals : []
   };
 }

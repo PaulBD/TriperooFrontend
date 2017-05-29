@@ -86,7 +86,7 @@ class AirportHotelSearchForm extends React.Component {
 
   render(){
     let style = {
-        backgroundImage: 'url(/static/img/' + this.props.contentType + '.jpg'
+      backgroundImage: 'url(/static/img/' + this.props.contentType + '.jpg'
     };
     return (
       <div>
@@ -94,112 +94,112 @@ class AirportHotelSearchForm extends React.Component {
           <div className="bg-mask"></div>
           <div className="bg-img" style={style}></div>
           <div className="bg-front full-center">
-              <div className="owl-cap">
-                  <h1 className="owl-cap-title fittext">{this.props.headerTitle}</h1>
-                  <div className="owl-cap-price">
-                    <small>{this.props.subHeaderTitle}</small>
-                  </div>
+            <div className="owl-cap">
+              <h1 className="owl-cap-title fittext">{this.props.headerTitle}</h1>
+              <div className="owl-cap-price">
+                <small>{this.props.subHeaderTitle}</small>
               </div>
+            </div>
           </div>
         </div>
-      <div className="container">
-        <div className="search-tabs search-tabs-bg search-tabs-to-top">
-          <div className="tabbable">
-            <div className="tab-content">
-              <div className="tab-pane fade in active" id="tab-1">
-                <form onSubmit={this.submitForm} className="searchForm">
-                  <div className="row">
-                    <div className="col-md-3">
-                      <div className="row">
-                        <div className="col-md-12">
-                          <div className="form-group form-group-icon-left"><i className="fa fa-map-marker input-icon"></i>
-                            <label>Flying From?</label>
+        <div className="container">
+          <div className="search-tabs search-tabs-bg search-tabs-to-top">
+            <div className="tabbable">
+              <div className="tab-content">
+                <div className="tab-pane fade in active" id="tab-1">
+                  <form onSubmit={this.submitForm} className="searchForm">
+                    <div className="row">
+                      <div className="col-md-3">
+                        <div className="row">
+                          <div className="col-md-12">
+                            <div className="form-group form-group-icon-left"><i className="fa fa-map-marker input-icon"></i>
+                              <label>Flying From?</label>
                               <AirportList cssClass="form-control searchSelect" name="airport" selectedValue={this.state.airport} changeValue={this.handleAirportChange} />
+                            </div>
                           </div>
-                        </div>
-                        <div className="col-md-12">
-                          <div className="form-group form-group-icon-left"><i className="fa fa-car input-icon input-icon-hightlight"></i>
-                            <label>Include Parking?</label>
-                            <select defaultValue="Yes" className="form-control" onChange={this.handleHideCollectCar}>
-                              <option key="Yes">Yes</option>
-                              <option key="No">No</option>
-                            </select>
+                          <div className="col-md-12">
+                            <div className="form-group form-group-icon-left"><i className="fa fa-car input-icon input-icon-hightlight"></i>
+                              <label>Include Parking?</label>
+                              <select defaultValue="Yes" className="form-control" onChange={this.handleHideCollectCar}>
+                                <option key="Yes">Yes</option>
+                                <option key="No">No</option>
+                              </select>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div className="col-md-9">
-                      <div className="row">
-                        <div className="col-md-9">
-                          <div className="row">
-                            <div className="col-md-7">
-                              <div className="row">
-                                <div className="col-md-6">
-                                  <div className="form-group form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
-                                    <label>Hotel Check In</label>
-                                    <DatePicker name="dropOffDate" dateFormat="DD/MM/YYYY"  selected={this.state.checkInDate} onChange={this.handleCheckInDateChange} className="form-control" />
+                      <div className="col-md-9">
+                        <div className="row">
+                          <div className="col-md-9">
+                            <div className="row">
+                              <div className="col-md-7">
+                                <div className="row">
+                                  <div className="col-md-6">
+                                    <div className="form-group form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
+                                      <label>Hotel Check In</label>
+                                      <DatePicker name="dropOffDate" dateFormat="DD/MM/YYYY"  selected={this.state.checkInDate} onChange={this.handleCheckInDateChange} className="form-control" />
+                                    </div>
                                   </div>
-                                 </div>
-                                <div className="col-md-6">
-                                  <div className="form-group form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
+                                  <div className="col-md-6">
+                                    <div className="form-group form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
                                       <label>Hotel Check Out</label>
                                       <DatePicker name="pickUpDate" dateFormat="DD/MM/YYYY"  selected={this.state.checkOutDate} onChange={this.handleCheckOutDateChange} className="form-control" />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-5">
+                                <div className="row">
+                                  <div className="col-md-12">
+                                    <div className="form-group form-group-select-plus">
+                                      <label>Room Type</label>
+                                      <RoomDropDownList cssClass="form-control searchSelect" name="pickUpTime" value={this.state.roomType} changeValue={this.handleRoomChange} />
+                                    </div>
                                   </div>
                                 </div>
                               </div>
                             </div>
-                            <div className="col-md-5">
-                              <div className="row">
-                                <div className="col-md-12">
-                                  <div className="form-group form-group-select-plus">
-                                    <label>Room Type</label>
-                                    <RoomDropDownList cssClass="form-control searchSelect" name="pickUpTime" value={this.state.roomType} changeValue={this.handleRoomChange} />
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="row">
-                            <div className="col-md-7">
-                              <div className="row">
-                                <div className={this.state.includeParking == 'Yes' ? "col-md-6" : "col-md-6 hide"}>
-                                  <div className="form-group form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
+                            <div className="row">
+                              <div className="col-md-7">
+                                <div className="row">
+                                  <div className={this.state.includeParking == 'Yes' ? "col-md-6" : "col-md-6 hide"}>
+                                    <div className="form-group form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
                                       <label>Drop Off Car</label>
                                       <DatePicker name="dropOffCar" dateFormat="DD/MM/YYYY"  selected={this.state.dropOffCarDate} onChange={this.handleDropOffCarChange} className="form-control" />
+                                    </div>
                                   </div>
-                                </div>
-                                <div className={this.state.includeParking == 'Yes' ? "col-md-6" : "col-md-6 hide"}>
-                                  <div className="form-group form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
+                                  <div className={this.state.includeParking == 'Yes' ? "col-md-6" : "col-md-6 hide"}>
+                                    <div className="form-group form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
                                       <label>Collect Car</label>
                                       <DatePicker name="collectCar" dateFormat="DD/MM/YYYY"  selected={this.state.collectCarDate} onChange={this.handleCollectCarChange} className="form-control" />
+                                    </div>
                                   </div>
                                 </div>
                               </div>
-                            </div>
-                            <div className="col-md-5">
-                              <div className="row">
-                                <div className="col-md-12">
-                                <div className={this.state.includeSecondRoom == 'No' ? "form-group form-group-select-plus" : "form-group form-group-select-plus hide"}>
-                                  <p><a href="#" onClick={this.addSecondRoom}>Add second room?</a></p>
-                                </div>
-                                <div className={this.state.includeSecondRoom == 'Yes' ? "form-group form-group-select-plus" : "form-group form-group-select-plus hide"}>
-                                    <label>Second Room Type <a href="#" onClick={this.removeSecondRoom}>Remove?</a></label>
-                                    <RoomDropDownList cssClass="form-control searchSelect" name="pickUpTime" value={this.state.secondRoomType} changeValue={this.handleSecondRoomChange} />
-                                </div>
+                              <div className="col-md-5">
+                                <div className="row">
+                                  <div className="col-md-12">
+                                    <div className={this.state.includeSecondRoom == 'No' ? "form-group form-group-select-plus" : "form-group form-group-select-plus hide"}>
+                                      <p><a href="#" onClick={this.addSecondRoom}>Add second room?</a></p>
+                                    </div>
+                                    <div className={this.state.includeSecondRoom == 'Yes' ? "form-group form-group-select-plus" : "form-group form-group-select-plus hide"}>
+                                      <label>Second Room Type <a href="#" onClick={this.removeSecondRoom}>Remove?</a></label>
+                                      <RoomDropDownList cssClass="form-control searchSelect" name="pickUpTime" value={this.state.secondRoomType} changeValue={this.handleSecondRoomChange} />
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <div className="col-md-3">
-                          <button className="btn btn-primary btn-lg formBtn" type="submit">
-                            <i className="fa fa-search"></i>Search
-                          </button>
+                          <div className="col-md-3">
+                            <button className="btn btn-primary btn-lg formBtn" type="submit">
+                              <i className="fa fa-search"></i>Search
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </form>
+                  </form>
                 </div>
               </div>
             </div>

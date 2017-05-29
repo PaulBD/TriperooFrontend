@@ -4,7 +4,8 @@ import {bindActionCreators} from 'redux';
 import * as locationActions from '../../actions/location/locationActions';
 import * as nightlifeActions from '../../actions/location/travelContent/nightlifeActions';
 import FacebookSignup from '../../components/customer/authentication/facebookSignup';
-import Loader from '../../components/common/loadingDots';
+import TriperooLoader from '../../components/common/triperooLoader';
+import Toastr from 'toastr';
 
 import SubPageHeader from '../../components/locations/subPageHeader';
 import NightlifeCategories from '../../components/locations/common/categorySideBar';
@@ -13,90 +14,104 @@ import Nightlife from '../../components/locations/locationListWrapper';
 let titleCase = require('title-case');
 
 class NightlifeContent extends React.Component {
-    constructor(props, context) {
-        super(props, context);
-        this.changeNightlife = this.changeNightlife.bind(this);
-        this.changePage = this.changePage.bind(this);
-        this.state = { nightlifeType: '', nightlifeFriendlyName: '', pageSize: 9, pageNumber: 0, activePage: 1 };
-    }
+  constructor(props, context) {
+    super(props, context);
+    this.changeNightlifeVenue = this.changeNightlifeVenue.bind(this);
+    this.changePage = this.changePage.bind(this);
+    this.state = { isLoadingLocation: false, isLoadingNightlifeList: false, nightlifeType: '', nightlifeFriendlyName: '', pageSize: 9, pageNumber: 0, activePage: 1 };
+  }
 
-    componentDidMount() {
-        window.scrollTo(0, 0);
-        this.props.locationActions.loadLocationById(this.props.locationId);
-        this.props.nightlifeActions.loadNightlifeByParentLocationId(this.props.locationId, this.state.nightlifeType, this.state.pageSize, this.state.pageNumber);
-    }
+  componentDidMount() {
+    window.scrollTo(0, 0);
+    this.setState({isLoadingLocation: true});
+    this.loadLocation();
+  }
 
-    changeNightlife(value, friendlyName) {
-        this.setState({ nightlifeType: value, nightlifeFriendlyName: friendlyName });
-        this.props.nightlifeActions.loadNightlifeByParentLocationId(this.props.locationId, value, this.state.pageSize, this.state.pageNumber - 1);
-    }
+  loadLocation() {
+    this.props.locationActions.loadLocationById(this.props.locationId)
+      .then(() => this.loadNightlifVenues(this.props.locationId, this.state.nightlifeType, this.state.pageSize, this.state.pageNumber))
+      .catch(error => {
+        Toastr.error(error);
+        this.setState({isLoadingLocation: false});
+      });
+  }
 
-    changePage(value){
-        this.props.nightlifeActions.loadNightlifeByParentLocationId(this.props.locationId, this.state.nightlifeType, this.state.pageSize, value);
-    }
+  changeNightlifeVenue(value, friendlyName) {
+    this.setState({ nightlifeType: value, nightlifeFriendlyName: friendlyName });
+    this.loadNightlifVenues(this.props.locationId, value, this.state.pageSize, this.state.pageNumber - 1);
+  }
 
-    render(){
-        document.title = this.state.nightlifeType == '' ? titleCase(this.props.location.regionName) + ' Nightlife' : titleCase(this.state.nightlifeFriendlyName) + ' in ' + titleCase(this.props.location.regionName);
+  changePage(value){
+    this.loadNightlifVenues(this.props.locationId, this.state.nightlifeType, this.state.pageSize, value);
+  }
 
-        if (this.props.location.regionName != undefined)
-        {
-            return (
-            <div>
-                <SubPageHeader location={this.props.location} contentType="nightlife" />
-                <div className="container">
-                    <div className="row row-wrap">
-                        <div className="gap gap-small"></div>
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-md-9">
-                                    <div className={this.props.isFetchingNightlife ? "hide" : "nav-drop booking-sort"}>
-                                        {this.props.nightlifeCount} Results {this.state.nightlifeType != '' ? ' - filtered by ' + titleCase(this.state.nightlifeFriendlyName) : ''}
-                                    </div>
-                                    <Nightlife locationId={this.props.locationId} locations={this.props.nightlife} locationCount={this.props.nightlifeCount} changePage={this.changePage} isFetching={this.props.isFetchingNightlife}/>
-                                </div>
-                                <div className="col-md-3">
-                                    <NightlifeCategories changeCategory={this.changeNightlife} contentType="nightlife"  />
-                                </div>
-                            </div>
-                        </div>
+  loadNightlifVenues(locationId, nightlifeType, pageSize, pageNumber) {
+    this.setState({isLoadingLocation: false, isLoadingNightlifeList: true });
+    this.props.nightlifeActions.loadNightlifeByParentLocationId(locationId, nightlifeType, pageSize, pageNumber)
+      .then(() => this.setState({isLoadingNightlifeList: false}))
+      .catch(error => {
+        Toastr.error(error);
+        this.setState({isLoadingNightlifeList: false});
+      });
+  }
+
+  render(){
+    document.title = this.state.nightlifeType == '' ? titleCase(this.props.location.regionName) + ' Nightlife' : titleCase(this.state.nightlifeFriendlyName) + ' in ' + titleCase(this.props.location.regionName);
+
+    if (! this.state.isLoadingLocation)
+    {
+      return (
+        <div>
+          <SubPageHeader location={this.props.location} contentType="nightlife" />
+          <div className="container">
+            <div className="row row-wrap">
+              <div className="gap gap-small"></div>
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-9">
+                    <div className={this.state.isLoadingNightlifeList ? "hide" : "nav-drop booking-sort"}>
+                      {this.props.nightlifeCount} Results {this.state.nightlifeType != '' ? ' - filtered by ' + titleCase(this.state.nightlifeFriendlyName) : ''}
                     </div>
+                    <Nightlife locationId={this.props.locationId} locations={this.props.nightlife} locationCount={this.props.nightlifeCount} changePage={this.changePage} isFetching={this.state.isLoadingNightlifeList}/>
+                  </div>
+                  <div className="col-md-3">
+                    <NightlifeCategories changeCategory={this.changeNightlifeVenue} contentType="nightlife"  />
+                  </div>
                 </div>
-                <FacebookSignup />
+              </div>
             </div>
-            );
-        }
-        else {
-            return (<Loader showLoader={this.props.isFetching} />);
-        }
+          </div>
+          <FacebookSignup />
+        </div>
+      );
+    }
+    else {
+      return (<TriperooLoader />);
+    }
   }
 }
 
 NightlifeContent.defaultProps = {
-    isFetching: false,
-    nightlifeType: ''
+  nightlifeType: ''
 };
 
 NightlifeContent.propTypes = {
-    locationId: PropTypes.number,
-    location: PropTypes.object,
-    locationActions: PropTypes.object.isRequired,
-    nightlifeActions: PropTypes.object.isRequired,
-    nightlifeCount: PropTypes.number.isRequired,
-    isFetching: PropTypes.bool.isRequired,
-    isFetchingNightlife: PropTypes.bool.isRequired,
-    nightlife: PropTypes.array.isRequired,
-    nightlifeType: PropTypes.string
+  locationId: PropTypes.number,
+  location: PropTypes.object,
+  locationActions: PropTypes.object.isRequired,
+  nightlifeActions: PropTypes.object.isRequired,
+  nightlifeCount: PropTypes.number.isRequired,
+  nightlife: PropTypes.array.isRequired,
+  nightlifeType: PropTypes.string
 };
 
 function mapStateToProps(state, ownProps) {
-     return {
-        isFetching: state.location.isFetching ? state.location.isFetching : false,
-        isFetchingNightlife: state.nightlife.isFetching ? state.nightlife.isFetching : false,
-        location: state.location.location ? state.location.location : {},
-        locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0,
-        nightlife: state.nightlife.nightlifeList ? state.nightlife.nightlifeList.locations : [],
-        nightlifeCount:  state.nightlife.nightlifeList ? state.nightlife.nightlifeList.locationCount : 0
-    };
+  return {
+    location: state.location.location ? state.location.location : {},
+    locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0,
+    nightlife: state.nightlife.nightlifeList ? state.nightlife.nightlifeList.locations : [],
+    nightlifeCount:  state.nightlife.nightlifeList ? state.nightlife.nightlifeList.locationCount : 0
+  };
 }
 
 function mapDispatchToProps(dispatch) {

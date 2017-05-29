@@ -33,9 +33,9 @@ const HomePage = () => {
                 <div className="gap"></div>
                 <BulletPoints />
                 <div className="gap gap-small"></div>
-                <hr />
-                <div className="gap"></div>
                 <FacebookSignup />
+                <div className="gap"></div>
+                <hr />
                 <TrustedPartners />
                 <div className="gap"></div>
             </div>

@@ -17,7 +17,7 @@ class AskQuestionButton extends React.Component {
   }
 
   render(){
-    if (this.props.isAuthenticated) {
+    if (this.props.isAuthenticated && this.props.locationName) {
         return (
             <div>
                 <a href="#" className="btn btn-info questionBtn" onClick={this.askQuestion}>

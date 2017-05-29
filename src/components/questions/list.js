@@ -14,9 +14,9 @@ class QuestionList extends React.Component {
 
   answerQuestion(e) {
     e.preventDefault();
-    let id = e.target.getAttribute('data-id');
+    let ref = e.target.getAttribute('data-ref');
     let question = e.target.getAttribute('data-question');
-    this.props.modalActions.openQuestionAnswer(id, question);
+    this.props.modalActions.openQuestionAnswer(ref, question);
   }
 
   handleMissingImage(e) {
@@ -25,8 +25,6 @@ class QuestionList extends React.Component {
 
   render() {
     if (this.props.questions != undefined && this.props.questions.length > -1) {
-
-
       return (
           <ul className="thumb-list thumb-list-right">
           {
@@ -40,7 +38,9 @@ class QuestionList extends React.Component {
                         <p className="thumb-list-item-meta">{question.friendlyDate}</p>
                         <h4 className="thumb-list-item-title"><a href={question.customerProfileUrl}>{question.customerName}</a></h4>
                         <p className="thumb-list-item-desciption">
-                          { this.props.isAuthenticated ?  <a href="#" onClick={this.answerQuestion} data-id={question.questionReference} data-question={question.question}>{question.question.length > 50 ? question.question.substring(0, 50) + '...' : question.question}</a> : question.question.length > 50 ? question.question.substring(0, 50) + '...' : question.question}
+                          {question.question}
+                          <br />
+                          {question.answers.length == 1 ? "1 Answer" : question.answers.length + " Answers"} { this.props.isAuthenticated ? (<span>&bull; <a href="#" onClick={this.answerQuestion} data-ref={question.questionReference} data-question={question.question}>Answer Question</a></span>) : ""}
                         </p>
                     </div>
                 </li>
