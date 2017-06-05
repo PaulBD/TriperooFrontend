@@ -31,6 +31,35 @@ export default function userReducer(state = { isSending: false, hasPosted: false
     case types.POST_BOOKMARK_FAILURE:
       return Object.assign({}, state, { isSending: false, hasPosted: false, errorMessage: action.message });
 
+    case types.LOAD_TRIPS_REQUEST:
+      return Object.assign({}, state, { isSending: true, hasPosted: false});
+    case types.LOAD_TRIPS_SUCCESS:
+      return Object.assign({}, state, { isSending: false, hasPosted: true, errorMessage: '', trips: action.trips });
+    case types.LOAD_TRIPS_FAILURE:
+      return Object.assign({}, state, { isSending: false, hasPosted: false, errorMessage: action.message });
+
+    case types.LOAD_TRIP_REQUEST:
+      return Object.assign({}, state, { isSending: true, hasPosted: false});
+    case types.LOAD_TRIP_SUCCESS:
+      return Object.assign({}, state, { isSending: false, hasPosted: true, errorMessage: '', trip: action.trip });
+    case types.LOAD_TRIP_FAILURE:
+      return Object.assign({}, state, { isSending: false, hasPosted: false, errorMessage: action.message });
+
+    case types.POST_TRIP_REQUEST:
+      return Object.assign({}, state, { isSending: true, hasPosted: false});
+    case types.POST_TRIP_SUCCESS:
+      return Object.assign({}, state, { isSending: false, hasPosted: true, errorMessage: '', tripId: action.tripId });
+    case types.POST_TRIP_FAILURE:
+      return Object.assign({}, state, { isSending: false, hasPosted: false, errorMessage: action.message });
+
+    case types.ARCHIVE_TRIP_REQUEST:
+      return Object.assign({}, state, { isSending: true, hasPosted: false});
+    case types.ARCHIVE_TRIP_SUCCESS:
+      return Object.assign({}, state, { isSending: false, hasPosted: true, errorMessage: '' });
+    case types.ARCHIVE_TRIP_FAILURE:
+      return Object.assign({}, state, { isSending: false, hasPosted: false, errorMessage: action.message });
+
+
     case types.POST_PHOTO_REQUEST:
       return Object.assign({}, state, { isSending: true, hasPosted: false});
     case types.POST_PHOTO_SUCCESS:

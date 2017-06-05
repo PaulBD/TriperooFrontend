@@ -11,6 +11,9 @@ const GoogleMap = ({longitude, latitude, text, zoom}) => {
         defaultCenter={center}
         defaultZoom={zoom}
         bootstrapURLKeys={{key: "AIzaSyDObkGQJw9q8qKkINjQ9fR7YTuSwNCBtoY"}}
+        options={{
+          scrollwheel: false,
+        }}
       >
         <Marker
           lat={latitude}

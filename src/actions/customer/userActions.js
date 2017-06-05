@@ -56,11 +56,126 @@ export function getUser(userReference) {
   };
 }
 
+
+// ****************************************
+// Get Trips
+// ****************************************
+export function getTripsInitialize() {
+  return {type: types.LOAD_TRIPS_REQUEST, isSending: true, hasPosted: false };
+}
+
+export function getTripsSuccess(trips) {
+  return {type: types.LOAD_TRIPS_SUCCESS, isSending: false, hasPosted: true, trips};
+}
+
+export function getTripsFailure(message) {
+  return {type: types.LOAD_TRIPS_FAILURE, isSending: false, hasPosted: false, message};
+}
+
+export function getTrips() {
+
+  return dispatch => {
+    dispatch(getTripsInitialize());
+    return UserApi.getTrips().then(trips => {
+      dispatch(getTripsSuccess(trips));
+    }).catch(error => {
+      dispatch(getTripsFailure(error.response.data));
+    });
+  };
+}
+
+// ****************************************
+// Get Trip
+// ****************************************
+export function getTripInitialize(tripId) {
+  return {type: types.LOAD_TRIP_REQUEST, isSending: true, hasPosted: false, tripId };
+}
+
+export function getTripSuccess(trip) {
+  return {type: types.LOAD_TRIP_SUCCESS, isSending: false, hasPosted: true, trip};
+}
+
+export function getTripFailure(message) {
+  return {type: types.LOAD_TRIP_FAILURE, isSending: false, hasPosted: false, message};
+}
+
+export function getTrip(tripId) {
+
+  return dispatch => {
+    dispatch(getTripInitialize());
+    return UserApi.getTrip(tripId).then(trip => {
+      dispatch(getTripSuccess(trip));
+    }).catch(error => {
+      dispatch(getTripFailure(error.response.data));
+    });
+  };
+}
+
+// ****************************************
+// Add new Trip
+// ****************************************
+export function postTripInitialize(trip) {
+  return {type: types.POST_TRIP_REQUEST, isSending: true, hasPosted: false, trip};
+}
+
+export function postTripSuccess(tripId) {
+  return {type: types.POST_TRIP_SUCCESS, isSending: false, hasPosted: true, tripId};
+}
+
+export function postTripFailure(message) {
+  return {type: types.POST_TRIP_FAILURE, isSending: false, hasPosted: false, message};
+}
+
+export function postTrip(trip) {
+  return dispatch => {
+    dispatch(postTripInitialize(trip));
+    if (trip.regionId > 0)
+    {
+      return UserApi.postTrip(trip).then(tripId => {
+        dispatch(postTripSuccess(tripId));
+      }).catch(error => {
+        dispatch(postTripFailure(error.response.data));
+      });
+    }
+    else {
+      dispatch(postTripFailure("An error has occurred whilst trying to create a new trip"));
+    }
+  };
+}
+
+
+// ****************************************
+// Archive Trip
+// ****************************************
+export function archiveTripInitialize(tripId) {
+  return {type: types.ARCHIVE_TRIP_REQUEST, isSending: true, hasPosted: false, tripId};
+}
+
+export function archiveTripSuccess() {
+  return {type: types.ARCHIVE_TRIP_SUCCESS, isSending: false, hasPosted: true};
+}
+
+export function archiveTripFailure(message) {
+  return {type: types.ARCHIVE_TRIP_FAILURE, isSending: false, hasPosted: false, message};
+}
+
+export function archiveTrip(tripId) {
+  return dispatch => {
+    dispatch(archiveTripInitialize(tripId));
+    return UserApi.archiveTrip(tripId).then(() => {
+      dispatch(archiveTripSuccess());
+    }).catch(error => {
+      dispatch(archiveTripFailure(error.response.data));
+    });
+  };
+}
+
+
 // ****************************************
 // Get Bookmarks
 // ****************************************
-export function getBookmarkInitialize() {
-  return {type: types.LOAD_BOOKMARK_REQUEST, isSending: true, hasPosted: false };
+export function getBookmarkInitialize(tripId) {
+  return {type: types.LOAD_BOOKMARK_REQUEST, isSending: true, hasPosted: false, tripId };
 }
 
 export function getBookmarkSuccess(bookmarks) {
@@ -71,11 +186,11 @@ export function getBookmarkFailure(message) {
   return {type: types.LOAD_BOOKMARK_FAILURE, isSending: false, hasPosted: false, message};
 }
 
-export function getBookmarks() {
+export function getBookmarks(tripId) {
 
   return dispatch => {
-    dispatch(getBookmarkInitialize());
-    return UserApi.getBookmarks().then(bookmarks => {
+    dispatch(getBookmarkInitialize(tripId));
+    return UserApi.getBookmarks(tripId).then(bookmarks => {
       dispatch(getBookmarkSuccess(bookmarks));
     }).catch(error => {
       dispatch(getBookmarkFailure(error.response.data));
@@ -86,8 +201,8 @@ export function getBookmarks() {
 // ****************************************
 // Add new Bookmark
 // ****************************************
-export function postBookmarkInitialize(bookmark) {
-  return {type: types.POST_BOOKMARK_REQUEST, isSending: true, hasPosted: false, bookmark};
+export function postBookmarkInitialize(tripId, bookmark) {
+  return {type: types.POST_BOOKMARK_REQUEST, isSending: true, hasPosted: false, tripId, bookmark};
 }
 
 export function postBookmarkSuccess() {
@@ -98,12 +213,12 @@ export function postBookmarkFailure(message) {
   return {type: types.POST_BOOKMARK_FAILURE, isSending: false, hasPosted: false, message};
 }
 
-export function postBookmark(bookmark) {
+export function postBookmark(tripId, location) {
   return dispatch => {
-    dispatch(postBookmarkInitialize(bookmark));
-    if (bookmark.regionID > 0)
+    dispatch(postBookmarkInitialize(tripId, location));
+    if (location.regionID > 0)
     {
-      return UserApi.postBookmark(bookmark).then(bookmark => {
+      return UserApi.postBookmark(tripId, location).then(bookmark => {
         dispatch(postBookmarkSuccess());
       }).catch(error => {
         dispatch(postBookmarkFailure(error.response.data));
@@ -119,8 +234,8 @@ export function postBookmark(bookmark) {
 // ****************************************
 // Archive Bookmark
 // ****************************************
-export function archiveBookmarkInitialize(locationId) {
-  return {type: types.ARCHIVE_BOOKMARK_REQUEST, isSending: true, hasPosted: false, locationId};
+export function archiveBookmarkInitialize(tripId, locationId) {
+  return {type: types.ARCHIVE_BOOKMARK_REQUEST, isSending: true, hasPosted: false, locationId, tripId};
 }
 
 export function archiveBookmarkSuccess() {
@@ -131,10 +246,10 @@ export function archiveBookmarkFailure(message) {
   return {type: types.ARCHIVE_BOOKMARK_FAILURE, isSending: false, hasPosted: false, message};
 }
 
-export function archiveBookmark(locationId) {
+export function archiveBookmark(tripId, locationId) {
   return dispatch => {
-    dispatch(archiveBookmarkInitialize(locationId));
-    return UserApi.archiveBookmark(locationId).then(bookmark => {
+    dispatch(archiveBookmarkInitialize(tripId, locationId));
+    return UserApi.archiveBookmark(tripId, locationId).then(bookmark => {
       dispatch(archiveBookmarkSuccess());
     }).catch(error => {
       dispatch(archiveBookmarkFailure(error.response.data));

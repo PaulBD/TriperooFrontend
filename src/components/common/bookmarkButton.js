@@ -12,7 +12,7 @@ class BookmarkButton extends React.Component {
 
   openBookmark(e) {
     e.preventDefault();
-    this.props.modalActions.openBookmark(this.props.locationId, this.props.locationNameLong, this.props.locationName, this.props.locationType, this.props.locationImage, this.props.locationUrl);
+    this.props.modalActions.openBookmark(this.props.parentLocationId, this.props.parentLocationName, this.props.parentLocationNameLong, this.props.locationId, this.props.locationNameLong, this.props.locationName, this.props.locationType, this.props.locationImage, this.props.locationUrl);
   }
 
   render() {
@@ -21,7 +21,7 @@ class BookmarkButton extends React.Component {
         <div key={this.props.name}>
           <a href="#" className="btn btn-info questionBtn" onClick={this.openBookmark}>
               <i className="fa fa-heart-o"></i>
-              Add to Wishlist
+              Add to Trips
           </a>
           <div className="gap gap-small"></div>
         </div>
@@ -41,6 +41,9 @@ BookmarkButton.defaultProps = {
 };
 
 BookmarkButton.propTypes = {
+  parentLocationId: PropTypes.number,
+  parentLocationName: PropTypes.string,
+  parentLocationNameLong: PropTypes.string,
   name: PropTypes.string.isRequired,
   locationId: PropTypes.number,
   locationName: PropTypes.string,

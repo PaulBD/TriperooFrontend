@@ -43,6 +43,7 @@ import CustomerPhotos from './apps/customer/photos';
 import BookingHistory from './apps/customer/bookingHistory';
 import CustomerReviews from './apps/customer/reviews';
 import CustomerBookmarks from './apps/customer/bookmarks';
+import CustomerTrips from './apps/customer/trips';
 
 // Hotels
 import Hotels from './apps/hotel';
@@ -93,6 +94,7 @@ export default (
     <Route path="/profile/(:guid)/(:customerName)/booking-history" component={BookingHistory}/>
     <Route path="/profile/(:guid)/(:customerName)/reviews" component={CustomerReviews}/>
     <Route path="/profile/(:guid)/(:customerName)/bookmarks" component={CustomerBookmarks}/>
+    <Route path="/profile/(:guid)/(:customerName)/trips/(:tripId)/(:tripName)" component={CustomerTrips}/>
 
     <Route path="*" component={NotFoundPage}/>
   </Route>

@@ -1,7 +1,6 @@
 import React, {PropTypes} from 'react';
 let DatePicker = require('react-datepicker');
 let moment = require('moment');
-import TimeDropDownList from '../../common/timeDropDownList';
 import RoomDropDownList from '../../common/roomDropDownList';
 import AirportList from '../../common/airportList';
 

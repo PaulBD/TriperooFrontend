@@ -12,7 +12,7 @@ class Bookmark extends React.Component {
 
   bookmarkLocation(e) {
     e.preventDefault();
-    this.props.modalActions.openBookmark(this.props.locationId, this.props.locationNameLong, this.props.locationName, this.props.locationType, this.props.locationImage, this.props.locationUrl, this.props.removeBookmark);
+    this.props.modalActions.openBookmark(this.props.parentLocationId, this.props.parentLocationName, this.props.parentLocationNameLong, this.props.locationId, this.props.locationNameLong, this.props.locationName, this.props.locationType, this.props.locationImage, this.props.locationUrl, this.props.removeBookmark);
   }
 
   render(){
@@ -24,7 +24,7 @@ class Bookmark extends React.Component {
 
     return (
         <div>
-          <a className={cssClass} key={this.props.locationId} href="#" onClick={this.bookmarkLocation} title="Bookmark"></a>
+          <a className={cssClass} key={this.props.locationId} href="#" onClick={this.bookmarkLocation} title="Add to Trips"></a>
         </div>
       );
     }
@@ -38,6 +38,9 @@ Bookmark.defaultProps = {
 };
 
 Bookmark.propTypes = {
+  parentLocationId: PropTypes.number,
+  parentLocationName: PropTypes.string,
+  parentLocationNameLong: PropTypes.string,
   locationId: PropTypes.number,
   locationName: PropTypes.string,
   locationNameLong: PropTypes.string,

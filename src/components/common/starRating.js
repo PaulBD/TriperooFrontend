@@ -29,12 +29,20 @@ class StarRating extends React.Component {
 
     let greyStars = tmpGrey.map(function (i) {
       return (<li key={i}><i className="fa fa-star-o"></i></li>);
-    });
+    })
+
+    let reviewCount = '';
+
+    if (this.props.includeReviewCount)
+    {
+      reviewCount = (<li className="reviewCount">{this.props.reviewCount == 1 ? this.props.reviewCount + ' Review' : this.props.reviewCount + ' Reviews'}</li>);
+    }
 
     return (
       <ul className={this.props.className}>
         {yellowStars}
         {greyStars}
+        {reviewCount}
       </ul>
     );
   }
@@ -42,7 +50,9 @@ class StarRating extends React.Component {
 
 StarRating.propTypes = {
   starRating: PropTypes.number.isRequired,
-  className: PropTypes.string.isRequired
+  className: PropTypes.string.isRequired,
+  includeReviewCount: PropTypes.bool,
+  reviewCount: PropTypes.number
 };
 
 export default StarRating;

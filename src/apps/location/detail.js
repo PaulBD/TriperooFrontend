@@ -18,6 +18,7 @@ import QuestionButton from '../../components/questions/questionButton';
 import Summary from '../../components/locations/summary';
 import GoogleMaps from '../../components/locations/common/googleMap';
 import HotelsNearLocation from '../../components/hotels/hotelsNearLocation';
+import EventsByLocation from '../../components/locations/event/eventByLocation';
 import Photos from '../../components/locations/common/photos';
 import TagList from '../../components/common/tagList';
 
@@ -36,7 +37,6 @@ class LocationDetail extends React.Component {
       formattedAddress: [],
       errors:''
     };
-
   }
 
   componentDidMount() {
@@ -88,70 +88,56 @@ class LocationDetail extends React.Component {
 
         address = this.removeLastComma(address);
       }
-
       return (
         <div>
           <LocationHeader location={this.props.location} hasLoaded={this.state.hasLoaded} />
-          <div className="row greyBg detailSubHeader">
-            <div className="container">
-              <div className="row row-wrap">
-                <div className="gap gap-small"></div>
-                <div className="col-md-12">
-                  <div className="row">
-                    <div className="col-md-6">
-                      <p><i className="fa fa-map-marker"></i> {address ? address : 'Address unknown'}</p>
-                      <TagList tags={this.props.location.tags} maxTags={5} />
-                      <p className={this.props.isAuthenticated ? "mb0" : "hide"}><a href="#" className="btn btn-default btn-sm editBtn" onClick={this.editLocation} >Edit Info</a></p>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="gap gap-small"></div>
-                      <div className="row">
-                        <div className="col-md-4">
-                          <ReviewButton name="sidePanel" locationId={this.props.locationId} locationName={this.props.location.regionName} locationType="" />
-                        </div>
-                        <div className="col-md-4">
-                          <PhotoButton name="sidePanel" locationId={this.props.locationId} locationName={this.props.location.regionName} locationType="" />
-                        </div>
-                        <div className="col-md-4">
-                          <BookmarkButton name="sidePanel" locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType={this.props.location.subClass} />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
           <div className="gap gap-small"></div>
           <div className="container">
             <div className="row row-wrap">
               <div className="col-md-8">
-                <ReviewList hasLoadedLocation={this.state.hasLoaded} locationId={this.props.locationId} locationName={this.props.location.regionName} locationType="" pageSize={3} pageNumber={0} showTitle={true} />
-              </div>
-              <div className="col-md-4">
-                <Photos />
-                <div className="gap gap-small"></div>
-                <GoogleMaps latitude={this.props.location.latitude} longitude={this.props.location.longitude} text={this.props.location.regionName} zoom={13} />
-                <div className="gap gap-small"></div>
-              </div>
-            </div>
-          </div>
-          <div className="container">
-            <div className="row row-wrap">
-              <HotelsNearLocation latitude={this.props.location.latitude} longitude={this.props.location.longitude} pageSize={3} />
-            </div>
-          </div>
-          <div className="container">
-            <div className="row row-wrap">
-              <div className="col-md-8">
+                <p><i className="fa fa-map-marker"></i> {address ? address : 'Address unknown'}</p>
+                <p><i className="fa fa-phone"></i> {this.props.location.contactDetails.formattedPhone}</p>
+                <p><i className="fa fa-pencil"></i> <a href="#" onClick={this.editLocation}>Edit</a></p>
+                <TagList tags={this.props.location.tags} maxTags={5} />
+                <div className="row">
+                <div className="col-md-4">
+                  <ReviewButton name="sidePanel" locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType={this.props.location.subClass} />
+                </div>
+                <div className="col-md-4">ß
+                  <PhotoButton name="sidePanel" locationId={this.props.locationId} locationName={this.props.location.regionName} locationType="" />
+                </div>
+                <div className="col-md-4">
+                  <BookmarkButton name="sidePanel" parentLocationId={this.props.location.parentRegionID} parentLocationName={this.props.location.parentRegionName} parentLocationNameLong={this.props.location.parentRegionNameLong} locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType={this.props.location.subClass} />
+                </div>
+                </div>
                 <Summary locationName={this.props.location.regionName} summary={this.props.location.summary ? this.props.location.summary.en : ''} />
               </div>
               <div className="col-md-4">
-                <QuestionButton locationId={this.props.locationId} locationName={this.props.location.regionNameLong} locationNameShort={this.props.location.regionName} locationType={this.props.location.regionType}/>
-                <RecentQuestions locationId={this.props.locationId} locationName={this.props.location.regionName} limit={3} offset={0} />
+                <Photos photos={this.props.location.photos}/>
               </div>
             </div>
           </div>
+          <div className="gap gap-small"></div>
+          <div className="row greyBg detailSubHeader">
+            <GoogleMaps latitude={this.props.location.locationCoordinates.latitude} longitude={this.props.location.locationCoordinates.longitude} text={this.props.location.regionName} zoom={13} />
+          </div>
+          <div className="gap gap-small"></div>
+          <div className="row">
+            <div className="container">
+                <div className="col-md-8">
+                  <ReviewList hasLoadedLocation={this.state.hasLoaded} locationId={this.props.locationId} locationName={this.props.location.regionName}  locationNameLong={this.props.location.regionNameLong}  locationType="" pageSize={3} pageNumber={0} showTitle={true} />
+                </div>
+                <div className="col-md-4">
+                  <QuestionButton locationId={this.props.locationId} locationName={this.props.location.regionNameLong} locationNameShort={this.props.location.regionName} locationType={this.props.location.regionType}/>
+                  <RecentQuestions locationId={this.props.locationId} locationName={this.props.location.regionName} limit={3} offset={0} />
+                </div>
+                <hr />
+            </div>
+          </div>
+          <div className="gap gap-small"></div>
+          <HotelsNearLocation latitude={this.props.location.latitude} longitude={this.props.location.longitude} pageSize={3} locationName={this.props.location.regionName} parentName={this.props.location.parentRegionName} parentUrl={this.props.location.parentUrl}/>
+          <div className="gap gap-small"></div>
+          <EventsByLocation locationId={this.props.locationId} keyword={this.props.location.regionName} />
           <FacebookSignup />
         </div>
       );

@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as locationReviewsActions from '../../actions/location/locationReviewsActions';
+import * as modalActions from '../../actions/common/modalActions';
 import ReviewList from './listCard';
 import Pagination from "react-js-pagination";
 import Toastr from 'toastr';
@@ -12,6 +13,7 @@ class Reviews extends React.Component {
     super(props, context);
     this.state = { reviews: [], activePage: 1, isLoadingReviews: false};
     this.changePage = this.changePage.bind(this);
+    this.writeReview = this.writeReview.bind(this);
   }
 
   componentDidMount() {
@@ -33,6 +35,11 @@ class Reviews extends React.Component {
             this.setState({isLoadingReviews: false});
           });
       }
+  }
+
+  writeReview(e) {
+    e.preventDefault();
+    this.props.modalActions.openReview(this.props.locationId, this.props.locationNameLong, this.props.locationType);
   }
 
   changePage(value) {
@@ -65,7 +72,7 @@ class Reviews extends React.Component {
     let title = '';
 
     if (this.props.showTitle) {
-      title = (<div><h4>Reviews</h4><hr /><div className="gap gap-small"></div></div>);
+      title = (<div><a href="#" onClick={this.writeReview} className="reviewLink">Been to {this.props.locationName}? Write a review</a><h4>Reviews</h4><hr /><div className="gap gap-small"></div></div>);
     }
     if (!this.state.isLoadingReviews) {
       return (
@@ -108,6 +115,7 @@ Reviews.propTypes = {
   locationReviewsActions: PropTypes.object.isRequired,
   locationType: PropTypes.string,
   locationName: PropTypes.string,
+  locationNameLong: PropTypes.string,
   locationId: PropTypes.number,
   pageSize: PropTypes.number.isRequired,
   pageNumber: PropTypes.number.isRequired,
@@ -126,7 +134,8 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    locationReviewsActions: bindActionCreators(locationReviewsActions, dispatch)
+    locationReviewsActions: bindActionCreators(locationReviewsActions, dispatch),
+    modalActions: bindActionCreators(modalActions, dispatch)
   };
 }
 

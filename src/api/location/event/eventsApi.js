@@ -3,7 +3,7 @@ import baseUrl from '../../baseApi';
 
 class EventsApi {
   // ****************************************
-  // Return events using Eventful using 
+  // Return events using Eventful using
   // location id
   // ****************************************
   static getEventsByLocationId(locationId, categoryName, pageSize, pageNumber) {
@@ -18,6 +18,25 @@ class EventsApi {
       .catch(function (error) {
         reject(error);
       });
+    });
+  }
+
+  // ****************************************
+  // Return events using Eventful using
+  // location id and keyword
+  // ****************************************
+  static getEventsByLocationIdAndKeyword(locationId, keyword, pageSize, pageNumber) {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'get',
+        url:  baseUrl + '/location/' + locationId + '/events/' + keyword + '?pageSize=' + pageSize + '&pageNumber=' + pageNumber
+      })
+        .then(response => {
+          resolve(Object.assign({}, response.data));
+        })
+        .catch(function (error) {
+          reject(error);
+        });
     });
   }
 }

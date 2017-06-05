@@ -28,6 +28,32 @@ export function loadEvents(locationId, pageSize, pageNumber) {
 }
 
 // ****************************************
+// Load Events by Location Name And Keywords
+// ****************************************
+export function requestEventContentKeyword() {
+  return { type: types.EVENT_CONTENT_KEYWORD_REQUEST, isFetching: true };
+}
+
+export function loadEventContentKeywordSuccess(locationEvents) {
+  return {type: types.EVENT_CONTENT_KEYWORD_SUCCESS, isFetching: false, locationEvents};
+}
+
+export function eventContentKeywordFailure(message) {
+  return {type: types.EVENT_CONTENT_KEYWORD_FAILURE, isFetching: false,  message};
+}
+
+export function loadEventsByKeyword(locationId, keyword, pageSize, pageNumber) {
+  return dispatch => {
+    dispatch(requestEventContentKeyword());
+    return EventsApi.getEventsByLocationIdAndKeyword(locationId, keyword, pageSize, pageNumber).then(locationEvents => {
+      dispatch(loadEventContentKeywordSuccess(locationEvents));
+    }).catch(error => {
+      dispatch(eventContentKeywordFailure(error.response.data));
+    });
+  };
+}
+
+// ****************************************
 // Load Events by Location Name & Category
 // Name
 // ****************************************

@@ -5,7 +5,11 @@ body { margin: 0; }
     overflow: hidden;
 }
 
-.googleMapWrapper { height: 400px; }
+.reviewCount { color: #fff; font-size: 14px; }
+
+.reviewLink { float:right; padding-top:10px;}
+
+.googleMapWrapper { height: 300px; }
 
 .error { color: red;}
 .error.orange { color: #ed8323;}
@@ -26,6 +30,8 @@ select.searchSelect:not([size]):not([multiple]) {
     height: calc(2.8rem - 2px);
 }
 
+.tripBtn { width: 40px; }
+
 .loadingHotelDeal { height: 100px; }
 
 h4 span { color: #ed8323; }
@@ -41,7 +47,8 @@ h4 span { color: #ed8323; }
 .reviewsHeader { color: #fff;
     z-index: 999;
     position: absolute;
-    right: 0;padding-right:15px;}
+  width: 100%;
+    right: 0;top: 80px; padding-left: 15px;}
 
 a:hover .card { border: solid 1px #ed8323; background-color: #efefef;}
 
@@ -102,9 +109,10 @@ h4.card-title { font-size: 18px;}
 
 .infoImg { background-position: center top !important; }
 
+.locationPage { height: 120px !important; }
 .infoPage { height: 100px !important; }
-.infoPage h1 { font-size: 28px; text-align: left; margin-top: 40px; z-index: 999; position: absolute; font-weight: bold; }
-.infoPage .breadcrumb { position: absolute; z-index: 999; }
+.infoPage h1, .locationPage h1 { font-size: 28px; text-align: left; margin-top: 40px; z-index: 999; position: absolute; font-weight: bold; }
+.infoPage .breadcrumb, .locationPage .breadcrumb { position: absolute; z-index: 999; }
 .im {  display: inline-block; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
 h3 small { float:right; padding-top:14px;}
