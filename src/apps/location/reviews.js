@@ -57,8 +57,8 @@ class ReviewsByLocation extends React.Component {
                     <ReviewList locationId={this.props.locationId} locationName={this.props.location.regionName} locationType="" pageSize={3} pageNumber={0} showTitle={false} />
                   </div>
                   <div className="col-md-4">
-                    <ReviewButton />
-                    <LocationStats likeCount={this.props.location.likeCount} reviewCount={this.props.location.reviewCount} averageReviewScore={this.props.location.averageReviewScore} />
+                    <ReviewButton name="sidePanel" locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType="" />
+                    <LocationStats stats={this.props.location.stats} locationUrl={this.props.location.url} locationName={this.props.location.regionName}  />
                     <div className="gap gap-small"></div>
                     <WeatherForcast locationId={this.props.locationId} />
                   </div>

@@ -19,6 +19,7 @@ class Header extends React.Component {
     this.writeReview = this.writeReview.bind(this);
     this.login = this.login.bind(this);
     this.signup = this.signup.bind(this);
+    this.createTrip = this.createTrip.bind(this);
   }
 
   openProfileMenu(e) {
@@ -56,6 +57,11 @@ class Header extends React.Component {
     this.props.authActions.logoutUser();
   }
 
+  createTrip(e) {
+    this.props.modalActions.openBookmark(0, '', '', 0, '', '', '', '', '');
+
+  }
+
   selectCurrency(e) {
     this.setState({ currency: e.target.getAttribute('data-name'), currencyIcon: e.target.getAttribute('data-currency'), isCurrencyMenuActive:0 });
     this.props.curActions.saveCurrency(e.target.getAttribute('data-name'));
@@ -80,8 +86,9 @@ class Header extends React.Component {
                       <ul className="top-user-area-list list list-horizontal list-border">
                         <li><a href="/explore-destinations" title="Destinations">Destinations</a></li>
                         <li><a href="/hotels" title="Hotels">Hotels</a></li>
-                        <li><a href="/flights" title="Flights">Flights</a></li>
+                        <li className="hide"><a href="/flights" title="Flights">Flights</a></li>
                         <li><a href="/travel-extras" title="Travel Extras">Travel Extras</a></li>
+                        <li className={this.props.isAuthenticated ? "" : "hide"}><a href="#" onClick={this.createTrip} title="Create a Trip">Create a Trip</a></li>
                         <li className={!this.props.isAuthenticated ? "" : "hide"}><a href="#" onClick={this.signup} title="Sign Up">Sign Up</a></li>
                         <li className={!this.props.isAuthenticated ? "" : "hide"}><a href="#" onClick={this.login} title="Log In">Log In</a></li>
                         <li className={this.props.isAuthenticated ? "" : "hide"}><a href="#" onClick={this.writeReview} title="Write a Review">Write a Review</a></li>
@@ -89,7 +96,7 @@ class Header extends React.Component {
                           <i className="fa fa-angle-up"></i></a>
                           <ul className="list nav-drop-menu headerList">
                             <li><a href={user ? user.userProfile + "/profile" : ""}><i className="fa fa-user"></i>Update Profile</a></li>
-                            <li><a href={user ? user.userProfile + "/bookmarks" : ""}><i className="fa fa-heart-o"></i>Bookmarks</a></li>
+                            <li><a href={user ? user.userProfile + "/trips" : ""}><i className="fa fa-heart-o"></i>Trips</a></li>
                             <li><a href={user ? user.userProfile + "/photos" : ""}><i className="fa fa-camera"></i>My Travel Photos</a></li>
                             <li><a href={user ? user.userProfile + "/booking-history" : ""}><i className="fa fa-clock-o"></i>Booking History</a></li>
                           </ul>

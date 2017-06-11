@@ -35,8 +35,9 @@ class FacebookSignup extends React.Component {
               <div className="col-md-6 text-xs-left">
                 <FacebookButton onCallback={this.submitFacebookForm}/>
               </div>
-            <hr />
           </div>
+          <div className="gap"></div>
+          <hr />
         </div>
       );
     }

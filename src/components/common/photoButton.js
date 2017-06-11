@@ -20,7 +20,7 @@ class PhotoButton extends React.Component {
     if (this.props.isAuthenticated) {
       return (
         <div key={this.props.name}>
-          <a href="#" className="btn btn-info questionBtn" onClick={this.writeReview}>
+          <a href="#" className="btn btn-secondary questionBtn" onClick={this.writeReview}>
               <i className="fa fa-picture-o"></i>
               Upload Photos
           </a>

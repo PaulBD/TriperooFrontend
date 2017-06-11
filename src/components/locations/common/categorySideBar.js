@@ -39,29 +39,25 @@ class CategorySideBar extends React.Component {
     if (this.props.categories.length > 0)
     {
       return (
-        <aside className="booking-filters text-white">
-          <h3>Filter By:</h3>
-          <ul className="list booking-filters-list">
-            <li>
-              {
-                this.props.categories.map(category => {
 
-                let className = this.state.categoryName == category.name ? 'eventOptions active' : 'eventOptions';
+            <div className="profile-usermenu">
+              <ul className="nav">
+                {
+                  this.props.categories.map(category => {
 
-                  return (
-                    <div className={className} key={category.name}>
-                      <label><i className={category.icon}></i>&nbsp;
-                        <a href="#" onClick={this.handleCategoryChange} data-id={category.id} data-name={category.name}>
-                           {category.name}
-                        </a>
-                      </label>
-                    </div>
-                  );
-                })
-              }
-            </li>
-          </ul>
-        </aside>
+                    let className = this.state.categoryName == category.name ? 'active' : '';
+
+                    return (
+                      <li className={className}>
+                          <a href="#" onClick={this.handleCategoryChange} data-id={category.id} data-name={category.name}>
+                            <i className={category.icon}></i> {category.name}
+                          </a>
+                      </li>
+                    );
+                  })
+                }
+              </ul>
+            </div>
       );
     }
     else { return null; }

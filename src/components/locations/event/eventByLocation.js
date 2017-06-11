@@ -21,6 +21,9 @@ class EventByLocation extends React.Component {
 
       return (
         <div>
+          <div className="gap gap-small"></div>
+
+
 
         </div>
       );

@@ -22,7 +22,9 @@ class UserReviews extends React.Component {
     this.setState({loading: true});
 
     this.props.userActions.getUser(this.props.currentUserId)
-      .catch(error => {
+      .then(() => {
+        this.setState({loading: false});
+      }).catch(error => {
         Toastr.error(error);
         this.setState({loading: false});
       });

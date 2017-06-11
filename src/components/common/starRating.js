@@ -14,13 +14,22 @@ class StarRating extends React.Component {
     greyStarsNumber = maxStars - stars;
 
     let tmpYellow = [];
-    for (let i = 0; i < this.props.starRating; i++) {
+    for (let i = 0; i < Math.floor(stars); i++) {
       tmpYellow.push(i);
     }
 
     let tmpGrey = [];
-    for (let i = 0; i < greyStarsNumber; i++) {
+    for (let i = 0; i < Math.floor(greyStarsNumber); i++) {
       tmpGrey.push(i);
+    }
+
+    let halfStars = '';
+
+    let result = stars % 1 != 0;
+
+    if (stars % 1 != 0)
+    {
+      halfStars = <li key='half'><i className="fa fa-star-half-o"></i></li>;
     }
 
     let yellowStars = tmpYellow.map(function (i) {
@@ -30,6 +39,7 @@ class StarRating extends React.Component {
     let greyStars = tmpGrey.map(function (i) {
       return (<li key={i}><i className="fa fa-star-o"></i></li>);
     })
+
 
     let reviewCount = '';
 
@@ -41,6 +51,7 @@ class StarRating extends React.Component {
     return (
       <ul className={this.props.className}>
         {yellowStars}
+        {halfStars}
         {greyStars}
         {reviewCount}
       </ul>

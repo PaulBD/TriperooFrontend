@@ -630,6 +630,8 @@ label {
   font-size: 12px;
   line-height: 1.4em;
 }
+
+
 .form-group.form-group-icon-left .form-control {
   padding-left: 32px;
 }
@@ -671,6 +673,12 @@ label {
   -ms-transition: 0.3s;
   transition: 0.3s;
 }
+
+
+.form-control.large {
+  height: 185px !important;
+}
+
 .form-group.form-group-icon-right .input-icon {
   right: 1px;
   left: auto;

@@ -21,6 +21,7 @@ import HotelsNearLocation from '../../components/hotels/hotelsNearLocation';
 import EventsByLocation from '../../components/locations/event/eventByLocation';
 import Photos from '../../components/locations/common/photos';
 import TagList from '../../components/common/tagList';
+import TrustedPartners from '../../components/content/static/trustedPartners';
 
 let titleCase = require('title-case');
 
@@ -103,7 +104,7 @@ class LocationDetail extends React.Component {
                 <div className="col-md-4">
                   <ReviewButton name="sidePanel" locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType={this.props.location.subClass} />
                 </div>
-                <div className="col-md-4">ß
+                <div className="col-md-4">
                   <PhotoButton name="sidePanel" locationId={this.props.locationId} locationName={this.props.location.regionName} locationType="" />
                 </div>
                 <div className="col-md-4">
@@ -136,9 +137,13 @@ class LocationDetail extends React.Component {
           </div>
           <div className="gap gap-small"></div>
           <HotelsNearLocation latitude={this.props.location.latitude} longitude={this.props.location.longitude} pageSize={3} locationName={this.props.location.regionName} parentName={this.props.location.parentRegionName} parentUrl={this.props.location.parentUrl}/>
-          <div className="gap gap-small"></div>
           <EventsByLocation locationId={this.props.locationId} keyword={this.props.location.regionName} />
-          <FacebookSignup />
+
+          <div className="container">
+            <FacebookSignup />
+            <TrustedPartners />
+            <div className="gap"></div>
+          </div>
         </div>
       );
     }

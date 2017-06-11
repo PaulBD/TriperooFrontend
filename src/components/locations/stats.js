@@ -3,34 +3,35 @@ import StarRating from '../common/starRating';
 
 class LocationStats extends React.Component {
   render(){
+    let reviewUrl = this.props.locationUrl + '/reviews';
     return (
-        <div className="sidebar-widget greyBg">
+        <div className="sidebar-widget">
+          <hr className="hrTop"/>
             <div className="row">
                 <div className="col-md-6">
-                    <StarRating starRating={this.props.averageReviewScore} className="icon-list list-inline-block mb0 last-minute-rating statStars"/>
+                    <StarRating starRating={this.props.stats.averageReviewScore} className="icon-list list-inline-block mb0 last-minute-rating statStars"/>
                 </div>
                 <div className="col-md-6">
                 <p className="statText">
-                    {this.props.reviewCount} review's<br />
-                    {this.props.likeCount} people like {this.props.locationName}</p>
+                  <a href={reviewUrl}>{this.props.stats.reviewCount} review's</a><br />
+                  {this.props.stats.likeCount} {this.props.stats.likeCount == 1 ? 'person likes' : 'people like'} {this.props.locationName}</p>
                 </div>
             </div>
+          <hr className="hrBottom" />
         </div>
     );
   }
 }
 
 LocationStats.defaultProps = {
-    likeCount: 0,
-    reviewCount: 0,
-    averageReviewScore: 0,
+    stats: {},
+    locationUrl: '',
     locationName: ''
 };
 
 LocationStats.propTypes = {
-    likeCount: PropTypes.number,
-    reviewCount: PropTypes.number,
-    averageReviewScore: PropTypes.number,
+    stats: PropTypes.object.isRequired,
+  locationUrl: PropTypes.string.isRequired,
     locationName: PropTypes.string.isRequired
 };
 

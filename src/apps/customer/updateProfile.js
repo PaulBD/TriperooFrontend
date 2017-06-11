@@ -6,6 +6,7 @@ import * as userActions from '../../actions/customer/userActions';
 import UserHeader from '../../components/customer/user/userHeader';
 import UserProfileForm from '../../components/customer/forms/profileForm';
 import TriperooLoader from '../../components/common/triperooLoader';
+import UserProfile from '../../components/customer/user/userProfile';
 import Toastr from 'toastr';
 
 class UpdateProfile extends React.Component {
@@ -23,6 +24,7 @@ class UpdateProfile extends React.Component {
       creds: {
         name: '',
         emailAddress: '',
+        bio: '',
         dateOfBirth: '',
         currentLocation:'',
         currentLocationId: 0,
@@ -48,6 +50,7 @@ class UpdateProfile extends React.Component {
             creds: {
               name: this.props.user.profile.name,
               emailAddress: this.props.user.profile.emailAddress,
+              bio: this.props.user.profile.bio,
               currentLocation: this.props.user.profile.currentLocation,
               currentLocationId: this.props.user.profile.currentLocationId,
               dateOfBirth: this.props.user.profile.dateOfBirth,
@@ -108,39 +111,36 @@ class UpdateProfile extends React.Component {
   render(){
     if (this.props.isAuthenticated && this.props.isActiveUser) {
       if (!this.state.loading) {
-        let user = JSON.parse(localStorage.getItem('id_token'));
         return (
-          <div>
-            <UserHeader user={this.props.user} isAuthenticated={this.props.isAuthenticated}/>
-            <div className="container">
-              <div className="gap gap"></div>
-              <div className="row">
-                <div className="col-md-3">
-                  <ul>
-                    <li><a href="">User Profile</a></li>
-                    <li><a href="">Home Page</a></li>
-                  </ul>
-                </div>
-                <div className="col-md-9">
-                  <div className="row">
-                    <div className="col-md-12">
-                      <UserProfileForm name={this.state.creds.name} emailAddress={this.state.creds.emailAddress}
-                                       dateOfBirth={this.state.creds.dateOfBirth}
-                                       cityId={this.state.creds.currentLocationId}
-                                       city={this.state.creds.currentLocation}
-                                       password={this.state.creds.pass}
-                                       phoneNumber={this.state.creds.phoneNumber}
-                                       isFacebookSignup={this.state.isFacebookSignup}
-                                       isUpdating={this.state.isUpdating}
-                                       onSubmit={this.submitStandardForm} onChange={this.changeField}
-                                       onChangeAutoComplete={this.onChangeAutoComplete} errors={this.props.errors}
-                      />
-                    </div>
+          <div className="container">
+            <div className="gap gap-small"></div>
+            <div className="row">
+              <div className="col-md-4">
+                <UserProfile user={this.props.user} isActiveUser={this.props.isActiveUser}/>
+              </div>
+              <div className="col-md-8">
+                <div className="row">
+                  <div className="col-md-12">
+                    <h4>Update Profile</h4>
+                    <hr />
+                    <UserProfileForm name={this.state.creds.name}
+                                     emailAddress={this.state.creds.emailAddress}
+                                     bio={this.state.creds.bio}
+                                     dateOfBirth={this.state.creds.dateOfBirth}
+                                     cityId={this.state.creds.currentLocationId}
+                                     city={this.state.creds.currentLocation}
+                                     password={this.state.creds.pass}
+                                     phoneNumber={this.state.creds.phoneNumber}
+                                     isFacebookSignup={this.state.isFacebookSignup}
+                                     isUpdating={this.state.isUpdating}
+                                     onSubmit={this.submitStandardForm} onChange={this.changeField}
+                                     onChangeAutoComplete={this.onChangeAutoComplete} errors={this.props.errors}
+                    />
                   </div>
                 </div>
               </div>
-              <div className="gap gap"></div>
             </div>
+            <div className="gap gap"></div>
           </div>
         );
       }

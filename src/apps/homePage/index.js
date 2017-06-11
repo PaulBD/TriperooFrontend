@@ -34,8 +34,6 @@ const HomePage = () => {
                 <BulletPoints />
                 <div className="gap gap-small"></div>
                 <FacebookSignup />
-                <div className="gap"></div>
-                <hr />
                 <TrustedPartners />
                 <div className="gap"></div>
             </div>

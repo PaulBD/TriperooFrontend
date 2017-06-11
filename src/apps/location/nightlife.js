@@ -63,19 +63,19 @@ class NightlifeContent extends React.Component {
       return (
         <div>
           <SubPageHeader location={this.props.location} contentType="nightlife" />
+          <div className="gap gap-small"></div>
           <div className="container">
             <div className="row row-wrap">
-              <div className="gap gap-small"></div>
               <div className="container">
                 <div className="row">
+                  <div className="col-md-3">
+                    <NightlifeCategories changeCategory={this.changeNightlifeVenue} contentType="nightlife"  />
+                  </div>
                   <div className="col-md-9">
                     <div className={this.state.isLoadingNightlifeList ? "hide" : "nav-drop booking-sort"}>
                       {this.props.nightlifeCount} Results {this.state.nightlifeType != '' ? ' - filtered by ' + titleCase(this.state.nightlifeFriendlyName) : ''}
                     </div>
                     <Nightlife locationId={this.props.locationId} locations={this.props.nightlife} locationCount={this.props.nightlifeCount} changePage={this.changePage} isFetching={this.state.isLoadingNightlifeList}/>
-                  </div>
-                  <div className="col-md-3">
-                    <NightlifeCategories changeCategory={this.changeNightlifeVenue} contentType="nightlife"  />
                   </div>
                 </div>
               </div>

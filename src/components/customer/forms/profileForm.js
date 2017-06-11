@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import AutoComplete from '../../common/autocomplete';
 
-const ProfileForm = ({name, emailAddress, dateOfBirth, city, password, phoneNumber, isFacebookSignup, isUpdating, onSubmit, onChange, onChangeAutoComplete, errors}) => {
+const ProfileForm = ({name, emailAddress, bio, dateOfBirth, city, password, phoneNumber, isFacebookSignup, isUpdating, onSubmit, onChange, onChangeAutoComplete, errors}) => {
   return (
     <div>
       <div className={errors && errors.length > 0 ? 'col-md-12' : 'col-md-12 hide'}>
@@ -11,14 +11,17 @@ const ProfileForm = ({name, emailAddress, dateOfBirth, city, password, phoneNumb
       </div>
       <form className="modalForm" onSubmit={onSubmit}>
         <div className="col-md-6">
-          <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-user input-icon input-icon-hightlight"></i>
-            <input className="form-control" placeholder="Enter Name" name="name" type="text" onChange={onChange} value={name} />
-          </div>
           <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-envelope input-icon input-icon-hightlight"></i>
             <input className="form-control" placeholder="Enter Email Address" type="text" name="emailAddress" disabled={true} onChange={onChange} value={emailAddress} />
           </div>
+          <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-edit input-icon input-icon-hightlight"></i>
+            <textarea className="form-control large" placeholder="Enter Bio" type="text" name="bio" onChange={onChange} value={bio} rows="6" />
+          </div>
         </div>
         <div className="col-md-6">
+          <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-user input-icon input-icon-hightlight"></i>
+            <input className="form-control" placeholder="Enter Name" name="name" type="text" onChange={onChange} value={name} />
+          </div>
           <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
             <input className="form-control" type="text" placeholder="Enter Date Of Birth" name="dateOfBirth" onChange={onChange} value={dateOfBirth} />
           </div>
@@ -44,6 +47,7 @@ const ProfileForm = ({name, emailAddress, dateOfBirth, city, password, phoneNumb
 ProfileForm.propTypes = {
   name: PropTypes.string.isRequired,
   emailAddress: PropTypes.string.isRequired,
+  bio: PropTypes.string.isRequired,
   cityId: PropTypes.number.isRequired,
   city: PropTypes.string.isRequired,
   dateOfBirth: PropTypes.string,

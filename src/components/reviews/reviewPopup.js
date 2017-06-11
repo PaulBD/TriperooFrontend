@@ -11,19 +11,16 @@ let Modal = require('react-modal');
 class ReviewPopup extends React.Component {
   constructor(props, context) {
     super(props, context);
-
-    this.handleSearchNameChange = this.handleSearchNameChange.bind(this);
-    this.handleSearchIdChange = this.handleSearchIdChange.bind(this);
-    this.handleSearchUrlClick = this.handleSearchUrlClick.bind(this);
-    this.handleSearchTypeChange = this.handleSearchTypeChange.bind(this);
+    this.onChangeAutoComplete = this.onChangeAutoComplete.bind(this);
     this.undoReviewSelection = this.undoReviewSelection.bind(this);
-    this.handleCommentChange = this.handleCommentChange.bind(this);
     this.addTags = this.addTags.bind(this);
     this.onRate = this.onRate.bind(this);
     this.submitReview = this.submitReview.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.handleCommentChange = this.handleCommentChange.bind(this);
 
     this.state = { wizardStep: 1, modalIsOpen: false, searchName: '', searchId: 0, searchType: '', errors:'', comment: '', tags:["Adventure","Arty","Backpackers","Budget","Business","Family","Foodies","Eco","History","Local Culture","Luxury","Nightlife","Outdoor","Solo","Spiritual","Students","Trendsters","Vegetarian","Wellness" ], selectedTags:[], rating: 0};
+
   }
 
   componentDidMount() {
@@ -39,19 +36,9 @@ class ReviewPopup extends React.Component {
     this.setState({ comment: e.target.value });
   }
 
-  handleSearchNameChange(value) {
-    this.setState({ searchName: value, wizardStep: 2 });
+  onChangeAutoComplete(city, cityId, cityUrl, dataType) {
+    this.setState({ searchName: city, searchId: cityId, searchType: dataType, wizardStep: 2 });
   }
-
-  handleSearchIdChange(value) {
-    this.setState({ searchId: value, wizardStep: 2 });
-  }
-
-  handleSearchTypeChange(value) {
-    this.setState({ searchType: value, wizardStep: 2 });
-  }
-
-  handleSearchUrlClick(value) { }
 
   undoReviewSelection(e) {
     e.preventDefault(e);
@@ -80,77 +67,77 @@ class ReviewPopup extends React.Component {
   }
 
   render(){
-  return (
+    return (
 
-    <div className="modal-dialog modelReviewAuthentication" role="document">
-      <div className="modal-content">
-        <div className={this.state.wizardStep == 1 ? "modal-body" : "modal-body hide"}>
-          <div className="row">
-            <div className="col-md-12">
-              <h3>Find a place to review</h3>
-              <p>Search for a place you'd like to review. (e.g London Eye, W Hotel, Barcelona)</p>
-            </div>
-            <div className="col-md-12">
+      <div className="modal-dialog modelReviewAuthentication" role="document">
+        <div className="modal-content">
+          <div className={this.state.wizardStep == 1 ? "modal-body" : "modal-body hide"}>
+            <div className="row">
+              <div className="col-md-12">
+                <h3>Find a place to review</h3>
+                <p>Search for a place you'd like to review. (e.g London Eye, W Hotel, Barcelona)</p>
+              </div>
+              <div className="col-md-12">
                 <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-map-marker input-icon input-icon-hightlight"></i>
-                   <AutoComplete isAppSearch={false} changeId={this.handleSearchIdChange} changeValue={this.handleSearchNameChange} changeType={this.handleSearchTypeChange} changeUrl={this.handleSearchUrlClick} searchType="all" placeholder="Search anywhere in the world" cssClass="typeahead form-control" searchValue={this.state.searchName} />
+                  <AutoComplete isAppSearch={false} onChangeAutoComplete={this.onChangeAutoComplete}  searchType="all" placeholder="Search anywhere in the world" cssClass="typeahead form-control" searchValue={this.state.searchName} />
                 </div>
-            </div>
-          </div>
-          <div className="modal-footer text-xs-center">
-            <a href="#" onClick={this.closeModal}>Close</a>
-          </div>
-        </div>
-        <div className={this.state.wizardStep == 2 ? "modal-body" : "modal-body hide"}>
-          <div className="row">
-            <div className={this.props.errorMessage != undefined && this.props.errorMessage.length > 0 ? 'col-md-12' : 'col-md-12 hide'}>
-              <div className="bg-danger form-danger">
-              {this.props.errorMessage}
               </div>
             </div>
-            <div className="col-md-12">
-              <h3>Write a review</h3>
-              <p>{this.state.searchName}</p>
+            <div className="modal-footer text-xs-center">
+              <a href="#" onClick={this.closeModal}>Close</a>
             </div>
-            <form className="modalForm" onSubmit={this.submitReview}>
+          </div>
+          <div className={this.state.wizardStep == 2 ? "modal-body" : "modal-body hide"}>
+            <div className="row">
+              <div className={this.props.errorMessage != undefined && this.props.errorMessage.length > 0 ? 'col-md-12' : 'col-md-12 hide'}>
+                <div className="bg-danger form-danger">
+                  {this.props.errorMessage}
+                </div>
+              </div>
               <div className="col-md-12">
-                <div className="form-group">
+                <h3>Write a review</h3>
+                <p>{this.state.searchName}</p>
+              </div>
+              <form className="modalForm" onSubmit={this.submitReview}>
+                <div className="col-md-12">
+                  <div className="form-group">
                     <label>Your Rating</label>
                     <Rater initialRate={this.state.rating} onClick={this.onRate} full="fa fa-star fa-2x orange starRating" placeholder="fa fa-star fa-2x orange starRating" empty="fa fa-star-o fa-2x starRating"/>
+                  </div>
                 </div>
-              </div>
-              <div className="col-md-12">
-                <div className="form-group">
+                <div className="col-md-12">
+                  <div className="form-group">
                     <label>Your Review</label>
                     <textarea ref="comment" className="form-control" rows="6" value={this.state.comment} onChange={this.handleCommentChange}></textarea>
+                  </div>
                 </div>
-              </div>
-              <div className="col-md-12">
-                <div className="form-group">
+                <div className="col-md-12">
+                  <div className="form-group">
                     <label>Recommended For</label>
                     <TagList tags={this.state.tags} selectedTags={this.state.selectedTags} maxTags={30} readOnly={false} returnTags={this.addTags} />
+                  </div>
                 </div>
-              </div>
-              <div className="col-md-12 text-xs-center">
+                <div className="col-md-12 text-xs-center">
                   <input className="btn btn-primary" type="submit" value="Post Review" />
+                </div>
+                <div className="gap gap-small"></div>
+              </form>
+            </div>
+            <div className="modal-footer text-xs-center">
+              <a href="#" onClick={this.undoReviewSelection} className="hide">Review a different location</a><a href="#" onClick={this.closeModal}>Close</a>
+            </div>
+          </div>
+          <div className={this.state.wizardStep == 3 ? "modal-body" : "modal-body hide"}>
+            <div className="row">
+              <div className="col-md-12">
+                <h3>Thank you for the Review</h3>
+                <p>Posting a review about <strong>{this.state.searchName}</strong> will help other Triperoo'ers in the future.Thank you!</p>
+                <p>Please click <a href="#" onClick={this.closeModal}>here</a> to close the window.</p>
               </div>
-              <div className="gap gap-small"></div>
-            </form>
-          </div>
-          <div className="modal-footer text-xs-center">
-            <a href="#" onClick={this.undoReviewSelection} className="hide">Review a different location</a><a href="#" onClick={this.closeModal}>Close</a>
-          </div>
-        </div>
-        <div className={this.state.wizardStep == 3 ? "modal-body" : "modal-body hide"}>
-          <div className="row">
-            <div className="col-md-12">
-              <h3>Thank you for the Review</h3>
-              <p>Posting a review about <strong>{this.state.searchName}</strong> will help other Triperoo'ers in the future.Thank you!</p>
-              <p>Please click <a href="#" onClick={this.closeModal}>here</a> to close the window.</p>
             </div>
           </div>
         </div>
       </div>
-    </div>
     );
   }
 }

@@ -107,9 +107,12 @@ class EventHome extends React.Component {
       return (
         <div>
           <SubPageHeader location={this.props.location} contentType="events" />
+          <div className="gap gap-small"></div>
           <div className="container">
             <div className="row row-wrap">
-              <div className="gap gap-small"></div>
+              <div className="col-md-3">
+                <EventCategories changeCategory={this.changeEvent} contentType="events" />
+              </div>
               <div className="col-md-9">
                 <div className="row">
                   <div className="col-md-12">
@@ -126,9 +129,6 @@ class EventHome extends React.Component {
                   </div>
                   <div className="gap gap-small"></div>
                 </div>
-              </div>
-              <div className="col-md-3">
-                <EventCategories changeCategory={this.changeEvent} contentType="events" />
               </div>
             </div>
           </div>

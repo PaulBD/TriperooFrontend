@@ -17,12 +17,29 @@ class AskQuestionButton extends React.Component {
   }
 
   render(){
-    if (this.props.isAuthenticated && this.props.locationName) {
+    if (this.props.isAuthenticated) {
+
+      let message = '';
+
+        if (this.props.locationName == '')
+        {
+          message = 'Ask a question';
+        }
+        else {
+          if (this.props.locationName.length > 15)
+          {
+            message = 'Ask a question about this location';
+          }
+          else {
+            message = 'Ask a question about ' + titleCase(this.props.locationName);
+          }
+        }
+
         return (
             <div>
-                <a href="#" className="btn btn-info questionBtn" onClick={this.askQuestion}>
+                <a href="#" className="btn btn-secondary questionBtn" onClick={this.askQuestion}>
                     <i className="fa fa-question-circle"></i>
-                    Ask a question about {this.props.locationName.length > 15 ? "this location" : titleCase(this.props.locationName)}
+                  {message}
                 </a>
                 <div className="gap-small"></div>
             </div>

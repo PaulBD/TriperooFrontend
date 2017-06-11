@@ -17,13 +17,20 @@ class BookmarkButton extends React.Component {
 
   render() {
     if (this.props.isAuthenticated) {
+
+      let message = 'Add to Trips';
+
+      if (this.props.locationId == 0)
+      {
+        message = 'Create Trip';
+      }
+
       return (
         <div key={this.props.name}>
-          <a href="#" className="btn btn-info questionBtn" onClick={this.openBookmark}>
+          <a href="#" className="btn btn-secondary questionBtn" onClick={this.openBookmark}>
               <i className="fa fa-heart-o"></i>
-              Add to Trips
+            {message}
           </a>
-          <div className="gap gap-small"></div>
         </div>
       );
     }

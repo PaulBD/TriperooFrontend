@@ -40,8 +40,6 @@ class BookmarkLocation extends React.Component {
     };
   }
 
-
-
   componentWillMount() {
 
     const bookmark = {
@@ -55,8 +53,6 @@ class BookmarkLocation extends React.Component {
       "dateCreated": moment().format('YYYY-MM-DD')
     };
 
-    console.log(this.props.locationImage);
-
     let trip = this.state.trip;
     trip.regionId = this.props.parentLocationId;
     trip.regionName = this.props.parentLocationNameLong;
@@ -64,41 +60,12 @@ class BookmarkLocation extends React.Component {
 
     this.setState({trip: trip});
 
-    /*
-    if (this.props.removeBookmark)
-    {
-      this.setState({postingBookmark: true, title: 'Bookmark Removed', message: 'This bookmark has been removed.'});
-      this.props.userActions.archiveBookmark(this.props.locationId)
-        .then(() => {
-          this.setState({postingBookmark: false, loadingBookmarks: true});
-          this.props.userActions.getBookmarks()
-            .then(() => {
-              this.setState({loadingBookmarks: false});
-            })
-            .catch(error => {
-              Toastr.error(error);
-              this.setState({loadingBookmarks: false});
-            });
-        })
-        .catch(error => {
-          Toastr.error(error);
-          this.setState({postingBookmark: false});
-        });
+    if (this.props.locationId == 0) {
+      this.setState({wizardStep: 'Create Trip'});
     }
     else {
-      this.setState({postingBookmark: true});
-      this.props.userActions.postBookmark(bookmark)
-        .then(() => {
-          this.setState({postingBookmark: false});
-        })
-        .catch(error => {
-          Toastr.error(error);
-          this.setState({postingBookmark: false});
-        });
+      this.getTrips();
     }
-    */
-
-    this.getTrips();
   }
 
   getTrips()

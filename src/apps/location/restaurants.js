@@ -64,19 +64,19 @@ class RestaurantContent extends React.Component {
       return (
         <div>
           <SubPageHeader location={this.props.location} contentType="restaurants" />
+          <div className="gap gap-small"></div>
           <div className="container">
             <div className="row row-wrap">
-              <div className="gap gap-small"></div>
               <div className="container">
                 <div className="row">
+                  <div className="col-md-3">
+                    <RestaurantCategories changeCategory={this.changeRestaurant} contentType="restaurants"  />
+                  </div>
                   <div className="col-md-9">
                     <div className={this.state.isLoadingRestaurantList ? "hide" : "nav-drop booking-sort"}>
                       {this.props.restaurantCount} Results {this.state.restaurantType != '' ? ' - filtered by ' + titleCase(this.state.restaurantFriendlyName) : ''}
                     </div>
                     <Restaurants locationId={this.props.locationId} locations={this.props.restaurants} locationCount={this.props.restaurantCount} changePage={this.changePage} isFetching={this.state.isLoadingRestaurantList}/>
-                  </div>
-                  <div className="col-md-3">
-                    <RestaurantCategories changeCategory={this.changeRestaurant} contentType="restaurants"  />
                   </div>
                 </div>
               </div>
