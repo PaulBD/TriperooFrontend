@@ -2,77 +2,148 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as authenticationActions from '../../actions/customer/authenticationActions';
+import * as locationQuestionsActions from '../../actions/location/locationQuestionsActions';
 import * as modalActions from '../../actions/common/modalActions';
+import * as userQuestionActions from '../../actions/customer/userQuestionActions';
+import QuestionList from './listCard';
+import Pagination from "react-js-pagination";
+import Toastr from 'toastr';
 import Loader from '../common/loadingDots';
 
-class QuestionList extends React.Component {
+class Questions extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.handleMissingImage = this.handleMissingImage.bind(this);
-    this.answerQuestion = this.answerQuestion.bind(this);
+    this.state = { questions: [], activePage: 1, isLoadingQuestions: false};
+    this.changePage = this.changePage.bind(this);
+    this.postQuestion = this.postQuestion.bind(this);
+    this.showAnswerPopup = this.showAnswerPopup.bind(this);
   }
 
-  answerQuestion(e) {
+  componentWillMount() {
+    this.loadReviews();
+  }
+
+  loadReviews() {
+    this.setState({isLoadingQuestions: true});
+    this.props.locationQuestionsActions.loadQuestionsByLocationId(this.props.locationId, this.props.pageSize, this.props.pageNumber)
+      .then(() => this.setState({isLoadingQuestions: false}))
+      .catch(error => {
+        Toastr.error(error);
+        this.setState({isLoadingQuestions: false});
+      });
+  }
+
+  postQuestion(e) {
     e.preventDefault();
-    let ref = e.target.getAttribute('data-ref');
-    let question = e.target.getAttribute('data-question');
-    this.props.modalActions.openQuestionAnswer(ref, question);
+    this.props.modalActions.openQuestion(this.props.locationId, this.props.locationNameLong, this.props.locationType);
   }
 
-  handleMissingImage(e) {
-      e.target.src='/static/img/userProfileImg.png';
+  changePage(value) {
+    this.setState({ activePage: value });
+
+    this.setState({isLoadingQuestions: true});
+    this.props.locationQuestionsActions.loadQuestionsByLocationId(this.props.locationId, this.props.pageSize, value - 1)
+      .then(() => this.setState({isLoadingQuestions: false}))
+      .catch(error => {
+        Toastr.error(error);
+        this.setState({isLoadingQuestions: false});
+      });
   }
 
-  render() {
-    if (this.props.questions != undefined && this.props.questions.length > -1) {
-      return (
-          <ul className="thumb-list thumb-list-right">
-          {
-            this.props.questions.map(question => {
-            return (
-                <li key={question.questionReference}>
-                    <a href={question.customerProfileUrl}>
-                      <img src={question.customerImageUrl ? question.customerImageUrl : '/static/img/userProfileImg.png'} alt={question.customerName} className="origin round profileImgLge" onError={this.handleMissingImage} />
-                    </a>
-                    <div className="thumb-list-item-caption">
-                        <p className="thumb-list-item-meta">{question.friendlyDate}</p>
-                        <h4 className="thumb-list-item-title"><a href={question.customerProfileUrl}>{question.customerName}</a></h4>
-                        <p className="thumb-list-item-desciption">
-                          {question.question}
-                          <br />
-                          {question.answers.length == 1 ? "1 Answer" : question.answers.length + " Answers"} { this.props.isAuthenticated ? (<span>&bull; <a href="#" onClick={this.answerQuestion} data-ref={question.questionReference} data-question={question.question}>Answer Question</a></span>) : ""}
-                        </p>
-                    </div>
-                </li>
-              );
-            })
+  showAnswerPopup(ref, question) {
+    this.props.userQuestionActions.resetAnswer();
+    this.props.modalActions.openQuestionAnswer(ref, question, this.props.locationId, this.props.pageSize, this.props.pageNumber);
+  }
+
+  render(){
+    let title = '';
+
+    if (this.props.showTitle) {
+      title = (<div><a href="#" onClick={this.postQuestion} className="reviewLink">Been to {this.props.locationName}? Write a review</a><h4>Reviews</h4><hr /><div className="gap gap-small"></div></div>);
+    }
+
+    let questionText = '';
+    let questionUrl = this.props.locationUrl + '/questions';
+
+    if (!this.state.isLoadingQuestions) {
+
+      console.log(this.props.questionList);
+
+      if (this.props.questionList) {
+        if (this.props.questionList.length == 0) {
+          questionText = (<p>Be the first to ask a local expert a question about {this.props.locationName}.</p>);
+        }
+        else {
+          if (this.props.isSideComponent) {
+            questionText = (<p className="text-xs-right"><a href={questionUrl}>Read all questions</a></p>);
           }
-        </ul>
+        }
+      }
+
+
+      return (
+        <div className="row">
+          {title}
+          <QuestionList questions={this.props.questionList} locationId={this.props.locationId} locationName={this.props.locationName} pageSize={this.props.pageSize} pageNumber={this.props.pageNumber} isAuthenticated={this.props.isAuthenticated} isSideComponent={this.props.isSideComponent} showAnswerPopup={this.showAnswerPopup}/>
+
+          <div className={this.props.questionCount > this.props.pageSize ? "row text-xs-center" : "hide"}>
+            <div className="gap gap-small"></div>
+            <Pagination innerClass={this.props.questionCount > this.props.pageSize ? "pagination text-xs-center" : "hide"}
+                        activePage={this.state.activePage} itemsCountPerPage={this.props.pageSize} totalItemsCount={this.props.questionCount}
+                        pageRangeDisplayed={this.props.pageSize} onChange={this.changePage}/>
+          </div>
+          {questionText}
+        </div>
       );
     }
     else {
-      return (<Loader showLoader={true} />);
+      return (
+        <div className="row">
+          {title}
+          <Loader showLoader={true} />
+        </div>
+      );
     }
   }
 }
 
-QuestionList.defaultProps = {
-  isAuthenticated: false,
-  isFetching: false
+Questions.defaultProps = {
+  showTitle: true,
+  locationType: 'all',
+  locationId: 0,
+  pageSize: 0,
+  pageNumber: 0,
+  isFetching: false,
+  questionList: [],
+  isAuthenticated: false
 };
 
-QuestionList.propTypes = {
-  questions: PropTypes.array.isRequired,
+Questions.propTypes = {
+  questionList: PropTypes.array.isRequired,
   authenticationActions: PropTypes.object.isRequired,
+  locationQuestionsActions: PropTypes.object.isRequired,
+  userQuestionActions: PropTypes.object.isRequired,
   modalActions: PropTypes.object.isRequired,
-  isAuthenticated: PropTypes.bool.isRequired,
+  locationType: PropTypes.string,
+  locationName: PropTypes.string,
+  locationUrl: PropTypes.string,
+  locationNameLong: PropTypes.string,
+  locationId: PropTypes.number,
+  pageSize: PropTypes.number.isRequired,
+  pageNumber: PropTypes.number.isRequired,
+  showTitle: PropTypes.bool,
   isFetching: PropTypes.bool.isRequired,
+  questionCount: PropTypes.number.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  isSideComponent: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    isFetching: state.authentication.isFetching,
+    questionList: state.locationQuestions.questions ? state.locationQuestions.questions.questionDto : [],
+    questionCount: state.locationQuestions.questions ? state.locationQuestions.questions.questionCount : 0,
+    isFetching: state.locationQuestions ? state.locationQuestions.isFetching : false,
     isAuthenticated: state.authentication.isAuthenticated,
     errorMessage: state.authentication.errorMessage
   };
@@ -81,8 +152,10 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch) {
   return {
     authenticationActions: bindActionCreators(authenticationActions, dispatch),
-    modalActions: bindActionCreators(modalActions, dispatch)
+    locationQuestionsActions: bindActionCreators(locationQuestionsActions, dispatch),
+    modalActions: bindActionCreators(modalActions, dispatch),
+    userQuestionActions: bindActionCreators(userQuestionActions, dispatch)
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(QuestionList);
+export default connect(mapStateToProps, mapDispatchToProps)(Questions);

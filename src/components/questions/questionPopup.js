@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as userQuestionActions from '../../actions/customer/userQuestionActions';
+import * as locationQuestionsActions from '../../actions/location/locationQuestionsActions';
 import Toastr from 'toastr';
 
 class QuestionPopup extends React.Component {
@@ -29,6 +30,7 @@ class QuestionPopup extends React.Component {
     this.props.userQuestionActions.postQuestion(question)
       .then(() =>{
         this.setState({isPostingQuestion: false});
+        this.props.locationQuestionsActions.loadQuestionsByLocationId(this.props.locationId, 3, 0);
       })
       .catch(error => {
         Toastr.error(error);
@@ -93,8 +95,8 @@ QuestionPopup.propTypes = {
   locationId: PropTypes.number,
   locationName: PropTypes.string,
   locationType: PropTypes.string,
-  locationQuestionsActions: PropTypes.object.isRequired,
   userQuestionActions: PropTypes.object.isRequired,
+  locationQuestionsActions: PropTypes.object.isRequired,
   isSending: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string,
   hasPosted: PropTypes.bool,
@@ -112,7 +114,8 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    userQuestionActions: bindActionCreators(userQuestionActions, dispatch)
+    userQuestionActions: bindActionCreators(userQuestionActions, dispatch),
+    locationQuestionsActions: bindActionCreators(locationQuestionsActions, dispatch)
   };
 }
 

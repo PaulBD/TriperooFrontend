@@ -12,13 +12,10 @@ class Photos extends React.Component {
 
   onClickItem(position){
     this.props.modalActions.openLocationImage(this.props.photos.photoList, position);
-
   }
-
 
   render() {
     if (this.props.photos && this.props.photos.photoList && this.props.photos.photoList.length > 0) {
-      console.log(this.props.photos);
       return (
         <div>
           <Carousel axis="horizontal" onClickItem={this.onClickItem}  showArrows={true} showStatus={false} showThumbs={true} autoPlay={false} showIndicators={false} >
@@ -38,7 +35,15 @@ class Photos extends React.Component {
       );
     }
     else {
-      return null;
+      return (
+        <div>
+          <Carousel axis="horizontal" onClickItem={this.onClickItem}  showArrows={true} showStatus={false} showThumbs={false} autoPlay={false} showIndicators={false} >
+            <div key="temp">
+              <img src="/static/img/placeholder-large-center.png"/>
+            </div>
+          </Carousel>
+        </div>
+      );
     }
   }
 }

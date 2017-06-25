@@ -12,7 +12,7 @@ class CustomerTrips extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    this.state = { loading: false };
+    this.state = { loading: true };
   }
 
   componentDidMount() {
@@ -47,7 +47,6 @@ class CustomerTrips extends React.Component {
     console.log(this.props.trip);
 
     if (!this.state.loadingTrip) {
-      let user = JSON.parse(localStorage.getItem('id_token'));
       return (
         <div>
           <UserHeader user={this.props.user} isAuthenticated={this.props.isAuthenticated}/>

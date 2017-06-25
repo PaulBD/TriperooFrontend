@@ -8,6 +8,7 @@ const TrustedPartners = () => {
         <img src="/static/img/expedia.png" className="partners"/>
         <img src="/static/img/skyscanner.png" className="partners"/>
         <img src="/static/img/holidayextras.png" className="partners"/>
+        <img src="/static/img/wikipedia.png" className="partners"/>
       </div>
       <div className="col-md-6 text-xs-right">
         <h5 className="trustedPartner">Secure Payment Providers</h5>

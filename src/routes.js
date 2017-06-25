@@ -16,9 +16,12 @@ import NotFoundPage from './apps/notFoundPage';
 import LocationEvents from './apps/location/events';
 import LocationHome from './apps/location';
 import LocationDetail from './apps/location/detail';
+import LocationEdit from './apps/location/edit';
 import LocationRestaurants from './apps/location/restaurants';
 import LocationNightlife from './apps/location/nightlife';
 import LocationReviews from './apps/location/reviews';
+import LocationQuestions from './apps/location/questions';
+import LocationQuestionDetail from './apps/location/questionDetail';
 import LocationAttractions from './apps/location/attractions';
 import LocationHotels from './apps/location/hotels';
 
@@ -44,6 +47,8 @@ import BookingHistory from './apps/customer/bookingHistory';
 import CustomerReviews from './apps/customer/reviews';
 import CustomerTrips from './apps/customer/trips';
 import CustomerTripDetail from './apps/customer/tripDetail';
+import CustomerFollowers from './apps/customer/followers';
+import CustomerFollowing from './apps/customer/following';
 
 // Hotels
 import Hotels from './apps/hotel';
@@ -63,8 +68,11 @@ export default (
 
     <Route path="/(:placeId)/visit/(:placeName)" component={LocationHome}/>
     <Route path="/(:placeId)/visit-location/(:placeName)" component={LocationDetail}/>
+    <Route path="/(:placeId)/visit-location/(:placeName)/edit" component={LocationEdit}/>
     <Route path="/(:placeId)/visit/(:placeName)/events" component={LocationEvents}/>
     <Route path="/(:placeId)/visit/(:placeName)/reviews" component={LocationReviews}/>
+    <Route path="/(:placeId)/visit/(:placeName)/questions" component={LocationQuestions}/>
+    <Route path="/(:placeId)/visit/(:placeName)/(:questionId)/question" component={LocationQuestionDetail}/>
     <Route path="/(:placeId)/visit/(:placeName)/attractions" component={LocationAttractions}/>
     <Route path="/(:placeId)/visit/(:placeName)/restaurants" component={LocationRestaurants}/>
     <Route path="/(:placeId)/visit/(:placeName)/nightlife" component={LocationNightlife}/>
@@ -94,6 +102,8 @@ export default (
     <Route path="/profile/(:guid)/(:customerName)/booking-history" component={BookingHistory}/>
     <Route path="/profile/(:guid)/(:customerName)/reviews" component={CustomerReviews}/>
     <Route path="/profile/(:guid)/(:customerName)/trips" component={CustomerTrips}/>
+    <Route path="/profile/(:guid)/(:customerName)/followers" component={CustomerFollowers}/>
+    <Route path="/profile/(:guid)/(:customerName)/following" component={CustomerFollowing}/>
     <Route path="/profile/(:guid)/(:customerName)/trips/(:tripId)/(:tripName)" component={CustomerTripDetail}/>
 
     <Route path="*" component={NotFoundPage}/>

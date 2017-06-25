@@ -679,6 +679,11 @@ label {
   height: 185px !important;
 }
 
+.form-control.medium {
+   height: 86px !important;
+ }
+
+
 .form-group.form-group-icon-right .input-icon {
   right: 1px;
   left: auto;

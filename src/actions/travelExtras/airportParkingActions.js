@@ -1,4 +1,4 @@
-import AiportParkingApi from '../../api/travelextras/airportParkingApi';
+import AiportParkingApi from '../../api/travelExtras/airportParkingApi';
 import * as types from '../../actionTypes/';
 
 // ****************************************

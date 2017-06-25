@@ -28,6 +28,7 @@ class BookmarkLocation extends React.Component {
       isCreatingList: false,
       trip: {
         listName: '',
+        description: '',
         momentStartDate: moment().add(7, 'days'),
         startDate: moment().add(7, 'days').format('YYYY-MM-DD'),
         momentEndDate: moment().add(14, 'days'),
@@ -95,6 +96,7 @@ class BookmarkLocation extends React.Component {
     if ((this.state.trip.listName.length > 0) && (this.state.trip.regionId > 0)) {
 
       this.setState({isCreatingList: true, errors: ''});
+      console.log(this.state.trip);
       this.props.userActions.postTrip(this.state.trip)
         .then(() => {
           this.setState({isCreatingList: false, errors: this.props.errorMessage});
@@ -210,7 +212,7 @@ class BookmarkLocation extends React.Component {
                   <hr />
                   <p>Create a new trip by completing the form below.</p>
                 </div>
-                <TripForm onSubmit={this.createNewTripForm} onChange={this.changeField} regionName={this.state.trip.regionName} endDate={this.state.trip.momentEndDate} isCreatingList={this.state.isCreatingList} listName={this.state.trip.listName} onChangeAutoComplete={this.onChangeAutoComplete} onChangeStartDate={this.onChangeStartDate} onChangeEndDate={this.onChangeEndDate} startDate={this.state.trip.momentStartDate} errors={this.state.errors} />
+                <TripForm onSubmit={this.createNewTripForm} onChange={this.changeField} regionName={this.state.trip.regionName} endDate={this.state.trip.momentEndDate} isCreatingList={this.state.isCreatingList} listName={this.state.trip.listName} description={this.state.trip.description}  onChangeAutoComplete={this.onChangeAutoComplete} onChangeStartDate={this.onChangeStartDate} onChangeEndDate={this.onChangeEndDate} startDate={this.state.trip.momentStartDate} errors={this.state.errors} />
               </div>
             <div className={this.state.wizardStep == "Thank you" ? "row" : "hide"}>
               <div className="col-md-12">

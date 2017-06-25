@@ -5,11 +5,10 @@ import QuestionModal from '../questions/questionPopup';
 import QuestionAnswerModal from '../questions/answerPopup';
 import LoginModal from '../customer/authentication/login';
 import SignupModal from '../customer/authentication/register';
-import LocationModal from '../locations/editLocation';
 import LocationImageModal from '../locations/common/photoPopup';
 import BookmarkLocationModal from '../locations/bookmarkLocation';
 
-const customStyles = {
+let customStyles = {
   overlay : {
     position                  : 'fixed',
     top                       : 0,
@@ -65,7 +64,7 @@ class Modal extends React.Component {
         modal = (<QuestionModal hasPosted={false} closeModal={this.props.closeModal} locationId={this.props.modalContent.locationId} locationName={this.props.modalContent.locationName} locationType={this.props.modalContent.locationType} />);
         break;
       case "QuestionAnswer":
-        modal = (<QuestionAnswerModal question={this.props.modalContent.question} hasPosted={false} closeModal={this.props.closeModal} questionReference={this.props.modalContent.questionReference} />);
+        modal = (<QuestionAnswerModal question={this.props.modalContent.question} hasPosted={false} closeModal={this.props.closeModal} questionReference={this.props.modalContent.questionReference} locationId={this.props.modalContent.locationId} pageSize={this.props.modalContent.pageSize} pageNumber={this.props.modalContent.pageNumber} />);
         break;
       case "Login":
         modal = (<LoginModal hasPosted={false} closeModal={this.props.closeModal} />);
@@ -78,9 +77,6 @@ class Modal extends React.Component {
         break;
       case "Photo":
         modal = (<p>Photo</p>);
-        break;
-      case "Location":
-        modal = (<LocationModal hasPosted={false} closeModal={this.props.closeModal} locationId={this.props.modalContent.locationId} locationName={this.props.modalContent.locationName} locationType={this.props.modalContent.locationType} location={this.props.modalContent.location} />);
         break;
       case "LocationImage":
         modal = (<LocationImageModal hasPosted={false} closeModal={this.props.closeModal} imageList={this.props.modalContent.imageList} imagePosition={this.props.modalContent.imagePosition} />);

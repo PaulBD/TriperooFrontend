@@ -1,4 +1,4 @@
-import AiportHotelApi from '../../api/travelextras/airportHotelApi';
+import AiportHotelApi from '../../api/travelExtras/airportHotelApi';
 import * as types from '../../actionTypes/';
 
 // ****************************************

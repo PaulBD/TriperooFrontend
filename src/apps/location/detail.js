@@ -13,7 +13,7 @@ import ReviewList from '../../components/reviews/textList';
 import ReviewButton from '../../components/reviews/reviewButton';
 import BookmarkButton from '../../components/common/bookmarkButton';
 import PhotoButton from '../../components/common/photoButton';
-import RecentQuestions from '../../components/questions/questions';
+import RecentQuestions from '../../components/questions/legacy/questions';
 import QuestionButton from '../../components/questions/questionButton';
 import Summary from '../../components/locations/summary';
 import GoogleMaps from '../../components/locations/common/googleMap';
@@ -28,7 +28,6 @@ let titleCase = require('title-case');
 class LocationDetail extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.editLocation = this.editLocation.bind(this);
     this.state = {
       isLoadingLocation: false,
       hasLoaded: false,
@@ -64,11 +63,6 @@ class LocationDetail extends React.Component {
       });
   }
 
-  editLocation(e) {
-    e.preventDefault();
-    this.props.modalActions.openEditLocation(this.state.locationId, this.state.locationNameLong, this.state.locationSubClass, this.state.location);
-  }
-
   removeLastComma(value){
     var n=value.lastIndexOf(",");
     var a=value.substring(0,n)
@@ -84,11 +78,16 @@ class LocationDetail extends React.Component {
       if (this.props.location.formattedAddress) {
 
         for (let i = 0; i < this.props.location.formattedAddress.length; i++) {
-          address += this.props.location.formattedAddress[i] + ', ';
+          if (this.props.location.formattedAddress[i].length > 0) {
+            address += this.props.location.formattedAddress[i] + ', ';
+          }
         }
 
         address = this.removeLastComma(address);
       }
+
+      let editUrl = this.props.location.url + '/edit';
+
       return (
         <div>
           <LocationHeader location={this.props.location} hasLoaded={this.state.hasLoaded} />
@@ -96,9 +95,9 @@ class LocationDetail extends React.Component {
           <div className="container">
             <div className="row row-wrap">
               <div className="col-md-8">
-                <p><i className="fa fa-map-marker"></i> {address ? address : 'Address unknown'}</p>
-                <p><i className="fa fa-phone"></i> {this.props.location.contactDetails.formattedPhone}</p>
-                <p><i className="fa fa-pencil"></i> <a href="#" onClick={this.editLocation}>Edit</a></p>
+                {address ? <p><i className="fa fa-map-marker"></i> {address}</p> : ''}
+                {this.props.location.contactDetails.formattedPhone ? <p><i className="fa fa-phone"></i> {this.props.location.contactDetails.formattedPhone} </p> : ''}
+                <p><i className="fa fa-pencil"></i> <a href={editUrl}>Edit Details</a></p>
                 <TagList tags={this.props.location.tags} maxTags={5} />
                 <div className="row">
                 <div className="col-md-4">
@@ -120,7 +119,7 @@ class LocationDetail extends React.Component {
           </div>
           <div className="gap gap-small"></div>
           <div className="row greyBg detailSubHeader">
-            <GoogleMaps latitude={this.props.location.locationCoordinates.latitude} longitude={this.props.location.locationCoordinates.longitude} text={this.props.location.regionName} zoom={13} />
+            <GoogleMaps latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0} longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0} text={this.props.location.regionName} zoom={13} />
           </div>
           <div className="gap gap-small"></div>
           <div className="row">
@@ -130,7 +129,7 @@ class LocationDetail extends React.Component {
                 </div>
                 <div className="col-md-4">
                   <QuestionButton locationId={this.props.locationId} locationName={this.props.location.regionNameLong} locationNameShort={this.props.location.regionName} locationType={this.props.location.regionType}/>
-                  <RecentQuestions locationId={this.props.locationId} locationName={this.props.location.regionName} limit={3} offset={0} />
+                  <RecentQuestions locationId={this.props.locationId} locationName={this.props.location.regionName} pageSize={3} pageNumber={0} />
                 </div>
                 <hr />
             </div>

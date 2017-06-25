@@ -84,15 +84,13 @@ ReviewsByLocation.defaultProps = {
 ReviewsByLocation.propTypes = {
   locationId: PropTypes.number,
   location: PropTypes.object,
-  locationActions: PropTypes.object.isRequired,
-  contentType: PropTypes.string.isRequired
+  locationActions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
     location: state.location.location ? state.location.location : {},
-    locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0,
-    contentType: ownProps.params.contentType
+    locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0
   };
 }
 

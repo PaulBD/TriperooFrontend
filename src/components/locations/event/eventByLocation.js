@@ -17,8 +17,6 @@ class EventByLocation extends React.Component {
 
     if (this.props.locationEvents != undefined)
     {
-      console.log(this.props.locationEvents);
-
       return (
         <div>
           <div className="gap gap-small"></div>

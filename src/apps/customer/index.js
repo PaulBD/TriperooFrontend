@@ -11,8 +11,7 @@ import Toastr from 'toastr';
 class CustomerHome extends React.Component {
   constructor(props, context) {
     super(props, context);
-
-    this.state = { isLoading: false };
+    this.state = { isLoading: true };
   }
 
   componentWillMount() {
@@ -31,7 +30,7 @@ class CustomerHome extends React.Component {
   }
 
   render(){
-    if (!this.state.isLoading) {
+    if (!this.state.isLoading && this.props.user.profile) {
       let profileUrl = this.props.user && this.props.user.profile ? this.props.user.profile.profileUrl : '';
       return (
           <div className="container">
@@ -41,7 +40,7 @@ class CustomerHome extends React.Component {
                 <UserProfile user={this.props.user} isActiveUser={this.props.isActiveUser}/>
               </div>
               <div className="col-md-8">
-                <h4>{this.props.isActiveUser ? 'Your Trips' : this.props.user.profile.name + ' trips'}</h4>
+                <h4>{this.props.isActiveUser ? 'Your Trips' : this.props.user.profile ? this.props.user.profile.name + ' trips' : ''}</h4>
                 <hr />
                 {
                   this.props.trips != null && this.props.trips.length > 0 ? this.props.trips.map(function(trip, i) { return (<TripItem trip={trip} key={trip.id} parentUrl={profileUrl}  cssClass="col-md-4" position={i} />);}) : <p>This user has never been on any trips</p>

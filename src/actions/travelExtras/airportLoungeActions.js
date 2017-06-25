@@ -1,4 +1,4 @@
-import AirportLoungeApi from '../../api/travelextras/airportLoungeApi';
+import AirportLoungeApi from '../../api/travelExtras/airportLoungeApi';
 import * as types from '../../actionTypes/';
 
 // ****************************************
@@ -13,7 +13,7 @@ export function airportLoungeSuccess(airportLounge) {
 	if (airportLounge.apI_Reply.error.message != undefined)
 	{
 		return {type: types.AIRPORT_LOUNGE_SUCCESS, isFetching: false, airportLounge, isError: true, error: airportLounge.apI_Reply.error.message};
-	} 
+	}
 	else {
 		return {type: types.AIRPORT_LOUNGE_SUCCESS, isFetching: false, airportLounge, isError: false};
 	}

@@ -16,13 +16,6 @@ class AirportParkingSearchForm extends React.Component {
     this.submitForm = this.submitForm.bind(this);
   }
 
-  componentDidMount() {
-    let dropOffDate = moment().add(1, 'Days');
-    let pickUpDate = moment().add(7, 'days');
-
-    this.setState({ pickUpDate: pickUpDate, dropOffDate: dropOffDate, airport: this.props.airport  });
-  }
-
   handleDropOffDateChange(date) {
     let sDate = date.format('YYYY-MM-DD');
     this.setState({ formattedDropOffDate: sDate, dropOffDate: date });

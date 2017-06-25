@@ -12,14 +12,12 @@ class UserBookmarks extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.handleMissingImage = this.handleMissingImage.bind(this);
-    this.state = { loading: false, loadingBookmarks: false };
+    this.state = { loading: true, loadingBookmarks: false };
   }
 
   componentDidMount() {
     document.title = 'Your Bookmarks';
     window.scrollTo(0, 0);
-
-    this.setState({loading: true});
 
     this.props.userActions.getUser(this.props.currentUserId)
       .then(() => {
@@ -50,7 +48,6 @@ class UserBookmarks extends React.Component {
 
   render(){
     if (!this.state.loading) {
-      let user = JSON.parse(localStorage.getItem('id_token'));
       return (
         <div>
           <UserHeader user={this.props.user} isAuthenticated={this.props.isAuthenticated}/>

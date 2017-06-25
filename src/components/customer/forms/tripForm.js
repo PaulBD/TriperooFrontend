@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import AutoComplete from '../../common/autocomplete';
 let DatePicker = require('react-datepicker');
 
-const TripForm = ({listName, startDate, endDate, regionName, isCreatingList, onSubmit, onChange, onChangeStartDate, onChangeEndDate, onChangeAutoComplete, errors}) => {
+const TripForm = ({listName, description, startDate, endDate, regionName, isCreatingList, onSubmit, onChange, onChangeStartDate, onChangeEndDate, onChangeAutoComplete, errors}) => {
   return (
     <div>
       <div className={errors && errors.length > 0 ? 'col-md-12' : 'col-md-12 hide'}>
@@ -17,6 +17,9 @@ const TripForm = ({listName, startDate, endDate, regionName, isCreatingList, onS
           </div>
           <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-pencil input-icon input-icon-hightlight"></i>
             <input className="form-control" placeholder="Enter List Name" name="listName" type="text" onChange={onChange} value={listName} />
+          </div>
+          <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-edit input-icon input-icon-hightlight"></i>
+            <textarea className="form-control large" placeholder="Enter Description" type="text" name="description" onChange={onChange} value={description} rows="6" />
           </div>
         </div>
         <div className="col-md-6">
@@ -39,6 +42,7 @@ const TripForm = ({listName, startDate, endDate, regionName, isCreatingList, onS
 
 TripForm.propTypes = {
   listName: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
   startDate: PropTypes.object.isRequired,
   endDate: PropTypes.object.isRequired,
   regionName: PropTypes.string.isRequired,

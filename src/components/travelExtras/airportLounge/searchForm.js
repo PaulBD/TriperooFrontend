@@ -18,12 +18,6 @@ class AirportLoungeSearchForm extends React.Component {
     this.submitForm = this.submitForm.bind(this);
   }
 
-  componentDidMount() {
-    let arrivalDate = moment().add(1, 'Days');
-
-    this.setState({ arrivalDate: arrivalDate, airport: this.props.airport, adultCount: 2, childCount:0, infantCount:0});
-  }
-
   handleArrivalDateChange(date) {
     let sDate = date.format('YYYY-MM-DD');
     this.setState({ formattedArrivalDate: sDate, arrivalDate: date });

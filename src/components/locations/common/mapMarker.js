@@ -11,7 +11,7 @@ const MapMarker = ({longitude, latitude, text}) => {
 MapMarker.propTypes = {
   longitude: PropTypes.number,
   latitude: PropTypes.number,
-  text: PropTypes.string,
+  text: PropTypes.string
 };
 
 export default MapMarker;

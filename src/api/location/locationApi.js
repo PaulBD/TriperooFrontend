@@ -18,29 +18,30 @@ class LocationApi {
   }
 
   // ****************************************
-  // Update Location
+  // Like location by id
   // ****************************************
-  static updateLocation(location) {
+  static likeLocation(locationId, likeLocation) {
+
+    let url = baseUrl + '/location/' + locationId + '/unlike';
+
+    if (likeLocation) {
+      url = baseUrl + '/location/' + locationId + '/like';
+    }
+
     return new Promise((resolve, reject) => {
-      console.log(location);
       axios({
         method: 'put',
-        url:  baseUrl + '/location/' + location.regionID,
+        url:  url,
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'token': JSON.parse(localStorage.getItem('id_token')).token
-        },
-        data: {
-          location
+          'Content-Type': 'application/json'
         }
-      })
-      .then(response => {
-        resolve(Object.assign({}, response.data));
-      })
-      .catch(function (error) {
-        reject(error);
-      });
+      }).then(function (response) {
+          resolve(Object.assign({}, response.data));
+        })
+        .catch(function (error) {
+          reject(error);
+        });
     });
   }
 }

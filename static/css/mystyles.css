@@ -237,11 +237,14 @@ optgroup,option { margin-left:0px;text-align:left;}
 .modal-footer a { color: #cccccc;}
 
 .modalForm .form-group .input-icon { top: 0; }
+.modalForm .form-group .input-icon.labels { top: 30px; }
 .modelAuthentication { width:360px !important; }
 
 .modal-dialog { width: auto !important; margin: 0 !important; max-width: 100% !important;}
 
 .smlText { font-size: 10px;line-height:1.5;}
+
+.blur { -webkit-filter: blur(2px);}
 
 .modal-open[style="padding-right: 16px;"] .navbar-fixed-top,
 .modal-open[style="padding-right: 16px;"] .navbar-fixed-bottom { padding-right: 16px; }
@@ -800,20 +803,24 @@ form.searchForm label a { float:right; }
 
 
 /* Avatar */
+.twPc-divLocationWrapper,
 .twPc-div {
   background: #fff none repeat scroll 0 0;
   border: 1px solid #e1e8ed;
   border-radius: 6px;
-  max-width: 340px; // orginal twitter width: 290px;
   margin-bottom: 15px;
 }
+.twPc-divLocationWrapper {
+  margin-bottom: 0;
+}
+
 .twPc-bg {
   background-image: url("https://pbs.twimg.com/profile_banners/50988711/1384539792/600x200");
   background-position: 0 50%;
   background-size: 100% auto;
   border-bottom: 1px solid #e1e8ed;
   border-radius: 4px 4px 0 0;
-  height: 95px;
+  height: 135px;
   width: 100%;
 }
 .twPc-block {
@@ -842,9 +849,16 @@ form.searchForm label a { float:right; }
   height: 72px;
   width: 72px;
 }
+.twPc-divLocation,
 .twPc-divUser {
   margin: 10px 0 0;
 }
+
+.twPc-divLocation
+{
+  margin: 10px;
+}
+
 .twPc-divName {
   font-size: 18px;
   font-weight: 700;
@@ -877,6 +891,13 @@ ul.twPc-Arrange {
   margin: 0;
   padding: 0;
 }
+
+ul.twPc-Arrange li.location {
+  width:33%;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
 .twPc-ArrangeSizeFit {
   display: table-cell;
   padding: 0;
@@ -1011,3 +1032,17 @@ ul.twPc-Arrange {
   border-left: 2px solid #5b9bd1;
   margin-left: -2px;
 }
+
+.dottedLine {
+  border:none;
+  border-top:1px dotted #efefef;
+  color:#fff;
+  background-color:#fff;
+  height:1px;
+  width:100%;
+  margin: 0;
+}
+
+.questionActions { font-size: 12px; }
+.questionResponse { padding:20px; background-color: #efefef; font-size: 12px; margin:10px 0; border-radius: 3px; text-align: center; line-height: 12px }
+.questionResponse strong { font-size: 16px; }

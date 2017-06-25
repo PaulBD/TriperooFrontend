@@ -44,15 +44,15 @@ export function postQuestion(question) {
 // Post new answer
 // ****************************************
 export function postAnswerInitialize(isSending, answer) {
-	return {type: types.POST_ANSWER_REQUEST, isSending: isSending, hasPosted: false, answer};
+	return {type: types.POST_ANSWER_REQUEST, isSending: isSending, hasPostedAnswer: false, answer};
 }
 
 export function postAnswerSuccess() {
-	return {type: types.POST_ANSWER_SUCCESS, isSending: false, hasPosted: true};
+	return {type: types.POST_ANSWER_SUCCESS, isSending: false, hasPostedAnswer: true};
 }
 
 export function postAnswerFailure(message) {
-	return {type: types.POST_ANSWER_FAILURE, isSending: false, hasPosted: false, message};
+	return {type: types.POST_ANSWER_FAILURE, isSending: false, hasPostedAnswer: false, message};
 }
 
 export function resetAnswer() {

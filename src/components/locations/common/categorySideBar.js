@@ -11,7 +11,6 @@ class CategorySideBar extends React.Component {
   }
 
   componentWillMount() {
-    console.log(this.props.contentType);
     switch (this.props.contentType)
     {
       case "attractions":
@@ -39,7 +38,6 @@ class CategorySideBar extends React.Component {
     if (this.props.categories.length > 0)
     {
       return (
-
             <div className="profile-usermenu">
               <ul className="nav">
                 {

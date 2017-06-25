@@ -11,11 +11,11 @@ export default function questionReducer(state = { isSending: false, hasPosted: f
             return Object.assign({}, state, { isSending: false, hasPosted: false, errorMessage: action.message });
 
         case types.POST_ANSWER_REQUEST:
-            return Object.assign({}, state, { isSending: true, hasPosted: false, answer: action.answer });
+            return Object.assign({}, state, { isSending: true, hasPostedAnswer: false, answer: action.answer });
         case types.POST_ANSWER_SUCCESS:
-            return Object.assign({}, state, { isSending: false, hasPosted: true, errorMessage: '' });
+            return Object.assign({}, state, { isSending: false, hasPostedAnswer: true, errorMessage: '' });
         case types.POST_ANSWER_FAILURE:
-            return Object.assign({}, state, { isSending: false, hasPosted: false, errorMessage: action.message });
+            return Object.assign({}, state, { isSending: false, hasPostedAnswer: false, errorMessage: action.message });
 
         case types.CLEAR_QUESTION:
             return Object.assign({}, state, { isSending: false, hasPosted: false, question: '' });

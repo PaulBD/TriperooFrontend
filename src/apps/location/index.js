@@ -1,11 +1,12 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+let _ = require('lodash');
 import * as locationActions from '../../actions/location/locationActions';
 
 import FacebookSignup from '../../components/customer/authentication/facebookSignup';
 import ReviewList from '../../components/reviews/textList';
-import RecentQuestions from '../../components/questions/questions';
+import RecentQuestions from '../../components/questions/list';
 import QuestionButton from '../../components/questions/questionButton';
 import TopLocations from '../../components/locations/topLocations';
 import NavigationWrapper from '../../components/locations/navigation/navigationWrapper';
@@ -17,42 +18,88 @@ import LastMinuteDeal from '../../components/content/dynamic/lastMinuteDeal';
 import Loader from '../../components/common/triperooLoader';
 import TopEvents from '../../components/locations/topEvents';
 import ReviewButton from '../../components/reviews/reviewButton';
+import Toastr from 'toastr';
 
 let titleCase = require('title-case');
 
 class LocationHome extends React.Component {
   constructor(props, context) {
     super(props, context);
+    this.likeLocation = this.likeLocation.bind(this);
+    this.state = { isLoadingLocation: true, isUpdatingLike: false, location: {}, showLike: true };
   }
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    this.props.locationActions.loadLocationById(this.props.locationId);
+    this.loadLocation();
+  }
+
+  loadLocation() {
+    this.setState({ isLoadingLocation: true });
+    this.props.locationActions.loadLocationById(this.props.locationId)
+      .then(() => {
+        this.setState({
+          isLoadingLocation: false,
+          location: _.cloneDeep(this.props.location)
+        });
+
+      })
+      .catch(error => {
+        Toastr.error(error);
+        this.setState({isLoadingLocation: false});
+      });
+  }
+
+  likeLocation(likeLocation) {
+    let location = this.state.location;
+
+    if (likeLocation) {
+      location.stats.likeCount += 1;
+    }
+    else {
+      location.stats.likeCount -= 1;
+    }
+
+    this.setState({ isUpdatingLike: true, location: location });
+
+    this.props.locationActions.likeLocationById(this.props.locationId, likeLocation, _.cloneDeep(location))
+      .then(() => {
+        this.setState({
+          isUpdatingLike: false,
+          location: location,
+          showLike: false
+        });
+      })
+      .catch(error => {
+        Toastr.error(error);
+        this.setState({isUpdatingLike: false});
+      });
   }
 
   render(){
-    document.title = 'Explore, Plan, Book in ' + titleCase(this.props.location.regionName);
-    if (this.props.location.regionName != undefined)
+    if (!this.state.isLoadingLocation)
     {
+      document.title = 'Explore, Plan, Book in ' + titleCase(this.state.location.regionName);
+
       return (
         <div>
-          <Header location={this.props.location}  />
+          <Header location={this.state.location}  />
           <div className="container">
-            <NavigationWrapper name={this.props.location.regionName} location={this.props.location} />
+            <NavigationWrapper name={this.state.location.regionName} location={this.state.location} />
             <div className="gap gap-small"></div>
           </div>
           <div className="container">
             <div className="row">
               <div className="col-md-12">
-                <TopLocations locationId={this.props.locationId} name={this.props.location.regionName} locationType={this.props.location.regionType} {...this.props} />
+                <TopLocations locationId={this.props.locationId} name={this.state.location.regionName} locationType={this.state.location.regionType} {...this.props} />
               </div>
               <div className="col-md-8">
-                <Summary locationName={this.props.location.regionName} summary={this.props.location.summary.en} />
+                <Summary locationName={this.props.location.regionName} summary={this.props.location.summary ? this.props.location.summary.en : ''} />
               </div>
               <div className="col-md-4">
-                <LocationStats stats={this.props.location.stats} locationUrl={this.props.location.url} locationName={this.props.location.regionName}  />
-                <QuestionButton locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType={this.props.location.regionType}/>
-                <RecentQuestions locationId={this.props.locationId} locationName={this.props.location.regionName} limit={3} offset={0} />
+                <LocationStats showLike={this.state.showLike} likeLocation={this.likeLocation} locationId={this.props.locationId} stats={this.state.location.stats} locationUrl={this.state.location.url} locationName={this.state.location.regionName}  />
+                <QuestionButton locationId={this.props.locationId} locationName={this.state.location.regionName} locationNameLong={this.state.location.regionNameLong} locationType={this.state.location.regionType} />
+                <RecentQuestions locationId={this.props.locationId} locationName={this.state.location.regionName} pageSize={3} pageNumber={0} locationUrl={this.state.location.url} showTitle={false} isSideComponent={true}/>
               </div>
             </div>
           </div>
@@ -61,17 +108,17 @@ class LocationHome extends React.Component {
           <div className="container">
             <div className="row">
               <div className="col-md-8">
-                <ReviewList locationId={this.props.locationId} locationName={this.props.location.regionName} locationType="" pageSize={10} pageNumber={0} showTitle={true} />
+                <ReviewList locationId={this.props.locationId} locationName={this.state.location.regionName} locationType="" pageSize={10} pageNumber={0} showTitle={true} />
               </div>
               <div className="col-md-4">
-                <ReviewButton name="sidePanel" locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType="" />
+                <ReviewButton name="sidePanel" locationId={this.props.locationId} locationName={this.state.location.regionName} locationNameLong={this.state.location.regionNameLong} locationType="" />
                 <div className="gap gap-small"></div>
                 <WeatherForcast locationId={this.props.locationId} />
               </div>
             </div>
           </div>
           <div className="gap"></div>
-          <TopEvents locationId={this.props.locationId} locationName={this.props.location.regionName} baseUrl={this.props.location.url}/>
+          <TopEvents locationId={this.props.locationId} locationName={this.state.location.regionName} baseUrl={this.state.location.url}/>
           <FacebookSignup />
         </div>
       );

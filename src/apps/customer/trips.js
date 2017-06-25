@@ -12,7 +12,7 @@ class CustomerTrips extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    this.state = { loading: false};
+    this.state = { loading: true};
   }
 
   componentDidMount() {
@@ -32,7 +32,7 @@ class CustomerTrips extends React.Component {
   }
 
   render(){
-    if (!this.state.loadingTrips) {
+    if (!this.state.loading) {
       let profileUrl = this.props.user && this.props.user.profile ? this.props.user.profile.profileUrl : '';
       return (
         <div className="container">

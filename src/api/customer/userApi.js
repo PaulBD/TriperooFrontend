@@ -3,7 +3,6 @@ import baseUrl from '../baseApi';
 
 class UserApi {
 
-
   // ****************************************
   // Update User
   // ****************************************

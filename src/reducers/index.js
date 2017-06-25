@@ -10,6 +10,7 @@ import newsletter from './customer/newsletterReducer';
 import question from './customer/questionReducer';
 import review from './customer/reviewReducer';
 import user from './customer/userReducer';
+import userFollow from './customer/userFollowReducer';
 
 import airports from './location/airportReducer';
 import attractions from './location/attractionReducer';
@@ -18,6 +19,7 @@ import flights from './location/flightReducer';
 import hotels from './location/hotelReducer';
 import locationQuestions from './location/locationQuestionsReducer';
 import location from './location/locationReducer';
+import cms from './location/cmsReducer';
 import locationReviews from './location/locationReviewsReducer';
 import locations from './location/locationsReducer';
 import nightlife from './location/nightlifeReducer';
@@ -42,9 +44,11 @@ const rootReducer = combineReducers({
   newsletter,
   review,
   user,
+  userFollow,
 
   airports,
   attractions,
+  cms,
   locationEvents,
   flights,
   hotels,

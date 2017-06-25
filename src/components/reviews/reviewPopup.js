@@ -23,7 +23,7 @@ class ReviewPopup extends React.Component {
 
   }
 
-  componentDidMount() {
+  componentWillMount() {
     if (this.props.locationId > 0) {
       this.setState({ searchName: this.props.locationName, searchId: this.props.locationId, searfchType: this.props.locationType, wizardStep: 2 });
     }

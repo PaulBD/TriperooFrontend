@@ -13,9 +13,13 @@ class TopLocations extends React.Component {
     this.state = { loadingLocations: false };
   }
 
-  componentDidMount() {
+  componentWillMount() {
+    this.loadLocations();
+  }
+
+  loadLocations() {
     this.setState({loadingLocations: true});
-    this.props.locationsActions.loadLocationsByParentLocationId(this.props.locationId, this.props.locationType, 6, 0)
+    this.props.locationsActions.loadLocationsByParentLocationId(this.props.locationId, this.props.locationType, 8, 0)
       .then(() => {
         this.setState({loadingLocations: false});
       })
@@ -30,15 +34,14 @@ class TopLocations extends React.Component {
     {
       return (
         <div>
-          <h3>Popular In {titleCase(this.props.name)}...</h3>
-          <LocationList locations={this.props.locations} />
+          {this.props.locations.length > 0 ? <h3>Popular In {titleCase(this.props.name)}...</h3> : ''}
+          <LocationList locations={this.props.locations} cssClass="col-md-3" />
         </div>
       );
     }
     else {
       return (
         <div>
-          <h3>Popular In {titleCase(this.props.name)}...</h3>
           <Loader showLoader={true}/>
         </div>
       );

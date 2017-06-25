@@ -103,6 +103,8 @@ const BookmarkList = ({bookmarks, loadingBookmarks, i, handleMissingImage}) => {
 
 BookmarkList.propTypes = {
   bookmarks: PropTypes.array.isRequired,
+  loadingBookmarks: PropTypes.bool.isRequired,
+  i: PropTypes.number.isRequired,
   handleMissingImage: PropTypes.func.isRequired,
   updateBookmarks: PropTypes.func.isRequired
 };

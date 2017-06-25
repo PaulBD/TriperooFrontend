@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as userQuestionActions from '../../actions/customer/userQuestionActions';
+import * as locationQuestionsActions from '../../actions/location/locationQuestionsActions';
 
 class AnswerPopup extends React.Component {
   constructor(props, context) {
@@ -11,7 +12,7 @@ class AnswerPopup extends React.Component {
     this.submitAnswer = this.submitAnswer.bind(this);
     this.closeModal = this.closeModal.bind(this);
 
-    this.state = { answer: '' };
+    this.state = { answer: '', postingAnswer: false};
   }
 
   handleAnswerChange(e) {
@@ -25,16 +26,23 @@ class AnswerPopup extends React.Component {
 
   submitAnswer(e) {
     e.preventDefault();
-
+    this.setState({postingAnswer: true});
     const answer = { "questionReference": this.props.questionReference, "answer": this.refs.answer.value.trim(), "likeCount": 0 };
-    this.props.userQuestionActions.postAnswer(answer);
+    this.props.userQuestionActions.postAnswer(answer)
+      .then(() =>{
+        this.setState({postingAnswer: false});
+        this.props.locationQuestionsActions.loadQuestionsByLocationId(this.props.locationId, this.props.pageSize, this.props.pageNumber)
+      })
+      .catch(error => {
+        this.setState({postingAnswer: false});
+      });
   }
 
   render(){
     return (
         <div className="modal-dialog modelReviewAuthentication" role="document">
           <div className="modal-content">
-            <div className={!this.props.hasPosted ? "modal-body" : "modal-body hide"}>
+            <div className={!this.props.hasPostedAnswer ? "modal-body" : "modal-body hide"}>
               <div className="row">
                 <form className="modalForm" onSubmit={this.submitAnswer}>
                   <div className={this.props.errorMessage != undefined && this.props.errorMessage.length > 0 ? 'col-md-12' : 'col-md-12 hide'}>
@@ -52,12 +60,12 @@ class AnswerPopup extends React.Component {
                     </div>
                   </div>
                   <div className="col-md-12 text-xs-center">
-                      <input className="btn btn-primary" type="submit" value="Submit Answer" />
+                      <input className="btn btn-primary" type="submit" value="Submit Answer" disabled={this.state.postingAnswer} />
                   </div>
                 </form>
               </div>
             </div>
-            <div className={this.props.hasPosted ? "modal-body" : "modal-body hide"}>
+            <div className={this.props.hasPostedAnswer ? "modal-body" : "modal-body hide"}>
               <div className="row">
                 <div className="col-md-12">
                   <h3>Thanks for Helping!</h3>
@@ -84,10 +92,14 @@ AnswerPopup.propTypes = {
   arrayPosition: PropTypes.number,
   questionReference: PropTypes.string,
   question: PropTypes.string.isRequired,
+  locationId: PropTypes.number.isRequired,
+  pageSize: PropTypes.number.isRequired,
+  pageNumber: PropTypes.number.isRequired,
   userQuestionActions: PropTypes.object.isRequired,
+  locationQuestionsActions: PropTypes.object.isRequired,
   isSending: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string,
-  hasPosted: PropTypes.bool,
+  hasPostedAnswer: PropTypes.bool,
   closeModal: PropTypes.func
 };
 
@@ -95,13 +107,14 @@ function mapStateToProps(state, ownProps) {
   return {
     isSending: state.question.isFetching,
     errorMessage: state.question.errorMessage,
-    hasPosted: state.question.hasPosted
+    hasPostedAnswer: state.question.hasPostedAnswer
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    userQuestionActions: bindActionCreators(userQuestionActions, dispatch)
+    userQuestionActions: bindActionCreators(userQuestionActions, dispatch),
+    locationQuestionsActions: bindActionCreators(locationQuestionsActions, dispatch)
   };
 }
 

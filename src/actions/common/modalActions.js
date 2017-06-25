@@ -87,17 +87,17 @@ export function openQuestion(locationId, locationName, locationType) {
 // ****************************************
 // Open question answer
 // ****************************************
-export function openQuestionAnswerModal(questionReference, question) {
-	return {type: types.OPEN_QUESTION_ANSWER_MODEL, question: question, questionReference: questionReference, name: 'QuestionAnswerModal' };
+export function openQuestionAnswerModal(questionReference, question, locationId, pageSize, pageNumber) {
+	return {type: types.OPEN_QUESTION_ANSWER_MODEL, question: question, questionReference: questionReference, name: 'QuestionAnswerModal', locationId, pageSize, pageNumber };
 }
 
 export function closeQuestionAnswerModal() {
 	return {type: types.CLOSE_QUESTION_ANSWER_MODEL, name: 'QuestionAnswerModal'};
 }
 
-export function openQuestionAnswer(questionId, question) {
+export function openQuestionAnswer(questionId, question, locationId, pageSize, offset) {
 	return dispatch => {
-		dispatch(openQuestionAnswerModal(questionId, question));
+		dispatch(openQuestionAnswerModal(questionId, question, locationId, pageSize, offset));
 	};
 }
 

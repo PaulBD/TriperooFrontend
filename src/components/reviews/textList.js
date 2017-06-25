@@ -16,7 +16,11 @@ class Reviews extends React.Component {
     this.writeReview = this.writeReview.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
+    this.loadReviews();
+  }
+
+  loadReviews() {
       if (this.props.locationType != 'all' && this.props.locationId > 0) {
         this.setState({isLoadingReviews: true});
         this.props.locationReviewsActions.loadReviewsByLocationId(this.props.locationId, this.props.pageSize, this.props.pageNumber)
@@ -113,6 +117,7 @@ Reviews.defaultProps = {
 Reviews.propTypes = {
   reviews: PropTypes.array.isRequired,
   locationReviewsActions: PropTypes.object.isRequired,
+  modalActions: PropTypes.object.isRequired,
   locationType: PropTypes.string,
   locationName: PropTypes.string,
   locationNameLong: PropTypes.string,

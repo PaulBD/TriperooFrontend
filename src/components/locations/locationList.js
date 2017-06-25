@@ -14,7 +14,7 @@ class LocationList extends React.Component {
   }
 
   handleMissingImage(e) {
-      e.target.src='/static/img/placeholder.png';
+    e.target.src = e.target.dataset['fallback'];
   }
 
   render() {
@@ -28,19 +28,34 @@ class LocationList extends React.Component {
 
 				let spacer = '';
 
-				switch (i)
-				{
-					case 3:
-					case 6:
-					case 9:
-					case 12:
-					case 15:
-					case 18:
-					case 21:
-					case 24:
-						spacer = <div className="gap gap-small"></div>;
-						break;
-				}
+				if (this.props.cssClass == 'col-md-4') {
+          switch (i) {
+            case 3:
+            case 6:
+            case 9:
+            case 12:
+            case 15:
+            case 18:
+            case 21:
+            case 24:
+              spacer = <div className="gap gap-small"></div>;
+              break;
+          }
+        }
+        else {
+          switch (i) {
+            case 4:
+            case 7:
+            case 10:
+            case 12:
+            case 15:
+            case 18:
+            case 21:
+            case 24:
+              spacer = <div className="gap gap-small"></div>;
+              break;
+          }
+        }
 
 				let locationType = location.subClass;
 
@@ -79,27 +94,37 @@ class LocationList extends React.Component {
 
 				}
 
+				let fallbackImage = '/static/img/placeholder-large.png';
+
+        if (location.photos) {
+          if (location.photos.photoList) {
+            if (location.photos.photoList.length > 0) {
+              fallbackImage = location.photos.photoList[0].prefix + '2000x2000' + location.photos.photoList[0].suffix;
+            }
+          }
+        }
+
 				return (
 					<div className={this.props.cssClass} key={location.regionID}>
 						<a className="hover-img" href={location.url}>
-							<img src={location.image ? location.image : '/static/img/placeholder.png'}  alt={location.regionName} onError={this.handleMissingImage} />
+							<img src={location.image ? location.image : '/static/img/placeholder.png'}  alt={location.regionName} data-fallback={fallbackImage} onError={this.handleMissingImage} />
 							<div className="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">
 								<div className="text-small">
 									<h5>{location.regionName.length > 33 ? location.regionName.substring(0,33) + '...' : location.regionName}</h5>
 									<p>{titleCase(locationType)}</p>
 								</div>
-								<ul className={this.props.isAuthenticated ? "hover-icon-group-bottom-right" : "hide"}>
-									<li>
-										<ReviewIcon locationId={location.regionID} locationName={location.regionNameLong} locationType={location.subClass} key={location.regionID}/>
-									</li>
-									<li>
-										<PhotoIcon locationId={location.regionID} locationName={location.regionNameLong} locationType={location.subClass} key={location.regionID}/>
-									</li>
-									<li>
-										<BookmarkIcon parentLocationId={location.parentRegionID} parentLocationName={location.parentRegionName} parentLocationNameLong={location.parentRegionNameLong} locationNameLong={location.regionNameLong} locationUrl={location.url} locationImage={location.image} locationId={location.regionID} locationName={location.regionName} locationType={location.subClass} key={location.regionID}/>
-									</li>
-								</ul>
 							</div>
+              <ul className={this.props.isAuthenticated ? "hover-icon-group-center-top" : "hide"}>
+                <li>
+                  <ReviewIcon locationId={location.regionID} locationName={location.regionNameLong} locationType={location.subClass} key={location.regionID}/>
+                </li>
+                <li>
+                  <PhotoIcon locationId={location.regionID} locationName={location.regionNameLong} locationType={location.subClass} key={location.regionID}/>
+                </li>
+                <li>
+                  <BookmarkIcon parentLocationId={location.parentRegionID} parentLocationName={location.parentRegionName} parentLocationNameLong={location.parentRegionNameLong} locationNameLong={location.regionNameLong} locationUrl={location.url} locationImage={location.image} locationId={location.regionID} locationName={location.regionName} locationType={location.subClass} key={location.regionID}/>
+                </li>
+              </ul>
 
 						</a>
 					{spacer}

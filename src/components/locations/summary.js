@@ -42,7 +42,7 @@ class Overview extends React.Component {
 
             return (
                 <div>
-                    <h4>Why {titleCase(this.props.locationName)}?</h4>
+                    <h4>About {titleCase(this.props.locationName)}...</h4>
                     <p dangerouslySetInnerHTML={{__html: summary}}></p>
                     <p><a href="#" onClick={this.onHandleTextClick}>{showMore}</a></p>
                 </div>

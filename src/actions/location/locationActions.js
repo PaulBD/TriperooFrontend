@@ -28,28 +28,27 @@ export function loadLocationById(locationId) {
 }
 
 // ****************************************
-// Update Location
+// Like Location
 // ****************************************
-export function requestLocationUpdate() {
-	return {type: types.LOCATION_UPDATE_REQUEST, isFetching: true};
+export function requestLikeLocationContent() {
+  return {type: types.LIKE_LOCATION_CONTENT_REQUEST, isFetching: true };
 }
 
-export function loadLocationUpdateSuccess(location) {
-	return {type: types.LOCATION_UPDATE_SUCCESS, isFetching: false, location};
+export function loadLikeLocationContentSuccess(location) {
+  return {type: types.LIKE_LOCATION_CONTENT_SUCCESS, isFetching: false, location};
 }
 
-export function locationUpdateFailure(errorMessage) {
-	return {type: types.LOCATION_UPDATE_FAILURE, isFetching: false,  errorMessage};
+export function likeLocationContentFailure(errorMessage) {
+  return {type: types.LIKE_LOCATION_CONTENT_FAILURE, isFetching: false,  errorMessage};
 }
 
-export function updateLocation(location) {
-	return dispatch => {
-		dispatch(requestLocationUpdate());
-		return LocationApi.updateLocation(location).then(newLocation => {
-			dispatch(loadLocationUpdateSuccess(newLocation));
-		}).catch(error => {
-			dispatch(locationUpdateFailure(error.response.data));
-		});
-	};
+export function likeLocationById(locationId, likeLocation, location) {
+  return dispatch => {
+    dispatch(requestLikeLocationContent());
+    return LocationApi.likeLocation(locationId, likeLocation).then(response => {
+      dispatch(loadLikeLocationContentSuccess(location));
+    }).catch(error => {
+      dispatch(likeLocationContentFailure(error.response.data));
+    });
+  };
 }
-

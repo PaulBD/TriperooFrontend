@@ -21,7 +21,7 @@ class AskQuestionButton extends React.Component {
 
       let message = '';
 
-        if (this.props.locationName == '')
+        if (this.props.locationName == '' || this.props.locationName == undefined)
         {
           message = 'Ask a question';
         }

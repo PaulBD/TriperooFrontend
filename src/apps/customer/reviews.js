@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as authenticationActions from '../../actions/customer/authenticationActions';
 import * as userActions from '../../actions/customer/userActions';
-import UserHeader from '../../components/customer/user/userHeader';
 import UserProfile from '../../components/customer/user/userProfile';
 import TriperooLoader from '../../components/common/triperooLoader';
 import Toastr from 'toastr';
@@ -12,19 +11,18 @@ class UserReviews extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    this.state = { loading: false };
+    this.state = { loading: true };
   }
 
   componentDidMount() {
     document.title = 'Your Reviews';
     window.scrollTo(0, 0);
 
-    this.setState({loading: true});
-
     this.props.userActions.getUser(this.props.currentUserId)
       .then(() => {
         this.setState({loading: false});
-      }).catch(error => {
+      })
+      .catch(error => {
         Toastr.error(error);
         this.setState({loading: false});
       });
@@ -32,23 +30,19 @@ class UserReviews extends React.Component {
 
   render(){
     if (!this.state.loading) {
-      let user = JSON.parse(localStorage.getItem('id_token'));
       return (
-      <div>
-        <UserHeader user={this.props.user} isAuthenticated={this.props.isAuthenticated}/>
         <div className="container">
-            <div className="gap gap"></div>
-            <div className="row">
-                <div className="col-md-3">
-                  <UserProfile user={this.props.user} isActiveUser={this.props.isActiveUser}/>
-                </div>
-                <div className="col-md-9">
-                    Reviews
-
-                </div>
+          <div className="gap gap-small"></div>
+          <div className="row">
+            <div className="col-md-4">
+              <UserProfile user={this.props.user} isActiveUser={this.props.isActiveUser}/>
             </div>
+            <div className="col-md-8">
+              Reviews
+
+            </div>
+          </div>
         </div>
-      </div>
       );
     }
     else {

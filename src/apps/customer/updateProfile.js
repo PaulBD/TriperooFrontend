@@ -17,7 +17,7 @@ class UpdateProfile extends React.Component {
     this.submitStandardForm = this.submitStandardForm.bind(this);
 
     this.state = {
-      loading: false,
+      loading: true,
       isUpdating: false,
       isUpdatingPassword: false,
       isFacebookSignup: false,
@@ -38,8 +38,6 @@ class UpdateProfile extends React.Component {
   componentDidMount() {
     document.title = 'Update Profile';
     window.scrollTo(0, 0);
-
-    this.setState({loading: true});
 
     this.props.userActions.getUser(this.props.currentUserId)
       .then(() => {

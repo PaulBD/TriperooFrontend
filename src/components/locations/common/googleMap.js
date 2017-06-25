@@ -4,9 +4,16 @@ import Marker from './mapMarker';
 
 const GoogleMap = ({longitude, latitude, text, zoom}) => {
 
-  let center = {lat: latitude, lng: longitude};
+  let center = {lat: 0, lng: 0};
+
+  if (latitude != undefined && longitude != undefined) {
+    if (latitude.toString().length > 2 && longitude.toString().length > 2) {
+      center = {lat: latitude, lng: longitude};
+    }
+  }
+
   return (
-    <div className="googleMapWrapper">
+    <div className={center.lat != 0 && center.lng != 0 ? "googleMapWrapper" : "hide"}>
       <GoogleMapReact
         defaultCenter={center}
         defaultZoom={zoom}
@@ -16,8 +23,8 @@ const GoogleMap = ({longitude, latitude, text, zoom}) => {
         }}
       >
         <Marker
-          lat={latitude}
-          lng={longitude}
+          lat={center.lat}
+          lng={center.lng}
           text={text}
         />
       </GoogleMapReact>

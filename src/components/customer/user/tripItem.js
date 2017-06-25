@@ -89,7 +89,7 @@ class TripItem extends React.Component {
           </a>
           <figcaption>
             <h3>{this.props.trip.listName}</h3>
-            <p>All this modern technology just makes people try to do everything at once.</p>
+            <p>{this.props.trip.description}</p>
             <hr />
             <div className="price">
               {this.props.trip.bookmarks && this.props.trip.bookmarks.length > 0 ? this.props.trip.bookmarks.length : 0} Bookmarks
