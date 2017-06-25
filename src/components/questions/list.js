@@ -59,7 +59,7 @@ class Questions extends React.Component {
     let title = '';
 
     if (this.props.showTitle) {
-      title = (<div><a href="#" onClick={this.postQuestion} className="reviewLink">Been to {this.props.locationName}? Write a review</a><h4>Reviews</h4><hr /><div className="gap gap-small"></div></div>);
+      title = (<div className="col-md-12"><h5>Recent Questions...</h5><hr /></div>);
     }
 
     let questionText = '';
@@ -70,10 +70,7 @@ class Questions extends React.Component {
       console.log(this.props.questionList);
 
       if (this.props.questionList) {
-        if (this.props.questionList.length == 0) {
-          questionText = (<p>Be the first to ask a local expert a question about {this.props.locationName}.</p>);
-        }
-        else {
+        if (this.props.questionList.length > 0) {
           if (this.props.isSideComponent) {
             questionText = (<p className="text-xs-right"><a href={questionUrl}>Read all questions</a></p>);
           }
@@ -86,7 +83,7 @@ class Questions extends React.Component {
           {title}
           <QuestionList questions={this.props.questionList} locationId={this.props.locationId} locationName={this.props.locationName} pageSize={this.props.pageSize} pageNumber={this.props.pageNumber} isAuthenticated={this.props.isAuthenticated} isSideComponent={this.props.isSideComponent} showAnswerPopup={this.showAnswerPopup}/>
 
-          <div className={this.props.questionCount > this.props.pageSize ? "row text-xs-center" : "hide"}>
+          <div className={this.props.isSideComponent ? "hide" : "row text-xs-center"}>
             <div className="gap gap-small"></div>
             <Pagination innerClass={this.props.questionCount > this.props.pageSize ? "pagination text-xs-center" : "hide"}
                         activePage={this.state.activePage} itemsCountPerPage={this.props.pageSize} totalItemsCount={this.props.questionCount}

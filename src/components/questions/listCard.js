@@ -42,14 +42,14 @@ class ListCard extends React.Component {
                         </div>
                         <div className={isSideComponent ? "col-md-10" : "col-md-8"}>
                           <a href={question.customerProfileUrl}>{question.customerName}</a> is looking for advice...
-
+                          {this.props.isSideComponent ? <p className="smlText">Added {question.friendlyDate}</p> : ''}
                           <p><i>"{question.question}"</i></p>
-                          <p className="questionActions">{ isAuthenticated ? (<span><a href="#" onClick={this.answerQuestion} data-ref={question.questionReference} data-question={question.question}>Answer Question</a></span>) : ""} &bull; Added {question.friendlyDate}</p>
+                          <p className="questionActions">{ isAuthenticated ? (<span><a href="#" onClick={this.answerQuestion} data-ref={question.questionReference} data-question={question.question}>Answer Question</a></span>) : ""} &bull; {question.answers.length} {question.answers.length == 1 ? 'Answer' : 'Answers'} {!this.props.isSideComponent ? <span>&bull; Added {question.friendlyDate}</span> : ''}</p>
                         </div>
                         <div className={isSideComponent ? "hide" : "col-md-2"}>
                           <a href={question.questionUrl}>
                             <div className="col-md-12 questionResponse">
-                              <strong>{question.answers.length}</strong><br />{question.answers.length == 1 ? 'response' : 'responses'} on this list
+                              <strong>{question.answers.length}</strong><br />{question.answers.length == 1 ? 'answer' : 'answers'}<br />to this question
                             </div>
                           </a>
                         </div>
@@ -65,7 +65,7 @@ class ListCard extends React.Component {
         );
       }
       else {
-        return (<p>There are no questions available for {this.props.locationName}. Be the first to ask a question.</p>);
+        return (<div className="col-md-12"><p>There are no questions available for {this.props.locationName}. Be the first to ask a question.</p></div>);
       }
     }
     else {

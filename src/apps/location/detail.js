@@ -13,7 +13,7 @@ import ReviewList from '../../components/reviews/textList';
 import ReviewButton from '../../components/reviews/reviewButton';
 import BookmarkButton from '../../components/common/bookmarkButton';
 import PhotoButton from '../../components/common/photoButton';
-import RecentQuestions from '../../components/questions/legacy/questions';
+import RecentQuestions from '../../components/questions/list';
 import QuestionButton from '../../components/questions/questionButton';
 import Summary from '../../components/locations/summary';
 import GoogleMaps from '../../components/locations/common/googleMap';
@@ -129,7 +129,7 @@ class LocationDetail extends React.Component {
                 </div>
                 <div className="col-md-4">
                   <QuestionButton locationId={this.props.locationId} locationName={this.props.location.regionNameLong} locationNameShort={this.props.location.regionName} locationType={this.props.location.regionType}/>
-                  <RecentQuestions locationId={this.props.locationId} locationName={this.props.location.regionName} pageSize={3} pageNumber={0} />
+                  <RecentQuestions locationId={this.props.locationId} locationName={this.state.location.regionName} pageSize={3} pageNumber={0} locationUrl={this.state.location.url} showTitle={true} isSideComponent={true}/>
                 </div>
                 <hr />
             </div>

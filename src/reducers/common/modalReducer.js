@@ -9,7 +9,7 @@ export default function modalReducer(state = { isSending: false, hasPosted: fals
       return Object.assign({}, state, { modalIsOpen: false, isSending: false, hasPosted: false, modalName: action.name, modalType: 'Review' });
 
     case types.OPEN_QUESTION_MODEL:
-      return Object.assign({}, state, { modalIsOpen: true, isSending: true, hasPosted: false, modalContent: { locationId: action.locationId, locationName: action.locationName, locationType: action.locationType }, modalName: action.name, modalType: 'Question' });
+      return Object.assign({}, state, { modalIsOpen: true, isSending: true, hasPosted: false, modalContent: { locationId: action.locationId, locationName: action.locationName, locationType: action.locationType, pageSize: action.pageSize, pageNumber: action.pageNumber }, modalName: action.name, modalType: 'Question' });
     case types.CLOSE_QUESTION_MODEL:
       return Object.assign({}, state, { modalIsOpen: false, isSending: false, hasPosted: false, modalName: action.name, modalType: 'Question' });
 

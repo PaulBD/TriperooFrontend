@@ -60,7 +60,7 @@ class QuestionsByLocation extends React.Component {
                     <hr/>
                   </div>
                   <div className="col-md-8">
-                    <QuestionList locationId={this.props.locationId} locationName={this.state.location.regionName} locationType={this.state.location.subClass} pageSize={10} pageNumber={0} showTitle={false} isSideComponent={false} />
+                    <QuestionList locationId={this.props.locationId} locationName={this.state.location.regionName} locationType={this.state.location.subClass} pageSize={5} pageNumber={0} showTitle={false} isSideComponent={false} />
                   </div>
                   <div className="col-md-4">
                     <QuestionButton locationId={this.props.locationId} locationName={this.state.location.regionName} locationNameLong={this.state.location.regionNameLong} locationType={this.state.location.regionType} />

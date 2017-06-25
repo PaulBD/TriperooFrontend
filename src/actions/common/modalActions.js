@@ -70,17 +70,17 @@ export function openReview(locationId, locationName, locationType) {
 // ****************************************
 // Open question
 // ****************************************
-export function openQuestionModal(locationId, locationName, locationType) {
-	return {type: types.OPEN_QUESTION_MODEL, locationId: locationId, locationName: locationName, locationType: locationType, name: 'QuestionModal' };
+export function openQuestionModal(locationId, locationName, locationType, pageSize, pageNumber) {
+	return {type: types.OPEN_QUESTION_MODEL, locationId: locationId, locationName: locationName, locationType: locationType, name: 'QuestionModal', pageSize, pageNumber };
 }
 
 export function closeQuestionModal() {
 	return {type: types.CLOSE_QUESTION_MODEL, name: 'QuestionModal'};
 }
 
-export function openQuestion(locationId, locationName, locationType) {
+export function openQuestion(locationId, locationName, locationType, pageSize, pageNumber) {
 	return dispatch => {
-		dispatch(openQuestionModal(locationId, locationName, locationType));
+		dispatch(openQuestionModal(locationId, locationName, locationType, pageSize, pageNumber));
 	};
 }
 
@@ -95,9 +95,9 @@ export function closeQuestionAnswerModal() {
 	return {type: types.CLOSE_QUESTION_ANSWER_MODEL, name: 'QuestionAnswerModal'};
 }
 
-export function openQuestionAnswer(questionId, question, locationId, pageSize, offset) {
+export function openQuestionAnswer(questionId, question, locationId, pageSize, pageNumber) {
 	return dispatch => {
-		dispatch(openQuestionAnswerModal(questionId, question, locationId, pageSize, offset));
+		dispatch(openQuestionAnswerModal(questionId, question, locationId, pageSize, pageNumber));
 	};
 }
 

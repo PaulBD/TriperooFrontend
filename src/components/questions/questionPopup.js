@@ -30,7 +30,7 @@ class QuestionPopup extends React.Component {
     this.props.userQuestionActions.postQuestion(question)
       .then(() =>{
         this.setState({isPostingQuestion: false});
-        this.props.locationQuestionsActions.loadQuestionsByLocationId(this.props.locationId, 3, 0);
+        this.props.locationQuestionsActions.loadQuestionsByLocationId(this.props.locationId, this.props.pageSize, this.props.pageNumber);
       })
       .catch(error => {
         Toastr.error(error);
@@ -92,9 +92,11 @@ QuestionPopup.defaultProps = {
 };
 
 QuestionPopup.propTypes = {
-  locationId: PropTypes.number,
-  locationName: PropTypes.string,
-  locationType: PropTypes.string,
+  locationId: PropTypes.number.isRequired,
+  pageSize: PropTypes.number.isRequired,
+  pageNumber: PropTypes.number.isRequired,
+  locationName: PropTypes.string.isRequired,
+  locationType: PropTypes.string.isRequired,
   userQuestionActions: PropTypes.object.isRequired,
   locationQuestionsActions: PropTypes.object.isRequired,
   isSending: PropTypes.bool.isRequired,
