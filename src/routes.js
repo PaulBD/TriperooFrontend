@@ -50,7 +50,6 @@ import CustomerTripDetail from './apps/customer/tripDetail';
 import CustomerFollowers from './apps/customer/followers';
 import CustomerFollowing from './apps/customer/following';
 
-// Hotels
 import Hotels from './apps/hotel';
 import HotelSearchResults from './apps/hotel/search-results';
 

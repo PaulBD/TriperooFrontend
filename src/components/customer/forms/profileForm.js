@@ -53,6 +53,7 @@ ProfileForm.propTypes = {
   dateOfBirth: PropTypes.string,
   password: PropTypes.string,
   phoneNumber: PropTypes.string.isRequired,
+  isFacebookSignup: PropTypes.bool.isRequired,
   isUpdating: PropTypes.bool.isRequired,
   errors: PropTypes.string,
   onSubmit: PropTypes.func.isRequired,

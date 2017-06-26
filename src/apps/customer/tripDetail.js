@@ -3,9 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as authenticationActions from '../../actions/customer/authenticationActions';
 import * as userActions from '../../actions/customer/userActions';
-import UserHeader from '../../components/customer/user/userHeader';
 import TriperooLoader from '../../components/common/triperooLoader';
-import {Timeline, TimelineEvent} from 'react-event-timeline';
 import Toastr from 'toastr';
 
 class CustomerTrips extends React.Component {
@@ -15,7 +13,7 @@ class CustomerTrips extends React.Component {
     this.state = { loading: true };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     document.title = 'Your Reviews';
     window.scrollTo(0, 0);
 
@@ -49,24 +47,11 @@ class CustomerTrips extends React.Component {
     if (!this.state.loadingTrip) {
       return (
         <div>
-          <UserHeader user={this.props.user} isAuthenticated={this.props.isAuthenticated}/>
           <div className="container">
             <div className="gap gap"></div>
             <div className="row">
               <div className="col-md-12">
-                <Timeline>
-                  <TimelineEvent
-                    title="Introduction to Redux in React applications"
-                    createdAt="2016-09-12 10:06 PM"
-                    icon={<i className="fa fa-envelope"/>}
-                    iconColor="#757575"
-                    style={{fontWeight: 400, color: "#828282c"}}
-                    buttons={<i />}
-                    container="card"
-                  >
-                    A DIY workshop on using React with Redux to build a Instagram clone
-                  </TimelineEvent>
-                </Timeline>
+
               </div>
             </div>
           </div>

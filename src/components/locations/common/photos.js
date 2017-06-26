@@ -22,7 +22,7 @@ class Photos extends React.Component {
             {
               this.props.photos.photoList.map(photo => {
 
-                var url = photo.prefix + '400x400' + photo.suffix;
+                let url = photo.prefix + '400x400' + photo.suffix;
                 return (
                   <div key={url}>
                     <img src={url}/>

@@ -15,7 +15,7 @@ class AirportList extends React.Component {
   }
 
   loadAirports() {
-    this.setState({isLoading: true})
+    this.setState({isLoading: true});
     this.props.airportActions.loadAirports()
       .then(() => this.setState({isLoading: false}))
       .catch(error => {

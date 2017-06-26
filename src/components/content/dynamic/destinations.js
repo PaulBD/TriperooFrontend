@@ -15,7 +15,7 @@ class Destinations extends React.Component {
   }
 
   loadLocations() {
-    this.setState({isLoading: true})
+    this.setState({isLoading: true});
     this.props.locationsActions.loadTopLocations(this.props.locationCount, this.props.contentType)
       .then(() => this.setState({isLoading: false}))
       .catch(error => {

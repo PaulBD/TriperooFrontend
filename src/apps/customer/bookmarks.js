@@ -15,7 +15,7 @@ class UserBookmarks extends React.Component {
     this.state = { loading: true, loadingBookmarks: false };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     document.title = 'Your Bookmarks';
     window.scrollTo(0, 0);
 

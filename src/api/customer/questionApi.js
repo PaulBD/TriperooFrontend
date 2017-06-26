@@ -4,13 +4,36 @@ import baseUrl from '../baseApi';
 class QuestionApi {
 
   // ****************************************
+  // Get question
+  // ****************************************
+  static getQuestion(questionId) {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'get',
+        url: baseUrl + '/question/' + questionId,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'token': JSON.parse(localStorage.getItem('id_token')).token
+        }
+      })
+        .then(response => {
+          resolve(Object.assign({}, response.data));
+        })
+        .catch(function (error) {
+          reject(error);
+        });
+    });
+  }
+
+  // ****************************************
   // Post question
   // ****************************************
   static postQuestion(question) {
     return new Promise((resolve, reject) => {
       axios({
         method: 'post',
-        url:  baseUrl + '/question',
+        url: baseUrl + '/question',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
@@ -20,12 +43,12 @@ class QuestionApi {
           question
         }
       })
-      .then(response => {
-        resolve(Object.assign([], response.data));
-      })
-      .catch(function (error) {
-        reject(error);
-      });
+        .then(response => {
+          resolve(Object.assign([], response.data));
+        })
+        .catch(function (error) {
+          reject(error);
+        });
     });
   }
 
@@ -36,7 +59,7 @@ class QuestionApi {
     return new Promise((resolve, reject) => {
       axios({
         method: 'post',
-        url:  baseUrl + '/question/answer',
+        url: baseUrl + '/question/answer',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
@@ -46,12 +69,65 @@ class QuestionApi {
           answer
         }
       })
-      .then(response => {
-        resolve(Object.assign([], response.data));
+        .then(response => {
+          resolve(Object.assign([], response.data));
+        })
+        .catch(function (error) {
+          reject(error);
+        });
+    });
+  }
+
+  // ****************************************
+  // Like an existing question
+  // ****************************************
+  static likeQuestion(questionReference) {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'put',
+        url: baseUrl + '/question/' + questionReference + '/like',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'token': JSON.parse(localStorage.getItem('id_token')).token
+        },
+        data: {
+          questionReference
+        }
       })
-      .catch(function (error) {
-        reject(error);
-      });
+        .then(response => {
+          resolve(Object.assign([], response.data));
+        })
+        .catch(function (error) {
+          reject(error);
+        });
+    });
+  }
+
+  // ****************************************
+  // Like an existing answer
+  // ****************************************
+  static likeAnswer(questionReference, answerReference) {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'put',
+        url: baseUrl + '/question/' + questionReference + '/answer/' + answerReference + '/like',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'token': JSON.parse(localStorage.getItem('id_token')).token
+        },
+        data: {
+          questionReference,
+          answerReference
+        }
+      })
+        .then(response => {
+          resolve(Object.assign([], response.data));
+        })
+        .catch(function (error) {
+          reject(error);
+        });
     });
   }
 }

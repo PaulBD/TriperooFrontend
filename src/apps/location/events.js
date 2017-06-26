@@ -21,7 +21,7 @@ class EventHome extends React.Component {
     this.state = { isLoadingLocation: false, isLoadingEvents: false, pageSize: 12, pageNumber: 0, activePageNumber: 1, categoryName: 'all', friendlyCategory: '' };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     window.scrollTo(0, 0);
     this.setState({isLoadingLocation: true});
     this.loadLocation();
@@ -39,13 +39,13 @@ class EventHome extends React.Component {
   changeEvent(categoryId, catgeoryName) {
     window.scrollTo(0, 0);
     this.setState({ categoryName: categoryId, friendlyCategory: catgeoryName });
-    this.loadEvents(this.props.locationId, categoryId, this.state.pageSize, this.state.pageNumber)
+    this.loadEvents(this.props.locationId, categoryId, this.state.pageSize, this.state.pageNumber);
   }
 
   changePage(value) {
     window.scrollTo(0, 0);
     this.setState({ pageNumber: value - 1, activePageNumber: value });
-    this.loadEvents(this.props.locationId, this.state.categoryName, this.state.pageSize, value - 1)
+    this.loadEvents(this.props.locationId, this.state.categoryName, this.state.pageSize, value - 1);
   }
 
   loadEvents(locationId, categoryName, pageSzie, pageNumber) {

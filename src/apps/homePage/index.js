@@ -24,7 +24,7 @@ const HomePage = () => {
                 </div>
                 <div className="gap gap-small"></div>
                 <div className="row row-wrap text-xs-center">
-                    <ReviewList locationType="all" locationId={0} pageSize={3} pageNumber={0} showTitle={true} />
+                    <ReviewList locationType="all" locationId={0} pageSize={3} locationName="" pageNumber={0} showTitle={true} />
                 </div>
                 <div className="gap"></div>
             </div>

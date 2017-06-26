@@ -39,7 +39,7 @@ class LocationDetail extends React.Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     window.scrollTo(0, 0);
     this.loadLocation();
   }
@@ -64,8 +64,8 @@ class LocationDetail extends React.Component {
   }
 
   removeLastComma(value){
-    var n=value.lastIndexOf(",");
-    var a=value.substring(0,n)
+    let n = value.lastIndexOf(",");
+    let a = value.substring(0, n);
     return a;
   }
 

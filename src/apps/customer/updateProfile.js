@@ -35,7 +35,7 @@ class UpdateProfile extends React.Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     document.title = 'Update Profile';
     window.scrollTo(0, 0);
 
@@ -132,7 +132,8 @@ class UpdateProfile extends React.Component {
                                      isFacebookSignup={this.state.isFacebookSignup}
                                      isUpdating={this.state.isUpdating}
                                      onSubmit={this.submitStandardForm} onChange={this.changeField}
-                                     onChangeAutoComplete={this.onChangeAutoComplete} errors={this.props.errors}
+                                     onChangeAutoComplete={this.onChangeAutoComplete}
+                                     errors={this.props.errorMessage}
                     />
                   </div>
                 </div>

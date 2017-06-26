@@ -192,7 +192,7 @@ class BookmarkLocation extends React.Component {
                     {
                       this.props.tripList.map(trip => {
                         return (
-                          <tr>
+                          <tr key={trip.id}>
                             <td className="tripBtn"><a href={trip.url}><i className="fa fa-external-link"></i></a></td>
                             <td>{trip.listName}</td>
                             <td className="tripBtn"><input className="btn btn-primary btn-sm" type="submit" onClick={this.onSaveBookmark} key={trip.id} value="Save" data-id={trip.id} /></td>

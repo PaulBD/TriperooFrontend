@@ -31,7 +31,7 @@ class AnswerPopup extends React.Component {
     this.props.userQuestionActions.postAnswer(answer)
       .then(() =>{
         this.setState({postingAnswer: false});
-        this.props.locationQuestionsActions.loadQuestionsByLocationId(this.props.locationId, this.props.pageSize, this.props.pageNumber)
+        this.props.locationQuestionsActions.loadQuestionsByLocationId(this.props.locationId, this.props.pageSize, this.props.pageNumber);
       })
       .catch(error => {
         this.setState({postingAnswer: false});

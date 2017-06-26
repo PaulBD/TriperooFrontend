@@ -6,8 +6,6 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as userReviewActions from '../../actions/customer/userReviewActions';
 
-let Modal = require('react-modal');
-
 class ReviewPopup extends React.Component {
   constructor(props, context) {
     super(props, context);

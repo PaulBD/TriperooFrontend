@@ -15,7 +15,7 @@ class LastMinuteDeal extends React.Component {
   }
 
   loadDeals() {
-    this.setState({isLoading: true})
+    this.setState({isLoading: true});
     this.props.hotelActions.loadHotelDealsByLocation(this.props.locationId, 1, 0)
       .then(() => this.setState({isLoading: false}))
       .catch(error => {

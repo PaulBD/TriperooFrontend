@@ -14,7 +14,7 @@ class Following extends React.Component {
     this.state = { loading: true };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     document.title = 'Other Triperooers your following';
     window.scrollTo(0, 0);
 
@@ -67,7 +67,7 @@ function mapStateToProps(state, ownProps) {
     isAuthenticated: state.authentication.isAuthenticated,
     currentUserId: ownProps.params.guid,
     isActiveUser: user ? ownProps.params.guid == user.userId : false,
-    user: state.user.user ? state.user.user : null,
+    user: state.user.user ? state.user.user : null
   };
 }
 

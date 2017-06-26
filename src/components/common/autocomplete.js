@@ -12,7 +12,7 @@ class AutoComplete extends React.Component {
 
     this.onSearchValue = this.onSearchValue.bind(this);
   }
-  componentDidMount() {
+  componentWillMount() {
     this.setState({ searchValue: this.props.searchValue });
   }
 

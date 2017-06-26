@@ -15,7 +15,7 @@ class BookingHistory extends React.Component {
     this.state = { loading: false };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     document.title = 'Booking History';
     window.scrollTo(0, 0);
 
@@ -214,7 +214,7 @@ function mapStateToProps(state, ownProps) {
     isAuthenticated: state.authentication.isAuthenticated,
     currentUserId: ownProps.params.guid,
     isActiveUser: user ? ownProps.params.guid == user.userId : false,
-    user: state.user.user ? state.user.user : null,
+    user: state.user.user ? state.user.user : null
   };
 }
 

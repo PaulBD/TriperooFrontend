@@ -29,7 +29,7 @@ class StarRating extends React.Component {
 
     if (stars % 1 != 0)
     {
-      halfStars = <li key='half'><i className="fa fa-star-half-o"></i></li>;
+      halfStars = <li key="half"><i className="fa fa-star-half-o"></i></li>;
     }
 
     let yellowStars = tmpYellow.map(function (i) {
@@ -38,7 +38,7 @@ class StarRating extends React.Component {
 
     let greyStars = tmpGrey.map(function (i) {
       return (<li key={i}><i className="fa fa-star-o"></i></li>);
-    })
+    });
 
 
     let reviewCount = '';

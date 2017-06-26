@@ -1,30 +1,47 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import * as userQuestionActions from '../../actions/customer/userQuestionActions';
 import * as locationActions from '../../actions/location/locationActions';
+import * as authenticationActions from '../../actions/customer/authenticationActions';
+import * as modalActions from '../../actions/common/modalActions';
 
 import FacebookSignup from '../../components/customer/authentication/facebookSignup';
 import Header from '../../components/locations/subPageHeader';
-
-import QuestionList from '../../components/questions/legacy/textList';
 import LocationStats from '../../components/locations/stats';
 import LocationOverview from '../../components/locations/overview';
 import WeatherForcast from '../../components/locations/weather/forecast';
 import TriperooLoader from '../../components/common/triperooLoader';
-import QuestionButton from '../../components/questions/questionButton';
+import AnswerButton from '../../components/questions/answerButton';
+import AnswerItem from '../../components/questions/answerItem';
+import QuestionHelpful from '../../components/questions/questionHelpful';
 import Toastr from 'toastr';
-
-let titleCase = require('title-case');
+let _ = require('lodash');
 
 class QuestionDetail extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { isLoadingLocation: true, isUpdatingLike: false, location: {}, showLike: true };
+    this.state = { isLoadingLocation: true, isLoadingQuestion:false, isUpdatingLike: false, location: {}, showLike: true };
+    this.handleMissingImage = this.handleMissingImage.bind(this);
+    this.answerQuestion = this.answerQuestion.bind(this);
   }
 
   componentDidMount() {
     window.scrollTo(0, 0);
     this.loadLocation();
+  }
+
+  answerQuestion(e) {
+    e.preventDefault();
+    let ref = e.target.getAttribute('data-ref');
+    let question = e.target.getAttribute('data-question');
+
+    this.props.userQuestionActions.resetAnswer();
+    this.props.modalActions.openQuestionAnswer(ref, question, this.props.locationId, this.props.pageSize, this.props.pageNumber);
+  }
+
+  handleMissingImage(e) {
+    e.target.src='/static/img/userProfileImg.png';
   }
 
   loadLocation() {
@@ -33,9 +50,18 @@ class QuestionDetail extends React.Component {
       .then(() => {
         this.setState({
           isLoadingLocation: false,
+          isLoadingQuestion: true,
           location: _.cloneDeep(this.props.location)
         });
 
+        this.props.userQuestionActions.getQuestion('7d472577-5023-47c6-9702-e633a8f3d334')
+          .then(() => {
+            this.setState({ isLoadingQuestion: false });
+          })
+          .catch(error => {
+            Toastr.error(error);
+            this.setState({isLoadingLocation: false, isLoadingQuestion: false});
+          });
       })
       .catch(error => {
         Toastr.error(error);
@@ -44,10 +70,13 @@ class QuestionDetail extends React.Component {
   }
 
   render(){
-    document.title = titleCase(this.props.location.regionName) + ' reviews';
 
-    if (! this.state.isLoadingLocation)
+    if (! this.state.isLoadingLocation && !this.state.isLoadingQuestion)
     {
+      console.log(this.props.question);
+      let question = this.props.question;
+
+      document.title = question.customerName + ' is looking for advice...';
       return (
         <div>
           <Header location={this.props.location} contentType="questions" />
@@ -57,14 +86,28 @@ class QuestionDetail extends React.Component {
               <div className="container">
                 <div className="row">
                   <div className="col-md-12">
-                    <h4>Title</h4>
+                    <h4><a href={question.customerProfileUrl}>{question.customerName}</a>  is looking for advice...</h4>
                     <hr/>
                   </div>
                   <div className="col-md-8">
+                    <p><i>"{question.question}"</i></p>
+                    <p className="questionActions">{this.props.isAuthenticated ? (<span><a href="#" onClick={this.answerQuestion} data-ref={question.questionReference} data-question={question.question}>Answer Question</a></span>) : ""} &bull; {question.answers.length} {question.answers.length == 1 ? 'Answer' : 'Answers'} {!this.props.isSideComponent ? <span>&bull; Added {question.friendlyDate}</span> : ''} &bull; <QuestionHelpful questionRef={question.questionReference} likeCount={question.likeCount} />
+                    </p>
 
+                    <div className="row">
+                        <div className="col-md-12">
+                          <ul className="booking-item-reviews list">
+                            {
+                              question.answers.map(function (answer, i) {
+                                return (<AnswerItem key={i} answer={answer} questionReference={question.questionReference}/>);
+                              })
+                            }
+                          </ul>
+                        </div>
+                    </div>
                   </div>
                   <div className="col-md-4">
-                    <QuestionButton locationId={this.props.locationId} locationName={this.state.location.regionName} locationNameLong={this.state.location.regionNameLong} locationType={this.state.location.regionType} />
+                    <AnswerButton questionReference={question.questionReference} question={question.question} locationId={this.props.locationId} locationName={this.state.location.regionName} locationNameLong={this.state.location.regionNameLong} locationType={this.state.location.regionType} pageSize={3} pageNumber={0} />
                     <div className="gap gap-small"></div>
                     <LocationOverview location={this.props.location} />
                     <LocationStats locationId={this.props.locationId} stats={this.props.location.stats} locationUrl={this.props.location.url} locationName={this.props.location.regionName}  />
@@ -87,25 +130,39 @@ class QuestionDetail extends React.Component {
 }
 
 QuestionDetail.defaultProps = {
-  isFetching: false
+  isFetching: false,
+  questionId: '',
+  isAuthenticated: false
 };
 
 QuestionDetail.propTypes = {
   locationId: PropTypes.number,
+  questionId: PropTypes.string,
   location: PropTypes.object,
-  locationActions: PropTypes.object.isRequired
+  question: PropTypes.object,
+  locationActions: PropTypes.object.isRequired,
+  userQuestionActions: PropTypes.object.isRequired,
+  modalActions: PropTypes.object.isRequired,
+  authenticationActions: PropTypes.object.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
+    isAuthenticated: state.authentication.isAuthenticated,
     location: state.location.location ? state.location.location : {},
-    locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0
+    locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0,
+    questionId: ownProps.params.questionId ? ownProps.params.questionId : '',
+    question: state.question.question ? state.question.question : {}
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    locationActions: bindActionCreators(locationActions, dispatch)
+    authenticationActions: bindActionCreators(authenticationActions, dispatch),
+    locationActions: bindActionCreators(locationActions, dispatch),
+    modalActions: bindActionCreators(modalActions, dispatch),
+    userQuestionActions: bindActionCreators(userQuestionActions, dispatch)
   };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(QuestionDetail);

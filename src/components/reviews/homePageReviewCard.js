@@ -1,7 +1,6 @@
 import React, {PropTypes} from 'react';
 import StarRating from '../common/starRating';
 import TagList from '../common/tagList';
-import Loader from '../common/loadingDots';
 
 class ReviewCard extends React.Component {
   constructor(props, context) {

@@ -7,7 +7,6 @@ import * as modalActions from '../../actions/common/modalActions';
 import * as authenticationActions from '../../actions/customer/authenticationActions';
 import TriperooLoader from '../../components/common/triperooLoader';
 import Toastr from 'toastr';
-import LocationHeader from '../../components/locations/locationHeader';
 import LocationForm from '../../components/locations/forms/locationForm';
 
 let titleCase = require('title-case');

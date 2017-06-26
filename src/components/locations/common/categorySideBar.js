@@ -46,7 +46,7 @@ class CategorySideBar extends React.Component {
                     let className = this.state.categoryName == category.name ? 'active' : '';
 
                     return (
-                      <li className={className}>
+                      <li className={className} key={category.name}>
                           <a href="#" onClick={this.handleCategoryChange} data-id={category.id} data-name={category.name}>
                             <i className={category.icon}></i> {category.name}
                           </a>

@@ -1,10 +1,8 @@
 import React, {PropTypes} from 'react';
-import { browserHistory } from 'react-router';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as authenticationActions from '../../actions/customer/authenticationActions';
 import * as modalActions from '../../actions/common/modalActions';
-let titleCase = require('title-case');
 
 class ReviewButton extends React.Component {
   constructor(props, context) {
@@ -20,7 +18,7 @@ class ReviewButton extends React.Component {
   render() {
     if (this.props.isAuthenticated) {
       return (
-        <div key={this.props.name}>
+        <div>
           <a href="#" className="btn btn-secondary questionBtn" onClick={this.writeReview}>
               <i className="fa fa-comments"></i>
               Write a Review
@@ -43,7 +41,6 @@ ReviewButton.defaultProps = {
 };
 
 ReviewButton.propTypes = {
-  name: PropTypes.string.isRequired,
   locationId: PropTypes.number,
   locationName: PropTypes.string,
   locationNameLong: PropTypes.string,

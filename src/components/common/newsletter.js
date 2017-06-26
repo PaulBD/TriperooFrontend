@@ -12,12 +12,12 @@ class Newsletter extends React.Component {
   }
 
   changeEmailAddress(e) {
-    this.setState({emailAddress: e.target.value})
+    this.setState({emailAddress: e.target.value});
   }
 
   saveNewsletter(e) {
     e.preventDefault();
-    this.setState({isPosting: true, error: ''})
+    this.setState({isPosting: true, error: ''});
     if (this.state.emailAddress.length > 0) {
       this.props.actions.saveNewsletter(this.state.emailAddress)
         .then(() => this.setState({isPosting: false}))
@@ -26,7 +26,7 @@ class Newsletter extends React.Component {
         });
     }
     else {
-      this.setState({isPosting: false, error: 'Please enter a valid email address'})
+      this.setState({isPosting: false, error: 'Please enter a valid email address'});
     }
   }
 

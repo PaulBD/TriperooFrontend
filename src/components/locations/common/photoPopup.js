@@ -27,7 +27,7 @@ class PhotoPopup extends React.Component {
                 {
                   this.props.imageList.map(photo => {
 
-                    var url = photo.prefix + '600x600' + photo.suffix;
+                    let url = photo.prefix + '600x600' + photo.suffix;
                     return (
                       <div key={url}>
                         <img src={url}/>

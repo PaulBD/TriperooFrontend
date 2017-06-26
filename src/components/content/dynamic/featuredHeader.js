@@ -15,7 +15,7 @@ class FeaturedHeader extends React.Component {
   }
 
   loadContent() {
-    this.setState({isLoading: true})
+    this.setState({isLoading: true});
     this.props.contentActions.loadHeaderContent(this.props.contentType)
       .then(() => this.setState({isLoading: false}))
       .catch(error => {

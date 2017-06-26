@@ -19,7 +19,7 @@ const GoogleMap = ({longitude, latitude, text, zoom}) => {
         defaultZoom={zoom}
         bootstrapURLKeys={{key: "AIzaSyDObkGQJw9q8qKkINjQ9fR7YTuSwNCBtoY"}}
         options={{
-          scrollwheel: false,
+          scrollwheel: false
         }}
       >
         <Marker

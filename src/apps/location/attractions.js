@@ -21,7 +21,7 @@ class AttractionContent extends React.Component {
     this.state = { isLoadingLocation: false, isLoadingAttractionList: false, attractionType: '', attractionFriendlyName: '', pageSize: 9, pageNumber: 0, activePage: 1 };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     window.scrollTo(0, 0);
     this.setState({isLoadingLocation: true});
     this.loadLocation();

@@ -15,7 +15,7 @@ class CustomerTrips extends React.Component {
     this.state = { loading: true};
   }
 
-  componentDidMount() {
+  componentWillMount() {
     document.title = 'Your Trips';
     window.scrollTo(0, 0);
 

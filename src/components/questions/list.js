@@ -66,9 +66,6 @@ class Questions extends React.Component {
     let questionUrl = this.props.locationUrl + '/questions';
 
     if (!this.state.isLoadingQuestions) {
-
-      console.log(this.props.questionList);
-
       if (this.props.questionList) {
         if (this.props.questionList.length > 0) {
           if (this.props.isSideComponent) {
@@ -76,7 +73,6 @@ class Questions extends React.Component {
           }
         }
       }
-
 
       return (
         <div className="row">

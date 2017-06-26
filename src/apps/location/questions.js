@@ -12,6 +12,7 @@ import LocationOverview from '../../components/locations/overview';
 import TriperooLoader from '../../components/common/triperooLoader';
 import QuestionButton from '../../components/questions/questionButton';
 import Toastr from 'toastr';
+let _ = require('lodash');
 
 let titleCase = require('title-case');
 

@@ -99,7 +99,7 @@ class LocationHome extends React.Component {
               </div>
               <div className="col-md-4">
                 <LocationStats showLike={this.state.showLike} likeLocation={this.likeLocation} locationId={this.props.locationId} stats={this.state.location.stats} locationUrl={this.state.location.url} locationName={this.state.location.regionName}  />
-                <QuestionButton locationId={this.props.locationId} locationName={this.state.location.regionName} locationNameLong={this.state.location.regionNameLong} locationType={this.state.location.regionType} />
+                <QuestionButton locationId={this.props.locationId} locationName={this.state.location.regionName} pageSize={3} pageNumber={0} locationNameLong={this.state.location.regionNameLong} locationType={this.state.location.regionType} />
                 <RecentQuestions locationId={this.props.locationId} locationName={this.state.location.regionName} pageSize={3} pageNumber={0} locationUrl={this.state.location.url} showTitle={true} isSideComponent={true}/>
               </div>
             </div>
