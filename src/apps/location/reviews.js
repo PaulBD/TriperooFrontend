@@ -6,7 +6,7 @@ import * as locationActions from '../../actions/location/locationActions';
 import FacebookSignup from '../../components/customer/authentication/facebookSignup';
 import Header from '../../components/locations/subPageHeader';
 
-import ReviewList from '../../components/reviews/textList';
+import ReviewList from '../../components/reviews/locationReviewList';
 import LocationStats from '../../components/locations/stats';
 import WeatherForcast from '../../components/locations/weather/forecast';
 import ReviewButton from '../../components/reviews/reviewButton';

@@ -5,8 +5,9 @@ let _ = require('lodash');
 import * as locationActions from '../../actions/location/locationActions';
 
 import FacebookSignup from '../../components/customer/authentication/facebookSignup';
-import ReviewList from '../../components/reviews/textList';
+import LocationReviews from '../../components/reviews/locationReviewList';
 import RecentQuestions from '../../components/questions/list';
+import ReviewButton from '../../components/reviews/reviewButton';
 import QuestionButton from '../../components/questions/questionButton';
 import TopLocations from '../../components/locations/topLocations';
 import NavigationWrapper from '../../components/locations/navigation/navigationWrapper';
@@ -17,7 +18,7 @@ import WeatherForcast from '../../components/locations/weather/forecast';
 import LastMinuteDeal from '../../components/content/dynamic/lastMinuteDeal';
 import Loader from '../../components/common/triperooLoader';
 import TopEvents from '../../components/locations/topEvents';
-import ReviewButton from '../../components/reviews/reviewButton';
+import LocationOverview from '../../components/locations/overview';
 import Toastr from 'toastr';
 
 let titleCase = require('title-case');
@@ -106,12 +107,19 @@ class LocationHome extends React.Component {
           <div className="gap"></div>
           <LastMinuteDeal locationId={this.props.locationId} />
           <div className="container">
+
             <div className="row">
+              <div className="col-md-12">
+                <h4>Reviews About {this.state.location.regionName}...</h4>
+                <hr/>
+              </div>
               <div className="col-md-8">
-                <ReviewList locationId={this.props.locationId} locationName={this.state.location.regionName} locationType="" pageSize={10} pageNumber={0} showTitle={true} />
+                <LocationReviews cssClass="col-md-6" showTitle={true} locationId={this.props.locationId} locationName={this.state.location.regionName} locationType={this.state.location.subClass} pageSize={4} pageNumber={0}  />
               </div>
               <div className="col-md-4">
-                <ReviewButton name="sidePanel" locationId={this.props.locationId} locationName={this.state.location.regionName} locationNameLong={this.state.location.regionNameLong} locationType="" />
+                <ReviewButton locationId={this.props.locationId} locationName={this.state.location.regionName} locationNameLong={this.state.location.regionNameLong} locationType={this.state.location.regionType}  />
+                <LocationOverview location={this.props.location} />
+
                 <div className="gap gap-small"></div>
                 <WeatherForcast locationId={this.props.locationId} />
               </div>

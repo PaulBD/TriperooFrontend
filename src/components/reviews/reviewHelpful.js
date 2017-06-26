@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as userReviewActions from '../../actions/customer/userReviewActions';
-import ReviewList from './listCard';
+import ReviewList from './locationReviewCard';
 
 class ReviewHelpful extends React.Component {
   constructor(props, context) {
@@ -28,9 +28,9 @@ class ReviewHelpful extends React.Component {
       return (
         <p className="booking-item-review-rate">Was this review helpful?
             <a className="fa fa-thumbs-o-up box-icon-inline round" href="#" onClick={this.likeReview}></a><b className="text-color"> {this.state.likeCount}</b>
-        </p> 
+        </p>
       );
-    } 
+    }
     else {
       return (<p className="booking-item-review-rate">Thanks!</p>);
     }
@@ -57,7 +57,7 @@ function mapStateToProps(state, ownProps) {
     isSending: state.review.isFetching,
     errorMessage: state.review.errorMessage,
     hasPosted: state.review.hasPosted,
-    reviews: state.reviews 
+    reviews: state.reviews
   };
 }
 

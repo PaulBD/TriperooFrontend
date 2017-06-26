@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 
 import Loader from '../common/loadingDots';
-import ReviewItem from './reviewItem';
+import ReviewItem from './locationReviewItem';
 
 class ReviewList extends React.Component {
   constructor(props, context) {

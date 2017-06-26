@@ -9,7 +9,7 @@ import Toastr from 'toastr';
 
 import FacebookSignup from '../../components/customer/authentication/facebookSignup';
 import LocationHeader from '../../components/locations/locationHeader';
-import ReviewList from '../../components/reviews/textList';
+import ReviewList from '../../components/reviews/locationReviewList';
 import ReviewButton from '../../components/reviews/reviewButton';
 import BookmarkButton from '../../components/common/bookmarkButton';
 import PhotoButton from '../../components/common/photoButton';
@@ -129,7 +129,7 @@ class LocationDetail extends React.Component {
                 </div>
                 <div className="col-md-4">
                   <QuestionButton locationId={this.props.locationId} locationName={this.props.location.regionNameLong} locationNameShort={this.props.location.regionName} locationType={this.props.location.regionType}/>
-                  <RecentQuestions locationId={this.props.locationId} locationName={this.state.location.regionName} pageSize={3} pageNumber={0} locationUrl={this.state.location.url} showTitle={true} isSideComponent={true}/>
+                  <RecentQuestions locationId={this.props.location.parentRegionID} locationName={this.state.location.parentRegionName} pageSize={3} pageNumber={0} locationUrl={this.state.location.url} showTitle={true} isSideComponent={true}/>
                 </div>
                 <hr />
             </div>

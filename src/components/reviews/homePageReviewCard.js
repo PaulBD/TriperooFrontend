@@ -24,7 +24,7 @@ class ReviewCard extends React.Component {
             };
 
             return (
-              <div className="col-md-4" key={review.reviewReference}>
+              <div className={this.props.cssClass} key={review.reviewReference}>
                 <div className="card reviewCard text-xs-left">
                 <div className="cardBg reviewBg" style={style} ></div>
 
@@ -54,12 +54,14 @@ class ReviewCard extends React.Component {
 
 ReviewCard.defaultProps = {
   reviews: [],
-  maxTags: 5
+  maxTags: 5,
+  cssClass: 'col-md-4'
 };
 
 ReviewCard.propTypes = {
   reviews: PropTypes.array.isRequired,
-  maxTags: PropTypes.number.isRequired
+  maxTags: PropTypes.number.isRequired,
+  cssClass: PropTypes.string.isRequired
 };
 
 export default ReviewCard;

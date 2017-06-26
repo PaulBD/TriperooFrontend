@@ -6,7 +6,7 @@ import TrustedPartners from '../../components/content/static/trustedPartners';
 import LastMinuteDeal from '../../components/content/dynamic/lastMinuteDeal';
 import Search from '../../components/search/homePage';
 import Destinations from '../../components/content/dynamic/destinations';
-import ReviewList from '../../components/reviews/list';
+import ReviewList from '../../components/reviews/homePageReviewList';
 import FacebookSignup from '../../components/customer/authentication/facebookSignup';
 
 const HomePage = () => {

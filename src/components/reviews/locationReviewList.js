@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as locationReviewsActions from '../../actions/location/locationReviewsActions';
 import * as modalActions from '../../actions/common/modalActions';
-import ReviewList from './listCard';
+import ReviewList from './locationReviewCard';
 import Pagination from "react-js-pagination";
 import Toastr from 'toastr';
 import Loader from '../common/loadingDots';
@@ -75,13 +75,10 @@ class Reviews extends React.Component {
 
     let title = '';
 
-    if (this.props.showTitle) {
-      title = (<div><a href="#" onClick={this.writeReview} className="reviewLink">Been to {this.props.locationName}? Write a review</a><h4>Reviews</h4><hr /><div className="gap gap-small"></div></div>);
-    }
     if (!this.state.isLoadingReviews) {
       return (
         <div className="row">
-          {title}
+          <div className="col-md-12">
           <ReviewList reviews={this.props.reviews} locationId={this.props.locationId} locationName={this.props.locationName}/>
 
           <div className="gap gap-small"></div>
@@ -90,6 +87,7 @@ class Reviews extends React.Component {
                         activePage={this.state.activePage} itemsCountPerPage={10} totalItemsCount={this.props.reviewCount}
                         pageRangeDisplayed={10} onChange={this.changePage}/>
           </div>
+        </div>
         </div>
       );
     }
