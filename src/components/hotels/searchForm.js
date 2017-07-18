@@ -17,9 +17,8 @@ class SearchForm extends React.Component {
     this.handleEndDateChange = this.handleEndDateChange.bind(this);
     this.handleGuestChange = this.handleGuestChange.bind(this);
     this.handleRoomChange = this.handleRoomChange.bind(this);
-    this.handleSearchNameClick = this.handleSearchNameClick.bind(this);
-    this.handleSearchUrlClick = this.handleSearchUrlClick.bind(this);
     this.submitForm = this.submitForm.bind(this);
+    this.onChangeAutoComplete = this.onChangeAutoComplete.bind(this);
   }
 
   componentDidMount() {
@@ -64,16 +63,8 @@ class SearchForm extends React.Component {
     this.state = { searchValue: searchValue, searchUrl: searchUrl, startDate: startDate, endDate: endDate, formattedStartDate: startDate.format('YYYY-MM-DD'), formattedEndDate: endDate.format('YYYY-MM-DD'), guests: guests, rooms: rooms  };
   }
 
-  handleSearchUrlClick(value) {
-    this.setState({
-      searchUrl: value
-    });
-  }
-
-  handleSearchNameClick(value) {
-    this.setState({
-      searchValue: value
-    });
+  onChangeAutoComplete(city, cityId, cityUrl, dataType) {
+    this.setState({ searchUrl: cityUrl, searchValue: city});
   }
 
   handleStartDateChange(date) {
@@ -124,9 +115,9 @@ class SearchForm extends React.Component {
         else {
           browserHistory.push('/search-results/hotels' + url);
         }
-    }  
+    }
 
-    if (this.props.useFunction == 1) {
+    if (this.props.useFunction) {
       this.props.handleFormSubmit(this.state.searchValue, this.state.formattedStartDate, this.state.formattedEndDate, this.state.rooms, this.state.guests);
     }
   }
@@ -135,23 +126,23 @@ class SearchForm extends React.Component {
 
     return (
         <form className="hotelSearch" onSubmit={this.submitForm}>
-          <div className="row row-wrap">
-            <div className="col-md-7">
+          <div className="row">
+            <div className={this.props.isSideBar ? "col-md-12" : "col-md-7"}>
               <div className="input-daterange" data-date-format="MM d, D">
                 <div className="row">
-                  <div className="col-md-6">
-                    <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-map-marker input-icon"></i>
+                  <div className={this.props.isSideBar ? "col-md-12" : "col-md-6"}>
+                    <div className="form-group form-group-icon-left">
                       <label>Destination</label>
-                      <AutoComplete changeValue={this.handleSearchNameClick} changeUrl={this.handleSearchUrlClick} searchType="all" placeholder="Enter Destination" cssClass="typeahead form-control" searchValue={this.props.searchValue !== undefined && this.props.searchValue != '' ? titleCase(this.props.searchValue) : titleCase(this.props.city)} />
+                      <AutoComplete onChangeAutoComplete={this.onChangeAutoComplete} searchType="city" placeholder="Enter Destination" cssClass="typeahead form-control" searchValue={this.props.searchValue !== undefined && this.props.searchValue != '' ? titleCase(this.props.searchValue) : titleCase(this.props.city)} />
                     </div>
                   </div>
-                  <div className="col-md-3">
+                  <div className={this.props.isSideBar ? "col-md-6" : "col-md-3"}>
                     <div className="form-group form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
                       <label>Check in</label>
                       <DatePicker name="start" dateFormat="DD/MM/YYYY"  selected={this.state.startDate} onChange={this.handleStartDateChange} className="form-control" />
                     </div>
                    </div>
-                  <div className="col-md-3">
+                  <div className={this.props.isSideBar ? "col-md-6" : "col-md-3"}>
                     <div className="form-group form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
                       <label>Check out</label>
                       <DatePicker name="end" dateFormat="DD/MM/YYYY"  selected={this.state.endDate} onChange={this.handleEndDateChange} className="form-control" />
@@ -160,9 +151,9 @@ class SearchForm extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="col-md-5">
+            <div className={this.props.isSideBar ? "col-md-12" : "col-md-5"}>
               <div className="row">
-                <div className="col-md-3">
+                <div className={this.props.isSideBar ? "col-md-6" : "col-md-3"}>
                   <div className="form-group form-group- form-group-select-plus">
                     <label>Guests</label>
                     <select className="form-control searchSelect" value={this.state.guests} onChange={this.handleGuestChange} ref="guests" name="guests">
@@ -183,7 +174,7 @@ class SearchForm extends React.Component {
                     </select>
                   </div>
                 </div>
-                <div className="col-md-3">
+                <div className={this.props.isSideBar ? "col-md-6" : "col-md-3"}>
                   <div className="form-group form-group-select-plus">
                       <label>Rooms</label>
                       <select className="form-control searchSelect" value={this.state.rooms} onChange={this.handleRoomChange} ref="rooms" name="rooms">
@@ -204,7 +195,7 @@ class SearchForm extends React.Component {
                       </select>
                   </div>
                 </div>
-                <div className="col-md-6">
+                <div className={this.props.isSideBar ? "col-md-12" : "col-md-6"}>
                   <button className="btn btn-primary btn-lg formBtn" type="submit">
                     <i className="fa fa-search"></i>Search Hotels
                   </button>
@@ -219,25 +210,27 @@ class SearchForm extends React.Component {
 
 SearchForm.defaultProps = {
   searchValue: '',
-  sDate: moment(), 
+  sDate: moment(),
   eDate: moment().add(1, 'days'),
-  rooms: '1', 
+  rooms: '1',
   guests: '1',
   searchUrl: '',
-  useFunction: 0
+  useFunction: false,
+  isSideBar: false
 };
 
 SearchForm.propTypes = {
   doSearch: PropTypes.func,
   handleFormSubmit: PropTypes.func,
   searchValue: PropTypes.string,
-  sDate:  PropTypes.string,
-  eDate: PropTypes.string,
-  rooms: PropTypes.string, 
+  sDate:  PropTypes.object,
+  eDate: PropTypes.object,
+  rooms: PropTypes.string,
   guests: PropTypes.string,
   city: PropTypes.string,
   searchUrl: PropTypes.string,
-  useFunction: PropTypes.boolean
+  useFunction: PropTypes.bool,
+  isSideBar: PropTypes.bool
 };
 
 function mapStateToProps(state, ownProps) {

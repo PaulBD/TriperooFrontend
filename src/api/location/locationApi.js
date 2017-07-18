@@ -44,6 +44,39 @@ class LocationApi {
         });
     });
   }
+
+  // ****************************************
+  // uploadPhoto
+  // ****************************************
+  static uploadPhotos(locationId, photos) {
+
+    let data = new FormData();
+    data.append('file', document);
+    data.append('name', name);
+
+    photos.forEach(file => {
+      data.append('file', file);
+      data.append('name', file.name);
+    });
+
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'post',
+        url:  baseUrl + '/location/' + locationId + '/photos',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'token': JSON.parse(localStorage.getItem('id_token')).token
+        },
+        data: data
+      }).then(function (response) {
+        resolve(Object.assign({}, response.data));
+      })
+        .catch(function (error) {
+          reject(error);
+        });
+    });
+  }
 }
 
 export default LocationApi;

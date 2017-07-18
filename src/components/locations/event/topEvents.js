@@ -29,7 +29,7 @@ class ByLocation extends React.Component {
               <div className="col-md-6">
               <p>Discover the best events happening in <strong>{this.props.locationName}</strong> every week.</p>
               </div>
-              <div className="col-md-6 text-xs-right">
+              <div className="col-md-6 text-right">
                 <p><a href={allEventsUrl}>View all events</a></p>
               </div>
               <div className="col-md-12">

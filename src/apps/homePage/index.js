@@ -18,24 +18,24 @@ const HomePage = () => {
             <FeaturedHeader contentType="homePage" />
             <div className="container">
                 <Search searchType="all" />
-                <div className="gap"></div>
-                <div className="row row-wrap text-xs-center">
+                <div className="gap gap-mini"></div>
+                <div className="row text-center">
                     <Destinations locationCount={3} title="Our Top Destinations" />
                 </div>
-                <div className="gap gap-small"></div>
-                <div className="row row-wrap text-xs-center">
-                    <ReviewList locationType="all" locationId={0} pageSize={3} locationName="" pageNumber={0} showTitle={true} />
+                <hr />
+              <div className="gap"></div>
+                <div className="row row-wrap">
+                    <ReviewList locationType="all" locationId={0} pageSize={6} locationName="" pageNumber={0} showTitle={true} />
                 </div>
-                <div className="gap"></div>
             </div>
             <LastMinuteDeal locationId={2114} />
             <div className="container">
                 <div className="gap"></div>
                 <BulletPoints />
-                <div className="gap gap-small"></div>
+                <div className="gap gap-mini"></div>
                 <FacebookSignup />
                 <TrustedPartners />
-                <div className="gap"></div>
+                <div className="gap gap-mini"></div>
             </div>
         </div>
     );

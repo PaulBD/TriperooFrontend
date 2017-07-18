@@ -3,7 +3,7 @@ import React from "react";
 export default class TravelPageFeature extends React.Component {
     render(){
     return (
-        <div className="bg-holder full text-xs-center text-white travelPage">
+        <div className="bg-holder full text-center text-white travelPage">
             <div className="bg-mask"></div>
             <div className="bg-img airportLounge"></div>
             <div className="bg-front full-center">

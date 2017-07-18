@@ -54,7 +54,7 @@ class AirportLoungeSearchForm extends React.Component {
     };
       return (
       <div>
-        <div className="bg-holder full text-xs-center text-white holidayPage">
+        <div className="bg-holder full text-center text-white holidayPage">
           <div className="bg-mask"></div>
           <div className="bg-img" style={style}></div>
           <div className="bg-front full-center">
@@ -70,7 +70,7 @@ class AirportLoungeSearchForm extends React.Component {
         <div className="search-tabs search-tabs-bg search-tabs-to-top">
           <div className="tabbable">
             <div className="tab-content">
-              <div className="tab-pane fade in active" id="tab-1">
+              <div className="tab-pane active" id="tab-1">
                 <form onSubmit={this.submitForm} className="searchForm">
                   <div className="row">
                     <div className="col-md-3">

@@ -16,6 +16,7 @@ class ListCard extends React.Component {
         let isAuthenticated = this.props.isAuthenticated;
 
         return (
+          <div className="col-md-12">
           <ul className="booking-item-reviews list">
             {
               this.props.questions.map(function (question, i) {
@@ -27,6 +28,7 @@ class ListCard extends React.Component {
               }, this)
             }
           </ul>
+          </div>
         );
       }
       else {

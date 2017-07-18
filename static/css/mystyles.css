@@ -1,9 +1,19 @@
 /*YOUR CUSTOM STYLES*/
 body { margin: 0; }
 
+.navbar { padding: 0px !important; }
+.navbar .nav-link { color: white !important; outline: none; }
+
+.dropdown-menu {right: 0; left:auto;}
+.userMenu { padding-top:5px !important; }
+
 .ReactModal__Body--open {
     overflow: hidden;
 }
+
+.modalForm { width:100%; }
+
+.ReactModal__Content { position: absolute; top: 10%; left: 35%; right: 35%; background: #fff; WebkitOverflowScrolling: touch; outline: none; padding: 0px; border-radius: 5px; width: 30% }
 
 .hrTop {
   margin-bottom: 0px !important;
@@ -13,11 +23,13 @@ body { margin: 0; }
   margin-top: 0px !important;
 }
 
+.hover-img { margin-bottom: 20px; }
+
 .reviewCount { color: #fff; font-size: 14px; }
 
 .reviewLink { float:right; padding-top:10px;}
 
-.googleMapWrapper { height: 300px; }
+.googleMapWrapper { height: 300px; width:100%; }
 
 .error { color: red;}
 .error.orange { color: #ed8323;}
@@ -52,27 +64,24 @@ h4 span { color: #ed8323; }
 #eventModal h5 { color: orange }
 #eventModal p { font-size: 12px; }
 .eventTitle { line-height:1.2em !important; font-size:1.2em;}
-.reviewsHeader { color: #fff;
-    z-index: 999;
-    position: absolute;
-  width: 100%;
-    right: 0;top: 80px; padding-left: 15px;}
+.reviewsHeader { color: #fff; z-index: 999; position: absolute; width: 100%; right: 0;top: 80px; padding-left: 15px;}
 
 a:hover .card { border: solid 1px #ed8323; background-color: #efefef;}
+
+.reviewBg { background-size: 100%; }
+h4.card-title { font-size: 18px;}
 
 .last-minute-title { font-weight:bold;}
 .booking-item-reviews .gap-small { margin: 7px 0 7px 0; }
 
 .modelReviewAuthentication .fa.fa-map-marker { top: 0 !important;}
 
+/* Weather */
 .weatherIcon { top: -15px; position: relative; width:32px !important; height: 32px; }
 .weatherIconSml { width:25px ;}
 
 .weatherTbl tr td { font-size: 12px !important; padding: .50rem; border:none;}
 .weatherTbl tbody { border-top: 1px solid #eceeef !important; }
-
-.reviewBg { background-size: 100%; }
-h4.card-title { font-size: 18px;}
 
 .weatherSml { font-size: 24px; }
 .weather .units { margin-top: -4px; line-height:16px; }
@@ -97,12 +106,13 @@ h4.card-title { font-size: 18px;}
 
 .infoImg { background-position: bottom; width:50%;}
 
-.homeSearchIcon { top:0 !important;}
+.homeSearchIcon { top:0 !important; }
+.homeSearch { margin: 0 auto 0px auto !important; width:50%; }
 .homeSearch .ui-autocomplete { top: 44px; }
 
 .card-block .commentStar { padding: 10px 0; }
 
-.tagCollection .tag, .tagCollection .tagReadOnly { margin: 0px 5px 4px 0px; padding: 4px 7px; font-size: 12px; background-color: #ccc; border-radius: 3px; color: #333; font-weight:normal; }
+.tagCollection .tag, .tagCollection .tagReadOnly { margin: 0px 5px 4px 0px; padding: 2px 7px; display: inline-block; font-size: 12px; background-color: #ccc; border-radius: 3px; color: #333; font-weight:normal; }
 
 .commentCardTestimonial { margin: 20px 0; }
 
@@ -187,7 +197,7 @@ h3 small { float:right; padding-top:14px;}
 .cityNav .user-profile-statictics-icon,
 .countryNav .user-profile-statictics-icon { font-size: 2rem ; color: #fff; margin-left:15px; }
 
-.hotelSearch i { margin-top: 6px; font-size: 20px; }
+.hotelSearch i { font-size: 20px; }
 
 /* Explore Destinations */
 
@@ -363,7 +373,8 @@ optgroup,option { margin-left:0px;text-align:left;}
 .form-group .input-icon.homeSearchIcon { line-height: 42px; }
 
 .trustedPartner { font-size: 12px;}
-.cards { width: 30px; margin-left:8px; }
+.cards, .cardsLast { width: 30px; margin-left:8px; }
+.cardsLast { margin-left: 0px; }
 .partners { height: 20px; width: auto; margin-right: 8px;}
 
 .hide { display:none !important;}
@@ -477,7 +488,8 @@ div.ReactTags__suggestions ul li.active {
 
 .reviewCard { height: 510px !important; }
 
-.cardBg { width: 100%; height: 160px;}
+.cardBg { width: 100%; height: 150px;}
+.tripStartDate { font-size: 12px; font-weight:300; }
 
 .cardAddress { font-size: 12px !important; line-height: normal !important; }
 
@@ -618,6 +630,22 @@ form.searchForm label a { float:right; }
   animation-fill-mode: both;
   animation-duration: 1s;
   z-index: 1;
+}
+.pin span {
+  display: none;
+}
+
+.pin:hover span{
+  display: block;
+  position: absolute;
+  z-index: 1000;
+  background-color: white;
+  transform: rotate(45deg);
+  width: 104px;
+  margin-left: -35px;
+  text-align: center;
+  border: solid 1px #999;
+  border-radius: 3px;
 }
 
 .pin:after {
@@ -808,12 +836,9 @@ form.searchForm label a { float:right; }
   background: #fff none repeat scroll 0 0;
   border: 1px solid #e1e8ed;
   border-radius: 6px;
-  margin-bottom: 15px;
-}
-.twPc-divLocationWrapper {
-  margin-bottom: 0;
 }
 
+.twPc-bgSml,
 .twPc-bg {
   background-image: url("https://pbs.twimg.com/profile_banners/50988711/1384539792/600x200");
   background-position: 0 50%;
@@ -822,6 +847,9 @@ form.searchForm label a { float:right; }
   border-radius: 4px 4px 0 0;
   height: 135px;
   width: 100%;
+}
+.twPc-bgSml {
+  height: 85px;
 }
 .twPc-block {
   display: block !important;
@@ -841,6 +869,7 @@ form.searchForm label a { float:right; }
   padding: 1px;
   vertical-align: bottom;
 }
+.twPc-avatarImgSml,
 .twPc-avatarImg {
   border: 2px solid #fff;
   border-radius: 7px;
@@ -848,6 +877,11 @@ form.searchForm label a { float:right; }
   color: #fff;
   height: 72px;
   width: 72px;
+}
+
+.twPc-avatarImgSml {
+  height: 36px;
+  width: 36px;
 }
 .twPc-divLocation,
 .twPc-divUser {
@@ -859,10 +893,16 @@ form.searchForm label a { float:right; }
   margin: 10px;
 }
 
+.twPc-divNameSml,
 .twPc-divName {
   font-size: 18px;
   font-weight: 700;
   line-height: 21px;
+}
+
+.twPc-divNameSml {
+  font-size: 12px;
+  line-height: 16px;
 }
 
 .twPc-divDesc {
@@ -926,9 +966,6 @@ ul.twPc-Arrange li.location {
 .snip1492 {
   position: relative;
   float: left;
-  margin: 10px 1%;
-  min-width: 230px;
-  max-width: 315px;
   width: 100%;
   background: #ffffff;
   text-align: center;
@@ -1047,3 +1084,64 @@ ul.twPc-Arrange li.location {
 .questionResponse { padding:20px; background-color: #efefef; font-size: 12px; margin:10px 0; border-radius: 3px; text-align: center; line-height: 12px }
 .questionResponse strong { font-size: 26px; }
 .smlText { font-size: 11px; }
+
+.searchBg {  border-bottom: solid 1px #efefef; }
+.searchBg h4 { margin-top: 10px; }
+
+.listHeight { min-height: 738px; }
+
+/* Mobile Menu */
+.navbar-toggle.mobileMenu {
+    background-color: #262626;
+    width: 40px;
+    height: 40px;
+    border: solid 1px white;
+    border-radius: 3px;
+    float:right;
+    margin-top:-40px;
+    outline: none;
+}
+
+.navbar-toggle .icon-bar {
+    display: block;
+    width: 26px;
+    height: 2px;
+    border-radius: 1px;
+    background-color: white;
+    margin-bottom:4px;
+}
+
+.navbar-toggle .icon-bar.last {
+  margin-bottom: 0px;
+}
+
+.blockquote:before {
+  left:10px; top: 10px;
+}
+
+.blockquote p{
+  margin-left:30px;
+}
+
+.dropzone {
+  width:100%;
+  background-color: #efefef;
+  padding: 70px 50px;
+  text-align: center;
+}
+
+.sidebar .form-group label { font-size: 12px; }
+
+.dropdown-menu { min-width: 12rem; }
+
+@media (max-width: 991px) {
+    .cityPage h1, .holidayPage h1, .travelPage h1, .infoPageWrapper h1 { font-size: 300%; }
+    .homeSearch { width:100%; }
+    .worldMap { display:none; }
+    .user-profile-statictics > li { text-align: center; padding: 10px; border: 1px solid #e6e6e6; -webkit-border-radius: 5px; border-radius: 5px; width: 30%; margin-bottom: 10px; margin-right:3.3%; }
+    .user-profile-statictics > li .user-profile-statictics-icon { font-size: 200%; display: inline-block; margin-bottom: 10px; color: #8c8c8c; }
+    .l30 { margin-left:0px; }
+    .ReactModal__Content { position: absolute; top: 10%; left: 3%; right: 3%; background: #fff; WebkitOverflowScrolling: touch; outline: none; padding: 0px; border-radius: 5px; width: 94% }
+
+}
+

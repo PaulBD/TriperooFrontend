@@ -12,19 +12,16 @@ class ReviewButton extends React.Component {
 
   writeReview(e) {
     e.preventDefault();
-    this.props.modalActions.openReview(this.props.locationId, this.props.locationNameLong, this.props.locationType);
+    this.props.modalActions.openReview(this.props.locationId, this.props.locationNameLong, this.props.locationType, this.props.pageSize, this.props.pageNumber);
   }
 
   render() {
     if (this.props.isAuthenticated) {
       return (
-        <div>
           <a href="#" className="btn btn-secondary questionBtn" onClick={this.writeReview}>
               <i className="fa fa-comments"></i>
               Write a Review
           </a>
-          <div className="gap gap-small"></div>
-        </div>
       );
     }
     else {
@@ -49,7 +46,9 @@ ReviewButton.propTypes = {
   modalActions: PropTypes.object.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  errorMessage: PropTypes.string
+  errorMessage: PropTypes.string,
+  pageSize: PropTypes.number.isRequired,
+  pageNumber: PropTypes.number.isRequired
 };
 
 function mapStateToProps(state, ownProps) {

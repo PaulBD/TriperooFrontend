@@ -17,7 +17,7 @@ export default class DestinationHome extends React.Component {
         <div className="container">
           <div className="search-tabs search-tabs-bg search-tabs-to-top">
             <div className="tab-content">
-                <div className="tab-pane fade in active" id="tab-1">
+                <div className="tab-pane active" id="tab-1">
                   <div className="worldMap">
                     <ul className="regionList">
                       <li className="UnitedStates"><small></small><a className="openList" href="/201/visit/united-states-of-america">United States</a></li>
@@ -40,18 +40,13 @@ export default class DestinationHome extends React.Component {
         <div className="container">
             <div className="gap gap"></div>
             <WorldCities />
-            <div className="gap"></div>
-             <hr />
             <div className="gap gap-small"></div>
-            <div className="container text-xs-center">
-              <Destinations destinationCount={3} title="Our Top Destinations" />
+             <hr />
+            <div className="row text-center">
+              <Destinations locationCount={3} title="Our Top Destinations" contentType="" />
             </div>
-            <div className="container">
-                <div className="gap gap-small"></div>
-                <hr />
-                <div className="gap"></div>
-                <FacebookSignup />
-                <div className="gap"></div>
+            <div className="row">
+                <FacebookSignup showLines={true} />
             </div>
         </div>
       </div>

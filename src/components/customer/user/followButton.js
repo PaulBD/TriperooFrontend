@@ -86,17 +86,11 @@ FollowButton.propTypes = {
   updateStats: PropTypes.func.isRequired
 };
 
-function mapStateToProps(state, ownProps) {
-
-  return {
-  };
-}
-
 function mapDispatchToProps(dispatch) {
   return {
     userFollowActions: bindActionCreators(userFollowActions, dispatch)
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FollowButton);
+export default connect(mapDispatchToProps)(FollowButton);
 

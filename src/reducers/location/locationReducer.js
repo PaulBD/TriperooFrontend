@@ -16,6 +16,13 @@ export default function locationReducer(state = { isFetching: false }, action) {
     case types.LIKE_LOCATION_CONTENT_FAILURE:
       return Object.assign({}, state, { isFetching: false, errorMessage: action.message });
 
+    case types.UPLOAD_PHOTO_LOCATION_REQUEST:
+      return Object.assign({}, state, { isFetching: true, hasPosted: false });
+    case types.UPLOAD_PHOTO_LOCATION_SUCCESS:
+      return Object.assign({}, state, { isFetching: false, errorMessage: '', hasPosted: true  });
+    case types.UPLOAD_PHOTO_LOCATION_FAILURE:
+      return Object.assign({}, state, { isFetching: false, errorMessage: action.message, hasPosted: false });
+
 		default:
 			return state;
 	}

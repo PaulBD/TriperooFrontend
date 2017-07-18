@@ -14,7 +14,7 @@ const PrivacyPage = () => {
 
     return (
       <div>
-        <div className="bg-holder full text-xs-center text-white infoPageWrapper">
+        <div className="bg-holder full text-center text-white infoPageWrapper">
             <div className="bg-mask"></div>
             <div style={style} className="bg-img infoImg" ></div>
             <div className="bg-front full-center">

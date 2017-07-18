@@ -26,7 +26,7 @@ class Summary extends React.Component {
 			);
 		}
 		else {
-			return false;
+			return (<div className="owl-cap-weather">&nbsp;</div>);
 		}
 	}
 }

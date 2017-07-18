@@ -27,11 +27,11 @@ class Reviews extends React.Component {
     let title = null;
 
     if (this.props.showTitle) {
-      if (reviews.length > 0)
+      if (reviews.length > 3)
       {
         if (this.props.locationType != 'all' && this.props.locationId > 0) {
           title = (
-            <div>
+            <div className="col-md-12">
               <h3 className="mb20">Share The Knowledge About {this.props.locationName}...</h3>
               <p>Community is the heart of everything we do, share tips on where to go and what to do with other<br />like-minded
                 people and help others discover amazing places in {this.props.locationName}, even earn commission whilst you do it!</p>
@@ -41,7 +41,7 @@ class Reviews extends React.Component {
         }
         else {
           title = (
-            <div>
+            <div className="col-md-12 text-center">
               <h3 className="mb20">Share The Knowledge...</h3>
               <p>Community is the heart of everything we do, share tips on where to go and what to do with other<br />like-minded
                 people and help others discover amazing places, even earn commission whilst you do it!</p>
@@ -55,15 +55,19 @@ class Reviews extends React.Component {
     if (!this.props.isFetching)
     {
       return (
-        <div>
+        <div className="col-md-12">
           {title}
-          <ReviewCard reviews={reviews} maxTags={5} cssClass={this.props.cssClass} />
+          <div className="row">
+            <div className="col-md-12">
+              <ReviewCard reviews={reviews} maxTags={5} cssClass={this.props.cssClass} showEdit={this.props.showEdit}/>
+            </div>
+          </div>
         </div>
       );
     }
     else {
       return (
-        <div>
+        <div className="col-md-12">
           {title}
           <div className="gap gap-small"></div>
           <div className="row row-wrap">
@@ -91,7 +95,8 @@ Reviews.defaultProps = {
   pageNumber: 1,
   isFetching: false,
   reviews: [],
-  cssClass: 'col-md-4'
+  cssClass: 'col-md-4',
+  showEdit: false
 };
 
 Reviews.propTypes = {
@@ -104,6 +109,7 @@ Reviews.propTypes = {
   pageNumber: PropTypes.number.isRequired,
   showTitle: PropTypes.bool,
   isFetching: PropTypes.bool.isRequired,
+  showEdit: PropTypes.bool,
   cssClass: PropTypes.string.isRequired
 };
 

@@ -6,6 +6,7 @@ import QuestionAnswerModal from '../questions/answerPopup';
 import LoginModal from '../customer/authentication/login';
 import SignupModal from '../customer/authentication/register';
 import LocationImageModal from '../locations/common/photoPopup';
+import LocationUploadImageModal from '../locations/common/uploadPhotoPopup';
 import BookmarkLocationModal from '../locations/bookmarkLocation';
 
 let customStyles = {
@@ -17,19 +18,6 @@ let customStyles = {
     bottom                    : 0,
     backgroundColor           : 'rgba(0, 0, 0, 0.75)',
     zIndex                    : 1040
-  },
-  content : {
-    position                   : 'absolute',
-    top                        : '10%',
-    left                       : '35%',
-    right                      : '35%',
-    background                 : '#fff',
-    WebkitOverflowScrolling    : 'touch',
-    outline                    : 'none',
-    padding                    : '0px',
-    borderRadius               : '5px',
-    width                      : '30%'
-
   }
 };
 
@@ -58,10 +46,13 @@ class Modal extends React.Component {
     switch(this.props.modalType)
     {
       case "Review":
-        modal = (<ReviewModal hasPosted={false} closeModal={this.props.closeModal} locationId={this.props.modalContent.locationId} locationName={this.props.modalContent.locationName} locationType={this.props.modalContent.locationType} />);
+        modal = (<ReviewModal hasPosted={false} isEdit={false} closeModal={this.props.closeModal} locationId={this.props.modalContent.locationId} locationName={this.props.modalContent.locationName} locationType={this.props.modalContent.locationType} pageSize={this.props.modalContent.pageSize} pageNumber={this.props.modalContent.pageNumber} />);
+        break;
+      case "EditReview":
+        modal = (<ReviewModal hasPosted={false} isEdit={true} closeModal={this.props.closeModal} locationId={this.props.modalContent.locationId} reference={this.props.modalContent.reference} locationName={this.props.modalContent.locationName} locationType={this.props.modalContent.locationType} locationAddress={this.props.modalContent.locationAddress} starRating={this.props.modalContent.starRating} comment={this.props.modalContent.comment} tags={this.props.modalContent.tags} />);
         break;
       case "Question":
-        modal = (<QuestionModal hasPosted={false} closeModal={this.props.closeModal} locationId={this.props.modalContent.locationId} locationName={this.props.modalContent.locationName} locationType={this.props.modalContent.locationType} />);
+        modal = (<QuestionModal hasPosted={false} closeModal={this.props.closeModal} locationId={this.props.modalContent.locationId} locationName={this.props.modalContent.locationName} locationType={this.props.modalContent.locationType} pageSize={this.props.modalContent.pageSize} pageNumber={this.props.modalContent.pageNumber} />);
         break;
       case "QuestionAnswer":
         modal = (<QuestionAnswerModal question={this.props.modalContent.question} hasPosted={false} closeModal={this.props.closeModal} questionReference={this.props.modalContent.questionReference} locationId={this.props.modalContent.locationId} pageSize={this.props.modalContent.pageSize} pageNumber={this.props.modalContent.pageNumber} />);
@@ -76,7 +67,7 @@ class Modal extends React.Component {
         modal = (<BookmarkLocationModal hasPosted={false} closeModal={this.props.closeModal} parentLocationId={this.props.modalContent.parentLocationId} parentLocationName={this.props.modalContent.parentLocationName} parentLocationNameLong={this.props.modalContent.parentLocationNameLong} locationId={this.props.modalContent.locationId} locationName={this.props.modalContent.locationName} locationType={this.props.modalContent.locationType} locationUrl={this.props.modalContent.locationUrl} locationImage={this.props.modalContent.locationImage} locationNameLong={this.props.modalContent.locationNameLong} removeBookmark={this.props.modalContent.removeBookmark}/>);
         break;
       case "Photo":
-        modal = (<p>Photo</p>);
+        modal = (<LocationUploadImageModal hasPosted={false} closeModal={this.props.closeModal} locationId={this.props.modalContent.locationId} locationName={this.props.modalContent.locationName} locationType={this.props.modalContent.locationType} />);
         break;
       case "LocationImage":
         modal = (<LocationImageModal hasPosted={false} closeModal={this.props.closeModal} imageList={this.props.modalContent.imageList} imagePosition={this.props.modalContent.imagePosition} />);

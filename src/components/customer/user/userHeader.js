@@ -10,12 +10,12 @@ class UserHeader extends React.Component {
             <div className="bg-img"></div>
             <div className="container">
               <div className="row">
-                <div className="col-md-12 text-xs-center">
+                <div className="col-md-12 text-center">
 
                   <img src={this.props.user.profile.imageUrl ? this.props.user.profile.imageUrl : '/static/img/userProfileImg.png'} className="user-profile-avatar"/>
                   <h1 className="userTitle">{this.props.user.profile.name}</h1>
                 </div>
-                <div className="col-md-12 text-xs-center">
+                <div className="col-md-12 text-center">
                   <p className="userStats">x Reviews, x Countries, 3 Cities</p>
                 </div>
               </div>

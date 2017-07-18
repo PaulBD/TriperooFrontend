@@ -15,7 +15,7 @@ export default class TravelExtras extends React.Component {
         return (
           <div>
             <Feature />
-            <div className="gap"></div>
+            <div className="gap gap-small"></div>
             <div className="container">
                 <div className="row">
                     <div className="col-md-4">

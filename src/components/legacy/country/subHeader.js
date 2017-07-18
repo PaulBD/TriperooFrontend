@@ -18,7 +18,7 @@ export default class SubHeader extends React.Component {
                             <h1>United Kingdom</h1>
                         </div>
                         <div className="col-md-4 col-xs-5">
-                        <ul className="list text-xs-right list-inline countryNav">
+                        <ul className="list text-right list-inline countryNav">
                                 <li>
                                     <a href="/place/united-kingdom/all/hotels" title="Book a hotel" className="active">
                                         <i className="fa fa-bed user-profile-statictics-icon"></i>

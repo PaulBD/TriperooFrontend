@@ -1,8 +1,8 @@
 [
 	{
-		"name": "All Attractions",
+		"name": "Reset Filter",
 		"id": "",
-		"icon": "fa fa-filter"
+		"icon": "fa fa-times"
 	},
 	{
 		"name": "Museums",
@@ -21,11 +21,11 @@
 		"id": "icecream",
 		"icon": "fa fa-camera"
 	}, {
-		"name": "Monument",
+		"name": "Monuments",
 		"id": "monument",
 		"icon": "fa fa-eye"
 	}, {
-		"name": "Area of Interest",
+		"name": "Areas of Interest",
 		"id": "sign",
 		"icon": "fa fa-pagelines"
 	}, {

@@ -35,7 +35,7 @@ class TopLocations extends React.Component {
       return (
         <div>
           {this.props.locations.length > 0 ? <h3>Popular In {titleCase(this.props.name)}...</h3> : ''}
-          <LocationList locations={this.props.locations} cssClass="col-md-3" />
+          <LocationList locations={this.props.locations} cssClass="col-md-3 col-12" />
         </div>
       );
     }

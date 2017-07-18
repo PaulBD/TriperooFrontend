@@ -3,15 +3,13 @@ import React, {PropTypes} from 'react';
 class TagList extends React.Component {
   constructor(props, context) {
     super(props, context);
-
     this.selectTag = this.selectTag.bind(this);
     this.getIndex = this.getIndex.bind(this);
     this.state = { selectedTags: [] };
   }
 
-  componentWillReceiveProps(props)
-  {
-    this.state = { selectedTags: this.props.selectedTags };
+  componentWillMount() {
+    this.setState({selectedTags: this.props.selectedTags});
   }
 
   selectTag(e) {

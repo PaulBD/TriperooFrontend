@@ -59,7 +59,7 @@ class AnswerPopup extends React.Component {
                         <textarea ref="answer" className="form-control" rows="6" value={this.state.answer} onChange={this.handleAnswerChange}></textarea>
                     </div>
                   </div>
-                  <div className="col-md-12 text-xs-center">
+                  <div className="col-md-12 text-center">
                       <input className="btn btn-primary" type="submit" value="Submit Answer" disabled={this.state.postingAnswer} />
                   </div>
                 </form>
@@ -73,7 +73,7 @@ class AnswerPopup extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="modal-footer text-xs-center">
+            <div className="modal-footer text-center">
               <a href="#" onClick={this.closeModal}>Close</a>
             </div>
           </div>

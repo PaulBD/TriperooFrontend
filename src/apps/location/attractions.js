@@ -5,11 +5,13 @@ import * as locationActions from '../../actions/location/locationActions';
 import * as attractionActions from '../../actions/location/travelContent/attractionActions';
 import FacebookSignup from '../../components/customer/authentication/facebookSignup';
 import TriperooLoader from '../../components/common/triperooLoader';
+import GoogleMaps from '../../components/locations/common/googleMap';
 import Toastr from 'toastr';
 
 import SubPageHeader from '../../components/locations/subPageHeader';
 import AttractionCategories from '../../components/locations/common/categorySideBar';
 import Attractions from '../../components/locations/locationListWrapper';
+import PageTitle from '../../components/locations/pageTitle';
 
 let titleCase = require('title-case');
 
@@ -18,18 +20,18 @@ class AttractionContent extends React.Component {
     super(props, context);
     this.changeAttraction = this.changeAttraction.bind(this);
     this.changePage = this.changePage.bind(this);
-    this.state = { isLoadingLocation: false, isLoadingAttractionList: false, attractionType: '', attractionFriendlyName: '', pageSize: 9, pageNumber: 0, activePage: 1 };
+    this.onSearchAttraction = this.onSearchAttraction.bind(this);
+    this.state = { searchValue: '', isLoadingLocation: true, isLoadingAttractionList: false, attractionType: '', attractionFriendlyName: '', pageSize: 9, pageNumber: 0, activePage: 1 };
   }
 
   componentWillMount() {
     window.scrollTo(0, 0);
-    this.setState({isLoadingLocation: true});
     this.loadLocation();
   }
 
   loadLocation() {
     this.props.locationActions.loadLocationById(this.props.locationId)
-      .then(() => this.loadAttractions(this.props.locationId, this.state.attractionType, this.state.pageSize, this.state.pageNumber))
+      .then(() => this.loadAttractions(this.props.locationId, this.state.attractionType, '', this.state.pageSize, this.state.pageNumber))
       .catch(error => {
         Toastr.error(error);
         this.setState({isLoadingLocation: false});
@@ -37,17 +39,18 @@ class AttractionContent extends React.Component {
   }
 
   changeAttraction(value, friendlyName) {
-    this.setState({ attractionType: value, attractionFriendlyName: friendlyName  });
-    this.loadAttractions(this.props.locationId, value, this.state.pageSize, this.state.pageNumber);
+    this.setState({ attractionType: value, attractionFriendlyName: friendlyName, searchValue: ''  });
+    this.loadAttractions(this.props.locationId, value, '', this.state.pageSize, this.state.pageNumber);
   }
 
   changePage(value){
-    this.loadAttractions(this.props.locationId, this.state.attractionType, this.state.pageSize, value - 1);
+    this.loadAttractions(this.props.locationId, this.state.attractionType, '', this.state.pageSize, value - 1);
   }
 
-  loadAttractions(locationId, attractionType, pageSize, pageNumber) {
-    this.setState({isLoadingLocation: false, isLoadingAttractionList: true });
-    this.props.attractionActions.loadAttractionsByParentLocationId(locationId, attractionType, pageSize, pageNumber)
+  loadAttractions(locationId, attractionType, attractionName, pageSize, pageNumber) {
+    this.setState({isLoadingLocation: false, isLoadingAttractionList: true});
+
+    this.props.attractionActions.loadAttractionsByParentLocationId(locationId, attractionType, attractionName, pageSize, pageNumber)
       .then(() => this.setState({isLoadingAttractionList: false}))
       .catch(error => {
         Toastr.error(error);
@@ -55,34 +58,49 @@ class AttractionContent extends React.Component {
       });
   }
 
+  onSearchAttraction(searchValue) {
+    this.setState({searchValue: searchValue});
+      this.loadAttractions(this.props.locationId, this.state.attractionType, searchValue, this.state.pageSize, this.state.pageNumber);
+  }
+
   render(){
     document.title = this.state.attractionType == '' ? titleCase(this.props.location.regionName) + ' Attractions' : titleCase(this.state.attractionFriendlyName) + ' in ' + titleCase(this.props.location.regionName);
 
     if (! this.state.isLoadingLocation)
     {
+      let title = 'Things to do in' + titleCase(this.props.location.regionName);
       return (
         <div>
-          <SubPageHeader location={this.props.location} contentType="attractions" />
+          <SubPageHeader location={this.props.location} contentType="attractions" title={title} />
           <div className="gap gap-small"></div>
           <div className="container">
             <div className="row row-wrap">
               <div className="container">
                 <div className="row">
-                  <div className="col-md-3">
-                    <AttractionCategories changeCategory={this.changeAttraction} contentType="attractions"  />
-                  </div>
-                  <div className="col-md-9">
-                    <div className={this.state.isLoadingAttractionList ? "hide" : "nav-drop booking-sort"}>
-                      {this.props.attractionCount} Results {this.state.attractionType != '' ? ' - filtered by ' + titleCase(this.state.attractionFriendlyName) : ''}
+                  <div className="col-md-8">
+                    <PageTitle defaultTitle="Top Things To Do" locationName={this.props.location.regionName} name={this.state.attractionFriendlyName} type={this.state.attractionType} searchValue={this.state.searchValue} onSearch={this.onSearchAttraction} />
+                    <div className="gap gap-small"></div>
+                    <div className="col-md-12">
+                      <div className="row">
+                        <Attractions locationId={this.props.locationId} locations={this.props.attractions} locationCount={this.props.attractionCount} changePage={this.changePage} isFetching={this.state.isLoadingAttractionList}/>
+                      </div>
                     </div>
-                    <Attractions locationId={this.props.locationId} locations={this.props.attractions} locationCount={this.props.attractionCount} changePage={this.changePage} isFetching={this.state.isLoadingAttractionList}/>
+                  </div>
+                  <div className="col-md-4">
+                    <AttractionCategories changeCategory={this.changeAttraction} contentType="attractions"   />
+                    <div className="gap gap-small"></div>
                   </div>
                 </div>
               </div>
               <div className="gap gap-small"></div>
             </div>
           </div>
-          <FacebookSignup />
+
+          <div className="gap gap-small"></div>
+          <div className="row greyBg detailSubHeader">
+            <GoogleMaps latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0} longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0} text={this.props.location.regionName} zoom={10} markerArray={this.state.attractions} isLoading={this.state.isLoadingAttractionList} locationType={this.props.location.subClass} />
+          </div>
+          <FacebookSignup showLines={false}/>
         </div>
       );
     }

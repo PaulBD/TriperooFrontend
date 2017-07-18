@@ -69,7 +69,7 @@ class Questions extends React.Component {
       if (this.props.questionList) {
         if (this.props.questionList.length > 0) {
           if (this.props.isSideComponent) {
-            questionText = (<p className="text-xs-right"><a href={questionUrl}>Read all questions</a></p>);
+            questionText = (<div className="col-md-12"><p className="text-right"><a href={questionUrl}>Read all questions</a></p></div>);
           }
         }
       }
@@ -79,9 +79,9 @@ class Questions extends React.Component {
           {title}
           <QuestionList questions={this.props.questionList} locationId={this.props.locationId} locationName={this.props.locationName} pageSize={this.props.pageSize} pageNumber={this.props.pageNumber} isAuthenticated={this.props.isAuthenticated} isSideComponent={this.props.isSideComponent} showAnswerPopup={this.showAnswerPopup}/>
 
-          <div className={this.props.isSideComponent ? "hide" : "row text-xs-center"}>
+          <div className={this.props.isSideComponent ? "hide" : "row text-center"}>
             <div className="gap gap-small"></div>
-            <Pagination innerClass={this.props.questionCount > this.props.pageSize ? "pagination text-xs-center" : "hide"}
+            <Pagination innerClass={this.props.questionCount > this.props.pageSize ? "pagination text-center" : "hide"}
                         activePage={this.state.activePage} itemsCountPerPage={this.props.pageSize} totalItemsCount={this.props.questionCount}
                         pageRangeDisplayed={this.props.pageSize} onChange={this.changePage}/>
           </div>

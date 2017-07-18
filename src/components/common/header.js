@@ -59,7 +59,6 @@ class Header extends React.Component {
 
   createTrip(e) {
     this.props.modalActions.openBookmark(0, '', '', 0, '', '', '', '', '');
-
   }
 
   selectCurrency(e) {
@@ -76,50 +75,57 @@ class Header extends React.Component {
           <div className="header-top">
             <div className="container">
               <div className="row">
-                <div className="col-md-3">
-                  <Link to="/" className="logo">
-                    <img src="/static/img/logo-invert-v3.png" alt="Triperoo - Explore the world" />
-                  </Link>
-                </div>
-                <div className="col-md-9">
-                    <div className="top-user-area clearfix">
-                      <ul className="top-user-area-list list list-horizontal list-border">
-                        <li><a href="/explore-destinations" title="Destinations">Destinations</a></li>
-                        <li><a href="/hotels" title="Hotels">Hotels</a></li>
-                        <li className="hide"><a href="/flights" title="Flights">Flights</a></li>
-                        <li><a href="/travel-extras" title="Travel Extras">Travel Extras</a></li>
-                        <li className={this.props.isAuthenticated ? "" : "hide"}><a href="#" onClick={this.createTrip} title="Create a Trip">Create a Trip</a></li>
-                        <li className={!this.props.isAuthenticated ? "" : "hide"}><a href="#" onClick={this.signup} title="Sign Up">Sign Up</a></li>
-                        <li className={!this.props.isAuthenticated ? "" : "hide"}><a href="#" onClick={this.login} title="Log In">Log In</a></li>
-                        <li className={this.props.isAuthenticated ? "" : "hide"}><a href="#" onClick={this.writeReview} title="Write a Review">Write a Review</a></li>
-                        <li className={this.props.isAuthenticated ? this.state.isProfileMenuActive ? "nav-drop active-drop" : "nav-drop" : "hide"} onMouseEnter={this.openProfileMenu} onMouseLeave={this.closeProfileMenu}><img className="origin round profileImg" src={user && user.userImage ? user.userImage : '/static/img/userProfileImg.png'} /><a href={user ? user.userProfile : ""}>{user ? user.userName : ""}<i className="fa fa-angle-down"></i>
-                          <i className="fa fa-angle-up"></i></a>
-                          <ul className="list nav-drop-menu headerList">
-                            <li><a href={user ? user.userProfile + "/profile" : ""}><i className="fa fa-user"></i>Update Profile</a></li>
-                            <li><a href={user ? user.userProfile + "/trips" : ""}><i className="fa fa-heart-o"></i>Trips</a></li>
-                            <li><a href={user ? user.userProfile + "/photos" : ""}><i className="fa fa-camera"></i>My Travel Photos</a></li>
-                            <li><a href={user ? user.userProfile + "/booking-history" : ""}><i className="fa fa-clock-o"></i>Booking History</a></li>
-                          </ul>
+                <div className="col-md-12">
+                  <nav className="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+                    <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <a className="navbar-brand logo" href="/"><img src="/static/img/logo-invert-v3.png" alt="Triperoo - Explore the world" /></a>
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul className="nav navbar-nav ml-auto">
+                        <li className="nav-item pull-xs-right"><a className="nav-link" href="/explore-destinations" title="Destinations">Destinations</a></li>
+                        <li className="nav-item pull-xs-right"><a className="nav-link"href="/hotels" title="Hotels">Hotels</a></li>
+                        <li className="nav-item pull-xs-right"><a className="nav-link"href="/travel-extras" title="Travel Extras">Travel Extras</a></li>
+                        <li className={this.props.isAuthenticated ? "nav-item pull-xs-right" : "hide"}><a className="nav-link"href="#" onClick={this.createTrip} title="Create a Trip">Create a Trip</a></li>
+                        <li className={!this.props.isAuthenticated ? "nav-item pull-xs-right" : "hide"}><a className="nav-link"href="#" onClick={this.signup} title="Sign Up">Sign Up</a></li>
+                        <li className={!this.props.isAuthenticated ? "nav-item pull-xs-right" : "hide"}><a className="nav-link"href="#" onClick={this.login} title="Log In">Log In</a></li>
+                        <li className={this.props.isAuthenticated ? "nav-item pull-xs-right" : "hide"}><a className="nav-link"href="#" onClick={this.writeReview} title="Write a Review">Write a Review</a></li>
+                        <li className={this.props.isAuthenticated ? "nav-item dropdown" : "hide"}>
+                          <a className="nav-link dropdown-toggle userMenu" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img className="origin round profileImg" src={user && user.userImage ? user.userImage : '/static/img/userProfileImg.png'} />
+                            {user ? user.userName : ""}
+                          </a>
+                          <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a className="dropdown-item" href={user ? user.userProfile : ""}>Profile Home <span className="pull-right"><i className="fa fa-home"></i></span></a>
+                            <a className="dropdown-item" href={user ? user.userProfile + "/profile" : ""}>Update Profile <span className="pull-right"><i className="fa fa-user"></i></span></a>
+                            <a className="dropdown-item" href={user ? user.userProfile + "/trips" : ""}>Trips <span className="pull-right"><i className="fa fa-heart-o"></i></span></a>
+                            <a className="dropdown-item" href={user ? user.userProfile + "/reviews" : ""}>Reviews <span className="pull-right"><i className="fa fa-pencil"></i></span></a>
+                            <a className="dropdown-item" href={user ? user.userProfile + "/photos" : ""}>Travel Photos <span className="pull-right"><i className="fa fa-camera"></i></span></a>
+                            <a className="dropdown-item" href={user ? user.userProfile + "/booking-history" : ""}>Booking History <span className="pull-right"><i className="fa fa-clock-o"></i></span></a>
+                          </div>
                         </li>
-                        <li className={this.props.isAuthenticated ? "" : "hide"}><a href="#" onClick={this.onLogout} title="Log Out">Log Out</a></li>
-                        <li className={this.state.isCurrencyMenuActive ? 'nav-drop active-drop' : 'nav-drop'} onMouseEnter={this.openCurrencyMenu} onMouseLeave={this.closeCurrencyMenu}><a href="#">{this.state.currency} {this.state.currencyIcon}<i className="fa fa-angle-down"></i>
-                          <i className="fa fa-angle-up"></i></a>
-                          <ul className="list nav-drop-menu">
-                            <li><a href="#" onClick={this.selectCurrency} data-name="GBP" data-currency="£">GBP<span className="right">£</span></a></li>
-                            <li><a href="#" onClick={this.selectCurrency} data-name="EUR" data-currency="€">EUR<span className="right">€</span></a></li>
-                            <li><a href="#" onClick={this.selectCurrency} data-name="USD" data-currency="$">USD<span className="right">$</span></a></li>
-                            <li><a href="#" onClick={this.selectCurrency} data-name="JPY" data-currency="円">JPY<span className="right">円</span></a></li>
-                            <li><a href="#" onClick={this.selectCurrency} data-name="CAD" data-currency="$">CAD<span className="right">$</span></a></li>
-                            <li><a href="#" onClick={this.selectCurrency} data-name="AUD" data-currency="$">AUD<span className="right">A$</span></a></li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </div>
+                        <li className={this.props.isAuthenticated ? "nav-item pull-xs-right" : "hide"}><a className="nav-link" href="#" onClick={this.onLogout} title="Log Out">Log Out</a></li>
+                          <li className={this.props.isAuthenticated ? "nav-item dropdown" : "hide"}>
+                          <a className="nav-link dropdown-toggle" id="navbarDropdownCurrencyLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {this.state.currency} {this.state.currencyIcon}
+                          </a>
+                        <div className="dropdown-menu" aria-labelledby="navbarDropdownCurrencyLink">
+                          <a className="dropdown-item" href="#" onClick={this.selectCurrency} data-name="GBP" data-currency="£">GBP<span className="pull-right">£</span></a>
+                          <a className="dropdown-item" href="#" onClick={this.selectCurrency} data-name="EUR" data-currency="€">EUR<span className="pull-right">€</span></a>
+                          <a className="dropdown-item" href="#" onClick={this.selectCurrency} data-name="USD" data-currency="$">USD<span className="pull-right">$</span></a>
+                          <a className="dropdown-item" href="#" onClick={this.selectCurrency} data-name="JPY" data-currency="円">JPY<span className="pull-right">円</span></a>
+                          <a className="dropdown-item" href="#" onClick={this.selectCurrency} data-name="CAD" data-currency="$">CAD<span className="pull-right">$</span></a>
+                          <a className="dropdown-item" href="#" onClick={this.selectCurrency} data-name="AUD" data-currency="$">AUD<span className="pull-right">A$</span></a>
+                        </div>
+                      </li>
+                    </ul>
                   </div>
-                </div>
+                </nav>
               </div>
             </div>
-        </header>
+          </div>
+        </div>
+      </header>
     );
   }
 }

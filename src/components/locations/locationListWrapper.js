@@ -1,6 +1,4 @@
 import React, {PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
 import LocationList from '../locations/locationList';
 import Loader from '../common/loadingDots';
 import Pagination from "react-js-pagination";
@@ -22,11 +20,11 @@ class ByLocation extends React.Component {
     render(){
         if (!this.props.isFetching) {
             return (
-                <div>
+                <div className="listHeight">
                     <LocationList locations={this.props.locations} cssClass="col-md-4" />
                     <div className="gap gap-small"></div>
-                    <div className="row text-xs-center">
-                        <Pagination innerClass={this.props.locationCount > 24 ? "pagination text-xs-center" : "hide"} activePage={this.state.activePage} itemsCountPerPage={this.state.limit} totalItemsCount={this.props.locationCount} pageRangeDisplayed={this.state.limit} onChange={this.changePage} />
+                    <div className="row justify-content-center">
+                        <Pagination innerClass={this.props.locationCount > 24 ? "pagination justify-content-center" : "hide"} activePage={this.state.activePage} itemsCountPerPage={this.state.limit} totalItemsCount={this.props.locationCount} pageRangeDisplayed={this.state.limit} onChange={this.changePage} />
                     </div>
                     <div className="gap gap-small"></div>
                 </div>

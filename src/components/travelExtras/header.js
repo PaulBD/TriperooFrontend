@@ -14,7 +14,7 @@ class Header extends React.Component {
 
     return (
     <div>
-      <div className="bg-holder full text-xs-center text-white holidayPage">
+      <div className="bg-holder full text-center text-white holidayPage">
         <div className="bg-mask"></div>
         <div className="bg-img" style={style}></div>
         <div className="bg-front full-center">

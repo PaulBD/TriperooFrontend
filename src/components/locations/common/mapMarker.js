@@ -1,9 +1,9 @@
 import React, {PropTypes} from 'react';
 
-const MapMarker = ({longitude, latitude, text}) => {
+const MapMarker = ({longitude, latitude, text, i}) => {
   return (
-    <div className="pin">
-
+    <div className="pin" key={i}>
+      <span>{text}</span>
     </div>
   );
 };
@@ -11,7 +11,8 @@ const MapMarker = ({longitude, latitude, text}) => {
 MapMarker.propTypes = {
   longitude: PropTypes.number,
   latitude: PropTypes.number,
-  text: PropTypes.string
+  text: PropTypes.string,
+  i: PropTypes.number
 };
 
 export default MapMarker;

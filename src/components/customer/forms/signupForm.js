@@ -3,7 +3,7 @@ import AutoComplete from '../../common/autocomplete';
 
 const SignupForm = ({name, emailAddress, password, cityId, city, isSigningUp, onSubmit, onChange, onChangeAutoComplete, errors}) => {
   return (
-    <div>
+    <div className="col-md-12">
       <div className={errors && errors.length > 0 ? 'col-md-12' : 'col-md-12 hide'}>
         <div className="bg-danger form-danger">
           {errors}
@@ -26,7 +26,7 @@ const SignupForm = ({name, emailAddress, password, cityId, city, isSigningUp, on
           <p className="smlText">By clicking "Create My Account," you are agreeing to the Terms of Service and the Privacy Policy. You'll
             also receive email updates about your account, sent to you by Triperoo. You can opt out in Account Settings.</p>
         </div>
-        <div className="col-md-12 text-xs-center">
+        <div className="col-md-12 text-center">
           <input className="btn btn-primary" type="submit" value="Create My Account" Disabled={isSigningUp}/>
         </div>
       </form>

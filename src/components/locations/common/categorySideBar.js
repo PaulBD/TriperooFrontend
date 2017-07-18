@@ -2,12 +2,14 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as categoryActions from '../../../actions/location/common/categoryActions';
+let titleCase = require('title-case');
 
 class CategorySideBar extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.handleCategoryChange = this.handleCategoryChange.bind(this);
-    this.state = { categoryName: 'all' };
+    this.showMore = this.showMore.bind(this);
+    this.state = { categoryName: 'all', showAll: false };
   }
 
   componentWillMount() {
@@ -28,6 +30,11 @@ class CategorySideBar extends React.Component {
     }
   }
 
+  showMore(e) {
+    e.preventDefault();
+    this.setState({ showAll: true });
+  }
+
   handleCategoryChange(e) {
     e.preventDefault();
     this.setState({ categoryName: e.target.getAttribute('data-name') });
@@ -39,12 +46,26 @@ class CategorySideBar extends React.Component {
     {
       return (
             <div className="profile-usermenu">
-              <ul className="nav">
+              <h5>Types of {titleCase(this.props.contentType)}</h5>
+              <ul className="nav flex-column">
                 {
-                  this.props.categories.map(category => {
+                  this.props.categories.map(function (category, i) {
 
-                    let className = this.state.categoryName == category.name ? 'active' : '';
+                    let className = this.state.categoryName == category.name ? 'active col-md-12' : 'col-md-12';
 
+                    if (!this.state.showAll) {
+                      if (i > 6) {
+                        return null;
+                      }
+                    }
+
+                    if (this.state.categoryName == 'all' || this.state.categoryName == 'Reset Filter')
+                    {
+                      if (category.name == 'Reset Filter')
+                      {
+                        return null;
+                      }
+                    }
                     return (
                       <li className={className} key={category.name}>
                           <a href="#" onClick={this.handleCategoryChange} data-id={category.id} data-name={category.name}>
@@ -52,9 +73,10 @@ class CategorySideBar extends React.Component {
                           </a>
                       </li>
                     );
-                  })
+                  }, this)
                 }
               </ul>
+              <p className={this.state.showAll ? "hide" : "text-right"}><a href="#" onClick={this.showMore}>More Categories <i className="fa fa-arrow-down"></i></a></p>
             </div>
       );
     }
@@ -76,7 +98,6 @@ CategorySideBar.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-  console.log(state.content);
   return {
     isFetching: state.categories.isFetching ? state.categories.isFetching : false,
     categories: state.categories.categoryList ? state.categories.categoryList : []

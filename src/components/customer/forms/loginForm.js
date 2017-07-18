@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 
 const LoginForm = ({emailAddress, password, isLoggingIn, onSubmit, onChange, onChangeLogin, errors}) => {
   return (
-    <div>
+    <div className="col-md-12">
       <div className={errors && errors.length > 0 ? 'col-md-12' : 'col-md-12 hide'}>
         <div className="bg-danger form-danger">
           {errors}
@@ -17,11 +17,11 @@ const LoginForm = ({emailAddress, password, isLoggingIn, onSubmit, onChange, onC
             <input className="form-control" type="password" placeholder="Enter Password" name="password" onChange={onChange} value={password} />
           </div>
         </div>
-        <div className="col-md-12 text-xs-center">
+        <div className="col-md-12 text-center">
           <input className="btn btn-primary" type="submit" value="Login" disabled={isLoggingIn}/>
         </div>
         <div className="gap gap-small"></div>
-        <div className="col-md-12 text-xs-center">
+        <div className="col-md-12 text-center">
           <a href="#" onClick={onChangeLogin}>Forgot Password? Click here</a>
         </div>
       </form>

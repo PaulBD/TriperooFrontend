@@ -27,6 +27,17 @@ export function loadReviewsByLocationId(locationId, pageSize, pageNumber) {
 	};
 }
 
+export function loadReviewsByLocationIdAndTags(locationId, selectedTags, pageSize, pageNumber) {
+  return dispatch => {
+    dispatch(requestReviews());
+    return LocationReviewsApi.getReviewsByLocationIdAndTags(locationId, selectedTags, pageSize, pageNumber).then(reviews => {
+      dispatch(loadReviewsSuccess(reviews));
+    }).catch(error => {
+      loadReviewsFailure(error.response.data);
+    });
+  };
+}
+
 export function loadReviewsByType(reviewType, pageSize, pageNumber) {
 	return dispatch => {
 		dispatch(requestReviews());

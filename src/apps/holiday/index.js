@@ -22,7 +22,7 @@ export default class Holidays extends React.Component {
         <div className="container">
           <Search />
           <div className="gap"></div>
-            <div className="row row-wrap text-xs-center">
+            <div className="row row-wrap text-center">
             <Destinations destinationCount={3} title="Our Top Destinations" />
           </div>
         </div>

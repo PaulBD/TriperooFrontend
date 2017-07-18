@@ -52,3 +52,30 @@ export function likeLocationById(locationId, likeLocation, location) {
     });
   };
 }
+
+
+// ****************************************
+// Upload Location photo
+// ****************************************
+export function requestUploadLocationPhoto() {
+  return {type: types.UPLOAD_PHOTO_LOCATION_REQUEST, isFetching: true };
+}
+
+export function uploadLocationPhotoSuccess() {
+  return {type: types.UPLOAD_PHOTO_LOCATION_SUCCESS, isFetching: false};
+}
+
+export function uploadLocationPhotoFailure(errorMessage) {
+  return {type: types.UPLOAD_PHOTO_LOCATION_FAILURE, isFetching: false,  errorMessage};
+}
+
+export function uploadPhotos(locationId, photos) {
+  return dispatch => {
+    dispatch(requestUploadLocationPhoto());
+    return LocationApi.uploadPhotos(locationId, photos).then(response => {
+      dispatch(uploadLocationPhotoSuccess());
+    }).catch(error => {
+      dispatch(uploadLocationPhotoFailure(error.response.data));
+    });
+  };
+}

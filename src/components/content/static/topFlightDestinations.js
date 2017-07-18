@@ -3,7 +3,7 @@ import React from "react";
 export default class TopDestinations extends React.Component {
 	render(){
 	return (
-          <div className="row row-wrap text-xs-center">
+          <div className="row row-wrap text-center">
             <div className="gap"></div>
             <h3 className="mb20">Our Top Flight Destinations</h3>
             <div className="row">

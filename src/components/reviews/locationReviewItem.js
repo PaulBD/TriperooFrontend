@@ -52,10 +52,11 @@ class ReviewItem extends React.Component {
       );
     }
 
+
     return (
       <li>
         <div className="row">
-            <div className="col-md-2">
+            <div className="col-md-2 col-2">
                 <div className="booking-item-review-person">
                     <a className="booking-item-review-person-avatar round" href={review.customerProfileUrl}>
                         <img src={review.customerImageUrl ? review.customerImageUrl : '/static/img/userProfileImg.png'} alt={review.customerName} onError={this.handleMissingImage}/>
@@ -64,10 +65,9 @@ class ReviewItem extends React.Component {
                       <a href={review.customerProfileUrl}>{review.customerName}</a>
                     </p>
                     <p className="booking-item-review-person-loc">{review.customerLocation}</p>
-                    <small><a href={review.customerProfileUrl}>{review.customerReviewCount}</a></small>
                 </div>
             </div>
-            <div className="col-md-10">
+            <div className="col-md-10 col-10">
                 <div className="booking-item-review-content">
                     <StarRating starRating={review.starRating} className="icon-list list-inline-block mb0 last-minute-rating"/>
                     <div className="gap gap-small"></div>
@@ -76,11 +76,11 @@ class ReviewItem extends React.Component {
                     <div className="gap gap-small"></div>
                     <TagList tags={review.tags} maxTags={10} readOnly={true} />
                     <div className="gap gap-small"></div>
-                    <ReviewHelpful reviewRef={review.reviewReference} likeCount={review.likeCount} />
+                    <p className="smlText">Added {review.friendlyDate} &bull; <ReviewHelpful reviewRef={review.reviewReference} likeCount={review.likeCount} /></p>
                 </div>
             </div>
         </div>
-    </li>  
+    </li>
     );
   }
 }

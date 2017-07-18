@@ -3,7 +3,7 @@ import React from "react";
 export default class AirportHotelsFeature extends React.Component {
     render(){
     return (
-        <div className="bg-holder full text-xs-center text-white holidayPage">
+        <div className="bg-holder full text-center text-white holidayPage">
             <div className="bg-mask"></div>
             <div className="bg-img carHire"></div>
             <div className="bg-front full-center">

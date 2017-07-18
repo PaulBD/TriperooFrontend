@@ -26,12 +26,10 @@ class BookmarkButton extends React.Component {
       }
 
       return (
-        <div key={this.props.name}>
           <a href="#" className="btn btn-secondary questionBtn" onClick={this.openBookmark}>
               <i className="fa fa-heart-o"></i>
             {message}
           </a>
-        </div>
       );
     }
     else {

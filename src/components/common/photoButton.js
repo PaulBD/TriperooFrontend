@@ -13,7 +13,7 @@ class PhotoButton extends React.Component {
 
   writeReview(e) {
     e.preventDefault();
-    this.props.modalActions.openPhoto(this.props.locationId, this.props.locationNameLong, this.props.locationType);
+    this.props.modalActions.openPhoto(this.props.locationId, this.props.locationName, this.props.locationType);
   }
 
   render() {

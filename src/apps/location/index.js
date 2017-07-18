@@ -14,12 +14,14 @@ import NavigationWrapper from '../../components/locations/navigation/navigationW
 import Summary from '../../components/locations/summary';
 import Header from '../../components/locations/homeHeader';
 import LocationStats from '../../components/locations/stats';
+import LocationArticles from '../../components/locations/articles';
 import WeatherForcast from '../../components/locations/weather/forecast';
 import LastMinuteDeal from '../../components/content/dynamic/lastMinuteDeal';
 import Loader from '../../components/common/triperooLoader';
 import TopEvents from '../../components/locations/topEvents';
 import LocationOverview from '../../components/locations/overview';
 import Toastr from 'toastr';
+import HotelsNearLocation from '../../components/hotels/hotelsNearLocation';
 
 let titleCase = require('title-case');
 
@@ -95,7 +97,7 @@ class LocationHome extends React.Component {
                 <TopLocations locationId={this.props.locationId} name={this.state.location.regionName} locationType={this.state.location.regionType} {...this.props} />
               </div>
               <div className="col-md-8">
-                <Summary locationName={this.props.location.regionName} summary={this.props.location.summary ? this.props.location.summary.en : ''} />
+                <Summary location={this.props.location} showMap={true} />
               </div>
               <div className="col-md-4">
                 <LocationStats showLike={this.state.showLike} likeLocation={this.likeLocation} locationId={this.props.locationId} stats={this.state.location.stats} locationUrl={this.state.location.url} locationName={this.state.location.regionName}  />
@@ -106,8 +108,9 @@ class LocationHome extends React.Component {
           </div>
           <div className="gap"></div>
           <LastMinuteDeal locationId={this.props.locationId} />
+          <HotelsNearLocation latitude={this.props.location.latitude} longitude={this.props.location.longitude} pageSize={3} locationName={this.props.location.regionName} parentName={this.props.location.parentRegionName} locationType={this.props.location.regionType} parentUrl={this.props.location.parentUrl}/>
+          <div className="gap gap-small"></div>
           <div className="container">
-
             <div className="row">
               <div className="col-md-12">
                 <h4>Reviews About {this.state.location.regionName}...</h4>
@@ -117,11 +120,13 @@ class LocationHome extends React.Component {
                 <LocationReviews cssClass="col-md-6" showTitle={true} locationId={this.props.locationId} locationName={this.state.location.regionName} locationType={this.state.location.subClass} pageSize={4} pageNumber={0}  />
               </div>
               <div className="col-md-4">
-                <ReviewButton locationId={this.props.locationId} locationName={this.state.location.regionName} locationNameLong={this.state.location.regionNameLong} locationType={this.state.location.regionType}  />
-                <LocationOverview location={this.props.location} />
-
+                <ReviewButton locationId={this.props.locationId} locationName={this.state.location.regionName} locationNameLong={this.state.location.regionNameLong} locationType={this.state.location.regionType} pageSize={4} pageNumber={0}  />
                 <div className="gap gap-small"></div>
-                <WeatherForcast locationId={this.props.locationId} />
+                <LocationOverview location={this.props.location} />
+                <div className={this.state.location.regionType == 'Country' ? "hide" : "gap gap-small"}></div>
+                <WeatherForcast locationId={this.props.locationId} locationType={this.state.location.regionType} />
+                <div className="gap gap-small"></div>
+                <LocationArticles locationId={this.props.locationId} locationName={this.state.location.regionName}/>
               </div>
             </div>
           </div>

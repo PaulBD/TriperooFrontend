@@ -10,12 +10,13 @@ class Destinations extends React.Component {
     this.state = { isLoading: false };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.loadLocations();
   }
 
   loadLocations() {
     this.setState({isLoading: true});
+    console.log(this.props.locationCount);
     this.props.locationsActions.loadTopLocations(this.props.locationCount, this.props.contentType)
       .then(() => this.setState({isLoading: false}))
       .catch(error => {
@@ -24,11 +25,10 @@ class Destinations extends React.Component {
   }
 
   render(){
-
     if (!this.state.isLoading) {
       return (
-        <div className="row row-wrap text-xs-center">
-          <div className={this.props.title ? "gap" : "hide"}></div>
+        <div className="col-md-12">
+          <div className={this.props.title ? "gap gap-small" : "hide"}></div>
           <h3 className={this.props.title ? "mb20" : "hide"}>{this.props.title}</h3>
           <div className="row">
             {

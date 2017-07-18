@@ -14,64 +14,80 @@ class Forecast extends React.Component {
 		this.props.actions.loadCurrentWeather(this.props.locationId, 'en');
 	}
 
+
+
 	render()
 	{
-		let showLoader = true;
-		let content = "";
-		if ((this.props.weather != undefined) && (this.props.weather.daily != undefined) && (this.props.weather.daily.data.length > 0))
-		{
-			showLoader = false;
-			let tmp = [];
+    if (this.props.locationType == 'Country')
+    {
+      return null;
+    }
+    else {
 
-			for (let i = 1; i < 6; i++) {
-				tmp.push(this.props.weather.daily.data[i]);
-			}
+      let showLoader = true;
+      let content = "";
+      if ((this.props.weather != undefined) && (this.props.weather.daily != undefined) && (this.props.weather.daily.data.length > 0)) {
+        showLoader = false;
+        let tmp = [];
 
-			content = (
-				tmp.map(weather => {
-				let imgUrl = '/static/img/weather-icons/' + weather.icon +'-black.png';
+        for (let i = 1; i < 6; i++) {
+          tmp.push(this.props.weather.daily.data[i]);
+        }
 
-				return (
-					<tbody key={weather.time}>
-						<tr>
-							<td colSpan="2">
-								<Timestamp time={weather.time} format="date" includeDay/>
-							</td>
-							<td className="text-xs-center"><small>Min</small></td>
-							<td className="text-xs-center"><small>Max</small></td>
-						</tr>
-						<tr>
-							<td><img src={imgUrl} className="weatherIconSml" /></td>
-							<td>{weather.summary}</td>
-							<td className="text-xs-center">{weather.temperatureMin}ºC</td>
-							<td className="text-xs-center">{weather.temperatureMax}ºC</td>
-						</tr>
-					</tbody>
-				);
-				})
-			);
-		}
+        content = (
+          tmp.map(weather => {
+            let imgUrl = '/static/img/weather-icons/' + weather.icon + '-black.png';
 
-			return (
-				<div className="sidebar-widget weather">
-					<h4>5 Day Forecast</h4>
-					<table className={content != '' ? "table weatherTbl" : "table weatherTbl hide"}>
-						{content}
-					</table>
-					<Loader showLoader={showLoader} />
-					<p className={content != '' ? "text-xs-right" : "text-xs-right hide"}><small>Powered by DarkSky</small></p>
-				</div>
-			);
+            return (
+              <tbody key={weather.time}>
+              <tr>
+                <td colSpan="2">
+                  <Timestamp time={weather.time} format="date" includeDay/>
+                </td>
+                <td className="text-center">
+                  <small>Min</small>
+                </td>
+                <td className="text-center">
+                  <small>Max</small>
+                </td>
+              </tr>
+              <tr>
+                <td><img src={imgUrl} className="weatherIconSml"/></td>
+                <td>{weather.summary}</td>
+                <td className="text-center">{weather.temperatureMin}ºC</td>
+                <td className="text-center">{weather.temperatureMax}ºC</td>
+              </tr>
+              </tbody>
+            );
+          })
+        );
+      }
+
+      return (
+        <div className="sidebar-widget weather">
+          <h4>5 Day Forecast</h4>
+          <table className={content != '' ? "table weatherTbl" : "table weatherTbl hide"}>
+            {content}
+          </table>
+          <Loader showLoader={showLoader}/>
+          <p className={content != '' ? "text-right" : "text-right hide"}>
+            <small>Powered by DarkSky</small>
+          </p>
+        </div>
+      );
+    }
 
 	}
 }
 
 Forecast.defaultProps = {
-  weather: {}
+  weather: {},
+  locationType: ''
 };
 
 Forecast.propTypes = {
 	locationId: PropTypes.number.isRequired,
+  locationType: PropTypes.string,
 	weather: PropTypes.object.isRequired,
 	actions: PropTypes.object.isRequired
 };

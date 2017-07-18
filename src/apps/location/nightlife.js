@@ -4,21 +4,25 @@ import {bindActionCreators} from 'redux';
 import * as locationActions from '../../actions/location/locationActions';
 import * as nightlifeActions from '../../actions/location/travelContent/nightlifeActions';
 import FacebookSignup from '../../components/customer/authentication/facebookSignup';
+
 import TriperooLoader from '../../components/common/triperooLoader';
 import Toastr from 'toastr';
 
 import SubPageHeader from '../../components/locations/subPageHeader';
 import NightlifeCategories from '../../components/locations/common/categorySideBar';
 import Nightlife from '../../components/locations/locationListWrapper';
+import PageTitle from '../../components/locations/pageTitle';
+import GoogleMaps from '../../components/locations/common/googleMap';
 
 let titleCase = require('title-case');
 
 class NightlifeContent extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.changeNightlifeVenue = this.changeNightlifeVenue.bind(this);
+    this.changeNightlife = this.changeNightlife.bind(this);
     this.changePage = this.changePage.bind(this);
-    this.state = { isLoadingLocation: false, isLoadingNightlifeList: false, nightlifeType: '', nightlifeFriendlyName: '', pageSize: 9, pageNumber: 0, activePage: 1 };
+    this.onSearchNightlife = this.onSearchNightlife.bind(this);
+    this.state = { nightlife: [], searchValue: '', isLoadingLocation: false, isLoadingNightlifeList: false, nightlifeType: '', nightlifeFriendlyName: '', pageSize: 9, pageNumber: 0, activePage: 1 };
   }
 
   componentWillMount() {
@@ -29,59 +33,76 @@ class NightlifeContent extends React.Component {
 
   loadLocation() {
     this.props.locationActions.loadLocationById(this.props.locationId)
-      .then(() => this.loadNightlifVenues(this.props.locationId, this.state.nightlifeType, this.state.pageSize, this.state.pageNumber))
+      .then(() => this.loadNightlife(this.props.locationId, this.state.nightlifeType, this.state.pageSize, this.state.pageNumber))
       .catch(error => {
         Toastr.error(error);
         this.setState({isLoadingLocation: false});
       });
   }
 
-  changeNightlifeVenue(value, friendlyName) {
+  changeNightlife(value, friendlyName) {
     this.setState({ nightlifeType: value, nightlifeFriendlyName: friendlyName });
-    this.loadNightlifVenues(this.props.locationId, value, this.state.pageSize, this.state.pageNumber - 1);
+    this.loadNightlife(this.props.locationId, value, this.state.pageSize, this.state.pageNumber);
   }
 
   changePage(value){
-    this.loadNightlifVenues(this.props.locationId, this.state.nightlifeType, this.state.pageSize, value);
+    this.loadNightlife(this.props.locationId, this.state.nightlifeType, this.state.pageSize, value - 1);
   }
 
-  loadNightlifVenues(locationId, nightlifeType, pageSize, pageNumber) {
+  loadNightlife(locationId, nightlifeType, pageSize, pageNumber) {
     this.setState({isLoadingLocation: false, isLoadingNightlifeList: true });
     this.props.nightlifeActions.loadNightlifeByParentLocationId(locationId, nightlifeType, pageSize, pageNumber)
-      .then(() => this.setState({isLoadingNightlifeList: false}))
+      .then(() => this.setState({isLoadingNightlifeList: false, nightlife: this.props.nightlife}))
       .catch(error => {
         Toastr.error(error);
         this.setState({isLoadingNightlifeList: false});
       });
   }
 
+  onSearchNightlife(searchValue) {
+    this.setState({searchValue: searchValue});
+    this.loadNightlife(this.props.locationId, this.state.nightlifeType, searchValue, this.state.pageSize, this.state.pageNumber);
+  }
+
   render(){
-    document.title = this.state.nightlifeType == '' ? titleCase(this.props.location.regionName) + ' Nightlife' : titleCase(this.state.nightlifeFriendlyName) + ' in ' + titleCase(this.props.location.regionName);
+    document.title = this.state.nightlifeType == '' ? titleCase(this.props.location.regionName) + ' Restaurants' : titleCase(this.state.restaurantFriendlyName) + ' in ' + titleCase(this.props.location.regionName);
 
     if (! this.state.isLoadingLocation)
     {
+      console.log(this.state.nightlife);
+
+      let title = 'Places to go out in ' + titleCase(this.props.location.regionName);
       return (
         <div>
-          <SubPageHeader location={this.props.location} contentType="nightlife" />
+          <SubPageHeader location={this.props.location} contentType="nightlife" title={title} />
           <div className="gap gap-small"></div>
           <div className="container">
             <div className="row row-wrap">
               <div className="container">
                 <div className="row">
-                  <div className="col-md-3">
-                    <NightlifeCategories changeCategory={this.changeNightlifeVenue} contentType="nightlife"  />
-                  </div>
-                  <div className="col-md-9">
-                    <div className={this.state.isLoadingNightlifeList ? "hide" : "nav-drop booking-sort"}>
-                      {this.props.nightlifeCount} Results {this.state.nightlifeType != '' ? ' - filtered by ' + titleCase(this.state.nightlifeFriendlyName) : ''}
+                  <div className="col-md-8">
+                    <PageTitle defaultTitle="Top Places To Go Out" locationName={this.props.location.regionName} name={this.state.nightlifeFriendlyName} type={this.state.nightlifeType} searchValue={this.state.searchValue} onSearch={this.onSearchNightlife} />
+                    <div className="gap gap-small"></div>
+                    <div className="col-md-12">
+                      <div className="row">
+                        <Nightlife locationId={this.props.locationId} locations={this.props.nightlife} locationCount={this.props.nightlifeCount} changePage={this.changePage} isFetching={this.state.isLoadingNightlifeList}/>
+                      </div>
                     </div>
-                    <Nightlife locationId={this.props.locationId} locations={this.props.nightlife} locationCount={this.props.nightlifeCount} changePage={this.changePage} isFetching={this.state.isLoadingNightlifeList}/>
+                  </div>
+                  <div className="col-md-4">
+                    <NightlifeCategories changeCategory={this.changeNightlife} contentType="nightlife"   />
+                    <div className="gap gap-small"></div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <FacebookSignup />
+
+          <div className="gap gap-small"></div>
+          <div className="row greyBg detailSubHeader">
+            <GoogleMaps latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0} longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0} text={this.props.location.regionName} zoom={13} markerArray={this.state.nightlife} isLoading={this.state.isLoadingNightlifeList} locationType={this.props.location.subClass} />
+          </div>
+          <FacebookSignup showLines={false}/>
         </div>
       );
     }

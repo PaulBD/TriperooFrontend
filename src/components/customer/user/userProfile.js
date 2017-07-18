@@ -23,9 +23,15 @@ class UserProfileNavigation extends React.Component {
   }
 
   render() {
-    let style = {
-      backgroundImage: 'url(' + this.props.user.profile.backgroundImageUrl + ')'
-    };
+    let style = {};
+
+    if (this.props.user.profile != undefined) {
+      if (this.props.user.profile.backgroundImageUrl != undefined) {
+        style = {
+          backgroundImage: 'url(' + this.props.user.profile.backgroundImageUrl + ')'
+        };
+      }
+    }
 
     if (this.props.user && this.props.user.profile) {
 
@@ -38,7 +44,7 @@ class UserProfileNavigation extends React.Component {
           <div className="twPc-div">
             <a className="twPc-bg twPc-block" style={style}></a>
             <div>
-              <FollowButton isActiveUer={this.props.isActiveUser} customerReference={this.props.user.customerReference.replace('customer:', '')} followedBy={this.props.user.followedBy} updateStats={this.updateStats}/>
+              <FollowButton isActiveUser={this.props.isActiveUser} customerReference={this.props.user.customerReference.replace('customer:', '')} followedBy={this.props.user.followedBy} updateStats={this.updateStats}/>
               <a href={this.props.user.profile.profileUrl} className="twPc-avatarLink">
                 <img src={this.props.user.profile.imageUrl ? this.props.user.profile.imageUrl : '/static/img/userProfileImg.png'} className="twPc-avatarImg"/>
               </a>
@@ -80,18 +86,20 @@ class UserProfileNavigation extends React.Component {
             </div>
           </div>
           <div className={this.props.isActiveUser ? "row" : "hide"}>
-            <div className="col-md-6">
+            <div className="col-md-6 col-12">
+                <div className="gap-small"></div>
               <TripButton name="sidePanel" locationId={0} locationName="" locationNameLong="" locationType=""  />
             </div>
-            <div className="col-md-6">
-              <QuestionButton name="sidePanel" locationId={0} locationName="" locationNameLong="" locationType="" />
+            <div className="col-md-6 col-12">
+                <div className="gap-small"></div>
+              <QuestionButton name="sidePanel" locationId={0} locationName="" locationNameLong="" locationType="" pageSize={3} pageNumber={0} />
             </div>
-          </div>
-          <div className={this.props.isActiveUser ? "row" : "hide"}>
-            <div className="col-md-12">
+            <div className="col-md-12 col-12">
+                <div className="gap-small"></div>
               <ReviewButton name="sidePanel" locationId={0} locationName="" locationNameLong="" locationType="" />
             </div>
           </div>
+          <div className="gap-small"></div>
         </div>
       );
     }

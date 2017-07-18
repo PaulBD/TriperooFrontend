@@ -3,13 +3,15 @@ import GoogleMaps from '../common/googleMap';
 
 const LocationForm = ({locationName, address, description, websiteUrl, telephone, facebookUsername, twitter, instagram, tags, latitude, longitude, isUpdating, onSubmit, onChangeAddress, onChangeContact, onChangeLocation, onChangeTags, onChangeDescription, errors}) => {
   return (
-    <div>
+    <div className="col-md-12">
+    <div className="row">
       <div className={errors && errors.length > 0 ? 'col-md-12' : 'col-md-12 hide'}>
         <div className="bg-danger form-danger">
           {errors}
         </div>
       </div>
-      <form className="modalForm"  onSubmit={onSubmit}>
+      <form className="modalForm col-md-12"  onSubmit={onSubmit}>
+      <div className="row">
         <div className="col-md-6">
           <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-edit input-icon labels input-icon-hightlight"></i>
             <label>Location Name</label>
@@ -67,22 +69,32 @@ const LocationForm = ({locationName, address, description, websiteUrl, telephone
             <input className="form-control" placeholder="Enter Instagram Username" type="text" name="instagram" onChange={onChangeContact} value={instagram} />
           </div>
         </div>
+        </div>
         <div className="col-md-12">
-          <GoogleMaps latitude={latitude} longitude={longitude} text={locationName} zoom={13} />
-
-          <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-edit input-icon labels input-icon-hightlight"></i>
-            <label>Latitude</label>
-            <input className="form-control" placeholder="Enter Latitude" type="text" name="latitude" onChange={onChangeLocation} value={latitude} />
-          </div>
-          <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-edit input-icon labels input-icon-hightlight"></i>
-            <label>Longitude</label>
-            <input className="form-control" placeholder="Enter Longitude" type="text" name="longitude" onChange={onChangeLocation} value={longitude} />
+          <div className="row">
+            <GoogleMaps latitude={latitude} longitude={longitude} text={locationName} zoom={13} />
           </div>
         </div>
-        <div className="col-md-12 text-xs-right">
-          <input className="btn btn-primary" type="submit" value="Update Details" Disabled={isUpdating}/>
+        <div className="gap gap-small"></div>
+          <div className="row">
+          <div className="col-md-6">
+            <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-edit input-icon labels input-icon-hightlight"></i>
+              <label>Latitude</label>
+              <input className="form-control" placeholder="Enter Latitude" type="text" name="latitude" onChange={onChangeLocation} value={latitude} />
+            </div>
+          </div>
+          <div className="col-md-6">
+            <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-edit input-icon labels input-icon-hightlight"></i>
+              <label>Longitude</label>
+              <input className="form-control" placeholder="Enter Longitude" type="text" name="longitude" onChange={onChangeLocation} value={longitude} />
+            </div>
+          </div>
         </div>
-      </form>
+          <div className="col-md-12 text-right">
+            <input className="btn btn-primary" type="submit" value="Update Details" Disabled={isUpdating}/>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

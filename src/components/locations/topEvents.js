@@ -7,38 +7,50 @@ import EventList from './event/eventList';
 class ByLocation extends React.Component {
   constructor(props, context) {
     super(props, context);
+    this.state = { isLoadingEvents: true };
   }
 
   componentWillMount() {
-    this.props.actions.loadEvents(this.props.locationId, 6, 0);
+    this.props.actions.loadEvents(this.props.locationId, 6, 0)
+      .then(() => {
+        this.setState({ isLoadingEvents: false });
+      })
+      .catch(error => {
+        this.setState({isLoadingEvents: false});
+      });
   }
 
   render(){
 
-    if (this.props.locationEvents != undefined)
+    if (!this.state.isLoadingEvents)
     {
-      let allEventsUrl = this.props.baseUrl + '/events';
+      if (this.props.locationEvents.length > 0)
+      {
 
-      return (
-        <div className="row row-nowrap greyBg events">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12">
-                <h3>Events This Week</h3>
+        let allEventsUrl = this.props.baseUrl + '/events';
+
+        return (
+          <div className="row row-nowrap greyBg events">
+            <div className="container">
+              <div className="row">
+                <div className="col-md-12">
+                  <h3>Events This Week</h3>
+                </div>
+                <div className="col-md-6">
+                <p>Discover the best events happening in <strong>{this.props.locationName}</strong> every week.</p>
+                </div>
+                <div className="col-md-6 text-right">
+                  <p><a href={allEventsUrl}>View all events</a></p>
+                </div>
+                <div className="col-md-12">
+                    <EventList locationEvents={this.props.locationEvents} isFeature={false} isFetching={this.props.isFetching} cssClass="col-md-2"/>
+                </div>
               </div>
-              <div className="col-md-6">
-              <p>Discover the best events happening in <strong>{this.props.locationName}</strong> every week.</p>
-              </div>
-              <div className="col-md-6 text-xs-right">
-                <p><a href={allEventsUrl}>View all events</a></p>
-              </div>
-              <div className="col-md-12">
-                  <EventList locationEvents={this.props.locationEvents} isFeature={false} isFetching={this.props.isFetching} cssClass="col-md-2"/>
-              </div>
-            </div> 
-          </div> 
-        </div>
-      );
+            </div>
+          </div>
+        );
+      }
+      else { return null; }
     }
     else { return null; }
   }

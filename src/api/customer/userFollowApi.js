@@ -48,6 +48,36 @@ class UserFollowApi {
         });
     });
   }
+
+  // ****************************************
+  // Get Following
+  // ****************************************
+  static getFollowing(customerReference) {
+    return new Promise((resolve, reject) => {
+      axios.get(baseUrl + '/customer/' + customerReference + '/following')
+        .then(function (response) {
+          resolve(Object.assign([], response.data));
+        })
+        .catch(function (error) {
+          reject(error);
+        });
+    });
+  }
+
+  // ****************************************
+  // Get Followed By
+  // ****************************************
+  static getFollowedBy(customerReference) {
+    return new Promise((resolve, reject) => {
+      axios.get(baseUrl + '/customer/' + customerReference + '/followedBy')
+        .then(function (response) {
+          resolve(Object.assign([], response.data));
+        })
+        .catch(function (error) {
+          reject(error);
+        });
+    });
+  }
 }
 
 

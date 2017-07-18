@@ -39,7 +39,6 @@ class QuestionPopup extends React.Component {
   }
 
   render(){
-
     return (
         <div className="modal-dialog modelReviewAuthentication" role="document">
           <div className="modal-content">
@@ -61,8 +60,8 @@ class QuestionPopup extends React.Component {
                         <textarea ref="question" className="form-control" rows="6"></textarea>
                     </div>
                   </div>
-                  <div className="col-md-12 text-xs-center">
-                      <input className="btn btn-primary" type="submit" value="Ask Question" />
+                  <div className="col-md-12 text-center">
+                      <input className="btn btn-primary" type="submit" value="Ask Question" disabled={this.state.isPostingQuestion} />
                   </div>
                 </form>
               </div>
@@ -75,7 +74,7 @@ class QuestionPopup extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="modal-footer text-xs-center">
+            <div className="modal-footer text-center">
               <a href="#" onClick={this.closeModal}>Close</a>
             </div>
           </div>
@@ -106,7 +105,6 @@ QuestionPopup.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-  console.log(state.question);
   return {
     isSending: state.question.isFetching,
     errorMessage: state.question.errorMessage,

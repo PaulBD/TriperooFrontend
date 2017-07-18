@@ -45,13 +45,12 @@ class LastMinuteDeal extends React.Component {
         }
 
         return (
-          <div>
             <div className="bg-holder">
               <div className="bg-mask"></div>
               <div className="bg-parallax" style={style}></div>
               <div className="bg-content">
                 <div className="container">
-                  <div className="gap gap-big text-xs-center text-white">
+                  <div className="gap gap-big text-center text-white">
                     <h5 className="last-minute-title">{hotelDeals[0].product_name}</h5>
                     <h3>{hotelDeals[0].description}</h3>
                     {price}
@@ -63,8 +62,6 @@ class LastMinuteDeal extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="gap"></div>
-          </div>
         );
       }
       else {
@@ -74,19 +71,18 @@ class LastMinuteDeal extends React.Component {
     else
     {
       return (
-        <div>
+        <div className="col-md-12">
           <div className="bg-holder">
             <div className="bg-mask"></div>
             <div className="bg-parallax"></div>
             <div className="bg-content">
               <div className="container">
-                <div className="gap gap-big text-xs-center text-white loadingHotelDeal">
+                <div className="gap gap-big text-center text-white loadingHotelDeal">
                   <Loader showLoader={true}/>
                 </div>
               </div>
             </div>
           </div>
-          <div className="gap"></div>
         </div>
       );
     }

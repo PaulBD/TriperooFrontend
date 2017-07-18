@@ -54,3 +54,56 @@ export function unfollowUser(userReference) {
   };
 }
 
+
+// ****************************************
+// Get Following
+// ****************************************
+export function getFollowingInitialize(customerReference) {
+  return {type: types.FOLLOWING_USER_REQUEST, isSending: true, hasPosted: false, customerReference};
+}
+
+export function getFollowingSuccess(users) {
+  return {type: types.FOLLOWING_USER_SUCCESS, isSending: false, hasPosted: true, users };
+}
+
+export function getFollowingFailure(message) {
+  return {type: types.FOLLOWING_USER_FAILURE, isSending: false, hasPosted: false, message};
+}
+
+export function getFollowing(customerReference) {
+  return dispatch => {
+    dispatch(getFollowingInitialize(customerReference));
+    return UserFollowApi.getFollowing(customerReference).then(users => {
+      dispatch(getFollowingSuccess(users));
+    }).catch(error => {
+      dispatch(getFollowingFailure(error.response.data));
+    });
+  };
+}
+
+
+// ****************************************
+// Get Followed By
+// ****************************************
+export function getFollowedByInitialize(customerReference) {
+  return {type: types.FOLLOWED_BY_USER_REQUEST, isSending: true, hasPosted: false, customerReference};
+}
+
+export function getFollowedBySuccess(users) {
+  return {type: types.FOLLOWED_BY_USER_SUCCESS, isSending: false, hasPosted: true, users };
+}
+
+export function getFollowedByFailure(message) {
+  return {type: types.FOLLOWED_BY_USER_FAILURE, isSending: false, hasPosted: false, message};
+}
+
+export function getFollowedBy(customerReference) {
+  return dispatch => {
+    dispatch(getFollowedByInitialize(customerReference));
+    return UserFollowApi.getFollowedBy(customerReference).then(users => {
+      dispatch(getFollowedBySuccess(users));
+    }).catch(error => {
+      dispatch(getFollowedByFailure(error.response.data));
+    });
+  };
+}

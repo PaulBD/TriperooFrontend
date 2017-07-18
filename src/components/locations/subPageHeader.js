@@ -1,6 +1,4 @@
 import React, {PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
 import Item from './navigation/navigationItem';
 
 let titleCase = require('title-case');
@@ -10,7 +8,7 @@ class SubHeader extends React.Component {
         super(props, context);
     }
 
-  render(){    
+  render(){
 
         let style = {
           backgroundImage: 'url(' + this.props.location.image + ')'
@@ -27,19 +25,19 @@ class SubHeader extends React.Component {
                                 <ol className="breadcrumb">
                                   <li className="breadcrumb-item"><a href="/">Home</a></li>
                                   <li className="breadcrumb-item"><a href={this.props.location.url}>{this.props.location.regionNameLong}</a></li>
-                                  <li className="breadcrumb-item active">{titleCase(this.props.contentType)}</li>
+                                  <li className="breadcrumb-item active">{titleCase(this.props.title)}</li>
                                 </ol>
-                                <h1>{titleCase(this.props.contentType)}</h1>
+                                <h1>{titleCase(this.props.title)}</h1>
                             </div>
                             <div className="col-md-4 col-xs-5">
-                              <ul className="list text-xs-right list-inline cityNav">
+                              <ul className="list text-right list-inline cityNav">
                                 <Item item="Hotels" parentUrl={this.props.location.url} showCount={false} showName={false} isActive={this.props.contentType == 'hotels' ? true : false} cssClass="fa fa-bed user-profile-statictics-icon" />
                                 <Item item="Attractions" parentUrl={this.props.location.url} showCount={false} showName={false} isActive={this.props.contentType == 'attractions' ? true : false} cssClass="fa fa-ticket user-profile-statictics-icon" />
                                 <Item item="Restaurants" parentUrl={this.props.location.url} showCount={false} showName={false} isActive={this.props.contentType == 'restaurants' ? true : false} cssClass="fa fa-cutlery user-profile-statictics-icon" />
                                 <Item item="Nightlife" parentUrl={this.props.location.url} showCount={false} showName={false} isActive={this.props.contentType == 'nightlife' ? true : false} cssClass="fa fa-glass user-profile-statictics-icon" />
                                 <Item item="Events" parentUrl={this.props.location.url} showCount={false} showName={false} isActive={this.props.contentType == 'events' ? true : false} cssClass="fa fa-calendar-o user-profile-statictics-icon" />
                                 <Item item="Reviews" parentUrl={this.props.location.url} showCount={false} showName={false} isActive={this.props.contentType == 'reviews' ? true : false} cssClass="fa fa-comment user-profile-statictics-icon" />
-                              </ul> 
+                              </ul>
                             </div>
                         </div>
                     </div>
@@ -55,6 +53,7 @@ SubHeader.defaultProps = {
 
 SubHeader.propTypes = {
     location: PropTypes.object.isRequired,
+    title: PropTypes.string.isRequired,
     contentType: PropTypes.string.isRequired
 };
 

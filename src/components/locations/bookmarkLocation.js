@@ -203,7 +203,7 @@ class BookmarkLocation extends React.Component {
                     </tbody>
                   </table>
                   <hr />
-                  <p className="text-xs-right"><a href="#" onClick={this.createNewTrip}>Create a new list</a></p>
+                  <p className="text-right"><a href="#" onClick={this.createNewTrip}>Create a new list</a></p>
                 </div>
               </div>
               <div className={this.state.wizardStep == "Create Trip" ? "row" : "hide"}>
@@ -227,7 +227,7 @@ class BookmarkLocation extends React.Component {
               </div>
             </div>
             </div>
-            <div className="modal-footer text-xs-center">
+            <div className="modal-footer text-center">
               <a href="#" onClick={this.closeModal}>Close</a>
             </div>
           </div>

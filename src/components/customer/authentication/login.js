@@ -124,19 +124,20 @@ class Login extends React.Component {
           <div className={!this.state.creatingUser && !this.state.isLoggingIn ? "modal-content" : "modal-content hide"}>
             <div className="modal-body">
               <div className="row">
-                <div className="gap gap-small"></div>
-                <div className="col-md-12 text-xs-center">
+                <div className="gap gap-mini"></div>
+                <div className="col-md-12 text-center">
                   <FacebookButton onCallback={this.submitFacebookForm}/>
                 </div>
-                <div className="gap gap-small"></div>
-                <div className="col-md-12 text-xs-center signupSeperator">
+                <div className="gap gap-mini"></div>
+                <div className="col-md-12 text-center signupSeperator">
                   <strong>or</strong>
                   <hr />
                 </div>
+              <div className="gap gap-mini"></div>
                 <LoginForm emailAddress={this.state.creds.emailAddress} password={this.state.creds.password} isLoggingIn={this.state.isLoggingIn} onSubmit={this.submitStandardForm} onChange={this.changeField} onChangeLogin={this.changeForgotPassword} errors={this.state.errors}/>
               </div>
             </div>
-            <div className="modal-footer text-xs-center">
+            <div className="modal-footer text-center">
               <a href="#" onClick={this.closeLoginModal}>Close</a>
             </div>
           </div>

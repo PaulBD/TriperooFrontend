@@ -14,7 +14,7 @@ class LocationList extends React.Component {
   }
 
   handleMissingImage(e) {
-    e.target.src = e.target.dataset['fallback'];
+    e.target.src = '/static/img/placeholder-large.png';
   }
 
   render() {
@@ -91,28 +91,39 @@ class LocationList extends React.Component {
 					case "historic":
 						locationType = 'Historic Venues';
 						break;
+          case "neighbor":
+            locationType = "";
+            break;
 
 				}
 
-				let fallbackImage = '/static/img/placeholder-large.png';
+				let fallbackImage = location.image;
 
         if (location.photos) {
           if (location.photos.photoList) {
             if (location.photos.photoList.length > 0) {
-              fallbackImage = location.photos.photoList[0].prefix + '2000x2000' + location.photos.photoList[0].suffix;
+              if (location.photos.photoList[0].width == 0)
+              {
+                fallbackImage = location.photos.photoList[0].prefix + location.photos.photoList[0].suffix;
+              }
+              else {
+                fallbackImage = location.photos.photoList[0].prefix + '2000x2000' + location.photos.photoList[0].suffix;
+              }
             }
           }
         }
 
 				return (
 					<div className={this.props.cssClass} key={location.regionID}>
-						<a className="hover-img" href={location.url}>
-							<img src={location.image ? location.image : '/static/img/placeholder.png'}  alt={location.regionName} data-fallback={fallbackImage} onError={this.handleMissingImage} />
+						<div className="hover-img">
+							<img src={fallbackImage}  alt={location.regionName} data-fallback={fallbackImage} onError={this.handleMissingImage} />
 							<div className="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">
+                <a  href={location.url}>
 								<div className="text-small">
-									<h5>{location.regionName.length > 33 ? location.regionName.substring(0,33) + '...' : location.regionName}</h5>
-									<p>{titleCase(locationType)}</p>
+									<h5>{location.regionName.length > 31 ? location.regionName.substring(0,31) + '...' : location.regionName}</h5>
+									<p className={locationType.length == 0 ? "hide" : ""}>{titleCase(locationType)}</p>
 								</div>
+                </a>
 							</div>
               <ul className={this.props.isAuthenticated ? "hover-icon-group-center-top" : "hide"}>
                 <li>
@@ -126,8 +137,7 @@ class LocationList extends React.Component {
                 </li>
               </ul>
 
-						</a>
-					{spacer}
+						</div>
 					</div>
 				);
 			})

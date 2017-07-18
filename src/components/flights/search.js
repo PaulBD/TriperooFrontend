@@ -7,8 +7,8 @@ export default class Search extends React.Component {
             <div className="tabbable">
                 <div className="tab-content">
                     <div className="tab-pane fade in active" id="tab-1">
-                        <h2 className="text-xs-center">Compare Cheap Flights</h2>
-                        <p className="text-xs-center">Find great flight deals from hundreds of airlines</p>
+                        <h2 className="text-center">Compare Cheap Flights</h2>
+                        <p className="text-center">Find great flight deals from hundreds of airlines</p>
 						<form>
                             <div className="tabbable">
                                 <ul className="nav nav-pills nav-sm nav-no-br mb10" id="flightChooseTab">
@@ -83,7 +83,7 @@ export default class Search extends React.Component {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="col-md-12 text-xs-center">
+                                            <div className="col-md-12 text-center">
                                                 <button className="btn btn-primary btn-lg" type="submit">
                                                     <i className="fa fa-search"></i>Search Flights
                                                 </button>

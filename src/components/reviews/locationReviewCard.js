@@ -23,7 +23,13 @@ class ReviewList extends React.Component {
         );
       }
       else {
-        return (<p>There are no reviews available for {this.props.locationName}. Be the first to post a review.</p>);
+        if (this.props.isUsingFilter)
+        {
+          return (<p>There are no reviews available for {this.props.locationName} and this filter. Change your filter.</p>);
+        }
+        else {
+          return (<p>There are no reviews available for {this.props.locationName}. Be the first to post a review.</p>);
+        }
       }
     }
     else {
@@ -39,7 +45,8 @@ ReviewList.defaultProps = {
 ReviewList.propTypes = {
   locationName: PropTypes.string,
   locationId: PropTypes.number,
-  reviews: PropTypes.array.isRequired
+  reviews: PropTypes.array.isRequired,
+  isUsingFilter: PropTypes.bool
 };
 
 

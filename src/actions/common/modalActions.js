@@ -11,6 +11,7 @@ export function closeModal() {
 		dispatch(closePhotoModal());
 		dispatch(closeEditLocationModal());
 		dispatch(closeLocationImageModal());
+		dispatch(closeEditReviewModal());
 	};
 }
 
@@ -52,20 +53,36 @@ export function openLocationImage(imageList, imagePosition) {
 // ****************************************
 // Open review
 // ****************************************
-export function openReviewModal(locationId, locationName, locationType) {
-	return {type: types.OPEN_REVIEW_MODEL, locationId: locationId, locationName: locationName, locationType: locationType, name: 'ReviewModal' };
+export function openReviewModal(locationId, locationName, locationType, pageSize, pageNumber) {
+	return {type: types.OPEN_REVIEW_MODEL, locationId: locationId, locationName: locationName, locationType: locationType, name: 'ReviewModal', pageSize, pageNumber };
 }
 
 export function closeReviewModal() {
 	return {type: types.CLOSE_REVIEW_MODEL, name: 'ReviewModal'};
 }
 
-export function openReview(locationId, locationName, locationType) {
+export function openReview(locationId, locationName, locationType, pageSize, pageNumber) {
 	return dispatch => {
-		dispatch(openReviewModal(locationId, locationName, locationType));
+		dispatch(openReviewModal(locationId, locationName, locationType, pageSize, pageNumber));
 	};
 }
 
+// ****************************************
+// Edit review
+// ****************************************
+export function editReviewModal(reference, locationId, locationName, locationType, locationAddress, starRating, comment, tags) {
+  return {type: types.EDIT_REVIEW_MODEL, name: 'EditReviewModal', reference, locationId, locationName, locationType, locationAddress, starRating, comment, tags};
+}
+
+export function closeEditReviewModal() {
+  return {type: types.CLOSE_EDIT_REVIEW_MODEL, name: 'EditReviewModal'};
+}
+
+export function openEditReview(reference, locationId, locationName, locationType, locationAddress, starRating, comment, tags) {
+  return dispatch => {
+    dispatch(editReviewModal(reference, locationId, locationName, locationType, locationAddress, starRating, comment, tags));
+  };
+}
 
 // ****************************************
 // Open question
@@ -159,6 +176,7 @@ export function openBookmark(parentLocationId, parentLocationName, parentLocatio
 // Add Bookmark
 // ****************************************
 export function openPhotoModal(locationId, locationName, locationType) {
+  console.log(locationName);
 	return {type: types.OPEN_PHOTO_MODEL, locationId: locationId, locationName: locationName, locationType: locationType, name: 'PhotoModal' };
 }
 

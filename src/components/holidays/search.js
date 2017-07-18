@@ -7,8 +7,8 @@ export default class Search extends React.Component {
                 <div className="tabbable">
                     <div className="tab-content">
                         <div className="tab-pane fade in active" id="tab-1">
-                            <h2 className="text-xs-center">Compare & Save on Winter Sun</h2>
-                            <p className="text-xs-center">We compare holiday deals to help you save money</p>
+                            <h2 className="text-center">Compare & Save on Winter Sun</h2>
+                            <p className="text-center">We compare holiday deals to help you save money</p>
                             <p>&nbsp;</p>
                             <form>
                                 <div className="row">
@@ -143,7 +143,7 @@ export default class Search extends React.Component {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-md-12 text-xs-center">
+                                    <div className="col-md-12 text-center">
                                         <button className="btn btn-primary btn-lg" type="submit">
                                             <i className="fa fa-search"></i>Search Holidays
                                         </button>

@@ -26,10 +26,10 @@ class FacebookSignup extends React.Component {
     if (!this.props.isAuthenticated) {
       return (
         <div>
-          <hr />
+          <hr className={this.props.showLines ? '' : 'hide'} />
           <div className="gap"></div>
           <div className="row">
-              <div className="col-md-6 text-xs-right">
+              <div className="col-md-6 text-right">
                 <h5 className="signupText">Join Now to get started</h5>
               </div>
               <div className="col-md-6 text-xs-left">
@@ -37,7 +37,7 @@ class FacebookSignup extends React.Component {
               </div>
           </div>
           <div className="gap"></div>
-          <hr />
+          <hr className={this.props.showLines ? '' : 'hide'} />
         </div>
       );
     }
@@ -46,13 +46,13 @@ class FacebookSignup extends React.Component {
       {
         return (
           <div>
-            <hr />
+            <hr className={this.props.showLines ? '' : 'hide'} />
             <div className="gap"></div>
             <div className="row">
-              <div className="col-md-12 text-xs-center">
+              <div className="col-md-12 text-center">
                 <h5 className="signupText">Creating Triperoo User...</h5>
               </div>
-            <hr />
+            <hr className={this.props.showLines ? '' : 'hide'}/>
           </div>
           </div>
         );
@@ -66,14 +66,16 @@ class FacebookSignup extends React.Component {
 
 FacebookSignup.defaultProps = {
   isAuthenticated: false,
-  isFetching: false
+  isFetching: false,
+  showLines: true
 };
 
 FacebookSignup.propTypes = {
   actions: PropTypes.object.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  errorMessage: PropTypes.string
+  errorMessage: PropTypes.string,
+  showLines: PropTypes.bool
 };
 
 function mapStateToProps(state, ownProps) {

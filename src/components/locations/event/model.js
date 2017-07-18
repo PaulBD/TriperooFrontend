@@ -19,7 +19,7 @@ class EventModal extends React.Component {
             <div className="card-block">
               <div className="col-md-4">
                 <img className="card-img-top mb-2" src={this.props.image} onError={this.handleMissingImage}/>
-                <p className="card-text text-xs-center">{this.props.ticketLink ? <a href={this.props.ticketLink} className="btn btn-primary" target="_blank">Buy Tickets</a> : ''} </p>
+                <p className="card-text text-center">{this.props.ticketLink ? <a href={this.props.ticketLink} className="btn btn-primary" target="_blank">Buy Tickets</a> : ''} </p>
               </div>
               <div className="col-md-8">
                 <p className="card-text mb-0"><i className="fa fa-clock-o"></i> {this.props.startTime}</p>
@@ -28,7 +28,7 @@ class EventModal extends React.Component {
                 <p className="card-text"><strong>Description</strong><br />{this.props.eventDescription ? this.props.eventDescription.length > 520 ? this.props.eventDescription.substring(0, 520) : this.props.eventDescription : 'No description found.'}</p>
               </div>
             </div>
-            <div className="card-block text-xs-center">
+            <div className="card-block text-center">
               <a href="#" data-dismiss="modal">Close</a>
             </div>
           </div>

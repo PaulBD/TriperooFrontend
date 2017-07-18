@@ -34,7 +34,7 @@ class SearchResults extends React.Component {
                         <div className="col-md-5">
                           <FlightCard carrierIds={quote.inboundLeg.carrierIds} carrierList={this.props.flights.carriers} isDirect={quote.inboundLeg.direct}/>
                         </div>                   
-                        <div className="col-md-2 text-xs-center">
+                        <div className="col-md-2 text-center">
                           <small>From</small><br />
                           <h5 className="mb-1"><strong>{this.props.flights.currencies[0].symbol}{quote.minPrice}</strong></h5>
                           <a href="#" target="_blank" className="btn btn-primary btnSearch">Select ></a>

@@ -5,9 +5,9 @@ class AttractionsApi {
   // ****************************************
   // Return attractions using parent id
   // ****************************************
-  static getAttractionsByParentLocationId(locationId, categoryName, pageSize, pageNumber) {
+  static getAttractionsByParentLocationId(locationId, categoryName, attractionName, pageSize, pageNumber) {
     return new Promise((resolve, reject) => {
-      axios.get(baseUrl + '/location/' + locationId + '/attractions?categoryName=' + categoryName + '&pageSize=' + pageSize + '&pageNumber=' + pageNumber)
+      axios.get(baseUrl + '/location/' + locationId + '/attractions?categoryName=' + categoryName + '&name=' + attractionName + '&pageSize=' + pageSize + '&pageNumber=' + pageNumber)
         .then(function (response) {
           resolve(Object.assign({}, response.data));
         })

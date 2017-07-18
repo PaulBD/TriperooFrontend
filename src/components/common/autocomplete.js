@@ -63,7 +63,8 @@ class AutoComplete extends React.Component {
     }
 
     return (
-      <div>
+<div className="input-group">
+      <i className="fa fa-search input-icon homeSearchIcon"></i>
         <input className={this.props.cssClass} placeholder={this.props.placeholder} type="text" onChange={this.onSearchValue} autoComplete="off" value={this.state.searchValue ? this.state.searchValue : this.props.searchValue} />
         <div style={style}>
           <ul className="ui-autocomplete">

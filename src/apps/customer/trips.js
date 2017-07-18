@@ -42,11 +42,17 @@ class CustomerTrips extends React.Component {
               <UserProfile user={this.props.user} isActiveUser={this.props.isActiveUser}/>
             </div>
             <div className="col-md-8">
-              <h4>Your Trips</h4>
+              <h4>Your Trips 1</h4>
               <hr/>
-                  {
-                    this.props.user.trips != null && this.props.user.trips.length > 0 ? this.props.user.trips.map(function(trip, i) { return (<TripItem trip={trip} key={trip.id} parentUrl={profileUrl} cssClass="col-md-4" position={i} />);}) : <p>This user has never been on any trips</p>
-                  }
+              <div className="row">
+                <div className="col-md-12">
+                  <div className="card-columns">
+                    {
+                      this.props.user.trips != null && this.props.user.trips.length > 0 ? this.props.user.trips.map(function(trip, i) { return (<TripItem trip={trip} key={trip.id} parentUrl={profileUrl} position={i} />);}) : <p>This user has never been on any trips</p>
+                    }
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div className="gap gap-small"></div>

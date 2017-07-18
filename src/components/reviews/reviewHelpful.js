@@ -25,13 +25,13 @@ class ReviewHelpful extends React.Component {
     if (!this.state.hasClicked)
     {
       return (
-        <p className="booking-item-review-rate">Was this review helpful?
+        <span className="booking-item-review-rate">Was this review helpful?
             <a className="fa fa-thumbs-o-up box-icon-inline round" href="#" onClick={this.likeReview}></a><b className="text-color"> {this.state.likeCount}</b>
-        </p>
+        </span>
       );
     }
     else {
-      return (<p className="booking-item-review-rate">Thanks!</p>);
+      return (<span className="booking-item-review-rate">Thanks!</span>);
     }
   }
 }

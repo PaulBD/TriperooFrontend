@@ -5,6 +5,8 @@ import TagList from '../common/tagList';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as userReviewActions from '../../actions/customer/userReviewActions';
+import * as locationReviewsActions from '../../actions/location/locationReviewsActions';
+let _ = require('lodash');
 
 class ReviewPopup extends React.Component {
   constructor(props, context) {
@@ -17,16 +19,35 @@ class ReviewPopup extends React.Component {
     this.closeModal = this.closeModal.bind(this);
     this.handleCommentChange = this.handleCommentChange.bind(this);
 
-    this.state = { wizardStep: 1, modalIsOpen: false, searchName: '', searchId: 0, searchType: '', errors:'', comment: '', tags:["Adventure","Arty","Backpackers","Budget","Business","Family","Foodies","Eco","History","Local Culture","Luxury","Nightlife","Outdoor","Solo","Spiritual","Students","Trendsters","Vegetarian","Wellness" ], selectedTags:[], rating: 0};
-
+    this.state = { reviewReference: '', isPostingReview: false, isLoadingReviews: false, wizardStep: 1, modalIsOpen: false, searchName: '', searchId: 0, searchType: '', errors:'', comment: '', tags:["Adventure","Arty","Backpackers","Budget","Business","Family","Foodies","Eco","History","Local Culture","Luxury","Nightlife","Outdoor","Solo","Spiritual","Students","Trendsters","Vegetarian","Wellness" ], selectedTags:[], rating: 0};
   }
 
   componentWillMount() {
-    if (this.props.locationId > 0) {
-      this.setState({ searchName: this.props.locationName, searchId: this.props.locationId, searfchType: this.props.locationType, wizardStep: 2 });
+    if (this.props.isEdit)
+    {
+      this.setState({
+        searchName: this.props.locationName,
+        searchId: this.props.locationId,
+        searchType: this.props.locationType,
+        selectedTags: this.props.tags,
+        rating: this.props.starRating,
+        comment: this.props.comment,
+        reviewReference: this.props.reference,
+        wizardStep: 2
+      });
     }
     else {
-      this.setState({ wizardStep: 1 });
+      if (this.props.locationId > 0) {
+        this.setState({
+          searchName: this.props.locationName,
+          searchId: this.props.locationId,
+          searchType: this.props.locationType,
+          wizardStep: 2
+        });
+      }
+      else {
+        this.setState({wizardStep: 1});
+      }
     }
   }
 
@@ -59,9 +80,45 @@ class ReviewPopup extends React.Component {
 
   submitReview(e) {
     e.preventDefault();
+    this.setState({isPostingReview: true});
 
-    const review = { "inventoryReference": this.state.searchId, "ReviewType": this.state.searchType, "StarRating": this.state.rating, "comment": this.refs.comment.value.trim(), "tags": this.state.selectedTags };
-    this.props.userReviewActions.postReview(review, this);
+    if (this.props.isEdit)
+    {
+      const editReview = {
+        "reviewReference": this.state.reviewReference,
+        "inventoryReference": this.state.searchId,
+        "ReviewType": this.state.searchType,
+        "StarRating": this.state.rating,
+        "comment": this.refs.comment.value.trim(),
+        "tags": this.state.selectedTags
+      };
+
+      console.log(editReview);
+
+      this.props.userReviewActions.updateReview(_.cloneDeep(editReview))
+        .then(() => {
+          this.setState({isPostingReview: false, isLoadingReviews: false, wizardStep: 3});
+        })
+        .catch(error => {
+          this.setState({isPostingReview: false});
+        });
+    }
+    else {
+      const newReview = { "inventoryReference": this.state.searchId, "ReviewType": this.state.searchType, "StarRating": this.state.rating, "comment": this.refs.comment.value.trim(), "tags": this.state.selectedTags };
+
+      this.props.userReviewActions.postReview(newReview)
+        .then(() => {
+          this.setState({isPostingReview: false, isLoadingReviews: true});
+          this.props.locationReviewsActions.loadReviewsByLocationId(this.props.locationId, this.props.pageSize, this.props.pageNumber)
+            .then(() => this.setState({isLoadingReviews: false, wizardStep: 3}))
+            .catch(error => {
+              this.setState({isLoadingReviews: false});
+            });
+        })
+        .catch(error => {
+          this.setState({isPostingReview: false});
+        });
+    }
   }
 
   render(){
@@ -81,7 +138,7 @@ class ReviewPopup extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="modal-footer text-xs-center">
+            <div className="modal-footer text-center">
               <a href="#" onClick={this.closeModal}>Close</a>
             </div>
           </div>
@@ -115,13 +172,13 @@ class ReviewPopup extends React.Component {
                     <TagList tags={this.state.tags} selectedTags={this.state.selectedTags} maxTags={30} readOnly={false} returnTags={this.addTags} />
                   </div>
                 </div>
-                <div className="col-md-12 text-xs-center">
-                  <input className="btn btn-primary" type="submit" value="Post Review" />
+                <div className="col-md-12 text-center">
+                  <input className="btn btn-primary" type="submit" value={this.props.isEdit ? "Update Review" : "Post Review"} disabled={this.state.isPostingReview} />
                 </div>
                 <div className="gap gap-small"></div>
               </form>
             </div>
-            <div className="modal-footer text-xs-center">
+            <div className="modal-footer text-center">
               <a href="#" onClick={this.undoReviewSelection} className="hide">Review a different location</a><a href="#" onClick={this.closeModal}>Close</a>
             </div>
           </div>
@@ -129,7 +186,8 @@ class ReviewPopup extends React.Component {
             <div className="row">
               <div className="col-md-12">
                 <h3>Thank you for the Review</h3>
-                <p>Posting a review about <strong>{this.state.searchName}</strong> will help other Triperoo'ers in the future.Thank you!</p>
+                <p className={this.props.isEdit ? "hide" : ""}>Posting a review about <strong>{this.state.searchName}</strong> will help other Triperoo'ers in the future. Thank you!</p>
+                <p className={!this.props.isEdit ? "hide" : ""}>Thanks for updating your review about <strong>{this.state.searchName}</strong>. This will help other Triperoo'ers in the future. Thank you!</p>
                 <p>Please click <a href="#" onClick={this.closeModal}>here</a> to close the window.</p>
               </div>
             </div>
@@ -148,13 +206,22 @@ ReviewPopup.defaultProps = {
 };
 
 ReviewPopup.propTypes = {
+  pageSize: PropTypes.number,
+  pageNumber: PropTypes.number,
   locationId: PropTypes.number,
   locationName: PropTypes.string,
   locationType: PropTypes.string,
   userReviewActions: PropTypes.object.isRequired,
+  locationReviewsActions: PropTypes.object.isRequired,
   isSending: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string,
   hasPosted: PropTypes.bool,
+  isEdit: PropTypes.bool,
+  reference: PropTypes.string,
+  locationAddress: PropTypes.string,
+  starRating: PropTypes.number,
+  comment: PropTypes.string,
+  tags: PropTypes.array,
   closeModal: PropTypes.func
 };
 
@@ -168,7 +235,8 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    userReviewActions: bindActionCreators(userReviewActions, dispatch)
+    userReviewActions: bindActionCreators(userReviewActions, dispatch),
+    locationReviewsActions: bindActionCreators(locationReviewsActions, dispatch)
   };
 }
 

@@ -19,7 +19,7 @@ const ContactPage = () => {
 
     return (
       <div>
-        <div className="bg-holder full text-xs-center text-white infoPageWrapper">
+        <div className="bg-holder full text-center text-white infoPageWrapper">
             <div className="bg-mask"></div>
             <div style={style} className="bg-img infoImg" ></div>
             <div className="bg-front full-center">
@@ -46,22 +46,18 @@ const ContactPage = () => {
               <p><SocialButtons /></p>
             </div>
             <div className="col-md-5">
-              <Destinations destinationCount={9}  />
+              <Destinations locationCount={9}  />
             </div>
           </div>
         </div>
         <div className="container">
-            <hr />
-            <div className="gap"></div>
-            <BulletPoints />
-            <div className="gap gap-small"></div>
-            <hr />
-            <div className="gap"></div>
-            <FacebookSignup />
-            <div className="gap"></div>
-            <hr />
-            <TrustedPartners />
-            <div className="gap"></div>
+          <hr />
+          <div className="gap gap-mini"></div>
+          <BulletPoints />
+          <div className="gap gap-mini"></div>
+          <FacebookSignup />
+          <TrustedPartners />
+          <div className="gap gap-mini"></div>
         </div>
       </div>
     );

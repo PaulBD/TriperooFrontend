@@ -16,10 +16,10 @@ export function attractionsContentError(errorMessage) {
 	return {type: types.ATTRACTION_CONTENT_FAILURE, isFetching: false,  errorMessage};
 }
 
-export function loadAttractionsByParentLocationId(locationId, categoryName, pageSize, pageNumber) {
+export function loadAttractionsByParentLocationId(locationId, categoryName, attractionName, pageSize, pageNumber) {
 	return dispatch => {
 		dispatch(requestAttractionsContent());
-		return AttractionsApi.getAttractionsByParentLocationId(locationId, categoryName, pageSize, pageNumber).then(attractionsList => {
+		return AttractionsApi.getAttractionsByParentLocationId(locationId, categoryName, attractionName, pageSize, pageNumber).then(attractionsList => {
 			dispatch(attractionsContentSuccess(attractionsList));
 		}).catch(error => {
 			dispatch(attractionsContentError(error.response.data));

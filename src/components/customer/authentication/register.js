@@ -102,20 +102,21 @@ class Register extends React.Component {
         <div className={this.props.isFetching ? "modal-content hide" : "modal-content"}>
           <div className="modal-body">
             <div className="row">
-              <div className="gap gap-small"></div>
-              <div className="col-md-12 text-xs-center">
+              <div className="gap gap-mini"></div>
+              <div className="col-md-12 text-center">
                 <FacebookButton onCallback={this.submitFacebookForm}/>
               </div>
-              <div className="gap gap-small"></div>
-              <div className="col-md-12  text-xs-center signupSeperator">
+              <div className="gap gap-mini"></div>
+              <div className="col-md-12  text-center signupSeperator">
                 <strong>or</strong>
                 <hr />
               </div>
+              <div className="gap gap-mini"></div>
               <SignupForm name={this.state.creds.name} emailAddress={this.state.creds.emailAddress} password={this.state.creds.password} cityId={this.state.creds.cityId} city={this.state.creds.city} isSigningUp={this.state.creatingUser} onSubmit={this.submitStandardForm} onChange={this.changeField} onChangeAutoComplete={this.onChangeAutoComplete} errors={this.state.errors} />
             </div>
           </div>
-          <div className="modal-footer text-xs-center">
-            <a href="#"  onClick={this.closeSignupModal}>Close</a>
+          <div className="modal-footer text-center">
+            <a href="#" onClick={this.closeSignupModal}>Close</a>
           </div>
         </div>
         <div className={this.state.isFetching ? "modal-content" : "modal-content hide"}>

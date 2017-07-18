@@ -50,6 +50,9 @@ import CustomerTripDetail from './apps/customer/tripDetail';
 import CustomerFollowers from './apps/customer/followers';
 import CustomerFollowing from './apps/customer/following';
 
+// Articles
+import LondonArticle from './apps/location/travelguides/united-kingdom/london';
+
 import Hotels from './apps/hotel';
 import HotelSearchResults from './apps/hotel/search-results';
 
@@ -104,6 +107,9 @@ export default (
     <Route path="/profile/(:guid)/(:customerName)/followers" component={CustomerFollowers}/>
     <Route path="/profile/(:guid)/(:customerName)/following" component={CustomerFollowing}/>
     <Route path="/profile/(:guid)/(:customerName)/trips/(:tripId)/(:tripName)" component={CustomerTripDetail}/>
+
+
+    <Route path="/(:placeId)/visit/(:placeName)/article/take-a-fabulous-vacation-in-london" component={LondonArticle}/>
 
     <Route path="*" component={NotFoundPage}/>
   </Route>

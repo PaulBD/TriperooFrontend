@@ -87,51 +87,55 @@ class LocationDetail extends React.Component {
       }
 
       let editUrl = this.props.location.url + '/edit';
-
+console.log(this.props.location);
       return (
         <div>
-          <LocationHeader location={this.props.location} hasLoaded={this.state.hasLoaded} />
+          <LocationHeader location={this.props.location} hasLoaded={this.state.hasLoaded} docType={this.props.location.subClass} />
           <div className="gap gap-small"></div>
           <div className="container">
             <div className="row row-wrap">
-              <div className="col-md-8">
+              <div className="col-md-8 col-12">
                 {address ? <p><i className="fa fa-map-marker"></i> {address}</p> : ''}
-                {this.props.location.contactDetails.formattedPhone ? <p><i className="fa fa-phone"></i> {this.props.location.contactDetails.formattedPhone} </p> : ''}
+                {this.props.location.contactDetails ? this.props.location.contactDetails.formattedPhone ? <p><i className="fa fa-phone"></i> {this.props.location.contactDetails.formattedPhone} </p> : '' : ''}
                 <p><i className="fa fa-pencil"></i> <a href={editUrl}>Edit Details</a></p>
                 <TagList tags={this.props.location.tags} maxTags={5} />
                 <div className="row">
-                <div className="col-md-4">
-                  <ReviewButton name="sidePanel" locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType={this.props.location.subClass} />
+                <div className="col-md-4 col-6">
+                  <ReviewButton name="sidePanel" locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType={this.props.location.subClass} pageSize={3} pageNumber={0} />
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-4 col-6">
                   <PhotoButton name="sidePanel" locationId={this.props.locationId} locationName={this.props.location.regionName} locationType="" />
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-4 col-12">
                   <BookmarkButton name="sidePanel" parentLocationId={this.props.location.parentRegionID} parentLocationName={this.props.location.parentRegionName} parentLocationNameLong={this.props.location.parentRegionNameLong} locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType={this.props.location.subClass} />
                 </div>
                 </div>
-                <Summary locationName={this.props.location.regionName} summary={this.props.location.summary ? this.props.location.summary.en : ''} />
+                <Summary location={this.props.location} showMap={false}/>
               </div>
-              <div className="col-md-4">
+              <div className="col-md-4 col-12">
                 <Photos photos={this.props.location.photos}/>
               </div>
             </div>
           </div>
           <div className="gap gap-small"></div>
           <div className="row greyBg detailSubHeader">
-            <GoogleMaps latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0} longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0} text={this.props.location.regionName} zoom={13} />
+            <GoogleMaps locationType={this.props.location.subClass} latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0} longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0} text={this.props.location.regionName} zoom={13} isLoading={this.state.isLoadingLocation} />
           </div>
           <div className="gap gap-small"></div>
           <div className="row">
             <div className="container">
+            <div className="col-md-12">
+          <div className="row">
                 <div className="col-md-8">
                   <ReviewList hasLoadedLocation={this.state.hasLoaded} locationId={this.props.locationId} locationName={this.props.location.regionName}  locationNameLong={this.props.location.regionNameLong}  locationType="" pageSize={3} pageNumber={0} showTitle={true} />
                 </div>
                 <div className="col-md-4">
-                  <QuestionButton locationId={this.props.locationId} locationName={this.props.location.regionNameLong} locationNameShort={this.props.location.regionName} locationType={this.props.location.regionType}/>
+                  <QuestionButton locationId={this.props.locationId} locationName={this.props.location.regionNameLong} locationNameShort={this.props.location.regionName} locationType={this.props.location.regionType} pageSize={3} pageNumber={0}/>
                   <RecentQuestions locationId={this.props.location.parentRegionID} locationName={this.state.location.parentRegionName} pageSize={3} pageNumber={0} locationUrl={this.state.location.url} showTitle={true} isSideComponent={true}/>
                 </div>
                 <hr />
+            </div>
+            </div>
             </div>
           </div>
           <div className="gap gap-small"></div>

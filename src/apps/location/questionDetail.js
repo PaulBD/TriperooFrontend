@@ -37,7 +37,7 @@ class QuestionDetail extends React.Component {
     let question = e.target.getAttribute('data-question');
 
     this.props.userQuestionActions.resetAnswer();
-    this.props.modalActions.openQuestionAnswer(ref, question, this.props.locationId, this.props.pageSize, this.props.pageNumber);
+    this.props.modalActions.openQuestionAnswer(ref, question, this.props.locationId, 3, 0);
   }
 
   handleMissingImage(e) {
@@ -54,7 +54,7 @@ class QuestionDetail extends React.Component {
           location: _.cloneDeep(this.props.location)
         });
 
-        this.props.userQuestionActions.getQuestion('7d472577-5023-47c6-9702-e633a8f3d334')
+        this.props.userQuestionActions.getQuestion(this.props.questionId)
           .then(() => {
             this.setState({ isLoadingQuestion: false });
           })
@@ -73,13 +73,12 @@ class QuestionDetail extends React.Component {
 
     if (! this.state.isLoadingLocation && !this.state.isLoadingQuestion)
     {
-      console.log(this.props.question);
       let question = this.props.question;
 
       document.title = question.customerName + ' is looking for advice...';
       return (
         <div>
-          <Header location={this.props.location} contentType="questions" />
+          <Header location={this.props.location} contentType="questions" title="questions" />
           <div className="container">
             <div className="row row-wrap">
               <div className="gap gap-small"></div>
@@ -91,7 +90,7 @@ class QuestionDetail extends React.Component {
                   </div>
                   <div className="col-md-8">
                     <p><i>"{question.question}"</i></p>
-                    <p className="questionActions">{this.props.isAuthenticated ? (<span><a href="#" onClick={this.answerQuestion} data-ref={question.questionReference} data-question={question.question}>Answer Question</a></span>) : ""} &bull; {question.answers.length} {question.answers.length == 1 ? 'Answer' : 'Answers'} {!this.props.isSideComponent ? <span>&bull; Added {question.friendlyDate}</span> : ''} &bull; <QuestionHelpful questionRef={question.questionReference} likeCount={question.likeCount} />
+                    <p className="questionActions">{this.props.isAuthenticated ? (<span><a href="#" onClick={this.answerQuestion} data-ref={question.questionReference} data-question={question.question}>Answer Question</a></span>) : ""} &bull; {question.answers.length} {question.answers.length == 1 ? 'Answer' : 'Answers'} <span>&bull; Added {question.friendlyDate}</span> &bull; <QuestionHelpful questionRef={question.questionReference} likeCount={question.likeCount} />
                     </p>
 
                     <div className="row">

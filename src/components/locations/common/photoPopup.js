@@ -37,7 +37,7 @@ class PhotoPopup extends React.Component {
                 }
               </Carousel>
               <div className="row">
-                <div className="col-md-12 text-xs-center">
+                <div className="col-md-12 text-center">
                   <hr />
                   <p><a href="#" onClick={this.closeModal}>Close</a></p>
                 </div>

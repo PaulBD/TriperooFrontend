@@ -45,7 +45,7 @@ class FeaturedHeader extends React.Component {
     if (!this.state.isLoading) {
 
       return (
-        <div className="bg-holder full text-xs-center text-white holidayPage">
+        <div className="bg-holder full text-center text-white holidayPage">
           <div className="bg-mask"></div>
           <div className="bg-img" style={style}></div>
           <div className={header.title ? "bg-front full-center" : "bg-front full-center hide"}>
@@ -55,7 +55,7 @@ class FeaturedHeader extends React.Component {
                 <small>{header.subTitle}</small>
                 {price}
               </div>
-              <a href={header.url} className="btn btn-white btn-ghost">
+              <a href={header.url} className={header.buttonText ? "btn btn-white btn-ghost" : "hide"}>
                 <i className="fa fa-angle-right"></i> {header.buttonText}</a>
             </div>
           </div>
@@ -63,7 +63,7 @@ class FeaturedHeader extends React.Component {
     }
     else {
       return (
-        <div className="bg-holder full text-xs-center text-white holidayPage">
+        <div className="bg-holder full text-center text-white holidayPage">
           <Loader showLoader={true}/>
         </div>);
     }

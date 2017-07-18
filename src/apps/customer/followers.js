@@ -3,7 +3,9 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as authenticationActions from '../../actions/customer/authenticationActions';
 import * as userActions from '../../actions/customer/userActions';
+import * as userFollowActions from '../../actions/customer/userFollowActions';
 import UserProfile from '../../components/customer/user/userProfile';
+import FollowerItem from '../../components/customer/user/followers';
 import TriperooLoader from '../../components/common/triperooLoader';
 import Toastr from 'toastr';
 
@@ -11,7 +13,7 @@ class Followers extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    this.state = { loading: true };
+    this.state = { loading: true, loadingFollowers: false };
   }
 
   componentWillMount() {
@@ -22,17 +24,24 @@ class Followers extends React.Component {
 
     this.props.userActions.getUser(this.props.currentUserId)
       .then(() => {
-        this.setState({loading: false});
+        this.setState({loading: false, loadingFollowers: true});
+        this.props.userFollowActions.getFollowedBy(this.props.currentUserId)
+          .then(() => {
+            this.setState({loadingFollowers: false});
+          })
+          .catch(error => {
+            Toastr.error(error);
+            this.setState({loadingFollowers: false});
+          });
       })
       .catch(error => {
         Toastr.error(error);
         this.setState({loading: false});
       });
-
   }
 
   render(){
-    if (!this.state.loading) {
+    if ((!this.state.loading) && (!this.state.loadingFollowers)) {
       return (
         <div className="container">
           <div className="gap gap-small"></div>
@@ -41,7 +50,14 @@ class Followers extends React.Component {
               <UserProfile user={this.props.user} isActiveUser={this.props.isActiveUser}/>
             </div>
             <div className="col-md-8">
-              <h3>People following you..</h3>
+              <h4>People your following..</h4>
+              <hr />
+              {
+                this.props.following.length > 0 ?
+                  this.props.following.map(function (user, i) {
+                    return (<FollowerItem key={i} user={user} />);
+                  }) : <p>You are currently not being followed by any other traveller.</p>
+              }
             </div>
           </div>
         </div>
@@ -56,9 +72,11 @@ class Followers extends React.Component {
 Followers.propTypes = {
   authActions: PropTypes.object.isRequired,
   userActions: PropTypes.object.isRequired,
+  userFollowActions: PropTypes.object.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   isActiveUser: PropTypes.bool.isRequired,
   user: PropTypes.object,
+  following: PropTypes.array,
   currentUserId: PropTypes.string
 };
 
@@ -69,14 +87,16 @@ function mapStateToProps(state, ownProps) {
     isAuthenticated: state.authentication.isAuthenticated,
     currentUserId: ownProps.params.guid,
     isActiveUser: user ? ownProps.params.guid == user.userId : false,
-    user: state.user.user ? state.user.user : null
+    user: state.user.user ? state.user.user : null,
+    following: state.userFollow.users ? state.userFollow.users : []
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     userActions: bindActionCreators(userActions, dispatch),
-    authActions: bindActionCreators(authenticationActions, dispatch)
+    authActions: bindActionCreators(authenticationActions, dispatch),
+    userFollowActions: bindActionCreators(userFollowActions, dispatch)
   };
 }
 

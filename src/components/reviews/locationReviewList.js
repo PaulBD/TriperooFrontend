@@ -6,14 +6,16 @@ import * as modalActions from '../../actions/common/modalActions';
 import ReviewList from './locationReviewCard';
 import Pagination from "react-js-pagination";
 import Toastr from 'toastr';
+import ReviewFilter from './filterReviews';
 import Loader from '../common/loadingDots';
 
 class Reviews extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { reviews: [], activePage: 1, isLoadingReviews: false};
+    this.state = { isUsingFilter: false, reviews: [], activePage: 1, isLoadingReviews: false};
     this.changePage = this.changePage.bind(this);
     this.writeReview = this.writeReview.bind(this);
+    this.filterReviews = this.filterReviews.bind(this);
   }
 
   componentWillMount() {
@@ -22,7 +24,7 @@ class Reviews extends React.Component {
 
   loadReviews() {
       if (this.props.locationType != 'all' && this.props.locationId > 0) {
-        this.setState({isLoadingReviews: true});
+        this.setState({isLoadingReviews: true, isUsingFilter: false});
         this.props.locationReviewsActions.loadReviewsByLocationId(this.props.locationId, this.props.pageSize, this.props.pageNumber)
           .then(() => this.setState({isLoadingReviews: false}))
           .catch(error => {
@@ -31,7 +33,7 @@ class Reviews extends React.Component {
           });
       }
       else {
-        this.setState({isLoadingReviews: true});
+        this.setState({isLoadingReviews: true, isUsingFilter: false});
         this.props.locationReviewsActions.loadReviewsByType(this.props.locationType, this.props.pageSize, this.props.pageNumber)
           .then(() => this.setState({isLoadingReviews: false}))
           .catch(error => {
@@ -49,9 +51,8 @@ class Reviews extends React.Component {
   changePage(value) {
     this.setState({ activePage: value });
 
-    if (this.props.locationType == 'all')
-    {
-      this.setState({isLoadingReviews: true});
+    if (this.props.locationType != 'all' && this.props.locationId > 0) {
+      this.setState({isLoadingReviews: true, isUsingFilter: false});
       this.props.locationReviewsActions.loadReviewsByLocationId(this.props.locationId, this.props.pageSize, value - 1)
         .then(() => this.setState({isLoadingReviews: false}))
         .catch(error => {
@@ -60,7 +61,7 @@ class Reviews extends React.Component {
         });
     }
     else {
-      this.setState({isLoadingReviews: true});
+      this.setState({isLoadingReviews: true, isUsingFilter: false});
       this.props.locationReviewsActions.loadReviewsByType(this.props.locationType, this.props.pageSize, value - 1)
         .then(() => this.setState({isLoadingReviews: false}))
         .catch(error => {
@@ -68,6 +69,11 @@ class Reviews extends React.Component {
           this.setState({isLoadingReviews: false});
         });
     }
+  }
+
+  filterReviews(selectedTags) {
+    this.setState({isUsingFilter: true});
+    this.props.locationReviewsActions.loadReviewsByLocationIdAndTags(this.props.locationId, selectedTags, this.props.pageSize, this.props.pageNumber);
   }
 
 
@@ -78,14 +84,20 @@ class Reviews extends React.Component {
     if (!this.state.isLoadingReviews) {
       return (
         <div className="row">
+          <div className={this.props.locationType != 'all' && this.props.locationId > 0 && this.props.reviews ? "col-md-12" : "hide"}>
+            <ReviewFilter filterReviews={this.filterReviews}/>
+          </div>
+          <div className="gap gap-small"></div>
           <div className="col-md-12">
-          <ReviewList reviews={this.props.reviews} locationId={this.props.locationId} locationName={this.props.locationName}/>
+          <ReviewList reviews={this.props.reviews} locationId={this.props.locationId} locationName={this.props.locationName} isUsingFilter={this.state.isUsingFilter} />
 
           <div className="gap gap-small"></div>
-          <div className="row text-xs-center">
-            <Pagination innerClass={this.props.reviewCount > 10 ? "pagination text-xs-center" : "hide"}
-                        activePage={this.state.activePage} itemsCountPerPage={10} totalItemsCount={this.props.reviewCount}
-                        pageRangeDisplayed={10} onChange={this.changePage}/>
+          <div className="row justify-content-center">
+            <nav aria-label="Review Pagination">
+              <Pagination innerClass={this.props.reviewCount > this.props.pageSize ? "pagination justify-content-center" : "hide"}
+                        activePage={this.state.activePage} itemsCountPerPage={this.props.pageSize} totalItemsCount={this.props.reviewCount}
+                        pageRangeDisplayed={this.props.pageSize} onChange={this.changePage}/>
+            </nav>
           </div>
         </div>
         </div>

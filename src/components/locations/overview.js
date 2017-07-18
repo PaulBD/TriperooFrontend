@@ -27,34 +27,47 @@ class LocationOverview extends React.Component {
       backgroundImage: 'url(' + image + ')'
     };
 
-    return (
-      <div className="sidebar-widget">
-        <div className="row">
-          <div className="col-md-12">
-          <div className="twPc-divLocationWrapper">
-            <a className="twPc-bg twPc-block" style={style}></a>
-            <div>
-              <div className="twPc-divLocation">
-                <div className="twPc-divName">
-                  <a href={this.props.location.url}>{this.props.location.regionNameLong}</a>
+    if (this.props.location.regionType == 'Country')
+    {
+      return null;
+    }
+    else {
+
+      return (
+        <div className="sidebar-widget">
+          <div className="row">
+            <div className="col-md-12">
+              <div className="twPc-divLocationWrapper">
+                <a className="twPc-bg twPc-block" style={style}></a>
+                <div>
+                  <div className="twPc-divLocation">
+                    <div className="twPc-divName">
+                      <a href={this.props.location.url}>{this.props.location.regionNameLong}</a>
+                    </div>
+                  </div>
+                  <div className="twPc-divStats">
+                    <ul className="twPc-Arrange">
+                      <li className="location"><a href={hotelUrl}><i
+                        className="fa fa-bed user-profile-statictics-icon"/> Hotels</a></li>
+                      <li className="location"><a href={attractionUrl}><i
+                        className="fa fa-ticket user-profile-statictics-icon"/> Attractions</a></li>
+                      <li className="location"><a href={restaurantUrl}><i
+                        className="fa fa-cutlery user-profile-statictics-icon"/> Restaurants</a></li>
+                      <li className="location"><a href={nightlifeUrl}><i
+                        className="fa fa-glass user-profile-statictics-icon"/> Nightlife</a></li>
+                      <li className="location"><a href={eventUrl}><i
+                        className="fa fa-calendar-o user-profile-statictics-icon"/> Events</a></li>
+                      <li className="location"><a href={reviewUrl}><i
+                        className="fa fa-comment user-profile-statictics-icon"/> Reviews</a></li>
+                    </ul>
+                  </div>
                 </div>
-              </div>
-              <div className="twPc-divStats">
-                <ul className="twPc-Arrange">
-                  <li className="location"><a href={hotelUrl}><i className="fa fa-bed user-profile-statictics-icon" /> Hotels</a></li>
-                  <li className="location"><a href={attractionUrl}><i className="fa fa-ticket user-profile-statictics-icon" /> Attractions</a></li>
-                  <li className="location"><a href={restaurantUrl}><i className="fa fa-cutlery user-profile-statictics-icon" /> Restaurants</a></li>
-                  <li className="location"><a href={nightlifeUrl}><i className="fa fa-glass user-profile-statictics-icon" /> Nightlife</a></li>
-                  <li className="location"><a href={eventUrl}><i className="fa fa-calendar-o user-profile-statictics-icon" /> Events</a></li>
-                  <li className="location"><a href={reviewUrl}><i className="fa fa-comment user-profile-statictics-icon" /> Reviews</a></li>
-                </ul>
               </div>
             </div>
           </div>
-          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 
