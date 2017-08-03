@@ -304,6 +304,17 @@ blockquote:before {
   background: #1070c6;
   border-color: #0e63b0;
 }
+
+.btn-secondary {
+  background: #ddd;
+  border-color: #ccc;
+}
+
+.btn-secondary:hover {
+  background: #ccc;
+  border-color: #bbb;
+}
+
 .btn-paypal {
   background: #0079c1;
   color: #fff;
@@ -634,7 +645,8 @@ label {
 
 
 .form-group.form-group-icon-left .form-control {
-  padding-left: 32px;
+  padding-left: 30px;
+  padding-top: 10px;
 }
 .form-group.form-group-icon-right .form-control {
   padding-right: 32px;
@@ -1283,7 +1295,7 @@ ul.slimmenu.slimmenu-collapsed li .slimmenu-sub-collapser > i {
   -o-transition: 0.3s;
   -ms-transition: 0.3s;
   transition: 0.3s;
-  height: 88.5%;
+  height: 88%;
 }
 .hover-img .curved > img {
   -webkit-border-radius: 5px;
@@ -2163,7 +2175,7 @@ img.pp-img {
 .header-top {
   padding: 10px 0;
   max-height: 60px;
-  background: #262626;
+  background: #292b2c;
 }
 @media (max-width:992px) {
   .header-top {
@@ -2529,6 +2541,7 @@ header#main-header {
 .nav-pills > li.active > a {
   background: #ed8323;
   cursor: default;
+  border-radius: 3px;
 }
 .nav-pills > li.active > a:hover {
   background: #ed8323;
@@ -3027,8 +3040,18 @@ aside.sidebar-left {
   color: #ed8323;
   font-size: 20px;
 }
+
+.hotel-rating {
+  color: #ed8323;
+  font-size: 12px;
+}
+
 .last-minute-rating .fa {
   margin-right: 8px;
+}
+
+.hotel-rating .fa {
+  margin-right: 2px;
 }
 .last-minute-title {
   font-size: 50px;
@@ -6895,6 +6918,10 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   margin-left: 5px;
 }
 .booking-filters {
+  border: solid 1px #efefef;
+  padding: 10px;
+  border-radius: 5px;
+  /*
   -webkit-border-radius: 5px;
   border-radius: 5px;
   font-size: 11px;
@@ -6903,17 +6930,20 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   padding: 15px 0;
   width: 263px;
   border: 1px solid #262626;
+  */
 }
+.booking-filters > h5,
 .booking-filters > h3 {
-  padding: 0 20px;
+  padding: 0 0px;
 }
 .booking-filters .booking-filters-list > li {
-  margin-top: 15px;
-  padding: 15px 20px 0 20px;
-  border-top: 1px solid #3b3b3b;
+  margin-top: 0px;
+  padding: 15px 0px 0 0px;
+  border-top: 1px solid #efefef;
 }
 .booking-filters .booking-filters-list > li .booking-filters-title {
   margin-bottom: 5px;
+  font-size: 14px;
 }
 .booking-filters .booking-filters-list > li .booking-filters-title small {
   font-size: 11px;
@@ -7820,7 +7850,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   cursor: pointer;
   top: 1px;
   left: -7px;
-  margin-left: -13px;
+  margin-left: 8px;
   float: left;
   text-align: center;
   line-height: 20px;

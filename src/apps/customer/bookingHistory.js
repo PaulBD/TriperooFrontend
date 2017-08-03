@@ -3,9 +3,9 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as authenticationActions from '../../actions/customer/authenticationActions';
 import * as userActions from '../../actions/customer/userActions';
-import UserHeader from '../../components/customer/user/userHeader';
-import UserProfile from '../../components/customer/user/userProfile';
-import TriperooLoader from '../../components/common/triperooLoader';
+import UserHeader from '../../components/layout/customer/customerHeader';
+import UserProfile from '../../components/forms/customer/userProfile';
+import TriperooLoader from '../../components/loaders/globalLoader';
 import Toastr from 'toastr';
 
 class BookingHistory extends React.Component {

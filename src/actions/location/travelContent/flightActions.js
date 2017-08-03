@@ -2,7 +2,7 @@ import FlightApi from '../../../api/location/travelContent/flightApi';
 import * as types from '../../../actionTypes/';
 
 // ****************************************
-// Load Cached Flights (Skyscanner)
+// Load Flights (Kiwi)
 // ****************************************
 export function searchFlightRequest() {
 	return {type: types.SEARCH_FLIGHTS_REQUEST, isFetching: true, flights: []};
@@ -16,11 +16,12 @@ export function searchFlightFailure(errorMessage) {
 	return {type: types.SEARCH_FLIGHTS_FAILURE, isFetching:false, errorMessage};
 }
 
-export function searchFlights(market, currency, locale, originPlace, destinationPlace, fromDate, toDate) {
+export function searchFlights(flyFrom, flyTo, dateFrom, dateTo, returnFrom, returnTo, market, locale, currency, flightType, passengerTotal, adultTotal, childTotal, infantTotal, directFlightsOnly, priceFrom, priceTo, departureTimeFrom, departureTimeTo, arrivalTimefrom, arrivalTimeto, returnDeperatureTimeFrom, returnDepartureTimeTo, returnArrivalTimeFrom, returnArrivalTimeTo, stopOverFrom, stopOverTo, offset, limit, sort, asc) {
 	return dispatch => {
 		dispatch(searchFlightRequest());
-		return FlightApi.searchFlights(market, currency, locale, originPlace, destinationPlace, fromDate, toDate).then(flights => {
+		return FlightApi.searchFlights(flyFrom, flyTo, dateFrom, dateTo, returnFrom, returnTo, market, locale, currency, flightType, passengerTotal, adultTotal, childTotal, infantTotal, directFlightsOnly, priceFrom, priceTo, departureTimeFrom, departureTimeTo, arrivalTimefrom, arrivalTimeto, returnDeperatureTimeFrom, returnDepartureTimeTo, returnArrivalTimeFrom, returnArrivalTimeTo, stopOverFrom, stopOverTo, offset, limit, sort, asc).then(flights => {
 			dispatch(searchFlightSuccess(flights));
+			console.log(flights);
 		}).catch(error => {
 			dispatch(searchFlightFailure(error.response.data));
 		});

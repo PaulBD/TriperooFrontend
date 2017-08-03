@@ -3,9 +3,9 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as authenticationActions from '../../actions/customer/authenticationActions';
 import * as userActions from '../../actions/customer/userActions';
-import TriperooLoader from '../../components/common/triperooLoader';
-import TripItem from '../../components/customer/user/tripItem';
-import UserProfile from '../../components/customer/user/userProfile';
+import TriperooLoader from '../../components/loaders/globalLoader';
+import TripItem from '../../components/layout/cards/customer/tripItem';
+import UserProfile from '../../components/forms/customer/userProfile';
 import Toastr from 'toastr';
 
 class CustomerTrips extends React.Component {

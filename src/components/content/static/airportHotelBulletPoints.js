@@ -14,6 +14,7 @@ const AirportHotelBulletPoints = () => {
 
         <p>A whopping 1.2 million travellers have booked a hotel with us in the past two years. Our
           airport hotels received an average rating of 88% from 264,031 customer reviews.</p>
+        <p><a href="/travel-extras">Back to Travel Extras</a></p>
       </div>
       <div className="col-md-6">
         <div className="col-md-12">
@@ -25,7 +26,7 @@ const AirportHotelBulletPoints = () => {
           </div>
         </div>
         <div className="col-md-12">
-          <div className="mb30 thumb"><i className="fa fa-clock-o box-icon-left round box-icon-big box-icon-border animate-icon-top-to-bottom"></i>
+          <div className="mb30 thumb"><i className="fa fa-money box-icon-left round box-icon-big box-icon-border animate-icon-top-to-bottom"></i>
             <div className="thumb-caption">
               <h4 className="thumb-title">Up-To-Date Pricing & Availability</h4>
               <p className="thumb-desc">We compare 27 UK airports to get you the best hotel deal working with big-name

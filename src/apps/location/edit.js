@@ -5,9 +5,9 @@ import * as locationActions from '../../actions/location/locationActions';
 import * as cmsActions from '../../actions/location/cmsActions';
 import * as modalActions from '../../actions/common/modalActions';
 import * as authenticationActions from '../../actions/customer/authenticationActions';
-import TriperooLoader from '../../components/common/triperooLoader';
+import TriperooLoader from '../../components/loaders/globalLoader';
 import Toastr from 'toastr';
-import LocationForm from '../../components/locations/forms/locationForm';
+import LocationForm from '../../components/forms/location/editLocation';
 
 let titleCase = require('title-case');
 let _ = require('lodash');

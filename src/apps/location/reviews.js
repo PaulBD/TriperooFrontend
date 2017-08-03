@@ -3,14 +3,14 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as locationActions from '../../actions/location/locationActions';
 
-import FacebookSignup from '../../components/customer/authentication/facebookSignup';
-import Header from '../../components/locations/subPageHeader';
+import FacebookSignup from '../../components/forms/authentication/facebookSignup';
+import Header from '../../components/content/headers/locationCategory';
 
-import ReviewList from '../../components/reviews/locationReviewList';
-import LocationStats from '../../components/locations/stats';
-import WeatherForcast from '../../components/locations/weather/forecast';
-import ReviewButton from '../../components/reviews/reviewButton';
-import TriperooLoader from '../../components/common/triperooLoader';
+import ReviewList from '../../components/layout/cards/reviews/locationReviewList';
+import LocationStats from '../../components/layout/location/stats';
+import WeatherForcast from '../../components/layout/weather/forecast';
+import ReviewButton from '../../components/layout/buttons/reviewButton';
+import TriperooLoader from '../../components/loaders/globalLoader';
 import Toastr from 'toastr';
 
 let titleCase = require('title-case');

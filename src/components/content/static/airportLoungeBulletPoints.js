@@ -11,6 +11,7 @@ const AirportLoungeBulletPoints = () => {
           pass.</p>
 
         <p>We sell airport lounges at 22 UK airports and we've recently started selling airport lounges abroad too.</p>
+        <p><a href="/travel-extras">Back to Travel Extras</a></p>
       </div>
       <div className="col-md-6">
         <div className="col-md-12">
@@ -26,7 +27,7 @@ const AirportLoungeBulletPoints = () => {
         </div>
         <div className="col-md-12">
           <div className="mb30 thumb"><i
-            className="fa fa-clock-o box-icon-left round box-icon-big box-icon-border animate-icon-top-to-bottom"></i>
+            className="fa fa-money box-icon-left round box-icon-big box-icon-border animate-icon-top-to-bottom"></i>
             <div className="thumb-caption">
               <h4 className="thumb-title">Real Time Prices</h4>
               <p className="thumb-desc">We display the most up-to-date pricing and availablity
@@ -37,7 +38,7 @@ const AirportLoungeBulletPoints = () => {
         </div>
         <div className="col-md-12">
           <div className="mb30 thumb"><i
-            className="fa fa-car box-icon-left round box-icon-big box-icon-border animate-icon-top-to-bottom"></i>
+            className="fa fa-clock-o box-icon-left round box-icon-big box-icon-border animate-icon-top-to-bottom"></i>
             <div className="thumb-caption">
               <h4 className="thumb-title">Relax In Style</h4>
               <p className="thumb-desc">You can relax in a comfy lounge armchair for up to 3 hours before your

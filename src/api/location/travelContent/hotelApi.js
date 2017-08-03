@@ -16,6 +16,21 @@ class HotelDealsApi {
         });
     });
   }
+
+  // ****************************************
+  // Return hotels by location Id
+  // ****************************************
+  static getHotelsByLocation(locationId, pageSize, pageNumber) {
+    return new Promise((resolve, reject) => {
+      axios.get(baseUrl + '/location/' + locationId + '/hotels?pageSize=' + pageSize + '&pageNumber=' + pageNumber)
+        .then(function (response) {
+          resolve(Object.assign([], response.data));
+        })
+        .catch(function (error) {
+          reject(error);
+        });
+    });
+  }
 }
 
 export default HotelDealsApi;

@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as locationsActions from '../../../actions/location/locationsActions';
-import Loader from '../../../components/common/loadingDots';
+import Loader from '../../loaders/contentLoader';
 
 class Destinations extends React.Component {
   constructor(props, context) {
@@ -17,6 +17,7 @@ class Destinations extends React.Component {
   loadLocations() {
     this.setState({isLoading: true});
     console.log(this.props.locationCount);
+    console.log(this.props.contentType);
     this.props.locationsActions.loadTopLocations(this.props.locationCount, this.props.contentType)
       .then(() => this.setState({isLoading: false}))
       .catch(error => {
@@ -27,14 +28,14 @@ class Destinations extends React.Component {
   render(){
     if (!this.state.isLoading) {
       return (
-        <div className="col-md-12">
+        <div className="col-md-12 text-center">
           <div className={this.props.title ? "gap gap-small" : "hide"}></div>
           <h3 className={this.props.title ? "mb20" : "hide"}>{this.props.title}</h3>
           <div className="row">
             {
               this.props.locationList.map(item => {
                 return (
-                  <div className="col-md-4 featureLocation" key={item.name}>
+                  <div className={this.props.cssClass} key={item.name}>
                     <a className="hover-img" href={item.url}>
                       <img src={item.image} alt="London"/>
                       <h5 className="hover-title hover-hold">{item.name}</h5>
@@ -57,7 +58,8 @@ class Destinations extends React.Component {
 Destinations.defaultProps = {
   locationList: [],
   locationCount: 0,
-  contentType: ''
+  contentType: '',
+  cssClass: 'col-md-4 featureLocation'
 };
 
 Destinations.propTypes = {
@@ -65,7 +67,8 @@ Destinations.propTypes = {
   locationsActions: PropTypes.object.isRequired,
   locationCount: PropTypes.number.isRequired,
   locationList: PropTypes.array.isRequired,
-  contentType: PropTypes.string.isRequired
+  contentType: PropTypes.string.isRequired,
+  cssClass: PropTypes.string
 };
 
 function mapStateToProps(state, ownProps) {

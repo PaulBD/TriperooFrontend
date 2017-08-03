@@ -2,10 +2,10 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as airportLoungeActions from '../../actions/travelExtras/airportLoungeActions';
-import AirportLoungeCard from '../../components/travelExtras/airportLounge/card';
-import AirportLoungeSearchForm from '../../components/travelExtras/airportLounge/searchForm';
+import AirportLoungeCard from '../../components/layout/cards/travelExtras/airportLounge';
+import AirportLoungeSearchForm from '../../components/forms/travelExtras/airportLounge';
 import AirportLoungeBulletPoints from '../../components/content/static/airportLoungeBulletPoints';
-import Loader from '../../components/common/loadingDots';
+import Loader from '../../components/loaders/contentLoader';
 let moment = require('moment');
 import Toastr from 'toastr';
 

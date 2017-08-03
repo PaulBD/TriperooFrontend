@@ -1,13 +1,11 @@
 import React from 'react';
-import Search from '../../components/holidays/search';
+import Search from '../../components/forms/searchForms/holidays';
 import FeaturedHeader from '../../components/content/dynamic/featuredHeader';
 import Destinations from '../../components/content/dynamic/destinations';
-import Copy from '../../components/holidays/copy';
-
+import Copy from '../../components/content/static/holidays';
 import LastMinuteDeal from '../../components/content/dynamic/lastMinuteDeal';
-import FacebookSignup from '../../components/customer/authentication/facebookSignup';
+import FacebookSignup from '../../components/forms/authentication/facebookSignup';
 
-// Since this component is simple and static, there's no parent container for it.
 export default class Holidays extends React.Component {
 
   componentDidMount() {

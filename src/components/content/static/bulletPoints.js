@@ -9,7 +9,7 @@ const BulletPoints = () => {
             className="fa fa-users box-icon-left round box-icon-big box-icon-border animate-icon-top-to-bottom"></i>
             <div className="thumb-caption">
               <h4 className="thumb-title">Ask Questions</h4>
-              <p className="thumb-desc">Get travel advise from people who've been there!</p>
+              <p className="thumb-desc">Get travel advice from people who've been there!</p>
             </div>
           </div>
         </a>

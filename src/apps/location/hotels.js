@@ -3,16 +3,14 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as locationActions from '../../actions/location/locationActions';
 
-import FacebookSignup from '../../components/customer/authentication/facebookSignup';
-import SubPageHeader from '../../components/locations/subPageHeader';
-import PageTitle from '../../components/locations/pageTitle';
-import GoogleMaps from '../../components/locations/common/googleMap';
-import Hotels from '../../components/hotels/byLocation';
-import TriperooLoader from '../../components/common/triperooLoader';
+import FacebookSignup from '../../components/forms/authentication/facebookSignup';
+import SubPageHeader from '../../components/content/headers/locationCategory';
+import GoogleMaps from '../../components/maps/googleMap';
+import Hotels from '../../components/legacy/hotels/byLocation';
+import TriperooLoader from '../../components/loaders/globalLoader';
 import Toastr from 'toastr';
-import Thumb from '../../components/hotels/thumb';
 import LastMinuteDeal from '../../components/content/dynamic/lastMinuteDeal';
-import SearchForm from '../../components/hotels/searchForm';
+import SearchForm from '../../components/forms/searchForms/hotels';
 
 let titleCase = require('title-case');
 
@@ -61,42 +59,7 @@ class LocationContent extends React.Component {
                     <hr />
                     <div className="gap gap-small"></div>
                       <div className="row">
-                        <div className="col-md-4">
-                          <Thumb />
-                        </div>
-                        <div className="col-md-4">
-                          <Thumb />
-                        </div>
-                        <div className="col-md-4">
-                          <Thumb />
-                        </div>
-                        <div className="col-md-4">
-                          <Thumb />
-                        </div>
-                        <div className="col-md-4">
-                          <Thumb />
-                        </div>
-                        <div className="col-md-4">
-                          <Thumb />
-                        </div>
-                        <div className="col-md-4">
-                          <Thumb />
-                        </div>
-                        <div className="col-md-4">
-                          <Thumb />
-                        </div>
-                        <div className="col-md-4">
-                          <Thumb />
-                        </div>
-                        <div className="col-md-4">
-                          <Thumb />
-                        </div>
-                        <div className="col-md-4">
-                          <Thumb />
-                        </div>
-                        <div className="col-md-4">
-                          <Thumb />
-                        </div>
+
                       </div>
                   </div>
                   <div className="col-md-4 sidebar">

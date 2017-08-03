@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as contentActions from '../../../actions/location/common/contentActions';
-import Loader from '../../common/loadingDots';
+import Loader from '../../loaders/contentLoader';
 
 class FeaturedHeader extends React.Component {
   constructor(props, context) {

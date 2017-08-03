@@ -4,11 +4,11 @@ import {bindActionCreators} from 'redux';
 import * as eventsActions from '../../actions/location/event/eventsActions';
 import * as locationActions from '../../actions/location/locationActions';
 
-import EventCategories from '../../components/locations/common/categorySideBar';
-import EventList from '../../components/locations/event/eventList';
+import EventCategories from '../../components/filters/locations';
+import EventList from '../../components/layout/cards/events/eventList';
 import Pagination from "react-js-pagination";
-import SubPageHeader from '../../components/locations/subPageHeader';
-import TriperooLoader from '../../components/common/triperooLoader';
+import SubPageHeader from '../../components/content/headers/locationCategory';
+import TriperooLoader from '../../components/loaders/globalLoader';
 import Toastr from 'toastr';
 
 let titleCase = require('title-case');

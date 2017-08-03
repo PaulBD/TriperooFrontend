@@ -53,7 +53,7 @@ export function searchLocations(value, searchType) {
       });
     }
     else {
-      dispatch(autocompleteFailure('No search value specified'));
+      dispatch(autocompleteFailure('No searchForms value specified'));
     }
   };
 }

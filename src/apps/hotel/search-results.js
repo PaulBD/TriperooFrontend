@@ -1,6 +1,6 @@
 import React from 'react';
-import Search from '../../components/hotels/search';
-import Thumb from '../../components/hotels/thumb';
+import Search from '../../components/content/headers/hotels';
+import Thumb from '../../components/layout/cards/hotels/thumb';
 
 export default class CityPage extends React.Component {
     componentDidMount() {

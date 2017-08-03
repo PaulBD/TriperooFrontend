@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 import SocialButtons from "../../components/content/static/socialButtons";
 import Destinations from '../../components/content/dynamic/destinations';
-import FacebookSignup from '../../components/customer/authentication/facebookSignup';
+import FacebookSignup from '../../components/forms/authentication/facebookSignup';
 import BulletPoints from '../../components/content/static/bulletPoints';
 import TrustedPartners from '../../components/content/static/trustedPartners';
 

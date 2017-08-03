@@ -4,9 +4,9 @@ import {bindActionCreators} from 'redux';
 import * as authenticationActions from '../../actions/customer/authenticationActions';
 import * as userActions from '../../actions/customer/userActions';
 import * as userFollowActions from '../../actions/customer/userFollowActions';
-import UserProfile from '../../components/customer/user/userProfile';
-import FollowerItem from '../../components/customer/user/followers';
-import TriperooLoader from '../../components/common/triperooLoader';
+import UserProfile from '../../components/forms/customer/userProfile';
+import FollowerItem from '../../components/social/followers';
+import TriperooLoader from '../../components/loaders/globalLoader';
 import Toastr from 'toastr';
 
 class Following extends React.Component {

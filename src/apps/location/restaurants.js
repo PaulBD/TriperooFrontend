@@ -3,16 +3,16 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as locationActions from '../../actions/location/locationActions';
 import * as restaurantActions from '../../actions/location/travelContent/restaurantActions';
-import FacebookSignup from '../../components/customer/authentication/facebookSignup';
+import FacebookSignup from '../../components/forms/authentication/facebookSignup';
 
-import TriperooLoader from '../../components/common/triperooLoader';
+import TriperooLoader from '../../components/loaders/globalLoader';
 import Toastr from 'toastr';
 
-import SubPageHeader from '../../components/locations/subPageHeader';
-import RestaurantCategories from '../../components/locations/common/categorySideBar';
-import Restaurants from '../../components/locations/locationListWrapper';
-import PageTitle from '../../components/locations/pageTitle';
-import GoogleMaps from '../../components/locations/common/googleMap';
+import SubPageHeader from '../../components/content/headers/locationCategory';
+import RestaurantCategories from '../../components/filters/locations';
+import Restaurants from '../../components/layout/cards/location/locationListWrapper';
+import PageTitle from '../../components/layout/location/pageTitle';
+import GoogleMaps from '../../components/maps/googleMap';
 
 let titleCase = require('title-case');
 

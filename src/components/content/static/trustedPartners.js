@@ -3,11 +3,10 @@ import React from "react";
 const TrustedPartners = () => {
   return (
     <div className="row">
-
       <div className="col-md-6 col-xs-12 text-xs-left hidden-md-down">
         <h5 className="trustedPartner">Trusted Providers</h5>
         <img src="/static/img/expedia.png" className="partners"/>
-        <img src="/static/img/skyscanner.png" className="partners"/>
+        <img src="/static/img/kiwi.png" className="partners"/>
         <img src="/static/img/holidayextras.png" className="partners"/>
         <img src="/static/img/wikipedia.png" className="partners"/>
       </div>
@@ -36,7 +35,6 @@ const TrustedPartners = () => {
         <img src="/static/img/payment/visa-electron-straight-64px.png" className="cards"/>
         <img src="/static/img/payment/solo-straight-64px.png" className="cards"/>
       </div>
-      
     </div>
   );
 };

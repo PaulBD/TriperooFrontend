@@ -11,6 +11,51 @@ body { margin: 0; }
     overflow: hidden;
 }
 
+.form-control {
+  font-size: 14px;
+}
+
+.flightResults .formBtn {
+  padding-left:7px;
+}
+
+.pageNotFound {
+  height: 300px;
+}
+
+.passengerPopup {
+  position: absolute;
+  border: solid 1px #efefef;
+  border-radius: 3px;
+  z-index: 888;
+  width: auto;
+  top: 20px;
+  right: 15px;
+  text-align: center;
+  display: inline-block;
+  padding: 5px 20px;
+  background-color: white;
+}
+
+.passengerCounter {
+  font-size: 18px;
+  font-weight: bold;
+  border: solid 1px #efefef;
+  padding: 3px;
+}
+
+.passengerCounter:hover {
+  background-color: #efefef;
+}
+
+.disabled {
+  background-color: #efefef !important;
+}
+
+.pagination .disabled {
+  background-color: #FFFFFF !important;
+}
+
 .modalForm { width:100%; }
 
 .ReactModal__Content { position: absolute; top: 10%; left: 35%; right: 35%; background: #fff; WebkitOverflowScrolling: touch; outline: none; padding: 0px; border-radius: 5px; width: 30% }
@@ -300,7 +345,8 @@ optgroup,option { margin-left:0px;text-align:left;}
 
 .ui-menu-item a:hover { background-color: #efefef; }
 
-.btnSearch { padding: 12px 20px;}
+.btnSearch { padding: 10px 20px 12px 20px}
+.btnSearch small { line-height: 1; }
 /* Spinner */
 .spinner {
   margin: 100px auto;
@@ -310,6 +356,8 @@ optgroup,option { margin-left:0px;text-align:left;}
   font-size: 10px;
   opacity: .5;
 }
+
+.socialButtons { display: inline-block; }
 
 .spinner > div {
   background-color: #cccccc;
@@ -495,10 +543,12 @@ div.ReactTags__suggestions ul li.active {
 
 /* Flights */
 .flightWrapper { border: solid 1px #efefef; padding:20px; }
+.flightWrapper .logo { width:30px !important; }
 
 .points-list {
     position: relative;
     display: inline-block;
+  width:100%;
 }
 
 .dotted-route {
@@ -515,21 +565,89 @@ div.ReactTags__suggestions ul li.active {
 
 .points-box {
     position: relative;
-    width: 350px;
+    width: 100%;
     display: inline-block;
 }
 
-.point:first-child {
+.pointLeft:first-child,
+.pointRight:first-child {
     float: none;
 }
 
-.point {
+.pointRight,
+.pointLeft {
     position: relative;
     display: inline-block;
     height: 80px;
-    width: 40px;
-    text-align: center;
+    width: 200px;
+    text-align: left;
     float: right;
+}
+
+.dottedLineBtm {
+  border-bottom: dotted 1px #ccc;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.flightDetailLineBtm {
+  border-bottom: dotted 1px #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.smallFlightLogo {
+  width:20px;
+  margin-right: 7px;
+}
+
+.Part {
+  position: absolute;
+  border-left: 4px solid #777;
+  margin-left: 4px;
+  height: 110px;
+  top: -30px;
+}
+
+.flightSeperator {
+  border-left: dotted 1px grey;
+  height: 100%;
+  position: absolute;
+  margin-left: 50%;
+}
+
+.flightDetailLineTop {
+  border-top: dotted 1px #ccc;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+.flightPrice {
+  font-size: 18px;
+  color: #ed8323;
+  margin-top: 39px;
+  font-weight: 500;
+}
+
+.flightDetails {
+  border-top: solid 1px #ccc;
+  background-color: #efefef;
+  width:100%;
+  padding: 20px;
+}
+
+.flightTime {
+  line-height: 1;
+}
+
+.flightNights {
+  font-size: 11px;
+  padding-top: 10px;
+  position: absolute;
+}
+
+.pointRight {
+  text-align: right;
 }
 
 .route {
@@ -555,7 +673,8 @@ div.ReactTags__suggestions ul li.active {
     display: inline-block;
 }
 
-.circle {
+.circleRight,
+.circleLeft {
     background: #ffffff;
     border: 2px solid #ee6600;
     border-radius: 32px;
@@ -568,10 +687,16 @@ div.ReactTags__suggestions ul li.active {
     margin-top: -12px;
     border-color: #ee6600;
     top: 50%;
-    left: 50%;
+    left: 5%;
 }
 
-.time {
+.circleRight {
+  right: 0%;
+  left: auto;
+}
+
+.timeRight,
+.timeLeft {
     font-family: 'SourceSansPro-Regular', Arial, Helvetica, sans-serif;
     font-weight: 400;
     color: #999999;
@@ -581,7 +706,11 @@ div.ReactTags__suggestions ul li.active {
     bottom: 4px;
     left: 0;
     right: 0;
-    text-align: center;
+    text-align: left;
+}
+
+.timeRight {
+  text-align: right;
 }
 
 /* Airport Parking */

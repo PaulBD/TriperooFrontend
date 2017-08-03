@@ -6,15 +6,15 @@ import * as locationActions from '../../actions/location/locationActions';
 import * as authenticationActions from '../../actions/customer/authenticationActions';
 import * as modalActions from '../../actions/common/modalActions';
 
-import FacebookSignup from '../../components/customer/authentication/facebookSignup';
-import Header from '../../components/locations/subPageHeader';
-import LocationStats from '../../components/locations/stats';
-import LocationOverview from '../../components/locations/overview';
-import WeatherForcast from '../../components/locations/weather/forecast';
-import TriperooLoader from '../../components/common/triperooLoader';
-import AnswerButton from '../../components/questions/answerButton';
-import AnswerItem from '../../components/questions/answerItem';
-import QuestionHelpful from '../../components/questions/questionHelpful';
+import FacebookSignup from '../../components/forms/authentication/facebookSignup';
+import Header from '../../components/content/headers/locationCategory';
+import LocationStats from '../../components/layout/location/stats';
+import LocationOverview from '../../components/layout/location/locationDescription';
+import WeatherForcast from '../../components/layout/weather/forecast';
+import TriperooLoader from '../../components/loaders/globalLoader';
+import AnswerButton from '../../components/layout/buttons/answerButton';
+import AnswerItem from '../../components/layout/cards/questions/answerItem';
+import QuestionHelpful from '../../components/social/questionHelpful';
 import Toastr from 'toastr';
 let _ = require('lodash');
 

@@ -3,66 +3,66 @@
 		"name": "London",
 		"url": "/2114/visit/london-england-united-kingdom",
 		"image": "/static/img/locations/london-england-united-kingdom.png",
-		"contentType": "flights"
-	}, 
+		"contentType": "flights, hotels, homePage"
+	},
 	{
 		"name": "Dubai",
 		"url": "/6053839/visit/dubai-united-arab-emirates",
 		"image": "/static/img/locations/dubai-united-arab-emirates.png",
-		"contentType": "flights"
-	}, 
+		"contentType": "flights, hotels, homePage"
+	},
 	{
 		"name": "New York",
 		"url": "/2621/visit/new-york-new-york-united-states-of-america",
 		"image": "/static/img/locations/new-york-new-york-united-states-of-america.png",
-		"contentType": "flights"
-	}, 
+		"contentType": "flights, hotels, homePage"
+	},
 	{
 		"name": "Rome",
 		"url": "/3023/visit/rome-italy",
 		"image": "/static/img/locations/rome-italy.png",
-		"contentType": ""
-	}, 
+		"contentType": "hotels"
+	},
 	{
 		"name": "Barcelona",
 		"url": "/513/visit/barcelona-spain",
 		"image": "/static/img/locations/barcelona-spain.png",
 		"contentType": "flights"
-	}, 
-	{
+	},
+  {
+    "name": "Las Vegas",
+    "url": "/2008/visit/las-vegas-nevada-united-states-of-america",
+    "image": "/static/img/locations/las-vegas-nevada-united-states-of-america.png",
+    "contentType": "flights"
+  },
+  {
+    "name": "Ibiza",
+    "url": "/1559/visit/ibiza-spain",
+    "image": "/static/img/locations/dublin-ireland.png",
+    "contentType": "flights"
+  },
+  {
 		"name": "Paris",
 		"url": "/2734/visit/paris-france",
 		"image": "/static/img/locations/paris-france.png",
 		"contentType": ""
-	}, 
+	},
 	{
 		"name": "Madrid",
 		"url": "/2198/visit/madrid-spain",
 		"image": "/static/img/locations/madrid-spain.png",
-		"contentType": ""
-	}, 
+		"contentType": "hotels"
+	},
 	{
 		"name": "Venice",
 		"url": "/3687/visit/venice-italy",
 		"image": "/static/img/locations/venice-italy.png",
-		"contentType": ""
-	}, 
+		"contentType": "hotels"
+	},
 	{
 		"name": "Dublin",
 		"url": "/1069/visit/dublin-ireland",
 		"image": "/static/img/locations/dublin-ireland.png",
 		"contentType": ""
-	}, 
-	{ 
-		"name": "Ibiza",
-		"url": "/1559/visit/ibiza-spain",
-		"image": "/static/img/locations/dublin-ireland.png",
-		"contentType": "flights"
-	}, 
-	{
-		"name": "Las Vegas",
-		"url": "/2008/visit/las-vegas-nevada-united-states-of-america",
-		"image": "/static/img/locations/las-vegas-nevada-united-states-of-america.png",
-		"contentType": "flights"
 	}
 ]

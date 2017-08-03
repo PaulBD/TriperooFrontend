@@ -3,14 +3,14 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as locationActions from '../../actions/location/locationActions';
 
-import FacebookSignup from '../../components/customer/authentication/facebookSignup';
-import Header from '../../components/locations/subPageHeader';
+import FacebookSignup from '../../components/forms/authentication/facebookSignup';
+import Header from '../../components/content/headers/locationCategory';
 
-import QuestionList from '../../components/questions/list';
-import LocationStats from '../../components/locations/stats';
-import LocationOverview from '../../components/locations/overview';
-import TriperooLoader from '../../components/common/triperooLoader';
-import QuestionButton from '../../components/questions/questionButton';
+import QuestionList from '../../components/layout/cards/questions/list';
+import LocationStats from '../../components/layout/location/stats';
+import LocationOverview from '../../components/layout/location/locationDescription';
+import TriperooLoader from '../../components/loaders/globalLoader';
+import QuestionButton from '../../components/layout/buttons/questionButton';
 import Toastr from 'toastr';
 let _ = require('lodash');
 

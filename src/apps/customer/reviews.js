@@ -4,10 +4,10 @@ import {bindActionCreators} from 'redux';
 import * as authenticationActions from '../../actions/customer/authenticationActions';
 import * as userActions from '../../actions/customer/userActions';
 import * as userReviewActions from '../../actions/customer/userReviewActions';
-import ReviewList from '../../components/reviews/homePageReviewCard';
+import ReviewList from '../../components/layout/cards/reviews/homePageReviewCard';
 import Pagination from "react-js-pagination";
-import UserProfile from '../../components/customer/user/userProfile';
-import TriperooLoader from '../../components/common/triperooLoader';
+import UserProfile from '../../components/forms/customer/userProfile';
+import TriperooLoader from '../../components/loaders/globalLoader';
 import Toastr from 'toastr';
 
 class UserReviews extends React.Component {

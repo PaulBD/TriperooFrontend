@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as hotelActions from '../../../actions/location/travelContent/hotelActions';
-import Loader from '../../common/loadingDots';
+import Loader from '../../loaders/contentLoader';
 
 class LastMinuteDeal extends React.Component {
   constructor(props, context) {

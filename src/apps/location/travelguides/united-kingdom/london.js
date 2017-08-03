@@ -2,10 +2,10 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as locationActions from '../../../../actions/location/locationActions';
-import TriperooLoader from '../../../../components/common/triperooLoader';
+import TriperooLoader from '../../../../components/loaders/globalLoader';
 import Toastr from 'toastr';
-import SubPageHeader from '../../../../components/locations/subPageHeader';
-import FacebookSignup from '../../../../components/customer/authentication/facebookSignup';
+import SubPageHeader from '../../../../components/content/headers/locationCategory';
+import FacebookSignup from '../../../../components/forms/authentication/facebookSignup';
 
 let titleCase = require('title-case');
 

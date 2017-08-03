@@ -27,17 +27,11 @@ import LocationHotels from './apps/location/hotels';
 
 import Holidays from './apps/holiday';
 import Flights from './apps/flight';
-import FlightSearchResults from './apps/flight/searchResults';
+import FlightSearchResults from './apps/flight/search-results';
 import TravelExtras from './apps/travelExtras';
 import AirportParking from './apps/travelExtras/airportParking';
 import AirportHotels from './apps/travelExtras/airportHotels';
-import AirportTransfers from './apps/travelExtras/airportTransfers';
 import AirportLounges from './apps/travelExtras/airportLounges';
-import CarHire from './apps/travelExtras/carHire';
-import Cottages from './apps/travelExtras/cottages';
-import Cruises from './apps/travelExtras/cruises';
-import RailTravel from './apps/travelExtras/railTravel';
-import Villas from './apps/travelExtras/villas';
 
 
 import CustomerHome from './apps/customer';
@@ -85,18 +79,12 @@ export default (
     <Route path="/hotels" component={Hotels}/>
     <Route path="/hotels/search-results" component={HotelSearchResults}/>
     <Route path="/flights" component={Flights}/>
-    <Route path="/flights/results" component={FlightSearchResults} />
+    <Route path="/flights/search-results" component={FlightSearchResults} />
 
     <Route path="/travel-extras" component={TravelExtras}/>
     <Route path="/travel-extras/airport-parking" component={AirportParking}/>
     <Route path="/travel-extras/airport-hotels" component={AirportHotels}/>
     <Route path="/travel-extras/airport-lounges" component={AirportLounges}/>
-    <Route path="/travel-extras/airport-transfers" component={AirportTransfers}/>
-    <Route path="/travel-extras/car-hire" component={CarHire}/>
-    <Route path="/travel-extras/cottages" component={Cottages}/>
-    <Route path="/travel-extras/cruises" component={Cruises}/>
-    <Route path="/travel-extras/rail-travel" component={RailTravel}/>
-    <Route path="/travel-extras/villas" component={Villas}/>
 
     <Route path="/profile/(:guid)/(:customerName)" component={CustomerHome}/>
     <Route path="/profile/(:guid)/(:customerName)/profile" component={CustomerProfile}/>

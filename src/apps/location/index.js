@@ -4,24 +4,24 @@ import {bindActionCreators} from 'redux';
 let _ = require('lodash');
 import * as locationActions from '../../actions/location/locationActions';
 
-import FacebookSignup from '../../components/customer/authentication/facebookSignup';
-import LocationReviews from '../../components/reviews/locationReviewList';
-import RecentQuestions from '../../components/questions/list';
-import ReviewButton from '../../components/reviews/reviewButton';
-import QuestionButton from '../../components/questions/questionButton';
-import TopLocations from '../../components/locations/topLocations';
-import NavigationWrapper from '../../components/locations/navigation/navigationWrapper';
-import Summary from '../../components/locations/summary';
-import Header from '../../components/locations/homeHeader';
-import LocationStats from '../../components/locations/stats';
-import LocationArticles from '../../components/locations/articles';
-import WeatherForcast from '../../components/locations/weather/forecast';
+import FacebookSignup from '../../components/forms/authentication/facebookSignup';
+import LocationReviews from '../../components/layout/cards/reviews/locationReviewList';
+import RecentQuestions from '../../components/layout/cards/questions/list';
+import ReviewButton from '../../components/layout/buttons/reviewButton';
+import QuestionButton from '../../components/layout/buttons/questionButton';
+import TopLocations from '../../components/layout/cards/location/topLocations';
+import NavigationWrapper from '../../components/layout/common/locationNav';
+import Summary from '../../components/layout/location/summary';
+import Header from '../../components/content/headers/location';
+import LocationStats from '../../components/layout/location/stats';
+import LocationArticles from '../../components/content/articles/location';
+import WeatherForcast from '../../components/layout/weather/forecast';
 import LastMinuteDeal from '../../components/content/dynamic/lastMinuteDeal';
-import Loader from '../../components/common/triperooLoader';
-import TopEvents from '../../components/locations/topEvents';
-import LocationOverview from '../../components/locations/overview';
+import Loader from '../../components/loaders/globalLoader';
+import TopEvents from '../../components/layout/cards/events/topEvents';
+import LocationOverview from '../../components/layout/location/locationDescription';
 import Toastr from 'toastr';
-import HotelsNearLocation from '../../components/hotels/hotelsNearLocation';
+import HotelsNearLocation from '../../components/layout/cards/hotels/hotelsNearLocation';
 
 let titleCase = require('title-case');
 
@@ -108,7 +108,7 @@ class LocationHome extends React.Component {
           </div>
           <div className="gap"></div>
           <LastMinuteDeal locationId={this.props.locationId} />
-          <HotelsNearLocation latitude={this.props.location.latitude} longitude={this.props.location.longitude} pageSize={3} locationName={this.props.location.regionName} parentName={this.props.location.parentRegionName} locationType={this.props.location.regionType} parentUrl={this.props.location.parentUrl}/>
+          <HotelsNearLocation locationId={this.props.locationId} pageSize={4} locationName={this.props.location.regionName} parentName={this.props.location.parentRegionName} locationType={this.props.location.regionType} url={this.props.location.url}/>
           <div className="gap gap-small"></div>
           <div className="container">
             <div className="row">

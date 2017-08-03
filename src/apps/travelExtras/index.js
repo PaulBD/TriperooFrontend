@@ -1,6 +1,6 @@
 import React from 'react';
-import Feature from '../../components/travelExtras/feature';
-import FacebookSignup from '../../components/customer/authentication/facebookSignup';
+import Feature from '../../components/content/headers/travelExtras';
+import FacebookSignup from '../../components/forms/authentication/facebookSignup';
 import LastMinuteDeal from '../../components/content/dynamic/lastMinuteDeal';
 import BulletPoints from '../../components/content/static/bulletPoints';
 import TrustedPartners from '../../components/content/static/trustedPartners';
@@ -61,8 +61,8 @@ export default class TravelExtras extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className="gap gap-small"></div>
-                <div className="row">
+                <div className="gap gap-small hide"></div>
+                <div className="row hide">
                     <div className="col-md-4">
                         <div className="thumb">
                             <a className="hover-img" href="/travel-extras/rail-travel">
@@ -106,8 +106,8 @@ export default class TravelExtras extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className="gap gap-small"></div>
-                <div className="row">
+                <div className="gap gap-small hide"></div>
+                <div className="row hide">
                     <div className="col-md-4">
                         <div className="thumb">
                             <a className="hover-img" href="/travel-extras/cruises">
@@ -152,14 +152,12 @@ export default class TravelExtras extends React.Component {
                     </div>
                 </div>
             </div>
-            <div className="gap"></div>
+            <div className="gap gap-small"></div>
             <LastMinuteDeal locationId={2114} />
             <div className="container">
                 <div className="gap"></div>
                 <BulletPoints />
-                <div className="gap gap-small"></div>
-                <hr />
-                <div className="gap"></div>
+                <div className="gap gap-mini"></div>
                 <FacebookSignup />
                 <TrustedPartners />
                 <div className="gap"></div>

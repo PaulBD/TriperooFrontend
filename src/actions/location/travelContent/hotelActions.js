@@ -26,3 +26,30 @@ export function loadHotelDealsByLocation(locationId, pageSize, pageNumber) {
 		});
 	};
 }
+
+
+// ****************************************
+// Load Hotel Content By Location
+// ****************************************
+export function hotelsByLocationRequest() {
+  return {type: types.HOTELS_BY_LOCATION_REQUEST, isFetching: true, hotels: []};
+}
+
+export function hotelsByLocationSuccess(hotels) {
+  return {type: types.HOTELS_BY_LOCATION_SUCCESS, hotels};
+}
+
+export function hotelsByLocationFailure(errorMessage) {
+  return {type: types.HOTELS_BY_LOCATION_FAILURE, isFetching: false, errorMessage};
+}
+
+export function loadHotelsByLocation(locationId, pageSize, pageNumber) {
+  return dispatch => {
+    dispatch(hotelsByLocationRequest());
+    return HotelApi.getHotelsByLocation(locationId, pageSize, pageNumber).then(hotels => {
+      dispatch(hotelsByLocationSuccess(hotels));
+    }).catch(error => {
+      dispatch(hotelsByLocationFailure(error.response.data));
+    });
+  };
+}

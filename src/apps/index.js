@@ -3,9 +3,9 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as modalActions from '../actions/common/modalActions';
 
-import Header from '../components/common/header';
-import Footer from '../components/common/footer';
-import Modal from '../components/common/modal';
+import Header from '../components/layout/common/header';
+import Footer from '../components/layout/common/footer';
+import Modal from '../components/popups/modalPopup';
 
 class App extends React.Component {
 	constructor(props, context) {

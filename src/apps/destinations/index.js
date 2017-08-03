@@ -2,7 +2,7 @@ import React from 'react';
 import Destinations from '../../components/content/dynamic/destinations';
 import FeaturedHeader from '../../components/content/dynamic/featuredHeader';
 import WorldCities from '../../components/content/static/worldCities';
-import FacebookSignup from '../../components/customer/authentication/facebookSignup';
+import FacebookSignup from '../../components/forms/authentication/facebookSignup';
 
 export default class DestinationHome extends React.Component {
     componentDidMount() {

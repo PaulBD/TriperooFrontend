@@ -1,8 +1,6 @@
 import React from 'react';
-import {Link} from 'react-router';
 import SocialButtons from "../../components/content/static/socialButtons";
-import Destinations from '../../components/content/dynamic/destinations';
-import FacebookSignup from '../../components/customer/authentication/facebookSignup';
+import FacebookSignup from '../../components/forms/authentication/facebookSignup';
 import BulletPoints from '../../components/content/static/bulletPoints';
 import TrustedPartners from '../../components/content/static/trustedPartners';
 
@@ -29,20 +27,17 @@ const AboutPage = () => {
       <div className="container">
         <div className="row row-wrap">
             <div className="gap gap-small"></div>
-            <div className="col-md-6">
-              <h2 className="title">Triperoo's mission is to help people explore, plan and book vacation's.</h2>
-              <p>We want to distrupt the travel space by helping our customers explore the world
-              and using that knowledge to earn commission by recommending other users on where to visit.</p>
+            <div className="col-md-12 text-center">
+              <h2 className="title">Triperoo's mission is to help people<br />explore, plan and book vacation's.</h2>
+              <p>We want to distrupt the travel space by helping our customers explore the world!</p>
 
               <p>We also believe that
-              being able to plan and book your trip without any stress is important as using our unique technology so
-              we try and recommend useful products that you may need during your trip. On top of that, before you
+              being able to plan and book your trip without any stress is important. We have partnered with many travel companies
+                to do the hard work for you and using our unique technology, we try and recommend useful products that you may
+                need during your trip. On top of that, before you
               get to your destination and whilst your there, we help you plan activities to help you get the best
-              out of your trip.</p>
-              <p><SocialButtons /></p>
-            </div>
-            <div className="col-md-6">
-              <Destinations locationCount={9}  />
+              out of your vacation.</p>
+              <p className="text-center"><SocialButtons /></p>
             </div>
           </div>
         </div>

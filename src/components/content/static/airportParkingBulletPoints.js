@@ -13,6 +13,7 @@ const AirportParkingBulletPoints = () => {
 
         <p>6 million savvy travellers have booked their airport parking with us via Holiday Extras in the
           past three years. Our airport parking is rated 90 % by 864,138 guests.</p>
+        <p><a href="/travel-extras">Back to Travel Extras</a></p>
 
       </div>
       <div className="col-md-6">
@@ -29,7 +30,7 @@ const AirportParkingBulletPoints = () => {
         </div>
         <div className="col-md-12">
           <div className="mb30 thumb"><i
-            className="fa fa-clock-o box-icon-left round box-icon-big box-icon-border animate-icon-top-to-bottom"></i>
+            className="fa fa-money box-icon-left round box-icon-big box-icon-border animate-icon-top-to-bottom"></i>
             <div className="thumb-caption">
               <h4 className="thumb-title">Real Time Prices</h4>
               <p className="thumb-desc">We display the most up-to-date pricing and availablity
