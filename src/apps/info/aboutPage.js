@@ -10,7 +10,8 @@ const AboutPage = () => {
     document.title = 'About Triperoo';
 
     let style = {
-      backgroundImage: 'url(/static/img/about.jpg)'
+      backgroundImage: 'url(/static/img/about6.jpg)',
+      backgroundPosition: 'bottom'
     };
 
     return (

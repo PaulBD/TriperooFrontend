@@ -12,7 +12,8 @@ const SupportPage = () => {
     document.title = 'Support';
 
     let style = {
-      backgroundImage: 'url(/static/img/north-wales.jpg)'
+      //backgroundImage: 'url(/static/img/north-wales.jpg)'
+      backgroundColor: 'black'
     };
 
     return (
@@ -31,22 +32,22 @@ const SupportPage = () => {
             <div className="gap gap-small"></div>
             <div className="col-md-7">
               <p>For any customer support questions related to your booking, these
-              are handled direclty by LateRooms.com  or SkyScanner.com, providing dedicated, 24/7 service to
-              Triperoo clients.  </p>
+              are handled direclty by Expedia.com, Kiwi.com or HolidayExtras.  </p>
               <h5>Expedia.com Customer Service</h5>
               <p>For questions related to your Expedia.com booking, please see your confirmation email. You
               can use the self-service tool provided in the email through the link “Manage your booking online” to
               cancel your booking. To make changes to your booking, please use the customer service
               number below. Lines are open 24 hours, 7 days a week.</p>
-              <p>XXXX XXX XXX</p>
+              <p>+44 20 3024 8211</p>
               <p><a href="http://www.expedia.com" target="_blank">www.expedia.com</a></p>
               <h5>Kiwi.com </h5>
               <p>For any customer support questions related to a flight booking, these will be handled directly with the company
               you booked your flight with.</p>
+              <p>+44 20 3808 5910</p>
               <p><a href="http://www.kiwi.com" target="_blank">www.kiwi.com</a></p>
               <h5>HolidayExtras.com </h5>
               <p>For any customer support questions related to a airport transfers, airport lounge or airport hotels, please use the customer service number below.</p>
-              <p>XXXX XXX XXXX</p>
+              <p>0871 360 1051</p>
               <p><a href="http://www.holidayextras.com" target="_blank">www.holidayextras.com</a></p>
             </div>
             <div className="col-md-5">

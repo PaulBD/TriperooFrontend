@@ -24,7 +24,7 @@ class LocationsApi {
   // ****************************************
   static searchLocations(value, searchType) {
     return new Promise((resolve, reject) => {
-      axios.get(baseUrl + '/locations/searchForms?searchvalue=' + value + '&searchtype=' + searchType)
+      axios.get(baseUrl + '/locations/search?searchvalue=' + value + '&searchtype=' + searchType)
         .then(function (response) {
           resolve(Object.assign([], response.data.locations));
         })
@@ -44,7 +44,7 @@ class LocationsApi {
       let i = 0;
       for (let index = 0; index < topDestinations.length; index++) {
         let v = topDestinations[index]['contentType'];
-        if (v.contains(v, contentType)) {
+        if (v.includes(contentType)) {
           if (i < size) {
             filteredList.push(topDestinations[index]);
             i += 1;

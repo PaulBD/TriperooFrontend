@@ -16,8 +16,6 @@ class Destinations extends React.Component {
 
   loadLocations() {
     this.setState({isLoading: true});
-    console.log(this.props.locationCount);
-    console.log(this.props.contentType);
     this.props.locationsActions.loadTopLocations(this.props.locationCount, this.props.contentType)
       .then(() => this.setState({isLoading: false}))
       .catch(error => {
@@ -34,9 +32,16 @@ class Destinations extends React.Component {
           <div className="row">
             {
               this.props.locationList.map(item => {
+                let url = item.url;
+
+                if (this.props.contentType == "hotels")
+                {
+                  url += '/hotels';
+                }
+
                 return (
                   <div className={this.props.cssClass} key={item.name}>
-                    <a className="hover-img" href={item.url}>
+                    <a className="hover-img" href={url}>
                       <img src={item.image} alt="London"/>
                       <h5 className="hover-title hover-hold">{item.name}</h5>
                     </a>

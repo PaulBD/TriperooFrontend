@@ -25,7 +25,8 @@ export default class FAQsPage extends React.Component {
 
   render(){
     let style = {
-      backgroundImage: 'url(/static/img/north-wales.jpg)'
+      //backgroundImage: 'url(/static/img/north-wales.jpg)'
+      backgroundColor: 'black'
     };
 
     let answers = "";
@@ -155,7 +156,7 @@ export default class FAQsPage extends React.Component {
             <div style={style} className="bg-img infoImg" ></div>
             <div className="bg-front full-center">
                 <div className="owl-cap">
-                    <h1 className="owl-cap-title fittext">How Can We Help You?</h1>
+                    <h1 className="owl-cap-title fittext">Can We Help You?</h1>
                     <div className="owl-cap-price">
                       <small>Everything you need to know about Triperoo</small>
                     </div>

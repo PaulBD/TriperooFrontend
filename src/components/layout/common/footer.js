@@ -52,7 +52,7 @@ class Footer extends React.Component {
                               <ul className="list list-footer">
                                 <li><a href="/explore-destinations" title="Destinations">Destinations</a></li>
                                 <li><a href="/hotels" title="Hotels">Hotels</a></li>
-                                <li><a href="/flights" title="Flights">Flights</a></li>
+                                <li className="hide"><a href="/flights" title="Flights">Flights</a></li>
                                 <li><a href="/travel-extras" title="Travel Extras">Travel Extras</a></li>
                                 <li className={this.props.isAuthenticated ? "" : "hide"}><a href="#" onClick={this.createTrip} title="Create a Trip">Create a Trip</a></li>
 

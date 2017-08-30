@@ -8,7 +8,8 @@ const PrivacyPage = () => {
     document.title = 'Privacy Policy';
 
     let style = {
-      backgroundImage: 'url(/static/img/north-wales.jpg)'
+      //backgroundImage: 'url(/static/img/north-wales.jpg)'
+      backgroundColor: 'black'
     };
 
 

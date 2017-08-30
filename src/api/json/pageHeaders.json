@@ -26,7 +26,7 @@
     "subTitle": "Perfect Christmas Gift",
     "price": "£499 per person",
     "url": "/flights",
-    "backgroundImage": "/static/img/flight.jpg",
+    "backgroundImage": "/static/img/flights2.jpg",
     "buttonText": "Explore"
   },
   {
@@ -46,7 +46,7 @@
     "subTitle": "stay 5 star from",
     "price": "£99 per night",
     "url": "/places/united-kingdom/london/hotels/the-ritz",
-    "backgroundImage": "/static/img/hotelRoom.jpg",
+    "backgroundImage": "/static/img/hotelroom2.jpg",
     "buttonText": "Explore"
   },
   {

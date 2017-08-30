@@ -87,7 +87,6 @@ class LocationDetail extends React.Component {
       }
 
       let editUrl = this.props.location.url + '/edit';
-console.log(this.props.location);
       return (
         <div>
           <LocationHeader location={this.props.location} hasLoaded={this.state.hasLoaded} docType={this.props.location.subClass} />

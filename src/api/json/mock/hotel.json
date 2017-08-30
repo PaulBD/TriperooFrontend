@@ -1,134 +1,978 @@
 {
-	"ref": "7713",
-	"url": "/places/123/united-kingdom/chester/hotels/7713/mill-hotel-spa-destinations",
-	"name": "Mill Hotel & Spa Destination",
-	"starRating": "3",
-	"address": "Milton Street Chester CH1 3NF",
-	"city": "Chester",
-	"county": "Cheshire",
-	"postcode": "CH1 3NF",
-	"maxChildAge": "8",
-	"description": "Discover Chester's favourite venue, The Mill Hotel & Spa Destination has a waterside location within the centre of the Roman City of Chester. The Mill offers Complementary Car Parking, use of the 60ft Swimming Pool, Jacuzzi, Steam Room and State of the art Techno-gym. The Public Bar has 16 different hand-pulled beers to choose from each week and has been featured in the Good Beer Guide for the last 10 years. The original Griffith's Corn Mill was built in c1830; the latest extention was completed in 2001 adding the south wing, which is connected with an internal bridge over the Shropshire Union Canal. The Mill has 5 different grades of rooms, from the Standard Rooms in the original Mill Building to the Spacious Club Class Rooms and very special Champagne Suite in the South Wing Building. All rooms are en-suite, have sky television and wifi. The Mill offers extensive dining options, with 5 options to wine & dine. The award wining waterside Canaletto Restaurant is open daily for lunch & dinner, serving food from both A la Carte and Table D'hote Menus. Friday & Saturdays in the Canaletto Restaurant are Dine & Dance evenings with dancing until 1.00am. L'eaut Cuisine Broad-beam Restaurant Cruiser moored alongside the hotel sails for lunch & dinner 7 days a week. Seating upto 50 people, the vessel has a licensed bar and dance floor. There are regular special events held, including Queen Mary Crown Cruises, Cruises and Roman High Tea Cruises. The Brasserie Flambe Steak Restaurant is open Sunday - Thursday, serving a range of starters, main courses and sweets plus a selection of special Mill Flamed Coffees. The Rialto Restaurant is located on the ground floor & is ideal for a light lunch after the gym, serving a range of sandwiches, baked potatoes, salads and a range of traditional home-made bar meals. In the tranquil surroundings of our Beauty Spa, we use only the finest Pevonia Botanica Products to provide face and body treatments for both men and women. Our retail counter stocks a comprehensive range of products, with free consultation and guidance. Further facilities include St. Tropez Ultimate Air Spray tanning booth, Hair Salon, Nail Bar and Kinesis Studio. ",
-	"directions": "Directions for the Mill Hotel, from the M53. Exit the M53 at Junction 12. Turn Right at the roundabout (A56). Carry straight on to the next roundabout.At the roundabout, go straight ahead (A56).Remain on the A56 (Hoole Road) for approximately 1 1/2 miles until you reach the next roundabout, take the first left exit (A5268). Take the 1st left into Seller Street. 2nd left into Milton Street . From Wrexham Carry on into Chester on the A483 Go over the Grovenor Bridge, over the River Dee , the Race Course is just visible on your left. At the next Roundabout take the left exit onto the A5268 Go over the 1st Roundabout (B&Q is on your left). Go over the 2nd Roundabout. The Mill is 50 meters on your left. Take the 1st Left into Seller Street and the 2nd Left into Milton Street. ",
-	"hotelLink": "http://www.laterooms.com/en/p15695/hotel-reservations/7713_mill-hotel-chester.aspx",
-	"checkIn": "14:00",
-	"checkOut": "11:00",
-	"noOfRooms": 132,
-	"coordinates": {
-		"lon": -2.88614,
-		"lat": 53.19416
-	},
-	"distance": 0.3,
-	"customerRating": 5,
-	"rank": 1,
-	"pricesFrom": "88.00",
-	"starAwardedBy": "AA",
-	"starAccommodationType": "Hotel",
-	"rackRate": "88.00",
-	"rooms": {
-		"rate": [{
-			"date": "22/12/2016",
-			"formattedDate": "22 December 2016",
-			"price": "88.00",
-			"roomType": "Standard",
-			"includesBreakfast": true,
-			"includesDinner": false,
-			"cancellationPolicy": "First Night Stay Chargeable",
-			"cancellationDays": 1,
-			"cancellationHours": "12:00:00",
-			"roomTerms": "",
-			"specialOfferName": "",
-			"specialOfferDescription": "",
-			"breakfasts": "",
-			"sleeps": 2,
-			"adults": 2,
-			"children": 0,
-			"roomsAvailable": 1
-		}, {
-			"date": "23/12/2016",
-			"formattedDate": "23 December 2016",
-			"price": "98.00",
-			"roomType": "Standard",
-			"includesBreakfast": true,
-			"includesDinner": false,
-			"cancellationPolicy": "First Night Stay Chargeable",
-			"cancellationDays": 1,
-			"cancellationHours": "12:00:00",
-			"roomTerms": "",
-			"specialOfferName": "",
-			"specialOfferDescription": "",
-			"breakfasts": "",
-			"sleeps": 2,
-			"adults": 2,
-			"children": 0,
-			"roomsAvailable": 1
-		}]
-	},
-	"cancellationType": "First Night Stay Chargeable",
-	"cancellationPolicy": "1 Day Prior to Arrival",
-	"tags": {
-		"tag": [
-			"City Breaks",
-			"Family Run",
-			"Spa Breaks",
-			"Theatre Breaks",
-			"Activity Breaks",
-			"Weekend Breaks"
-		]
-	},
-	"facilities": {
-		"facility": [
-			"Hotel Non-Smoking Throughout",
-			"Disabled Facilities",
-			"24 Hour Reception",
-			"Cots available",
-			"Car parking available onsite",
-			"Wi-Fi Available",
-			"Meeting Facilities",
-			"Restaurant",
-			"Gymnasium",
-			"Indoor Pool",
-			"Aerobics Studio",
-			"Fitness Centre",
-			"Sauna",
-			"Steam Rooms",
-			"Massage",
-			"Beauty Salon/Manicure",
-			"Solarium",
-			"Jacuzzi",
-			"TV",
-			"Satellite TV",
-			"Tea/Coffee making facilities in each room",
-			"Hairdryer in each room",
-			"Iron And Board In Each Room",
-			"Telephone In Each Room",
-			"Limited Hours Room Service",
-			"Limited room service for hot food",
-			"Wake Up Call Available",
-			"Interconnecting rooms available",
-			"Lift to all floors",
-			"Disabled Access Public Areas",
-			"Disabled Access Bedrooms",
-			"Disabled toilets on ground floor",
-			"Wheelchair Access",
-			"Wheelchair Access To Reception",
-			"Wheelchair Access To Restaurant",
-			"Wheelchair Access To Bar",
-			"Wheelchair Access To Conference Rooms",
-			"Wheelchair Access To Leisure Facilities",
-			"Wheelchair Access To Disabled Car Parking Spaces",
-			"In-room Broadband",
-			"In-room Modem Hook up",
-			"Wi-Fi Available In Public Areas",
-			"Bar",
-			"Mountain Bike Hire"
-		]
-	},
-	"importantInformation": "",
-	"mainImage": "http://static.laterooms.com/hotelphotos/laterooms/7713/gallery/7713.jpg",
-	"images": [
-		"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg",
-		"http://static.laterooms.com/hotelphotos/laterooms/201093/gallery/201093.jpg"
-	],
-	"reviewCount": 23
+  "hotelInformationResponse": {
+    "hotelId": 505612,
+    "customerSessionId": "0AB28682-1454-1503-9152-E05801F1D96F",
+    "hotelSummary": {
+      "order": "0",
+      "hotelId": 505612,
+      "name": "Mill Hotel & Spa",
+      "address1": "Milton Street",
+      "city": "Chester",
+      "postalCode": "CH1 3NF",
+      "countryCode": "GB",
+      "propertyCategory": 1,
+      "hotelRating": 3,
+      "hotelRatingDisplay": "Star",
+      "tripAdvisorRating": 4,
+      "tripAdvisorReviewCount": 1385,
+      "tripAdvisorRatingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.0-123456-4.gif",
+      "locationDescription": "Near Chester Cathedral",
+      "highRate": 161.7914,
+      "lowRate": 134.8304,
+      "latitude": 53.19398,
+      "longitude": -2.88446
+    },
+    "hotelDetails": {
+      "numberOfRooms": 132,
+      "numberOfFloors": 5,
+      "checkInTime": "2:00 PM",
+      "checkInEndTime": "6 AM",
+      "checkInMinAge": "18",
+      "checkOutTime": "11:00 AM",
+      "propertyInformation": "Pets not allowed  Check-in time starts at 2:00 PM  Check-out time is 11 AM",
+      "areaInformation": "Distances are calculated in a straight line from the property&apos;s location to the point of interest or attraction, and may not reflect actual travel distance. <br /><br /> Distances are displayed to the nearest 0.1 mile and kilometer. <p>Northgate Arena Leisure Centre - 0.4 km / 0.3 mi <br />Eastgate Clock - 0.5 km / 0.3 mi <br />Grosvenor Park - 0.5 km / 0.3 mi <br />Chester Cathedral - 0.5 km / 0.3 mi <br />Roman Amphitheatre - 0.5 km / 0.3 mi <br />Chester Town Hall - 0.5 km / 0.3 mi <br />St Peter&apos;s Church - 0.6 km / 0.4 mi <br />Chester City Walls - 0.6 km / 0.4 mi <br />Newgate - 0.6 km / 0.4 mi <br />Dewa Roman Experience - 0.8 km / 0.5 mi <br />St Paul&apos;s Church - 0.8 km / 0.5 mi <br />Grosvenor Museum - 0.9 km / 0.5 mi <br />Old Dee Bridge - 0.9 km / 0.6 mi <br />Chester Castle - 1 km / 0.7 mi <br />University of Chester - 1.1 km / 0.7 mi <br /></p><p>The nearest airports are:<br />Liverpool (LPL-John Lennon) - 16 km / 10 mi<br />Manchester (MAN) - 44.9 km / 27.9 mi<br /></p><p>The preferred airport for Mill Hotel &amp; Spa is Liverpool (LPL-John Lennon). </p>",
+      "propertyDescription": "<p><b>Property Location</b> <br />With a stay at Mill Hotel &amp; Spa in Chester, you&apos;ll be minutes from Northgate Arena Leisure Centre and Chester Cathedral.  This romantic hotel is within close proximity of Eastgate Clock and Grosvenor Park.</p><p><b>Rooms</b> <br />Make yourself at home in one of the 132 guestrooms. Complimentary wireless Internet access keeps you connected, and cable programming is available for your entertainment. Private bathrooms have deep soaking bathtubs and complimentary toiletries. Conveniences include desks and irons/ironing boards, and housekeeping is provided daily.</p><p><b>Amenities</b> <br />Relax at the full-service spa, where you can enjoy massages, body treatments, and facials. If you&apos;re looking for recreational opportunities, you&apos;ll find a health club and an indoor pool. Additional features at this hotel include complimentary wireless Internet access, a hair salon, and tour/ticket assistance.</p><p><b>Dining</b> <br />Enjoy a meal at one of the hotel&apos;s dining establishments, which include 2 restaurants and a coffee shop/café. From your room, you can also access room service (during limited hours). Relax with a refreshing drink at one of the 2 bars/lounges.</p><p><b>Business, Other Amenities</b> <br />Featured amenities include complimentary wired Internet access, dry cleaning/laundry services, and a 24-hour front desk. Free self parking is available onsite.</p>",
+      "hotelPolicy": "",
+      "roomInformation": "<p><b>National Rating</b> <br />This establishment has received its official star rating from VisitEngland, the National Tourist Board for England.</p><p><b>Know Before You Go</b> <br /><ul>  <li>This property&apos;s policy is to refuse certain bookings for the purpose of group events or parties, including pre-wedding stag/bachelor and hen/bachelorette parties. </li><li>Only registered guests are allowed in the guestrooms. </li> <li>The property has connecting/adjoining rooms, which are subject to availability and can be requested by contacting the property using the number on the booking confirmation. </li> </ul></p><p><b>Fees</b> <br /><p>The following fees and deposits are charged by the property at time of service, check-in, or check-out. </p> <ul>                  <li>Rollaway bed fee: GBP 15.00 per night</li>             </ul> <p>The above list may not be comprehensive. Fees and deposits may not include tax and are subject to change. </p></p>",
+      "checkInInstructions": "Extra-person charges may apply and vary depending on property policy. <br />Government-issued photo identification and a credit card or cash deposit are required at check-in for incidental charges. <br />Special requests are subject to availability upon check-in and may incur additional charges. Special requests cannot be guaranteed.  <ul><li>The name on the credit card used at check-in to pay for incidentals must be the primary name on the guestroom reservation. </li></ul>",
+      "nationalRatingsDescription": "This establishment has received its official star rating from VisitEngland, the National Tourist Board for England.",
+      "knowBeforeYouGoDescription": "<ul>  <li>This property's policy is to refuse certain bookings for the purpose of group events or parties, including pre-wedding stag/bachelor and hen/bachelorette parties. </li><li>Only registered guests are allowed in the guestrooms. </li> <li>The property has connecting/adjoining rooms, which are subject to availability and can be requested by contacting the property using the number on the booking confirmation. </li> </ul>",
+      "roomFeesDescription": "<p>The following fees and deposits are charged by the property at time of service, check-in, or check-out. </p> <ul>                  <li>Rollaway bed fee: GBP 15.00 per night</li>             </ul> <p>The above list may not be comprehensive. Fees and deposits may not include tax and are subject to change. </p>",
+      "locationDescription": "With a stay at Mill Hotel & Spa in Chester, you'll be minutes from Northgate Arena Leisure Centre and Chester Cathedral.  This romantic hotel is within close proximity of Eastgate Clock and Grosvenor Park.",
+      "diningDescription": "Enjoy a meal at one of the hotel's dining establishments, which include 2 restaurants and a coffee shop/café. From your room, you can also access room service (during limited hours). Relax with a refreshing drink at one of the 2 bars/lounges.",
+      "amenitiesDescription": "Relax at the full-service spa, where you can enjoy massages, body treatments, and facials. If you're looking for recreational opportunities, you'll find a health club and an indoor pool. Additional features at this hotel include complimentary wireless Internet access, a hair salon, and tour/ticket assistance.",
+      "businessAmenitiesDescription": "Featured amenities include complimentary wired Internet access, dry cleaning/laundry services, and a 24-hour front desk. Free self parking is available onsite.",
+      "roomDetailDescription": "Make yourself at home in one of the 132 guestrooms. Complimentary wireless Internet access keeps you connected, and cable programming is available for your entertainment. Private bathrooms have deep soaking bathtubs and complimentary toiletries. Conveniences include desks and irons/ironing boards, and housekeeping is provided daily."
+    },
+    "suppliers": {
+      "size": "1",
+      "supplier": {
+        "id": 13,
+        "chainCode": "EP"
+      }
+    },
+    "roomTypes": {
+      "size": "5",
+      "roomType": [{
+        "roomTypeId": 1620042,
+        "roomCode": "200976902",
+        "description": "Standard Double Room, 1 Double Bed",
+        "descriptionLong": "<strong>1 Double Bed</strong><br />172-sq-foot (16-sq-meter) room with desert views<br /><br /><b>Internet</b> - Free WiFi and wired Internet access<br /> <b>Entertainment</b> - Cable channels <br /><b>Food & Drink</b> - Room service<br /><b>Bathroom</b> - Private bathroom, deep soaking bathtub <br /><b>Practical</b> - Iron/ironing board and desk; rollaway/extra beds available on request<br /><b>Comfort</b> - Daily housekeeping<br /><b>Need to Know</b> - No cribs (infant beds) or rollaway/extra beds available<br />Non-Smoking<br />Connecting/adjoining rooms can be requested, subject to availability <br />&nbsp;",
+        "roomAmenities": {
+          "size": "15",
+          "roomAmenity": [{
+            "amenityId": 2168,
+            "amenity": "Bathtub only"
+          }, {
+            "amenityId": 2398,
+            "amenity": "Cable TV service"
+          }, {
+            "amenityId": 4420,
+            "amenity": "Connecting/adjoining rooms available"
+          }, {
+            "amenityId": 133,
+            "amenity": "Daily housekeeping"
+          }, {
+            "amenityId": 3501,
+            "amenity": "Deep soaking bathtub"
+          }, {
+            "amenityId": 2026,
+            "amenity": "Desk"
+          }, {
+            "amenityId": 2403,
+            "amenity": "Free WiFi"
+          }, {
+            "amenityId": 143,
+            "amenity": "Free toiletries"
+          }, {
+            "amenityId": 2180,
+            "amenity": "Hair dryer (on request)"
+          }, {
+            "amenityId": 145,
+            "amenity": "Iron/ironing board"
+          }, {
+            "amenityId": 6176,
+            "amenity": "Non-Smoking"
+          }, {
+            "amenityId": 141,
+            "amenity": "Private bathroom"
+          }, {
+            "amenityId": 1073742816,
+            "amenity": "Rollaway/extra beds (surcharge)"
+          }, {
+            "amenityId": 20,
+            "amenity": "Room service (limited hours)"
+          }, {
+            "amenityId": 26,
+            "amenity": "Television"
+          }]
+        }
+      }, {
+        "roomTypeId": 1621830,
+        "roomCode": "200977006",
+        "description": "Standard Single Room, 1 Single Bed",
+        "descriptionLong": "<strong>1 Twin Bed</strong><br />172-sq-foot (16-sq-meter) room with city views<br /><br /><b>Internet</b> - Free WiFi and wired Internet access<br /> <b>Entertainment</b> - Cable channels <br /><b>Food & Drink</b> - Room service<br /><b>Bathroom</b> - Private bathroom, deep soaking bathtub <br /><b>Practical</b> - Iron/ironing board and desk; rollaway/extra beds available on request<br /><b>Comfort</b> - Daily housekeeping<br /><b>Need to Know</b> - No cribs (infant beds) or rollaway/extra beds available<br />Non-Smoking<br />Connecting/adjoining rooms can be requested, subject to availability <br />&nbsp;",
+        "roomAmenities": {
+          "size": "15",
+          "roomAmenity": [{
+            "amenityId": 2168,
+            "amenity": "Bathtub only"
+          }, {
+            "amenityId": 2398,
+            "amenity": "Cable TV service"
+          }, {
+            "amenityId": 4420,
+            "amenity": "Connecting/adjoining rooms available"
+          }, {
+            "amenityId": 133,
+            "amenity": "Daily housekeeping"
+          }, {
+            "amenityId": 3501,
+            "amenity": "Deep soaking bathtub"
+          }, {
+            "amenityId": 2026,
+            "amenity": "Desk"
+          }, {
+            "amenityId": 2403,
+            "amenity": "Free WiFi"
+          }, {
+            "amenityId": 143,
+            "amenity": "Free toiletries"
+          }, {
+            "amenityId": 2180,
+            "amenity": "Hair dryer (on request)"
+          }, {
+            "amenityId": 145,
+            "amenity": "Iron/ironing board"
+          }, {
+            "amenityId": 6176,
+            "amenity": "Non-Smoking"
+          }, {
+            "amenityId": 141,
+            "amenity": "Private bathroom"
+          }, {
+            "amenityId": 1073742816,
+            "amenity": "Rollaway/extra beds (surcharge)"
+          }, {
+            "amenityId": 20,
+            "amenity": "Room service (limited hours)"
+          }, {
+            "amenityId": 26,
+            "amenity": "Television"
+          }]
+        }
+      }, {
+        "roomTypeId": 1621831,
+        "roomCode": "200977016",
+        "description": "Business Double Room, 1 King Bed",
+        "descriptionLong": "<strong>1 King Bed</strong><br />194-sq-foot (18-sq-meter) room with city views<br /><br /><b>Internet</b> - Free WiFi and wired Internet access<br /> <b>Entertainment</b> - Cable channels <br /><b>Food & Drink</b> - Room service<br /><b>Bathroom</b> - Private bathroom, deep soaking bathtub <br /><b>Practical</b> - Iron/ironing board and desk; rollaway/extra beds and free cribs/infant beds available on request<br /><b>Comfort</b> - Daily housekeeping<br /><b>Need to Know</b> - No rollaway/extra beds available<br />Non-Smoking<br />Connecting/adjoining rooms can be requested, subject to availability <br />&nbsp;",
+        "roomAmenities": {
+          "size": "15",
+          "roomAmenity": [{
+            "amenityId": 2168,
+            "amenity": "Bathtub only"
+          }, {
+            "amenityId": 2398,
+            "amenity": "Cable TV service"
+          }, {
+            "amenityId": 4420,
+            "amenity": "Connecting/adjoining rooms available"
+          }, {
+            "amenityId": 133,
+            "amenity": "Daily housekeeping"
+          }, {
+            "amenityId": 3501,
+            "amenity": "Deep soaking bathtub"
+          }, {
+            "amenityId": 2026,
+            "amenity": "Desk"
+          }, {
+            "amenityId": 2403,
+            "amenity": "Free WiFi"
+          }, {
+            "amenityId": 143,
+            "amenity": "Free toiletries"
+          }, {
+            "amenityId": 2180,
+            "amenity": "Hair dryer (on request)"
+          }, {
+            "amenityId": 145,
+            "amenity": "Iron/ironing board"
+          }, {
+            "amenityId": 6176,
+            "amenity": "Non-Smoking"
+          }, {
+            "amenityId": 141,
+            "amenity": "Private bathroom"
+          }, {
+            "amenityId": 1073742816,
+            "amenity": "Rollaway/extra beds (surcharge)"
+          }, {
+            "amenityId": 20,
+            "amenity": "Room service (limited hours)"
+          }, {
+            "amenityId": 26,
+            "amenity": "Television"
+          }]
+        }
+      }, {
+        "roomTypeId": 1621832,
+        "roomCode": "200977064",
+        "description": "Club Double Room, 1 King Bed",
+        "descriptionLong": "<strong>1 King Bed</strong><br />258-sq-foot (24-sq-meter) room with city views<br /><br /><b>Internet</b> - Free WiFi and wired Internet access<br /> <b>Entertainment</b> - Cable channels <br /><b>Food & Drink</b> - Room service<br /><b>Bathroom</b> - Private bathroom, deep soaking bathtub <br /><b>Practical</b> - Iron/ironing board and desk; rollaway/extra beds and free cribs/infant beds available on request<br /><b>Comfort</b> - Daily housekeeping<br />Non-Smoking<br />Connecting/adjoining rooms can be requested, subject to availability <br />&nbsp;",
+        "roomAmenities": {
+          "size": "15",
+          "roomAmenity": [{
+            "amenityId": 2168,
+            "amenity": "Bathtub only"
+          }, {
+            "amenityId": 2398,
+            "amenity": "Cable TV service"
+          }, {
+            "amenityId": 4420,
+            "amenity": "Connecting/adjoining rooms available"
+          }, {
+            "amenityId": 133,
+            "amenity": "Daily housekeeping"
+          }, {
+            "amenityId": 3501,
+            "amenity": "Deep soaking bathtub"
+          }, {
+            "amenityId": 2026,
+            "amenity": "Desk"
+          }, {
+            "amenityId": 2403,
+            "amenity": "Free WiFi"
+          }, {
+            "amenityId": 143,
+            "amenity": "Free toiletries"
+          }, {
+            "amenityId": 2180,
+            "amenity": "Hair dryer (on request)"
+          }, {
+            "amenityId": 145,
+            "amenity": "Iron/ironing board"
+          }, {
+            "amenityId": 6176,
+            "amenity": "Non-Smoking"
+          }, {
+            "amenityId": 141,
+            "amenity": "Private bathroom"
+          }, {
+            "amenityId": 1073742816,
+            "amenity": "Rollaway/extra beds (surcharge)"
+          }, {
+            "amenityId": 20,
+            "amenity": "Room service (limited hours)"
+          }, {
+            "amenityId": 26,
+            "amenity": "Television"
+          }]
+        }
+      }, {
+        "roomTypeId": 1654470,
+        "roomCode": "201010828",
+        "description": "Family Quadruple Room, 1 King Bed with Sofabed",
+        "descriptionLong": "<strong>1 King Bed and 1 Double Sofa Bed</strong><br />258-sq-foot (24-sq-meter) room with city views<br /><br /><b>Internet</b> - Free WiFi and wired Internet access<br /> <b>Entertainment</b> - Cable channels <br /><b>Food & Drink</b> - Room service<br /><b>Bathroom</b> - Private bathroom, deep soaking bathtub <br /><b>Practical</b> - Iron/ironing board and desk; rollaway/extra beds and free cribs/infant beds available on request<br /><b>Comfort</b> - Daily housekeeping<br /><b>Need to Know</b> - No rollaway/extra beds available<br />Non-Smoking<br />Connecting/adjoining rooms can be requested, subject to availability <br />&nbsp;",
+        "roomAmenities": {
+          "size": "15",
+          "roomAmenity": [{
+            "amenityId": 2168,
+            "amenity": "Bathtub only"
+          }, {
+            "amenityId": 2398,
+            "amenity": "Cable TV service"
+          }, {
+            "amenityId": 4420,
+            "amenity": "Connecting/adjoining rooms available"
+          }, {
+            "amenityId": 133,
+            "amenity": "Daily housekeeping"
+          }, {
+            "amenityId": 3501,
+            "amenity": "Deep soaking bathtub"
+          }, {
+            "amenityId": 2026,
+            "amenity": "Desk"
+          }, {
+            "amenityId": 2403,
+            "amenity": "Free WiFi"
+          }, {
+            "amenityId": 143,
+            "amenity": "Free toiletries"
+          }, {
+            "amenityId": 2180,
+            "amenity": "Hair dryer (on request)"
+          }, {
+            "amenityId": 145,
+            "amenity": "Iron/ironing board"
+          }, {
+            "amenityId": 6176,
+            "amenity": "Non-Smoking"
+          }, {
+            "amenityId": 141,
+            "amenity": "Private bathroom"
+          }, {
+            "amenityId": 1073742816,
+            "amenity": "Rollaway/extra beds (surcharge)"
+          }, {
+            "amenityId": 20,
+            "amenity": "Room service (limited hours)"
+          }, {
+            "amenityId": 26,
+            "amenity": "Television"
+          }]
+        }
+      }]
+    },
+    "propertyAmenities": {
+      "size": "28",
+      "propertyAmenity": [{
+        "amenityId": 2063,
+        "amenity": "24-hour front desk"
+      }, {
+        "amenityId": 2420,
+        "amenity": "Accessible bathroom"
+      }, {
+        "amenityId": 2004,
+        "amenity": "Coffee shop or café"
+      }, {
+        "amenityId": 2349,
+        "amenity": "Designated smoking areas"
+      }, {
+        "amenityId": 3269,
+        "amenity": "Designated smoking areas (fines apply)"
+      }, {
+        "amenityId": 2070,
+        "amenity": "Dry cleaning/laundry service"
+      }, {
+        "amenityId": 2390,
+        "amenity": "Free WiFi"
+      }, {
+        "amenityId": 2001,
+        "amenity": "Free breakfast"
+      }, {
+        "amenityId": 3861,
+        "amenity": "Free self parking"
+      }, {
+        "amenityId": 2392,
+        "amenity": "Free wired Internet"
+      }, {
+        "amenityId": 2123,
+        "amenity": "Full-service spa"
+      }, {
+        "amenityId": 40,
+        "amenity": "Hair salon"
+      }, {
+        "amenityId": 2008,
+        "amenity": "Health club"
+      }, {
+        "amenityId": 2423,
+        "amenity": "In-room accessibility"
+      }, {
+        "amenityId": 14,
+        "amenity": "Indoor pool"
+      }, {
+        "amenityId": 4003,
+        "amenity": "Luggage storage"
+      }, {
+        "amenityId": 1073742791,
+        "amenity": "Newspapers in lobby (surcharge)"
+      }, {
+        "amenityId": 3913,
+        "amenity": "Number of bars/lounges - 2"
+      }, {
+        "amenityId": 55,
+        "amenity": "Number of buildings/towers - 2"
+      }, {
+        "amenityId": 54,
+        "amenity": "Number of floors - 5"
+      }, {
+        "amenityId": 2537,
+        "amenity": "Number of restaurants - 2"
+      }, {
+        "amenityId": 3637,
+        "amenity": "One meeting room"
+      }, {
+        "amenityId": 2421,
+        "amenity": "Roll-in shower"
+      }, {
+        "amenityId": 2016,
+        "amenity": "Safe-deposit box at front desk"
+      }, {
+        "amenityId": 2137,
+        "amenity": "Smoke-free property"
+      }, {
+        "amenityId": 2017,
+        "amenity": "Spa services on site"
+      }, {
+        "amenityId": 52,
+        "amenity": "Total number of rooms - 132"
+      }, {
+        "amenityId": 2387,
+        "amenity": "Tours/ticket assistance"
+      }]
+    },
+    "hotelImages": {
+      "size": "41",
+      "hotelImage": [{
+        "hotelImageId": 15134879,
+        "name": "Featured Image",
+        "category": 1,
+        "type": 1,
+        "caption": "Featured Image",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_4_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_4_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_4_z.jpg",
+        "heroImage": true
+      }, {
+        "hotelImageId": 23305297,
+        "name": "Reception",
+        "category": 0,
+        "type": 0,
+        "caption": "Reception",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_65_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_65_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_65_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 15134884,
+        "name": "Guestroom",
+        "category": 0,
+        "type": 0,
+        "caption": "Guestroom",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_9_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_9_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_9_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 15177753,
+        "name": "Guestroom",
+        "category": 0,
+        "type": 0,
+        "caption": "Guestroom",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_23_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_23_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_23_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 15551730,
+        "name": "Guestroom",
+        "category": 0,
+        "type": 0,
+        "caption": "Guestroom",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_27_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_27_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "heroImage": false
+      }, {
+        "hotelImageId": 15551731,
+        "name": "Guestroom",
+        "category": 0,
+        "type": 0,
+        "caption": "Guestroom",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_28_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_28_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "heroImage": false
+      }, {
+        "hotelImageId": 15551735,
+        "name": "Guestroom",
+        "category": 0,
+        "type": 0,
+        "caption": "Guestroom",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_34_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_34_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "heroImage": false
+      }, {
+        "hotelImageId": 15551740,
+        "name": "Guestroom",
+        "category": 0,
+        "type": 0,
+        "caption": "Guestroom",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_43_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_43_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "heroImage": false
+      }, {
+        "hotelImageId": 15595302,
+        "name": "Guestroom",
+        "category": 0,
+        "type": 0,
+        "caption": "Guestroom",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_47_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_47_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "heroImage": false
+      }, {
+        "hotelImageId": 15756939,
+        "name": "Guestroom",
+        "category": 0,
+        "type": 0,
+        "caption": "Guestroom",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_62_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_62_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_62_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 15551744,
+        "name": "In-Room Coffee",
+        "category": 0,
+        "type": 0,
+        "caption": "In-Room Coffee",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_38_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_38_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "heroImage": false
+      }, {
+        "hotelImageId": 15551728,
+        "name": "Bathroom",
+        "category": 0,
+        "type": 0,
+        "caption": "Bathroom",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_26_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_26_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "heroImage": false
+      }, {
+        "hotelImageId": 15551745,
+        "name": "Indoor Pool",
+        "category": 0,
+        "type": 0,
+        "caption": "Indoor Pool",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_35_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_35_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_35_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 15134877,
+        "name": "Gym",
+        "category": 0,
+        "type": 0,
+        "caption": "Gym",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_2_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_2_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "heroImage": false
+      }, {
+        "hotelImageId": 15756938,
+        "name": "Fitness Studio",
+        "category": 0,
+        "type": 0,
+        "caption": "Fitness Studio",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_64_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_64_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_64_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 15551741,
+        "name": "Hair Salon",
+        "category": 0,
+        "type": 0,
+        "caption": "Hair Salon",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_29_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_29_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "heroImage": false
+      }, {
+        "hotelImageId": 15756942,
+        "name": "Treatment Room",
+        "category": 0,
+        "type": 0,
+        "caption": "Treatment Room",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_58_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_58_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_58_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 15756943,
+        "name": "Treatment Room",
+        "category": 0,
+        "type": 0,
+        "caption": "Treatment Room",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_61_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_61_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_61_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 15177751,
+        "name": "Property Amenity",
+        "category": 0,
+        "type": 0,
+        "caption": "Property Amenity",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_20_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_20_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_20_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 15551746,
+        "name": "Restaurant",
+        "category": 0,
+        "type": 0,
+        "caption": "Restaurant",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_24_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_24_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "heroImage": false
+      }, {
+        "hotelImageId": 15595304,
+        "name": "Restaurant",
+        "category": 0,
+        "type": 0,
+        "caption": "Restaurant",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_49_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_49_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_49_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 15756941,
+        "name": "Restaurant",
+        "category": 0,
+        "type": 0,
+        "caption": "Restaurant",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_60_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_60_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "heroImage": false
+      }, {
+        "hotelImageId": 23305294,
+        "name": "Restaurant",
+        "category": 0,
+        "type": 0,
+        "caption": "Restaurant",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_67_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_67_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_67_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 15595855,
+        "name": "Cafe",
+        "category": 0,
+        "type": 0,
+        "caption": "Cafe",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_51_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_51_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_51_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 15595858,
+        "name": "Food and Drink",
+        "category": 0,
+        "type": 0,
+        "caption": "Food and Drink",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_54_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_54_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "heroImage": false
+      }, {
+        "hotelImageId": 15595860,
+        "name": "Food and Drink",
+        "category": 0,
+        "type": 0,
+        "caption": "Food and Drink",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_56_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_56_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "heroImage": false
+      }, {
+        "hotelImageId": 15551742,
+        "name": "Hotel Bar",
+        "category": 0,
+        "type": 0,
+        "caption": "Hotel Bar",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_37_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_37_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_37_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 15756940,
+        "name": "Hotel Bar",
+        "category": 0,
+        "type": 0,
+        "caption": "Hotel Bar",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_59_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_59_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_59_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 23305293,
+        "name": "Hotel Bar",
+        "category": 0,
+        "type": 0,
+        "caption": "Hotel Bar",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_66_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_66_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_66_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 23305295,
+        "name": "Hotel Bar",
+        "category": 0,
+        "type": 0,
+        "caption": "Hotel Bar",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_68_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_68_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_68_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 23305296,
+        "name": "Hotel Bar",
+        "category": 0,
+        "type": 0,
+        "caption": "Hotel Bar",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_69_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_69_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_69_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 15756937,
+        "name": "Hotel Lounge",
+        "category": 0,
+        "type": 0,
+        "caption": "Hotel Lounge",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_63_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_63_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_63_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 15551743,
+        "name": "Hotel Interior",
+        "category": 0,
+        "type": 0,
+        "caption": "Hotel Interior",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_44_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_44_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "heroImage": false
+      }, {
+        "hotelImageId": 15551727,
+        "name": "Banquet Hall",
+        "category": 0,
+        "type": 0,
+        "caption": "Banquet Hall",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_30_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_30_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_30_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 15595857,
+        "name": "Banquet Hall",
+        "category": 0,
+        "type": 0,
+        "caption": "Banquet Hall",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_53_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_53_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_53_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 15595303,
+        "name": "Meeting Facility",
+        "category": 0,
+        "type": 0,
+        "caption": "Meeting Facility",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_48_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_48_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "heroImage": false
+      }, {
+        "hotelImageId": 15595856,
+        "name": "Interior Detail",
+        "category": 0,
+        "type": 0,
+        "caption": "Interior Detail",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_52_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_52_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_52_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 15595859,
+        "name": "Lake",
+        "category": 0,
+        "type": 0,
+        "caption": "Lake",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_55_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_55_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "heroImage": false
+      }, {
+        "hotelImageId": 15134867,
+        "name": "Exterior",
+        "category": 0,
+        "type": 0,
+        "caption": "Exterior",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_10_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_10_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_10_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 15595305,
+        "name": "Exterior",
+        "category": 0,
+        "type": 0,
+        "caption": "Exterior",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_50_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_50_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "heroImage": false
+      }, {
+        "hotelImageId": 15598177,
+        "name": "City View",
+        "category": 0,
+        "type": 0,
+        "caption": "City View",
+        "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_57_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_57_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_57_z.jpg",
+        "heroImage": false
+      }]
+    }
+  }
 }

@@ -47,8 +47,10 @@ import CustomerFollowing from './apps/customer/following';
 // Articles
 import LondonArticle from './apps/location/travelguides/united-kingdom/london';
 
+// Hotels
 import Hotels from './apps/hotel';
 import HotelSearchResults from './apps/hotel/search-results';
+import HotelDetail from './apps/hotel/detail';
 
 export default (
   <Route path="/" component={Container}>
@@ -78,6 +80,7 @@ export default (
     <Route path="/holidays" component={Holidays}/>
     <Route path="/hotels" component={Hotels}/>
     <Route path="/hotels/search-results" component={HotelSearchResults}/>
+    <Route path="/(:placeId)/visit/(:placeName)/hotels/(:hotelId)" component={HotelDetail}/>
     <Route path="/flights" component={Flights}/>
     <Route path="/flights/search-results" component={FlightSearchResults} />
 
