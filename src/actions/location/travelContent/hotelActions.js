@@ -43,10 +43,10 @@ export function hotelsByLocationFailure(errorMessage) {
   return {type: types.HOTELS_BY_LOCATION_FAILURE, isFetching: false, errorMessage};
 }
 
-export function loadHotelsByLocation(locationId, arrivalDate, nights, locale, currencyCode, room, city, country) {
+export function loadHotelsByLocation(locationId, arrivalDate, nights, locale, currencyCode, room, city, pageSize, pageNumber) {
   return dispatch => {
     dispatch(hotelsByLocationRequest());
-    return HotelApi.getHotelsByLocation(locationId, arrivalDate, nights, locale, currencyCode, room, city, country).then(hotels => {
+    return HotelApi.getHotelsByLocation(locationId, arrivalDate, nights, locale, currencyCode, room, city, pageSize, pageNumber).then(hotels => {
       dispatch(hotelsByLocationSuccess(hotels));
     }).catch(error => {
       dispatch(hotelsByLocationFailure(error.response.data));
@@ -70,10 +70,10 @@ export function hotelsByProximityFailure(errorMessage) {
   return {type: types.HOTELS_BY_PROXIMITY_FAILURE, isFetching: false, errorMessage};
 }
 
-export function loadHotelsByProximty(locationId, latitude, longitude, radius, locale, currencyCode, pageSize) {
+export function loadHotelsByProximty(locationId, latitude, longitude, radius, locale, currencyCode, pageSize, pageNumber) {
   return dispatch => {
     dispatch(hotelsByProximityRequest());
-    return HotelApi.getHotelsByProximty(locationId, latitude, longitude, radius, locale, currencyCode, pageSize).then(hotels => {
+    return HotelApi.getHotelsByProximty(locationId, latitude, longitude, radius, locale, currencyCode, pageSize, pageNumber).then(hotels => {
       dispatch(hotelsByProximitySuccess(hotels));
     }).catch(error => {
       dispatch(hotelsByProximityFailure(error.response.data));

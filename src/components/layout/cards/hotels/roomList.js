@@ -96,7 +96,6 @@ class RoomList extends React.Component {
                       {
                         style.backgroundImage = 'url(' + hotelRoom.roomImages.roomImage[0].url + ')';
                       }
-
                       return (
                         <div className="col-md-4 mb-4" key={index}>
                           <div className="card text-xs-left">
@@ -107,11 +106,13 @@ class RoomList extends React.Component {
                             </div>
                             <div className="card-block">
                               <h4 className="card-title mb-2">{titleCase(hotelRoom.roomTypeDescription)}</h4>
+
                               <div className="row">
                                 <div className="col-md-12">
-                                  {hotelRoom.rateInfos.rateInfo.promo == true ? hotelRoom.rateInfos.rateInfo.promoDescription : ''}
                                     <ul className="nav card-text mb-2">
                                       <li className="nav-item bedType">Sleeps: {roomOccupancy}</li>
+                                    </ul>
+                                  <ul className="nav card-text mb-2">
                                       {
                                         hotelRoom.bedTypes.bedType.map((bedType, bedIndex) => {
                                           return (
@@ -126,11 +127,17 @@ class RoomList extends React.Component {
                                 <div className="col-md-6">
                                   <h5
                                     className="hotelPrice mb-1">{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.total} {hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.currencyCode}</h5>
-                                  <p className="card-subtitle mb-1 text-muted cardAddress"><a href="#" onClick={this.cancellationPolicyClick} data-policy={hotelRoom.rateInfos.rateInfo[0].cancellationPolicy}><i
-                                    className="fa fa-info"></i> Cancellation Policy</a></p>
+
                                 </div>
                                 <div className="col-md-6">
                                   <a href={hotelRoom.deepLink} className="btn btn-primary priceRight" target="_blank">Book Room</a>
+                                </div>
+                                <div className="col-md-12">
+                                  <p className="card-subtitle mb-1 text-muted cardAddress">
+                                    <a href="#" onClick={this.cancellationPolicyClick} data-policy={hotelRoom.rateInfos.rateInfo[0].cancellationPolicy}>
+                                      {hotelRoom.rateInfos.rateInfo[0].nonRefundable ? <span><i className="fa fa-info"></i> Non-Refundable - Read Cancellation Policy</span> : <span><i className="fa fa-info"></i> Read Cancellation Policy</span>}
+                                    </a>
+                                  </p>
                                 </div>
                               </div>
                             </div>

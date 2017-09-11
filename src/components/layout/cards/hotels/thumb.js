@@ -2,16 +2,17 @@ import React, {PropTypes} from 'react';
 import StarRating from '../../../forms/common/starRating';
 
 const HotelThumb = ({hotel, hotelUrl, cssClass, nameLength}) => {
+
   let style = {
-    backgroundImage: 'url(' + hotel.thumbNailUrl + ')'
+    backgroundImage: 'url(http://i.travelapi.com' + hotel.imagelUrl + ')'
   };
   let url = hotelUrl + '/hotels/' + hotel.hotelId;
   return (
     <div className={cssClass} key={hotel.hotelId}>
       <div className="card text-xs-left">
-        <div className="cardBg" style={style}>
+        <div className="cardBg hotels" style={style}>
         </div>
-        <div className="card-block">
+        <div className="card-block hotels">
           <h5>{hotel.name.length > nameLength ? hotel.name.substring(0,nameLength) + '...' : hotel.name}</h5>
           <a href={url} className="btn btn-primary priceRight">View</a>
           <p className="mb0">From {hotel.lowRate.toFixed(2)} {hotel.rateCurrencyCode}</p>

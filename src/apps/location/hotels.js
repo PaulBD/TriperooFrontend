@@ -10,7 +10,8 @@ import GoogleMaps from '../../components/maps/googleMap';
 import TriperooLoader from '../../components/loaders/globalLoader';
 import LastMinuteDeal from '../../components/content/dynamic/lastMinuteDeal';
 import SearchForm from '../../components/forms/searchForms/hotels';
-import HotelResults from '../../components/layout/cards/hotels/hotelResults';
+import HotelThumb from '../../components/layout/cards/hotels/thumb';
+import Loader from '../../components/loaders/contentLoader';
 let moment = require('moment');
 import Toastr from 'toastr';
 
@@ -20,7 +21,7 @@ class LocationContent extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    this.state = { pageSize: 20, pageNumber: 0, arrivalDate: moment().add(7, 'days').format('YYYY-MM-DD'), formattedArrivalDate: moment().add(7, 'days').format('LL'), departureDate: moment().add(8, 'days').format('YYYY-MM-DD'), formattedDepartureDate: moment().add(8, 'days').format('LL'), nights: 1, isLoadingLocation: true, isLoadingHotelList: true };
+    this.state = { pageSize: 20, pageNumber: 0, radius: 5, arrivalDate: moment().add(7, 'days').format('YYYY-MM-DD'), formattedArrivalDate: moment().add(7, 'days').format('LL'), departureDate: moment().add(8, 'days').format('YYYY-MM-DD'), formattedDepartureDate: moment().add(8, 'days').format('LL'), nights: 1, rooms: 1, isLoadingLocation: true, isLoadingHotelList: true };
   }
 
   componentWillMount() {
@@ -30,7 +31,7 @@ class LocationContent extends React.Component {
 
   loadLocation() {
     this.props.locationActions.loadLocationById(this.props.locationId)
-      .then(() => this.loadHotels(this.props.locationId, this.state.arrivalDate, this.state.nights, this.state.pageSize, this.state.pageNumber))
+      .then(() => this.loadHotels(this.props.locationId, this.props.location.locationCoordinates.latitude, this.props.location.locationCoordinates.longitude, this.state.radius, 'en_en', 'GBP', this.state.pageSize, this.state.pageNumber))
       .catch(error => {
         Toastr.error(error);
         this.setState({isLoadingLocation: false, isLoadingHotelList: false });
@@ -41,12 +42,14 @@ class LocationContent extends React.Component {
     this.setState({isLoadingLocation: false, isLoadingHotelList: false});
     var nights = endDate.diff(startDate, 'days');
     this.setState({  arrivalDate: startDate.format('YYYY-MM-DD'), formattedArrivalDate: startDate.format('LL'), departureDate: endDate.format('YYYY-MM-DD'), formattedDepartureDate: endDate.format('LL'), nights: nights });
-    this.loadHotels(this.props.locationId, startDate.format('YYYY-MM-DD'), nights, this.state.pageSize, this.state.pageNumber);
+    //this.loadHotels(this.props.locationId, startDate.format('YYYY-MM-DD'), nights, 'en_en', 'GBP', rooms, this.props.location.regionNameLong, this.state.pageSize, this.state.pageNumber);
+    this.loadHotels(this.props.locationId, this.props.location.locationCoordinates.latitude, this.props.location.locationCoordinates.longitude, this.state.radius, 'en_en', 'GBP', this.state.pageSize, this.state.pageNumber);
+
   }
 
-  loadHotels(locationId, pageSize, pageNumber) {
+  loadHotels(locationId, latitude, longitude, radius, locale, currencyCode, pageSize, pageNumber) {
     this.setState({isLoadingLocation: false, isLoadingHotelList: true});
-    this.props.hotelActions.loadHotelsByLocation(locationId, pageSize, pageNumber)
+    this.props.hotelActions.loadHotelsByProximty(locationId, latitude, longitude, radius, locale, currencyCode, pageSize, pageNumber)
       .then(() => this.setState({isLoadingLocation: false, isLoadingHotelList: false}))
       .catch(error => {
         this.setState({isLoadingLocation: false, isLoadingHotelList: false});
@@ -62,19 +65,31 @@ class LocationContent extends React.Component {
       return (
         <div>
           <SubPageHeader location={this.props.location} contentType="hotels" title={title}/>
-          <div className="gap gap-small"></div>
+          <div className="gap gap-mini"></div>
           <div className="container">
             <div className="row row-wrap">
               <div className="container">
                 <div className="row">
                   <div className="col-md-12">
-                    <h5>Search For Hotels</h5>
                     <SearchForm sDate={this.state.arrivalDate} useFunction={true} handleFormSubmit={this.handleFormSubmit} isSideBar={false} city={this.props.location.regionNameLong} />
-                    <div className="gap gap-small"></div>
                   </div>
                   <div className="col-md-12">
                     <div className="row">
-                      <HotelResults hotels={this.props.hotels.hotelListResponse} url={this.props.location.url} loadingHotels={this.state.isLoadingHotelList} />
+                      <div className="col-md-6">
+                        <p className="text-left"><a href="">Filter Hotels</a></p>
+                      </div>
+                      <div className="col-md-6">
+                        <p className="text-right">{this.props.hotels.hotelListResponse ? this.props.hotels.hotelListResponse.hotelList.size : 0 } hotels found in {this.props.location.regionName}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-12">
+                    <div className="row">
+                      {
+                        this.props.hotels.hotelListResponse ? this.props.hotels.hotelListResponse.hotelList.hotelSummary.map(function (hotel, i) {
+                          return(<HotelThumb hotel={hotel} hotelUrl={this.props.location.url} key={hotel.hotelId} cssClass="col-md-3 mb-4" nameLength={50}/>);
+                        }, this) : (<Loader showLoader={true}/>)
+                      }
                     </div>
                   </div>
                 </div>

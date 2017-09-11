@@ -18,7 +18,7 @@ class SimilarHotels extends React.Component {
 
   getHotels() {
     this.setState({isLoading: true});
-    this.props.hotelActions.loadHotelsByProximty(this.props.locationId, this.props.latitude, this.props.longitude, this.props.radius, this.props.locale, this.props.currencyCode, this.props.pageSize)
+    this.props.hotelActions.loadHotelsByProximty(this.props.locationId, this.props.latitude, this.props.longitude, this.props.radius, this.props.locale, this.props.currencyCode, this.props.pageSize, this.props.pageNumber)
       .then(() => this.setState({isLoading: false}))
       .catch(error => {
         this.setState({isLoading: false});
@@ -80,7 +80,8 @@ class SimilarHotels extends React.Component {
 
 SimilarHotels.defaultProps = {
   hotelDeals: {},
-  pageSize: 3
+  pageSize: 3,
+  pageNumber: 0
 };
 
 SimilarHotels.propTypes = {
@@ -89,6 +90,7 @@ SimilarHotels.propTypes = {
   longitude: PropTypes.number.isRequired,
   radius: PropTypes.number.isRequired,
   pageSize: PropTypes.number.isRequired,
+  pageNumber: PropTypes.number.isRequired,
   locale: PropTypes.string.isRequired,
   currencyCode: PropTypes.string.isRequired,
   hotels: PropTypes.object.isRequired,

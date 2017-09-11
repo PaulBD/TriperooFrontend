@@ -539,9 +539,11 @@ div.ReactTags__suggestions ul li.active {
 .reviewCard { height: 510px !important; }
 
 .cardBg { width: 100%; height: 150px;}
+.cardBg.hotels { width: 100%; height: 200px;}
+.card-block.hotels h5 { height: 50px; }
 .tripStartDate { font-size: 12px; font-weight:300; }
 
-.cardAddress { font-size: 12px !important; line-height: normal !important; }
+.cardAddress { font-size: 12px !important; line-height: normal !important; margin-top: 10px; }
 
 /* Flights */
 .flightWrapper { border: solid 1px #efefef; padding:20px; }
@@ -1277,10 +1279,9 @@ ul.twPc-Arrange li.location {
 }
 
 /* Hotel Detail */
-.hotelPrice {}
 
 .priceRight { float: right; margin-left:10px;  }
-.hotelPrice { font-weight: bold;}
+.hotelPrice { font-weight: bold; margin-top: 8px;}
 .hotelAddress { margin-bottom: 5px; }
 .facilities { padding: 0px 15px; }
 .facilities li { width:50%; float:left; font-size: 12px; }

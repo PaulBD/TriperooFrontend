@@ -50,9 +50,9 @@ class HotelDealsApi {
   // ****************************************
   // Return hotels by location Id
   // ****************************************
-  static getHotelsByLocation(locationId, arrivalDate, nights, locale, currencyCode, room, city, country) {
+  static getHotelsByLocation(locationId, arrivalDate, nights, locale, currencyCode, room, city, pageSize, pageNumber) {
     return new Promise((resolve, reject) => {
-      axios.get(baseUrl + '/location/' + locationId + '/hotels/' + arrivalDate + '/' + nights + '?locale=' + locale + '&currencyCode=' + currencyCode + '&room1=' + room + '&city=' + city + '&Country=' + country)
+      axios.get(baseUrl + '/location/' + locationId + '/hotels/' + arrivalDate + '/' + nights + '?locale=' + locale + '&currencyCode=' + currencyCode + '&room1=' + room + '&city=' + city + '&pageSize=' + pageSize + '&pageNumber=' + pageNumber)
         .then(function (response) {
           resolve(Object.assign({}, response.data));
         })
@@ -70,9 +70,9 @@ class HotelDealsApi {
   // ****************************************
   // Return hotels by location Id
   // ****************************************
-  static getHotelsByProximty(locationId, latitude, longitude, radius, locale, currencyCode, pageSize) {
+  static getHotelsByProximty(locationId, latitude, longitude, radius, locale, currencyCode, pageSize, pageNumber) {
     return new Promise((resolve, reject) => {
-      axios.get(baseUrl + '/location/' + locationId + '/hotels/?latitude=' + latitude + '&longitude=' + longitude + '&radius=' + radius + '&locale=' + locale + '&currencyCode=' + currencyCode + '&pageSize=' + pageSize)
+      axios.get(baseUrl + '/location/' + locationId + '/hotels/?latitude=' + latitude + '&longitude=' + longitude + '&radius=' + radius + '&locale=' + locale + '&currencyCode=' + currencyCode + '&pageSize=' + pageSize + '&pageNumber=' + pageNumber)
         .then(function (response) {
           resolve(Object.assign({}, response.data));
         })
