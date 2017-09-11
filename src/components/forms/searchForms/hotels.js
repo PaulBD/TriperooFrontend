@@ -11,7 +11,7 @@ let moment = require('moment');
 class SearchForm extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { startDate: moment(), endDate: moment().add(1, 'days'), formattedStartDate: moment().format('YYYY-MM-DD'), formattedEndDate: moment().add(1, 'days').format('YYYY-MM-DD'), guests: '1', rooms: '1', searchValue: '', searchUrl: '' };
+    this.state = { startDate: moment().add(7, 'days'), endDate: moment().add(8, 'days'), formattedStartDate: moment().add(7, 'days').format('YYYY-MM-DD'), formattedEndDate: moment().add(8, 'days').format('YYYY-MM-DD'), guests: '1', rooms: '1', searchValue: '', searchUrl: '' };
     this.handleStartDateChange = this.handleStartDateChange.bind(this);
     this.handleEndDateChange = this.handleEndDateChange.bind(this);
     this.handleGuestChange = this.handleGuestChange.bind(this);
@@ -20,14 +20,14 @@ class SearchForm extends React.Component {
     this.onChangeAutoComplete = this.onChangeAutoComplete.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
 
     let searchValue = '';
     let searchUrl = '';
     let guests = '1';
     let rooms = '1';
-    let startDate = moment();
-    let endDate = moment().add(1, 'days');
+    let startDate = moment().add(7, 'days');
+    let endDate = moment().add(8, 'days');
 
     if (this.props.searchValue !== undefined) {
         searchValue = this.props.searchValue;
@@ -58,7 +58,6 @@ class SearchForm extends React.Component {
     {
       searchUrl = this.props.searchUrl;
     }
-
     this.state = { searchValue: searchValue, searchUrl: searchUrl, startDate: startDate, endDate: endDate, formattedStartDate: startDate.format('YYYY-MM-DD'), formattedEndDate: endDate.format('YYYY-MM-DD'), guests: guests, rooms: rooms  };
   }
 
@@ -99,7 +98,11 @@ class SearchForm extends React.Component {
   submitForm(event) {
     event.preventDefault();
 
-    if (this.state.searchValue.length > 0) {
+    if (this.props.useFunction) {
+      this.props.handleFormSubmit(this.state.searchValue, this.state.startDate, this.state.formattedStartDate, this.state.endDate, this.state.formattedEndDate, this.state.rooms, this.state.guests);
+    }
+    else {
+      if (this.state.searchValue.length > 0) {
         let url = '?q=' + this.state.searchValue + '&sDate=' + this.state.formattedStartDate + '&eDate=' + this.state.formattedEndDate + '&rooms=' + this.state.rooms + '&guests=' + this.state.guests;
 
         if (this.state.searchUrl.length > 0) {
@@ -114,15 +117,11 @@ class SearchForm extends React.Component {
         else {
           browserHistory.push('/searchForms-results/hotels' + url);
         }
-    }
-
-    if (this.props.useFunction) {
-      this.props.handleFormSubmit(this.state.searchValue, this.state.formattedStartDate, this.state.formattedEndDate, this.state.rooms, this.state.guests);
+      }
     }
   }
 
   render(){
-
     return (
         <form className="hotelSearch" onSubmit={this.submitForm}>
           <div className="row">
@@ -132,7 +131,7 @@ class SearchForm extends React.Component {
                   <div className={this.props.isSideBar ? "col-md-12" : "col-md-6"}>
                     <div className="form-group form-group-icon-left">
                       <label>Destination</label>
-                      <AutoComplete onChangeAutoComplete={this.onChangeAutoComplete} searchType="city" placeholder="Enter Destination" cssClass="typeahead form-control" searchValue={this.props.searchValue !== undefined && this.props.searchValue != '' ? titleCase(this.props.searchValue) : titleCase(this.props.city)} />
+                      <AutoComplete disabled={this.props.lockLocation} onChangeAutoComplete={this.onChangeAutoComplete} searchType="city" placeholder="Enter Destination" cssClass="typeahead form-control" searchValue={this.props.searchValue !== undefined && this.props.searchValue != '' ? titleCase(this.props.searchValue) : titleCase(this.props.city)} />
                     </div>
                   </div>
                   <div className={this.props.isSideBar ? "col-md-6" : "col-md-3"}>
@@ -152,6 +151,27 @@ class SearchForm extends React.Component {
             </div>
             <div className={this.props.isSideBar ? "col-md-12" : "col-md-5"}>
               <div className="row">
+                <div className={this.props.isSideBar ? "col-md-6" : "col-md-3"}>
+                  <div className="form-group form-group-select-plus">
+                    <label>Rooms</label>
+                    <select className="form-control searchSelect" value={this.state.rooms} onChange={this.handleRoomChange} ref="rooms" name="rooms">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                      <option>11</option>
+                      <option>12</option>
+                      <option>13</option>
+                      <option>14</option>
+                    </select>
+                  </div>
+                </div>
                 <div className={this.props.isSideBar ? "col-md-6" : "col-md-3"}>
                   <div className="form-group form-group- form-group-select-plus">
                     <label>Guests</label>
@@ -173,27 +193,6 @@ class SearchForm extends React.Component {
                     </select>
                   </div>
                 </div>
-                <div className={this.props.isSideBar ? "col-md-6" : "col-md-3"}>
-                  <div className="form-group form-group-select-plus">
-                      <label>Rooms</label>
-                      <select className="form-control searchSelect" value={this.state.rooms} onChange={this.handleRoomChange} ref="rooms" name="rooms">
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
-                          <option>6</option>
-                          <option>7</option>
-                          <option>8</option>
-                          <option>9</option>
-                          <option>10</option>
-                          <option>11</option>
-                          <option>12</option>
-                          <option>13</option>
-                          <option>14</option>
-                      </select>
-                  </div>
-                </div>
                 <div className={this.props.isSideBar ? "col-md-12" : "col-md-6"}>
                   <button className="btn btn-primary btn-lg formBtn" type="submit">
                     <i className="fa fa-search"></i>Search Hotels
@@ -209,13 +208,14 @@ class SearchForm extends React.Component {
 
 SearchForm.defaultProps = {
   searchValue: '',
-  sDate: moment(),
-  eDate: moment().add(1, 'days'),
+  sDate: moment().add(7, 'days'),
+  eDate: moment().add(8, 'days'),
   rooms: '1',
   guests: '1',
   searchUrl: '',
   useFunction: false,
-  isSideBar: false
+  isSideBar: false,
+  lockLocation: false
 };
 
 SearchForm.propTypes = {
@@ -229,14 +229,15 @@ SearchForm.propTypes = {
   city: PropTypes.string,
   searchUrl: PropTypes.string,
   useFunction: PropTypes.bool,
-  isSideBar: PropTypes.bool
+  isSideBar: PropTypes.bool,
+  lockLocation: PropTypes.bool
 };
 
 function mapStateToProps(state, ownProps) {
   return {
     searchValue: ownProps.location !== undefined ? ownProps.location.query.q : '',
-    sDate: ownProps.location !== undefined ? ownProps.location.query.sDate : moment(),
-    eDate: ownProps.location !== undefined ? ownProps.location.query.eDate : moment().add(1, 'days'),
+    sDate: ownProps.location !== undefined ? ownProps.location.query.sDate : moment().add(7, 'days'),
+    eDate: ownProps.location !== undefined ? ownProps.location.query.eDate : moment().add(8, 'days'),
     rooms: ownProps.location !== undefined ? ownProps.location.query.rooms : '1',
     guests: ownProps.location !== undefined ? ownProps.location.query.guests : '1',
     searchUrl: ownProps.location !== undefined ? ownProps.location.pathname : ''

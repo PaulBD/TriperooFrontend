@@ -53,6 +53,16 @@ export default function modalReducer(state = { isSending: false, hasPosted: fals
     case types.CLOSE_LOCATION_IMAGE_MODEL:
       return Object.assign({}, state, { modalIsOpen: false, isSending: false, hasPosted: false, modalName: action.name, modalType: 'LocationImage' });
 
+    case types.OPEN_HOTEL_IMAGE_MODEL:
+      return Object.assign({}, state, { modalIsOpen: true, isSending: true, hasPosted: false, modalContent: { imageList: action.imageList, imagePosition: action.imagePosition, hotelName: action.hotelName }, modalName: action.name, modalType: 'HotelImage' });
+    case types.CLOSE_HOTEL_IMAGE_MODEL:
+      return Object.assign({}, state, { modalIsOpen: false, isSending: false, hasPosted: false, modalName: action.name, modalType: 'HotelImage' });
+
+    case types.OPEN_POLICY_MODEL:
+      return Object.assign({}, state, { modalIsOpen: true, isSending: true, hasPosted: false, modalContent: { policy: action.policy }, modalName: action.name, modalType: 'CancellationPolicy' });
+    case types.CLOSE_POLICY_MODEL:
+      return Object.assign({}, state, { modalIsOpen: false, isSending: false, hasPosted: false, modalName: action.name, modalType: 'CancellationPolicy' });
+
     default:
       return state;
   }

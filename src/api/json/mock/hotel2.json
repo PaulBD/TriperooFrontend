@@ -1,0 +1,2525 @@
+{
+  "hotelInformationResponse": {
+    "hotelId": "122212",
+    "customerSessionId": "0AB2905F-19AA-6915-E472-8796FE9042B9",
+    "hotelSummary": {
+      "order": "0",
+      "hotelId": 122212,
+      "name": "Luxor Hotel and Casino",
+      "address1": "3900 S. Las Vegas Blvd",
+      "city": "Las Vegas",
+      "stateProvinceCode": "NV",
+      "postalCode": 89119,
+      "countryCode": "US",
+      "propertyCategory": 3,
+      "hotelRating": 3.5,
+      "hotelRatingDisplay": "star",
+      "tripAdvisorRating": 4.0,
+      "tripAdvisorReviewCount": 30304,
+      "tripAdvisorRatingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.0-123456-4.gif",
+      "locationDescription": "In Las Vegas (Paradise)",
+      "highRate": 277.41,
+      "lowRate": 84.41,
+      "latitude": 36.09659,
+      "longitude": -115.17309
+    },
+    "hotelDetails": {
+      "numberOfRooms": 4400,
+      "numberOfFloors": 1,
+      "checkInTime": "3:00 PM",
+      "checkInMinAge": "21",
+      "checkOutTime": "11:00 AM",
+      "propertyInformation": "Pets not allowed  Check-in time starts at 3 PM  Check-out time is 11 AM",
+      "areaInformation": "Distances are calculated in a straight line from the property&apos;s location to the point of interest or attraction, and may not reflect actual travel distance. <br /><br /> Distances are displayed to the nearest 0.1 mile and kilometer. <p>Luxor Casino - 0.3 km / 0.2 mi <br />The Park - 0.8 km / 0.5 mi <br />Park Theater - 0.8 km / 0.5 mi <br />T-Mobile Arena - 0.8 km / 0.5 mi <br />Bali Hai Golf Club - 1.4 km / 0.9 mi <br />Miracle Mile Shops - 1.5 km / 1 mi <br />Welcome to Fabulous Las Vegas Sign - 1.6 km / 1 mi <br />High Roller - 2.4 km / 1.5 mi <br />The Auto Collections - 2.4 km / 1.5 mi <br />Orleans Arena - 2.6 km / 1.6 mi <br />Thomas and Mack Center - 2.6 km / 1.6 mi <br />University of Nevada-Las Vegas - 3.1 km / 1.9 mi <br />Town Square Las Vegas - 3.2 km / 2 mi <br />Fashion Show Mall - 3.5 km / 2.2 mi <br />Clark County Library - 3.9 km / 2.4 mi <br /></p><p>The preferred airport for Luxor Hotel and Casino is Las Vegas, NV (LAS-McCarran Intl.) - 2.4 km / 1.5 mi. </p>",
+      "propertyDescription": "<p><b>Property Location</b> <br />With a stay at Luxor Hotel and Casino in Las Vegas (Paradise), you&apos;ll be minutes from Luxor Casino and close to University of Nevada-Las Vegas.  This casino resort is within close proximity of The Park and Park Theater.</p><p><b>Rooms</b> <br />Make yourself at home in one of the 4400 air-conditioned rooms featuring flat-screen televisions. Complimentary wireless Internet access keeps you connected, and cable programming is available for your entertainment. Private bathrooms with shower/tub combinations feature designer toiletries and hair dryers. Conveniences include phones, as well as irons/ironing boards and blackout drapes/curtains.</p><p><b>Amenities</b> <br />Relax at the full-service spa, where you can enjoy massages, body treatments, and facials. Gambling sorts can try their luck at the casino, while others may prefer a nightclub or an outdoor pool. Additional amenities at this resort include complimentary wireless Internet access, concierge services, and gift shops/newsstands.</p><p><b>Dining</b> <br />Enjoy a meal at one of the resort&apos;s dining establishments, which include 11 restaurants and a coffee shop/cafÃ©. From your room, you can also access room service (during limited hours). Relax with a refreshing drink from a poolside bar or one of the 5 bars/lounges.</p><p><b>Business, Other Amenities</b> <br />Featured amenities include a business center, express check-in, and express check-out. Event facilities at this resort consist of conference space and meeting rooms. Self parking (subject to charges) is available onsite.</p>",
+      "hotelPolicy": "",
+      "roomInformation": "<p><b>Know Before You Go</b> <br /><ul>  <li>The property has connecting/adjoining rooms, which are subject to availability and can be requested by contacting the property using the number on the booking confirmation. </li> </ul></p><p><b>Fees</b> <br /><p>The following fees and deposits are charged by the property at time of service, check-in, or check-out. </p> <ul> <li>Fee for buffet breakfast: USD 21.99 per person (approximately)</li>       <li>Self parking fee: USD 10 per day</li> <li>Valet parking fee: USD 15 per day</li>         <li>Rollaway bed fee: USD 35.0 per day</li>           <li>Facilities fee: USD 25.00 per person and includes use of:</li><br /> - Spa  </ul> <p>The above list may not be comprehensive. Fees and deposits may not include tax and are subject to change. </p></p><p><b>Mandatory Fees and Taxes</b> <br /><p>You&apos;ll be asked to pay the following charges at the property:</p> <ul><li>Deposit: USD 50 per night</li><li>Resort fee: USD 34.01 per accommodation, per night</li></ul> The resort fee includes:<ul><li>Fitness center access</li><li>Internet access</li><li>Phone calls</li><li>Additional inclusions</li></ul> <p>We have included all charges provided to us by the property. However, charges can vary, for example, based on length of stay or the room you book. </p></p>",
+      "drivingDirections": "The preferred airport for Luxor Hotel and Casino is Las Vegas, NV (LAS-McCarran Intl.) - 2.5 km / 1.5 mi. <p>Distances are calculated in a straight line from the propertyâ€™s location to the point of interest or airport and may not reflect actual travel distance. <br /><br /> Distances are displayed to the nearest 0.1 mile and kilometre. </p>",
+      "checkInInstructions": "Extra-person charges may apply and vary depending on property policy. <br />Government-issued photo identification and a credit card are required at check-in for incidental charges. <br />Special requests are subject to availability upon check-in and may incur additional charges. Special requests cannot be guaranteed. <br />",
+      "knowBeforeYouGoDescription": "<ul>  <li>The property has connecting/adjoining rooms, which are subject to availability and can be requested by contacting the property using the number on the booking confirmation. </li> </ul>",
+      "roomFeesDescription": "<p>The following fees and deposits are charged by the property at time of service, check-in, or check-out. </p> <ul> <li>Fee for buffet breakfast: USD 21.99 per person (approximately)</li>       <li>Self parking fee: USD 10 per day</li> <li>Valet parking fee: USD 15 per day</li>         <li>Rollaway bed fee: USD 35.0 per day</li>           <li>Facilities fee: USD 25.00 per person and includes use of:</li><br /> - Spa  </ul> <p>The above list may not be comprehensive. Fees and deposits may not include tax and are subject to change. </p>",
+      "mandatoryFeesDescription": "<p>You'll be asked to pay the following charges at the property:</p> <ul><li>Deposit: USD 50 per night</li><li>Resort fee: USD 34.01 per accommodation, per night</li></ul> The resort fee includes:<ul><li>Fitness center access</li><li>Internet access</li><li>Phone calls</li><li>Additional inclusions</li></ul> <p>We have included all charges provided to us by the property. However, charges can vary, for example, based on length of stay or the room you book. </p>",
+      "locationDescription": "With a stay at Luxor Hotel and Casino in Las Vegas (Paradise), you'll be minutes from Luxor Casino and close to University of Nevada-Las Vegas.  This casino resort is within close proximity of The Park and Park Theater.",
+      "diningDescription": "Enjoy a meal at one of the resort's dining establishments, which include 11 restaurants and a coffee shop/cafÃ©. From your room, you can also access room service (during limited hours). Relax with a refreshing drink from a poolside bar or one of the 5 bars/lounges.",
+      "amenitiesDescription": "relax at the full-service spa, where you can enjoy massages, body treatments, and facials. Gambling sorts can try their luck at the casino, while others may prefer a nightclub or an outdoor pool. Additional amenities at this resort include complimentary wireless Internet access, concierge services, and gift shops/newsstands.",
+      "businessAmenitiesDescription": "Featured amenities include a business center, express check-in, and express check-out. Event facilities at this resort consist of conference space and meeting rooms. Self parking (subject to charges) is available onsite.",
+      "roomDetailDescription": "Make yourself at home in one of the 4400 air-conditioned rooms featuring flat-screen televisions. Complimentary wireless Internet access keeps you connected, and cable programming is available for your entertainment. Private bathrooms with shower/tub combinations feature designer toiletries and hair dryers. Conveniences include phones, as well as irons/ironing boards and blackout drapes/curtains.",
+      "specialCheckInInstructions": "Guests may check-in at the North Lobby for easy access to the Tower Rooms."
+    },
+    "suppliers": {
+      "size": "1",
+      "supplier": {
+        "id": "13",
+        "chainCode": "EP"
+      }
+    },
+    "roomTypes": {
+      "size": "21",
+      "roomType": [{
+        "roomTypeId": "166317",
+        "roomCode": "1554",
+        "description": "Pyramid Suite",
+        "descriptionLong": "Located in the Luxor pyramid, this suite is 590-800 square feet, with views of Las Vegas. The bedroom offers 1 king or 2 queen beds. The separate living area comes with a couch, upholstered armchair, 2-chair dining set, and compact refrigerator. Unwind with a pay movie on the 27-inch television, or check email with wired high-speed Internet access, included in the resort fee. The oversized bathroom includes a shower only, marble vanity, and complimentary premium toiletries from Luxor's Nurture Spa and Salon.",
+        "roomAmenities": {
+          "size": "20",
+          "roomAmenity": [{
+            "amenityId": "1",
+            "amenity": "Air conditioning"
+          }, {
+            "amenityId": "2150",
+            "amenity": "Blackout drapes/curtains"
+          }, {
+            "amenityId": "2398",
+            "amenity": "cable TV service"
+          }, {
+            "amenityId": "4420",
+            "amenity": "connecting/adjoining rooms available"
+          }, {
+            "amenityId": "133",
+            "amenity": "Daily housekeeping"
+          }, {
+            "amenityId": "2025",
+            "amenity": "Designer toiletries"
+          }, {
+            "amenityId": "2399",
+            "amenity": "Flat-panel TV"
+          }, {
+            "amenityId": "2403",
+            "amenity": "Free WiFi"
+          }, {
+            "amenityId": "4951",
+            "amenity": "Free cribs/infant beds"
+          }, {
+            "amenityId": "143",
+            "amenity": "Free toiletries"
+          }, {
+            "amenityId": "144",
+            "amenity": "hair dryer"
+          }, {
+            "amenityId": "2030",
+            "amenity": "In-room climate control (air conditioning)"
+          }, {
+            "amenityId": "145",
+            "amenity": "Iron/ironing board"
+          }, {
+            "amenityId": "2039",
+            "amenity": "Pay movies"
+          }, {
+            "amenityId": "136",
+            "amenity": "Phone"
+          }, {
+            "amenityId": "141",
+            "amenity": "Private bathroom"
+          }, {
+            "amenityId": "1073742816",
+            "amenity": "rollaway/extra beds (surcharge)"
+          }, {
+            "amenityId": "20",
+            "amenity": "room service (limited hours)"
+          }, {
+            "amenityId": "2183",
+            "amenity": "shower/tub combination"
+          }, {
+            "amenityId": "6213",
+            "amenity": "smoking And Non-Smoking"
+          }]
+        }
+      }, {
+        "roomTypeId": "167692",
+        "roomCode": "1557",
+        "description": "Pyramid Deluxe 2 Queens",
+        "descriptionLong": "Located in the Luxor pyramid and overlooking the action-packed atrium, this 439 sq. foot (41 sq. meter) room has 2 queen beds. Unwind with a pay movie on the flat-screen TV or check email with wired high-speed Internet access, included in the resort fee. The bathroom includes an oversized shower (no tub), marble vanity, and complimentary toiletries from Luxor's Nurture Spa and Salon.",
+        "roomAmenities": {
+          "size": "20",
+          "roomAmenity": [{
+            "amenityId": "1",
+            "amenity": "Air conditioning"
+          }, {
+            "amenityId": "2150",
+            "amenity": "Blackout drapes/curtains"
+          }, {
+            "amenityId": "2398",
+            "amenity": "cable TV service"
+          }, {
+            "amenityId": "4420",
+            "amenity": "connecting/adjoining rooms available"
+          }, {
+            "amenityId": "133",
+            "amenity": "Daily housekeeping"
+          }, {
+            "amenityId": "2025",
+            "amenity": "Designer toiletries"
+          }, {
+            "amenityId": "2399",
+            "amenity": "Flat-panel TV"
+          }, {
+            "amenityId": "2403",
+            "amenity": "Free WiFi"
+          }, {
+            "amenityId": "4951",
+            "amenity": "Free cribs/infant beds"
+          }, {
+            "amenityId": "143",
+            "amenity": "Free toiletries"
+          }, {
+            "amenityId": "144",
+            "amenity": "hair dryer"
+          }, {
+            "amenityId": "2030",
+            "amenity": "In-room climate control (air conditioning)"
+          }, {
+            "amenityId": "145",
+            "amenity": "Iron/ironing board"
+          }, {
+            "amenityId": "6176",
+            "amenity": "Non-Smoking"
+          }, {
+            "amenityId": "2039",
+            "amenity": "Pay movies"
+          }, {
+            "amenityId": "136",
+            "amenity": "Phone"
+          }, {
+            "amenityId": "141",
+            "amenity": "Private bathroom"
+          }, {
+            "amenityId": "1073742816",
+            "amenity": "rollaway/extra beds (surcharge)"
+          }, {
+            "amenityId": "20",
+            "amenity": "room service (limited hours)"
+          }, {
+            "amenityId": "2183",
+            "amenity": "shower/tub combination"
+          }]
+        }
+      }, {
+        "roomTypeId": "179092",
+        "roomCode": "1556",
+        "description": "One Bedroom Luxury Suite",
+        "descriptionLong": "Located in one of Luxor's 22-story towers, this grand 775 sq. foot (72 sq. meter) suite has floor-to-ceiling windows and a bedroom with 1 king bed. Great for entertaining, the spacious separate living room includes a couch, armchair, 2nd TV, and wet bar, as well as a breakfast nook, compact refrigerator,  and 2-chair dining set. Curl up in the bathrobe and slippers, and unwind with a pay movie. Or check email with wired high-speed Internet access, included in the resort fee. The large marble bathroom has a shower/tub combination, phone, dual sinks, and complimentary toiletries from Luxor's Nurture Spa and Salon.",
+        "roomAmenities": {
+          "size": "20",
+          "roomAmenity": [{
+            "amenityId": "1",
+            "amenity": "Air conditioning"
+          }, {
+            "amenityId": "2150",
+            "amenity": "Blackout drapes/curtains"
+          }, {
+            "amenityId": "2398",
+            "amenity": "cable TV service"
+          }, {
+            "amenityId": "4420",
+            "amenity": "connecting/adjoining rooms available"
+          }, {
+            "amenityId": "133",
+            "amenity": "Daily housekeeping"
+          }, {
+            "amenityId": "2025",
+            "amenity": "Designer toiletries"
+          }, {
+            "amenityId": "2399",
+            "amenity": "Flat-panel TV"
+          }, {
+            "amenityId": "2403",
+            "amenity": "Free WiFi"
+          }, {
+            "amenityId": "4951",
+            "amenity": "Free cribs/infant beds"
+          }, {
+            "amenityId": "143",
+            "amenity": "Free toiletries"
+          }, {
+            "amenityId": "144",
+            "amenity": "hair dryer"
+          }, {
+            "amenityId": "2030",
+            "amenity": "In-room climate control (air conditioning)"
+          }, {
+            "amenityId": "145",
+            "amenity": "Iron/ironing board"
+          }, {
+            "amenityId": "6176",
+            "amenity": "Non-Smoking"
+          }, {
+            "amenityId": "2039",
+            "amenity": "Pay movies"
+          }, {
+            "amenityId": "136",
+            "amenity": "Phone"
+          }, {
+            "amenityId": "141",
+            "amenity": "Private bathroom"
+          }, {
+            "amenityId": "1073742816",
+            "amenity": "rollaway/extra beds (surcharge)"
+          }, {
+            "amenityId": "20",
+            "amenity": "room service (limited hours)"
+          }, {
+            "amenityId": "2183",
+            "amenity": "shower/tub combination"
+          }]
+        }
+      }, {
+        "roomTypeId": "261592",
+        "roomCode": "111388",
+        "description": "Tower Deluxe 2 Queens",
+        "descriptionLong": "Located in one of Luxor's 22-story towers, this spacious 420 sq. foot (39 sq. meter) room has floor-to-ceiling windows and 2 queen beds. Unwind with a pay movie on the flat-screen TV or check email with wired high-speed Internet access, included in the resort fee. 2 armoires offer extra storage space, and each room includes a 2-person dining set. The oversized bathroom includes a separate tub and shower, and complimentary toiletries from Luxor's Nurture Spa and Salon.",
+        "roomAmenities": {
+          "size": "20",
+          "roomAmenity": [{
+            "amenityId": "1",
+            "amenity": "Air conditioning"
+          }, {
+            "amenityId": "2150",
+            "amenity": "Blackout drapes/curtains"
+          }, {
+            "amenityId": "2398",
+            "amenity": "cable TV service"
+          }, {
+            "amenityId": "4420",
+            "amenity": "connecting/adjoining rooms available"
+          }, {
+            "amenityId": "133",
+            "amenity": "Daily housekeeping"
+          }, {
+            "amenityId": "2025",
+            "amenity": "Designer toiletries"
+          }, {
+            "amenityId": "2399",
+            "amenity": "Flat-panel TV"
+          }, {
+            "amenityId": "2403",
+            "amenity": "Free WiFi"
+          }, {
+            "amenityId": "4951",
+            "amenity": "Free cribs/infant beds"
+          }, {
+            "amenityId": "143",
+            "amenity": "Free toiletries"
+          }, {
+            "amenityId": "144",
+            "amenity": "hair dryer"
+          }, {
+            "amenityId": "2030",
+            "amenity": "In-room climate control (air conditioning)"
+          }, {
+            "amenityId": "145",
+            "amenity": "Iron/ironing board"
+          }, {
+            "amenityId": "6176",
+            "amenity": "Non-Smoking"
+          }, {
+            "amenityId": "2039",
+            "amenity": "Pay movies"
+          }, {
+            "amenityId": "136",
+            "amenity": "Phone"
+          }, {
+            "amenityId": "141",
+            "amenity": "Private bathroom"
+          }, {
+            "amenityId": "1073742816",
+            "amenity": "rollaway/extra beds (surcharge)"
+          }, {
+            "amenityId": "20",
+            "amenity": "room service (limited hours)"
+          }, {
+            "amenityId": "2183",
+            "amenity": "shower/tub combination"
+          }]
+        }
+      }, {
+        "roomTypeId": "633020",
+        "roomCode": "200017040",
+        "description": "Tower Deluxe King",
+        "descriptionLong": "Located in one of Luxor's 22-story towers, this spacious 420 sq. foot (39 sq. meter) room has floor-to-ceiling windows and 1 king bed. Unwind with a pay movie on the flat-screen TV or check email with wired high-speed Internet access, included in the resort fee. 2 armoires offer extra storage space, and a dining set provides seating for two. The oversized bathroom includes a separate tub and shower, and complimentary toiletries from Luxor's Nurture Spa and Salon.",
+        "roomAmenities": {
+          "size": "20",
+          "roomAmenity": [{
+            "amenityId": "1",
+            "amenity": "Air conditioning"
+          }, {
+            "amenityId": "2150",
+            "amenity": "Blackout drapes/curtains"
+          }, {
+            "amenityId": "2398",
+            "amenity": "cable TV service"
+          }, {
+            "amenityId": "4420",
+            "amenity": "connecting/adjoining rooms available"
+          }, {
+            "amenityId": "133",
+            "amenity": "Daily housekeeping"
+          }, {
+            "amenityId": "2025",
+            "amenity": "Designer toiletries"
+          }, {
+            "amenityId": "2399",
+            "amenity": "Flat-panel TV"
+          }, {
+            "amenityId": "2403",
+            "amenity": "Free WiFi"
+          }, {
+            "amenityId": "4951",
+            "amenity": "Free cribs/infant beds"
+          }, {
+            "amenityId": "143",
+            "amenity": "Free toiletries"
+          }, {
+            "amenityId": "144",
+            "amenity": "hair dryer"
+          }, {
+            "amenityId": "2030",
+            "amenity": "In-room climate control (air conditioning)"
+          }, {
+            "amenityId": "145",
+            "amenity": "Iron/ironing board"
+          }, {
+            "amenityId": "6176",
+            "amenity": "Non-Smoking"
+          }, {
+            "amenityId": "2039",
+            "amenity": "Pay movies"
+          }, {
+            "amenityId": "136",
+            "amenity": "Phone"
+          }, {
+            "amenityId": "141",
+            "amenity": "Private bathroom"
+          }, {
+            "amenityId": "1073742816",
+            "amenity": "rollaway/extra beds (surcharge)"
+          }, {
+            "amenityId": "20",
+            "amenity": "room service (limited hours)"
+          }, {
+            "amenityId": "2183",
+            "amenity": "shower/tub combination"
+          }]
+        }
+      }, {
+        "roomTypeId": "633021",
+        "roomCode": "200017046",
+        "description": "Pyramid Deluxe King",
+        "descriptionLong": "Located in the Luxor pyramid and overlooking the action-packed atrium, this 439 sq. foot (41 sq. meter) room has 1 king bed. Unwind with a pay movie on the flat-screen TV or check email with wired high-speed Internet access, included in the resort fee. The bathroom includes an oversized shower (no tub), marble vanity, and complimentary toiletries from Luxor's Nurture Spa and Salon.",
+        "roomAmenities": {
+          "size": "20",
+          "roomAmenity": [{
+            "amenityId": "1",
+            "amenity": "Air conditioning"
+          }, {
+            "amenityId": "2150",
+            "amenity": "Blackout drapes/curtains"
+          }, {
+            "amenityId": "2398",
+            "amenity": "cable TV service"
+          }, {
+            "amenityId": "4420",
+            "amenity": "connecting/adjoining rooms available"
+          }, {
+            "amenityId": "133",
+            "amenity": "Daily housekeeping"
+          }, {
+            "amenityId": "2025",
+            "amenity": "Designer toiletries"
+          }, {
+            "amenityId": "2399",
+            "amenity": "Flat-panel TV"
+          }, {
+            "amenityId": "2403",
+            "amenity": "Free WiFi"
+          }, {
+            "amenityId": "4951",
+            "amenity": "Free cribs/infant beds"
+          }, {
+            "amenityId": "143",
+            "amenity": "Free toiletries"
+          }, {
+            "amenityId": "144",
+            "amenity": "hair dryer"
+          }, {
+            "amenityId": "2030",
+            "amenity": "In-room climate control (air conditioning)"
+          }, {
+            "amenityId": "145",
+            "amenity": "Iron/ironing board"
+          }, {
+            "amenityId": "6176",
+            "amenity": "Non-Smoking"
+          }, {
+            "amenityId": "2039",
+            "amenity": "Pay movies"
+          }, {
+            "amenityId": "136",
+            "amenity": "Phone"
+          }, {
+            "amenityId": "141",
+            "amenity": "Private bathroom"
+          }, {
+            "amenityId": "1073742816",
+            "amenity": "rollaway/extra beds (surcharge)"
+          }, {
+            "amenityId": "20",
+            "amenity": "room service (limited hours)"
+          }, {
+            "amenityId": "2183",
+            "amenity": "shower/tub combination"
+          }]
+        }
+      }, {
+        "roomTypeId": "1931146",
+        "roomCode": "201288302",
+        "description": "run of House",
+        "descriptionLong": "Located in the Luxor pyramid. Unwind with a pay movie on the flat-screen TV or check email with wired high-speed Internet access, included in the resort fee. The bathroom includes an oversized shower (no tub), marble vanity, and complimentary toiletries from Luxor's Nurture Spa and Salon. Bed and room type depend on availability and will be assigned at check-in. Number of beds, room types, and views are not guaranteed.",
+        "roomAmenities": {
+          "size": "20",
+          "roomAmenity": [{
+            "amenityId": "1",
+            "amenity": "Air conditioning"
+          }, {
+            "amenityId": "2150",
+            "amenity": "Blackout drapes/curtains"
+          }, {
+            "amenityId": "2398",
+            "amenity": "cable TV service"
+          }, {
+            "amenityId": "4420",
+            "amenity": "connecting/adjoining rooms available"
+          }, {
+            "amenityId": "133",
+            "amenity": "Daily housekeeping"
+          }, {
+            "amenityId": "2025",
+            "amenity": "Designer toiletries"
+          }, {
+            "amenityId": "2399",
+            "amenity": "Flat-panel TV"
+          }, {
+            "amenityId": "2403",
+            "amenity": "Free WiFi"
+          }, {
+            "amenityId": "4951",
+            "amenity": "Free cribs/infant beds"
+          }, {
+            "amenityId": "143",
+            "amenity": "Free toiletries"
+          }, {
+            "amenityId": "144",
+            "amenity": "hair dryer"
+          }, {
+            "amenityId": "2030",
+            "amenity": "In-room climate control (air conditioning)"
+          }, {
+            "amenityId": "145",
+            "amenity": "Iron/ironing board"
+          }, {
+            "amenityId": "6176",
+            "amenity": "Non-Smoking"
+          }, {
+            "amenityId": "2039",
+            "amenity": "Pay movies"
+          }, {
+            "amenityId": "136",
+            "amenity": "Phone"
+          }, {
+            "amenityId": "141",
+            "amenity": "Private bathroom"
+          }, {
+            "amenityId": "1073742816",
+            "amenity": "rollaway/extra beds (surcharge)"
+          }, {
+            "amenityId": "20",
+            "amenity": "room service (limited hours)"
+          }, {
+            "amenityId": "2183",
+            "amenity": "shower/tub combination"
+          }]
+        }
+      }, {
+        "roomTypeId": "2299985",
+        "roomCode": "201631670",
+        "description": "Luxury Suite, 1 Bedroom",
+        "roomAmenities": {
+          "size": "20",
+          "roomAmenity": [{
+            "amenityId": "1",
+            "amenity": "Air conditioning"
+          }, {
+            "amenityId": "2150",
+            "amenity": "Blackout drapes/curtains"
+          }, {
+            "amenityId": "2398",
+            "amenity": "cable TV service"
+          }, {
+            "amenityId": "4420",
+            "amenity": "connecting/adjoining rooms available"
+          }, {
+            "amenityId": "133",
+            "amenity": "Daily housekeeping"
+          }, {
+            "amenityId": "2025",
+            "amenity": "Designer toiletries"
+          }, {
+            "amenityId": "2399",
+            "amenity": "Flat-panel TV"
+          }, {
+            "amenityId": "2403",
+            "amenity": "Free WiFi"
+          }, {
+            "amenityId": "4951",
+            "amenity": "Free cribs/infant beds"
+          }, {
+            "amenityId": "143",
+            "amenity": "Free toiletries"
+          }, {
+            "amenityId": "144",
+            "amenity": "hair dryer"
+          }, {
+            "amenityId": "2030",
+            "amenity": "In-room climate control (air conditioning)"
+          }, {
+            "amenityId": "145",
+            "amenity": "Iron/ironing board"
+          }, {
+            "amenityId": "6176",
+            "amenity": "Non-Smoking"
+          }, {
+            "amenityId": "2039",
+            "amenity": "Pay movies"
+          }, {
+            "amenityId": "136",
+            "amenity": "Phone"
+          }, {
+            "amenityId": "141",
+            "amenity": "Private bathroom"
+          }, {
+            "amenityId": "1073742816",
+            "amenity": "rollaway/extra beds (surcharge)"
+          }, {
+            "amenityId": "20",
+            "amenity": "room service (limited hours)"
+          }, {
+            "amenityId": "2183",
+            "amenity": "shower/tub combination"
+          }]
+        }
+      }, {
+        "roomTypeId": "2299986",
+        "roomCode": "201631671",
+        "description": "Deluxe Room, 2 Queen Beds (Pyramid)",
+        "roomAmenities": {
+          "size": "20",
+          "roomAmenity": [{
+            "amenityId": "1",
+            "amenity": "Air conditioning"
+          }, {
+            "amenityId": "2150",
+            "amenity": "Blackout drapes/curtains"
+          }, {
+            "amenityId": "2398",
+            "amenity": "cable TV service"
+          }, {
+            "amenityId": "4420",
+            "amenity": "connecting/adjoining rooms available"
+          }, {
+            "amenityId": "133",
+            "amenity": "Daily housekeeping"
+          }, {
+            "amenityId": "2025",
+            "amenity": "Designer toiletries"
+          }, {
+            "amenityId": "2399",
+            "amenity": "Flat-panel TV"
+          }, {
+            "amenityId": "2403",
+            "amenity": "Free WiFi"
+          }, {
+            "amenityId": "4951",
+            "amenity": "Free cribs/infant beds"
+          }, {
+            "amenityId": "143",
+            "amenity": "Free toiletries"
+          }, {
+            "amenityId": "144",
+            "amenity": "hair dryer"
+          }, {
+            "amenityId": "2030",
+            "amenity": "In-room climate control (air conditioning)"
+          }, {
+            "amenityId": "145",
+            "amenity": "Iron/ironing board"
+          }, {
+            "amenityId": "6176",
+            "amenity": "Non-Smoking"
+          }, {
+            "amenityId": "2039",
+            "amenity": "Pay movies"
+          }, {
+            "amenityId": "136",
+            "amenity": "Phone"
+          }, {
+            "amenityId": "141",
+            "amenity": "Private bathroom"
+          }, {
+            "amenityId": "1073742816",
+            "amenity": "rollaway/extra beds (surcharge)"
+          }, {
+            "amenityId": "20",
+            "amenity": "room service (limited hours)"
+          }, {
+            "amenityId": "2183",
+            "amenity": "shower/tub combination"
+          }]
+        }
+      }, {
+        "roomTypeId": "2299987",
+        "roomCode": "201631673",
+        "description": "Deluxe Room, 2 Queen Beds, Tower",
+        "roomAmenities": {
+          "size": "20",
+          "roomAmenity": [{
+            "amenityId": "1",
+            "amenity": "Air conditioning"
+          }, {
+            "amenityId": "2150",
+            "amenity": "Blackout drapes/curtains"
+          }, {
+            "amenityId": "2398",
+            "amenity": "cable TV service"
+          }, {
+            "amenityId": "4420",
+            "amenity": "connecting/adjoining rooms available"
+          }, {
+            "amenityId": "133",
+            "amenity": "Daily housekeeping"
+          }, {
+            "amenityId": "2025",
+            "amenity": "Designer toiletries"
+          }, {
+            "amenityId": "2399",
+            "amenity": "Flat-panel TV"
+          }, {
+            "amenityId": "2403",
+            "amenity": "Free WiFi"
+          }, {
+            "amenityId": "4951",
+            "amenity": "Free cribs/infant beds"
+          }, {
+            "amenityId": "143",
+            "amenity": "Free toiletries"
+          }, {
+            "amenityId": "144",
+            "amenity": "hair dryer"
+          }, {
+            "amenityId": "2030",
+            "amenity": "In-room climate control (air conditioning)"
+          }, {
+            "amenityId": "145",
+            "amenity": "Iron/ironing board"
+          }, {
+            "amenityId": "6176",
+            "amenity": "Non-Smoking"
+          }, {
+            "amenityId": "2039",
+            "amenity": "Pay movies"
+          }, {
+            "amenityId": "136",
+            "amenity": "Phone"
+          }, {
+            "amenityId": "141",
+            "amenity": "Private bathroom"
+          }, {
+            "amenityId": "1073742816",
+            "amenity": "rollaway/extra beds (surcharge)"
+          }, {
+            "amenityId": "20",
+            "amenity": "room service (limited hours)"
+          }, {
+            "amenityId": "2183",
+            "amenity": "shower/tub combination"
+          }]
+        }
+      }, {
+        "roomTypeId": "2299988",
+        "roomCode": "201631674",
+        "description": "Deluxe Room, 1 King Bed, Tower",
+        "roomAmenities": {
+          "size": "20",
+          "roomAmenity": [{
+            "amenityId": "1",
+            "amenity": "Air conditioning"
+          }, {
+            "amenityId": "2150",
+            "amenity": "Blackout drapes/curtains"
+          }, {
+            "amenityId": "2398",
+            "amenity": "cable TV service"
+          }, {
+            "amenityId": "4420",
+            "amenity": "connecting/adjoining rooms available"
+          }, {
+            "amenityId": "133",
+            "amenity": "Daily housekeeping"
+          }, {
+            "amenityId": "2025",
+            "amenity": "Designer toiletries"
+          }, {
+            "amenityId": "2399",
+            "amenity": "Flat-panel TV"
+          }, {
+            "amenityId": "2403",
+            "amenity": "Free WiFi"
+          }, {
+            "amenityId": "4951",
+            "amenity": "Free cribs/infant beds"
+          }, {
+            "amenityId": "143",
+            "amenity": "Free toiletries"
+          }, {
+            "amenityId": "144",
+            "amenity": "hair dryer"
+          }, {
+            "amenityId": "2030",
+            "amenity": "In-room climate control (air conditioning)"
+          }, {
+            "amenityId": "145",
+            "amenity": "Iron/ironing board"
+          }, {
+            "amenityId": "6176",
+            "amenity": "Non-Smoking"
+          }, {
+            "amenityId": "2039",
+            "amenity": "Pay movies"
+          }, {
+            "amenityId": "136",
+            "amenity": "Phone"
+          }, {
+            "amenityId": "141",
+            "amenity": "Private bathroom"
+          }, {
+            "amenityId": "1073742816",
+            "amenity": "rollaway/extra beds (surcharge)"
+          }, {
+            "amenityId": "20",
+            "amenity": "room service (limited hours)"
+          }, {
+            "amenityId": "2183",
+            "amenity": "shower/tub combination"
+          }]
+        }
+      }, {
+        "roomTypeId": "2299989",
+        "roomCode": "201631676",
+        "description": "Deluxe Room, 1 King Bed (Pyramid)",
+        "roomAmenities": {
+          "size": "20",
+          "roomAmenity": [{
+            "amenityId": "1",
+            "amenity": "Air conditioning"
+          }, {
+            "amenityId": "2150",
+            "amenity": "Blackout drapes/curtains"
+          }, {
+            "amenityId": "2398",
+            "amenity": "cable TV service"
+          }, {
+            "amenityId": "4420",
+            "amenity": "connecting/adjoining rooms available"
+          }, {
+            "amenityId": "133",
+            "amenity": "Daily housekeeping"
+          }, {
+            "amenityId": "2025",
+            "amenity": "Designer toiletries"
+          }, {
+            "amenityId": "2399",
+            "amenity": "Flat-panel TV"
+          }, {
+            "amenityId": "2403",
+            "amenity": "Free WiFi"
+          }, {
+            "amenityId": "4951",
+            "amenity": "Free cribs/infant beds"
+          }, {
+            "amenityId": "143",
+            "amenity": "Free toiletries"
+          }, {
+            "amenityId": "144",
+            "amenity": "hair dryer"
+          }, {
+            "amenityId": "2030",
+            "amenity": "In-room climate control (air conditioning)"
+          }, {
+            "amenityId": "145",
+            "amenity": "Iron/ironing board"
+          }, {
+            "amenityId": "6176",
+            "amenity": "Non-Smoking"
+          }, {
+            "amenityId": "2039",
+            "amenity": "Pay movies"
+          }, {
+            "amenityId": "136",
+            "amenity": "Phone"
+          }, {
+            "amenityId": "141",
+            "amenity": "Private bathroom"
+          }, {
+            "amenityId": "1073742816",
+            "amenity": "rollaway/extra beds (surcharge)"
+          }, {
+            "amenityId": "20",
+            "amenity": "room service (limited hours)"
+          }, {
+            "amenityId": "2183",
+            "amenity": "shower/tub combination"
+          }]
+        }
+      }, {
+        "roomTypeId": "2299990",
+        "roomCode": "201631677",
+        "description": "room (Run of House)",
+        "roomAmenities": {
+          "size": "20",
+          "roomAmenity": [{
+            "amenityId": "1",
+            "amenity": "Air conditioning"
+          }, {
+            "amenityId": "2150",
+            "amenity": "Blackout drapes/curtains"
+          }, {
+            "amenityId": "2398",
+            "amenity": "cable TV service"
+          }, {
+            "amenityId": "4420",
+            "amenity": "connecting/adjoining rooms available"
+          }, {
+            "amenityId": "133",
+            "amenity": "Daily housekeeping"
+          }, {
+            "amenityId": "2025",
+            "amenity": "Designer toiletries"
+          }, {
+            "amenityId": "2399",
+            "amenity": "Flat-panel TV"
+          }, {
+            "amenityId": "2403",
+            "amenity": "Free WiFi"
+          }, {
+            "amenityId": "4951",
+            "amenity": "Free cribs/infant beds"
+          }, {
+            "amenityId": "143",
+            "amenity": "Free toiletries"
+          }, {
+            "amenityId": "144",
+            "amenity": "hair dryer"
+          }, {
+            "amenityId": "2030",
+            "amenity": "In-room climate control (air conditioning)"
+          }, {
+            "amenityId": "145",
+            "amenity": "Iron/ironing board"
+          }, {
+            "amenityId": "6176",
+            "amenity": "Non-Smoking"
+          }, {
+            "amenityId": "2039",
+            "amenity": "Pay movies"
+          }, {
+            "amenityId": "136",
+            "amenity": "Phone"
+          }, {
+            "amenityId": "141",
+            "amenity": "Private bathroom"
+          }, {
+            "amenityId": "1073742816",
+            "amenity": "rollaway/extra beds (surcharge)"
+          }, {
+            "amenityId": "20",
+            "amenity": "room service (limited hours)"
+          }, {
+            "amenityId": "2183",
+            "amenity": "shower/tub combination"
+          }]
+        }
+      }, {
+        "roomTypeId": "2300746",
+        "roomCode": "201632564",
+        "description": "Tower Luxury Suite",
+        "descriptionLong": "This suite includes 1 king bed and measures 775 sq feet (72 sq meters). Enjoy free WiFi access and cable TV with pay movies and Internet access. The bathroom features a shower/tub combination, hair dryer, and designer toiletries. Cool off on warm days with air conditioning. This is a non-smoking room.",
+        "roomAmenities": {
+          "size": "20",
+          "roomAmenity": [{
+            "amenityId": "1",
+            "amenity": "Air conditioning"
+          }, {
+            "amenityId": "2150",
+            "amenity": "Blackout drapes/curtains"
+          }, {
+            "amenityId": "2398",
+            "amenity": "cable TV service"
+          }, {
+            "amenityId": "4420",
+            "amenity": "connecting/adjoining rooms available"
+          }, {
+            "amenityId": "133",
+            "amenity": "Daily housekeeping"
+          }, {
+            "amenityId": "2025",
+            "amenity": "Designer toiletries"
+          }, {
+            "amenityId": "2399",
+            "amenity": "Flat-panel TV"
+          }, {
+            "amenityId": "2403",
+            "amenity": "Free WiFi"
+          }, {
+            "amenityId": "4951",
+            "amenity": "Free cribs/infant beds"
+          }, {
+            "amenityId": "143",
+            "amenity": "Free toiletries"
+          }, {
+            "amenityId": "144",
+            "amenity": "hair dryer"
+          }, {
+            "amenityId": "2030",
+            "amenity": "In-room climate control (air conditioning)"
+          }, {
+            "amenityId": "145",
+            "amenity": "Iron/ironing board"
+          }, {
+            "amenityId": "6176",
+            "amenity": "Non-Smoking"
+          }, {
+            "amenityId": "2039",
+            "amenity": "Pay movies"
+          }, {
+            "amenityId": "136",
+            "amenity": "Phone"
+          }, {
+            "amenityId": "141",
+            "amenity": "Private bathroom"
+          }, {
+            "amenityId": "1073742816",
+            "amenity": "rollaway/extra beds (surcharge)"
+          }, {
+            "amenityId": "20",
+            "amenity": "room service (limited hours)"
+          }, {
+            "amenityId": "2183",
+            "amenity": "shower/tub combination"
+          }]
+        }
+      }, {
+        "roomTypeId": "2300747",
+        "roomCode": "201632565",
+        "description": "Pyramid Deluxe Queen Room",
+        "descriptionLong": "This room includes 2 queen beds and measures 420 sq feet (39 sq meters). Enjoy free WiFi access and cable TV with pay movies and Internet access. The bathroom features a shower/tub combination, hair dryer, and designer toiletries. Cool off on warm days with air conditioning.  This is a non-smoking room.",
+        "roomAmenities": {
+          "size": "20",
+          "roomAmenity": [{
+            "amenityId": "1",
+            "amenity": "Air conditioning"
+          }, {
+            "amenityId": "2150",
+            "amenity": "Blackout drapes/curtains"
+          }, {
+            "amenityId": "2398",
+            "amenity": "cable TV service"
+          }, {
+            "amenityId": "4420",
+            "amenity": "connecting/adjoining rooms available"
+          }, {
+            "amenityId": "133",
+            "amenity": "Daily housekeeping"
+          }, {
+            "amenityId": "2025",
+            "amenity": "Designer toiletries"
+          }, {
+            "amenityId": "2399",
+            "amenity": "Flat-panel TV"
+          }, {
+            "amenityId": "2403",
+            "amenity": "Free WiFi"
+          }, {
+            "amenityId": "4951",
+            "amenity": "Free cribs/infant beds"
+          }, {
+            "amenityId": "143",
+            "amenity": "Free toiletries"
+          }, {
+            "amenityId": "144",
+            "amenity": "hair dryer"
+          }, {
+            "amenityId": "2030",
+            "amenity": "In-room climate control (air conditioning)"
+          }, {
+            "amenityId": "145",
+            "amenity": "Iron/ironing board"
+          }, {
+            "amenityId": "6176",
+            "amenity": "Non-Smoking"
+          }, {
+            "amenityId": "2039",
+            "amenity": "Pay movies"
+          }, {
+            "amenityId": "136",
+            "amenity": "Phone"
+          }, {
+            "amenityId": "141",
+            "amenity": "Private bathroom"
+          }, {
+            "amenityId": "1073742816",
+            "amenity": "rollaway/extra beds (surcharge)"
+          }, {
+            "amenityId": "20",
+            "amenity": "room service (limited hours)"
+          }, {
+            "amenityId": "2183",
+            "amenity": "shower/tub combination"
+          }]
+        }
+      }, {
+        "roomTypeId": "2300748",
+        "roomCode": "201632566",
+        "description": "Tower Deluxe Queen Room",
+        "descriptionLong": "This room includes 2 queen beds and measures 452 sq feet (42 sq meters). Enjoy free WiFi access and cable TV with pay movies and Internet access. The bathroom features a shower/tub combination, hair dryer, and designer toiletries. Cool off on warm days with air conditioning. This is a non-smoking room.",
+        "roomAmenities": {
+          "size": "20",
+          "roomAmenity": [{
+            "amenityId": "1",
+            "amenity": "Air conditioning"
+          }, {
+            "amenityId": "2150",
+            "amenity": "Blackout drapes/curtains"
+          }, {
+            "amenityId": "2398",
+            "amenity": "cable TV service"
+          }, {
+            "amenityId": "4420",
+            "amenity": "connecting/adjoining rooms available"
+          }, {
+            "amenityId": "133",
+            "amenity": "Daily housekeeping"
+          }, {
+            "amenityId": "2025",
+            "amenity": "Designer toiletries"
+          }, {
+            "amenityId": "2399",
+            "amenity": "Flat-panel TV"
+          }, {
+            "amenityId": "2403",
+            "amenity": "Free WiFi"
+          }, {
+            "amenityId": "4951",
+            "amenity": "Free cribs/infant beds"
+          }, {
+            "amenityId": "143",
+            "amenity": "Free toiletries"
+          }, {
+            "amenityId": "144",
+            "amenity": "hair dryer"
+          }, {
+            "amenityId": "2030",
+            "amenity": "In-room climate control (air conditioning)"
+          }, {
+            "amenityId": "145",
+            "amenity": "Iron/ironing board"
+          }, {
+            "amenityId": "6176",
+            "amenity": "Non-Smoking"
+          }, {
+            "amenityId": "2039",
+            "amenity": "Pay movies"
+          }, {
+            "amenityId": "136",
+            "amenity": "Phone"
+          }, {
+            "amenityId": "141",
+            "amenity": "Private bathroom"
+          }, {
+            "amenityId": "1073742816",
+            "amenity": "rollaway/extra beds (surcharge)"
+          }, {
+            "amenityId": "20",
+            "amenity": "room service (limited hours)"
+          }, {
+            "amenityId": "2183",
+            "amenity": "shower/tub combination"
+          }]
+        }
+      }, {
+        "roomTypeId": "2300749",
+        "roomCode": "201632567",
+        "description": "Tower Deluxe King Room",
+        "descriptionLong": "This room includes 1 king bed and measures 452 sq feet (42 sq meters). Enjoy free WiFi access and cable TV with pay movies and Internet access. The bathroom features a shower/tub combination, hair dryer, and designer toiletries. Cool off on warm days with air conditioning. This is a non-smoking room.",
+        "roomAmenities": {
+          "size": "20",
+          "roomAmenity": [{
+            "amenityId": "1",
+            "amenity": "Air conditioning"
+          }, {
+            "amenityId": "2150",
+            "amenity": "Blackout drapes/curtains"
+          }, {
+            "amenityId": "2398",
+            "amenity": "cable TV service"
+          }, {
+            "amenityId": "4420",
+            "amenity": "connecting/adjoining rooms available"
+          }, {
+            "amenityId": "133",
+            "amenity": "Daily housekeeping"
+          }, {
+            "amenityId": "2025",
+            "amenity": "Designer toiletries"
+          }, {
+            "amenityId": "2399",
+            "amenity": "Flat-panel TV"
+          }, {
+            "amenityId": "2403",
+            "amenity": "Free WiFi"
+          }, {
+            "amenityId": "4951",
+            "amenity": "Free cribs/infant beds"
+          }, {
+            "amenityId": "143",
+            "amenity": "Free toiletries"
+          }, {
+            "amenityId": "144",
+            "amenity": "hair dryer"
+          }, {
+            "amenityId": "2030",
+            "amenity": "In-room climate control (air conditioning)"
+          }, {
+            "amenityId": "145",
+            "amenity": "Iron/ironing board"
+          }, {
+            "amenityId": "6176",
+            "amenity": "Non-Smoking"
+          }, {
+            "amenityId": "2039",
+            "amenity": "Pay movies"
+          }, {
+            "amenityId": "136",
+            "amenity": "Phone"
+          }, {
+            "amenityId": "141",
+            "amenity": "Private bathroom"
+          }, {
+            "amenityId": "1073742816",
+            "amenity": "rollaway/extra beds (surcharge)"
+          }, {
+            "amenityId": "20",
+            "amenity": "room service (limited hours)"
+          }, {
+            "amenityId": "2183",
+            "amenity": "shower/tub combination"
+          }]
+        }
+      }, {
+        "roomTypeId": "2300750",
+        "roomCode": "201632568",
+        "description": "Pyramid Deluxe King Room",
+        "descriptionLong": "This room includes 1 king bed and measures 420 sq feet (39 sq meters). Enjoy free WiFi access and cable TV with pay movies and Internet access. The bathroom features a shower/tub combination, hair dryer, and designer toiletries. Cool off on warm days with air conditioning. This is a non-smoking room.",
+        "roomAmenities": {
+          "size": "20",
+          "roomAmenity": [{
+            "amenityId": "1",
+            "amenity": "Air conditioning"
+          }, {
+            "amenityId": "2150",
+            "amenity": "Blackout drapes/curtains"
+          }, {
+            "amenityId": "2398",
+            "amenity": "cable TV service"
+          }, {
+            "amenityId": "4420",
+            "amenity": "connecting/adjoining rooms available"
+          }, {
+            "amenityId": "133",
+            "amenity": "Daily housekeeping"
+          }, {
+            "amenityId": "2025",
+            "amenity": "Designer toiletries"
+          }, {
+            "amenityId": "2399",
+            "amenity": "Flat-panel TV"
+          }, {
+            "amenityId": "2403",
+            "amenity": "Free WiFi"
+          }, {
+            "amenityId": "4951",
+            "amenity": "Free cribs/infant beds"
+          }, {
+            "amenityId": "143",
+            "amenity": "Free toiletries"
+          }, {
+            "amenityId": "144",
+            "amenity": "hair dryer"
+          }, {
+            "amenityId": "2030",
+            "amenity": "In-room climate control (air conditioning)"
+          }, {
+            "amenityId": "145",
+            "amenity": "Iron/ironing board"
+          }, {
+            "amenityId": "6176",
+            "amenity": "Non-Smoking"
+          }, {
+            "amenityId": "2039",
+            "amenity": "Pay movies"
+          }, {
+            "amenityId": "136",
+            "amenity": "Phone"
+          }, {
+            "amenityId": "141",
+            "amenity": "Private bathroom"
+          }, {
+            "amenityId": "1073742816",
+            "amenity": "rollaway/extra beds (surcharge)"
+          }, {
+            "amenityId": "20",
+            "amenity": "room service (limited hours)"
+          }, {
+            "amenityId": "2183",
+            "amenity": "shower/tub combination"
+          }]
+        }
+      }, {
+        "roomTypeId": "2300751",
+        "roomCode": "201632569",
+        "description": "run of House Room",
+        "descriptionLong": "This room includes 1 king bed or 2 queen beds, and measures 420 sq feet (39 sq meters). Enjoy free WiFi access and cable TV with pay movies and Internet access. The bathroom features a shower/tub combination, hair dryer, and designer toiletries. Cool off on warm days with air conditioning. This is a non-smoking room.",
+        "roomAmenities": {
+          "size": "20",
+          "roomAmenity": [{
+            "amenityId": "1",
+            "amenity": "Air conditioning"
+          }, {
+            "amenityId": "2150",
+            "amenity": "Blackout drapes/curtains"
+          }, {
+            "amenityId": "2398",
+            "amenity": "cable TV service"
+          }, {
+            "amenityId": "4420",
+            "amenity": "connecting/adjoining rooms available"
+          }, {
+            "amenityId": "133",
+            "amenity": "Daily housekeeping"
+          }, {
+            "amenityId": "2025",
+            "amenity": "Designer toiletries"
+          }, {
+            "amenityId": "2399",
+            "amenity": "Flat-panel TV"
+          }, {
+            "amenityId": "2403",
+            "amenity": "Free WiFi"
+          }, {
+            "amenityId": "4951",
+            "amenity": "Free cribs/infant beds"
+          }, {
+            "amenityId": "143",
+            "amenity": "Free toiletries"
+          }, {
+            "amenityId": "144",
+            "amenity": "hair dryer"
+          }, {
+            "amenityId": "2030",
+            "amenity": "In-room climate control (air conditioning)"
+          }, {
+            "amenityId": "145",
+            "amenity": "Iron/ironing board"
+          }, {
+            "amenityId": "6176",
+            "amenity": "Non-Smoking"
+          }, {
+            "amenityId": "2039",
+            "amenity": "Pay movies"
+          }, {
+            "amenityId": "136",
+            "amenity": "Phone"
+          }, {
+            "amenityId": "141",
+            "amenity": "Private bathroom"
+          }, {
+            "amenityId": "1073742816",
+            "amenity": "rollaway/extra beds (surcharge)"
+          }, {
+            "amenityId": "20",
+            "amenity": "room service (limited hours)"
+          }, {
+            "amenityId": "2183",
+            "amenity": "shower/tub combination"
+          }]
+        }
+      }, {
+        "roomTypeId": "2406225",
+        "roomCode": "201739736",
+        "description": "cleo Pyramid King Deluxe Room",
+        "descriptionLong": "This room includes 1 king bed and measures 420 sq feet (39 sq meters). Enjoy free WiFi access and cable TV with pay movies and Internet access. The bathroom features a shower/tub combination, hair dryer, and designer toiletries. Cool off on warm days with air conditioning. This is a non-smoking room.",
+        "roomAmenities": {
+          "size": "20",
+          "roomAmenity": [{
+            "amenityId": "1",
+            "amenity": "Air conditioning"
+          }, {
+            "amenityId": "2150",
+            "amenity": "Blackout drapes/curtains"
+          }, {
+            "amenityId": "2398",
+            "amenity": "cable TV service"
+          }, {
+            "amenityId": "4420",
+            "amenity": "connecting/adjoining rooms available"
+          }, {
+            "amenityId": "133",
+            "amenity": "Daily housekeeping"
+          }, {
+            "amenityId": "2025",
+            "amenity": "Designer toiletries"
+          }, {
+            "amenityId": "2399",
+            "amenity": "Flat-panel TV"
+          }, {
+            "amenityId": "2403",
+            "amenity": "Free WiFi"
+          }, {
+            "amenityId": "4951",
+            "amenity": "Free cribs/infant beds"
+          }, {
+            "amenityId": "143",
+            "amenity": "Free toiletries"
+          }, {
+            "amenityId": "144",
+            "amenity": "hair dryer"
+          }, {
+            "amenityId": "2030",
+            "amenity": "In-room climate control (air conditioning)"
+          }, {
+            "amenityId": "145",
+            "amenity": "Iron/ironing board"
+          }, {
+            "amenityId": "6176",
+            "amenity": "Non-Smoking"
+          }, {
+            "amenityId": "2039",
+            "amenity": "Pay movies"
+          }, {
+            "amenityId": "136",
+            "amenity": "Phone"
+          }, {
+            "amenityId": "141",
+            "amenity": "Private bathroom"
+          }, {
+            "amenityId": "1073742816",
+            "amenity": "rollaway/extra beds (surcharge)"
+          }, {
+            "amenityId": "20",
+            "amenity": "room service (limited hours)"
+          }, {
+            "amenityId": "2183",
+            "amenity": "shower/tub combination"
+          }]
+        }
+      }, {
+        "roomTypeId": "2406226",
+        "roomCode": "201739737",
+        "description": "cleo Pyramid Queen Deluxe Room",
+        "descriptionLong": "This room includes 2 queen beds and measures 420 sq feet (39 sq meters). Enjoy free WiFi access and cable TV with pay movies and Internet access. The bathroom features a shower/tub combination, hair dryer, and designer toiletries. Cool off on warm days with air conditioning. This is a non-smoking room.",
+        "roomAmenities": {
+          "size": "20",
+          "roomAmenity": [{
+            "amenityId": "1",
+            "amenity": "Air conditioning"
+          }, {
+            "amenityId": "2150",
+            "amenity": "Blackout drapes/curtains"
+          }, {
+            "amenityId": "2398",
+            "amenity": "cable TV service"
+          }, {
+            "amenityId": "4420",
+            "amenity": "connecting/adjoining rooms available"
+          }, {
+            "amenityId": "133",
+            "amenity": "Daily housekeeping"
+          }, {
+            "amenityId": "2025",
+            "amenity": "Designer toiletries"
+          }, {
+            "amenityId": "2399",
+            "amenity": "Flat-panel TV"
+          }, {
+            "amenityId": "2403",
+            "amenity": "Free WiFi"
+          }, {
+            "amenityId": "4951",
+            "amenity": "Free cribs/infant beds"
+          }, {
+            "amenityId": "143",
+            "amenity": "Free toiletries"
+          }, {
+            "amenityId": "144",
+            "amenity": "hair dryer"
+          }, {
+            "amenityId": "2030",
+            "amenity": "In-room climate control (air conditioning)"
+          }, {
+            "amenityId": "145",
+            "amenity": "Iron/ironing board"
+          }, {
+            "amenityId": "6176",
+            "amenity": "Non-Smoking"
+          }, {
+            "amenityId": "2039",
+            "amenity": "Pay movies"
+          }, {
+            "amenityId": "136",
+            "amenity": "Phone"
+          }, {
+            "amenityId": "141",
+            "amenity": "Private bathroom"
+          }, {
+            "amenityId": "1073742816",
+            "amenity": "rollaway/extra beds (surcharge)"
+          }, {
+            "amenityId": "20",
+            "amenity": "room service (limited hours)"
+          }, {
+            "amenityId": "2183",
+            "amenity": "shower/tub combination"
+          }]
+        }
+      }]
+    },
+    "propertyAmenities": {
+      "size": "39",
+      "propertyAmenity": [{
+        "amenityId": 2063,
+        "amenity": "24-hour front desk"
+      }, {
+        "amenityId": 41,
+        "amenity": "ATM/banking"
+      }, {
+        "amenityId": 2420,
+        "amenity": "Accessible bathroom"
+      }, {
+        "amenityId": 361,
+        "amenity": "Breakfast available (surcharge)"
+      }, {
+        "amenityId": 2065,
+        "amenity": "Business center"
+      }, {
+        "amenityId": 2112,
+        "amenity": "casino"
+      }, {
+        "amenityId": 2004,
+        "amenity": "coffee shop or cafÃ©"
+      }, {
+        "amenityId": 43,
+        "amenity": "concierge services"
+      }, {
+        "amenityId": 81,
+        "amenity": "conference space"
+      }, {
+        "amenityId": 2349,
+        "amenity": "Designated smoking areas"
+      }, {
+        "amenityId": 3269,
+        "amenity": "Designated smoking areas (fines apply)"
+      }, {
+        "amenityId": 2070,
+        "amenity": "Dry cleaning/laundry service"
+      }, {
+        "amenityId": 8,
+        "amenity": "Elevator/lift"
+      }, {
+        "amenityId": 2177,
+        "amenity": "Express check-in"
+      }, {
+        "amenityId": 2067,
+        "amenity": "Express check-out"
+      }, {
+        "amenityId": 9,
+        "amenity": "Fitness facilities"
+      }, {
+        "amenityId": 2390,
+        "amenity": "Free WiFi"
+      }, {
+        "amenityId": 2123,
+        "amenity": "Full-service spa"
+      }, {
+        "amenityId": 44,
+        "amenity": "Gift shops or newsstand"
+      }, {
+        "amenityId": 40,
+        "amenity": "hair salon"
+      }, {
+        "amenityId": 4003,
+        "amenity": "Luggage storage"
+      }, {
+        "amenityId": 2131,
+        "amenity": "Meeting rooms - 13"
+      }, {
+        "amenityId": 2043,
+        "amenity": "Multilingual staff"
+      }, {
+        "amenityId": 2010,
+        "amenity": "Nightclub"
+      }, {
+        "amenityId": 3913,
+        "amenity": "Number of bars/lounges - 5"
+      }, {
+        "amenityId": 2537,
+        "amenity": "Number of restaurants - 11"
+      }, {
+        "amenityId": 24,
+        "amenity": "Outdoor pool"
+      }, {
+        "amenityId": 2138,
+        "amenity": "Outdoor seasonal pool"
+      }, {
+        "amenityId": 400,
+        "amenity": "Poolside bar"
+      }, {
+        "amenityId": 2066,
+        "amenity": "Porter/bellhop"
+      }, {
+        "amenityId": 2421,
+        "amenity": "roll-in shower"
+      }, {
+        "amenityId": 2135,
+        "amenity": "sauna"
+      }, {
+        "amenityId": 3862,
+        "amenity": "self parking (surcharge)"
+      }, {
+        "amenityId": 45,
+        "amenity": "shopping on site"
+      }, {
+        "amenityId": 2017,
+        "amenity": "spa services on site"
+      }, {
+        "amenityId": 52,
+        "amenity": "Total number of rooms - 4400"
+      }, {
+        "amenityId": 2387,
+        "amenity": "Tours/ticket assistance"
+      }, {
+        "amenityId": 3864,
+        "amenity": "valet parking (surcharge)"
+      }, {
+        "amenityId": 2167,
+        "amenity": "Wedding services"
+      }]
+    },
+    "hotelImages": {
+      "size": "64",
+      "hotelImage": [{
+        "hotelImageId": 33427181,
+        "name": "Featured Image",
+        "category": 1,
+        "type": 1,
+        "caption": "Featured Image",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/e2b95d01_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/e2b95d01_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/e2b95d01_z.jpg",
+        "heroImage": true
+      }, {
+        "hotelImageId": 33427176,
+        "name": "Lobby",
+        "category": 0,
+        "type": 0,
+        "caption": "Lobby",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/a5bf495a_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/a5bf495a_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/a5bf495a_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 31674390,
+        "name": "reception",
+        "category": 0,
+        "type": 0,
+        "caption": "reception",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/f936dcb5_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/f936dcb5_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/f936dcb5_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 8888174,
+        "name": "Guestroom",
+        "category": 0,
+        "type": 0,
+        "caption": "Guestroom",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/15237_203_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/15237_203_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/15237_203_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 18031819,
+        "name": "Guestroom",
+        "category": 0,
+        "type": 0,
+        "caption": "Guestroom",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/15237_232_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/15237_232_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/15237_232_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 25824538,
+        "name": "Guestroom",
+        "category": 0,
+        "type": 0,
+        "caption": "Guestroom",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/59fa78bf_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/59fa78bf_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/59fa78bf_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 26619200,
+        "name": "Guestroom",
+        "category": 0,
+        "type": 0,
+        "caption": "Guestroom",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/29b32e2c_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/29b32e2c_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/29b32e2c_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 31674382,
+        "name": "Guestroom",
+        "category": 0,
+        "type": 0,
+        "caption": "Guestroom",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/021728b9_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/021728b9_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/021728b9_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 31674383,
+        "name": "Guestroom",
+        "category": 0,
+        "type": 0,
+        "caption": "Guestroom",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/4c2b3eca_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/4c2b3eca_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/4c2b3eca_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 31674384,
+        "name": "Guestroom",
+        "category": 0,
+        "type": 0,
+        "caption": "Guestroom",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/f20077e1_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/f20077e1_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/f20077e1_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 33427170,
+        "name": "Guestroom",
+        "category": 0,
+        "type": 0,
+        "caption": "Guestroom",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/1b154bed_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/1b154bed_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/1b154bed_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 33427174,
+        "name": "Guestroom",
+        "category": 0,
+        "type": 0,
+        "caption": "Guestroom",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/73015ab4_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/73015ab4_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/73015ab4_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 33427182,
+        "name": "Guestroom",
+        "category": 0,
+        "type": 0,
+        "caption": "Guestroom",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/1fbfaf6b_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/1fbfaf6b_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/1fbfaf6b_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 33427183,
+        "name": "Guestroom",
+        "category": 0,
+        "type": 0,
+        "caption": "Guestroom",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/5527c2a4_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/5527c2a4_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/5527c2a4_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 25824537,
+        "name": "In-Room Dining",
+        "category": 0,
+        "type": 0,
+        "caption": "In-Room Dining",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/2fb085c0_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/2fb085c0_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/2fb085c0_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 25824542,
+        "name": "Pool",
+        "category": 0,
+        "type": 0,
+        "caption": "Pool",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/bf55e734_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/bf55e734_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/bf55e734_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 33427177,
+        "name": "Pool",
+        "category": 0,
+        "type": 0,
+        "caption": "Pool",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/c48437e0_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/c48437e0_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/c48437e0_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 33427178,
+        "name": "Pool",
+        "category": 0,
+        "type": 0,
+        "caption": "Pool",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/c4a1a1f0_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/c4a1a1f0_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/c4a1a1f0_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 33427185,
+        "name": "Outdoor Pool",
+        "category": 0,
+        "type": 0,
+        "caption": "Outdoor Pool",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/042adcc7_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/042adcc7_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/042adcc7_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 25824536,
+        "name": "Fitness Facility",
+        "category": 0,
+        "type": 0,
+        "caption": "Fitness Facility",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/40013700_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/40013700_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/40013700_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 31674385,
+        "name": "Gym",
+        "category": 0,
+        "type": 0,
+        "caption": "Gym",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/9821baa7_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/9821baa7_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/9821baa7_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 26656814,
+        "name": "spa",
+        "category": 0,
+        "type": 0,
+        "caption": "spa",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/b88a719f_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/b88a719f_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/b88a719f_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 31512607,
+        "name": "spa",
+        "category": 0,
+        "type": 0,
+        "caption": "spa",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/7a2d4981_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/7a2d4981_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/7a2d4981_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 18675962,
+        "name": "Treatment Room",
+        "category": 0,
+        "type": 0,
+        "caption": "Treatment Room",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/15237_238_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/15237_238_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/15237_238_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 31674374,
+        "name": "casino",
+        "category": 0,
+        "type": 0,
+        "caption": "casino",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/3834e906_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/3834e906_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/3834e906_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 31674391,
+        "name": "Theater Show",
+        "category": 0,
+        "type": 0,
+        "caption": "Theater Show",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/00ad399f_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/00ad399f_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/00ad399f_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 31674392,
+        "name": "Theater Show",
+        "category": 0,
+        "type": 0,
+        "caption": "Theater Show",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/637e3f5b_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/637e3f5b_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/637e3f5b_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 21650747,
+        "name": "Dining",
+        "category": 0,
+        "type": 0,
+        "caption": "Dining",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/15237_271_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/15237_271_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/15237_271_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 31674377,
+        "name": "Dining",
+        "category": 0,
+        "type": 0,
+        "caption": "Dining",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/1d26c541_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/1d26c541_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/1d26c541_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 31674378,
+        "name": "Dining",
+        "category": 0,
+        "type": 0,
+        "caption": "Dining",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/2a773915_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/2a773915_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/2a773915_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 31674379,
+        "name": "Dining",
+        "category": 0,
+        "type": 0,
+        "caption": "Dining",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/5c98e4a4_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/5c98e4a4_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/5c98e4a4_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 18675964,
+        "name": "restaurant",
+        "category": 0,
+        "type": 0,
+        "caption": "restaurant",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/15237_240_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/15237_240_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/15237_240_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 25824544,
+        "name": "restaurant",
+        "category": 0,
+        "type": 0,
+        "caption": "restaurant",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/dde70f85_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/dde70f85_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/dde70f85_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 31512603,
+        "name": "restaurant",
+        "category": 0,
+        "type": 0,
+        "caption": "restaurant",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/6ea31af8_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/6ea31af8_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/6ea31af8_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 31512604,
+        "name": "restaurant",
+        "category": 0,
+        "type": 0,
+        "caption": "restaurant",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/8918ce99_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/8918ce99_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/8918ce99_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 31512606,
+        "name": "restaurant",
+        "category": 0,
+        "type": 0,
+        "caption": "restaurant",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/f27fe33a_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/f27fe33a_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/f27fe33a_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 33427173,
+        "name": "restaurant",
+        "category": 0,
+        "type": 0,
+        "caption": "restaurant",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/3f959ca9_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/3f959ca9_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/3f959ca9_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 33427186,
+        "name": "restaurant",
+        "category": 0,
+        "type": 0,
+        "caption": "restaurant",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/fcffe8bb_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/fcffe8bb_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/fcffe8bb_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 31674381,
+        "name": "Food Court",
+        "category": 0,
+        "type": 0,
+        "caption": "Food Court",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/337eec7c_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/337eec7c_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/337eec7c_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 18675966,
+        "name": "hotel Bar",
+        "category": 0,
+        "type": 0,
+        "caption": "hotel Bar",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/15237_242_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/15237_242_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/15237_242_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 25824540,
+        "name": "hotel Bar",
+        "category": 0,
+        "type": 0,
+        "caption": "hotel Bar",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/fd5abba7_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/fd5abba7_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/fd5abba7_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 30733373,
+        "name": "hotel Bar",
+        "category": 0,
+        "type": 0,
+        "caption": "hotel Bar",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/8085350e_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/8085350e_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/8085350e_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 31674387,
+        "name": "hotel Bar",
+        "category": 0,
+        "type": 0,
+        "caption": "hotel Bar",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/446bb1a6_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/446bb1a6_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/446bb1a6_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 33427179,
+        "name": "hotel Lounge",
+        "category": 0,
+        "type": 0,
+        "caption": "hotel Lounge",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/ff1bf31c_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/ff1bf31c_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/ff1bf31c_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 21650774,
+        "name": "sports Bar",
+        "category": 0,
+        "type": 0,
+        "caption": "sports Bar",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/15237_256_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/15237_256_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/15237_256_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 25824539,
+        "name": "Nightclub",
+        "category": 0,
+        "type": 0,
+        "caption": "Nightclub",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/7d572477_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/7d572477_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/7d572477_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 33427180,
+        "name": "Banquet Hall",
+        "category": 0,
+        "type": 0,
+        "caption": "Banquet Hall",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/2eb72526_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/2eb72526_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/2eb72526_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 31674375,
+        "name": "chapel",
+        "category": 0,
+        "type": 0,
+        "caption": "chapel",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/6d5c3a8c_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/6d5c3a8c_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/6d5c3a8c_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 31674376,
+        "name": "chapel",
+        "category": 0,
+        "type": 0,
+        "caption": "chapel",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/d5bd7822_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/d5bd7822_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/d5bd7822_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 33427172,
+        "name": "Indoor Wedding",
+        "category": 0,
+        "type": 0,
+        "caption": "Indoor Wedding",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/31d8afd1_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/31d8afd1_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/31d8afd1_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 30733374,
+        "name": "Meeting Facility",
+        "category": 0,
+        "type": 0,
+        "caption": "Meeting Facility",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/06c4c8d7_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/06c4c8d7_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/06c4c8d7_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 30733376,
+        "name": "Meeting Facility",
+        "category": 0,
+        "type": 0,
+        "caption": "Meeting Facility",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/55d6c6c2_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/55d6c6c2_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/55d6c6c2_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 30733377,
+        "name": "Meeting Facility",
+        "category": 0,
+        "type": 0,
+        "caption": "Meeting Facility",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/655fbc24_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/655fbc24_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/655fbc24_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 30733378,
+        "name": "Meeting Facility",
+        "category": 0,
+        "type": 0,
+        "caption": "Meeting Facility",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/6f6115a3_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/6f6115a3_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/6f6115a3_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 30733379,
+        "name": "Meeting Facility",
+        "category": 0,
+        "type": 0,
+        "caption": "Meeting Facility",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/998d0e81_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/998d0e81_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/998d0e81_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 30733380,
+        "name": "Meeting Facility",
+        "category": 0,
+        "type": 0,
+        "caption": "Meeting Facility",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/a98f79d3_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/a98f79d3_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/a98f79d3_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 30733381,
+        "name": "Meeting Facility",
+        "category": 0,
+        "type": 0,
+        "caption": "Meeting Facility",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/bfdaf8bf_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/bfdaf8bf_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/bfdaf8bf_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 30733382,
+        "name": "Meeting Facility",
+        "category": 0,
+        "type": 0,
+        "caption": "Meeting Facility",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/ef370c22_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/ef370c22_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/ef370c22_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 33427184,
+        "name": "Meeting Facility",
+        "category": 0,
+        "type": 0,
+        "caption": "Meeting Facility",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/fef2454f_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/fef2454f_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/fef2454f_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 33427169,
+        "name": "hotel Front",
+        "category": 0,
+        "type": 0,
+        "caption": "hotel Front",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/08a36c21_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/08a36c21_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/08a36c21_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 33427175,
+        "name": "hotel Front",
+        "category": 0,
+        "type": 0,
+        "caption": "hotel Front",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/9b6db0c4_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/9b6db0c4_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/9b6db0c4_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 31530029,
+        "name": "Exterior",
+        "category": 0,
+        "type": 0,
+        "caption": "Exterior",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/6a3d8bcd_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/6a3d8bcd_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/6a3d8bcd_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 31674380,
+        "name": "Exterior",
+        "category": 0,
+        "type": 0,
+        "caption": "Exterior",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/34f8e650_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/34f8e650_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/34f8e650_z.jpg",
+        "heroImage": false
+      }, {
+        "hotelImageId": 25824535,
+        "name": "city View",
+        "category": 0,
+        "type": 0,
+        "caption": "city View",
+        "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/2bb0d4fc_b.jpg",
+        "thumbnailUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/2bb0d4fc_t.jpg",
+        "supplierId": 13,
+        "width": 350,
+        "height": 350,
+        "byteSize": 0,
+        "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/2bb0d4fc_z.jpg",
+        "heroImage": false
+      }]
+    }
+  }
+}

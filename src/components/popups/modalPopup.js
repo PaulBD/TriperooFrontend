@@ -6,8 +6,10 @@ import QuestionAnswerModal from './answerPopup';
 import LoginModal from './loginPopup';
 import SignupModal from './registerPopup';
 import LocationImageModal from './photoPopup';
+import HotelImageModal from './hotelPhotoPopup';
 import LocationUploadImageModal from './uploadPhotoPopup';
 import BookmarkLocationModal from '../forms/customer/addToTrip';
+import CancellationModal from './cancellationPolicy';
 
 let customStyles = {
   overlay : {
@@ -42,6 +44,7 @@ class Modal extends React.Component {
   render(){
 
     let modal = (<p>Loading</p>);
+    let cssClass = "Modal";
 
     switch(this.props.modalType)
     {
@@ -72,10 +75,17 @@ class Modal extends React.Component {
       case "LocationImage":
         modal = (<LocationImageModal hasPosted={false} closeModal={this.props.closeModal} imageList={this.props.modalContent.imageList} imagePosition={this.props.modalContent.imagePosition} />);
         break;
+      case "HotelImage":
+        cssClass = "PhotoModel";
+        modal = (<HotelImageModal hasPosted={false} closeModal={this.props.closeModal} imageList={this.props.modalContent.imageList} imagePosition={this.props.modalContent.imagePosition} hotelName={this.props.modalContent.hotelName}/>);
+        break;
+      case "CancellationPolicy":
+        modal = (<CancellationModal hasPosted={false} closeModal={this.props.closeModal} policy={this.props.modalContent.policy} />);
+        break;
     }
 
     return (
-      <ReactModal style={customStyles} isOpen={this.props.modalIsOpen} onRequestClose={this.closeModalWindow} contentLabel={this.props.modalName} shouldCloseOnOverlayClick={true} className="Modal"  >
+      <ReactModal style={customStyles} isOpen={this.props.modalIsOpen} onRequestClose={this.closeModalWindow} contentLabel={this.props.modalName} shouldCloseOnOverlayClick={true} className={cssClass}  >
           {modal}
       </ReactModal>
     );

@@ -11,8 +11,27 @@ export function closeModal() {
 		dispatch(closePhotoModal());
 		dispatch(closeEditLocationModal());
 		dispatch(closeLocationImageModal());
+    dispatch(closeHotelImageModal());
 		dispatch(closeEditReviewModal());
+    dispatch(closeCancellationPolicyModal());
 	};
+}
+
+// ****************************************
+// Cancellation Policy
+// ****************************************
+export function openCancellationPolicyModal(policy) {
+  return {type: types.OPEN_POLICY_MODEL, policy: policy, name: 'PolicyModal' };
+}
+
+export function closeCancellationPolicyModal() {
+  return {type: types.CLOSE_POLICY_MODEL, name: 'PolicyModal'};
+}
+
+export function openCancellationPolicy(policy) {
+  return dispatch => {
+    dispatch(openCancellationPolicyModal(policy));
+  };
 }
 
 // ****************************************
@@ -44,9 +63,26 @@ export function closeLocationImageModal() {
   return {type: types.CLOSE_LOCATION_IMAGE_MODEL, name: 'LocationImageModal'};
 }
 
-export function openLocationImage(imageList, imagePosition) {
+export function openLocationImage(imageList, imagePosition, imageName) {
   return dispatch => {
-    dispatch(openLocationImageModal(imageList, imagePosition));
+    dispatch(openLocationImageModal(imageList, imagePosition, imageName));
+  };
+}
+
+// ****************************************
+// Hotel Images
+// ****************************************
+export function openHotelImageModal(imageList, imagePosition, hotelName) {
+  return {type: types.OPEN_HOTEL_IMAGE_MODEL, imageList: imageList, imagePosition: imagePosition, hotelName: hotelName, name: 'HotelImageModal' };
+}
+
+export function closeHotelImageModal() {
+  return {type: types.CLOSE_HOTEL_IMAGE_MODEL, name: 'HotelImageModal'};
+}
+
+export function openHotelImage(imageList, imagePosition, hotelName) {
+  return dispatch => {
+    dispatch(openHotelImageModal(imageList, imagePosition, hotelName));
   };
 }
 

@@ -70,10 +70,10 @@ export function hotelsByProximityFailure(errorMessage) {
   return {type: types.HOTELS_BY_PROXIMITY_FAILURE, isFetching: false, errorMessage};
 }
 
-export function loadHotelsByProximty(locationId, arrivalDate, nights, locale, currencyCode, room, city, country) {
+export function loadHotelsByProximty(locationId, latitude, longitude, radius, locale, currencyCode, pageSize) {
   return dispatch => {
     dispatch(hotelsByProximityRequest());
-    return HotelApi.getHotelsByProximty(locationId, arrivalDate, nights, locale, currencyCode, room, city, country).then(hotels => {
+    return HotelApi.getHotelsByProximty(locationId, latitude, longitude, radius, locale, currencyCode, pageSize).then(hotels => {
       dispatch(hotelsByProximitySuccess(hotels));
     }).catch(error => {
       dispatch(hotelsByProximityFailure(error.response.data));
@@ -107,4 +107,32 @@ export function loadHotelById(locationId, hotelId, locale, currencyCode) {
     });
   };
 }
+
+
+// ****************************************
+// Load Hotel Room Content By Id
+// ****************************************
+export function hotelRoomsByIdRequest() {
+  return {type: types.HOTEL_ROOMS_BY_ID_REQUEST, isFetching: true, hotelRooms: {}};
+}
+
+export function hotelRoomsByIdSuccess(hotelRooms) {
+  return {type: types.HOTEL_ROOMS_BY_ID_SUCCESS, hotelRooms};
+}
+
+export function hotelRoomsByIdFailure(errorMessage) {
+  return {type: types.HOTEL_ROOMS_BY_ID_FAILURE, isFetching: false, errorMessage};
+}
+
+export function loadHotelRoomsById(locationId, hotelId, arrivalDate, nights, locale, currencyCode) {
+  return dispatch => {
+    dispatch(hotelRoomsByIdRequest());
+    return HotelApi.getHotelRoomsById(locationId, hotelId, arrivalDate, nights, locale, currencyCode).then(hotelRooms => {
+      dispatch(hotelRoomsByIdSuccess(hotelRooms));
+    }).catch(error => {
+      dispatch(hotelRoomsByIdFailure(error.response.data));
+    });
+  };
+}
+
 

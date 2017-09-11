@@ -20,7 +20,7 @@ class Photos extends React.Component {
         <div>
           <Carousel axis="horizontal" onClickItem={this.onClickItem}  showArrows={true} showStatus={false} showThumbs={true} autoPlay={false} showIndicators={false} >
             {
-              this.props.photos.photoList.map(photo => {
+              this.props.photos.photoList.map((photo, photoIndex) => {
 
                 let url = photo.prefix + '400x400' + photo.suffix;
 
@@ -29,7 +29,7 @@ class Photos extends React.Component {
                   url = photo.prefix + photo.suffix;
                 }
                 return (
-                  <div key={url}>
+                  <div key={photoIndex}>
                     <img src={url}/>
                   </div>
                 );

@@ -1,0 +1,748 @@
+{
+  "hotelRoomAvailabilityResponse": {
+    "size": "6",
+    "customerSessionId": "0AB29036-7424-F491-5E42-7ADD62494CB3",
+    "hotelId": 122212,
+    "arrivalDate": "10/03/2017",
+    "departureDate": "10/05/2017",
+    "hotelName": "Luxor Hotel and Casino",
+    "hotelAddress": "3900 S. Las Vegas Blvd",
+    "hotelCity": "Las Vegas",
+    "hotelStateProvince": "nV",
+    "hotelCountry": "US",
+    "numberOfRoomsRequested": 1,
+    "checkInInstructions": "<p><b>Know Before You Go</b> <br /><ul>  <li>The property has connecting/adjoining rooms, which are subject to availability and can be requested by contacting the property using the number on the booking confirmation. </li> </ul></p><p><b>Fees</b> <br /><p>The following fees and deposits are charged by the property at time of service, check-in, or check-out. </p> <ul> <li>Fee for buffet breakfast: USD 21.99 per person (approximately)</li>       <li>Self parking fee: USD 10 per day</li> <li>Valet parking fee: USD 15 per day</li>         <li>Rollaway bed fee: USD 35.0 per day</li>           <li>Facilities fee: USD 25.00 per person and includes use of:</li><br /> - Spa  </ul> <p>The above list may not be comprehensive. Fees and deposits may not include tax and are subject to change. </p></p><p><b>Mandatory Fees and Taxes</b> <br /><p>You'll be asked to pay the following charges at the property:</p> <ul><li>Deposit: USD 50 per night</li><li>Resort fee: USD 34.01 per accommodation, per night</li></ul> The resort fee includes:<ul><li>Fitness center access</li><li>Internet access</li><li>Phone calls</li><li>Additional inclusions</li></ul> <p>We have included all charges provided to us by the property. However, charges can vary, for example, based on length of stay or the room you book. </p></p>",
+    "specialCheckInInstructions": "Guests may check-in at the North Lobby for easy access to the Tower Rooms.",
+    "tripAdvisorRating": 4.0,
+    "tripAdvisorReviewCount": 30304,
+    "tripAdvisorRatingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.0-123456-4.gif",
+    "hotelRoomResponse": [{
+      "rateCode": 208162388,
+      "roomTypeCode": 201632569,
+      "rateDescription": "run of House Room",
+      "roomTypeDescription": "run of House Room",
+      "supplierType": "E",
+      "propertyId": 15237,
+      "bedTypes": {
+        "size": "2",
+        "bedType": [{
+          "id": "14",
+          "description": "1 king bed"
+        }, {
+          "id": "23",
+          "description": "2 queen beds"
+        }]
+      },
+      "smokingPreferences": "nS",
+      "rateOccupancyPerRoom": 3,
+      "quotedOccupancy": 2,
+      "minGuestAge": 0,
+      "rateInfos": {
+        "size": "1",
+        "rateInfo": [{
+          "priceBreakdown": true,
+          "promo": true,
+          "rateChange": true,
+          "roomGroup": {
+            "room": {
+              "numberOfAdults": 2,
+              "numberOfChildren": 0,
+              "rateKey": "684cd552-ae2e-4433-a0c3-e14c099c597a-5101",
+              "chargeableNightlyRates": [{
+                "baseRate": "129.06",
+                "rate": "83.89",
+                "promo": true,
+                "fenced": false
+              }, {
+                "baseRate": "172.09",
+                "rate": "111.86",
+                "promo": true,
+                "fenced": false
+              }]
+            }
+          },
+          "chargeableRateInfo": {
+            "averageBaseRate": "150.58",
+            "averageRate": "97.88",
+            "commissionableUsdTotal": "195.75",
+            "currencyCode": "GBP",
+            "maxNightlyRate": "111.86",
+            "nightlyRateTotal": "195.75",
+            "surchargeTotal": "26.18",
+            "total": "221.93",
+            "nightlyRatesPerRoom": {
+              "size": "2",
+              "nightlyRate": [{
+                "baseRate": "129.06",
+                "rate": "83.89",
+                "promo": true,
+                "fenced": false
+              }, {
+                "baseRate": "172.09",
+                "rate": "111.86",
+                "promo": true,
+                "fenced": false
+              }]
+            },
+            "surcharges": {
+              "size": "1",
+              "surcharge": [{
+                "type": "TaxAndServiceFee",
+                "amount": "26.18"
+              }]
+            }
+          },
+          "cancellationPolicy": "We understand that sometimes your travel plans change. We do not charge a change or cancel fee. However, this property (Luxor Hotel and Casino) imposes the following penalty to its customers that we are required to pass on: Cancellations or changes made after 3:00 PM ((GMT-07:00)) on Sep 30, 2017, or no-shows, are subject to a 1 Night Room &amp; Tax penalty.  ",
+          "cancelPolicyInfoList": {
+            "cancelPolicyInfo": [{
+              "versionId": 0,
+              "cancelTime": "15:00:00",
+              "startWindowHours": 0,
+              "nightCount": 1,
+              "currencyCode": "GBP",
+              "timeZoneDescription": "(GMT-07:00)"
+            }, {
+              "versionId": 0,
+              "cancelTime": "15:00:00",
+              "startWindowHours": 72,
+              "nightCount": 0,
+              "currencyCode": "GBP",
+              "timeZoneDescription": "(GMT-07:00)"
+            }]
+          },
+          "nonRefundable": false,
+          "hotelFees": {
+            "size": "1",
+            "hotelFee": [{
+              "description": "resortFee",
+              "amount": "52.52"
+            }]
+          },
+          "rateType": "MerchantStandard",
+          "promoId": 230955277,
+          "promoDescription": "save 35%",
+          "promoType": "standard",
+          "currentAllotment": 4998,
+          "guaranteeRequired": false,
+          "depositRequired": false,
+          "taxRate": 26.18
+        }]
+      },
+      "deepLink": "https://www.travelnow.com/templates/406390/hotels/122212/book?lang=en&amp;currency=GBP&amp;standardCheckin=10/3/2017&amp;standardCheckout=10/5/2017&amp;selectedPrice=221.93&amp;supplierType=E&amp;rateCode=208162388&amp;roomTypeCode=201632569&amp;roomsCount=1&amp;rooms[0].adultsCount=2",
+      "roomImages": {
+        "size": "1",
+        "roomImage": [{
+          "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/29b32e2c_s.jpg",
+          "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/29b32e2c_z.jpg",
+          "heroImage": false
+        }]
+      }
+    }, {
+      "rateCode": 208162370,
+      "roomTypeCode": 201632565,
+      "rateDescription": "Pyramid Deluxe Queen Room",
+      "roomTypeDescription": "Pyramid Deluxe Queen Room",
+      "supplierType": "E",
+      "propertyId": 15237,
+      "bedTypes": {
+        "size": "1",
+        "bedType": [{
+          "id": "23",
+          "description": "2 queen beds"
+        }]
+      },
+      "smokingPreferences": "nS",
+      "rateOccupancyPerRoom": 4,
+      "quotedOccupancy": 2,
+      "minGuestAge": 0,
+      "rateInfos": {
+        "size": "1",
+        "rateInfo": [{
+          "priceBreakdown": true,
+          "promo": true,
+          "rateChange": true,
+          "roomGroup": {
+            "room": {
+              "numberOfAdults": 2,
+              "numberOfChildren": 0,
+              "rateKey": "b2793e6c-5b42-40a4-a070-e1d092aed8d9-5101",
+              "chargeableNightlyRates": [{
+                "baseRate": "142.31",
+                "rate": "92.50",
+                "promo": true,
+                "fenced": false
+              }, {
+                "baseRate": "185.32",
+                "rate": "120.46",
+                "promo": true,
+                "fenced": false
+              }]
+            }
+          },
+          "chargeableRateInfo": {
+            "averageBaseRate": "163.82",
+            "averageRate": "106.48",
+            "commissionableUsdTotal": "212.96",
+            "currencyCode": "GBP",
+            "maxNightlyRate": "120.46",
+            "nightlyRateTotal": "212.96",
+            "surchargeTotal": "28.50",
+            "total": "241.46",
+            "nightlyRatesPerRoom": {
+              "size": "2",
+              "nightlyRate": [{
+                "baseRate": "142.31",
+                "rate": "92.50",
+                "promo": true,
+                "fenced": false
+              }, {
+                "baseRate": "185.32",
+                "rate": "120.46",
+                "promo": true,
+                "fenced": false
+              }]
+            },
+            "surcharges": {
+              "size": "1",
+              "surcharge": [{
+                "type": "TaxAndServiceFee",
+                "amount": "28.50"
+              }]
+            }
+          },
+          "cancellationPolicy": "We understand that sometimes your travel plans change. We do not charge a change or cancel fee. However, this property (Luxor Hotel and Casino) imposes the following penalty to its customers that we are required to pass on: Cancellations or changes made after 3:00 PM ((GMT-07:00)) on Sep 30, 2017, or no-shows, are subject to a 1 Night Room &amp; Tax penalty.  ",
+          "cancelPolicyInfoList": {
+            "cancelPolicyInfo": [{
+              "versionId": 0,
+              "cancelTime": "15:00:00",
+              "startWindowHours": 0,
+              "nightCount": 1,
+              "currencyCode": "GBP",
+              "timeZoneDescription": "(GMT-07:00)"
+            }, {
+              "versionId": 0,
+              "cancelTime": "15:00:00",
+              "startWindowHours": 72,
+              "nightCount": 0,
+              "currencyCode": "GBP",
+              "timeZoneDescription": "(GMT-07:00)"
+            }]
+          },
+          "nonRefundable": false,
+          "hotelFees": {
+            "size": "1",
+            "hotelFee": [{
+              "description": "resortFee",
+              "amount": "52.52"
+            }]
+          },
+          "rateType": "MerchantStandard",
+          "promoId": 230955277,
+          "promoDescription": "save 35%",
+          "promoType": "standard",
+          "currentAllotment": 4999,
+          "guaranteeRequired": false,
+          "depositRequired": false,
+          "taxRate": 28.50
+        }]
+      },
+      "deepLink": "https://www.travelnow.com/templates/406390/hotels/122212/book?lang=en&amp;currency=GBP&amp;standardCheckin=10/3/2017&amp;standardCheckout=10/5/2017&amp;selectedPrice=241.46&amp;supplierType=E&amp;rateCode=208162370&amp;roomTypeCode=201632565&amp;roomsCount=1&amp;rooms[0].adultsCount=2",
+      "roomImages": {
+        "size": "2",
+        "roomImage": [{
+          "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/15237_203_s.jpg",
+          "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/15237_203_z.jpg",
+          "heroImage": false
+        }, {
+          "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/5527c2a4_s.jpg",
+          "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/5527c2a4_z.jpg",
+          "heroImage": false
+        }]
+      }
+    }, {
+      "rateCode": 208162381,
+      "roomTypeCode": 201632567,
+      "rateDescription": "Tower Deluxe King Room",
+      "roomTypeDescription": "Tower Deluxe King Room",
+      "supplierType": "E",
+      "propertyId": 15237,
+      "bedTypes": {
+        "size": "1",
+        "bedType": [{
+          "id": "14",
+          "description": "1 king bed"
+        }]
+      },
+      "smokingPreferences": "nS",
+      "rateOccupancyPerRoom": 4,
+      "quotedOccupancy": 2,
+      "minGuestAge": 0,
+      "rateInfos": {
+        "size": "1",
+        "rateInfo": [{
+          "priceBreakdown": true,
+          "promo": true,
+          "rateChange": true,
+          "roomGroup": {
+            "room": {
+              "numberOfAdults": 2,
+              "numberOfChildren": 0,
+              "rateKey": "1719e5d7-f42f-46d4-a203-f3b3fbe6ed74-5101",
+              "chargeableNightlyRates": [{
+                "baseRate": "148.91",
+                "rate": "96.79",
+                "promo": true,
+                "fenced": false
+              }, {
+                "baseRate": "191.94",
+                "rate": "124.76",
+                "promo": true,
+                "fenced": false
+              }]
+            }
+          },
+          "chargeableRateInfo": {
+            "averageBaseRate": "170.42",
+            "averageRate": "110.78",
+            "commissionableUsdTotal": "221.55",
+            "currencyCode": "GBP",
+            "maxNightlyRate": "124.76",
+            "nightlyRateTotal": "221.55",
+            "surchargeTotal": "29.64",
+            "total": "251.19",
+            "nightlyRatesPerRoom": {
+              "size": "2",
+              "nightlyRate": [{
+                "baseRate": "148.91",
+                "rate": "96.79",
+                "promo": true,
+                "fenced": false
+              }, {
+                "baseRate": "191.94",
+                "rate": "124.76",
+                "promo": true,
+                "fenced": false
+              }]
+            },
+            "surcharges": {
+              "size": "1",
+              "surcharge": [{
+                "type": "TaxAndServiceFee",
+                "amount": "29.64"
+              }]
+            }
+          },
+          "cancellationPolicy": "We understand that sometimes your travel plans change. We do not charge a change or cancel fee. However, this property (Luxor Hotel and Casino) imposes the following penalty to its customers that we are required to pass on: Cancellations or changes made after 3:00 PM ((GMT-07:00)) on Sep 30, 2017, or no-shows, are subject to a 1 Night Room &amp; Tax penalty.  ",
+          "cancelPolicyInfoList": {
+            "cancelPolicyInfo": [{
+              "versionId": 0,
+              "cancelTime": "15:00:00",
+              "startWindowHours": 0,
+              "nightCount": 1,
+              "currencyCode": "GBP",
+              "timeZoneDescription": "(GMT-07:00)"
+            }, {
+              "versionId": 0,
+              "cancelTime": "15:00:00",
+              "startWindowHours": 72,
+              "nightCount": 0,
+              "currencyCode": "GBP",
+              "timeZoneDescription": "(GMT-07:00)"
+            }]
+          },
+          "nonRefundable": false,
+          "hotelFees": {
+            "size": "1",
+            "hotelFee": [{
+              "description": "resortFee",
+              "amount": "52.52"
+            }]
+          },
+          "rateType": "MerchantStandard",
+          "promoId": 230955277,
+          "promoDescription": "save 35%",
+          "promoType": "standard",
+          "currentAllotment": 4999,
+          "guaranteeRequired": false,
+          "depositRequired": false,
+          "taxRate": 29.64
+        }]
+      },
+      "deepLink": "https://www.travelnow.com/templates/406390/hotels/122212/book?lang=en&amp;currency=GBP&amp;standardCheckin=10/3/2017&amp;standardCheckout=10/5/2017&amp;selectedPrice=251.19&amp;supplierType=E&amp;rateCode=208162381&amp;roomTypeCode=201632567&amp;roomsCount=1&amp;rooms[0].adultsCount=2",
+      "roomImages": {
+        "size": "2",
+        "roomImage": [{
+          "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/15237_232_s.jpg",
+          "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/15237_232_z.jpg",
+          "heroImage": false
+        }, {
+          "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/4c2b3eca_s.jpg",
+          "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/4c2b3eca_z.jpg",
+          "heroImage": false
+        }]
+      }
+    }, {
+      "rateCode": 208162376,
+      "roomTypeCode": 201632566,
+      "rateDescription": "Tower Deluxe Queen Room",
+      "roomTypeDescription": "Tower Deluxe Queen Room",
+      "supplierType": "E",
+      "propertyId": 15237,
+      "bedTypes": {
+        "size": "1",
+        "bedType": [{
+          "id": "23",
+          "description": "2 queen beds"
+        }]
+      },
+      "smokingPreferences": "nS",
+      "rateOccupancyPerRoom": 4,
+      "quotedOccupancy": 2,
+      "minGuestAge": 0,
+      "rateInfos": {
+        "size": "1",
+        "rateInfo": [{
+          "priceBreakdown": true,
+          "promo": true,
+          "rateChange": true,
+          "roomGroup": {
+            "room": {
+              "numberOfAdults": 2,
+              "numberOfChildren": 0,
+              "rateKey": "041637e2-3472-4ae0-b696-65d33553f17b-5101",
+              "chargeableNightlyRates": [{
+                "baseRate": "155.54",
+                "rate": "101.10",
+                "promo": true,
+                "fenced": false
+              }, {
+                "baseRate": "198.55",
+                "rate": "129.06",
+                "promo": true,
+                "fenced": false
+              }]
+            }
+          },
+          "chargeableRateInfo": {
+            "averageBaseRate": "177.04",
+            "averageRate": "115.08",
+            "commissionableUsdTotal": "230.16",
+            "currencyCode": "GBP",
+            "maxNightlyRate": "129.06",
+            "nightlyRateTotal": "230.16",
+            "surchargeTotal": "30.80",
+            "total": "260.96",
+            "nightlyRatesPerRoom": {
+              "size": "2",
+              "nightlyRate": [{
+                "baseRate": "155.54",
+                "rate": "101.10",
+                "promo": true,
+                "fenced": false
+              }, {
+                "baseRate": "198.55",
+                "rate": "129.06",
+                "promo": true,
+                "fenced": false
+              }]
+            },
+            "surcharges": {
+              "size": "1",
+              "surcharge": [{
+                "type": "TaxAndServiceFee",
+                "amount": "30.80"
+              }]
+            }
+          },
+          "cancellationPolicy": "We understand that sometimes your travel plans change. We do not charge a change or cancel fee. However, this property (Luxor Hotel and Casino) imposes the following penalty to its customers that we are required to pass on: Cancellations or changes made after 3:00 PM ((GMT-07:00)) on Sep 30, 2017, or no-shows, are subject to a 1 Night Room &amp; Tax penalty.  ",
+          "cancelPolicyInfoList": {
+            "cancelPolicyInfo": [{
+              "versionId": 0,
+              "cancelTime": "15:00:00",
+              "startWindowHours": 0,
+              "nightCount": 1,
+              "currencyCode": "GBP",
+              "timeZoneDescription": "(GMT-07:00)"
+            }, {
+              "versionId": 0,
+              "cancelTime": "15:00:00",
+              "startWindowHours": 72,
+              "nightCount": 0,
+              "currencyCode": "GBP",
+              "timeZoneDescription": "(GMT-07:00)"
+            }]
+          },
+          "nonRefundable": false,
+          "hotelFees": {
+            "size": "1",
+            "hotelFee": [{
+              "description": "resortFee",
+              "amount": "52.52"
+            }]
+          },
+          "rateType": "MerchantStandard",
+          "promoId": 230955277,
+          "promoDescription": "save 35%",
+          "promoType": "standard",
+          "currentAllotment": 4999,
+          "guaranteeRequired": false,
+          "depositRequired": false,
+          "taxRate": 30.80
+        }]
+      },
+      "deepLink": "https://www.travelnow.com/templates/406390/hotels/122212/book?lang=en&amp;currency=GBP&amp;standardCheckin=10/3/2017&amp;standardCheckout=10/5/2017&amp;selectedPrice=260.96&amp;supplierType=E&amp;rateCode=208162376&amp;roomTypeCode=201632566&amp;roomsCount=1&amp;rooms[0].adultsCount=2",
+      "roomImages": {
+        "size": "1",
+        "roomImage": [{
+          "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/1fbfaf6b_s.jpg",
+          "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/1fbfaf6b_z.jpg",
+          "heroImage": false
+        }]
+      }
+    }, {
+      "rateCode": 208647564,
+      "roomTypeCode": 201739737,
+      "rateDescription": "cleo Pyramid Queen Deluxe Room",
+      "roomTypeDescription": "cleo Pyramid Queen Deluxe Room",
+      "supplierType": "E",
+      "propertyId": 15237,
+      "bedTypes": {
+        "size": "1",
+        "bedType": [{
+          "id": "23",
+          "description": "2 queen beds"
+        }]
+      },
+      "smokingPreferences": "nS",
+      "rateOccupancyPerRoom": 4,
+      "quotedOccupancy": 2,
+      "minGuestAge": 0,
+      "rateInfos": {
+        "size": "1",
+        "rateInfo": [{
+          "priceBreakdown": true,
+          "promo": true,
+          "rateChange": true,
+          "roomGroup": {
+            "room": {
+              "numberOfAdults": 2,
+              "numberOfChildren": 0,
+              "rateKey": "8067b0ed-f1b3-4ac7-8d09-9baf09876cfa-5101",
+              "chargeableNightlyRates": [{
+                "baseRate": "155.54",
+                "rate": "101.10",
+                "promo": true,
+                "fenced": false
+              }, {
+                "baseRate": "198.55",
+                "rate": "129.06",
+                "promo": true,
+                "fenced": false
+              }]
+            }
+          },
+          "chargeableRateInfo": {
+            "averageBaseRate": "177.04",
+            "averageRate": "115.08",
+            "commissionableUsdTotal": "230.16",
+            "currencyCode": "GBP",
+            "maxNightlyRate": "129.06",
+            "nightlyRateTotal": "230.16",
+            "surchargeTotal": "30.80",
+            "total": "260.96",
+            "nightlyRatesPerRoom": {
+              "size": "2",
+              "nightlyRate": [{
+                "baseRate": "155.54",
+                "rate": "101.10",
+                "promo": true,
+                "fenced": false
+              }, {
+                "baseRate": "198.55",
+                "rate": "129.06",
+                "promo": true,
+                "fenced": false
+              }]
+            },
+            "surcharges": {
+              "size": "1",
+              "surcharge": [{
+                "type": "TaxAndServiceFee",
+                "amount": "30.80"
+              }]
+            }
+          },
+          "cancellationPolicy": "We understand that sometimes your travel plans change. We do not charge a change or cancel fee. However, this property (Luxor Hotel and Casino) imposes the following penalty to its customers that we are required to pass on: Cancellations or changes made after 3:00 PM ((GMT-07:00)) on Sep 30, 2017, or no-shows, are subject to a 1 Night Room &amp; Tax penalty.  ",
+          "cancelPolicyInfoList": {
+            "cancelPolicyInfo": [{
+              "versionId": 0,
+              "cancelTime": "15:00:00",
+              "startWindowHours": 0,
+              "nightCount": 1,
+              "currencyCode": "GBP",
+              "timeZoneDescription": "(GMT-07:00)"
+            }, {
+              "versionId": 0,
+              "cancelTime": "15:00:00",
+              "startWindowHours": 72,
+              "nightCount": 0,
+              "currencyCode": "GBP",
+              "timeZoneDescription": "(GMT-07:00)"
+            }]
+          },
+          "nonRefundable": false,
+          "hotelFees": {
+            "size": "1",
+            "hotelFee": [{
+              "description": "resortFee",
+              "amount": "52.52"
+            }]
+          },
+          "rateType": "MerchantStandard",
+          "promoId": 230955277,
+          "promoDescription": "save 35%",
+          "promoType": "standard",
+          "currentAllotment": 4999,
+          "guaranteeRequired": false,
+          "depositRequired": false,
+          "taxRate": 30.80
+        }]
+      },
+      "deepLink": "https://www.travelnow.com/templates/406390/hotels/122212/book?lang=en&amp;currency=GBP&amp;standardCheckin=10/3/2017&amp;standardCheckout=10/5/2017&amp;selectedPrice=260.96&amp;supplierType=E&amp;rateCode=208647564&amp;roomTypeCode=201739737&amp;roomsCount=1&amp;rooms[0].adultsCount=2",
+      "roomImages": {
+        "size": "2",
+        "roomImage": [{
+          "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/f20077e1_s.jpg",
+          "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/f20077e1_z.jpg",
+          "heroImage": false
+        }, {
+          "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/1b154bed_s.jpg",
+          "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/1b154bed_z.jpg",
+          "heroImage": false
+        }]
+      }
+    }, {
+      "rateCode": 208162366,
+      "roomTypeCode": 201632564,
+      "rateDescription": "Tower Luxury Suite",
+      "roomTypeDescription": "Tower Luxury Suite",
+      "supplierType": "E",
+      "propertyId": 15237,
+      "bedTypes": {
+        "size": "1",
+        "bedType": [{
+          "id": "14",
+          "description": "1 king bed"
+        }]
+      },
+      "smokingPreferences": "nS",
+      "rateOccupancyPerRoom": 2,
+      "quotedOccupancy": 2,
+      "minGuestAge": 0,
+      "rateInfos": {
+        "size": "1",
+        "rateInfo": [{
+          "priceBreakdown": true,
+          "promo": true,
+          "rateChange": true,
+          "roomGroup": {
+            "room": {
+              "numberOfAdults": 2,
+              "numberOfChildren": 0,
+              "rateKey": "c7f3c995-e333-4e8d-9eb1-47e4c02bae27-5101",
+              "chargeableNightlyRates": [{
+                "baseRate": "189.74",
+                "rate": "123.33",
+                "promo": true,
+                "fenced": false
+              }, {
+                "baseRate": "232.76",
+                "rate": "151.29",
+                "promo": true,
+                "fenced": false
+              }]
+            }
+          },
+          "chargeableRateInfo": {
+            "averageBaseRate": "211.25",
+            "averageRate": "137.31",
+            "commissionableUsdTotal": "274.62",
+            "currencyCode": "GBP",
+            "maxNightlyRate": "151.29",
+            "nightlyRateTotal": "274.62",
+            "surchargeTotal": "36.76",
+            "total": "311.38",
+            "nightlyRatesPerRoom": {
+              "size": "2",
+              "nightlyRate": [{
+                "baseRate": "189.74",
+                "rate": "123.33",
+                "promo": true,
+                "fenced": false
+              }, {
+                "baseRate": "232.76",
+                "rate": "151.29",
+                "promo": true,
+                "fenced": false
+              }]
+            },
+            "surcharges": {
+              "size": "1",
+              "surcharge": [{
+                "type": "TaxAndServiceFee",
+                "amount": "36.76"
+              }]
+            }
+          },
+          "cancellationPolicy": "We understand that sometimes your travel plans change. We do not charge a change or cancel fee. However, this property (Luxor Hotel and Casino) imposes the following penalty to its customers that we are required to pass on: Cancellations or changes made after 3:00 PM ((GMT-07:00)) on Sep 30, 2017, or no-shows, are subject to a 1 Night Room &amp; Tax penalty.  ",
+          "cancelPolicyInfoList": {
+            "cancelPolicyInfo": [{
+              "versionId": 0,
+              "cancelTime": "15:00:00",
+              "startWindowHours": 0,
+              "nightCount": 1,
+              "currencyCode": "GBP",
+              "timeZoneDescription": "(GMT-07:00)"
+            }, {
+              "versionId": 0,
+              "cancelTime": "15:00:00",
+              "startWindowHours": 72,
+              "nightCount": 0,
+              "currencyCode": "GBP",
+              "timeZoneDescription": "(GMT-07:00)"
+            }]
+          },
+          "nonRefundable": false,
+          "hotelFees": {
+            "size": "1",
+            "hotelFee": [{
+              "description": "resortFee",
+              "amount": "52.52"
+            }]
+          },
+          "rateType": "MerchantStandard",
+          "promoId": 230955277,
+          "promoDescription": "save 35%",
+          "promoType": "standard",
+          "currentAllotment": 4999,
+          "guaranteeRequired": false,
+          "depositRequired": false,
+          "taxRate": 36.76
+        }]
+      },
+      "deepLink": "https://www.travelnow.com/templates/406390/hotels/122212/book?lang=en&amp;currency=GBP&amp;standardCheckin=10/3/2017&amp;standardCheckout=10/5/2017&amp;selectedPrice=311.38&amp;supplierType=E&amp;rateCode=208162366&amp;roomTypeCode=201632564&amp;roomsCount=1&amp;rooms[0].adultsCount=2",
+      "roomImages": {
+        "size": "2",
+        "roomImage": [{
+          "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/59fa78bf_s.jpg",
+          "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/59fa78bf_z.jpg",
+          "heroImage": false
+        }, {
+          "url": "http://media.expedia.com/hotels/1000000/20000/15300/15237/2fb085c0_s.jpg",
+          "highResolutionUrl": "http://media.expedia.com/hotels/1000000/20000/15300/15237/2fb085c0_z.jpg",
+          "heroImage": false
+        }]
+      }
+    }]
+  }
+}

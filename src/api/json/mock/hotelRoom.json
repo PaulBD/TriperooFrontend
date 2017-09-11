@@ -1,0 +1,448 @@
+{
+  "hotelRoomAvailabilityResponse": {
+    "size": 4,
+    "customerSessionId": "0AB2902F-63ED-0F91-5E62-CE1CFF7944DA",
+    "hotelId": 505612,
+    "arrivalDate": "09/17/2017",
+    "departureDate": "09/18/2017",
+    "hotelName": "Mill Hotel & Spa",
+    "hotelAddress": "Milton Street",
+    "hotelCity": "Chester",
+    "hotelCountry": "GB",
+    "numberOfRoomsRequested": 1,
+    "checkInInstructions": "<p><b>National Rating</b> <br />This establishment has received its official star rating from VisitEngland, the National Tourist Board for England.</p><p><b>Know Before You Go</b> <br /><ul>  <li>This property's policy is to refuse certain bookings for the purpose of group events or parties, including pre-wedding stag/bachelor and hen/bachelorette parties. </li><li>Only registered guests are allowed in the guestrooms. </li> <li>The property has connecting/adjoining rooms, which are subject to availability and can be requested by contacting the property using the number on the booking confirmation. </li> </ul></p><p><b>Fees</b> <br /><p>The following fees and deposits are charged by the property at time of service, check-in, or check-out. </p> <ul>                  <li>Rollaway bed fee: GBP 15.00 per night</li>             </ul> <p>The above list may not be comprehensive. Fees and deposits may not include tax and are subject to change. </p></p>",
+    "tripAdvisorRating": 4,
+    "tripAdvisorReviewCount": 1416,
+    "tripAdvisorRatingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.0-123456-4.gif",
+    "hotelRoomResponse": [{
+      "rateCode": 204765496,
+      "roomTypeCode": 200976902,
+      "rateDescription": "Standard Double Room, 1 Double Bed",
+      "roomTypeDescription": "Standard Double Room, 1 Double Bed",
+      "supplierType": "E",
+      "propertyId": 1695656,
+      "bedTypes": {
+        "size": "1",
+        "bedType": [{
+          "id": "13",
+          "description": "1 double bed"
+        }]
+      },
+      "smokingPreferences": "NS",
+      "rateOccupancyPerRoom": 2,
+      "quotedOccupancy": 2,
+      "minGuestAge": 0,
+      "rateInfos": {
+        "size": "1",
+        "rateInfo": [{
+          "priceBreakdown": true,
+          "promo": false,
+          "rateChange": false,
+          "roomGroup": {
+            "room": {
+              "numberOfAdults": 2,
+              "numberOfChildren": 0,
+              "rateKey": "8b215cf1-8ccf-42f0-b2ab-8083c4f36d66-5101",
+              "chargeableNightlyRates": [{
+                "baseRate": "70.83",
+                "rate": "70.83",
+                "promo": false,
+                "fenced": false
+              }]
+            }
+          },
+          "chargeableRateInfo": {
+            "averageBaseRate": "70.83",
+            "averageRate": "70.83",
+            "commissionableUsdTotal": "70.83",
+            "currencyCode": "GBP",
+            "maxNightlyRate": "70.83",
+            "nightlyRateTotal": "70.83",
+            "surchargeTotal": "14.17",
+            "total": "85.00",
+            "nightlyRatesPerRoom": {
+              "size": "1",
+              "nightlyRate": [{
+                "baseRate": "70.83",
+                "rate": "70.83",
+                "promo": false,
+                "fenced": false
+              }]
+            },
+            "surcharges": {
+              "size": "1",
+              "surcharge": [{
+                "type": "TaxAndServiceFee",
+                "amount": "14.17"
+              }]
+            }
+          },
+          "cancellationPolicy": "We understand that sometimes your travel plans change. We do not charge a change or cancel fee. However, this property (Mill Hotel &amp; Spa) imposes the following penalty to its customers that we are required to pass on: Cancellations or changes made after 11:59 PM ((GMT+01:00)) on Sep 15, 2017, or no-shows, are subject to a 1 Night Room &amp; Tax penalty.  ",
+          "cancelPolicyInfoList": {
+            "cancelPolicyInfo": [{
+              "versionId": 0,
+              "cancelTime": "23:59:00",
+              "startWindowHours": 0,
+              "nightCount": 1,
+              "currencyCode": "GBP",
+              "timeZoneDescription": "(GMT+01:00)"
+            }, {
+              "versionId": 0,
+              "cancelTime": "23:59:00",
+              "startWindowHours": 48,
+              "nightCount": 0,
+              "currencyCode": "GBP",
+              "timeZoneDescription": "(GMT+01:00)"
+            }]
+          },
+          "nonRefundable": false,
+          "rateType": "MerchantStandard",
+          "promoId": 0,
+          "currentAllotment": 2,
+          "guaranteeRequired": false,
+          "depositRequired": false,
+          "taxRate": 14.17
+        }]
+      },
+      "deepLink": "https://www.travelnow.com/templates/406390/hotels/505612/book?lang=en&amp;currency=GBP&amp;standardCheckin=9/17/2017&amp;standardCheckout=9/18/2017&amp;selectedPrice=85.00&amp;supplierType=E&amp;rateCode=204765496&amp;roomTypeCode=200976902&amp;roomsCount=1&amp;rooms[0].adultsCount=2",
+      "roomImages": {
+        "size": "2",
+        "roomImage": [{
+          "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_9_s.jpg",
+          "highResolutionUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_9_z.jpg",
+          "heroImage": true
+        }, {
+          "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_26_s.jpg",
+          "heroImage": false
+        }]
+      }
+    }, {
+      "rateCode": 204765960,
+      "roomTypeCode": 200977016,
+      "rateDescription": "Business Double Room, 1 King Bed",
+      "roomTypeDescription": "Business Double Room, 1 King Bed",
+      "supplierType": "E",
+      "propertyId": 1695656,
+      "bedTypes": {
+        "size": "1",
+        "bedType": [{
+          "id": "14",
+          "description": "1 king bed"
+        }]
+      },
+      "smokingPreferences": "NS",
+      "rateOccupancyPerRoom": 2,
+      "quotedOccupancy": 2,
+      "minGuestAge": 0,
+      "rateInfos": {
+        "size": "1",
+        "rateInfo": [{
+          "priceBreakdown": true,
+          "promo": false,
+          "rateChange": false,
+          "roomGroup": {
+            "room": {
+              "numberOfAdults": 2,
+              "numberOfChildren": 0,
+              "rateKey": "b88d74a8-7aca-426e-8beb-35e1186e080d-5101",
+              "chargeableNightlyRates": [{
+                "baseRate": "79.17",
+                "rate": "79.17",
+                "promo": false,
+                "fenced": false
+              }]
+            }
+          },
+          "chargeableRateInfo": {
+            "averageBaseRate": "79.17",
+            "averageRate": "79.17",
+            "commissionableUsdTotal": "79.17",
+            "currencyCode": "GBP",
+            "maxNightlyRate": "79.17",
+            "nightlyRateTotal": "79.17",
+            "surchargeTotal": "15.83",
+            "total": "95.00",
+            "nightlyRatesPerRoom": {
+              "size": "1",
+              "nightlyRate": [{
+                "baseRate": "79.17",
+                "rate": "79.17",
+                "promo": false,
+                "fenced": false
+              }]
+            },
+            "surcharges": {
+              "size": "1",
+              "surcharge": [{
+                "type": "TaxAndServiceFee",
+                "amount": "15.83"
+              }]
+            }
+          },
+          "cancellationPolicy": "We understand that sometimes your travel plans change. We do not charge a change or cancel fee. However, this property (Mill Hotel &amp; Spa) imposes the following penalty to its customers that we are required to pass on: Cancellations or changes made after 11:59 PM ((GMT+01:00)) on Sep 15, 2017, or no-shows, are subject to a 1 Night Room &amp; Tax penalty.  ",
+          "cancelPolicyInfoList": {
+            "cancelPolicyInfo": [{
+              "versionId": 0,
+              "cancelTime": "23:59:00",
+              "startWindowHours": 0,
+              "nightCount": 1,
+              "currencyCode": "GBP",
+              "timeZoneDescription": "(GMT+01:00)"
+            }, {
+              "versionId": 0,
+              "cancelTime": "23:59:00",
+              "startWindowHours": 48,
+              "nightCount": 0,
+              "currencyCode": "GBP",
+              "timeZoneDescription": "(GMT+01:00)"
+            }]
+          },
+          "nonRefundable": false,
+          "rateType": "MerchantStandard",
+          "promoId": 0,
+          "currentAllotment": 2,
+          "guaranteeRequired": false,
+          "depositRequired": false,
+          "taxRate": 15.83
+        }]
+      },
+      "deepLink": "https://www.travelnow.com/templates/406390/hotels/505612/book?lang=en&amp;currency=GBP&amp;standardCheckin=9/17/2017&amp;standardCheckout=9/18/2017&amp;selectedPrice=95.00&amp;supplierType=E&amp;rateCode=204765960&amp;roomTypeCode=200977016&amp;roomsCount=1&amp;rooms[0].adultsCount=2",
+      "roomImages": {
+        "size": "5",
+        "roomImage": [{
+          "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_23_s.jpg",
+          "highResolutionUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_23_z.jpg",
+          "heroImage": true
+        }, {
+          "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_28_s.jpg",
+          "heroImage": false
+        }, {
+          "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_34_s.jpg",
+          "heroImage": false
+        }, {
+          "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_43_s.jpg",
+          "heroImage": false
+        }, {
+          "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_26_s.jpg",
+          "heroImage": false
+        }]
+      }
+    }, {
+      "rateCode": 204766160,
+      "roomTypeCode": 200977064,
+      "rateDescription": "Club Double Room, 1 King Bed",
+      "roomTypeDescription": "Club Double Room, 1 King Bed",
+      "supplierType": "E",
+      "propertyId": 1695656,
+      "bedTypes": {
+        "size": "1",
+        "bedType": [{
+          "id": "14",
+          "description": "1 king bed"
+        }]
+      },
+      "smokingPreferences": "NS",
+      "rateOccupancyPerRoom": 2,
+      "quotedOccupancy": 2,
+      "minGuestAge": 0,
+      "rateInfos": {
+        "size": "1",
+        "rateInfo": [{
+          "priceBreakdown": true,
+          "promo": false,
+          "rateChange": false,
+          "roomGroup": {
+            "room": {
+              "numberOfAdults": 2,
+              "numberOfChildren": 0,
+              "rateKey": "46bc9466-1cfa-4cc9-a186-15a14af962fb-5101",
+              "chargeableNightlyRates": [{
+                "baseRate": "87.50",
+                "rate": "87.50",
+                "promo": false,
+                "fenced": false
+              }]
+            }
+          },
+          "chargeableRateInfo": {
+            "averageBaseRate": "87.50",
+            "averageRate": "87.50",
+            "commissionableUsdTotal": "87.50",
+            "currencyCode": "GBP",
+            "maxNightlyRate": "87.50",
+            "nightlyRateTotal": "87.50",
+            "surchargeTotal": "17.50",
+            "total": "105.00",
+            "nightlyRatesPerRoom": {
+              "size": "1",
+              "nightlyRate": [{
+                "baseRate": "87.50",
+                "rate": "87.50",
+                "promo": false,
+                "fenced": false
+              }]
+            },
+            "surcharges": {
+              "size": "1",
+              "surcharge": [{
+                "type": "TaxAndServiceFee",
+                "amount": "17.50"
+              }]
+            }
+          },
+          "cancellationPolicy": "We understand that sometimes your travel plans change. We do not charge a change or cancel fee. However, this property (Mill Hotel &amp; Spa) imposes the following penalty to its customers that we are required to pass on: Cancellations or changes made after 11:59 PM ((GMT+01:00)) on Sep 15, 2017, or no-shows, are subject to a 1 Night Room &amp; Tax penalty.  ",
+          "cancelPolicyInfoList": {
+            "cancelPolicyInfo": [{
+              "versionId": 0,
+              "cancelTime": "23:59:00",
+              "startWindowHours": 0,
+              "nightCount": 1,
+              "currencyCode": "GBP",
+              "timeZoneDescription": "(GMT+01:00)"
+            }, {
+              "versionId": 0,
+              "cancelTime": "23:59:00",
+              "startWindowHours": 48,
+              "nightCount": 0,
+              "currencyCode": "GBP",
+              "timeZoneDescription": "(GMT+01:00)"
+            }]
+          },
+          "nonRefundable": false,
+          "rateType": "MerchantStandard",
+          "promoId": 0,
+          "currentAllotment": 2,
+          "guaranteeRequired": false,
+          "depositRequired": false,
+          "taxRate": 17.5
+        }]
+      },
+      "deepLink": "https://www.travelnow.com/templates/406390/hotels/505612/book?lang=en&amp;currency=GBP&amp;standardCheckin=9/17/2017&amp;standardCheckout=9/18/2017&amp;selectedPrice=105.00&amp;supplierType=E&amp;rateCode=204766160&amp;roomTypeCode=200977064&amp;roomsCount=1&amp;rooms[0].adultsCount=2",
+      "roomImages": {
+        "size": "4",
+        "roomImage": [{
+          "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_47_s.jpg",
+          "heroImage": true
+        }, {
+          "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_62_s.jpg",
+          "highResolutionUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_62_z.jpg",
+          "heroImage": false
+        }, {
+          "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_38_s.jpg",
+          "heroImage": false
+        }, {
+          "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_26_s.jpg",
+          "heroImage": false
+        }]
+      }
+    }, {
+      "rateCode": 204919037,
+      "roomTypeCode": 201010828,
+      "rateDescription": "Family Quadruple Room, 1 King Bed with Sofabed",
+      "roomTypeDescription": "Family Quadruple Room, 1 King Bed with Sofabed",
+      "supplierType": "E",
+      "propertyId": 1695656,
+      "bedTypes": {
+        "size": "1",
+        "bedType": [{
+          "id": "67",
+          "description": "1 king and 1 sofa bed"
+        }]
+      },
+      "smokingPreferences": "NS",
+      "rateOccupancyPerRoom": 4,
+      "quotedOccupancy": 2,
+      "minGuestAge": 0,
+      "rateInfos": {
+        "size": "1",
+        "rateInfo": [{
+          "priceBreakdown": true,
+          "promo": false,
+          "rateChange": false,
+          "roomGroup": {
+            "room": {
+              "numberOfAdults": 2,
+              "numberOfChildren": 0,
+              "rateKey": "5f3ed9b8-133f-42ea-ab6f-d51481459f55-5101",
+              "chargeableNightlyRates": [{
+                "baseRate": "120.83",
+                "rate": "120.83",
+                "promo": false,
+                "fenced": false
+              }]
+            }
+          },
+          "chargeableRateInfo": {
+            "averageBaseRate": "120.83",
+            "averageRate": "120.83",
+            "commissionableUsdTotal": "120.83",
+            "currencyCode": "GBP",
+            "maxNightlyRate": "120.83",
+            "nightlyRateTotal": "120.83",
+            "surchargeTotal": "24.17",
+            "total": "145.00",
+            "nightlyRatesPerRoom": {
+              "size": "1",
+              "nightlyRate": [{
+                "baseRate": "120.83",
+                "rate": "120.83",
+                "promo": false,
+                "fenced": false
+              }]
+            },
+            "surcharges": {
+              "size": "1",
+              "surcharge": [{
+                "type": "TaxAndServiceFee",
+                "amount": "24.17"
+              }]
+            }
+          },
+          "cancellationPolicy": "We understand that sometimes your travel plans change. We do not charge a change or cancel fee. However, this property (Mill Hotel &amp; Spa) imposes the following penalty to its customers that we are required to pass on: Cancellations or changes made after 11:59 PM ((GMT+01:00)) on Sep 15, 2017, or no-shows, are subject to a 1 Night Room &amp; Tax penalty.  ",
+          "cancelPolicyInfoList": {
+            "cancelPolicyInfo": [{
+              "versionId": 0,
+              "cancelTime": "23:59:00",
+              "startWindowHours": 0,
+              "nightCount": 1,
+              "currencyCode": "GBP",
+              "timeZoneDescription": "(GMT+01:00)"
+            }, {
+              "versionId": 0,
+              "cancelTime": "23:59:00",
+              "startWindowHours": 48,
+              "nightCount": 0,
+              "currencyCode": "GBP",
+              "timeZoneDescription": "(GMT+01:00)"
+            }]
+          },
+          "nonRefundable": false,
+          "rateType": "MerchantStandard",
+          "promoId": 0,
+          "currentAllotment": 1,
+          "guaranteeRequired": false,
+          "depositRequired": false,
+          "taxRate": 24.17
+        }]
+      },
+      "deepLink": "https://www.travelnow.com/templates/406390/hotels/505612/book?lang=en&amp;currency=GBP&amp;standardCheckin=9/17/2017&amp;standardCheckout=9/18/2017&amp;selectedPrice=145.00&amp;supplierType=E&amp;rateCode=204919037&amp;roomTypeCode=201010828&amp;roomsCount=1&amp;rooms[0].adultsCount=2",
+      "roomImages": {
+        "size": "4",
+        "roomImage": [{
+          "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_47_s.jpg",
+          "heroImage": true
+        }, {
+          "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_27_s.jpg",
+          "heroImage": false
+        }, {
+          "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_62_s.jpg",
+          "highResolutionUrl": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_62_z.jpg",
+          "heroImage": false
+        }, {
+          "url": "http://media.expedia.com/hotels/2000000/1700000/1695700/1695656/1695656_26_s.jpg",
+          "heroImage": false
+        }]
+      }
+    }]
+  }
+}

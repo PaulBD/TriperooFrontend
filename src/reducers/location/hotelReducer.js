@@ -30,6 +30,13 @@ export default function hotelsReducer(state = { isFetching: false }, action) {
     case types.HOTELS_BY_ID_FAILURE:
       return Object.assign({}, state, { isFetching: false, errorMessage: action.message });
 
+    case types.HOTEL_ROOMS_BY_ID_REQUEST:
+      return Object.assign({}, state, { isFetching: true });
+    case types.HOTEL_ROOMS_BY_ID_SUCCESS:
+      return Object.assign({}, state, { isFetching: false, errorMessage: '', hotelRooms: action.hotelRooms });
+    case types.HOTEL_ROOMS_BY_ID_FAILURE:
+      return Object.assign({}, state, { isFetching: false, errorMessage: action.message });
+
     default:
 			return state;
 	}

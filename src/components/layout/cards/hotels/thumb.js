@@ -1,27 +1,30 @@
 import React, {PropTypes} from 'react';
 import StarRating from '../../../forms/common/starRating';
 
-const HotelThumb = ({hotel}) => {
-
-  let url = '/2114/visit/london-england-united-kingdom/hotels/' + hotel.eanHotelID;
+const HotelThumb = ({hotel, hotelUrl, cssClass, nameLength}) => {
+  let style = {
+    backgroundImage: 'url(' + hotel.thumbNailUrl + ')'
+  };
+  let url = hotelUrl + '/hotels/' + hotel.hotelId;
   return (
-    <div className="thumb" key={hotel.eanHotelID}>
-      <a className="hover-img" href={url}>
-        <img src="/static/img/800x600.png" alt="Image Alternative text" title="Gaviota en el Top" />
-        <div className="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">
-          <div className="text-small">
-            <h5>{hotel.name}</h5>
-            <p className="mb0">Between {hotel.lowRate} {hotel.propertyCurrency} and {hotel.highRate} {hotel.propertyCurrency}</p>
-            <StarRating starRating={hotel.starRating} className="icon-list list-inline-block mb0 hotel-rating"/>
-          </div>
+    <div className={cssClass} key={hotel.hotelId}>
+      <div className="card text-xs-left">
+        <div className="cardBg" style={style}>
         </div>
-      </a>
+        <div className="card-block">
+          <h5>{hotel.name.length > nameLength ? hotel.name.substring(0,nameLength) + '...' : hotel.name}</h5>
+          <a href={url} className="btn btn-primary priceRight">View</a>
+          <p className="mb0">From {hotel.lowRate.toFixed(2)} {hotel.rateCurrencyCode}</p>
+          <StarRating starRating={hotel.hotelRating} className="icon-list list-inline-block mb0 hotel-rating"/>
+        </div>
+      </div>
     </div>
   );
 };
 
 HotelThumb.propTypes = {
-  hotel: PropTypes.object.isRequired
+  hotel: PropTypes.object.isRequired,
+  hotelUrl: PropTypes.string.isRequired
 };
 
 export default HotelThumb;

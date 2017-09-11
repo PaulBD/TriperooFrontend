@@ -36,36 +36,41 @@ class HotelsNearLocation extends React.Component {
     }
 
     if (!this.state.isLoading) {
-      if (this.props.hotels.hotelList != undefined) {
-        return (
-          <div className="row greyBg detailSubHeader">
-            <div className="gap"></div>
-            <div className="container">
-              <div className="row">
-                <div className="col-md-8">
-                  <h4>{title}</h4>
-                </div>
-                <div className="col-md-4 text-right">
-                  <p><a href={searchHotels}>Find more hotels in {this.props.parentName}</a></p>
-                </div>
-                <div className="col-md-12">
-                  <div className="row">
-                    {
-                      this.props.hotels.hotelList != undefined ? this.props.hotels.hotelList.map(hotel => {
-                        return (
-                          <div className="col-md-3">
-                            <HotelThumb hotel={hotel} key={hotel.eanHotelID}/>
-                          </div>
-                        );
-                      }) : ''
-                    }
+      if (this.props.hotels.hotelListResponse != undefined) {
+        if (this.props.hotels.hotelListResponse.hotelList.size > 0) {
+          return (
+            <div className="row greyBg detailSubHeader">
+              <div className="gap gap-small"></div>
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-8">
+                    <h4>{title}</h4>
+                  </div>
+                  <div className="col-md-4 text-right">
+                    <p><a href={searchHotels}>Find more hotels in {this.props.parentName}</a></p>
+                  </div>
+                  <div className="col-md-12">
+                    <div className="row">
+                      {
+                        this.props.hotels.hotelListResponse.hotelList.hotelSummary.map((hotel, index) => {
+                          if (index < this.props.pageSize) {
+                            return (
+                              <HotelThumb hotel={hotel} hotelUrl={this.props.url} key={hotel.hotelId} cssClass="col-md-3 mb-0" nameLength={20}/>
+                            );
+                          }
+                        })
+                      }
+                    </div>
                   </div>
                 </div>
               </div>
+              <div className="gap gap-small"></div>
             </div>
-            <div className="gap"></div>
-          </div>
-        );
+          );
+        }
+        else {
+          return null;
+        }
       }
       else {
         return null;
@@ -98,7 +103,7 @@ class HotelsNearLocation extends React.Component {
 }
 
 HotelsNearLocation.defaultProps = {
-  hotelDeals: {}
+  hotels: {}
 };
 
 HotelsNearLocation.propTypes = {
@@ -108,13 +113,13 @@ HotelsNearLocation.propTypes = {
   locationType: PropTypes.string,
   parentName: PropTypes.string,
   url: PropTypes.string,
-  hotels: PropTypes.array.isRequired,
+  hotels: PropTypes.object.isRequired,
   hotelActions: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    hotels: state.hotels.hotels ? state.hotels.hotels : []
+    hotels: state.hotels.hotels ? state.hotels.hotels : {}
   };
 }
 
