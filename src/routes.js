@@ -16,7 +16,8 @@ import NotFoundPage from './apps/notFoundPage';
 import LocationEvents from './apps/location/events';
 import LocationHome from './apps/location';
 import LocationDetail from './apps/location/detail';
-import LocationEdit from './apps/location/edit';
+import LocationEdit from './apps/location/addLocation';
+import LocationDetailEdit from './apps/location/editLocation';
 import LocationRestaurants from './apps/location/restaurants';
 import LocationNightlife from './apps/location/nightlife';
 import LocationReviews from './apps/location/reviews';
@@ -65,8 +66,9 @@ export default (
     <Route path="/support" component={SupportPage}/>
 
     <Route path="/(:placeId)/visit/(:placeName)" component={LocationHome}/>
+    <Route path="/(:placeId)/visit/(:placeName)/add" component={LocationEdit}/>
     <Route path="/(:placeId)/visit-location/(:placeName)" component={LocationDetail}/>
-    <Route path="/(:placeId)/visit-location/(:placeName)/edit" component={LocationEdit}/>
+    <Route path="/(:placeId)/visit-location/(:placeName)/edit" component={LocationDetailEdit}/>
     <Route path="/(:placeId)/visit/(:placeName)/events" component={LocationEvents}/>
     <Route path="/(:placeId)/visit/(:placeName)/reviews" component={LocationReviews}/>
     <Route path="/(:placeId)/visit/(:placeName)/questions" component={LocationQuestions}/>

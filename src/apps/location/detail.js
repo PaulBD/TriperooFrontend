@@ -109,7 +109,7 @@ class LocationDetail extends React.Component {
                   <BookmarkButton name="sidePanel" parentLocationId={this.props.location.parentRegionID} parentLocationName={this.props.location.parentRegionName} parentLocationNameLong={this.props.location.parentRegionNameLong} locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType={this.props.location.subClass} />
                 </div>
                 </div>
-                <Summary location={this.props.location} showMap={false}/>
+                <Summary location={this.props.location} showMap={false} showHelp={false}/>
               </div>
               <div className="col-md-4 col-12">
                 <Photos photos={this.props.location.photos}/>

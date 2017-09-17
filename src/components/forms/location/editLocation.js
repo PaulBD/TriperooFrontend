@@ -1,13 +1,15 @@
 import React, {PropTypes} from 'react';
 import GoogleMaps from '../../maps/googleMap';
 
-const LocationForm = ({locationName, address, description, websiteUrl, telephone, facebookUsername, twitter, instagram, tags, latitude, longitude, isUpdating, onSubmit, onChangeAddress, onChangeContact, onChangeLocation, onChangeTags, onChangeDescription, errors}) => {
+const LocationForm = ({locationName, locationType, address, description, websiteUrl, telephone, facebookUsername, twitter, instagram, tags, latitude, longitude, isUpdating, editLocation, onSubmit, onChangeName, onChangeAddress, onChangeContact, onChangeLocation, onChangeTags, onChangeDescription, locationUrl, errors, buttonName}) => {
   return (
     <div className="col-md-12">
     <div className="row">
       <div className={errors && errors.length > 0 ? 'col-md-12' : 'col-md-12 hide'}>
         <div className="bg-danger form-danger">
-          {errors}
+          <p>Please fix the following problems:</p>
+          <ul dangerouslySetInnerHTML={{__html: errors}}>
+          </ul>
         </div>
       </div>
       <form className="modalForm col-md-12"  onSubmit={onSubmit}>
@@ -15,7 +17,7 @@ const LocationForm = ({locationName, address, description, websiteUrl, telephone
         <div className="col-md-6">
           <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-edit input-icon labels input-icon-hightlight"></i>
             <label>Location Name</label>
-            <input className="form-control" type="text" placeholder="Enter Location Name" name="regionName" disabled={true} value={locationName} />
+            <input className="form-control" type="text" placeholder="Enter Location Name" name="regionName" disabled={!editLocation} onChange={onChangeName} value={editLocation ? locationName : ''} />
           </div>
           <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-edit input-icon labels input-icon-hightlight"></i>
             <label>Address Line 1</label>
@@ -72,7 +74,7 @@ const LocationForm = ({locationName, address, description, websiteUrl, telephone
         </div>
         <div className="col-md-12">
           <div className="row">
-            <GoogleMaps latitude={latitude} longitude={longitude} text={locationName} zoom={13} />
+            <GoogleMaps latitude={latitude} longitude={longitude} text={locationName} zoom={13} locationType={locationType} />
           </div>
         </div>
         <div className="gap gap-small"></div>
@@ -91,7 +93,8 @@ const LocationForm = ({locationName, address, description, websiteUrl, telephone
           </div>
         </div>
           <div className="col-md-12 text-right">
-            <input className="btn btn-primary" type="submit" value="Update Details" Disabled={isUpdating}/>
+            <a className="btn btn-secondary" href={locationUrl}>Back</a>&nbsp;
+            <input className="btn btn-primary" type="submit" value={buttonName} Disabled={isUpdating}/>
           </div>
         </form>
       </div>
@@ -100,7 +103,9 @@ const LocationForm = ({locationName, address, description, websiteUrl, telephone
 };
 
 LocationForm.propTypes = {
+  buttonName: PropTypes.string.isRequired,
   locationName: PropTypes.string.isRequired,
+  locationType: PropTypes.string.isRequired,
   address: PropTypes.array.isRequired,
   description: PropTypes.string.isRequired,
   websiteUrl: PropTypes.string.isRequired,
@@ -113,7 +118,9 @@ LocationForm.propTypes = {
   tags: PropTypes.string.isRequired,
   isUpdating: PropTypes.bool.isRequired,
   errors: PropTypes.string,
+  editLocation: PropTypes.bool.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  onChangeName: PropTypes.func.isRequired,
   onChangeAddress: PropTypes.func.isRequired,
   onChangeContact: PropTypes.func.isRequired,
   onChangeLocation: PropTypes.func.isRequired,

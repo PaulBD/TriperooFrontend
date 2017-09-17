@@ -27,3 +27,29 @@ export function updateCMSLocation(cmsLocation) {
   };
 }
 
+
+// ****************************************
+// Add New Location
+// ****************************************
+export function requestNewLocation(cmsLocation) {
+  return {type: types.CMS_LOCATION_POST_REQUEST, isFetching: true, cmsLocation: cmsLocation};
+}
+
+export function loadNewLocationSuccess() {
+  return {type: types.CMS_LOCATION_POST_SUCCESS, isFetching: false};
+}
+
+export function newLocationFailure(errorMessage) {
+  return {type: types.CMS_LOCATION_POST_FAILURE, isFetching: false,  errorMessage};
+}
+
+export function addCMSLocation(cmsLocation) {
+  return dispatch => {
+    dispatch(requestNewLocation(cmsLocation));
+    return CmsApi.addCMSLocation(cmsLocation).then(cmsLocationResponse => {
+      dispatch(loadNewLocationSuccess());
+    }).catch(error => {
+      dispatch(newLocationFailure(error.response.data));
+    });
+  };
+}

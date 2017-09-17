@@ -77,7 +77,11 @@ class AttractionContent extends React.Component {
             <div className="row row-wrap">
               <div className="container">
                 <div className="row">
-                  <div className="col-md-8">
+                  <div className="col-md-3">
+                    <AttractionCategories changeCategory={this.changeAttraction} contentType="attractions"   />
+                    <div className="gap gap-small"></div>
+                  </div>
+                  <div className="col-md-9">
                     <PageTitle defaultTitle="Top Things To Do" locationName={this.props.location.regionName} name={this.state.attractionFriendlyName} type={this.state.attractionType} searchValue={this.state.searchValue} onSearch={this.onSearchAttraction} />
                     <div className="gap gap-small"></div>
                     <div className="col-md-12">
@@ -85,10 +89,6 @@ class AttractionContent extends React.Component {
                         <Attractions locationId={this.props.locationId} locations={this.props.attractions} locationCount={this.props.attractionCount} changePage={this.changePage} isFetching={this.state.isLoadingAttractionList}/>
                       </div>
                     </div>
-                  </div>
-                  <div className="col-md-4">
-                    <AttractionCategories changeCategory={this.changeAttraction} contentType="attractions"   />
-                    <div className="gap gap-small"></div>
                   </div>
                 </div>
               </div>

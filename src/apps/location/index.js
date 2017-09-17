@@ -108,7 +108,7 @@ class LocationHome extends React.Component {
           </div>
           <div className="gap"></div>
           <LastMinuteDeal locationId={this.props.locationId} />
-          <HotelsNearLocation locationId={this.props.locationId} pageSize={4} locationName={this.props.location.regionName} parentName={this.props.location.parentRegionName} locationType={this.props.location.regionType} url={this.props.location.url}/>
+          <HotelsNearLocation locationId={this.props.locationId} latitude={this.props.location.latitude} longitude={this.props.location.longitude} pageSize={4} locationName={this.props.location.regionName} url={this.props.location.url}/>
           <div className="gap gap-small"></div>
           <div className="container">
             <div className="row">

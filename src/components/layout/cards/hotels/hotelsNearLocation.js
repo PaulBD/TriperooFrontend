@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as hotelActions from '../../../../actions/location/travelContent/hotelActions';
 import Loader from '../../../loaders/contentLoader';
+let moment = require('moment');
 
 import HotelThumb from './thumb';
 
@@ -13,17 +14,26 @@ class HotelsNearLocation extends React.Component {
   }
 
   componentWillMount() {
-    this.getHotels();
+    this.loadHotels(this.props.locationId, this.props.latitude, this.props.longitude, 10, 'en_en', 'GBP', this.props.pageSize, 0);
   }
 
-  getHotels() {
+  loadHotels(locationId, latitude, longitude, radius, locale, currencyCode, pageSize, pageNumber) {
     this.setState({isLoading: true});
-    console.log(this.props.pageSize);
-    this.props.hotelActions.loadHotelsByLocation(this.props.locationId, this.props.pageSize, 0)
-      .then(() => this.setState({isLoading: false}))
-      .catch(error => {
-        this.setState({isLoading: false});
-      });
+    if (latitude == 0 && longitude == 0)
+    {
+      this.props.hotelActions.loadHotelsByLocation(locationId, moment().add(1, 'days').format('YYYY-MM-DD'), 1, locale, currencyCode, 1, this.props.locationName, pageSize, pageNumber)
+        .then(() => this.setState({isLoading: false}))
+        .catch(error => {
+          this.setState({isLoading: false});
+        });
+    }
+    else {
+      this.props.hotelActions.loadHotelsByProximty(locationId, latitude, longitude, radius, locale, currencyCode, pageSize, pageNumber)
+        .then(() => this.setState({isLoading: false}))
+        .catch(error => {
+          this.setState({isLoading: false});
+        });
+    }
   }
 
   render()
@@ -47,7 +57,7 @@ class HotelsNearLocation extends React.Component {
                     <h4>{title}</h4>
                   </div>
                   <div className="col-md-4 text-right">
-                    <p><a href={searchHotels}>Find more hotels in {this.props.parentName}</a></p>
+                    <p><a href={searchHotels}>Find more hotels in {this.props.locationName}</a></p>
                   </div>
                   <div className="col-md-12">
                     <div className="row">
@@ -86,7 +96,7 @@ class HotelsNearLocation extends React.Component {
                 <h4>{title}</h4>
               </div>
               <div className="col-md-4 text-right">
-                <p><a href={searchHotels}>Find more hotels in {this.props.parentName}</a></p>
+                <p><a href={searchHotels}>Find more hotels in {this.props.locationName}</a></p>
               </div>
               <div className="col-md-12">
                 <div className="row">
@@ -108,10 +118,10 @@ HotelsNearLocation.defaultProps = {
 
 HotelsNearLocation.propTypes = {
   locationId: PropTypes.number,
+  longitude: PropTypes.number,
+  latitude: PropTypes.number,
   pageSize: PropTypes.number,
   locationName: PropTypes.string,
-  locationType: PropTypes.string,
-  parentName: PropTypes.string,
   url: PropTypes.string,
   hotels: PropTypes.object.isRequired,
   hotelActions: PropTypes.object.isRequired,

@@ -25,10 +25,20 @@ class ReviewList extends React.Component {
       else {
         if (this.props.isUsingFilter)
         {
-          return (<p>There are no reviews available for {this.props.locationName} and this filter. Change your filter.</p>);
+          return (
+            <div className="row">
+              <div className="col-md-12">
+                <p>There are no reviews available for {this.props.locationName} and this filter. Change your filter.</p>
+              </div>
+            </div>);
         }
         else {
-          return (<p>There are no reviews available for {this.props.locationName}. Be the first to post a review.</p>);
+          return (
+            <div className="row">
+              <div className="col-md-12">
+                <p>There are no reviews available for {this.props.locationName}. Be the first to write a review.</p>
+              </div>
+            </div>);
         }
       }
     }

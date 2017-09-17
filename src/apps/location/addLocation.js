@@ -15,6 +15,7 @@ let _ = require('lodash');
 class LocationEdit extends React.Component {
   constructor(props, context) {
     super(props, context);
+    this.onChangeName = this.onChangeName.bind(this);
     this.onChangeAddress = this.onChangeAddress.bind(this);
     this.onChangeContact = this.onChangeContact.bind(this);
     this.onChangeLocation = this.onChangeLocation.bind(this);
@@ -30,7 +31,24 @@ class LocationEdit extends React.Component {
       locationSubClass: '',
       formattedAddress: [],
       errors:'',
-      location: {},
+      location: {
+        summary: { en: '', fr: '', de: '', es: '', it: '' },
+        formattedAddress: [ "", "", "", "", "" ],
+        contactDetails: {
+          phone: '',
+          formattedPhone: '',
+          twitter: '',
+          facebook: '',
+          facebookUsername: '',
+          facebookName: '',
+          instagram: '',
+          websiteUrl: ''
+        },
+        locationCoordinates: {
+          latitude: 0,
+          longitude: 0
+        }
+      },
       wizardStep: 1
     };
   }
@@ -38,6 +56,13 @@ class LocationEdit extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0);
     this.loadLocation();
+  }
+
+  onChangeName(event) {
+    event.preventDefault();
+    let location = this.state.location;
+    location.regionName = event.target.value;
+    this.setState({location: location});
   }
 
   onChangeAddress(event) {
@@ -60,7 +85,8 @@ class LocationEdit extends React.Component {
     event.preventDefault();
     const field = event.target.name;
     let location = this.state.location;
-    location.locationCoordinates[field] = event.target.value;
+    location[field] = parseFloat(event.target.value);
+    location.locationCoordinates[field] = parseFloat(event.target.value);
     this.setState({location: location});
   }
 
@@ -75,9 +101,7 @@ class LocationEdit extends React.Component {
   onChangeDescription(event) {
     event.preventDefault();
     let location = this.state.location;
-    let summary = { en: '', fr: '', de: '', es: '', it: '' };
-    summary.en = event.target.value;
-    location.summary = summary;
+    location.summary.en = event.target.value;
     this.setState({location: location});
   }
 
@@ -85,28 +109,37 @@ class LocationEdit extends React.Component {
     e.preventDefault();
     this.setState({isUpdating: true});
     let isValid = true;
+    let errors = '';
 
-    if (this.state.location.formattedAddress[0] == undefined) {
-      this.setState({ errors: 'Please complete the locations address' });
+    if (this.state.location.regionName == undefined || this.state.location.regionName.length == 0) {
+      errors += '<li>Enter a locations name</li>';
       isValid = false;
     }
 
-    if (this.state.location.locationCoordinates == undefined) {
-      this.setState({ errors: 'Please complete the locations coordinates' });
+    if (this.state.location.formattedAddress == undefined || this.state.location.formattedAddress[0] == undefined) {
+      errors += '<li>Add the locations address</li>';
+      isValid = false;
+    }
+
+    if (this.state.location.locationCoordinates == undefined || (this.state.location.locationCoordinates.longitude == 0 && this.state.location.locationCoordinates.latitude == 0)) {
+      errors += '<li>Add the locations coordinates</li>';
       isValid = false;
     }
 
     if (isValid) {
-      this.props.cmsActions.updateCMSLocation(this.state.location)
+      this.props.cmsActions.addCMSLocation(this.state.location)
         .then(() => {
-          this.setState({isUpdating: false, errors: this.props.errorMessage, wizardStep: 2});
+        console.log('Succ');
+          this.setState({isUpdating: false, errors: '', wizardStep: 2});
         })
         .catch(error => {
           Toastr.error(error);
           this.setState({isUpdating: false, errors: error});
         });
     }
-
+    else {
+      this.setState({ errors: errors });
+    }
   }
 
   loadLocation() {
@@ -117,9 +150,31 @@ class LocationEdit extends React.Component {
           isLoadingLocation: false
           , hasLoaded: true
           , locationId: this.props.locationId
-          , locationNameLong: this.props.location.regionNameLong
-          , locationSubClass: this.props.location.subClass
-          , location: _.cloneDeep(this.props.location)
+          , location: {
+            doctype: 'ParentRegionList',
+            summary: {
+              en: ''
+            },
+            parentRegionNameLong: this.props.location.regionNameLong,
+            parentRegionName: this.props.location.regionName,
+            parentRegionType: this.props.location.regionType,
+            parentRegionID: this.props.locationId,
+            formattedAddress: [ "", "", "", "", "" ],
+            contactDetails: {
+              phone: '',
+              formattedPhone: '',
+              twitter: '',
+              facebook: '',
+              facebookUsername: '',
+              facebookName: '',
+              instagram: '',
+              websiteUrl: ''
+            },
+            locationCoordinates: {
+              latitude: 0,
+              longitude: 0
+            }
+          }
         });
       })
       .catch(error => {
@@ -129,7 +184,7 @@ class LocationEdit extends React.Component {
   }
 
   render(){
-    document.title = 'Edit details for ' + titleCase(this.props.location.regionName) + ' in ' + titleCase(this.props.location.parentRegionName);
+    document.title = 'Add new location for ' + titleCase(this.props.location.regionName) + ' in ' + titleCase(this.props.location.parentRegionName);
     if (this.state.hasLoaded)
     {
       return (
@@ -138,13 +193,13 @@ class LocationEdit extends React.Component {
           <div className="container">
             <div className={this.state.wizardStep == 1 ? "row" : "hide"}>
               <div className="col-md-12">
-                <h3>Request to edit this location</h3>
-                <p>Did you come across missing or incorrect information for {titleCase(this.props.location.regionName)}? You can submit an
-                  update or correction to us via this form. Just edit or fill in the fields below. Please note
+                <h3>Request to add a location to {titleCase(this.props.location.regionName)}</h3>
+                <p>Help us add more locations for {titleCase(this.props.location.regionName)}. Just fill in the fields below. Please note
                   that Triperoo publishes unbiased descriptions, and we don't promote any one business over others, so we
                   reserve the right to edit submissions accordingly. Thanks for looking out!</p>
               </div>
-              <LocationForm onChangeAddress={this.onChangeAddress}
+              <LocationForm onChangeName={this.onChangeName}
+                            onChangeAddress={this.onChangeAddress}
                             onChangeContact={this.onChangeContact}
                             onChangeLocation={this.onChangeLocation}
                             onChangeDescription={this.onChangeDescription}
@@ -153,21 +208,39 @@ class LocationEdit extends React.Component {
                             address={this.state.location.formattedAddress ? this.state.location.formattedAddress : []}
                             isUpdating={this.state.isUpdating}
                             errors={this.state.errors}
+                            locationUrl={this.props.location.url}
                             longitude={this.state.location.locationCoordinates ? this.state.location.locationCoordinates.longitude : 0}
                             latitude={this.state.location.locationCoordinates ? this.state.location.locationCoordinates.latitude : 0}
-                            description={this.state.location.description ? this.state.location.description : ''}
+                            description={this.state.location.summary.en ? this.state.location.summary.en : ''}
                             facebookUsername={this.state.location.contactDetails.facebookUsername ? this.state.location.contactDetails.facebookUsername : ''}
                             twitter={this.state.location.contactDetails.twitter ? this.state.location.contactDetails.twitter : ''}
                             instagram={this.state.location.contactDetails.instagram ? this.state.location.contactDetails.instagram : ''}
+                            locationType='location'
                             locationName={this.state.location.regionName ? this.state.location.regionName : ''}
+                            editLocation={true}
                             tags={this.state.location.tags ? this.state.location.tags.toString() : ''}
                             telephone={this.state.location.contactDetails.phone ? this.state.location.contactDetails.phone : ''}
-                            websiteUrl={this.state.location.contactDetails.websiteUrl ? this.state.location.contactDetails.websiteUrl : ''} />
+                            websiteUrl={this.state.location.contactDetails.websiteUrl ? this.state.location.contactDetails.websiteUrl : ''}
+                            buttonName="Add Location"/>
             </div>
             <div className={this.state.wizardStep == 2 ? "row" : "hide"}>
               <div className="col-md-12">
                 <h3>Your request has been submitted!</h3>
                 <p>We'll review your request and update our information. Thanks for taking the time to help us keep our database up-to-date! Have any suggestions on how to improve our form? Email us at info@triperoo.co.uk.</p>
+                <p><a href={this.props.location.url} className="btn btn-secondary" title="Suggest Location">Back</a></p>
+
+                <div className="gap"></div>
+                <div className="gap"></div>
+                <div className="gap"></div>
+                <div className="gap"></div>
+                <div className="gap"></div>
+                <div className="gap"></div>
+                <div className="gap"></div>
+                <div className="gap"></div>
+                <div className="gap"></div>
+                <div className="gap"></div>
+                <div className="gap"></div>
+                <div className="gap"></div>
               </div>
             </div>
           </div>
