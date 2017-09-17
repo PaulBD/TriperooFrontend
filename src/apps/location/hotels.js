@@ -24,7 +24,8 @@ class LocationContent extends React.Component {
     super(props, context);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.filterHotels = this.filterHotels.bind(this);
-    this.state = { minPrice: 0, maxPrice: 0, showFilters: false, pageSize: 20, pageNumber: 0, radius: 5, arrivalDate: this.props.arrivalDate, nights: this.props.nights, rooms: this.props.rooms, guests: this.props.guests, isLoadingLocation: true, isLoadingHotelList: true };
+    let arrivalDate = this.props.arrivalDate == undefined ? moment().add(7, 'days').format('YYYY-MM-DD') : this.props.arrivalDate;
+    this.state = { minPrice: 0, maxPrice: 0, showFilters: false, pageSize: 20, pageNumber: 0, radius: 5, arrivalDate: arrivalDate, nights: this.props.nights, rooms: this.props.rooms, guests: this.props.guests, isLoadingLocation: true, isLoadingHotelList: true };
   }
 
   componentWillMount() {
@@ -165,7 +166,10 @@ class LocationContent extends React.Component {
 
 LocationContent.defaultProps = {
   isFetching: false,
-  hotels: {}
+  hotels: {},
+  nights: 1,
+  rooms: 1,
+  guests: 1
 };
 
 LocationContent.propTypes = {
@@ -187,9 +191,9 @@ function mapStateToProps(state, ownProps) {
     location: state.location.location ? state.location.location : {},
     locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0,
     arrivalDate: ownProps.location !== undefined ? ownProps.location.query.arrivalDate : moment().add(7, 'days').format('YYYY-MM-DD'),
-    rooms: ownProps.location !== undefined ? parseInt(ownProps.location.query.rooms) : 1,
-    guests: ownProps.location !== undefined ? parseInt(ownProps.location.query.guests) : 1,
-    nights: ownProps.location !== undefined ? parseInt(ownProps.location.query.nights) : 1,
+    rooms: ownProps.location.query.rooms !== undefined ? parseInt(ownProps.location.query.rooms) : 1,
+    guests: ownProps.location.query.guests !== undefined ? parseInt(ownProps.location.query.guests) : 1,
+    nights: ownProps.location.query.nights !== undefined ? parseInt(ownProps.location.query.nights) : 1,
     hotels: state.hotels.hotels ? state.hotels.hotels : {}
   };
 }
