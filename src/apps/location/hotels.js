@@ -24,6 +24,8 @@ class LocationContent extends React.Component {
     super(props, context);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.filterHotels = this.filterHotels.bind(this);
+    this.showList = this.showList.bind(this);
+    this.showMap = this.showMap.bind(this);
     let arrivalDate = this.props.arrivalDate == undefined ? moment().add(7, 'days').format('YYYY-MM-DD') : this.props.arrivalDate;
     this.state = {
       filters: {
@@ -34,6 +36,7 @@ class LocationContent extends React.Component {
         , facilityList: []
         , accommodationType: []
       }
+      , showMap: false
       , showFilters: false
       , pageSize: 20
       , pageNumber: 0
@@ -73,6 +76,16 @@ class LocationContent extends React.Component {
         Toastr.error(error);
         this.setState({isLoadingLocation: false, isLoadingHotelList: false });
       });
+  }
+
+  showList(e) {
+    e.preventDefault();
+    this.setState({showMap: false });
+  }
+
+  showMap(e) {
+    e.preventDefault();
+    this.setState({showMap: true });
   }
 
   handleFormSubmit(searchUrl, searchId, arrivalDate, nights, rooms, guests) {
@@ -153,24 +166,44 @@ class LocationContent extends React.Component {
                           Showing  {this.props.hotels.hotelListResponse ? this.props.hotels.hotelListResponse.hotelList.size : 0 } Hotels in {this.props.location.regionName} on  {this.state.formattedArrivalDate} for {this.state.nights} {this.state.nights == 1 ? 'night' : 'nights'}</p>
                       </div>
                       <div className="col-md-4">
-                        <p className="text-right"><a href="#googleMaps"><i className="fa fa-map"></i> View Map</a></p>
+                        <p className="text-right">
+
+                          <div className="nav-drop booking-sort">
+                            <h5 className="booking-sort-title"><a href="#">Sort: Availability<i className="fa fa-angle-down"></i><i className="fa fa-angle-up"></i></a></h5>
+                            <ul className="nav-drop-menu">
+                              <li><a href="#">Price (low to high)</a>
+                              </li>
+                              <li><a href="#">Price (hight to low)</a>
+                              </li>
+                              <li><a href="#">Ranking</a>
+                              </li>
+                              <li><a href="#">Distance</a>
+                              </li>
+                              <li><a href="#">Number of Reviews</a>
+                              </li>
+                            </ul>
+                          </div>
+                          &nbsp;
+                          <a href="#" onClick={this.showMap} className={!this.state.showMap ? "" : "hide"}><i className="fa fa-map"></i> View Map</a>
+                          <a href="#" onClick={this.showList} className={this.state.showMap ? "text-right" : "hide"}><i className="fa fa-list"></i> View List</a>
+
+                        </p>
                       </div>
                     </div>
-                    <div className="row">
+                    <div className={!this.state.showMap ? "row" : "hide"}>
                       {
                         !this.state.isLoadingHotelList ? this.props.hotels.hotelListResponse ? this.props.hotels.hotelListResponse.hotelList.hotelSummary.map(function (hotel, i) {
                           return(<HotelThumb hotel={hotel} hotelUrl={this.props.location.url} queryString={queryString} key={hotel.hotelId} cssClass="col-md-4 mb-4" nameLength={50}/>);
                         }, this) : (<Loader showLoader={true}/>) : (<Loader showLoader={true}/>)
                       }
                     </div>
+                    <div className={this.state.showMap ? "row" : "hide"}>
+                      <GoogleMaps latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0} longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0} text={this.props.location.regionName} zoom={12} markerArray={this.state.hotels} isLoading={this.state.isLoadingHotelList} locationType={this.props.location.subClass} />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="gap gap-small"></div>
-          <div className="row greyBg detailSubHeader" id="googleMaps">
-            <GoogleMaps latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0} longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0} text={this.props.location.regionName} zoom={12} markerArray={this.state.hotels} isLoading={this.state.isLoadingHotelList} locationType={this.props.location.subClass} />
           </div>
           <FacebookSignup showLines={false}/>
           <LastMinuteDeal locationId={this.props.locationId} />
