@@ -6,7 +6,6 @@ import * as hotelActions from '../../actions/location/travelContent/hotelActions
 import * as locationActions from '../../actions/location/locationActions';
 import Loader from '../../components/loaders/globalLoader';
 import Toastr from 'toastr';
-let titleCase = require('title-case');
 import HotelHeader from '../../components/content/headers/hotelDetail';
 import StarRating from '../../components/forms/common/starRating';
 import GoogleMaps from '../../components/maps/googleMap';
@@ -14,14 +13,26 @@ import HotelPhotos from '../../components/layout/location/hotelImages';
 import RoomList from '../../components/layout/cards/hotels/roomList';
 import SimilarHotels from '../../components/layout/cards/hotels/similarHotels';
 import HotelSubNav from '../../components/layout/location/hotelSubNav';
+
+let titleCase = require('title-case');
 let striptags = require('striptags');
+let moment = require('moment');
 
 
 class HotelDetail extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.showImage = this.showImage.bind(this);
-    this.state = {isLoadingHotel: true, isLoadingLocation: true};
+
+    let arrivalDate = this.props.arrivalDate == undefined ? moment().add(7, 'days').format('YYYY-MM-DD') : this.props.arrivalDate;
+    this.state = {
+      isLoadingHotel: true
+      , isLoadingLocation: true
+      , arrivalDate: arrivalDate
+      , nights: this.props.nights
+      , rooms: this.props.rooms
+      , guests: this.props.guests
+    };
   }
 
   componentWillMount() {
@@ -65,6 +76,7 @@ class HotelDetail extends React.Component {
     if (!this.state.isLoadingLocation && !this.state.isLoadingHotel) {
 
       document.title = 'Book to stay in ' + this.props.hotel.hotelInformationResponse.hotelSummary.name;
+      let queryString = this.props.queryString;
 
       return (
         <div>
@@ -102,8 +114,7 @@ class HotelDetail extends React.Component {
                 <div className="col-md-7">
                   <h4>About The Hotel</h4>
                   <hr />
-                  <span
-                    dangerouslySetInnerHTML={{__html: this.props.hotel.hotelInformationResponse.hotelDetails.propertyDescription}}/>
+                  <span dangerouslySetInnerHTML={{__html: this.props.hotel.hotelInformationResponse.hotelDetails.propertyDescription}}/>
                 </div>
                 <div className="col-md-5">
                   <h4>Facilities</h4>
@@ -129,7 +140,7 @@ class HotelDetail extends React.Component {
                       text={this.props.hotel.hotelInformationResponse.hotelSummary.name} zoom={15}
                       isLoading={this.state.isLoadingHotel}/>
           <div className="gap gap-small"></div>
-          <RoomList locationId={this.props.locationId} hotelId={this.props.hotelId} regionNameLong={this.props.location.regionNameLong} hotelName={this.props.hotel.hotelInformationResponse.hotelSummary.name} />
+          <RoomList searchUrl={this.props.searchUrl} guests={this.props.guests} arrivalDate={this.props.arrivalDate} nights={this.props.nights} rooms={this.props.rooms} locationId={this.props.locationId} hotelId={this.props.hotelId} regionNameLong={this.props.location.regionNameLong} hotelName={this.props.hotel.hotelInformationResponse.hotelSummary.name} />
           <div className="gap gap-small"></div>
           <div className="row row-nowrap greyBg hotelInfo" id="policies">
             <div className="gap gap-small" id="info"></div>
@@ -138,7 +149,7 @@ class HotelDetail extends React.Component {
                 <div className="col-md-6">
                   <h5>Similar Hotels</h5>
                   <hr />
-                  <SimilarHotels locationId={this.props.locationId} currencyCode="GBP" locale="en_en" radius={10} pageSize={4} latitude={this.props.hotel.hotelInformationResponse.hotelSummary.latitude} longitude={this.props.hotel.hotelInformationResponse.hotelSummary.longitude} url={this.props.location.url}/>
+                  <SimilarHotels exclude={this.props.hotelId} locationId={this.props.locationId} currencyCode="GBP" locale="en_en" arrivalDate={this.state.arrivalDate} nights={this.state.nights} rooms={this.state.rooms} guests={this.state.guests} radius={10} pageSize={4} latitude={this.props.hotel.hotelInformationResponse.hotelSummary.latitude} longitude={this.props.hotel.hotelInformationResponse.hotelSummary.longitude} url={this.props.location.url} queryString={queryString} />
                 </div>
                 <div className="col-md-6">
                   <h5>Useful Information</h5>
@@ -170,7 +181,13 @@ HotelDetail.propTypes = {
   location: PropTypes.object,
   locationActions: PropTypes.object.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  modalActions: PropTypes.object.isRequired
+  modalActions: PropTypes.object.isRequired,
+  nights: PropTypes.number,
+  rooms: PropTypes.number,
+  guests: PropTypes.number,
+  arrivalDate: PropTypes.string,
+  searchUrl: PropTypes.string,
+  queryString: PropTypes.string
 
 };
 
@@ -180,7 +197,13 @@ function mapStateToProps(state, ownProps) {
     location: state.location.location ? state.location.location : {},
     locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0,
     hotel: state.hotels.hotel ? state.hotels.hotel : {},
-    hotelId: ownProps.params.hotelId ? parseInt(ownProps.params.hotelId) : 0
+    hotelId: ownProps.params.hotelId ? parseInt(ownProps.params.hotelId) : 0,
+    arrivalDate: ownProps.location.query.arrivalDate !== undefined ? ownProps.location.query.arrivalDate : moment().add(7, 'days').format('YYYY-MM-DD'),
+    rooms: ownProps.location.query.rooms !== undefined ? parseInt(ownProps.location.query.rooms) : 1,
+    guests: ownProps.location.query.guests !== undefined ? parseInt(ownProps.location.query.guests) : 1,
+    nights: ownProps.location.query.nights !== undefined ? parseInt(ownProps.location.query.nights) : 1,
+    searchUrl: ownProps.location.pathname,
+    queryString: ownProps.location.search
   };
 }
 

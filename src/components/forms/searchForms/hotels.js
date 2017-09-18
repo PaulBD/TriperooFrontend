@@ -35,10 +35,8 @@ class SearchForm extends React.Component {
       searchValue = this.props.city;
     }
 
-    if (searchUrl == '')
-    {
-      searchUrl = this.props.searchUrl;
-    }
+    searchUrl = this.props.searchUrl;
+
     this.state = { searchValue: searchValue, searchUrl: searchUrl, arrivalDate: arrivalDate, formattedArrivalDate: arrivalDate.format('YYYY-MM-DD'), nights: this.props.nights, guests: this.props.guests, rooms: this.props.rooms  };
   }
 
@@ -161,7 +159,7 @@ class SearchForm extends React.Component {
               </div>
               <div className={this.props.isSideBar ? "col-md-12" : "col-md-6"}>
                 <button className="btn btn-primary btn-lg formBtn" type="submit">
-                  <i className="fa fa-search"></i>Search Hotels
+                  <i className="fa fa-search"></i>{this.props.buttonName}
                 </button>
               </div>
             </div>
@@ -174,29 +172,27 @@ class SearchForm extends React.Component {
 
 SearchForm.defaultProps = {
   searchValue: '',
-  arrivalDate: moment().add(7, 'days').format('YYYY-MM-DD'),
-  rooms: 1,
-  guests: 1,
-  nights: 1,
   searchUrl: '',
   useFunction: false,
   isSideBar: false,
-  lockLocation: false
+  lockLocation: false,
+  buttonName: 'Search Hotels'
 };
 
 SearchForm.propTypes = {
   doSearch: PropTypes.func,
   handleFormSubmit: PropTypes.func,
   searchValue: PropTypes.string,
-  arrivalDate: PropTypes.string,
-  nights: PropTypes.number,
-  rooms: PropTypes.number,
-  guests: PropTypes.number,
+  arrivalDate: PropTypes.string.isRequired,
+  nights: PropTypes.number.isRequired,
+  rooms: PropTypes.number.isRequired,
+  guests: PropTypes.number.isRequired,
   city: PropTypes.string,
   searchUrl: PropTypes.string,
   useFunction: PropTypes.bool,
   isSideBar: PropTypes.bool,
-  lockLocation: PropTypes.bool
+  lockLocation: PropTypes.bool,
+  buttonName: PropTypes.string
 };
 
 export default SearchForm;

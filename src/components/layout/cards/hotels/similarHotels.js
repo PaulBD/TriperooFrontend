@@ -18,7 +18,8 @@ class SimilarHotels extends React.Component {
 
   getHotels() {
     this.setState({isLoading: true});
-    this.props.hotelActions.loadHotelsByProximty(this.props.locationId, this.props.latitude, this.props.longitude, this.props.radius, this.props.locale, this.props.currencyCode, this.props.pageSize, this.props.pageNumber)
+    this.props.hotelActions.loadHotelsByProximty(this.props.locationId, this.props.latitude, this.props.longitude, this.props.radius, this.props.locale, this.props.currencyCode, this.props.arrivalDate
+      , this.props.nights, this.props.rooms, this.props.guests, this.props.filters, '', this.props.pageSize, this.props.pageNumber, this.props.exclude)
       .then(() => this.setState({isLoading: false}))
       .catch(error => {
         this.setState({isLoading: false});
@@ -41,7 +42,7 @@ class SimilarHotels extends React.Component {
                       this.props.hotels.hotelListResponse.hotelList.hotelSummary.map((hotel, index) => {
                         if (index < this.props.pageSize) {
                           return (
-                            <HotelThumb hotel={hotel} hotelUrl={this.props.url} key={hotel.hotelId} cssClass="col-md-6 mb-4" nameLength={20}/>
+                            <HotelThumb hotel={hotel} hotelUrl={this.props.url} queryString={this.props.queryString} key={hotel.hotelId} cssClass="col-md-6 mb-4" nameLength={20}/>
                           );
                         }
                       })
@@ -79,12 +80,18 @@ class SimilarHotels extends React.Component {
 }
 
 SimilarHotels.defaultProps = {
+  exclude: 0,
   hotelDeals: {},
   pageSize: 3,
-  pageNumber: 0
+  pageNumber: 0,
+  nights: 1,
+  rooms: 1,
+  guests: 1,
+  filters: {}
 };
 
 SimilarHotels.propTypes = {
+  exclude: PropTypes.number.isRequired,
   locationId: PropTypes.number.isRequired,
   latitude: PropTypes.number.isRequired,
   longitude: PropTypes.number.isRequired,
@@ -95,7 +102,13 @@ SimilarHotels.propTypes = {
   currencyCode: PropTypes.string.isRequired,
   hotels: PropTypes.object.isRequired,
   hotelActions: PropTypes.object.isRequired,
-  url: PropTypes.string.isRequired
+  url: PropTypes.string.isRequired,
+  arrivalDate: PropTypes.string.isRequired,
+  nights: PropTypes.number,
+  rooms: PropTypes.number,
+  guests: PropTypes.number,
+  filters: PropTypes.object,
+  queryString: PropTypes.string.isRequired
 };
 
 function mapStateToProps(state, ownProps) {

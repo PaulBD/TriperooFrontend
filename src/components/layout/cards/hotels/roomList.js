@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import {browserHistory} from 'react-router';
 import {connect} from 'react-redux';
 import * as modalActions from '../../../../actions/common/modalActions';
 import {bindActionCreators} from 'redux';
@@ -15,7 +16,7 @@ class RoomList extends React.Component {
     super(props, context);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.cancellationPolicyClick = this.cancellationPolicyClick.bind(this);
-    this.state = { isLoadingHotelRooms: true, arrivalDate: moment().add(7, 'days').format('YYYY-MM-DD'), formattedArrivalDate: moment().add(7, 'days').format('LL'), departureDate: moment().add(8, 'days').format('YYYY-MM-DD'), formattedDepartureDate: moment().add(8, 'days').format('LL'), nights: 1 };
+    this.state = { isLoadingHotelRooms: true, arrivalDate: this.props.arrivalDate, formattedArrivalDate: new moment(this.props.arrivalDate).format('LL'), nights: this.props.nights, guests: this.props.guests, rooms: this.props.rooms };
     this.trackClick = this.trackClick.bind(this);
   }
 
@@ -27,15 +28,16 @@ class RoomList extends React.Component {
     ReactGA.event({ category: 'Hotels', action: 'Click', label: this.props.hotelName });
   }
 
-  handleFormSubmit(searchValue, startDate, formattedStartDate, endDate, formattedEndDate, rooms, guests) {
-    var nights = endDate.diff(startDate, 'days');
-    this.setState({  arrivalDate: startDate.format('YYYY-MM-DD'), formattedArrivalDate: startDate.format('LL'), departureDate: endDate.format('YYYY-MM-DD'), formattedDepartureDate: endDate.format('LL'), nights: nights });
-    this.loadHotelRooms(this.props.locationId, this.props.hotelId, startDate.format('YYYY-MM-DD'), nights);
+  handleFormSubmit(searchUrl, searchId, arrivalDate, nights, rooms, guests) {
+    this.setState({arrivalDate: arrivalDate,formattedArrivalDate: new moment(arrivalDate).format('LL'), nights: nights, rooms: rooms, guests: guests});
+    this.setState({isLoadingLocation: true, isLoadingHotelList: true });
+    browserHistory.push(searchUrl + '?arrivalDate=' + arrivalDate + '&nights=' + nights + '&rooms=' + rooms + '&guests=' + guests);
+    this.loadHotelRooms(this.props.locationId, this.props.hotelId, arrivalDate, nights, rooms, guests);
   }
 
-  loadHotelRooms(locationId, hotelId, arrivalDate, nights) {
+  loadHotelRooms(locationId, hotelId, arrivalDate, nights, rooms, guests) {
     this.setState({isLoadingHotelRooms: true});
-    this.props.hotelActions.loadHotelRoomsById(locationId, hotelId, arrivalDate, nights, 'en_en', 'GBP')
+    this.props.hotelActions.loadHotelRoomsById(locationId, hotelId, arrivalDate, nights, rooms, guests, 'en_en', 'GBP')
       .then(() => {
         this.setState({
           isLoadingHotelRooms: false
@@ -55,16 +57,15 @@ class RoomList extends React.Component {
 
   render() {
     if (!this.state.isLoadingHotelRooms) {
+      console.log(this.props.searchUrl);
       if (this.props.hotelRooms.hotelRoomAvailabilityResponse.size > 0) {
         return (
           <div className="container" id="rooms">
             <div className="row">
               <div className="col-md-12" id="rooms">
                 <h2>Room Availability</h2>
-                <p>Showing rooms available between <strong>{this.state.formattedArrivalDate}</strong> and
-                  <strong>{this.state.formattedDepartureDate}</strong></p>
-                <SearchForm useFunction={true} handleFormSubmit={this.handleFormSubmit} isSideBar={false}
-                            city={this.props.hotelName} lockLocation={true}/>
+                <p>Showing rooms available <strong>{this.state.formattedArrivalDate}</strong> for <strong>{this.state.nights}</strong> {this.state.nights == 1 ? 'night' : 'nights'}</p>
+                <SearchForm searchUrl={this.props.searchUrl} buttonName="Search Rooms" rooms={this.state.rooms} nights={this.state.nights} arrivalDate={this.state.arrivalDate} guests={this.state.guests} useFunction={true} handleFormSubmit={this.handleFormSubmit} isSideBar={false} city={this.props.hotelName} lockLocation={true}/>
                 <div className="row">
                   {
                     this.props.hotelRooms.hotelRoomAvailabilityResponse.hotelRoomResponse.map((hotelRoom, index) => {
@@ -159,7 +160,7 @@ class RoomList extends React.Component {
               <div className="col-md-12" id="rooms">
                 <h2>Room Availability</h2>
                 <p>Showing rooms available between <strong>{this.state.formattedArrivalDate}</strong> and <strong>{this.state.formattedDepartureDate}</strong></p>
-                <SearchForm useFunction={true} handleFormSubmit={this.handleFormSubmit} isSideBar={false} city={this.props.hotelName} lockLocation={true}/>
+                <SearchForm searchUrl={this.props.searchUrl} buttonName="Search Rooms" rooms={this.state.rooms} nights={this.state.nights} arrivalDate={this.state.arrivalDate} guests={this.state.guests} useFunction={true} handleFormSubmit={this.handleFormSubmit} isSideBar={false} city={this.props.hotelName} lockLocation={true}/>
                 <div className="row">
                   <div className="col-md-12">
                     <div className="alert alert-danger" role="alert">
@@ -180,7 +181,7 @@ class RoomList extends React.Component {
             <div className="col-md-12" id="rooms">
               <h2>Room Availability</h2>
               <p>Showing rooms available between <strong>{this.state.formattedArrivalDate}</strong> and <strong>{this.state.formattedDepartureDate}</strong></p>
-              <SearchForm useFunction={true} handleFormSubmit={this.handleFormSubmit} isSideBar={false} city={this.props.hotelName} lockLocation={true}/>
+              <SearchForm searchUrl={this.props.searchUrl} buttonName="Search Rooms" rooms={this.state.rooms} nights={this.state.nights} arrivalDate={this.state.arrivalDate} guests={this.state.guests} useFunction={true} handleFormSubmit={this.handleFormSubmit} isSideBar={false} city={this.props.hotelName} lockLocation={true}/>
               <div className="row">
                 <Loader showLoader={true} />
               </div>
@@ -191,6 +192,12 @@ class RoomList extends React.Component {
     }
   }
 }
+SearchForm.defaultProps = {
+  arrivalDate: moment().add(7, 'days').format('YYYY-MM-DD'),
+  rooms: 1,
+  guests: 1,
+  nights: 1
+};
 
 RoomList.propTypes = {
   locationId: PropTypes.number.isRequired,
@@ -200,14 +207,20 @@ RoomList.propTypes = {
   hotelRooms: PropTypes.object,
   isFetching: PropTypes.bool.isRequired,
   modalActions: PropTypes.object.isRequired,
-  hotelName: PropTypes.string.isRequired
+  hotelName: PropTypes.string.isRequired,
+  nights: PropTypes.number,
+  rooms: PropTypes.number,
+  guests: PropTypes.number,
+  arrivalDate: PropTypes.string,
+  searchUrl: PropTypes.string
 
 };
 
 function mapStateToProps(state, ownProps) {
   return {
     isFetching: state.location.isFetching ? state.location.isFetching : false,
-    hotelRooms: state.hotels.hotelRooms ? state.hotels.hotelRooms : {}
+    hotelRooms: state.hotels.hotelRooms ? state.hotels.hotelRooms : {},
+    searchUrl: ownProps.searchUrl
   };
 }
 

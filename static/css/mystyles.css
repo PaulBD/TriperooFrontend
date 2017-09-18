@@ -1354,5 +1354,6 @@ ul.twPc-Arrange li.location {
 }
 
 .hotelStarWrapper { width: 46px; color: #666; }
+.hotelStarWrapper.orange { color: #ef8f39; }
 .hotelStar { font-size: 40px }
 .hotelStarNumber { color: white; font-size: 14px; }

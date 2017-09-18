@@ -4,7 +4,7 @@ import hotelList from '../../json/mock/hotels.json';
 import hotel from '../../json/mock/hotel2.json';
 import hotelRooms from '../../json/mock/hotelRoom2.json';
 
-let live = true;
+let live = false;
 
 class HotelDealsApi {
 
@@ -34,10 +34,10 @@ class HotelDealsApi {
   // ****************************************
   // Return hotel rooms by id
   // ****************************************
-  static getHotelRoomsById(locationId, hotelId, arrivalDate, nights, locale, currencyCode) {
+  static getHotelRoomsById(locationId, hotelId, arrivalDate, nights, rooms, guests, locale, currencyCode) {
     if (live) {
       return new Promise((resolve, reject) => {
-        let url = baseUrl + '/location/' + locationId + '/hotel/' + hotelId + '/rooms/' + arrivalDate + '/' + nights + '/?locale=' + locale + '&currencyCode=' + currencyCode;
+        let url = baseUrl + '/location/' + locationId + '/hotel/' + hotelId + '/rooms/' + arrivalDate + '/' + nights + '/?locale=' + locale + '&currencyCode=' + currencyCode + '&rooms=' + rooms+ '&guests=' + guests;
         axios.get(url)
           .then(function (response) {
             resolve(Object.assign({}, response.data));
@@ -57,10 +57,10 @@ class HotelDealsApi {
   // ****************************************
   // Return hotels by location Id
   // ****************************************
-  static getHotelsByLocation(locationId, arrivalDate, nights, locale, currencyCode, room, city, pageSize, pageNumber) {
+  static getHotelsByLocation(locationId, arrivalDate, nights, locale, currencyCode, room, city, guests, filters, sortBy, pageSize, pageNumber, exclude) {
     if (live) {
       return new Promise((resolve, reject) => {
-        axios.get(baseUrl + '/location/' + locationId + '/hotels/' + arrivalDate + '/' + nights + '?locale=' + locale + '&currencyCode=' + currencyCode + '&room1=' + room + '&city=' + city + '&pageSize=' + pageSize + '&pageNumber=' + pageNumber)
+        axios.get(baseUrl + '/location/' + locationId + '/hotels/' + arrivalDate + '/' + nights + '?locale=' + locale + '&currencyCode=' + currencyCode + '&room1=' + room + '&city=' + city + '&guests=' + guests + '&filters=' + filters + '&sortBy=' + sortBy + '&pageSize=' + pageSize + '&pageNumber=' + pageNumber + '&exclude=' + exclude)
           .then(function (response) {
             resolve(Object.assign({}, response.data));
           })
@@ -79,10 +79,10 @@ class HotelDealsApi {
   // ****************************************
   // Return hotels by location Id
   // ****************************************
-  static getHotelsByProximty(locationId, latitude, longitude, radius, locale, currencyCode, pageSize, pageNumber) {
+  static getHotelsByProximty(locationId, latitude, longitude, radius, locale, currencyCode, arrivalDate, nights, room, guests, filters, sortBy, pageSize, pageNumber, exclude) {
     if (live) {
       return new Promise((resolve, reject) => {
-        axios.get(baseUrl + '/location/' + locationId + '/hotels/?latitude=' + latitude + '&longitude=' + longitude + '&radius=' + radius + '&locale=' + locale + '&currencyCode=' + currencyCode + '&pageSize=' + pageSize + '&pageNumber=' + pageNumber)
+        axios.get(baseUrl + '/location/' + locationId + '/hotels/' + arrivalDate + '/' + nights + '?room1=' + room + '&guests=' + guests + '&latitude=' + latitude + '&longitude=' + longitude + '&radius=' + radius + '&locale=' + locale + '&currencyCode=' + currencyCode + '&filters=' + filters + '&sortBy=' + sortBy + '&pageSize=' + pageSize + '&pageNumber=' + pageNumber + '&exclude=' + exclude)
           .then(function (response) {
             resolve(Object.assign({}, response.data));
           })

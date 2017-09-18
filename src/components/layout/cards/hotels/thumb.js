@@ -1,12 +1,12 @@
 import React, {PropTypes} from 'react';
 import StarRating from '../../../forms/common/starRating';
 
-const HotelThumb = ({hotel, hotelUrl, cssClass, nameLength}) => {
+const HotelThumb = ({hotel, hotelUrl, queryString, cssClass, nameLength}) => {
 
   let style = {
     backgroundImage: 'url(http://i.travelapi.com' + hotel.imagelUrl + ')'
   };
-  let url = hotelUrl + '/hotels/' + hotel.hotelId;
+  let url = hotelUrl + '/hotels/' + hotel.hotelId + queryString;
   return (
     <div className={cssClass} key={hotel.hotelId}>
       <div className="card text-xs-left">
@@ -25,7 +25,8 @@ const HotelThumb = ({hotel, hotelUrl, cssClass, nameLength}) => {
 
 HotelThumb.propTypes = {
   hotel: PropTypes.object.isRequired,
-  hotelUrl: PropTypes.string.isRequired
+  hotelUrl: PropTypes.string.isRequired,
+  queryString: PropTypes.string.isRequired
 };
 
 export default HotelThumb;

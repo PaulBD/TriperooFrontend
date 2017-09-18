@@ -21,14 +21,14 @@ class HotelsNearLocation extends React.Component {
     this.setState({isLoading: true});
     if (latitude == 0 && longitude == 0)
     {
-      this.props.hotelActions.loadHotelsByLocation(locationId, moment().add(1, 'days').format('YYYY-MM-DD'), 1, locale, currencyCode, 1, this.props.locationName, pageSize, pageNumber)
+      this.props.hotelActions.loadHotelsByLocation(locationId, moment().add(1, 'days').format('YYYY-MM-DD'), 1, locale, currencyCode, 1, this.props.locationName, 1, {}, '', pageSize, pageNumber, 0)
         .then(() => this.setState({isLoading: false}))
         .catch(error => {
           this.setState({isLoading: false});
         });
     }
     else {
-      this.props.hotelActions.loadHotelsByProximty(locationId, latitude, longitude, radius, locale, currencyCode, pageSize, pageNumber)
+      this.props.hotelActions.loadHotelsByProximty(locationId, latitude, longitude, radius, locale, currencyCode, moment().add(1, 'days').format('YYYY-MM-DD'), 1, 1, 1, {}, '', pageSize, pageNumber, 0)
         .then(() => this.setState({isLoading: false}))
         .catch(error => {
           this.setState({isLoading: false});

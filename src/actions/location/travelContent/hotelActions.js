@@ -43,10 +43,10 @@ export function hotelsByLocationFailure(errorMessage) {
   return {type: types.HOTELS_BY_LOCATION_FAILURE, isFetching: false, errorMessage};
 }
 
-export function loadHotelsByLocation(locationId, arrivalDate, nights, locale, currencyCode, room, city, pageSize, pageNumber) {
+export function loadHotelsByLocation(locationId, arrivalDate, nights, locale, currencyCode, room, city, guests, filters, sortBy, pageSize, pageNumber, exclude) {
   return dispatch => {
     dispatch(hotelsByLocationRequest());
-    return HotelApi.getHotelsByLocation(locationId, arrivalDate, nights, locale, currencyCode, room, city, pageSize, pageNumber).then(hotels => {
+    return HotelApi.getHotelsByLocation(locationId, arrivalDate, nights, locale, currencyCode, room, city, guests, filters, sortBy, pageSize, pageNumber, exclude).then(hotels => {
       dispatch(hotelsByLocationSuccess(hotels));
     }).catch(error => {
       dispatch(hotelsByLocationFailure(error.response.data));
@@ -70,10 +70,10 @@ export function hotelsByProximityFailure(errorMessage) {
   return {type: types.HOTELS_BY_PROXIMITY_FAILURE, isFetching: false, errorMessage};
 }
 
-export function loadHotelsByProximty(locationId, latitude, longitude, radius, locale, currencyCode, pageSize, pageNumber) {
+export function loadHotelsByProximty(locationId, latitude, longitude, radius, locale, currencyCode, sortBy, pageSize, pageNumber, exclude) {
   return dispatch => {
     dispatch(hotelsByProximityRequest());
-    return HotelApi.getHotelsByProximty(locationId, latitude, longitude, radius, locale, currencyCode, pageSize, pageNumber).then(hotels => {
+    return HotelApi.getHotelsByProximty(locationId, latitude, longitude, radius, locale, currencyCode, sortBy, pageSize, pageNumber, exclude).then(hotels => {
       dispatch(hotelsByProximitySuccess(hotels));
     }).catch(error => {
       dispatch(hotelsByProximityFailure(error.response.data));
@@ -124,10 +124,10 @@ export function hotelRoomsByIdFailure(errorMessage) {
   return {type: types.HOTEL_ROOMS_BY_ID_FAILURE, isFetching: false, errorMessage};
 }
 
-export function loadHotelRoomsById(locationId, hotelId, arrivalDate, nights, locale, currencyCode) {
+export function loadHotelRoomsById(locationId, hotelId, arrivalDate, nights, rooms, guests, locale, currencyCode) {
   return dispatch => {
     dispatch(hotelRoomsByIdRequest());
-    return HotelApi.getHotelRoomsById(locationId, hotelId, arrivalDate, nights, locale, currencyCode).then(hotelRooms => {
+    return HotelApi.getHotelRoomsById(locationId, hotelId, arrivalDate, nights, rooms, guests, locale, currencyCode).then(hotelRooms => {
       dispatch(hotelRoomsByIdSuccess(hotelRooms));
     }).catch(error => {
       dispatch(hotelRoomsByIdFailure(error.response.data));
