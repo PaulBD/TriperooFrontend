@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import StarRating from '../../../forms/common/starRating';
 
 const HotelThumb = ({hotel, hotelUrl, queryString, cssClass, nameLength}) => {
-
+console.log(nameLength);
   let style = {
     backgroundImage: 'url(http://i.travelapi.com' + hotel.imagelUrl + ')'
   };

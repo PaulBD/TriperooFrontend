@@ -7,7 +7,6 @@ class CmsApi {
   // Add Location
   // ****************************************
   static addCMSLocation(cmsLocation) {
-    console.log(cmsLocation)
     return new Promise((resolve, reject) => {
       axios({
         method: 'post',

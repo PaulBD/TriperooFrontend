@@ -8,7 +8,9 @@ class Search extends React.Component {
   }
 
   handleFormSubmit(searchUrl, searchId, startDate, nights, rooms, guests) {
-    browserHistory.push(searchUrl + '/hotels?arrivalDate=' + startDate + '&nights=' + nights + '&rooms=' + rooms + '&guests=' + guests);
+    if (searchUrl != undefined) {
+      browserHistory.push(searchUrl + '/hotels?arrivalDate=' + startDate + '&nights=' + nights + '&rooms=' + rooms + '&guests=' + guests);
+    }
   }
 
   render(){
@@ -20,7 +22,7 @@ class Search extends React.Component {
                       <h2 className="text-center">Compare & Save on Hotels</h2>
                       <p className="text-center">Great deals from a selection of hotel companies only a click away</p>
                       <p>&nbsp;</p>
-                      <SearchForm useFunction={false} handleFormSubmit={this.handleFormSubmit} />
+                      <SearchForm useFunction={false} handleFormSubmit={this.handleFormSubmit} buttonName="Search Hotels" />
                     </div>
                 </div>
             </div>

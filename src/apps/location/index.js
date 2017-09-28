@@ -1,7 +1,6 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-let _ = require('lodash');
 import * as locationActions from '../../actions/location/locationActions';
 
 import FacebookSignup from '../../components/forms/authentication/facebookSignup';
@@ -24,6 +23,8 @@ import Toastr from 'toastr';
 import HotelsNearLocation from '../../components/layout/cards/hotels/hotelsNearLocation';
 
 let titleCase = require('title-case');
+let _ = require('lodash');
+let moment = require('moment');
 
 class LocationHome extends React.Component {
   constructor(props, context) {
@@ -108,7 +109,18 @@ class LocationHome extends React.Component {
           </div>
           <div className="gap"></div>
           <LastMinuteDeal locationId={this.props.locationId} />
-          <HotelsNearLocation locationId={this.props.locationId} latitude={this.props.location.latitude} longitude={this.props.location.longitude} pageSize={4} locationName={this.props.location.regionName} url={this.props.location.url}/>
+          <HotelsNearLocation
+            arrivalDate={moment().add(7, 'days').format('YYYY-MM-DD')}
+            pageNumber={0}
+            currencyCode='GBP'
+            exclude={0}
+            locale='en_en'
+            radius={5}
+            rooms1={1}
+            nights={1}
+            guests={1}
+            sortBy='PROMO'
+            locationId={this.props.locationId} latitude={this.props.location.latitude} longitude={this.props.location.longitude} pageSize={4} locationName={this.props.location.regionNameLong} url={this.props.location.url}/>
           <div className="gap gap-small"></div>
           <div className="container">
             <div className="row">

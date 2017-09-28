@@ -12,6 +12,7 @@ import TriperooLoader from '../../components/loaders/globalLoader';
 import LastMinuteDeal from '../../components/content/dynamic/lastMinuteDeal';
 import SearchForm from '../../components/forms/searchForms/hotels';
 import FilterHotels from '../../components/forms/searchForms/filterHotels';
+import SortBy from '../../components/forms/common/sortBy';
 import HotelThumb from '../../components/layout/cards/hotels/thumb';
 import Loader from '../../components/loaders/contentLoader';
 let moment = require('moment');
@@ -26,16 +27,20 @@ class LocationContent extends React.Component {
     this.filterHotels = this.filterHotels.bind(this);
     this.showList = this.showList.bind(this);
     this.showMap = this.showMap.bind(this);
+    this.updateSortBy = this.updateSortBy.bind(this);
     let arrivalDate = this.props.arrivalDate == undefined ? moment().add(7, 'days').format('YYYY-MM-DD') : this.props.arrivalDate;
     this.state = {
       filters: {
-        minPrice: 1
-        , maxPrice: 99
-        , starRatingList: []
-        , tripAdvisorRatingList : []
+        minRate: 1
+        , maxRate: 300
+        , minStarRating: 1
+        , maxStarRating: 5
+        , minTripAdvisorRating: 0
+        , maxTripAdvisorRating: 0
         , facilityList: []
-        , accommodationType: []
+        , propertyCategory: []
       }
+      , openSortBy: false
       , showMap: false
       , showFilters: false
       , pageSize: 20
@@ -44,8 +49,11 @@ class LocationContent extends React.Component {
       , arrivalDate: arrivalDate
       , formattedArrivalDate: new moment(arrivalDate).format('LL')
       , nights: this.props.nights
-      , rooms: this.props.rooms
-      , guests: this.props.guests
+      , rooms1: this.props.rooms
+      , rooms2: 0
+      , rooms3: 0
+      , sortBy: 'PROMO'
+      , sortByFriendly: 'Recommended'
       , isLoadingLocation: true
       , isLoadingHotelList: true };
   }
@@ -62,16 +70,19 @@ class LocationContent extends React.Component {
         , this.props.location.locationCoordinates.latitude
         , this.props.location.locationCoordinates.longitude
         , this.state.radius
-        , this.props.location.regionName
+        , this.props.location.regionNameLong
         , this.state.arrivalDate
         , this.state.nights
-        , this.state.rooms
-        , this.state.guests
+        , this.state.rooms1
+        , this.state.rooms2
+        , this.state.rooms3
         , 'en_en'
         , 'GBP'
         , this.state.filters
+        , this.state.sortBy
         , this.state.pageSize
-        , this.state.pageNumber))
+        , this.state.pageNumber
+        , 0))
       .catch(error => {
         Toastr.error(error);
         this.setState({isLoadingLocation: false, isLoadingHotelList: false });
@@ -88,7 +99,7 @@ class LocationContent extends React.Component {
     this.setState({showMap: true });
   }
 
-  handleFormSubmit(searchUrl, searchId, arrivalDate, nights, rooms, guests) {
+  handleFormSubmit(searchUrl, searchId, arrivalDate, nights, rooms1, guests) {
 
     if (searchUrl == '')
     {
@@ -100,24 +111,24 @@ class LocationContent extends React.Component {
       searchId = this.props.location.regionID;
     }
 
-    this.setState({arrivalDate: arrivalDate, formattedArrivalDate: new moment(arrivalDate).format('LL'), nights: nights, rooms: rooms, guests: guests});
+    this.setState({arrivalDate: arrivalDate, formattedArrivalDate: new moment(arrivalDate).format('LL'), nights: nights, rooms1: rooms1, guests: guests});
     this.setState({isLoadingLocation: true, isLoadingHotelList: true });
-    browserHistory.push(searchUrl + '?arrivalDate=' + arrivalDate + '&nights=' + nights + '&rooms=' + rooms + '&guests=' + guests);
+    browserHistory.push(searchUrl + '/hotels?arrivalDate=' + arrivalDate + '&nights=' + nights + '&rooms1=' + rooms1 + '&guests=' + guests);
     this.loadLocation(searchId);
   }
 
-  loadHotels(locationId, latitude, longitude, radius, city, arrivalDate, nights, room, guests, locale, currencyCode, filters, pageSize, pageNumber) {
+  loadHotels(locationId, latitude, longitude, radius, location, arrivalDate, nights, rooms1, rooms2, rooms3, locale, currencyCode, filters, sortBy, pageSize, pageNumber, exclude) {
     this.setState({isLoadingLocation: false, isLoadingHotelList: true});
     if (latitude == 0 && longitude == 0)
     {
-      this.props.hotelActions.loadHotelsByLocation(locationId, arrivalDate, nights, locale, currencyCode, room, city, guests, filters, pageSize, pageNumber)
+      this.props.hotelActions.loadHotelsByLocation(locationId, arrivalDate, nights, locale, currencyCode, rooms1, rooms2, rooms3, location, filters, sortBy, pageSize, pageNumber, exclude, true)
         .then(() => this.setState({isLoadingLocation: false, isLoadingHotelList: false}))
         .catch(error => {
           this.setState({isLoadingLocation: false, isLoadingHotelList: false});
         });
     }
     else {
-      this.props.hotelActions.loadHotelsByProximty(locationId, latitude, longitude, radius, locale, currencyCode, pageSize, pageNumber)
+      this.props.hotelActions.loadHotelsByProximty(locationId, latitude, longitude, radius, arrivalDate, nights, locale, currencyCode, rooms1, rooms2, rooms3, location, filters, sortBy, pageSize, pageNumber, exclude, true)
         .then(() => this.setState({isLoadingLocation: false, isLoadingHotelList: false}))
         .catch(error => {
           this.setState({isLoadingLocation: false, isLoadingHotelList: false});
@@ -125,19 +136,70 @@ class LocationContent extends React.Component {
     }
   }
 
-  filterHotels(priceFrom, priceTo, starRatingList, tripAdvisorRatingList, facilityList, accommodationType) {
+  filterHotels(minRate, maxRate, minStarRating, maxStarRating, minTripAdvisorRating, maxTripAdvisorRating, facilityList, propertyCategory) {
 
+    let filters = this.state.filters;
+    filters.minRate = parseFloat(minRate);
+    filters.maxRate = parseFloat(maxRate);
+    filters.minStarRating = minStarRating;
+    filters.maxStarRating = maxStarRating;
+    filters.minTripAdvisorRating = minTripAdvisorRating;
+    filters.maxTripAdvisorRating = maxTripAdvisorRating;
+    filters.facilityList = facilityList;
+    filters.propertyCategory = propertyCategory;
 
+    this.setState({filters: filters, isLoadingHotelList: true});
+
+    this.loadHotels(this.props.locationId
+      , this.props.location.locationCoordinates.latitude
+      , this.props.location.locationCoordinates.longitude
+      , this.state.radius
+      , this.props.location.regionNameLong
+      , this.state.arrivalDate
+      , this.state.nights
+      , this.state.rooms1
+      , this.state.rooms2
+      , this.state.rooms3
+      , 'en_en'
+      , 'GBP'
+      , this.state.filters
+      , this.state.sortBy
+      , this.state.pageSize
+      , this.state.pageNumber
+      , 0);
+
+  }
+
+  updateSortBy(sortBy, sortByFriendly) {
+    this.setState({sortBy: sortBy, sortByFriendly: sortByFriendly, openSortBy: false});
+
+    this.loadHotels(this.props.locationId
+      , this.props.location.locationCoordinates.latitude
+      , this.props.location.locationCoordinates.longitude
+      , this.state.radius
+      , this.props.location.regionNameLong
+      , this.state.arrivalDate
+      , this.state.nights
+      , this.state.rooms1
+      , this.state.rooms2
+      , this.state.rooms3
+      , 'en_en'
+      , 'GBP'
+      , this.state.filters
+      , sortBy
+      , this.state.pageSize
+      , this.state.pageNumber
+      , 0);
   }
 
   render() {
     document.title = 'Loading Hotels...';
     if (!this.state.isLoadingLocation) {
-      document.title = 'Hotels in ' + titleCase(this.props.location.regionName);
 
-      let queryString = '?arrivalDate=' + this.state.arrivalDate + '&nights=' + this.state.nights + '&rooms=' + this.state.rooms + '&guests=' + this.state.guests
+      let queryString = '?arrivalDate=' + this.state.arrivalDate + '&nights=' + this.state.nights + '&rooms=' + this.state.rooms1 + '&guests=' + this.state.guests;
 
       let title = 'Hotels in ' + titleCase(this.props.location.regionName);
+      document.title = title;
       return (
         <div>
           <SubPageHeader location={this.props.location} contentType="hotels" title={title}/>
@@ -146,7 +208,7 @@ class LocationContent extends React.Component {
               <div className="row ">
                 <div className="gap gap-mini"></div>
                 <div className="col-md-12">
-                  <SearchForm searchUrl={this.props.searchUrl} arrivalDate={this.state.arrivalDate} nights={parseInt(this.state.nights)} rooms={parseInt(this.state.rooms)} guests={parseInt(this.state.guests)} useFunction={false} handleFormSubmit={this.handleFormSubmit} isSideBar={false} city={this.props.location.regionNameLong} />
+                  <SearchForm searchUrl={this.props.searchUrl} arrivalDate={this.state.arrivalDate} nights={parseInt(this.state.nights)} rooms={parseInt(this.state.rooms1)} guests={parseInt(this.state.guests)} useFunction={false} handleFormSubmit={this.handleFormSubmit} isSideBar={false} city={this.props.location.regionNameLong} buttonName='Search' />
                 </div>
               </div>
             </div>
@@ -157,43 +219,28 @@ class LocationContent extends React.Component {
               <div className="container">
                 <div className="row">
                   <div className="col-md-3">
-                    <FilterHotels minPrice={0} maxPrice={99} facilityList={[]} accommodationTypeList={[]} filterHotels={this.filterHotels} />
+                    <FilterHotels minPrice={0} maxPrice={300} facilityList={[]} accommodationTypeList={[]} filterHotels={this.filterHotels} />
                   </div>
                   <div className="col-md-9">
                     <div className={this.state.isLoadingHotelList ? "hide" : "row"}>
                       <div className="col-md-8">
                         <p className="text-left">
-                          Showing  {this.props.hotels.hotelListResponse ? this.props.hotels.hotelListResponse.hotelList.size : 0 } Hotels in {this.props.location.regionName} on  {this.state.formattedArrivalDate} for {this.state.nights} {this.state.nights == 1 ? 'night' : 'nights'}</p>
+                          Showing  {this.props.hotels.hotelListResponse ? this.props.hotels.hotelListResponse.hotelList.size : 0} Hotels in {this.props.location.regionName} on  {this.state.formattedArrivalDate} for {this.state.nights} {this.state.nights == 1 ? 'night' : 'nights'}</p>
                       </div>
                       <div className="col-md-4">
-                        <p className="text-right">
+                        <div className="text-right">
+                          <SortBy updateSortBy={this.updateSortBy} value={this.state.sortBy} valueFriendly={this.state.sortByFriendly}/>
 
-                          <div className="nav-drop booking-sort">
-                            <h5 className="booking-sort-title"><a href="#">Sort: Availability<i className="fa fa-angle-down"></i><i className="fa fa-angle-up"></i></a></h5>
-                            <ul className="nav-drop-menu">
-                              <li><a href="#">Price (low to high)</a>
-                              </li>
-                              <li><a href="#">Price (hight to low)</a>
-                              </li>
-                              <li><a href="#">Ranking</a>
-                              </li>
-                              <li><a href="#">Distance</a>
-                              </li>
-                              <li><a href="#">Number of Reviews</a>
-                              </li>
-                            </ul>
-                          </div>
                           &nbsp;
                           <a href="#" onClick={this.showMap} className={!this.state.showMap ? "" : "hide"}><i className="fa fa-map"></i> View Map</a>
                           <a href="#" onClick={this.showList} className={this.state.showMap ? "text-right" : "hide"}><i className="fa fa-list"></i> View List</a>
-
-                        </p>
+                        </div>
                       </div>
                     </div>
                     <div className={!this.state.showMap ? "row" : "hide"}>
                       {
                         !this.state.isLoadingHotelList ? this.props.hotels.hotelListResponse ? this.props.hotels.hotelListResponse.hotelList.hotelSummary.map(function (hotel, i) {
-                          return(<HotelThumb hotel={hotel} hotelUrl={this.props.location.url} queryString={queryString} key={hotel.hotelId} cssClass="col-md-4 mb-4" nameLength={50}/>);
+                          return(<HotelThumb hotel={hotel} hotelUrl={this.props.location.url} queryString={queryString} key={hotel.hotelId} cssClass="col-md-4 mb-4" nameLength={40}/>);
                         }, this) : (<Loader showLoader={true}/>) : (<Loader showLoader={true}/>)
                       }
                     </div>
@@ -202,6 +249,7 @@ class LocationContent extends React.Component {
                     </div>
                   </div>
                 </div>
+                <div className="gap gap-mini"></div>
               </div>
             </div>
           </div>

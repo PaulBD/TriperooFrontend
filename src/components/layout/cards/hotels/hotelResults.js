@@ -4,7 +4,7 @@ import Loader from '../../../loaders/contentLoader';
 
 const HotelResults = ({hotel, url, loadingHotels}) => {
     if (!loadingHotels) {
-      return (<HotelThumb hotel={hotel} hotelUrl={url} key={hotel.hotelId} cssClass="col-md-4 mb-4" nameLength={33}/>);
+      return (<HotelThumb hotel={hotel} hotelUrl={url} key={hotel.hotelId} cssClass="col-md-4 mb-4" nameLength={30}/>);
     }
     else {
       return (<Loader showLoader={true}/>);

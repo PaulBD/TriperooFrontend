@@ -33,7 +33,7 @@ const WorldCities = () => {
               <li><a href="/1951/visit/kuala-lumpur-malaysia">Kuala Lumpur</a></li>
               <li><a href="/3124/visit/seoul-south-korea">Seoul</a></li>
               <li><a href="/161/visit/singapore">Singapore</a></li>
-              <li><a href="/6218624/visit/shangqiu-china">Shangqiu</a></li>
+              <li><a href="/6218624/visit/shanghai-china">Shanghai</a></li>
               <li><a href="/3518/visit/taipei-taiwan">Taipei</a></li>
               <li><a href="/3593/visit/tokyo-japan">Tokyo</a></li>
             </ul>
@@ -43,11 +43,11 @@ const WorldCities = () => {
             <ul>
               <li><a href="/292/visit/adelaide-south-australia-australia">Adelaide</a></li>
               <li><a href="/346/visit/auckland-new-zealand">Auckland</a></li>
-              <li><a href="#">Brisbane</a></li>
+              <li><a href="/641/visit/brisbane-south-australia-australia">Brisbane</a></li>
               <li><a href="/828/visit/christchurch-new-zealand">Christchurch</a></li>
               <li><a href="/2261/visit/melbourne-victoria-australia">Melbourne</a></li>
               <li><a href="/6354222/visit/perth-tasmania-australia">Perth</a></li>
-              <li><a href="/3611/visit/queenstown-tasmania-australia">Queenstown</a></li>
+              <li><a href="/4189/visit/queenstown-new-zealand">Queenstown</a></li>
               <li><a href="/3027/visit/rotorua-new-zealand">Rotorua</a></li>
               <li><a href="/3341/visit/sydney-new-south-wales-australia">Sydney</a></li>
               <li><a href="/3798/visit/wellington-new-zealand">Wellington</a></li>

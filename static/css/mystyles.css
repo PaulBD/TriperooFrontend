@@ -1275,7 +1275,11 @@ ul.twPc-Arrange li.location {
     .user-profile-statictics > li .user-profile-statictics-icon { font-size: 200%; display: inline-block; margin-bottom: 10px; color: #8c8c8c; }
     .l30 { margin-left:0px; }
     .ReactModal__Content { position: absolute; top: 10%; left: 3%; right: 3%; background: #fff; WebkitOverflowScrolling: touch; outline: none; padding: 0px; border-radius: 5px; width: 94% }
+  .infoPage { height: 150px !important; }
+  .infoPage .breadcrumb { display: none; }
 
+  .infoPage .cityNav, .infoPage .countryNav { margin-top: 84px;}
+  .infoPage h1 { width: 92%; text-align: center; }
 }
 
 /* Hotel Detail */

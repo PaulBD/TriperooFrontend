@@ -13,13 +13,12 @@ class SimilarHotels extends React.Component {
   }
 
   componentWillMount() {
-    this.getHotels();
+    this.loadHotels();
   }
 
-  getHotels() {
+  loadHotels() {
     this.setState({isLoading: true});
-    this.props.hotelActions.loadHotelsByProximty(this.props.locationId, this.props.latitude, this.props.longitude, this.props.radius, this.props.locale, this.props.currencyCode, this.props.arrivalDate
-      , this.props.nights, this.props.rooms, this.props.guests, this.props.filters, '', this.props.pageSize, this.props.pageNumber, this.props.exclude)
+    this.props.hotelActions.loadHotelsByProximty(this.props.locationId, this.props.latitude, this.props.longitude, this.props.radius, this.props.arrivalDate, this.props.nights, this.props.locale, this.props.currencyCode, this.props.rooms1, this.props.rooms2, this.props.rooms3, this.props.locationName, this.props.filters, this.props.sortBy, this.props.pageSize, this.props.pageNumber, this.props.exclude, true)
       .then(() => this.setState({isLoading: false}))
       .catch(error => {
         this.setState({isLoading: false});
@@ -85,7 +84,9 @@ SimilarHotels.defaultProps = {
   pageSize: 3,
   pageNumber: 0,
   nights: 1,
-  rooms: 1,
+  rooms1: 1,
+  rooms2: 0,
+  rooms3: 0,
   guests: 1,
   filters: {}
 };
@@ -93,6 +94,7 @@ SimilarHotels.defaultProps = {
 SimilarHotels.propTypes = {
   exclude: PropTypes.number.isRequired,
   locationId: PropTypes.number.isRequired,
+  locationName: PropTypes.string.isRequired,
   latitude: PropTypes.number.isRequired,
   longitude: PropTypes.number.isRequired,
   radius: PropTypes.number.isRequired,
@@ -105,8 +107,10 @@ SimilarHotels.propTypes = {
   url: PropTypes.string.isRequired,
   arrivalDate: PropTypes.string.isRequired,
   nights: PropTypes.number,
-  rooms: PropTypes.number,
-  guests: PropTypes.number,
+  rooms1: PropTypes.number,
+  rooms2: PropTypes.number,
+  rooms3: PropTypes.number,
+  sortBy: PropTypes.string,
   filters: PropTypes.object,
   queryString: PropTypes.string.isRequired
 };

@@ -20,7 +20,7 @@ export default class SearchHotels extends React.Component {
       <div>
         <FeaturedHeader contentType="hotel" />
         <div className="container">
-          <Search searchType="all" />
+          <Search searchType="all"  />
         </div>
         <div className="container">
           <Destinations locationCount={6} title="Our Top Hotel Destinations" contentType="hotels" />

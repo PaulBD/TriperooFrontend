@@ -43,10 +43,11 @@ export function hotelsByLocationFailure(errorMessage) {
   return {type: types.HOTELS_BY_LOCATION_FAILURE, isFetching: false, errorMessage};
 }
 
-export function loadHotelsByLocation(locationId, arrivalDate, nights, locale, currencyCode, room, city, guests, filters, sortBy, pageSize, pageNumber, exclude) {
+export function loadHotelsByLocation(locationId, arrivalDate, nights, locale, currencyCode, rooms1, rooms2, rooms3, location, filters, sortBy, pageSize, pageNumber, exclude) {
+
   return dispatch => {
     dispatch(hotelsByLocationRequest());
-    return HotelApi.getHotelsByLocation(locationId, arrivalDate, nights, locale, currencyCode, room, city, guests, filters, sortBy, pageSize, pageNumber, exclude).then(hotels => {
+    return HotelApi.getHotelsByLocation(locationId, arrivalDate, nights, locale, currencyCode, rooms1, rooms2, rooms3, location, filters, sortBy, pageSize, pageNumber, exclude).then(hotels => {
       dispatch(hotelsByLocationSuccess(hotels));
     }).catch(error => {
       dispatch(hotelsByLocationFailure(error.response.data));
@@ -70,10 +71,14 @@ export function hotelsByProximityFailure(errorMessage) {
   return {type: types.HOTELS_BY_PROXIMITY_FAILURE, isFetching: false, errorMessage};
 }
 
-export function loadHotelsByProximty(locationId, latitude, longitude, radius, locale, currencyCode, sortBy, pageSize, pageNumber, exclude) {
+
+export function loadHotelsByProximty(locationId, latitude, longitude, radius, arrivalDate, nights, locale, currencyCode, rooms1, rooms2, rooms3, location, filters, sortBy, pageSize, pageNumber, exclude, checkDates) {
+
+  console.log('prox');
+
   return dispatch => {
     dispatch(hotelsByProximityRequest());
-    return HotelApi.getHotelsByProximty(locationId, latitude, longitude, radius, locale, currencyCode, sortBy, pageSize, pageNumber, exclude).then(hotels => {
+    return HotelApi.getHotelsByProximty(locationId, latitude, longitude, radius, arrivalDate, nights, locale, currencyCode, rooms1, rooms2, rooms3, location, filters, sortBy, pageSize, pageNumber, exclude, checkDates).then(hotels => {
       dispatch(hotelsByProximitySuccess(hotels));
     }).catch(error => {
       dispatch(hotelsByProximityFailure(error.response.data));

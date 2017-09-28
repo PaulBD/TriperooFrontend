@@ -21,7 +21,7 @@ class Overview extends React.Component {
 
   render(){
 
-    let summaryCount = 660;
+    let summaryCount = 700;
 
     let summary = this.props.location.summary ? this.props.location.summary.en : '';
 

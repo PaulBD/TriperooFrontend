@@ -147,9 +147,9 @@ class HotelDetail extends React.Component {
             <div className="container">
               <div className="row">
                 <div className="col-md-6">
-                  <h5>Similar Hotels</h5>
+                  <h5>Other Hotels Close To {this.props.hotel.hotelInformationResponse.hotelSummary.name}</h5>
                   <hr />
-                  <SimilarHotels exclude={this.props.hotelId} locationId={this.props.locationId} currencyCode="GBP" locale="en_en" arrivalDate={this.state.arrivalDate} nights={this.state.nights} rooms={this.state.rooms} guests={this.state.guests} radius={10} pageSize={4} latitude={this.props.hotel.hotelInformationResponse.hotelSummary.latitude} longitude={this.props.hotel.hotelInformationResponse.hotelSummary.longitude} url={this.props.location.url} queryString={queryString} />
+                  <SimilarHotels exclude={this.props.hotelId} locationId={this.props.locationId} locationName={this.props.location.regionName} currencyCode="GBP" locale="en_en" arrivalDate={this.state.arrivalDate} nights={this.state.nights} rooms1={this.state.guests}  radius={10} pageSize={4} latitude={this.props.hotel.hotelInformationResponse.hotelSummary.latitude} longitude={this.props.hotel.hotelInformationResponse.hotelSummary.longitude} url={this.props.location.url} queryString={queryString} sortBy='PROXIMITY' />
                 </div>
                 <div className="col-md-6">
                   <h5>Useful Information</h5>

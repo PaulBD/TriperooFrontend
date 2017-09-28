@@ -4,7 +4,7 @@ import hotelList from '../../json/mock/hotels.json';
 import hotel from '../../json/mock/hotel2.json';
 import hotelRooms from '../../json/mock/hotelRoom2.json';
 
-let live = false;
+let live = true;
 
 class HotelDealsApi {
 
@@ -57,11 +57,42 @@ class HotelDealsApi {
   // ****************************************
   // Return hotels by location Id
   // ****************************************
-  static getHotelsByLocation(locationId, arrivalDate, nights, locale, currencyCode, room, city, guests, filters, sortBy, pageSize, pageNumber, exclude) {
+  static getHotelsByLocation(locationId, arrivalDate, nights, locale, currencyCode, rooms1, rooms2, rooms3, location, filters, sortBy, pageSize, pageNumber, exclude) {
     if (live) {
+      let url = baseUrl + '/location/' + locationId + '/hotels';
       return new Promise((resolve, reject) => {
-        axios.get(baseUrl + '/location/' + locationId + '/hotels/' + arrivalDate + '/' + nights + '?locale=' + locale + '&currencyCode=' + currencyCode + '&room1=' + room + '&city=' + city + '&guests=' + guests + '&filters=' + filters + '&sortBy=' + sortBy + '&pageSize=' + pageSize + '&pageNumber=' + pageNumber + '&exclude=' + exclude)
-          .then(function (response) {
+        axios({
+          method: 'post',
+          url:  url,
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          data: {
+            locale: locale,
+            currencyCode: currencyCode,
+            location: location,
+            propertyCategory: filters.propertyCategory,
+            minRate: filters.minRate,
+            maxRate: filters.maxRate,
+            minStarRating: filters.minStarRating,
+            maxStarRating: filters.maxStarRating,
+            minTripAdvisorRating: filters.minTripAdvisorRating,
+            maxTripAdvisorRating: filters.maxTripAdvisorRating,
+            facilityList: filters.facilityList,
+            arrivalDate: arrivalDate,
+            nights: nights,
+            rooms1: rooms1,
+            rooms2: rooms2,
+            rooms3: rooms3,
+            sortBy: sortBy,
+            exclude: exclude,
+            checkDates: true,
+            pageSize: pageSize,
+            pageNumber: pageNumber
+          }
+        })
+          .then(response => {
             resolve(Object.assign({}, response.data));
           })
           .catch(function (error) {
@@ -77,13 +108,48 @@ class HotelDealsApi {
   }
 
   // ****************************************
-  // Return hotels by location Id
+  // Return hotels by Proximity
   // ****************************************
-  static getHotelsByProximty(locationId, latitude, longitude, radius, locale, currencyCode, arrivalDate, nights, room, guests, filters, sortBy, pageSize, pageNumber, exclude) {
+  static getHotelsByProximty(locationId, latitude, longitude, radius, arrivalDate, nights, locale, currencyCode, rooms1, rooms2, rooms3, location, filters, sortBy, pageSize, pageNumber, exclude, checkDates) {
     if (live) {
+
+      let url = baseUrl + '/location/' + locationId + '/hotels';
+
       return new Promise((resolve, reject) => {
-        axios.get(baseUrl + '/location/' + locationId + '/hotels/' + arrivalDate + '/' + nights + '?room1=' + room + '&guests=' + guests + '&latitude=' + latitude + '&longitude=' + longitude + '&radius=' + radius + '&locale=' + locale + '&currencyCode=' + currencyCode + '&filters=' + filters + '&sortBy=' + sortBy + '&pageSize=' + pageSize + '&pageNumber=' + pageNumber + '&exclude=' + exclude)
-          .then(function (response) {
+        axios({
+          method: 'post',
+          url:  url,
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          data: {
+            locale: locale,
+            currencyCode: currencyCode,
+            latitude: latitude,
+            longitude: longitude,
+            radius: radius,
+            propertyCategory: filters.propertyCategory,
+            minRate: filters.minRate,
+            maxRate: filters.maxRate,
+            minStarRating: filters.minStarRating,
+            maxStarRating: filters.maxStarRating,
+            minTripAdvisorRating: filters.minTripAdvisorRating,
+            maxTripAdvisorRating: filters.maxTripAdvisorRating,
+            facilityList: filters.facilityList,
+            arrivalDate: arrivalDate,
+            nights: nights,
+            rooms1: rooms1,
+            rooms2: rooms2,
+            rooms3: rooms3,
+            sortBy: sortBy,
+            checkDates: checkDates,
+            exclude: exclude,
+            pageSize: pageSize,
+            pageNumber: pageNumber
+          }
+        })
+          .then(response => {
             resolve(Object.assign({}, response.data));
           })
           .catch(function (error) {
