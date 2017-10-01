@@ -60,25 +60,25 @@ const WorldCities = () => {
               <li><a href="/10115/visit/lake-louise-alberta-canada">Lake Louise</a></li>
               <li><a href="/4005/visit/montreal-quebec-canada">Montreal</a></li>
               <li><a href="/4025/visit/ottawa-ontario-canada">Ottawa</a></li>
-              <li><a href="/4043/visit/quebec-quebec-canada">Quebec</a></li>
+              <li><a href="/4043/visit/quebec-canada">Quebec</a></li>
               <li><a href="/4089/visit/toronto-ontario-canada">Toronto</a></li>
               <li><a href="/4106/visit/vancouver-british-columbia-canada">Vancouver</a></li>
-              <li><a href="#">Victoria</a></li>
+              <li><a href="/6058399/visit/victoria-british-columbia-canada">Victoria</a></li>
               <li><a href="/4115/visit/whistler-british-columbia-canada">Whistler</a></li>
             </ul>
           </div>
           <div className="col-md-4 left">
             <h4>Carribean</h4>
             <ul>
-              <li><a href="#">Frederiksted</a></li>
-              <li><a href="/3289/visit/charlotte-amalie-st-thomas-u.s-virgin-islands">Charlotte Amalie</a></li>
-              <li><a href="#">Christiansted</a></li>
-              <li><a href="/9874/visit/cruz-bay-st-john-u.s-virgin-islands">Cruz Bay</a></li>
+              <li><a href="/11642/visit/frederiksted-us-virgin-islands">Frederiksted</a></li>
+              <li><a href="/3289/visit/charlotte-amalie-st-thomas-us-virgin-islands">Charlotte Amalie</a></li>
+              <li><a href="/3292/visit/christiansted-us-virgin-islands">Christiansted</a></li>
+              <li><a href="/9874/visit/cruz-bay-st-john-us-virgin-islands">Cruz Bay</a></li>
               <li><a href="/6349479/visit/havana-cuba">Havana</a></li>
-              <li><a href="#">Nassau</a></li>
+              <li><a href="/2519/visit/nassau-new-providence-bahamas">Nassau</a></li>
               <li><a href="/2822/visit/providenciales-providenciales-turks-and-caicos">Providenciales</a></li>
-              <li><a href="#">Punta Cana</a></li>
-              <li><a href="#">San Juan</a></li>
+              <li><a href="/2902/visit/punta-cana-dominican-republic">Punta Cana</a></li>
+              <li><a href="/3179/visit/san-juan-puerto-rico">San Juan</a></li>
               <li><a href="/937/visit/willemstad-curacao">Willemstad</a></li>
             </ul>
             <div className="gap gap-small"></div>
