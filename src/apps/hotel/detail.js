@@ -78,7 +78,9 @@ class HotelDetail extends React.Component {
       document.title = 'Book to stay in ' + this.props.hotel.hotelInformationResponse.hotelSummary.name;
       let queryString = this.props.queryString;
 
-      console.log(this.props.hotel);
+      let markerArray = [];
+      markerArray.push({"url": this.props.searchUrl, "regionName":this.props.hotel.hotelInformationResponse.hotelSummary.name,"subClass":"Hotel","locationCoordinates":{"latitude":this.props.hotel.hotelInformationResponse.hotelSummary.latitude, "longitude":this.props.hotel.hotelInformationResponse.hotelSummary.longitude }});
+
 
       return (
         <div>
@@ -140,7 +142,7 @@ class HotelDetail extends React.Component {
           <GoogleMaps locationType="Hotel" latitude={this.props.hotel.hotelInformationResponse.hotelSummary.latitude}
                       longitude={this.props.hotel.hotelInformationResponse.hotelSummary.longitude}
                       text={this.props.hotel.hotelInformationResponse.hotelSummary.name} zoom={15}
-                      isLoading={this.state.isLoadingHotel}/>
+                      isLoading={this.state.isLoadingHotel} markerArray={markerArray}/>
           <div className="gap gap-small"></div>
           <RoomList regionName={this.props.hotel.hotelInformationResponse.hotelSummary.name} regionNameImage={this.props.hotel.hotelInformationResponse.hotelImages.hotelImage[0].highResolutionUrl} regionUrl={this.props.searchUrl} parentRegionId={this.props.location.regionID} parentLocationName={this.props.location.regionName} parentLocationImage={this.props.location.image} parentLocationNameLong={this.props.location.regionNameLong} longitude={this.props.hotel.hotelInformationResponse.hotelSummary.longitude} latitude={this.props.hotel.hotelInformationResponse.hotelSummary.latitude} searchUrl={this.props.searchUrl} guests={this.props.guests} arrivalDate={this.props.arrivalDate} nights={this.props.nights} rooms={this.props.rooms} locationId={this.props.locationId} hotelId={this.props.hotelId} regionNameLong={this.props.hotel.hotelInformationResponse.hotelSummary.name + ', ' + this.props.hotel.hotelInformationResponse.hotelSummary.city} hotelName={this.props.hotel.hotelInformationResponse.hotelSummary.name} />
           <div className="gap gap-small"></div>

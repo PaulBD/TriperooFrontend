@@ -1,0 +1,42 @@
+{
+  "tripName": "ABC",
+  "tripDetails": {
+    "regionID": 45645,
+    "regionName": "Las Vegas",
+    "regionUrl": "/6798/las-vegas",
+    "tripStart": 1567457567,
+    "tripEnd": 5675757578,
+    "tripLength": 3,
+    "adults": 2,
+    "children": 0,
+    "type": "Popular",
+    "tripPace": "Fast",
+    "tags": ["culture", "outdoors"]
+  },
+  "Days": [{
+    "Day": 1,
+    "type": "Activity",
+    "StartTime": 67868678,
+    "Length": 5,
+    "LengthValue": "Hours",
+    "regionID": 45645,
+    "regionName": "Las Vegas",
+    "regionUrl": "/6798/las-vegas"
+  }, {
+    "Day": 1,
+    "type": "Travel",
+    "StartTime": 67868678,
+    "Length": 4,
+    "LengthValue": "Minutes",
+    "TravelType": "Walk"
+  }, {
+    "Day": 2,
+    "type": "Activity",
+    "StartTime": 67868678,
+    "Length": 3,
+    "LengthValue": "Hours",
+    "regionID": 45645,
+    "regionName": "Las Vegas",
+    "regionUrl": "/6798/las-vegas"
+  }]
+}
