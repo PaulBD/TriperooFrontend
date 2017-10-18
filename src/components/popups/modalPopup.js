@@ -10,6 +10,8 @@ import HotelImageModal from './hotelPhotoPopup';
 import LocationUploadImageModal from './uploadPhotoPopup';
 import BookmarkLocationModal from '../forms/customer/addToTrip';
 import CancellationModal from './cancellationPolicy';
+import MapSidebarModal from './mapPopup';
+import CategoryModal from './categoryPopup';
 
 let customStyles = {
   overlay : {
@@ -67,7 +69,7 @@ class Modal extends React.Component {
         modal = (<SignupModal hasPosted={false} closeModal={this.props.closeModal} />);
         break;
       case "Bookmark":
-        modal = (<BookmarkLocationModal hasPosted={false} closeModal={this.props.closeModal} parentLocationId={this.props.modalContent.parentLocationId} parentLocationName={this.props.modalContent.parentLocationName} parentLocationNameLong={this.props.modalContent.parentLocationNameLong} locationId={this.props.modalContent.locationId} locationName={this.props.modalContent.locationName} locationType={this.props.modalContent.locationType} locationUrl={this.props.modalContent.locationUrl} locationImage={this.props.modalContent.locationImage} locationNameLong={this.props.modalContent.locationNameLong} removeBookmark={this.props.modalContent.removeBookmark}/>);
+        modal = (<BookmarkLocationModal hasPosted={false} closeModal={this.props.closeModal} parentLocationId={this.props.modalContent.parentLocationId} parentLocationName={this.props.modalContent.parentLocationName} parentLocationNameLong={this.props.modalContent.parentLocationNameLong} parentLocationImage={this.props.modalContent.parentLocationImage} locationId={this.props.modalContent.locationId} locationName={this.props.modalContent.locationName} locationType={this.props.modalContent.locationType} locationUrl={this.props.modalContent.locationUrl} locationImage={this.props.modalContent.locationImage} locationNameLong={this.props.modalContent.locationNameLong} removeBookmark={this.props.modalContent.removeBookmark} latitude={this.props.modalContent.latitude} longitude={this.props.modalContent.longitude}/>);
         break;
       case "Photo":
         modal = (<LocationUploadImageModal hasPosted={false} closeModal={this.props.closeModal} locationId={this.props.modalContent.locationId} locationName={this.props.modalContent.locationName} locationType={this.props.modalContent.locationType} />);
@@ -81,6 +83,14 @@ class Modal extends React.Component {
         break;
       case "CancellationPolicy":
         modal = (<CancellationModal hasPosted={false} closeModal={this.props.closeModal} policy={this.props.modalContent.policy} />);
+        break;
+      case "MapSidebarModal":
+        cssClass = "MapModel";
+        modal = (<MapSidebarModal hasPosted={false} closeModal={this.props.closeModal} policy={this.props.modalContent.policy} longitude={this.props.modalContent.longitude} latitude={this.props.modalContent.latitude} text={this.props.modalContent.text} zoom={this.props.modalContent.zoom} markerArray={this.props.modalContent.markerArray} locationType={this.props.modalContent.locationType} />);
+        break;
+      case "CategoryModal":
+        cssClass = "CategoryModel";
+        modal = (<CategoryModal hasPosted={false} closeModal={this.props.closeModal} categories={this.props.modalContent.categories} selectedCategories={this.props.modalContent.selectedCategories} />);
         break;
     }
 

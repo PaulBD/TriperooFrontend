@@ -84,7 +84,7 @@ class Header extends React.Component {
                       <ul className="nav navbar-nav ml-auto">
                         <li className="nav-item pull-xs-right"><a className="nav-link" href="/explore-destinations" title="Destinations">Destinations</a></li>
                         <li className="nav-item pull-xs-right"><a className="nav-link"href="/hotels" title="Hotels">Hotels</a></li>
-                        <li className="nav-item pull-xs-right hide"><a className="nav-link"href="/flights" title="Flights">Flights</a></li>
+                        <li className="nav-item pull-xs-right"><a className="nav-link"href="/flights" title="Flights">Flights</a></li>
                         <li className="nav-item pull-xs-right"><a className="nav-link"href="/travel-extras" title="Travel Extras">Travel Extras</a></li>
                         <li className={this.props.isAuthenticated ? "nav-item pull-xs-right" : "hide"}><a className="nav-link"href="#" onClick={this.createTrip} title="Create a Trip">Create a Trip</a></li>
                         <li className={!this.props.isAuthenticated ? "nav-item pull-xs-right" : "hide"}><a className="nav-link"href="#" onClick={this.signup} title="Sign Up">Sign Up</a></li>

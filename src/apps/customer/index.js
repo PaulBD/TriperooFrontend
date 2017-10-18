@@ -40,11 +40,17 @@ class CustomerHome extends React.Component {
                 <UserProfile user={this.props.user} isActiveUser={this.props.isActiveUser}/>
               </div>
               <div className="col-md-8">
-                <h4>{this.props.isActiveUser ? 'Your Trips' : this.props.user.profile ? this.props.user.profile.name + ' trips' : ''}</h4>
-                <hr />
-                {
-                  this.props.trips != null && this.props.trips.length > 0 ? this.props.trips.map(function(trip, i) { return (<TripItem trip={trip} key={trip.id} parentUrl={profileUrl}  cssClass="col-md-4" position={i} />);}) : <p>This user has never been on any trips</p>
-                }
+                <h5 className="mb-2">{this.props.isActiveUser ? 'Your Trips' : this.props.user.profile ? this.props.user.profile.name + ' trips' : ''}</h5>
+                <hr className="pageTitle"/>
+                <div className="row">
+                  <div className="col-md-12">
+                    <div className="card-columns profileHome">
+                    {
+                      this.props.trips != null && this.props.trips.length > 0 ? this.props.trips.map(function(trip, i) { return (<TripItem trip={trip} key={trip.id} parentUrl={profileUrl} cssClass="col-md-12 mb-4" position={i} />);}) : <p>This user has never been on any trips</p>
+                    }
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div className="gap gap-small"></div>

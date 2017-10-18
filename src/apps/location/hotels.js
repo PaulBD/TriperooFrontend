@@ -7,7 +7,6 @@ import * as hotelActions from '../../actions/location/travelContent/hotelActions
 
 import FacebookSignup from '../../components/forms/authentication/facebookSignup';
 import SubPageHeader from '../../components/content/headers/locationCategory';
-import GoogleMaps from '../../components/maps/googleMap';
 import TriperooLoader from '../../components/loaders/globalLoader';
 import LastMinuteDeal from '../../components/content/dynamic/lastMinuteDeal';
 import SearchForm from '../../components/forms/searchForms/hotels';
@@ -15,6 +14,7 @@ import FilterHotels from '../../components/forms/searchForms/filterHotels';
 import SortBy from '../../components/forms/common/sortBy';
 import HotelThumb from '../../components/layout/cards/hotels/thumb';
 import Loader from '../../components/loaders/contentLoader';
+import MapSideBar from '../../components/maps/mapSideBar';
 let moment = require('moment');
 import Toastr from 'toastr';
 
@@ -25,8 +25,6 @@ class LocationContent extends React.Component {
     super(props, context);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.filterHotels = this.filterHotels.bind(this);
-    this.showList = this.showList.bind(this);
-    this.showMap = this.showMap.bind(this);
     this.updateSortBy = this.updateSortBy.bind(this);
     let arrivalDate = this.props.arrivalDate == undefined ? moment().add(7, 'days').format('YYYY-MM-DD') : this.props.arrivalDate;
     this.state = {
@@ -41,7 +39,6 @@ class LocationContent extends React.Component {
         , propertyCategory: []
       }
       , openSortBy: false
-      , showMap: false
       , showFilters: false
       , pageSize: 20
       , pageNumber: 0
@@ -87,16 +84,6 @@ class LocationContent extends React.Component {
         Toastr.error(error);
         this.setState({isLoadingLocation: false, isLoadingHotelList: false });
       });
-  }
-
-  showList(e) {
-    e.preventDefault();
-    this.setState({showMap: false });
-  }
-
-  showMap(e) {
-    e.preventDefault();
-    this.setState({showMap: true });
   }
 
   handleFormSubmit(searchUrl, searchId, arrivalDate, nights, rooms1, guests) {
@@ -208,7 +195,7 @@ class LocationContent extends React.Component {
               <div className="row ">
                 <div className="gap gap-mini"></div>
                 <div className="col-md-12">
-                  <SearchForm searchUrl={this.props.searchUrl} arrivalDate={this.state.arrivalDate} nights={parseInt(this.state.nights)} rooms={parseInt(this.state.rooms1)} guests={parseInt(this.state.guests)} useFunction={false} handleFormSubmit={this.handleFormSubmit} isSideBar={false} city={this.props.location.regionNameLong} buttonName='Search' />
+                  <SearchForm searchUrl={this.props.searchUrl} arrivalDate={this.state.arrivalDate} nights={parseInt(this.state.nights)} rooms={parseInt(this.state.rooms1)} guests={parseInt(this.state.guests)} useFunction={false} handleFormSubmit={this.handleFormSubmit} isSideBar={false} city={this.props.location.regionNameLong} buttonName="Search" />
                 </div>
               </div>
             </div>
@@ -218,7 +205,8 @@ class LocationContent extends React.Component {
             <div className="row row-wrap">
               <div className="container">
                 <div className="row">
-                  <div className="col-md-3">
+                  <div className="col-md-3 sideBar">
+                    <MapSideBar latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0} longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0} text={title} zoom={13} markerArray={this.props.mapHotels} isLoading={this.state.isLoadingRestaurantList} locationType={this.props.location.subClass} />
                     <FilterHotels minPrice={0} maxPrice={300} facilityList={[]} accommodationTypeList={[]} filterHotels={this.filterHotels} />
                   </div>
                   <div className="col-md-9">
@@ -230,22 +218,15 @@ class LocationContent extends React.Component {
                       <div className="col-md-4">
                         <div className="text-right">
                           <SortBy updateSortBy={this.updateSortBy} value={this.state.sortBy} valueFriendly={this.state.sortByFriendly}/>
-
-                          &nbsp;
-                          <a href="#" onClick={this.showMap} className={!this.state.showMap ? "" : "hide"}><i className="fa fa-map"></i> View Map</a>
-                          <a href="#" onClick={this.showList} className={this.state.showMap ? "text-right" : "hide"}><i className="fa fa-list"></i> View List</a>
                         </div>
                       </div>
                     </div>
-                    <div className={!this.state.showMap ? "row" : "hide"}>
+                    <div className="row">
                       {
                         !this.state.isLoadingHotelList ? this.props.hotels.hotelListResponse ? this.props.hotels.hotelListResponse.hotelList.hotelSummary.map(function (hotel, i) {
                           return(<HotelThumb hotel={hotel} hotelUrl={this.props.location.url} queryString={queryString} key={hotel.hotelId} cssClass="col-md-4 mb-4" nameLength={40}/>);
                         }, this) : (<Loader showLoader={true}/>) : (<Loader showLoader={true}/>)
                       }
-                    </div>
-                    <div className={this.state.showMap ? "row" : "hide"}>
-                      <GoogleMaps latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0} longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0} text={this.props.location.regionName} zoom={12} markerArray={this.state.hotels} isLoading={this.state.isLoadingHotelList} locationType={this.props.location.subClass} />
                     </div>
                   </div>
                 </div>
@@ -285,7 +266,9 @@ LocationContent.propTypes = {
   guests: PropTypes.number,
   arrivalDate: PropTypes.string,
   searchUrl: PropTypes.string,
-  queryString: PropTypes.string
+  queryString: PropTypes.string,
+  mapHotels: PropTypes.array.isRequired,
+  hotelCategories: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
@@ -299,7 +282,9 @@ function mapStateToProps(state, ownProps) {
     nights: ownProps.location.query.nights !== undefined ? parseInt(ownProps.location.query.nights) : 1,
     hotels: state.hotels.hotels ? state.hotels.hotels : {},
     searchUrl: ownProps.location.pathname,
-    queryString: ownProps.location.search
+    queryString: ownProps.location.search,
+    mapHotels: state.hotels.hotels ? state.hotels.hotels.mapLocations : [],
+    hotelCategories: state.hotels.hotels ? state.hotels.hotels.categories : []
   };
 }
 

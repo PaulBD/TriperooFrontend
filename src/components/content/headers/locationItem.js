@@ -80,7 +80,7 @@ class LocationHeader extends React.Component {
             <div className="bg-img blur" style={style}></div>
             <div className="container">
               <div className="row">
-                <div className="col-md-8 col-xs-7">
+                <div className="col-md-9 col-xs-7">
                   <ol className="breadcrumb">
                     <li className="breadcrumb-item"><a href="/">Home</a></li>
                     <li className="breadcrumb-item"><a href={this.props.location.parentUrl}>{this.props.location.parentRegionNameLong}</a></li>
@@ -96,7 +96,7 @@ class LocationHeader extends React.Component {
 
                   </div>
                 </div>
-                <div className="col-md-4 col-xs-5 text-right">
+                <div className="col-md-3 col-xs-5 text-right">
                   <div className="gap gap-small"></div>
                   <img src={this.props.location.image} width="1" height="1" onError={this.backupImage}/>
                 </div>

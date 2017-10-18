@@ -15,7 +15,7 @@ class FlightFilter extends React.Component {
 
   render() {
     return (
-      <div className="profile-usermenu booking-filters">
+      <div className="profile-usermenu">
         <h5>Filter Flights</h5>
         <ul className="nav flex-column list booking-filters-list">
           <li>
@@ -55,7 +55,7 @@ class FlightFilter extends React.Component {
           </li>
           <li>
             <h5 className="booking-filters-title">Stops
-              <small>Price from</small>
+              <small className="float-right">Price from</small>
             </h5>
             <div className="checkbox">
               <label>
@@ -75,7 +75,7 @@ class FlightFilter extends React.Component {
           </li>
           <li>
             <h5 className="booking-filters-title">Airlines
-              <small>Price from</small>
+              <small className="float-right">Price from</small>
             </h5>
             <div className="checkbox">
               <label>
@@ -95,7 +95,7 @@ class FlightFilter extends React.Component {
           </li>
           <li>
             <h5 className="booking-filters-title">Departure Time
-              <small>Price from</small>
+              <small className="float-right">Price from</small>
             </h5>
             <div className="checkbox">
               <label>

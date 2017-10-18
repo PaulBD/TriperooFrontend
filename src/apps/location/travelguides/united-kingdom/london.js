@@ -4,10 +4,8 @@ import {bindActionCreators} from 'redux';
 import * as locationActions from '../../../../actions/location/locationActions';
 import TriperooLoader from '../../../../components/loaders/globalLoader';
 import Toastr from 'toastr';
-import SubPageHeader from '../../../../components/content/headers/locationCategory';
 import FacebookSignup from '../../../../components/forms/authentication/facebookSignup';
 
-let titleCase = require('title-case');
 
 class LondonTravelGuide extends React.Component {
   constructor(props, context) {
@@ -110,7 +108,7 @@ class LondonTravelGuide extends React.Component {
                           there’s always an opportunity to witness the changing of the guard and have multiple photo opportunities
                           in front of the palace gates.</p>
                         <p><small><i className="fa fa-map-marker"></i> Buckingham Palace Rd, London, Greater London, SW1A 1AA, United Kingdom</small></p>
-                        <p><a href="/66001520/visit-location/buckingham-palace-london-england-united-kingdom">View Details</a></p>
+                        <p><a href="/6001520/visit-location/buckingham-palace-london-england-united-kingdom">View Details</a></p>
                       </div>
                       <div className="col-md-4">
                         <img src="/static/img/locations/buckingham-palace-london-england-united-kingdom.png" className="float-left" />

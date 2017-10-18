@@ -8,7 +8,7 @@ class HotelImages extends React.Component {
 
   onClickHotelImage(e){
     e.preventDefault();
-    var position = e.target.getAttribute('data-type');
+    let position = e.target.getAttribute('data-type');
     this.props.showImage(position);
   }
 

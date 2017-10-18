@@ -83,7 +83,7 @@ class EventHome extends React.Component {
       }
       else {
         intro = 'We found ' + totalItems + ' events in total.';
-          title= '<span>Featured Events:</span> Recommended For You';
+        title= '<span>Featured Events:</span> Recommended For You';
       }
     }
 
@@ -110,28 +110,15 @@ class EventHome extends React.Component {
           <div className="gap gap-small"></div>
           <div className="container">
             <div className="row row-wrap">
-              <div className="col-md-9">
-                <div className="row">
-                  <div className="col-md-12">
-                      <h4 dangerouslySetInnerHTML={{__html: title}}></h4>
-                    <hr />
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-12">
-                    <EventList locationEvents={this.props.locationEvents} isFeature={this.state.categoryName == 'all' || this.state.categoryName == ''  ? true : false} cssClass={this.state.categoryName == 'all' || this.state.categoryName == ''  ? "col-md-4" : "col-md-3"} isFetching={this.state.isLoadingEvents} />
-                  </div>
-                  <div className="gap gap-small"></div>
-                  <div className="col-md-12">
-                    <div className="row justify-content-center">
-                      <Pagination innerClass={this.state.categoryName == 'all' || this.state.categoryName == '' ? "hide" : totalItems > this.state.pageSize ? "pagination justify-content-center" : "hide"} activePage={this.state.activePageNumber} itemsCountPerPage={this.props.pageSize} totalItemsCount={this.props.totalItems} pageRangeDisplayed={10} onChange={this.changePage} />
-                    </div>
-                  </div>
-                  <div className="gap gap-small"></div>
-                </div>
-              </div>
-              <div className="col-md-3">
+              <div className="col-md-3 sideBar">
                 <EventCategories changeCategory={this.changeEvent} contentType="events" />
+              </div>
+              <div className="col-md-9">
+                <EventList locationEvents={this.props.locationEvents} isFeature={this.state.categoryName == 'all' || this.state.categoryName == ''  ? true : false} cssClass={this.state.categoryName == 'all' || this.state.categoryName == ''  ? "col-md-4" : "col-md-3"} isFetching={this.state.isLoadingEvents} />
+                <div className="row justify-content-center">
+                  <Pagination innerClass={this.state.categoryName == 'all' || this.state.categoryName == '' ? "hide" : totalItems > this.state.pageSize ? "pagination justify-content-center" : "hide"} activePage={this.state.activePageNumber} itemsCountPerPage={this.props.pageSize} totalItemsCount={this.props.totalItems} pageRangeDisplayed={10} onChange={this.changePage} />
+                </div>
+                <div className="gap gap-small"></div>
               </div>
             </div>
           </div>

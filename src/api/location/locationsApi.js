@@ -1,5 +1,7 @@
 import axios from 'axios';
 import baseUrl from '../baseApi';
+import environment from '../environment';
+import locations from '../json/mock/locations.json';
 import topDestinations from '../json/destinations.json';
 
 class LocationsApi {
@@ -7,15 +9,22 @@ class LocationsApi {
   // Return child locations using parent id
   // ****************************************
   static getLocationsByParentId(parentLocationId, type, pageSize, pageNumber) {
-    return new Promise((resolve, reject) => {
-      axios.get(baseUrl + '/locations/' + parentLocationId + '?type=' + type + '&pageSize=' + pageSize + '&pageNumber=' + pageNumber)
-        .then(function (response) {
-          resolve(Object.assign([], response.data));
-        })
-        .catch(function (error) {
-          reject(error);
-        });
-    });
+    if (environment) {
+      return new Promise((resolve, reject) => {
+        axios.get(baseUrl + '/locations/' + parentLocationId + '?type=' + type + '&pageSize=' + pageSize + '&pageNumber=' + pageNumber)
+          .then(function (response) {
+            resolve(Object.assign([], response.data));
+          })
+          .catch(function (error) {
+            reject(error);
+          });
+      });
+    }
+    else {
+      return new Promise((resolve, reject) => {
+        resolve(Object.assign([], locations));
+      });
+    }
   }
 
   // ****************************************

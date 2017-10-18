@@ -90,16 +90,16 @@ class QuestionDetail extends React.Component {
                   </div>
                   <div className="col-md-8">
                     <p><i>"{question.question}"</i></p>
-                    <p className="questionActions">{this.props.isAuthenticated ? (<span><a href="#" onClick={this.answerQuestion} data-ref={question.questionReference} data-question={question.question}>Answer Question</a></span>) : ""} &bull; {question.answers.length} {question.answers.length == 1 ? 'Answer' : 'Answers'} <span>&bull; Added {question.friendlyDate}</span> &bull; <QuestionHelpful questionRef={question.questionReference} likeCount={question.likeCount} />
+                    <p className="questionActions">{this.props.isAuthenticated ? (<span><a href="#" onClick={this.answerQuestion} data-ref={question.questionReference} data-question={question.question}>Answer Question</a></span>) : ""} &bull; {question.answers ? question.answers.length : '0'} {question.answers ? question.answers.length == 1 ? 'Answer' : 'Answers' : 'Answers'} <span>&bull; Added {question.friendlyDate}</span> &bull; <QuestionHelpful questionRef={question.questionReference} likeCount={question.likeCount} />
                     </p>
 
                     <div className="row">
                         <div className="col-md-12">
                           <ul className="booking-item-reviews list">
                             {
-                              question.answers.map(function (answer, i) {
+                              question.answers ? question.answers.map(function (answer, i) {
                                 return (<AnswerItem key={i} answer={answer} questionReference={question.questionReference}/>);
-                              })
+                              }) : ''
                             }
                           </ul>
                         </div>

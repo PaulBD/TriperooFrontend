@@ -118,8 +118,8 @@ class UpdateProfile extends React.Component {
               <div className="col-md-8">
                 <div className="row">
                   <div className="col-md-12">
-                    <h4>Update Profile</h4>
-                    <hr />
+                    <h5 className="mb-2">Update Profile</h5>
+                    <hr className="pageTitle" />
                     <UserProfileForm name={this.state.creds.name}
                                      emailAddress={this.state.creds.emailAddress}
                                      bio={this.state.creds.bio}

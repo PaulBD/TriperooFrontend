@@ -18,14 +18,25 @@ class App extends React.Component {
 	}
 
 	render(){
-		return (
-			<div className="global-wrap">
-				<Header showHeader={true} />
-				{this.props.children}
-				<Footer />
-				<Modal modalName={this.props.modalName} modalType={this.props.modalType} modalContent={this.props.modalContent} modalIsOpen={this.props.modalIsOpen} closeModal={this.closeModal}/>
-			</div>
-		);
+
+	  if (this.props.isAdmin)
+    {
+      return (
+        <div className="global-wrap">
+          {this.props.children}
+        </div>
+      );
+    }
+    else {
+      return (
+        <div className="global-wrap">
+          <Header showHeader={true} />
+          {this.props.children}
+          <Footer />
+          <Modal modalName={this.props.modalName} modalType={this.props.modalType} modalContent={this.props.modalContent} modalIsOpen={this.props.modalIsOpen} closeModal={this.closeModal}/>
+        </div>
+      );
+    }
 	}
 }
 
@@ -38,6 +49,7 @@ App.defaultProps = {
 };
 
 App.propTypes = {
+  isAdmin: PropTypes.bool,
 	children: PropTypes.element,
 	modalContent: PropTypes.object,
 	modalName: PropTypes.string,
@@ -47,7 +59,15 @@ App.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
+
+  let isAdmin = false;
+  if (ownProps.location.pathname.includes('admin-console'))
+  {
+    isAdmin = true;
+  }
+
 	return {
+    isAdmin: isAdmin,
 		modalContent: state.modal.modalContent ? state.modal.modalContent : {},
 		modalName: state.modal.modalName ? state.modal.modalName : '',
 		modalType: state.modal.modalType ? state.modal.modalType : '',

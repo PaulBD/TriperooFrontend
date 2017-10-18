@@ -78,6 +78,8 @@ class HotelDetail extends React.Component {
       document.title = 'Book to stay in ' + this.props.hotel.hotelInformationResponse.hotelSummary.name;
       let queryString = this.props.queryString;
 
+      console.log(this.props.hotel);
+
       return (
         <div>
           <HotelHeader location={this.props.location} hotelName={this.props.hotel.hotelInformationResponse.hotelSummary.name} hotelImage={this.props.hotel.hotelInformationResponse.hotelImages.hotelImage[0].highResolutionUrl} />
@@ -140,7 +142,7 @@ class HotelDetail extends React.Component {
                       text={this.props.hotel.hotelInformationResponse.hotelSummary.name} zoom={15}
                       isLoading={this.state.isLoadingHotel}/>
           <div className="gap gap-small"></div>
-          <RoomList searchUrl={this.props.searchUrl} guests={this.props.guests} arrivalDate={this.props.arrivalDate} nights={this.props.nights} rooms={this.props.rooms} locationId={this.props.locationId} hotelId={this.props.hotelId} regionNameLong={this.props.location.regionNameLong} hotelName={this.props.hotel.hotelInformationResponse.hotelSummary.name} />
+          <RoomList regionName={this.props.hotel.hotelInformationResponse.hotelSummary.name} regionNameImage={this.props.hotel.hotelInformationResponse.hotelImages.hotelImage[0].highResolutionUrl} regionUrl={this.props.searchUrl} parentRegionId={this.props.location.regionID} parentLocationName={this.props.location.regionName} parentLocationImage={this.props.location.image} parentLocationNameLong={this.props.location.regionNameLong} longitude={this.props.hotel.hotelInformationResponse.hotelSummary.longitude} latitude={this.props.hotel.hotelInformationResponse.hotelSummary.latitude} searchUrl={this.props.searchUrl} guests={this.props.guests} arrivalDate={this.props.arrivalDate} nights={this.props.nights} rooms={this.props.rooms} locationId={this.props.locationId} hotelId={this.props.hotelId} regionNameLong={this.props.hotel.hotelInformationResponse.hotelSummary.name + ', ' + this.props.hotel.hotelInformationResponse.hotelSummary.city} hotelName={this.props.hotel.hotelInformationResponse.hotelSummary.name} />
           <div className="gap gap-small"></div>
           <div className="row row-nowrap greyBg hotelInfo" id="policies">
             <div className="gap gap-small" id="info"></div>

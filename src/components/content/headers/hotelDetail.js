@@ -66,7 +66,8 @@ class HotelDetail extends React.Component {
 HotelDetail.propTypes = {
   location: PropTypes.object,
   hotelImage: PropTypes.string.isRequired,
-  hotelName: PropTypes.string.isRequired
+  hotelName: PropTypes.string.isRequired,
+  contentType: PropTypes.string.isRequired
 
 };
 

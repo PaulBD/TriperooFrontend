@@ -22,8 +22,22 @@ class Overview extends React.Component {
   render(){
 
     let summaryCount = 700;
+    let restaurantInfo = '';
 
-    let summary = this.props.location.summary ? this.props.location.summary.en : '';
+    if (this.props.location.regionType == "Restaurant") {
+      restaurantInfo = (
+        <div className="row">
+          <div className="col-md-6">
+          <p className={this.props.location.locationDetail.averagePriceMainCourse ? "" : "hide"}><strong>Average Main Course Price:</strong><br />{this.props.location.locationDetail.averagePriceMainCourse.text.toFixed(2)} {this.props.location.locationDetail.averagePriceMainCourse.currency} </p>
+          <p className={this.props.location.locationDetail.averagePriceThreeCourseMeal ? "" : "hide"}><strong>Average 3 Course Meal Price:</strong><br />{this.props.location.locationDetail.averagePriceThreeCourseMeal.text.toFixed(2)} {this.props.location.locationDetail.averagePriceThreeCourseMeal.currency} </p>
+          </div>
+          <div className="col-md-6">
+            <p className={this.props.location.locationDetail.openHours ? "" : "hide"}><strong>Opening Hours:</strong><br /><span dangerouslySetInnerHTML={{__html: this.props.location.locationDetail.openHours}}></span></p>
+          </div>
+        </div>);
+    }
+
+      let summary = this.props.location.summary ? this.props.location.summary.en : '';
 
     if ((summary != null) && (summary.length > 0))
     {
@@ -41,18 +55,33 @@ class Overview extends React.Component {
         }
       }
 
+      let map = '';
+
+      if (this.props.showMap) {
+        map =
+         (
+          <div className={this.state.showMore ? "hide" : "col-md-12"}>
+            <div className="row">
+              <GoogleMaps
+                latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0}
+                longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0}
+                text={this.props.location.regionName} zoom={12}
+                locationType="city"/>
+            </div>
+          </div>
+        );
+      }
+
       return (
         <div className="row">
           <div className="col-md-12">
-            <h4>About {titleCase(this.props.location.regionName)}...</h4>
+            <h4>About {this.props.location.regionName}...</h4>
             <p dangerouslySetInnerHTML={{__html: summary}}></p>
             <p><a href="#" onClick={this.onHandleTextClick}>{showMore}</a></p>
 
-            <div className={this.props.showMap ? this.state.showMore ? "hide" : "col-md-12" : "hide"}>
-              <div className="row">
-                <GoogleMaps latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0} longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0} text={this.props.location.regionName} zoom={12} isLoading={this.state.isLoadingLocation} locationType="city"/>
-              </div>
-            </div>
+            {restaurantInfo}
+            {map}
+
           </div>
         </div>
       );
@@ -63,7 +92,7 @@ class Overview extends React.Component {
           <div className="row">
             <div className="col-md-12">
               <h4>We Need Your Help!!</h4>
-              <p>We want to supply the best local content for {titleCase(this.props.location.regionName)} so e need you
+              <p>We want to supply the best local content for {titleCase(this.props.location.regionName)} so we need you
                 to submit the best attractions, pubs and restaurants to Triperoo!</p>
               <p>Simply, click the button below and add your favourite location so we can review and add to our growing
                 database. Our mission is provide the best guide to {titleCase(this.props.location.regionName)}.</p>

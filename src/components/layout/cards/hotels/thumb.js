@@ -2,7 +2,6 @@ import React, {PropTypes} from 'react';
 import StarRating from '../../../forms/common/starRating';
 
 const HotelThumb = ({hotel, hotelUrl, queryString, cssClass, nameLength}) => {
-console.log(nameLength);
   let style = {
     backgroundImage: 'url(http://i.travelapi.com' + hotel.imagelUrl + ')'
   };
@@ -15,7 +14,7 @@ console.log(nameLength);
         <div className="card-block hotels">
           <h5>{hotel.name.length > nameLength ? hotel.name.substring(0,nameLength) + '...' : hotel.name}</h5>
           <a href={url} className="btn btn-primary priceRight">View</a>
-          <p className="mb0">From {hotel.lowRate.toFixed(2)} {hotel.rateCurrencyCode}</p>
+          <p className={hotel.lowRate == 0 ? "hide" : "mb0"}>From {hotel.lowRate.toFixed(2)} {hotel.rateCurrencyCode}</p>
           <StarRating starRating={hotel.hotelRating} className="icon-list list-inline-block mb0 hotel-rating"/>
         </div>
       </div>
@@ -26,7 +25,9 @@ console.log(nameLength);
 HotelThumb.propTypes = {
   hotel: PropTypes.object.isRequired,
   hotelUrl: PropTypes.string.isRequired,
-  queryString: PropTypes.string.isRequired
+  queryString: PropTypes.string.isRequired,
+  cssClass: PropTypes.string,
+  nameLength: PropTypes.string
 };
 
 export default HotelThumb;

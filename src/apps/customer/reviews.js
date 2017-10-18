@@ -5,8 +5,6 @@ import * as authenticationActions from '../../actions/customer/authenticationAct
 import * as userActions from '../../actions/customer/userActions';
 import * as userReviewActions from '../../actions/customer/userReviewActions';
 import ReviewList from '../../components/layout/cards/reviews/homePageReviewCard';
-import Pagination from "react-js-pagination";
-import UserProfile from '../../components/forms/customer/userProfile';
 import TriperooLoader from '../../components/loaders/globalLoader';
 import Toastr from 'toastr';
 
@@ -54,9 +52,9 @@ class UserReviews extends React.Component {
           <div className="gap gap-small"></div>
           <div className="row">
             <div className="col-md-12">
-              <h5>Your Reviews</h5>
-              <hr />
-              <ReviewList reviews={this.props.reviews} maxTags={5} showEdit={true} cssClass="col-md-6" refreshData={this.refreshData}/>
+              <h5 className="mb-2">{!this.props.isActiveUser ? this.props.user.profile.name : 'Your'}' Reviews</h5>
+              <hr className="pageTitle"/>
+              <ReviewList reviews={this.props.reviews} maxTags={5} showEdit={this.props.isActiveUser} cssClass="col-md-6" refreshData={this.refreshData}/>
               <div className="gap gap-small"></div>
             </div>
           </div>

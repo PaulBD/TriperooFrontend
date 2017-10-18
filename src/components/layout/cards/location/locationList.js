@@ -2,10 +2,10 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as authenticationActions from '../../../../actions/customer/authenticationActions';
-let titleCase = require('title-case');
 import ReviewIcon from '../../location/reviewIcon';
 import PhotoIcon from '../../location/photoIcon';
 import BookmarkIcon from '../../location/bookmarkIcon';
+let titleCase = require('title-case');
 
 class LocationList extends React.Component {
   constructor(props, context) {
@@ -113,10 +113,13 @@ class LocationList extends React.Component {
           }
         }
 
+        const bgImage = {
+          backgroundImage: "url(" + fallbackImage + ")"
+        };
+
 				return (
 					<div className={this.props.cssClass} key={location.regionID}>
-						<div className="hover-img">
-							<img src={fallbackImage}  alt={location.regionName} data-fallback={fallbackImage} onError={this.handleMissingImage} />
+						<div className="hover-img bgImage" style={bgImage}>
 							<div className="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">
                 <a  href={location.url}>
 								<div className="text-small">
@@ -133,7 +136,7 @@ class LocationList extends React.Component {
                   <PhotoIcon locationId={location.regionID} locationName={location.regionNameLong} locationType={location.subClass} key={location.regionID}/>
                 </li>
                 <li>
-                  <BookmarkIcon parentLocationId={location.parentRegionID} parentLocationName={location.parentRegionName} parentLocationNameLong={location.parentRegionNameLong} locationNameLong={location.regionNameLong} locationUrl={location.url} locationImage={location.image} locationId={location.regionID} locationName={location.regionName} locationType={location.subClass} key={location.regionID}/>
+                  <BookmarkIcon parentLocationId={location.parentRegionID} parentLocationName={location.parentRegionName} parentLocationNameLong={location.parentRegionNameLong} parentLocationImage={location.parentRegionImage}  locationNameLong={location.regionNameLong} locationUrl={location.url} locationImage={location.image} locationId={location.regionID} locationName={location.regionName} locationType={location.subClass} key={location.regionID} latitude={location.locationCoordinates ? location.locationCoordinates.latitude : 0} longitude={location.locationCoordinates ? location.locationCoordinates.longitude : 0}/>
                 </li>
               </ul>
 

@@ -45,7 +45,7 @@ class ReviewCard extends React.Component {
             };
 
             return (
-              <div className="card text-xs-left" key={review.reviewReference}>
+              <div className="card text-xs-left mb-4" key={review.reviewReference}>
                 <div className="cardBg reviewBg" style={style} ></div>
                 <div className="card-block testimonial">
                   <h4 className="card-title"><a href={review.placeUrl}>{review.placeNameShort != null && review.placeNameShort.length > 35 ? review.placeNameShort.substring(0, 35) + '...' : review.placeNameShort}</a></h4>

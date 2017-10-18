@@ -29,12 +29,12 @@ class SubHeader extends React.Component {
                                 </ol>
                                 <h1>{titleCase(this.props.title)}</h1>
                             </div>
-                            <div className="col-md-4 col-sm-12">
+                            <div className="col-md-4 col-sm-12 pull-right">
                               <ul className="list text-right list-inline cityNav">
                                 <Item item="Hotels" parentUrl={this.props.location.url} showCount={false} showName={false} isActive={this.props.contentType == 'hotels' ? true : false} cssClass="fa fa-bed user-profile-statictics-icon" />
                                 <Item item="Attractions" parentUrl={this.props.location.url} showCount={false} showName={false} isActive={this.props.contentType == 'attractions' ? true : false} cssClass="fa fa-ticket user-profile-statictics-icon" />
                                 <Item item="Restaurants" parentUrl={this.props.location.url} showCount={false} showName={false} isActive={this.props.contentType == 'restaurants' ? true : false} cssClass="fa fa-cutlery user-profile-statictics-icon" />
-                                <Item item="Nightlife" parentUrl={this.props.location.url} showCount={false} showName={false} isActive={this.props.contentType == 'nightlife' ? true : false} cssClass="fa fa-glass user-profile-statictics-icon" />
+                                <Item item="Nightlife" parentUrl={this.props.location.url} showCount={false} showName={false} isActive={this.props.contentType == 'nightlife' ? true : false} cssClass="fa fa-glass user-profile-statictics-icon hide" />
                                 <Item item="Events" parentUrl={this.props.location.url} showCount={false} showName={false} isActive={this.props.contentType == 'events' ? true : false} cssClass="fa fa-calendar-o user-profile-statictics-icon" />
                                 <Item item="Reviews" parentUrl={this.props.location.url} showCount={false} showName={false} isActive={this.props.contentType == 'reviews' ? true : false} cssClass="fa fa-comment user-profile-statictics-icon" />
                               </ul>

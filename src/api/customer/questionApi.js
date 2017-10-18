@@ -13,8 +13,7 @@ class QuestionApi {
         url: baseUrl + '/question/' + questionId,
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'token': JSON.parse(localStorage.getItem('id_token')).token
+          'Content-Type': 'application/json'
         }
       })
         .then(response => {

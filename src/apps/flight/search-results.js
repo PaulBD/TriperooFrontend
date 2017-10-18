@@ -79,13 +79,25 @@ class SearchResults extends React.Component {
               </div>
             </div>
           </div>
+          <div className="row greyBg">
+            <div className="container">
+              <div className="row ">
+                <div className="gap gap-mini"></div>
+                <div className="col-md-12">
+                  <Search />
+                </div>
+              </div>
+            </div>
+          </div>
           <div className="gap gap-small"></div>
           <div className="container">
             <div className="row">
               <div className="col-md-12">
                 <div className="row">
+                  <div className="col-md-3 sideBar">
+                    <FlightFilter />
+                  </div>
                   <div className="col-md-9 flightResults">
-                    <Search />
                     <div className="gap gap-small"></div>
                     {
                       this.props.flights.data.map(quote => {
@@ -95,9 +107,6 @@ class SearchResults extends React.Component {
                         );
                       })
                     }
-                  </div>
-                  <div className="col-md-3">
-                    <FlightFilter />
                   </div>
                 </div>
               </div>

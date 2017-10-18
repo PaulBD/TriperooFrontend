@@ -1,5 +1,7 @@
 import axios from 'axios';
 import baseUrl from '../../baseApi';
+import environment from '../../environment';
+import mockEvents from '../../json/mock/events.json';
 
 class EventsApi {
   // ****************************************
@@ -7,18 +9,25 @@ class EventsApi {
   // location id
   // ****************************************
   static getEventsByLocationId(locationId, categoryName, pageSize, pageNumber) {
-    return new Promise((resolve, reject) => {
-      axios({
-        method: 'get',
-        url:  baseUrl + '/location/' + locationId + '/events?categoryName=' + categoryName + '&pageSize=' + pageSize + '&pageNumber=' + pageNumber
-      })
-      .then(response => {
-        resolve(Object.assign({}, response.data));
-      })
-      .catch(function (error) {
-        reject(error);
+    if (environment) {
+      return new Promise((resolve, reject) => {
+        axios({
+          method: 'get',
+          url:  baseUrl + '/location/' + locationId + '/events?categoryName=' + categoryName + '&pageSize=' + pageSize + '&pageNumber=' + pageNumber
+        })
+        .then(response => {
+          resolve(Object.assign({}, response.data));
+        })
+        .catch(function (error) {
+          reject(error);
+        });
       });
-    });
+    }
+    else {
+      return new Promise((resolve, reject) => {
+        resolve(Object.assign({}, mockEvents));
+      });
+    }
   }
 
   // ****************************************

@@ -215,7 +215,7 @@ class LocationEdit extends React.Component {
                             facebookUsername={this.state.location.contactDetails.facebookUsername ? this.state.location.contactDetails.facebookUsername : ''}
                             twitter={this.state.location.contactDetails.twitter ? this.state.location.contactDetails.twitter : ''}
                             instagram={this.state.location.contactDetails.instagram ? this.state.location.contactDetails.instagram : ''}
-                            locationType='location'
+                            locationType="location"
                             locationName={this.state.location.regionName ? this.state.location.regionName : ''}
                             editLocation={true}
                             tags={this.state.location.tags ? this.state.location.tags.toString() : ''}

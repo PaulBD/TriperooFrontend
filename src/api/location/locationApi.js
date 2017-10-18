@@ -1,20 +1,29 @@
 import axios from 'axios';
 import baseUrl from '../baseApi';
+import environment from '../environment';
+import location from '../json/mock/location.json';
 
 class LocationApi {
   // ****************************************
   // Return location details by location id
   // ****************************************
   static getLocation(locationId) {
-    return new Promise((resolve, reject) => {
-      axios.get(baseUrl + '/location/' + locationId)
-        .then(function (response) {
-          resolve(Object.assign({}, response.data));
-        })
-        .catch(function (error) {
-          reject(error);
-        });
-    });
+    if (environment) {
+      return new Promise((resolve, reject) => {
+        axios.get(baseUrl + '/location/' + locationId)
+          .then(function (response) {
+            resolve(Object.assign({}, response.data));
+          })
+          .catch(function (error) {
+            reject(error);
+          });
+      });
+    }
+    else {
+      return new Promise((resolve, reject) => {
+        resolve(Object.assign({}, location));
+      });
+    }
   }
 
   // ****************************************
@@ -49,7 +58,6 @@ class LocationApi {
   // uploadPhoto
   // ****************************************
   static uploadPhotos(locationId, photos) {
-
     let data = new FormData();
     data.append('file', document);
     data.append('name', name);

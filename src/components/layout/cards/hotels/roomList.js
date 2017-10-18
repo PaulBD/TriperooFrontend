@@ -26,6 +26,8 @@ class RoomList extends React.Component {
 
   trackClick() {
     ReactGA.event({ category: 'Hotels', action: 'Click', label: this.props.hotelName });
+    console.log(this.props.regionNameLong);
+    this.props.modalActions.openBookmark(this.props.parentLocationId, this.props.parentLocationName, this.props.parentLocationNameLong, this.props.parentLocationImage, this.props.locationId, this.props.regionNameLong, this.props.regionName, "hotel", this.props.regionNameImage, this.props.regionUrl, false, this.props.latitude, this.props.longitude);
   }
 
   handleFormSubmit(searchUrl, searchId, arrivalDate, nights, rooms, guests) {
@@ -80,12 +82,10 @@ class RoomList extends React.Component {
                           roomOccupancy = <span><i className="fa fa-user"></i> <i className="fa fa-user"></i></span>;
                           break;
                         case 3:
-                          roomOccupancy = <span><i className="fa fa-user"></i> <i className="fa fa-user"></i> <i
-                            className="fa fa-user"></i></span>;
+                          roomOccupancy = <span><i className="fa fa-user"></i> <i className="fa fa-user"></i> <i className="fa fa-user"></i></span>;
                           break;
                         case 4:
-                          roomOccupancy = <span><i className="fa fa-user"></i> <i className="fa fa-user"></i> <i
-                            className="fa fa-user"></i> <i className="fa fa-user"></i></span>;
+                          roomOccupancy = <span><i className="fa fa-user"></i> <i className="fa fa-user"></i> <i className="fa fa-user"></i> <i className="fa fa-user"></i></span>;
                           break;
                       }
 
@@ -131,7 +131,7 @@ class RoomList extends React.Component {
 
                                 </div>
                                 <div className="col-md-6">
-                                  <a href={hotelRoom.deepLink} className="btn btn-primary priceRight" target="_blank">Book Room</a>
+                                  <a href={hotelRoom.deepLink} className="btn btn-primary priceRight" target="_blank" onClick={this.trackClick}>Book Room</a>
                                 </div>
                                 <div className="col-md-12">
                                   <p className="card-subtitle mb-1 text-muted cardAddress">
@@ -200,9 +200,18 @@ SearchForm.defaultProps = {
 };
 
 RoomList.propTypes = {
+  parentRegionId: PropTypes.number.isRequired,
+  parentLocationName: PropTypes.string.isRequired,
+  parentLocationNameLong: PropTypes.string.isRequired,
+  parentLocationImage: PropTypes.string.isRequired,
   locationId: PropTypes.number.isRequired,
   hotelId: PropTypes.number.isRequired,
+  regionName: PropTypes.string.isRequired,
   regionNameLong: PropTypes.string.isRequired,
+  regionNameImage: PropTypes.string.isRequired,
+  regionUrl: PropTypes.string.isRequired,
+  latitude: PropTypes.number.isRequired,
+  longitude: PropTypes.number.isRequired,
   hotelActions: PropTypes.object.isRequired,
   hotelRooms: PropTypes.object,
   isFetching: PropTypes.bool.isRequired,

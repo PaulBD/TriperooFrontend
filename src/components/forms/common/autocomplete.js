@@ -18,7 +18,7 @@ class AutoComplete extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    this.props.onChangeAutoComplete(e.target.text.trim(), parseInt(e.target.getAttribute('data-id')), e.target.getAttribute('data-url'), e.target.getAttribute('data-type'));
+    this.props.onChangeAutoComplete(e.target.text.trim(), parseInt(e.target.getAttribute('data-id')), e.target.getAttribute('data-url'), e.target.getAttribute('data-type'), e.target.getAttribute('data-image'));
 
     if (this.props.isAppSearch)
     {
@@ -103,7 +103,7 @@ class AutoComplete extends React.Component {
                     break;
                 }
 
-                return (<li key={search.regionID} className="ui-menu-item"><a href="#" onClick={this.handleClick} data-type={search.regionType} data-name={search.regionNameLong} data-url={search.url} data-id={search.regionID}><span><i className={icon}></i></span> {search.regionNameLong}</a></li>);
+                return (<li key={search.regionID} className="ui-menu-item"><a href="#" onClick={this.handleClick} data-type={search.regionType} data-name={search.regionNameLong} data-url={search.url} data-id={search.regionID} data-image={search.image}><span><i className={icon}></i></span> {search.regionNameLong}</a></li>);
               })
             }
           </ul>

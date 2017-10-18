@@ -33,31 +33,31 @@ class StarFilter extends React.Component {
   render(){
     return (
       <span>
-        <a href="#" onClick={this.updateFilter} data-type="1">
+        <a href="#" onClick={this.updateFilter} data-type="1" className="star">
               <span className={this.state.starFilterList.includes(1) ? "fa-stack hotelStarWrapper orange fa-2x" : "fa-stack hotelStarWrapper fa-2x"}>
                 <i className="fa fa-star fa-stack-1x hotelStar"></i>
                 <span className="fa-stack-1x hotelStarNumber">1</span>
               </span>
             </a>
-            <a href="#" onClick={this.updateFilter} data-type="2">
+            <a href="#" onClick={this.updateFilter} data-type="2" className="star">
               <span className={this.state.starFilterList.includes(2) ? "fa-stack hotelStarWrapper orange fa-2x" : "fa-stack hotelStarWrapper fa-2x"}>
                 <i className="fa fa-star fa-stack-1x hotelStar"></i>
                 <span className="fa-stack-1x hotelStarNumber">2</span>
               </span>
             </a>
-            <a href="#" onClick={this.updateFilter} data-type="3">
+            <a href="#" onClick={this.updateFilter} data-type="3" className="star">
               <span className={this.state.starFilterList.includes(3) ? "fa-stack hotelStarWrapper orange fa-2x" : "fa-stack hotelStarWrapper fa-2x"}>
                 <i className="fa fa-star fa-stack-1x hotelStar"></i>
                 <span className="fa-stack-1x hotelStarNumber">3</span>
               </span>
             </a>
-            <a href="#" onClick={this.updateFilter} data-type="4">
+            <a href="#" onClick={this.updateFilter} data-type="4" className="star">
               <span className={this.state.starFilterList.includes(4) ? "fa-stack hotelStarWrapper orange fa-2x" : "fa-stack hotelStarWrapper fa-2x"}>
                 <i className="fa fa-star fa-stack-1x hotelStar"></i>
                 <span className="fa-stack-1x hotelStarNumber">4</span>
               </span>
             </a>
-            <a href="#" onClick={this.updateFilter} data-type="5">
+            <a href="#" onClick={this.updateFilter} data-type="5" className="star">
              <span className={this.state.starFilterList.includes(5) ? "fa-stack hotelStarWrapper orange fa-2x" : "fa-stack hotelStarWrapper fa-2x"}>
                  <i className="fa fa-star fa-stack-1x hotelStar"></i>
                 <span className="fa-stack-1x hotelStarNumber">5</span>

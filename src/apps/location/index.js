@@ -95,7 +95,7 @@ class LocationHome extends React.Component {
           <div className="container">
             <div className="row">
               <div className="col-md-12">
-                <TopLocations locationId={this.props.locationId} name={this.state.location.regionName} locationType={this.state.location.regionType} {...this.props} />
+                <TopLocations locationId={this.props.locationId} name={this.state.location.regionName} locationType="Point of Interest Shadow" {...this.props} />
               </div>
               <div className="col-md-8">
                 <Summary location={this.props.location} showMap={true} />
@@ -112,14 +112,14 @@ class LocationHome extends React.Component {
           <HotelsNearLocation
             arrivalDate={moment().add(7, 'days').format('YYYY-MM-DD')}
             pageNumber={0}
-            currencyCode='GBP'
+            currencyCode="GBP"
             exclude={0}
-            locale='en_en'
+            locale="en_en"
             radius={5}
             rooms1={1}
             nights={1}
             guests={1}
-            sortBy='PROMO'
+            sortBy="PROMO"
             locationId={this.props.locationId} latitude={this.props.location.latitude} longitude={this.props.location.longitude} pageSize={4} locationName={this.props.location.regionNameLong} url={this.props.location.url}/>
           <div className="gap gap-small"></div>
           <div className="container">

@@ -8,7 +8,7 @@ body { margin: 0; }
 .userMenu { padding-top:5px !important; }
 
 .ReactModal__Body--open {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .form-control {
@@ -75,6 +75,7 @@ body { margin: 0; }
 .reviewLink { float:right; padding-top:10px;}
 
 .googleMapWrapper { height: 300px; width:100%; }
+.mapSideBar .googleMapWrapper { height: 650px; width:100%; }
 
 .error { color: red;}
 .error.orange { color: #ed8323;}
@@ -93,7 +94,7 @@ body { margin: 0; }
 .hotelInfo { padding: 10px 0; margin: 0;}
 
 select.searchSelect:not([size]):not([multiple]) {
-    height: calc(2.8rem - 2px);
+  height: calc(2.8rem - 2px);
 }
 
 .tripBtn { width: 40px; }
@@ -122,6 +123,9 @@ h4.card-title { font-size: 18px;}
 .booking-item-reviews .gap-small { margin: 7px 0 7px 0; }
 
 .modelReviewAuthentication .fa.fa-map-marker { top: 0 !important;}
+
+.mapSideBar { width: 100%; }
+.mapSideBar .fa.fa-map-marker { top: 0 !important;}
 
 /* Weather */
 .weatherIcon { top: -15px; position: relative; width:32px !important; height: 32px; }
@@ -235,10 +239,15 @@ h3 small { float:right; padding-top:14px;}
 .cityNav .active .user-profile-statictics-icon,
 .cityNav .user-profile-statictics-icon:hover,
 .breadcrumb-item.active {
-    color: #ed8323;
+  color: #ed8323;
 }
 
-.cityNav, .countryNav { color: #fff; position:absolute;z-index:999; float:right; margin-top:34px; }
+.list-center {
+  display: flex;
+  justify-content: center;
+}
+
+.cityNav, .countryNav { color: #fff; position:absolute;z-index:999; float:right; right: 0; margin-top:34px; }
 
 /* TODO: Need to fix this for mobile */
 .cityNav .user-profile-statictics-icon,
@@ -292,6 +301,7 @@ optgroup,option { margin-left:0px;text-align:left;}
 .signupSeperator strong { font-size: 14px; padding: 10px; background: #fff; }
 
 .modal-footer a { color: #cccccc;}
+.modal-footer a.btn { color: #ffffff;}
 
 .modalForm .form-group .input-icon { top: 0; }
 .modalForm .form-group .input-icon.labels { top: 30px; }
@@ -401,15 +411,58 @@ optgroup,option { margin-left:0px;text-align:left;}
     transform: scaleY(0.4);
     -webkit-transform: scaleY(0.4);
   }  20% {
-    transform: scaleY(1.0);
-    -webkit-transform: scaleY(1.0);
-  }
+       transform: scaleY(1.0);
+       -webkit-transform: scaleY(1.0);
+     }
 }
 
 .map {  width: 100%; height: 500px; }
+/*
 .mapMarker { background-image: url('/static/img/map-marker.png');background-repeat:no-repeat; background-size:20px 20px; background-position: center; width: 50px; height: 30px;margin-left:-25px;margin-top:-15px;}
-.mapInfo { z-index:999; background-color: #fff; border: solid 1px #cc0000; border-radius: 4px; padding:4px;margin-top:-1px;line-height:10px; position:absolute; width:50px;text-align:center;}
+*/
 
+.mapInfo { z-index:1999; background-color: #fff; border: solid 1px #cc0000; border-radius: 4px; padding:4px;margin-top:-1px;line-height:10px; position:absolute; width:50px;text-align:center;}
+
+.mapSideBar .mapMarker {
+  background-image: none;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 20px;
+  top: 20px;
+  border: solid 1px #f44336;
+  border-radius: 40px;
+  background-color: #fff;
+  text-align: center;
+  color: #3f51b5;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.mapPin {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 20px;
+  top: 20px;
+  border: solid 1px #f44336;
+  border-radius: 40px;
+  background-color: #fff;
+  text-align: center;
+  color: #3f51b5;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.mapPin.hover {
+  border: solid 1px #3f51b5;
+  color: #f44336;
+
+}
 .hoverActive .booking-item { border: 1px solid #ed8323;}
 
 .placeItem .booking-item-price { font-size: 27px; }
@@ -445,19 +498,19 @@ optgroup,option { margin-left:0px;text-align:left;}
 .react-rater {
   font-size: 22px; }
 .react-rater a {
-    cursor: pointer;
-    color: #ccc; }
+  cursor: pointer;
+  color: #ccc; }
 .react-rater a.will-be-active {
-      color: #ffdd99; }
+  color: #ffdd99; }
 .react-rater a.is-active {
-      color: #fc6; }
+  color: #fc6; }
 .react-rater a.is-active-half:before {
-      color: #fc6;}
+  color: #fc6;}
 .react-rater a.is-disabled {
-      cursor: default; }
+  cursor: default; }
 
 
-      div.ReactTags__tagInput {
+div.ReactTags__tagInput {
   width: 200px;
   border-radius: 2px;
   display: inline-block;
@@ -550,42 +603,42 @@ div.ReactTags__suggestions ul li.active {
 .flightWrapper .logo { width:30px !important; }
 
 .points-list {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
   width:100%;
 }
 
 .dotted-route {
-    display: block;
-    border-top-color: #cccccc;
-    border-top: 2px dotted #ccc;
-    margin-top: -6px;
-    position: absolute;
-    left: 20px;
-    right: 20px;
-    top: 50%;
-    display: none;
+  display: block;
+  border-top-color: #cccccc;
+  border-top: 2px dotted #ccc;
+  margin-top: -6px;
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 50%;
+  display: none;
 }
 
 .points-box {
-    position: relative;
-    width: 100%;
-    display: inline-block;
+  position: relative;
+  width: 100%;
+  display: inline-block;
 }
 
 .pointLeft:first-child,
 .pointRight:first-child {
-    float: none;
+  float: none;
 }
 
 .pointRight,
 .pointLeft {
-    position: relative;
-    display: inline-block;
-    height: 80px;
-    width: 200px;
-    text-align: left;
-    float: right;
+  position: relative;
+  display: inline-block;
+  height: 80px;
+  width: 200px;
+  text-align: left;
+  float: right;
 }
 
 .dottedLineBtm {
@@ -655,43 +708,43 @@ div.ReactTags__suggestions ul li.active {
 }
 
 .route {
-    border-top-color: #ee6600;
+  border-top-color: #ee6600;
 }
 
 .route {
-    position: absolute;
-    top: 50%;
-    left: 20px;
-    right: 20px;
-    height: 0;
-    font-size: 0;
-    border-top: 2px solid #ee6600;
-    margin-top: -3px;
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  right: 20px;
+  height: 0;
+  font-size: 0;
+  border-top: 2px solid #ee6600;
+  margin-top: -3px;
 }
 
 .code {
-    font-family: 'SourceSansPro-Semibold', Arial, Helvetica, sans-serif;
-    font-weight: 500;
-    color: #666666;
-    position: relative;
-    display: inline-block;
+  font-family: 'SourceSansPro-Semibold', Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  color: #666666;
+  position: relative;
+  display: inline-block;
 }
 
 .circleRight,
 .circleLeft {
-    background: #ffffff;
-    border: 2px solid #ee6600;
-    border-radius: 32px;
-    width: 20px;
-    height: 20px;
-    display: block;
-    position: absolute;
-    z-index: 1;
-    margin-left: -10px;
-    margin-top: -12px;
-    border-color: #ee6600;
-    top: 50%;
-    left: 5%;
+  background: #ffffff;
+  border: 2px solid #ee6600;
+  border-radius: 32px;
+  width: 20px;
+  height: 20px;
+  display: block;
+  position: absolute;
+  z-index: 1;
+  margin-left: -10px;
+  margin-top: -12px;
+  border-color: #ee6600;
+  top: 50%;
+  left: 5%;
 }
 
 .circleRight {
@@ -701,16 +754,16 @@ div.ReactTags__suggestions ul li.active {
 
 .timeRight,
 .timeLeft {
-    font-family: 'SourceSansPro-Regular', Arial, Helvetica, sans-serif;
-    font-weight: 400;
-    color: #999999;
-    font-size: 13px;
-    line-height: 13px;
-    position: absolute;
-    bottom: 4px;
-    left: 0;
-    right: 0;
-    text-align: left;
+  font-family: 'SourceSansPro-Regular', Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  color: #999999;
+  font-size: 13px;
+  line-height: 13px;
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  right: 0;
+  text-align: left;
 }
 
 .timeRight {
@@ -725,10 +778,10 @@ div.ReactTags__suggestions ul li.active {
 .airportSearch { background-color: #efefef; border-radius: 5px; padding:10px;}
 
 .airportParking .card-title.price {
-    color: #ed8323;
-    font-weight: 500;
-    font-size: 20px;
-    height: auto;
+  color: #ed8323;
+  font-weight: 500;
+  font-size: 20px;
+  height: auto;
 }
 
 .airportParking .card-text small { font-size: 11px; }
@@ -1166,7 +1219,17 @@ ul.twPc-Arrange li.location {
 
 .profile-usermenu ul li {
   border-bottom: 1px solid #f0f4f7;
-  padding: 5px;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}
+
+.profile-usermenu.category {
+  width:100%;
+}
+
+.profile-usermenu.category ul li {
+  display: inline-block;
+  border-bottom: none;
 }
 
 .profile-usermenu ul li:last-child {
@@ -1177,7 +1240,6 @@ ul.twPc-Arrange li.location {
   color: #93a3b5;
   font-size: 14px;
   font-weight: 400;
-  padding: 5px;
   width:100%;
   display: inline-block;
 }
@@ -1192,15 +1254,15 @@ ul.twPc-Arrange li.location {
   color: #5b9bd1;
 }
 
-.profile-usermenu ul li.active {
-  border-bottom: none;
+.profile-usermenu ul li.active a {
+  color: #ed8323;
+  background-color: #f6f9fb;
+  border-left: 2px solid #ed8323;
+  padding-left: 5px;
 }
 
-.profile-usermenu ul li.active a {
-  color: #5b9bd1;
-  background-color: #f6f9fb;
-  border-left: 2px solid #5b9bd1;
-  margin-left: -2px;
+.profile-usermenu ul li a:focus {
+  text-decoration: none;
 }
 
 .dottedLine {
@@ -1225,23 +1287,23 @@ ul.twPc-Arrange li.location {
 
 /* Mobile Menu */
 .navbar-toggle.mobileMenu {
-    background-color: #262626;
-    width: 40px;
-    height: 40px;
-    border: solid 1px white;
-    border-radius: 3px;
-    float:right;
-    margin-top:-40px;
-    outline: none;
+  background-color: #262626;
+  width: 40px;
+  height: 40px;
+  border: solid 1px white;
+  border-radius: 3px;
+  float:right;
+  margin-top:-40px;
+  outline: none;
 }
 
 .navbar-toggle .icon-bar {
-    display: block;
-    width: 26px;
-    height: 2px;
-    border-radius: 1px;
-    background-color: white;
-    margin-bottom:4px;
+  display: block;
+  width: 26px;
+  height: 2px;
+  border-radius: 1px;
+  background-color: white;
+  margin-bottom:4px;
 }
 
 .navbar-toggle .icon-bar.last {
@@ -1268,18 +1330,20 @@ ul.twPc-Arrange li.location {
 .dropdown-menu { min-width: 12rem; }
 
 @media (max-width: 991px) {
-    .cityPage h1, .holidayPage h1, .travelPage h1, .infoPageWrapper h1 { font-size: 300%; }
-    .homeSearch { width:100%; }
-    .worldMap { display:none; }
-    .user-profile-statictics > li { text-align: center; padding: 10px; border: 1px solid #e6e6e6; -webkit-border-radius: 5px; border-radius: 5px; width: 30%; margin-bottom: 10px; margin-right:3.3%; }
-    .user-profile-statictics > li .user-profile-statictics-icon { font-size: 200%; display: inline-block; margin-bottom: 10px; color: #8c8c8c; }
-    .l30 { margin-left:0px; }
-    .ReactModal__Content { position: absolute; top: 10%; left: 3%; right: 3%; background: #fff; WebkitOverflowScrolling: touch; outline: none; padding: 0px; border-radius: 5px; width: 94% }
+  .cityPage h1, .holidayPage h1, .travelPage h1, .infoPageWrapper h1 { font-size: 300%; }
+  .homeSearch { width:100%; }
+  .worldMap { display:none; }
+  .user-profile-statictics > li { text-align: center; padding: 10px; border: 1px solid #e6e6e6; -webkit-border-radius: 5px; border-radius: 5px; width: 30%; margin-bottom: 10px; margin-right:3.3%; }
+  .user-profile-statictics > li .user-profile-statictics-icon { font-size: 200%; display: inline-block; margin-bottom: 10px; color: #8c8c8c; }
+  .l30 { margin-left:0px; }
+  .ReactModal__Content { position: absolute; top: 10%; left: 3%; right: 3%; background: #fff; WebkitOverflowScrolling: touch; outline: none; padding: 0px; border-radius: 5px; width: 94% }
   .infoPage { height: 150px !important; }
   .infoPage .breadcrumb { display: none; }
 
   .infoPage .cityNav, .infoPage .countryNav { margin-top: 84px;}
   .infoPage h1 { width: 92%; text-align: center; }
+
+  .CategoryModel.ReactModal__Content { left: 2%; right: 2%; width: 96%;}
 }
 
 /* Hotel Detail */
@@ -1345,6 +1409,31 @@ ul.twPc-Arrange li.location {
   width: 42%;
 }
 
+
+.MapModel.ReactModal__Content{
+  position: absolute;
+  top: 2%;
+  left: 10%;
+  right: 10%;
+  background: #fff;
+  outline: none;
+  padding: 0px;
+  border-radius: 5px;
+  width: 80%;
+}
+
+.CategoryModel.ReactModal__Content{
+  position: absolute;
+  top: 2%;
+  left: 20%;
+  right: 20%;
+  background: #fff;
+  outline: none;
+  padding: 0px;
+  border-radius: 5px;
+  width: 60%;
+}
+
 .promotion {
   padding: 0px;
 }
@@ -1357,7 +1446,21 @@ ul.twPc-Arrange li.location {
   margin: 0px;
 }
 
+.profile-usermenu ul li a.star { padding: 0; width: auto; }
+.profile-usermenu ul li a.star i { font-size: 48px; }
 .hotelStarWrapper { width: 46px; color: #666; }
 .hotelStarWrapper.orange { color: #ef8f39; }
 .hotelStar { font-size: 40px }
 .hotelStarNumber { color: white; font-size: 14px; }
+.restaurantList { height: 589px; }
+/*.restaurantList .hover-img, .restaurantList .hover-img img { height: 170px !important; }*/
+.jumbotron.maps { padding: 0; margin:0; }
+.jumbotron.hotels { margin: 0; padding:30px 0; }
+.mapBackground { background-image: url(/static/img/map-bg.png); height: 120px; background-size:100%; text-align: center; vertical-align: middle; padding-top: 40px;  }
+.infoWindowContent h1 { font-size: 14px; }
+.infoWindowContent .text { width:120px; float:left; }
+.categoryCheck { float: right; padding-top: 3px; }
+.sideBar { border-right: solid 1px #efefef; }
+.bgImage { background-size: 100%; height: 162px; }
+.pageTitle { margin: 5px 0px 10px 0px }
+.profileHome.card-columns { column-count: 2; }

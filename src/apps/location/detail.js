@@ -16,9 +16,7 @@ import PhotoButton from '../../components/layout/buttons/photoButton';
 import RecentQuestions from '../../components/layout/cards/questions/list';
 import QuestionButton from '../../components/layout/buttons/questionButton';
 import Summary from '../../components/layout/location/summary';
-import GoogleMaps from '../../components/maps/googleMap';
-import HotelsNearLocation from '../../components/layout/cards/hotels/hotelsNearLocation';
-import EventsByLocation from '../../components/layout/cards/events/eventByLocation';
+import TriperooGoogleMap from '../../components/maps/googleMap';
 import Photos from '../../components/layout/cards/location/photoList';
 import TagList from '../../components/forms/common/tagList';
 import TrustedPartners from '../../components/content/static/trustedPartners';
@@ -74,6 +72,8 @@ class LocationDetail extends React.Component {
     if (this.state.hasLoaded)
     {
       let address = '';
+      let markerArray = [];
+      markerArray.push({"url": this.props.location.url, "regionName":this.props.location.regionName,"subClass":this.props.location.subClass,"locationCoordinates":{"latitude":this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0,"longitude":this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0}});
 
       if (this.props.location.formattedAddress) {
 
@@ -87,6 +87,9 @@ class LocationDetail extends React.Component {
       }
 
       let editUrl = this.props.location.url + '/edit';
+
+      console.log(this.props.location);
+
       return (
         <div>
           <LocationHeader location={this.props.location} hasLoaded={this.state.hasLoaded} docType={this.props.location.subClass} />
@@ -98,16 +101,19 @@ class LocationDetail extends React.Component {
                 {this.props.location.contactDetails ? this.props.location.contactDetails.formattedPhone ? <p><i className="fa fa-phone"></i> {this.props.location.contactDetails.formattedPhone} </p> : '' : ''}
                 <p><i className="fa fa-pencil"></i> <a href={editUrl}>Edit Details</a></p>
                 <TagList tags={this.props.location.tags} maxTags={5} />
-                <div className="row">
-                <div className="col-md-4 col-6">
-                  <ReviewButton name="sidePanel" locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType={this.props.location.subClass} pageSize={3} pageNumber={0} />
-                </div>
-                <div className="col-md-4 col-6">
-                  <PhotoButton name="sidePanel" locationId={this.props.locationId} locationName={this.props.location.regionName} locationType="" />
-                </div>
-                <div className="col-md-4 col-12">
-                  <BookmarkButton name="sidePanel" parentLocationId={this.props.location.parentRegionID} parentLocationName={this.props.location.parentRegionName} parentLocationNameLong={this.props.location.parentRegionNameLong} locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType={this.props.location.subClass} />
-                </div>
+                <div className="row mb-2">
+                  <div className="col-md-3 col-6">
+                    <ReviewButton name="sidePanel" locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType={this.props.location.subClass} pageSize={3} pageNumber={0} />
+                  </div>
+                  <div className="col-md-3 col-6">
+                    <PhotoButton name="sidePanel" locationId={this.props.locationId} locationName={this.props.location.regionName} locationType="" />
+                  </div>
+                  <div className="col-md-3 col-6">
+                    <BookmarkButton name="sidePanel" parentLocationId={this.props.location.parentRegionID} parentLocationName={this.props.location.parentRegionName} parentLocationNameLong={this.props.location.parentRegionNameLong} parentLocationImage={this.props.location.parentRegionImage} locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType={this.props.location.subClass} latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0} longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0} />
+                  </div>
+                  <div className="col-md-3 col-6">
+                    {this.props.location.regionType == "Restaurant" ? <a href={this.props.location.locationDetail.bookingUrl} className="btn btn-primary questionBtn" target="_blank"><i className="fa fa-calendar"></i> Book Restaurant</a> : ''}
+                  </div>
                 </div>
                 <Summary location={this.props.location} showMap={false} showHelp={false}/>
               </div>
@@ -116,31 +122,29 @@ class LocationDetail extends React.Component {
               </div>
             </div>
           </div>
-          <div className="gap gap-small"></div>
-          <div className="row greyBg detailSubHeader">
-            <GoogleMaps locationType={this.props.location.subClass} latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0} longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0} text={this.props.location.regionName} zoom={13} isLoading={this.state.isLoadingLocation} />
+          <div className="jumbotron maps">
+            <div className="row">
+              <TriperooGoogleMap latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0} longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0} text={this.props.location.regionName} zoom={13} markerArray={markerArray} isLoading={false} locationType={this.props.location.subClass}/>
+            </div>
           </div>
           <div className="gap gap-small"></div>
           <div className="row">
             <div className="container">
-            <div className="col-md-12">
-          <div className="row">
-                <div className="col-md-8">
-                  <ReviewList hasLoadedLocation={this.state.hasLoaded} locationId={this.props.locationId} locationName={this.props.location.regionName}  locationNameLong={this.props.location.regionNameLong}  locationType="" pageSize={3} pageNumber={0} showTitle={true} />
+              <div className="col-md-12">
+                <div className="row">
+                  <div className="col-md-8">
+                    <ReviewList hasLoadedLocation={this.state.hasLoaded} locationId={this.props.locationId} locationName={this.props.location.regionName}  locationNameLong={this.props.location.regionNameLong}  locationType="" pageSize={3} pageNumber={0} showTitle={true} />
+                  </div>
+                  <div className="col-md-4">
+                    <QuestionButton locationId={this.props.locationId} locationName={this.props.location.regionNameLong} locationNameShort={this.props.location.regionName} locationType={this.props.location.regionType} pageSize={3} pageNumber={0}/>
+                    <RecentQuestions locationId={this.props.location.parentRegionID} locationName={this.state.location.parentRegionName} pageSize={3} pageNumber={0} locationUrl={this.state.location.url} showTitle={true} isSideComponent={true}/>
+                  </div>
+                  <hr />
                 </div>
-                <div className="col-md-4">
-                  <QuestionButton locationId={this.props.locationId} locationName={this.props.location.regionNameLong} locationNameShort={this.props.location.regionName} locationType={this.props.location.regionType} pageSize={3} pageNumber={0}/>
-                  <RecentQuestions locationId={this.props.location.parentRegionID} locationName={this.state.location.parentRegionName} pageSize={3} pageNumber={0} locationUrl={this.state.location.url} showTitle={true} isSideComponent={true}/>
-                </div>
-                <hr />
-            </div>
-            </div>
+              </div>
             </div>
           </div>
           <div className="gap gap-small"></div>
-          <HotelsNearLocation latitude={this.props.location.latitude} longitude={this.props.location.longitude} pageSize={3} locationName={this.props.location.regionName} parentName={this.props.location.parentRegionName} parentUrl={this.props.location.parentUrl}/>
-          <EventsByLocation locationId={this.props.locationId} keyword={this.props.location.regionName} />
-
           <div className="container">
             <FacebookSignup />
             <TrustedPartners />

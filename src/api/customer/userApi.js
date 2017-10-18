@@ -49,15 +49,14 @@ class UserApi {
   // ****************************************
   // GET trip
   // ****************************************
-  static getTrip(tripId) {
+  static getTrip(tripId, customerReference) {
     return new Promise((resolve, reject) => {
       axios({
         method: 'get',
-        url:  baseUrl + '/customer/trip/' + tripId,
+        url:  baseUrl + '/customer/trip/' + tripId + '?reference=' + customerReference,
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'token': JSON.parse(localStorage.getItem('id_token')).token
+          'Content-Type': 'application/json'
         }
       })
         .then(response => {
@@ -72,15 +71,14 @@ class UserApi {
   // ****************************************
   // GET trips
   // ****************************************
-  static getTrips() {
+  static getTrips(customerReference) {
     return new Promise((resolve, reject) => {
       axios({
         method: 'get',
-        url:  baseUrl + '/customer/trips',
+        url:  baseUrl + '/customer/trips?reference=' + customerReference,
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'token': JSON.parse(localStorage.getItem('id_token')).token
+          'Content-Type': 'application/json'
         }
       })
         .then(response => {

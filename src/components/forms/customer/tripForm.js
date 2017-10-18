@@ -13,7 +13,7 @@ const TripForm = ({listName, description, startDate, endDate, regionName, isCrea
         </div>
         <form className="modalForm"  onSubmit={onSubmit}>
           <div className="col-md-12">
-            <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-map-marker input-icon input-icon-hightlight"></i>
+            <div className="form-group form-group-lg form-group-icon-left">
               <AutoComplete onChangeAutoComplete={onChangeAutoComplete} searchValue={regionName} searchType="city" placeholder="Current Location" cssClass="typeahead form-control" />
             </div>
             <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-pencil input-icon input-icon-hightlight"></i>

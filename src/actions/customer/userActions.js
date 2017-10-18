@@ -72,11 +72,11 @@ export function getTripsFailure(message) {
   return {type: types.LOAD_TRIPS_FAILURE, isSending: false, hasPosted: false, message};
 }
 
-export function getTrips() {
+export function getTrips(customerReference) {
 
   return dispatch => {
     dispatch(getTripsInitialize());
-    return UserApi.getTrips().then(trips => {
+    return UserApi.getTrips(customerReference).then(trips => {
       dispatch(getTripsSuccess(trips));
     }).catch(error => {
       dispatch(getTripsFailure(error.response.data));
@@ -99,11 +99,11 @@ export function getTripFailure(message) {
   return {type: types.LOAD_TRIP_FAILURE, isSending: false, hasPosted: false, message};
 }
 
-export function getTrip(tripId) {
+export function getTrip(tripId, customerReference) {
 
   return dispatch => {
     dispatch(getTripInitialize());
-    return UserApi.getTrip(tripId).then(trip => {
+    return UserApi.getTrip(tripId, customerReference).then(trip => {
       dispatch(getTripSuccess(trip));
     }).catch(error => {
       dispatch(getTripFailure(error.response.data));

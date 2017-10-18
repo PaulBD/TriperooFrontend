@@ -85,15 +85,15 @@ const WorldCities = () => {
             <h4>Central America</h4>
             <ul>
               <li><a href="/2897/visit/panama-city-panama">Panama City</a></li>
-              <li><a href="/6254893/visit/san-jose-montanita-ecuador">San Jose</a></li>
+              <li><a href="/3177/visit/san-jose-montanita-costa-rica">San Jose</a></li>
               <li><a href="/500187/visit/tamarindo-costa-rica">Tamarindo</a></li>
               <li><a href="/500665/visit/jaco-costa-rica">Jaco</a></li>
               <li><a href="/601060/visit/manuel-antonio-costa-rica">Manuel Antonio</a></li>
               <li><a href="/6047145/visit/la-fortuna-alajuela-costa-rica">La Fortuna</a></li>
-              <li><a href="/6159987/visit/granada-cali-colombia">Granada</a></li>
+              <li><a href="/500193/visit/granada-nicaragua">Granada</a></li>
               <li><a href="/3868/visit/quepos-costa-rica">Quepos</a></li>
               <li><a href="/11729/visit/antigua-antigua-and-barbuda">Antigua</a></li>
-              <li><a href="/6050539/visit/san-pedro-ecuador">San Pedro</a></li>
+              <li><a href="/3623/visit/quito-ecuador">Quito</a></li>
             </ul>
             <div className="gap gap-small"></div>
             <h4>Europe</h4>
@@ -125,11 +125,11 @@ const WorldCities = () => {
               <li><a href="/2621/visit/new-york-new-york-united-states-of-america">New York</a></li>
               <li><a href="/2434/visit/new-orleans-louisiana-united-states-of-america">New Orleans</a></li>
               <li><a href="/2693/visit/orlando-florida-united-states-of-america">Orlando</a></li>
-              <li><a href="#">Pheonix</a></li>
-              <li><a href="/6340112/visit/philadelphia-new-york-united-states-of-america">Philadelphia</a></li>
+              <li><a href="/2790/visit/phoenix-arizona-united-states">Phoenix</a></li>
+              <li><a href="/2786/visit/philadelphia-pennsylvania-united-states-of-america">Philadelphia</a></li>
               <li><a href="/3073/visit/san-diego-california-united-states-of-america">San Diego</a></li>
               <li><a href="/3132/visit/san-francisco-california-united-states-of-america">San Francisco</a></li>
-              <li><a href="#">Washington D.C</a></li>
+              <li><a href="/3763/visit/washington-district-of-columbia-united-states-of-america">Washington D.C</a></li>
             </ul>
             <div className="gap gap-small"></div>
           </div>
@@ -163,7 +163,6 @@ const WorldCities = () => {
               <li><a href="/6053839/visit/dubai-united-arab-emirates">Dubai</a></li>
               <li><a href="/3477/visit/tel-aviv-israel">Tel Aviv</a></li>
               <li><a href="/1727/visit/jerusalem-israel">Jerusalem</a></li>
-              <li><a href="#">Tehran</a></li>
               <li><a href="/453/visit/abu-dhabi-united-arab-emirates">Abu Dhabi</a></li>
               <li><a href="/6269113/visit/doha-qatar">Doha</a></li>
               <li><a href="/542/visit/beirut-lebanon">Beirut</a></li>
@@ -176,7 +175,7 @@ const WorldCities = () => {
             <ul>
               <li><a href="/716/visit/buenos-aires-argentina">Buenos Aires</a></li>
               <li><a href="/2998/visit/rio-de-janeiro-brazil">Rio de Janeiro</a></li>
-              <li><a href="#">São Paulo</a></li>
+              <li><a href="/3074/visit/sau-paulo-brazil">São Paulo</a></li>
               <li><a href="/2077/visit/lima-peru">Lima</a></li>
               <li><a href="/3095/visit/santiago-chile">Santiago</a></li>
               <li><a href="/6143664/visit/porto-alegre-brazil">Porto Alegre</a></li>

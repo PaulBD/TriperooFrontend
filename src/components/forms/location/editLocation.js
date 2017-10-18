@@ -116,6 +116,7 @@ LocationForm.propTypes = {
   latitude: PropTypes.number.isRequired,
   longitude: PropTypes.number.isRequired,
   tags: PropTypes.string.isRequired,
+  locationUrl: PropTypes.string.isRequired,
   isUpdating: PropTypes.bool.isRequired,
   errors: PropTypes.string,
   editLocation: PropTypes.bool.isRequired,

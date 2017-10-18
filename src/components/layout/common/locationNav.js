@@ -14,11 +14,10 @@ class NavigationWrapper extends React.Component {
 
     if (this.props.location !== undefined) {
       places = (
-        <ul className="list text-center list-inline user-profile-statictics mb30 l30">
+        <ul className="list text-center list-inline user-profile-statictics mb30 list-center">
           <Item item="Hotels" parentUrl={this.props.location.url} showCount={true} showName={true} cssClass="fa fa-bed user-profile-statictics-icon" />
           <Item item="Attractions" parentUrl={this.props.location.url} showCount={true} showName={true} cssClass="fa fa-ticket user-profile-statictics-icon" />
           <Item item="Restaurants" parentUrl={this.props.location.url} showCount={true} showName={true} cssClass="fa fa-cutlery user-profile-statictics-icon" />
-          <Item item="Nightlife" parentUrl={this.props.location.url} showCount={true} showName={true} cssClass="fa fa-glass user-profile-statictics-icon" />
           <Item item="Events" parentUrl={this.props.location.url} showCount={true} showName={true} cssClass="fa fa-calendar-o user-profile-statictics-icon" />
           <Item item="Reviews" parentUrl={this.props.location.url} showCount={true} showName={true} cssClass="fa fa-comment user-profile-statictics-icon" />
          </ul>

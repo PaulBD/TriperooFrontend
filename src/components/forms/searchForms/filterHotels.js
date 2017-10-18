@@ -71,11 +71,10 @@ class FilterHotels extends React.Component {
 
   render(){
     return (
-      <aside className="booking-filters booking-filters-white">
-        <h3>Filter By:</h3>
+      <div className="profile-usermenu">
         <ul className="list booking-filters-list">
           <li>
-            <h5 className="booking-filters-title">Price Range</h5>
+            <h5>Price Range</h5>
             <div className="row">
               <div className="col-md-5">
                 <input type="number" className="form-control" value={this.state.minPrice} min="1" max="100000" onChange={this.changeMinprice}/>
@@ -90,24 +89,23 @@ class FilterHotels extends React.Component {
             </div>
           </li>
           <li>
-            <h5 className="booking-filters-title">Star Rating</h5>
+            <h5>Star Rating</h5>
             <StarFilter updateFilter={this.updateStarFilter} />
           </li>
           <li>
-            <h5 className="booking-filters-title">Trip Advisor Rating</h5>
+            <h5>Trip Advisor Rating</h5>
             <StarFilter updateFilter={this.updateTripAdvisorFilter} />
           </li>
-
           <li>
-            <h5 className="booking-filters-title">Facilities</h5>
+            <h5>Facilities</h5>
             <FacilitiesFilter updateFilter={this.updateFacilitiesFilter} />
           </li>
           <li>
-            <h5 className="booking-filters-title">Accommodation Type</h5>
+            <h5>Accommodation Type</h5>
             <PropertyCategoryFilter updateFilter={this.updatePropertyCategoryFilter} />
           </li>
         </ul>
-      </aside>
+      </div>
     );
   }
 }

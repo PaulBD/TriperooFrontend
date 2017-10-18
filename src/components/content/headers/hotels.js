@@ -34,6 +34,6 @@ class Search extends React.Component {
 
 Search.propTypes = {
   handleFormSubmit: PropTypes.func
-}
+};
 
 export default Search;

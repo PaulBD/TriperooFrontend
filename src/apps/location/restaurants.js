@@ -4,25 +4,22 @@ import {bindActionCreators} from 'redux';
 import * as locationActions from '../../actions/location/locationActions';
 import * as restaurantActions from '../../actions/location/travelContent/restaurantActions';
 import FacebookSignup from '../../components/forms/authentication/facebookSignup';
-
 import TriperooLoader from '../../components/loaders/globalLoader';
-import Toastr from 'toastr';
-
 import SubPageHeader from '../../components/content/headers/locationCategory';
-import RestaurantCategories from '../../components/filters/locations';
 import Restaurants from '../../components/layout/cards/location/locationListWrapper';
-import PageTitle from '../../components/layout/location/pageTitle';
-import GoogleMaps from '../../components/maps/googleMap';
+import FilterRestaurants from '../../components/forms/searchForms/filterRestaurants';
+import MapSideBar from '../../components/maps/mapSideBar';
 
 let titleCase = require('title-case');
+import Toastr from 'toastr';
 
 class RestaurantContent extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.changeRestaurant = this.changeRestaurant.bind(this);
+    this.filterRestaurant = this.filterRestaurant.bind(this);
     this.changePage = this.changePage.bind(this);
     this.onSearchRestaurant = this.onSearchRestaurant.bind(this);
-    this.state = { restaurants: [], searchValue: '', isLoadingLocation: false, isLoadingRestaurantList: false, restaurantType: '', restaurantFriendlyName: '', pageSize: 9, pageNumber: 0, activePage: 1 };
+    this.state = { restaurants: [], mapRestaurants:[], searchValue: '', isLoadingLocation: false, isLoadingRestaurantCategories: true, isLoadingRestaurantList: false, restaurantType: '', restaurantFriendlyName: '', pageSize: 9, pageNumber: 0, activePage: 1 };
   }
 
   componentWillMount() {
@@ -40,9 +37,10 @@ class RestaurantContent extends React.Component {
       });
   }
 
-  changeRestaurant(value, friendlyName) {
-    this.setState({ restaurantType: value, restaurantFriendlyName: friendlyName });
-    this.loadRestaurants(this.props.locationId, value, this.state.pageSize, this.state.pageNumber);
+  filterRestaurant(restaurantCategory) {
+    console.log(restaurantCategory);
+    this.setState({ restaurantType: restaurantCategory, restaurantFriendlyName: restaurantCategory });
+    this.loadRestaurants(this.props.locationId, restaurantCategory, this.state.pageSize, this.state.pageNumber);
   }
 
   changePage(value){
@@ -52,7 +50,7 @@ class RestaurantContent extends React.Component {
   loadRestaurants(locationId, restaurantType, pageSize, pageNumber) {
     this.setState({isLoadingLocation: false, isLoadingRestaurantList: true });
     this.props.restaurantActions.loadRestaurantsByParentLocationId(locationId, restaurantType, pageSize, pageNumber)
-      .then(() => this.setState({isLoadingRestaurantList: false, restaurants: this.props.restaurants}))
+      .then(() => this.setState({isLoadingRestaurantList: false, isLoadingRestaurantCategories: false, restaurants: this.props.restaurants, mapRestaurants: this.props.mapRestaurants}))
       .catch(error => {
         Toastr.error(error);
         this.setState({isLoadingRestaurantList: false});
@@ -65,13 +63,12 @@ class RestaurantContent extends React.Component {
   }
 
   render(){
-    document.title = this.state.restaurantType == '' ? titleCase(this.props.location.regionName) + ' Restaurants' : titleCase(this.state.restaurantFriendlyName) + ' in ' + titleCase(this.props.location.regionName);
+    let title = 'Places to eat in ' + titleCase(this.props.location.regionName);
+
+    document.title = title;
 
     if (! this.state.isLoadingLocation)
     {
-      console.log(this.state.restaurants);
-
-      let title = 'Places to eat in' + titleCase(this.props.location.regionName);
       return (
         <div>
           <SubPageHeader location={this.props.location} contentType="restaurants" title={title} />
@@ -80,27 +77,17 @@ class RestaurantContent extends React.Component {
             <div className="row row-wrap">
               <div className="container">
                 <div className="row">
-                  <div className="col-md-8">
-                    <PageTitle defaultTitle="Top Places To Eat" locationName={this.props.location.regionName} name={this.state.restaurantFriendlyName} type={this.state.restaurantType} searchValue={this.state.searchValue} onSearch={this.onSearchRestaurant} />
-                    <div className="gap gap-small"></div>
-                    <div className="col-md-12">
-                      <div className="row">
-                        <Restaurants locationId={this.props.locationId} locations={this.props.restaurants} locationCount={this.props.restaurantCount} changePage={this.changePage} isFetching={this.state.isLoadingRestaurantList}/>
-                      </div>
-                    </div>
+                  <div className="col-md-3 sideBar">
+                    <MapSideBar latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0} longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0} text={title} zoom={13} markerArray={this.props.mapRestaurants} isLoading={this.state.isLoadingRestaurantList} locationType={this.props.location.subClass} />
+                    <FilterRestaurants categories={this.props.restaurantCategories} filterRestaurant={this.filterRestaurant} isFetching={this.state.isLoadingRestaurantCategories}/>
                   </div>
-                  <div className="col-md-4">
-                    <RestaurantCategories changeCategory={this.changeRestaurant} contentType="restaurants"   />
-                    <div className="gap gap-small"></div>
+                  <div className="col-md-9 restaurantList">
+                    <Restaurants useMinHeight={false} locationId={this.props.locationId} locations={this.props.restaurants} locationCount={this.props.restaurantCount} changePage={this.changePage} isFetching={this.state.isLoadingRestaurantList}/>
                   </div>
                 </div>
+                <div className="gap gap-small"></div>
               </div>
             </div>
-          </div>
-
-          <div className="gap gap-small"></div>
-          <div className="row greyBg detailSubHeader">
-            <GoogleMaps latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0} longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0} text={this.props.location.regionName} zoom={13} markerArray={this.state.restaurants} isLoading={this.state.isLoadingRestaurantList} locationType={this.props.location.subClass} />
           </div>
           <FacebookSignup showLines={false}/>
         </div>
@@ -113,7 +100,9 @@ class RestaurantContent extends React.Component {
 }
 
 RestaurantContent.defaultProps = {
-  attractionType: ''
+  restaurantType: '',
+  mapRestaurants: [],
+  restaurantCategories: []
 };
 
 RestaurantContent.propTypes = {
@@ -123,6 +112,8 @@ RestaurantContent.propTypes = {
   restaurantActions: PropTypes.object.isRequired,
   restaurantCount: PropTypes.number.isRequired,
   restaurants: PropTypes.array.isRequired,
+  mapRestaurants: PropTypes.array.isRequired,
+  restaurantCategories: PropTypes.array.isRequired,
   restaurantType: PropTypes.string
 };
 
@@ -131,6 +122,8 @@ function mapStateToProps(state, ownProps) {
     location: state.location.location ? state.location.location : {},
     locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0,
     restaurants: state.restaurants.restaurantsList ? state.restaurants.restaurantsList.locations : [],
+    mapRestaurants: state.restaurants.restaurantsList ? state.restaurants.restaurantsList.mapLocations : [],
+    restaurantCategories: state.restaurants.restaurantsList ? state.restaurants.restaurantsList.categories : [],
     restaurantCount:  state.restaurants.restaurantsList ? state.restaurants.restaurantsList.locationCount : 0
   };
 }

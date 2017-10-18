@@ -113,8 +113,7 @@ class ReviewApi {
         url:  baseUrl + '/customer/' + customerReference + '/reviews',
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'token': JSON.parse(localStorage.getItem('id_token')).token
+          'Content-Type': 'application/json'
         }
       })
         .then(response => {

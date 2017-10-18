@@ -1,0 +1,41 @@
+{
+  "locationDetail": {},
+  "doctype": "ParentRegionList",
+  "image": "/static/img/locations/london-england-united-kingdom.png",
+  "latitude": 51.5074,
+  "letterIndex": "lon",
+  "listingPriority": -1,
+  "longitude": -0.141099,
+  "parentRegionID": 178279,
+  "parentRegionName": "London (and vicinity)",
+  "parentRegionNameLong": "London (and vicinity), England, United Kingdom",
+  "parentRegionType": "Multi-City (Vicinity)",
+  "regionID": 2114,
+  "regionName": "London",
+  "regionNameLong": "London, England, United Kingdom",
+  "regionType": "City",
+  "relativeSignificance": "",
+  "searchPriority": 6,
+  "subClass": "",
+  "summary": {
+    "en": "If you were forced to pick one city to be a tourist in for a whole year, London might very well be your best choice. In London, you'd probably run into a citizen of just about every country on the planet and you'd eat a good deal of their cuisines, as well. You'd have access to the art and antiquities of both Britain and the world at the British Museum or the National Gallery or a host of other places, endless performances (including Shakespeare at the Globe Theatre), unruly sporting events, and first-class shopping. When it rains (which is less often than most people think), dive into a historic pub for pie and mash or hop on one of London's famed double-decker buses. The public transportation system alone warrants a visit to this worldly city. (Hint: Try Route 15 for a local's view of many sights: Trafalgar Square, Piccadilly Circus and the Tower of London.) London is more like the crossroads for, rather than the center of, the world these days. The timeless city effortlessly manages to blend international culture with British pomp in a metropolis of 14 million (the largest in the EU)."
+  },
+  "url": "/2114/visit/london-england-united-kingdom",
+  "parentUrl": "/178279/visit/london-and-vicinity-england-united-kingdom",
+  "sourceData": {},
+  "formattedAddress": [],
+  "tags": [],
+  "contactDetails": {},
+  "photos": {
+    "photoCount": 0
+  },
+  "stats": {
+    "likeCount": 1,
+    "reviewCount": 7,
+    "averageReviewScore": 0.721428571428571
+  },
+  "locationCoordinates": {
+    "latitude": 51.5074,
+    "longitude": -0.141099
+  }
+}

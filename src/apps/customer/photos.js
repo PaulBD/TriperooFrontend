@@ -34,11 +34,10 @@ class UserPhotos extends React.Component {
         <div className="container">
           <div className="gap gap-small"></div>
           <div className="row">
-            <div className="col-md-4">
-              <UserProfile user={this.props.user} isActiveUser={this.props.isActiveUser}/>
-            </div>
-            <div className="col-md-8">
-              <a href="#" className="btn btn-primary mb20"><i className="fa fa-plus-circle"></i> Add new photo</a>
+            <div className="col-md-12">
+              <a href="#" className="btn btn-primary btn-sm mb20 float-right"><i className="fa fa-plus-circle"></i> Add new photo</a>
+              <h5 className="mb-2">Your Travel Photos </h5>
+              <hr className="pageTitle"/>
               <div className="row row-no-gutter">
                 <div className="col-md-4">
                   <div className="thumb">

@@ -34,6 +34,7 @@ class BookmarkLocation extends React.Component {
         momentEndDate: moment().add(14, 'days'),
         endDate: moment().add(14, 'days').format('YYYY-MM-DD'),
         regionName: '',
+        image: '',
         regionId: 0,
         bookmarks: []
       },
@@ -50,6 +51,8 @@ class BookmarkLocation extends React.Component {
       "regionNameLong": this.props.locationNameLong,
       "image": this.props.locationImage,
       "url": this.props.locationUrl,
+      "latitude": this.props.latitude,
+      "longitude": this.props.longitude,
       "id" : 1,
       "dateCreated": moment().format('YYYY-MM-DD')
     };
@@ -57,6 +60,7 @@ class BookmarkLocation extends React.Component {
     let trip = this.state.trip;
     trip.regionId = this.props.parentLocationId;
     trip.regionName = this.props.parentLocationNameLong;
+    trip.image = this.props.parentLocationImage;
     trip.bookmarks.push(bookmark);
 
     this.setState({trip: trip});
@@ -124,11 +128,13 @@ class BookmarkLocation extends React.Component {
     this.setState({trip: trip});
   }
 
-  onChangeAutoComplete(city, cityId, cityUrl, dataType)
+  onChangeAutoComplete(city, cityId, cityUrl, dataType, cityImage)
   {
+    console.log(cityImage);
     let trip = this.state.trip;
     trip.regionId = cityId;
     trip.regionName = city;
+    trip.image = cityImage;
     this.setState({trip: trip});
   }
 
@@ -248,6 +254,7 @@ BookmarkLocation.propTypes = {
   parentLocationId: PropTypes.number,
   parentLocationName: PropTypes.string,
   parentLocationNameLong: PropTypes.string,
+  parentLocationImage: PropTypes.string,
   locationId: PropTypes.number,
   locationName: PropTypes.string,
   locationType: PropTypes.string,
@@ -258,6 +265,8 @@ BookmarkLocation.propTypes = {
   isSending: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string,
   hasPosted: PropTypes.bool,
+  latitude: PropTypes.number,
+  longitude: PropTypes.number,
   closeModal: PropTypes.func,
   removeBookmark: PropTypes.bool,
   tripList: PropTypes.array

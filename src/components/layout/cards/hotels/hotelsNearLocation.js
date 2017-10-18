@@ -47,18 +47,19 @@ class HotelsNearLocation extends React.Component {
 
     if (!this.state.isLoading) {
       if (this.props.hotels.hotelListResponse != undefined) {
-        console.log(this.props.hotels.hotelListResponse.hotelList.size);
         if (this.props.hotels.hotelListResponse.hotelList.size > 0) {
           return (
-            <div className="container greyBg detailSubHeader">
-            <div className="row greyBg detailSubHeader">
-              <div className="gap gap-small"></div>
+            <div className="jumbotron hotels">
               <div className="container">
                 <div className="row">
-                  <div className="col-md-8">
+                  <div className="col-md-8 hidden-sm-down">
                     <h4>{title}</h4>
                   </div>
-                  <div className="col-md-4 text-right">
+                  <div className="col-md-4 text-right  hidden-sm-down">
+                    <p><a href={searchHotels}>Find more hotels in {this.props.locationName}</a></p>
+                  </div>
+                  <div className="col-md-12 text-center hidden-sm-up">
+                    <h4>{title}</h4>
                     <p><a href={searchHotels}>Find more hotels in {this.props.locationName}</a></p>
                   </div>
                   <div className="col-md-12">
@@ -67,7 +68,7 @@ class HotelsNearLocation extends React.Component {
                         this.props.hotels.hotelListResponse.hotelList.hotelSummary.map((hotel, index) => {
                           if (index < this.props.pageSize) {
                             return (
-                              <HotelThumb hotel={hotel} hotelUrl={this.props.url} queryString={this.props.queryString} key={hotel.hotelId} cssClass="col-md-3 mb-0" nameLength={20}/>
+                              <HotelThumb hotel={hotel} hotelUrl={this.props.url} queryString={this.props.queryString} key={hotel.hotelId} cssClass="col-md-3 mb-2" nameLength={20}/>
                             );
                           }
                         })
@@ -76,8 +77,6 @@ class HotelsNearLocation extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className="gap gap-small"></div>
-            </div>
             </div>
           );
         }
@@ -91,8 +90,7 @@ class HotelsNearLocation extends React.Component {
     }
     else {
       return (
-        <div className="row greyBg detailSubHeader">
-          <div className="gap"></div>
+        <div className="jumbotron hotels">
           <div className="container">
             <div className="row">
               <div className="col-md-8">
@@ -108,7 +106,6 @@ class HotelsNearLocation extends React.Component {
               </div>
             </div>
           </div>
-          <div className="gap"></div>
         </div>
       );
     }
@@ -139,6 +136,7 @@ HotelsNearLocation.propTypes = {
   exclude: PropTypes.number.isRequired,
   locationId: PropTypes.number.isRequired,
   locationName: PropTypes.string.isRequired,
+  locationType: PropTypes.string.isRequired,
   latitude: PropTypes.number.isRequired,
   longitude: PropTypes.number.isRequired,
   radius: PropTypes.number.isRequired,

@@ -34,7 +34,7 @@ export default function modalReducer(state = { isSending: false, hasPosted: fals
       return Object.assign({}, state, { modalIsOpen: false, isSending: false, hasPosted: false, modalName: action.name, modalType: 'Signup' });
 
     case types.OPEN_BOOKMARK_MODEL:
-      return Object.assign({}, state, { modalIsOpen: true, isSending: true, hasPosted: false, modalContent: { parentLocationId: action.parentLocationId, parentLocationName: action.parentLocationName, parentLocationNameLong: action.parentLocationNameLong, locationId: action.locationId, locationUrl: action.locationUrl, locationImage: action.locationImage, locationNameLong: action.locationNameLong, locationName: action.locationName, locationType: action.locationType, removeBookmark: action.removeBookmark }, modalName: action.name, modalType: 'Bookmark' });
+      return Object.assign({}, state, { modalIsOpen: true, isSending: true, hasPosted: false, modalContent: { parentLocationId: action.parentLocationId, parentLocationName: action.parentLocationName, parentLocationNameLong: action.parentLocationNameLong, parentLocationImage: action.parentLocationImage, locationId: action.locationId, locationUrl: action.locationUrl, locationImage: action.locationImage, locationNameLong: action.locationNameLong, locationName: action.locationName, locationType: action.locationType, removeBookmark: action.removeBookmark, latitude: action.latitude , longitude: action.longitude }, modalName: action.name, modalType: 'Bookmark' });
     case types.CLOSE_BOOKMARK_MODEL:
       return Object.assign({}, state, { modalIsOpen: false, isSending: false, hasPosted: false, modalName: action.name, modalType: 'Bookmark' });
 
@@ -63,6 +63,17 @@ export default function modalReducer(state = { isSending: false, hasPosted: fals
     case types.CLOSE_POLICY_MODEL:
       return Object.assign({}, state, { modalIsOpen: false, isSending: false, hasPosted: false, modalName: action.name, modalType: 'CancellationPolicy' });
 
+    case types.OPEN_MAP_SIDEBAR_MODEL:
+      return Object.assign({}, state, { modalIsOpen: true, isSending: true, hasPosted: false, modalContent: { longitude: action.longitude, latitude: action.latitude, text: action.text, zoom: action.zoom, markerArray: action.markerArray, locationType: action.locationType }, modalName: action.name, modalType: 'MapSidebarModal' });
+    case types.CLOSE_MAP_SIDEBAR_MODEL:
+      return Object.assign({}, state, { modalIsOpen: false, isSending: false, hasPosted: false, modalName: action.name, modalType: 'MapSidebarModal' });
+
+    case types.OPEN_CATEGORY_MODEL:
+      return Object.assign({}, state, { modalIsOpen: true, isSending: true, hasPosted: false, modalContent: { categories: action.categories, selectedCategories: action.selectedCategories }, modalName: action.name, modalType: 'CategoryModal' });
+    case types.CLOSE_CATEGORY_MODEL:
+      return Object.assign({}, state, { modalIsOpen: false, isSending: false, hasPosted: false, modalName: action.name, modalType: 'CategoryModal' });
+    case types.CHANGE_CATEGORY_MODEL:
+      return Object.assign({}, state, { modalIsOpen: true, isSending: true, hasPosted: false, modalContent: { selectedCategories: action.selectedCategories }, modalName: action.name, modalType: 'ChangeCategories' });
     default:
       return state;
   }

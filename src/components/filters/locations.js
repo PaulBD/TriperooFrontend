@@ -68,15 +68,19 @@ class CategorySideBar extends React.Component {
                     }
                     return (
                       <li className={className} key={category.name}>
-                          <a href="#" onClick={this.handleCategoryChange} data-id={category.id} data-name={category.name}>
-                            <i className={category.icon}></i> {category.name}
-                          </a>
+                        <a href="#" onClick={this.handleCategoryChange} data-id={category.id} data-name={category.name}>
+                          <input type="checkbox" className="form-check-inline" checked={this.state.typeFilterList.includes(category.name) ? true : false}/>&nbsp;
+                          {category.name}
+                          <i className={this.state.typeFilterList.includes(category.name) ? "fa fa-check categoryCheck" : "hide"} />
+                        </a>
                       </li>
                     );
                   }, this)
                 }
+                <li className={this.state.showAll ? "hide" : "text-right"}>
+                  <a href="#" onClick={this.showMore}>More <i className="fa fa-arrow-down"></i></a>
+                </li>
               </ul>
-              <p className={this.state.showAll ? "hide" : "text-right"}><a href="#" onClick={this.showMore}>More Categories <i className="fa fa-arrow-down"></i></a></p>
             </div>
       );
     }

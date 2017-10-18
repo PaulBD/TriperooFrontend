@@ -47,6 +47,15 @@ import CustomerFollowing from './apps/customer/following';
 
 // Articles
 import LondonArticle from './apps/location/travelguides/united-kingdom/london';
+import NewYorkArticle from './apps/location/travelguides/united-states/new-york';
+
+//Admin
+import Admin from './apps/admin/index';
+import AdminSecure from './apps/admin/secure/main';
+import AdminContent from './apps/admin/secure/content/main';
+import AdminCustomers from './apps/admin/secure/customers/main';
+import AdminAnalytics from './apps/admin/secure/analytics/main';
+import AdminFeeds from './apps/admin/secure/feeds/main';
 
 // Hotels
 import Hotels from './apps/hotel';
@@ -103,6 +112,15 @@ export default (
 
 
     <Route path="/(:placeId)/visit/(:placeName)/article/take-a-fabulous-vacation-in-london" component={LondonArticle}/>
+    <Route path="/(:placeId)/visit/(:placeName)/article/discover-new-york" component={NewYorkArticle}/>
+
+
+    <Route path="/admin-console" component={Admin}/>
+    <Route path="/admin-console/secure" component={AdminSecure}/>
+    <Route path="/admin-console/secure/analytics" component={AdminAnalytics}/>
+    <Route path="/admin-console/secure/content" component={AdminContent}/>
+    <Route path="/admin-console/secure/customers" component={AdminCustomers}/>
+    <Route path="/admin-console/secure/feeds" component={AdminFeeds}/>
 
     <Route path="*" component={NotFoundPage}/>
   </Route>
