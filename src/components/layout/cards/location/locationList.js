@@ -5,6 +5,7 @@ import * as authenticationActions from '../../../../actions/customer/authenticat
 import ReviewIcon from '../../location/reviewIcon';
 import PhotoIcon from '../../location/photoIcon';
 import BookmarkIcon from '../../location/bookmarkIcon';
+import VisitIcon from '../../location/visitIcon';
 let titleCase = require('title-case');
 
 class LocationList extends React.Component {
@@ -133,10 +134,13 @@ class LocationList extends React.Component {
                   <ReviewIcon locationId={location.regionID} locationName={location.regionNameLong} locationType={location.subClass} key={location.regionID}/>
                 </li>
                 <li>
-                  <PhotoIcon locationId={location.regionID} locationName={location.regionNameLong} locationType={location.subClass} key={location.regionID}/>
+                  <PhotoIcon locationId={location.regionID} locationName={location.regionName} locationNameLong={location.regionNameLong} locationType={location.subClass} key={location.regionID}/>
                 </li>
                 <li>
                   <BookmarkIcon parentLocationId={location.parentRegionID} parentLocationName={location.parentRegionName} parentLocationNameLong={location.parentRegionNameLong} parentLocationImage={location.parentRegionImage}  locationNameLong={location.regionNameLong} locationUrl={location.url} locationImage={location.image} locationId={location.regionID} locationName={location.regionName} locationType={location.subClass} key={location.regionID} latitude={location.locationCoordinates ? location.locationCoordinates.latitude : 0} longitude={location.locationCoordinates ? location.locationCoordinates.longitude : 0}/>
+                </li>
+                <li>
+                  <VisitIcon parentLocationId={location.parentRegionID} parentLocationName={location.parentRegionName} parentLocationNameLong={location.parentRegionNameLong} parentLocationImage={location.parentRegionImage}  locationNameLong={location.regionNameLong} locationUrl={location.url} locationImage={location.image} locationId={location.regionID} locationName={location.regionName} locationType={location.subClass} key={location.regionID} latitude={location.locationCoordinates ? location.locationCoordinates.latitude : 0} longitude={location.locationCoordinates ? location.locationCoordinates.longitude : 0}/>
                 </li>
               </ul>
 

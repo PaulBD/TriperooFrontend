@@ -1,3 +1,4 @@
+
 import React, {PropTypes} from 'react';
 
 import ReviewButton from '../../layout/buttons/reviewButton';
@@ -96,7 +97,7 @@ class UserProfileNavigation extends React.Component {
             </div>
             <div className="col-md-12 col-12">
                 <div className="gap-small"></div>
-              <ReviewButton name="sidePanel" locationId={0} locationName="" locationNameLong="" locationType="" />
+              <ReviewButton name="sidePanel" locationId={0} locationName="" locationNameLong="" locationType="" pageNumber={0} pageSize={0} />
             </div>
           </div>
           <div className="gap-small"></div>

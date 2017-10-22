@@ -138,10 +138,10 @@ export function getCustomerReviewsFailure(message) {
   return {type: types.CUSTOMER_REVIEWS_FAILURE, isSending: false, hasPosted: false, message};
 }
 
-export function getReviews(customerReference) {
+export function getReviews(customerReference, pageSize, pageNumber) {
   return dispatch => {
     dispatch(getCustomerReviewsInitialize(customerReference));
-    return ReviewApi.getReviews(customerReference).then(reviews => {
+    return ReviewApi.getReviews(customerReference, pageSize, pageNumber).then(reviews => {
       dispatch(getCustomerReviewsSuccess(reviews));
     }).catch(error => {
       dispatch(likeReviewFailure(error));

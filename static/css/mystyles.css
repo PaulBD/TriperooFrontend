@@ -82,7 +82,7 @@ body { margin: 0; }
 
 .notFoundBg { background-image:url(/static/img/1300x900.png); }
 
-.airportLounge { background-image:url(/static/img/holidayextras.jpg); }
+.airportLounge { background-image:url(/static/img/holidayextras-v2.png); }
 .carHire { background-image:url(/static/img/carHire.jpg); }
 
 .map { width:100%; height:500px; }
@@ -771,7 +771,7 @@ div.ReactTags__suggestions ul li.active {
 }
 
 /* Airport Parking */
-.airportParking, .airportLoungeCard { min-height:590px;}
+.airportParking, .airportLoungeCard, .customerPhotos { min-height:590px;}
 .airportLoungeCard { min-height:540px;}
 .airportParking .card-title, .airportLoungeCard .card-title { height: 60px; }
 
@@ -1072,6 +1072,28 @@ form.searchForm label a { float:right; }
 .twPc-divLocation,
 .twPc-divUser {
   margin: 10px 0 0;
+}
+
+.twPc-avatarLink.header {
+  margin-top: 20px;
+  z-index: 999;
+  position: absolute;
+}
+
+.twPc-divLocation.header, .twPc-divUser.header {
+  margin: 22px 0 0;
+  z-index: 999;
+  position: absolute;
+  left: 120px;
+}
+
+.header .twPc-avatarImg {
+  -webkit-filter: blur(0px);
+}
+
+.header .twPc-button {
+margin: 0;
+  text-align: left;
 }
 
 .twPc-divLocation
@@ -1456,11 +1478,25 @@ ul.twPc-Arrange li.location {
 /*.restaurantList .hover-img, .restaurantList .hover-img img { height: 170px !important; }*/
 .jumbotron.maps { padding: 0; margin:0; }
 .jumbotron.hotels { margin: 0; padding:30px 0; }
-.mapBackground { background-image: url(/static/img/map-bg.png); height: 120px; background-size:100%; text-align: center; vertical-align: middle; padding-top: 40px;  }
+.mapBackground { background-image: url(/static/img/map-bg.png); height: 120px; background-size:100%; text-align: center; vertical-align: middle;   }
 .infoWindowContent h1 { font-size: 14px; }
-.infoWindowContent .text { width:120px; float:left; }
+.infoWindowContent .text { width:130px; float:left; }
 .categoryCheck { float: right; padding-top: 3px; }
 .sideBar { border-right: solid 1px #efefef; }
 .bgImage { background-size: 100%; height: 162px; }
 .pageTitle { margin: 5px 0px 10px 0px }
-.profileHome.card-columns { column-count: 2; }
+.profileHome.card-columns { column-count: 4; }
+
+.customerSubHeader { margin: 0px; padding: 0px; }
+.customerHeader h3, .customerHeader h4 { position: absolute; z-index: 999; width:100%; top:30px; }
+.customerHeader h4 { top:65px; font-size: 18px;}
+
+.createPhoto { height: 252px; }
+.createTripBlank { height: 379px; }
+.createTripBlank .fa, .createPhoto .fa { font-size: 70px; margin: 40px 0; }
+.createPhoto .fa { margin: 10px 0px }
+.removePhoto .fa { font-size: 30px; }
+.tripDate { font-size: 14px; text-align: left; margin-top: 80px; z-index: 999; position: absolute;}
+.tripNav { margin: 0; padding: 0; }
+.tripNav a { border-left: solid 1px #cccccc; color: #333333; }
+.tripNav a:hover, .tripNav a.active { color: #ffffff; background-color: #ed8323; }

@@ -4,7 +4,6 @@ const BulletPoints = () => {
   return (
     <div className="row">
       <div className="col-md-3">
-        <a href="#" data-toggle="modal" data-target="#signupModel">
           <div className="mb30 thumb"><i
             className="fa fa-users box-icon-left round box-icon-big box-icon-border animate-icon-top-to-bottom"></i>
             <div className="thumb-caption">
@@ -12,7 +11,6 @@ const BulletPoints = () => {
               <p className="thumb-desc">Get travel advice from people who've been there!</p>
             </div>
           </div>
-        </a>
       </div>
       <div className="col-md-3">
         <a href="/hotels">
@@ -37,12 +35,12 @@ const BulletPoints = () => {
         </a>
       </div>
       <div className="col-md-3">
-        <a href="/travel-extras/car-hire">
+        <a href="/travel-extras">
           <div className="mb30 thumb"><i
             className="fa fa-car box-icon-left round box-icon-big box-icon-border animate-icon-top-to-bottom"></i>
             <div className="thumb-caption">
-              <h4 className="thumb-title">Best Car Hire</h4>
-              <p className="thumb-desc">Thousands of destinations to get the best car hire</p>
+              <h4 className="thumb-title">Holiday Extras</h4>
+              <p className="thumb-desc">Save money with parking, airport hotels & lounges</p>
             </div>
           </div>
         </a>

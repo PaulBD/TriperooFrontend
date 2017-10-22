@@ -12,19 +12,16 @@ class TriperooGoogleMap extends React.Component {
 
   componentDidMount() {
 
-
     if (window.google != undefined) {
       let map = new window.google.maps.Map(document.getElementById('map'), {
         center: {lat: this.props.latitude, lng: this.props.longitude},
-        zoom: 13,
+        zoom: this.props.zoom,
         mapTypeId: 'roadmap'
       });
 
       let icon = {
         url: "/static/img/map-marker.png", // url
-        scaledSize: new window.google.maps.Size(25, 25), // scaled size
-        origin: new window.google.maps.Point(0, 0), // origin
-        anchor: new window.google.maps.Point(0, 0) // anchor
+        scaledSize: new window.google.maps.Size(25, 25)
       };
 
       if (this.props.markerArray.length > 0) {
@@ -33,14 +30,15 @@ class TriperooGoogleMap extends React.Component {
           let infowindow = new window.google.maps.InfoWindow({
             content: '<div class="infoWindowContent"><div class="pic"><div class="text">' +
             '<p class="mb-0"><strong>' + location.regionName + '</strong></p>' +
-            '<p class="mb-0"><small>' + location.subClass + ' Food</small></p>' +
+            '<p class="mb-0"><small>' + location.subClass + '</small></p>' +
             '<p class="mb-0"><small><a href="' + location.url + '">View</a></small></p></div>' +
             '</div>'
           });
 
           let marker = new window.google.maps.Marker({
-            position: {lat: location.locationCoordinates.latitude, lng: location.locationCoordinates.longitude},
-            icon: icon
+            position: new window.google.maps.LatLng(location.locationCoordinates.latitude, location.locationCoordinates.longitude),
+            icon: icon,
+            map: map
           });
 
           marker.addListener('click', function () {
@@ -72,7 +70,8 @@ class TriperooGoogleMap extends React.Component {
 
 TriperooGoogleMap.defaultProps = {
   markerArray: [],
-  singleIcon: false
+  singleIcon: false,
+  zoom: 13
 };
 
 TriperooGoogleMap.propTypes = {

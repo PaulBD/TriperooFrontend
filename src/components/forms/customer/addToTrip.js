@@ -76,7 +76,7 @@ class BookmarkLocation extends React.Component {
   getTrips()
   {
     this.setState({loadingTrips: true, errors: ''});
-    this.props.userActions.getTrips()
+    this.props.userActions.getTrips(this.props.customerReference)
       .then(() => {
         this.setState({loadingTrips: false, errors: this.props.errorMessage});
 
@@ -264,6 +264,7 @@ BookmarkLocation.propTypes = {
   userActions: PropTypes.object.isRequired,
   isSending: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string,
+  customerReference: PropTypes.string,
   hasPosted: PropTypes.bool,
   latitude: PropTypes.number,
   longitude: PropTypes.number,
@@ -273,10 +274,13 @@ BookmarkLocation.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
+
+  let user = localStorage.getItem('id_token') ? JSON.parse(localStorage.getItem('id_token')) : {};
   return {
     isSending: state.user.isFetching,
     errorMessage: state.user.errorMessage,
-    tripList: state.user.trips ? state.user.trips : []
+    tripList: state.user.trips ? state.user.trips : [],
+    customerReference: user.userId
   };
 }
 

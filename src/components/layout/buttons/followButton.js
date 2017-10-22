@@ -16,9 +16,13 @@ class FollowButton extends React.Component {
   }
 
   checkFollows() {
+
+    console.log(this.props.followedBy);
+
     if (this.props.followedBy != undefined) {
       for (let i = 0; i < this.props.followedBy.length; i++) {
-        if (this.props.followedBy[i].customerReference == this.props.customerReference) {
+        console.log(this.props.followedBy[i].customerReference);
+        if (this.props.followedBy[i].customerReference.includes(this.props.activeCustomerReference)) {
           this.setState({isFollowing: true});
         }
       }
@@ -26,6 +30,8 @@ class FollowButton extends React.Component {
   }
 
   followUser(e) {
+    e.preventDefault();
+
     this.props.userFollowActions.followUser(this.props.customerReference)
       .then (response => {
           this.setState({isFollowing: true});
@@ -38,6 +44,8 @@ class FollowButton extends React.Component {
   }
 
   unfollowUser(e) {
+    e.preventDefault();
+
     this.props.userFollowActions.unfollowUser(this.props.customerReference)
       .then (response => {
           this.setState({isFollowing: false});
@@ -52,7 +60,7 @@ class FollowButton extends React.Component {
     if (!this.state.isFollowing) {
       return (
         <div className={this.props.isActiveUser ? "hide" : "twPc-button"}>
-          <a href="#" onClick={this.followUser} className="btn btn-sm btn-secondary" data-remote="true">
+          <a href="#" onClick={this.followUser} className="btn btn-sm btn-primary" data-remote="true">
             <i className="fa fa-check"></i>
             Follow
           </a>
@@ -62,7 +70,7 @@ class FollowButton extends React.Component {
     else {
       return (
         <div className={this.props.isActiveUser ? "hide" : "twPc-button"}>
-          <a href="#" onClick={this.unfollowUser} className="btn btn-sm btn-secondary" data-remote="true">
+          <a href="#" onClick={this.unfollowUser} className="btn btn-sm btn-primary" data-remote="true">
             <i className="fa fa-check"></i>
             Following
           </a>
@@ -82,9 +90,18 @@ FollowButton.propTypes = {
   userFollowActions : PropTypes.object.isRequired,
   isActiveUser : PropTypes.bool.isRequired,
   customerReference : PropTypes.string.isRequired,
+  activeCustomerReference : PropTypes.string.isRequired,
   followedBy : PropTypes.array.isRequired,
   updateStats: PropTypes.func.isRequired
 };
+
+function mapStateToProps(state, ownProps) {
+  let user = localStorage.getItem('id_token') ? JSON.parse(localStorage.getItem('id_token')) : {};
+  return {
+    isAuthenticated: state.authentication.isAuthenticated,
+    activeCustomerReference: user ? user.userId : ''
+  };
+}
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -92,5 +109,5 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapDispatchToProps)(FollowButton);
+export default connect(mapStateToProps, mapDispatchToProps)(FollowButton);
 

@@ -53,7 +53,7 @@ class UserApi {
     return new Promise((resolve, reject) => {
       axios({
         method: 'get',
-        url:  baseUrl + '/customer/trip/' + tripId + '?reference=' + customerReference,
+        url:  baseUrl + '/customer/' + customerReference + '/trip/' + tripId,
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
@@ -236,6 +236,32 @@ class UserApi {
       .catch(function (error) {
         reject(error);
       });
+    });
+  }
+
+  // ****************************************
+  // Post new visit
+  // ****************************************
+  static postVisit(location) {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'post',
+        url:  baseUrl + '/customer/visit',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'token': JSON.parse(localStorage.getItem('id_token')).token
+        },
+        data: {
+          location
+        }
+      })
+        .then(response => {
+          resolve(Object.assign([], response.data));
+        })
+        .catch(function (error) {
+          reject(error);
+        });
     });
   }
 }

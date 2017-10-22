@@ -3,29 +3,29 @@ import CategoryFilter from '../common/categoryFilter';
 import Loader from '../../loaders/contentLoader';
 let _ = require('lodash');
 
-class FilterAttractions extends React.Component {
+class FilterPointOfInterests extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      attractionCategory: []
+      pointOfInterestsCategory: []
     };
-    this.filterAttractions = this.filterAttractions.bind(this);
+    this.filterPointOfInterests = this.filterPointOfInterests.bind(this);
   }
 
-  filterAttractions(filter) {
-    this.setState({attractionCategory: filter });
+  filterPointOfInterests(filter) {
+    this.setState({pointOfInterestsCategory: filter });
     this.applyFilter(filter);
   }
 
-  applyFilter(attractionCategory) {
-    this.props.filterAttractions(attractionCategory);
+  applyFilter(pointOfInterestsCategory) {
+    this.props.filterPointOfInterests(pointOfInterestsCategory);
   }
 
   render(){
     if (!this.props.isFetching) {
       return (
       <div className="profile-usermenu">
-        <CategoryFilter title="Attraction Types" categories={this.props.categories} filterResults={this.filterAttractions} numberToShow={6} />
+        <CategoryFilter title="Point Of Interest Types" categories={this.props.categories} filterResults={this.filterPointOfInterests} numberToShow={6} />
       </div>
       );
     }
@@ -39,11 +39,11 @@ class FilterAttractions extends React.Component {
   }
 }
 
-FilterAttractions.propTypes = {
+FilterPointOfInterests.propTypes = {
   categories: PropTypes.array,
   isFetching: PropTypes.bool,
-  filterAttractions: PropTypes.func
+  filterPointOfInterests: PropTypes.func
 };
 
-export default FilterAttractions;
+export default FilterPointOfInterests;
 

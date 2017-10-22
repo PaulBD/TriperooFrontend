@@ -9,13 +9,18 @@ class Bookmark extends React.Component {
     this.bookmarkLocation = this.bookmarkLocation.bind(this);
   }
 
+  componentDidMount() {
+    $(this.refs.bookmark).tooltip();
+  }
+
   bookmarkLocation(e) {
     e.preventDefault();
     this.props.modalActions.openBookmark(this.props.parentLocationId, this.props.parentLocationName, this.props.parentLocationNameLong, this.props.parentLocationImage, this.props.locationId, this.props.locationNameLong, this.props.locationName, this.props.locationType, this.props.locationImage, this.props.locationUrl, this.props.removeBookmark, this.props.latitude, this.props.longitude);
   }
 
   render(){
-    let cssClass = "fa fa-heart-o box-icon-normal round";
+
+    let cssClass = "fa fa-bookmark box-icon-normal round";
 
     if (this.props.removeBookmark) {
       cssClass = "fa fa-minus-circle box-icon-normal round";
@@ -23,7 +28,7 @@ class Bookmark extends React.Component {
 
     return (
         <div>
-          <a className={cssClass} key={this.props.locationId} href="#" onClick={this.bookmarkLocation} title="Add to Trips"></a>
+          <a className={cssClass} ref="bookmark" key={this.props.locationId} href="#" onClick={this.bookmarkLocation} data-toggle="tooltip" data-placement="top" title="Add to Trips" ></a>
         </div>
       );
     }

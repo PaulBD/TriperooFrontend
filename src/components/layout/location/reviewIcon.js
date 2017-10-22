@@ -9,6 +9,10 @@ class ReviewIcon extends React.Component {
     this.writeReview = this.writeReview.bind(this);
   }
 
+  componentDidMount() {
+    $(this.refs.review).tooltip();
+  }
+
   writeReview(e) {
     e.preventDefault();
     this.props.modalActions.openReview(this.props.locationId, this.props.locationName, this.props.locationType);
@@ -17,7 +21,7 @@ class ReviewIcon extends React.Component {
   render(){
     return (
         <div>
-          <a className="fa fa-comments box-icon-normal round" key={this.props.locationId} href="#" onClick={this.writeReview} data-toggle="modal" data-target="#reviewModel" title="Review"></a>
+          <a ref="review" className="fa fa-comments box-icon-normal round" key={this.props.locationId} href="#" onClick={this.writeReview} data-toggle="tooltip" data-placement="top" title="Write Review"></a>
         </div>
       );
     }

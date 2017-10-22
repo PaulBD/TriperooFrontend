@@ -3,35 +3,35 @@ import AutoComplete from '../common/autocomplete';
 
 const ProfileForm = ({name, emailAddress, bio, dateOfBirth, city, password, phoneNumber, isFacebookSignup, isUpdating, onSubmit, onChange, onChangeAutoComplete, errors}) => {
   return (
-    <div>
+    <div className="col-md-12">
       <div className={errors && errors.length > 0 ? 'col-md-12' : 'col-md-12 hide'}>
         <div className="bg-danger form-danger">
           {errors}
         </div>
       </div>
-      <form className="modalForm" onSubmit={onSubmit}>
+      <form className="row" onSubmit={onSubmit}>
         <div className="col-md-6">
-          <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-envelope input-icon input-icon-hightlight"></i>
+          <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-envelope input-icon homeSearchIcon"></i>
             <input className="form-control" placeholder="Enter Email Address" type="text" name="emailAddress" disabled={true} onChange={onChange} value={emailAddress} />
           </div>
-          <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-edit input-icon input-icon-hightlight"></i>
+          <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-edit input-icon homeSearchIcon"></i>
             <textarea className="form-control large" placeholder="Enter Bio" type="text" name="bio" onChange={onChange} value={bio} rows="6" />
           </div>
         </div>
         <div className="col-md-6">
-          <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-user input-icon input-icon-hightlight"></i>
+          <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-user input-icon homeSearchIcon"></i>
             <input className="form-control" placeholder="Enter Name" name="name" type="text" onChange={onChange} value={name} />
           </div>
-          <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
+          <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-calendar input-icon homeSearchIcon"></i>
             <input className="form-control" type="text" placeholder="Enter Date Of Birth" name="dateOfBirth" onChange={onChange} value={dateOfBirth} />
           </div>
-          <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-phone input-icon input-icon-hightlight"></i>
+          <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-phone input-icon homeSearchIcon"></i>
             <input className="form-control" type="text" placeholder="Enter Phone Number" name="phoneNumber" onChange={onChange} value={phoneNumber} />
           </div>
-          <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-map-marker input-icon input-icon-hightlight"></i>
+          <div className="form-group form-group-lg form-group-icon-left">
             <AutoComplete onChangeAutoComplete={onChangeAutoComplete} searchValue={city} searchType="city" placeholder="Current Location" cssClass="typeahead form-control" />
           </div>
-          <div className={isFacebookSignup ? "hide" : "form-group form-group-lg form-group-icon-left"}><i className="fa fa-lock input-icon input-icon-hightlight"></i>
+          <div className={isFacebookSignup ? "hide" : "form-group form-group-lg form-group-icon-left"}><i className="fa fa-lock input-icon homeSearchIcon"></i>
             <input className="form-control" placeholder="Enter New Password" name="pass" type="password" onChange={onChange}  />
           </div>
         </div>

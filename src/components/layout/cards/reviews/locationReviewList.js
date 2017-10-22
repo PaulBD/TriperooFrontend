@@ -84,7 +84,7 @@ class Reviews extends React.Component {
     if (!this.state.isLoadingReviews) {
       return (
         <div className="row">
-          <div className={this.props.locationType != 'all' && this.props.locationId > 0 && this.props.reviews.length > 0 ? "col-md-12" : "hide"}>
+          <div className={this.props.locationType != 'all' && this.props.locationId > 0 ? "col-md-12" : "hide"}>
             <ReviewFilter filterReviews={this.filterReviews}/>
           </div>
           <div className="col-md-12">

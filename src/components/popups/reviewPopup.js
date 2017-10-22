@@ -29,7 +29,7 @@ class ReviewPopup extends React.Component {
         searchName: this.props.locationName,
         searchId: this.props.locationId,
         searchType: this.props.locationType,
-        selectedTags: this.props.tags,
+        selectedTags: _.cloneDeep(this.props.tags),
         rating: this.props.starRating,
         comment: this.props.comment,
         reviewReference: this.props.reference,
@@ -90,13 +90,12 @@ class ReviewPopup extends React.Component {
         "ReviewType": this.state.searchType,
         "StarRating": this.state.rating,
         "comment": this.refs.comment.value.trim(),
-        "tags": this.state.selectedTags
+        "tags": _.cloneDeep(this.state.selectedTags)
       };
-
-      console.log(editReview);
 
       this.props.userReviewActions.updateReview(_.cloneDeep(editReview))
         .then(() => {
+          this.props.userReviewActions.getReviews(this.props.currentUserId);
           this.setState({isPostingReview: false, isLoadingReviews: false, wizardStep: 3});
         })
         .catch(error => {
@@ -123,7 +122,6 @@ class ReviewPopup extends React.Component {
 
   render(){
     return (
-
       <div className="modal-dialog modelReviewAuthentication" role="document">
         <div className="modal-content">
           <div className={this.state.wizardStep == 1 ? "modal-body" : "modal-body hide"}>
@@ -133,7 +131,7 @@ class ReviewPopup extends React.Component {
                 <p>Search for a place you'd like to review. (e.g London Eye, W Hotel, Barcelona)</p>
               </div>
               <div className="col-md-12">
-                <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-map-marker input-icon input-icon-hightlight"></i>
+                <div className="form-group form-group-lg form-group-icon-left">
                   <AutoComplete isAppSearch={false} onChangeAutoComplete={this.onChangeAutoComplete}  searchType="all" placeholder="Search anywhere in the world" cssClass="typeahead form-control" searchValue={this.state.searchName} />
                 </div>
               </div>
@@ -222,7 +220,8 @@ ReviewPopup.propTypes = {
   starRating: PropTypes.number,
   comment: PropTypes.string,
   tags: PropTypes.array,
-  closeModal: PropTypes.func
+  closeModal: PropTypes.func,
+  currentUserId: PropTypes.string
 };
 
 function mapStateToProps(state, ownProps) {

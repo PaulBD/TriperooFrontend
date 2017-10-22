@@ -17,7 +17,6 @@ export function getQuestionFailure(message) {
 }
 
 export function getQuestion(questionId) {
-
   return dispatch => {
     dispatch(getQuestionInitialize());
     return QuestionApi.getQuestion(questionId).then(question => {

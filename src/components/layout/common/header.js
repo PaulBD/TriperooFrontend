@@ -101,7 +101,7 @@ class Header extends React.Component {
                             <a className="dropdown-item" href={user ? user.userProfile + "/trips" : ""}>Trips <span className="pull-right"><i className="fa fa-heart-o"></i></span></a>
                             <a className="dropdown-item" href={user ? user.userProfile + "/reviews" : ""}>Reviews <span className="pull-right"><i className="fa fa-pencil"></i></span></a>
                             <a className="dropdown-item" href={user ? user.userProfile + "/photos" : ""}>Travel Photos <span className="pull-right"><i className="fa fa-camera"></i></span></a>
-                            <a className="dropdown-item" href={user ? user.userProfile + "/booking-history" : ""}>Booking History <span className="pull-right"><i className="fa fa-clock-o"></i></span></a>
+                            <a className="dropdown-item hide" href={user ? user.userProfile + "/booking-history" : ""}>Booking History <span className="pull-right"><i className="fa fa-clock-o"></i></span></a>
                             <a className="dropdown-item" onClick={this.onLogout}>Log Out <span className="pull-right"><i className="fa fa-lock"></i></span></a>
                           </div>
                         </li>

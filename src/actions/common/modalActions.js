@@ -16,6 +16,7 @@ export function closeModal() {
     dispatch(closeCancellationPolicyModal());
     dispatch(closeMapSideBarModal());
     dispatch(closeCategoryModel());
+    dispatch(closeVisitModal());
 	};
 }
 
@@ -108,17 +109,17 @@ export function openReview(locationId, locationName, locationType, pageSize, pag
 // ****************************************
 // Edit review
 // ****************************************
-export function editReviewModal(reference, locationId, locationName, locationType, locationAddress, starRating, comment, tags) {
-  return {type: types.EDIT_REVIEW_MODEL, name: 'EditReviewModal', reference, locationId, locationName, locationType, locationAddress, starRating, comment, tags};
+export function editReviewModal(reference, locationId, locationName, locationType, locationAddress, starRating, comment, tags, currentUserId) {
+  return {type: types.EDIT_REVIEW_MODEL, name: 'EditReviewModal', reference, locationId, locationName, locationType, locationAddress, starRating, comment, tags, currentUserId};
 }
 
 export function closeEditReviewModal() {
   return {type: types.CLOSE_EDIT_REVIEW_MODEL, name: 'EditReviewModal'};
 }
 
-export function openEditReview(reference, locationId, locationName, locationType, locationAddress, starRating, comment, tags) {
+export function openEditReview(reference, locationId, locationName, locationType, locationAddress, starRating, comment, tags, currentUserId) {
   return dispatch => {
-    dispatch(editReviewModal(reference, locationId, locationName, locationType, locationAddress, starRating, comment, tags));
+    dispatch(editReviewModal(reference, locationId, locationName, locationType, locationAddress, starRating, comment, tags, currentUserId));
   };
 }
 
@@ -203,7 +204,6 @@ export function closeBookmarkModal() {
 }
 
 export function openBookmark(parentLocationId, parentLocationName, parentLocationNameLong, parentLocationImage, locationId, locationNameLong, locationName, locationType, locationImage, locationUrl, removeBookmark, latitude, longitude) {
-  console.log(latitude);
 	return dispatch => {
 		dispatch(openBookmarkModal(parentLocationId, parentLocationName, parentLocationNameLong, parentLocationImage, locationId, locationNameLong, locationName, locationType, locationImage, locationUrl, removeBookmark, latitude, longitude));
 	};
@@ -211,19 +211,36 @@ export function openBookmark(parentLocationId, parentLocationName, parentLocatio
 
 
 // ****************************************
+// Add Visit
+// ****************************************
+export function openVisitModal(parentLocationId, parentLocationName, parentLocationNameLong, parentLocationImage, locationId, locationNameLong, locationName, locationType, locationImage, locationUrl, removeBookmark, latitude, longitude) {
+  return {type: types.OPEN_VISIT_MODEL, parentLocationId: parentLocationId, parentLocationName: parentLocationName, parentLocationNameLong: parentLocationNameLong, parentLocationImage: parentLocationImage, locationId: locationId, locationName: locationName, locationType: locationType, locationNameLong: locationNameLong, locationUrl: locationUrl, locationImage: locationImage, removeBookmark: removeBookmark, latitude:latitude, longitude:longitude, name: 'BookmarkModal' };
+}
+
+export function closeVisitModal() {
+  return {type: types.CLOSE_VISIT_MODEL, name: 'VisitModal'};
+}
+
+export function openVisit(parentLocationId, parentLocationName, parentLocationNameLong, parentLocationImage, locationId, locationNameLong, locationName, locationType, locationImage, locationUrl, removeBookmark, latitude, longitude) {
+  return dispatch => {
+    dispatch(openVisitModal(parentLocationId, parentLocationName, parentLocationNameLong, parentLocationImage, locationId, locationNameLong, locationName, locationType, locationImage, locationUrl, removeBookmark, latitude, longitude));
+  };
+}
+
+// ****************************************
 // Add Bookmark
 // ****************************************
-export function openPhotoModal(locationId, locationName, locationType) {
-	return {type: types.OPEN_PHOTO_MODEL, locationId: locationId, locationName: locationName, locationType: locationType, name: 'PhotoModal' };
+export function openPhotoModal(locationId, locationName, locationNameLong, locationType) {
+	return {type: types.OPEN_PHOTO_MODEL, locationId: locationId, locationName: locationName, locationNameLong: locationNameLong, locationType: locationType, name: 'PhotoModal' };
 }
 
 export function closePhotoModal() {
 	return {type: types.CLOSE_PHOTO_MODEL, name: 'PhotoModal'};
 }
 
-export function openPhoto(locationId, locationName, locationType) {
+export function openPhoto(locationId, locationName, locationNameLong, locationType) {
 	return dispatch => {
-		dispatch(openPhotoModal(locationId, locationName, locationType));
+		dispatch(openPhotoModal(locationId, locationName, locationNameLong, locationType));
 	};
 }
 

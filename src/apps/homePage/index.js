@@ -24,7 +24,7 @@ const HomePage = () => {
                 <hr />
               <div className="gap"></div>
                 <div className="row row-wrap">
-                    <ReviewList locationType="all" locationId={0} pageSize={6} locationName="" pageNumber={0} showTitle={true} />
+                    <ReviewList locationType="all" locationId={0} pageSize={3} locationName="" pageNumber={0} showTitle={true} />
                 </div>
             </div>
             <LastMinuteDeal locationId={2114} />

@@ -291,3 +291,36 @@ export function postPhoto(location, state) {
     }
   };
 }
+
+
+// ****************************************
+// Insert New Visit
+// ****************************************
+export function visitInitialize(location) {
+  return {type: types.VISIT_REQUEST, isSending: true, hasPosted: false, location};
+}
+
+export function visitSuccess() {
+  return {type: types.VISIT_SUCCESS, isSending: false, hasPosted: true};
+}
+
+export function visitFailure(message) {
+  return {type: types.VISIT_FAILURE, isSending: false, hasPosted: false, message};
+}
+
+export function postVisit(location) {
+  return dispatch => {
+    dispatch(visitInitialize(location));
+    if (location.regionID > 0)
+    {
+      return UserApi.postVisit(location).then(visit => {
+        dispatch(visitSuccess());
+      }).catch(error => {
+        dispatch(visitFailure(error.response.data));
+      });
+    }
+    else {
+      dispatch(visitFailure("An error has occurred whilst trying to mark this location as visited"));
+    }
+  };
+}

@@ -106,11 +106,11 @@ class ReviewApi {
   // ****************************************
   // Get Reviews
   // ****************************************
-  static getReviews(customerReference) {
+  static getReviews(customerReference, pageSize, pageNumber) {
     return new Promise((resolve, reject) => {
       axios({
         method: 'get',
-        url:  baseUrl + '/customer/' + customerReference + '/reviews',
+        url:  baseUrl + '/customer/' + customerReference + '/reviews?pageSize=' + pageSize + '&pageNumber=' + pageNumber,
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'

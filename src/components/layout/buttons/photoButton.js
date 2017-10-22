@@ -8,19 +8,20 @@ let titleCase = require('title-case');
 class PhotoButton extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.writeReview = this.writeReview.bind(this);
+    this.uploadPhoto = this.uploadPhoto.bind(this);
   }
 
-  writeReview(e) {
+  uploadPhoto(e) {
     e.preventDefault();
-    this.props.modalActions.openPhoto(this.props.locationId, this.props.locationName, this.props.locationType);
+    console.log(this.props.locationNameLong);
+    this.props.modalActions.openPhoto(this.props.locationId, this.props.locationName, this.props.locationNameLong, this.props.locationType);
   }
 
   render() {
     if (this.props.isAuthenticated) {
       return (
         <div key={this.props.name}>
-          <a href="#" className="btn btn-secondary questionBtn" onClick={this.writeReview}>
+          <a href="#" className="btn btn-secondary questionBtn" onClick={this.uploadPhoto}>
               <i className="fa fa-picture-o"></i>
               Upload Photos
           </a>

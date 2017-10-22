@@ -14,7 +14,7 @@ const ContactPage = () => {
     document.title = 'Contact Triperoo';
 
     let style = {
-      backgroundImage: 'url(/static/img/north-wales.jpg)'
+      backgroundImage: 'url(/static/img/contact-us.jpg)'
     };
 
     return (

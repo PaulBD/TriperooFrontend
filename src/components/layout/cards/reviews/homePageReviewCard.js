@@ -20,7 +20,7 @@ class ReviewCard extends React.Component {
 
   editReview(e, reference, locationId, locationName, locationType, locationAddress, starRating, comment, tags) {
     e.preventDefault();
-    this.props.modalActions.openEditReview(reference, locationId, locationName, locationType, locationAddress, starRating, comment, tags);
+    this.props.modalActions.openEditReview(reference, locationId, locationName, locationType, locationAddress, starRating, comment, tags, this.props.currentUserId);
   }
 
   removeReview(e, reference) {
@@ -36,7 +36,7 @@ class ReviewCard extends React.Component {
 
   render() {
     return (
-      <div className="card-columns">
+      <div className={this.props.cssClass}>
         {
           this.props.reviews.map(review => {
 
@@ -76,7 +76,7 @@ class ReviewCard extends React.Component {
 ReviewCard.defaultProps = {
   reviews: [],
   maxTags: 5,
-  cssClass: 'col-md-4',
+  cssClass: 'card-deck',
   showEdit: false
 };
 
@@ -87,7 +87,8 @@ ReviewCard.propTypes = {
   modalActions: PropTypes.object.isRequired,
   userReviewActions: PropTypes.object.isRequired,
   showEdit: PropTypes.bool,
-  refreshData: PropTypes.func
+  refreshData: PropTypes.func,
+  currentUserId: PropTypes.string
 };
 
 function mapStateToProps(state, ownProps) {

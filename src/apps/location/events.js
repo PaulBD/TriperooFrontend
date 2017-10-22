@@ -4,21 +4,21 @@ import {bindActionCreators} from 'redux';
 import * as eventsActions from '../../actions/location/event/eventsActions';
 import * as locationActions from '../../actions/location/locationActions';
 
-import EventCategories from '../../components/filters/locations';
 import EventList from '../../components/layout/cards/events/eventList';
 import Pagination from "react-js-pagination";
 import SubPageHeader from '../../components/content/headers/locationCategory';
 import TriperooLoader from '../../components/loaders/globalLoader';
 import Toastr from 'toastr';
+import FilterEvents from '../../components/forms/searchForms/filterEvents';
 
 let titleCase = require('title-case');
 
 class EventHome extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.changeEvent = this.changeEvent.bind(this);
+    this.filterEvents = this.filterEvents.bind(this);
     this.changePage = this.changePage.bind(this);
-    this.state = { isLoadingLocation: false, isLoadingEvents: false, pageSize: 12, pageNumber: 0, activePageNumber: 1, categoryName: 'all', friendlyCategory: '' };
+    this.state = { isLoadingLocation: false, isLoadingEvents: false, isLoadingEventCategories: false, pageSize: 12, pageNumber: 0, activePageNumber: 1, categoryName: 'all', friendlyCategory: '' };
   }
 
   componentWillMount() {
@@ -34,12 +34,6 @@ class EventHome extends React.Component {
         Toastr.error(error);
         this.setState({isLoadingLocation: false});
       });
-  }
-
-  changeEvent(categoryId, catgeoryName) {
-    window.scrollTo(0, 0);
-    this.setState({ categoryName: categoryId, friendlyCategory: catgeoryName });
-    this.loadEvents(this.props.locationId, categoryId, this.state.pageSize, this.state.pageNumber);
   }
 
   changePage(value) {
@@ -58,51 +52,19 @@ class EventHome extends React.Component {
       });
   }
 
+
+  filterEvents(categoryId, categoryName) {
+    console.log(categoryName);
+    this.setState({ categoryName: categoryId, friendlyCategory: categoryName })
+    this.loadEvents(this.props.locationId, categoryId, this.state.pageSize, this.state.pageNumber);
+  }
+
   render() {
     document.title = 'All events this week in ' + this.props.locationName;
 
-    let intro = '';
-    let title = '';
-    let totalItems = 0;
-
     if (! this.state.isLoadingLocation)
     {
-      totalItems = this.props.totalItems;
-
-      if (this.state.categoryName != '') {
-        if (this.state.friendlyCategory == '')
-        {
-          intro = 'We found ' + totalItems + ' events matching all categories.';
-          title= '<span>Featured Events:</span> Recommended For You';
-        }
-        else
-        {
-          intro = 'We found ' + totalItems + ' events matching ' + this.state.friendlyCategory + '.';
-          title= '<span>Local:</span> ' + this.state.friendlyCategory;
-        }
-      }
-      else {
-        intro = 'We found ' + totalItems + ' events in total.';
-        title= '<span>Featured Events:</span> Recommended For You';
-      }
-    }
-
-    let style = {
-      backgroundImage: 'url(/static/img/community.jpg)'
-    };
-
-    let resultCount =  this.props.totalItems + ' Results ';
-
-    if (this.state.friendlyCategory != '') {
-      resultCount += ' - filtered by ' + titleCase(this.state.friendlyCategory);
-    }
-
-    if (this.state.isLoadingEvents)
-    {
-      resultCount = '';
-    }
-    if (! this.state.isLoadingLocation)
-    {
+      let totalItems = this.props.totalItems;
 
       return (
         <div>
@@ -111,10 +73,10 @@ class EventHome extends React.Component {
           <div className="container">
             <div className="row row-wrap">
               <div className="col-md-3 sideBar">
-                <EventCategories changeCategory={this.changeEvent} contentType="events" />
+                <FilterEvents  filterEvents={this.filterEvents} isFetching={this.state.isLoadingEventCategories}/>
               </div>
               <div className="col-md-9">
-                <EventList locationEvents={this.props.locationEvents} isFeature={this.state.categoryName == 'all' || this.state.categoryName == ''  ? true : false} cssClass={this.state.categoryName == 'all' || this.state.categoryName == ''  ? "col-md-4" : "col-md-3"} isFetching={this.state.isLoadingEvents} />
+                <EventList locationEvents={this.props.locationEvents} isFeature={this.state.categoryName == 'all' || this.state.categoryName == ''  ? true : false} cssClass={this.state.categoryName == 'all' || this.state.categoryName == ''  ? "col-md-4" : "col-md-4"} isFetching={this.state.isLoadingEvents} />
                 <div className="row justify-content-center">
                   <Pagination innerClass={this.state.categoryName == 'all' || this.state.categoryName == '' ? "hide" : totalItems > this.state.pageSize ? "pagination justify-content-center" : "hide"} activePage={this.state.activePageNumber} itemsCountPerPage={this.props.pageSize} totalItemsCount={this.props.totalItems} pageRangeDisplayed={10} onChange={this.changePage} />
                 </div>

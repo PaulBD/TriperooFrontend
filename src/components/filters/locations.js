@@ -9,7 +9,7 @@ class CategorySideBar extends React.Component {
     super(props, context);
     this.handleCategoryChange = this.handleCategoryChange.bind(this);
     this.showMore = this.showMore.bind(this);
-    this.state = { categoryName: 'all', showAll: false };
+    this.state = { categoryName: 'all', showAll: false, typeFilterList:[] };
   }
 
   componentWillMount() {

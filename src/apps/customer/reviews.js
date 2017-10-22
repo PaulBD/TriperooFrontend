@@ -6,6 +6,7 @@ import * as userActions from '../../actions/customer/userActions';
 import * as userReviewActions from '../../actions/customer/userReviewActions';
 import ReviewList from '../../components/layout/cards/reviews/homePageReviewCard';
 import TriperooLoader from '../../components/loaders/globalLoader';
+import CustomerHeader from '../../components/layout/customer/customerNavigation';
 import Toastr from 'toastr';
 
 class UserReviews extends React.Component {
@@ -35,7 +36,7 @@ class UserReviews extends React.Component {
   }
 
   loadReviews(){
-    this.props.userReviewActions.getReviews(this.props.currentUserId)
+    this.props.userReviewActions.getReviews(this.props.currentUserId, 8, 0)
       .then(() => {
         this.setState({loading: false, loadingReviews: false});
       })
@@ -48,16 +49,18 @@ class UserReviews extends React.Component {
   render(){
     if ((!this.state.loading) && (!this.state.loadingReviews)){
       return (
+        <div>
+        <CustomerHeader user={this.props.user} isAuthenticated={this.props.isAuthenticated} isActiveUser={this.props.isActiveUser} pageName={!this.props.isActiveUser ? this.props.user.profile.name + "' Reviews" : 'Reviews'}/>
+
         <div className="container">
           <div className="gap gap-small"></div>
           <div className="row">
             <div className="col-md-12">
-              <h5 className="mb-2">{!this.props.isActiveUser ? this.props.user.profile.name : 'Your'}' Reviews</h5>
-              <hr className="pageTitle"/>
-              <ReviewList reviews={this.props.reviews} maxTags={5} showEdit={this.props.isActiveUser} cssClass="col-md-6" refreshData={this.refreshData}/>
+              <ReviewList currentUserId={this.props.currentUserId} reviews={this.props.reviews} maxTags={5} showEdit={this.props.isActiveUser} cssClass="card-columns" refreshData={this.refreshData}/>
               <div className="gap gap-small"></div>
             </div>
           </div>
+        </div>
         </div>
       );
     }

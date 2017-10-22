@@ -44,7 +44,6 @@ export function hotelsByLocationFailure(errorMessage) {
 }
 
 export function loadHotelsByLocation(locationId, arrivalDate, nights, locale, currencyCode, rooms1, rooms2, rooms3, location, filters, sortBy, pageSize, pageNumber, exclude) {
-
   return dispatch => {
     dispatch(hotelsByLocationRequest());
     return HotelApi.getHotelsByLocation(locationId, arrivalDate, nights, locale, currencyCode, rooms1, rooms2, rooms3, location, filters, sortBy, pageSize, pageNumber, exclude).then(hotels => {
@@ -73,9 +72,6 @@ export function hotelsByProximityFailure(errorMessage) {
 
 
 export function loadHotelsByProximty(locationId, latitude, longitude, radius, arrivalDate, nights, locale, currencyCode, rooms1, rooms2, rooms3, location, filters, sortBy, pageSize, pageNumber, exclude, checkDates) {
-
-  console.log('prox');
-
   return dispatch => {
     dispatch(hotelsByProximityRequest());
     return HotelApi.getHotelsByProximty(locationId, latitude, longitude, radius, arrivalDate, nights, locale, currencyCode, rooms1, rooms2, rooms3, location, filters, sortBy, pageSize, pageNumber, exclude, checkDates).then(hotels => {

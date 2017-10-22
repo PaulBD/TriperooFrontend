@@ -17,7 +17,7 @@ const TripForm = ({listName, description, startDate, endDate, regionName, isCrea
               <AutoComplete onChangeAutoComplete={onChangeAutoComplete} searchValue={regionName} searchType="city" placeholder="Current Location" cssClass="typeahead form-control" />
             </div>
             <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-pencil input-icon input-icon-hightlight"></i>
-              <input className="form-control" placeholder="Enter List Name" name="listName" type="text" onChange={onChange} value={listName} />
+              <input className="form-control" placeholder="Enter Trip Name" name="listName" type="text" onChange={onChange} value={listName} />
             </div>
             <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-edit input-icon input-icon-hightlight"></i>
               <textarea className="form-control large" placeholder="Enter Description" type="text" name="description" onChange={onChange} value={description} rows="6" />

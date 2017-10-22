@@ -5,7 +5,7 @@ import * as authenticationActions from '../../actions/customer/authenticationAct
 import * as userActions from '../../actions/customer/userActions';
 import UserProfileForm from '../../components/forms/authentication/profileForm';
 import TriperooLoader from '../../components/loaders/globalLoader';
-import UserProfile from '../../components/forms/customer/userProfile';
+import CustomerHeader from '../../components/layout/customer/customerNavigation';
 import Toastr from 'toastr';
 
 class UpdateProfile extends React.Component {
@@ -109,17 +109,11 @@ class UpdateProfile extends React.Component {
     if (this.props.isAuthenticated && this.props.isActiveUser) {
       if (!this.state.loading) {
         return (
-          <div className="container">
+          <div>
+            <CustomerHeader user={this.props.user} isAuthenticated={this.props.isAuthenticated} isActiveUser={this.props.isActiveUser} pageName="Update Profile"/>
+            <div className="container">
             <div className="gap gap-small"></div>
-            <div className="row">
-              <div className="col-md-4">
-                <UserProfile user={this.props.user} isActiveUser={this.props.isActiveUser}/>
-              </div>
-              <div className="col-md-8">
                 <div className="row">
-                  <div className="col-md-12">
-                    <h5 className="mb-2">Update Profile</h5>
-                    <hr className="pageTitle" />
                     <UserProfileForm name={this.state.creds.name}
                                      emailAddress={this.state.creds.emailAddress}
                                      bio={this.state.creds.bio}
@@ -134,11 +128,9 @@ class UpdateProfile extends React.Component {
                                      onChangeAutoComplete={this.onChangeAutoComplete}
                                      errors={this.props.errorMessage}
                     />
-                  </div>
-                </div>
-              </div>
             </div>
             <div className="gap gap"></div>
+          </div>
           </div>
         );
       }

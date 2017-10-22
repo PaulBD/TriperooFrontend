@@ -4,7 +4,7 @@ export default function modalReducer(state = { isSending: false, hasPosted: fals
 
   switch(action.type) {
     case types.EDIT_REVIEW_MODEL:
-      return Object.assign({}, state, { modalIsOpen: true, isSending: true, hasPosted: false, modalContent: { locationId: action.locationId, locationType: action.locationType, reference: action.reference, locationName: action.locationName, locationAddress: action.locationAddress, starRating: action.starRating, comment: action.comment, tags: action.tags }, modalName: action.name, modalType: 'EditReview' });
+      return Object.assign({}, state, { modalIsOpen: true, isSending: true, hasPosted: false, modalContent: { locationId: action.locationId, locationType: action.locationType, reference: action.reference, locationName: action.locationName, locationAddress: action.locationAddress, starRating: action.starRating, comment: action.comment, tags: action.tags, currentUserId: action.currentUserId }, modalName: action.name, modalType: 'EditReview' });
     case types.CLOSE_EDIT_REVIEW_MODEL:
       return Object.assign({}, state, { modalIsOpen: false, isSending: false, hasPosted: false, modalName: action.name, modalType: 'EditReview' });
 
@@ -38,8 +38,13 @@ export default function modalReducer(state = { isSending: false, hasPosted: fals
     case types.CLOSE_BOOKMARK_MODEL:
       return Object.assign({}, state, { modalIsOpen: false, isSending: false, hasPosted: false, modalName: action.name, modalType: 'Bookmark' });
 
+    case types.OPEN_VISIT_MODEL:
+      return Object.assign({}, state, { modalIsOpen: true, isSending: true, hasPosted: false, modalContent: { parentLocationId: action.parentLocationId, parentLocationName: action.parentLocationName, parentLocationNameLong: action.parentLocationNameLong, parentLocationImage: action.parentLocationImage, locationId: action.locationId, locationUrl: action.locationUrl, locationImage: action.locationImage, locationNameLong: action.locationNameLong, locationName: action.locationName, locationType: action.locationType, removeBookmark: action.removeBookmark, latitude: action.latitude , longitude: action.longitude }, modalName: action.name, modalType: 'Visit' });
+    case types.CLOSE_VISIT_MODEL:
+      return Object.assign({}, state, { modalIsOpen: false, isSending: false, hasPosted: false, modalName: action.name, modalType: 'Visit' });
+
     case types.OPEN_PHOTO_MODEL:
-      return Object.assign({}, state, { modalIsOpen: true, isSending: true, hasPosted: false, modalContent: { locationId: action.locationId, locationName: action.locationName, locationType: action.locationType }, modalName: action.name, modalType: 'Photo' });
+      return Object.assign({}, state, { modalIsOpen: true, isSending: true, hasPosted: false, modalContent: { locationId: action.locationId, locationName: action.locationName, locationNameLong: action.locationNameLong, locationType: action.locationType }, modalName: action.name, modalType: 'Photo' });
     case types.CLOSE_PHOTO_MODEL:
       return Object.assign({}, state, { modalIsOpen: false, isSending: false, hasPosted: false, modalName: action.name, modalType: 'Photo' });
 

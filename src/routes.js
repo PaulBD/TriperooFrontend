@@ -23,6 +23,7 @@ import LocationNightlife from './apps/location/nightlife';
 import LocationReviews from './apps/location/reviews';
 import LocationQuestions from './apps/location/questions';
 import LocationQuestionDetail from './apps/location/questionDetail';
+import LocationPointsOfInterest from './apps/location/pointofinterest';
 import LocationAttractions from './apps/location/attractions';
 import LocationHotels from './apps/location/hotels';
 
@@ -83,6 +84,7 @@ export default (
     <Route path="/(:placeId)/visit/(:placeName)/questions" component={LocationQuestions}/>
     <Route path="/(:placeId)/visit/(:placeName)/(:questionId)/question" component={LocationQuestionDetail}/>
     <Route path="/(:placeId)/visit/(:placeName)/attractions" component={LocationAttractions}/>
+    <Route path="/(:placeId)/visit/(:placeName)/points-of-interest" component={LocationPointsOfInterest}/>
     <Route path="/(:placeId)/visit/(:placeName)/restaurants" component={LocationRestaurants}/>
     <Route path="/(:placeId)/visit/(:placeName)/nightlife" component={LocationNightlife}/>
     <Route path="/(:placeId)/visit/(:placeName)/hotels" component={LocationHotels}/>

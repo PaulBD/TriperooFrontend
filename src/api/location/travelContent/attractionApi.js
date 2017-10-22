@@ -1,9 +1,9 @@
 import axios from 'axios';
 import baseUrl from '../../baseApi';
 
-class AttractionsApi {
+class AttractionApi {
   // ****************************************
-  // Return attractions using parent id
+  // Return Attractions using parent id
   // ****************************************
   static getAttractionsByParentLocationId(locationId, categoryName, attractionName, pageSize, pageNumber) {
     return new Promise((resolve, reject) => {
@@ -18,4 +18,4 @@ class AttractionsApi {
   }
 }
 
-export default AttractionsApi;
+export default AttractionApi;

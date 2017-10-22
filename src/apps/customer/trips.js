@@ -5,7 +5,7 @@ import * as authenticationActions from '../../actions/customer/authenticationAct
 import * as userActions from '../../actions/customer/userActions';
 import TriperooLoader from '../../components/loaders/globalLoader';
 import TripItem from '../../components/layout/cards/customer/tripItem';
-import UserProfile from '../../components/forms/customer/userProfile';
+import CustomerHeader from '../../components/layout/customer/customerNavigation';
 import Toastr from 'toastr';
 
 class CustomerTrips extends React.Component {
@@ -35,18 +35,20 @@ class CustomerTrips extends React.Component {
     if (!this.state.loading) {
       let profileUrl = this.props.user && this.props.user.profile ? this.props.user.profile.profileUrl : '';
       return (
-        <div className="container">
-          <div className="gap gap-small"></div>
-          <div className="row">
-            <div className="col-md-12">
-              <h5 className="mb-2">Your Trips</h5>
-              <hr className="pageTitle"/>
-              <div className="card-columns">
-                {
-                  this.props.user.trips != null && this.props.user.trips.length > 0 ? this.props.user.trips.map(function(trip, i) { return (<TripItem trip={trip} key={trip.id} parentUrl={profileUrl} position={i} />);}) : <p>This user has never been on any trips</p>
-                }
+        <div>
+          <CustomerHeader user={this.props.user} isAuthenticated={this.props.isAuthenticated} isActiveUser={this.props.isActiveUser} pageName={!this.props.isActiveUser ? this.props.user.profile.name + "' Trips" : 'Trips'}/>
+
+          <div className="container">
+            <div className="gap gap-small"></div>
+            <div className="row">
+              <div className="col-md-12">
+                <div className="card-columns">
+                  {
+                    this.props.user.trips != null && this.props.user.trips.length > 0 ? this.props.user.trips.map(function(trip, i) { return (<TripItem trip={trip} key={trip.id} parentUrl={profileUrl} position={i} />);}) : <p>This user has never been on any trips</p>
+                  }
+                </div>
+                <div className="gap gap-small"></div>
               </div>
-              <div className="gap gap-small"></div>
             </div>
           </div>
         </div>

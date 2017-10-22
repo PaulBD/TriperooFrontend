@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 import currency from './common/currencyReducer';
 import content from './common/contentReducer';
-import categories from './common/categoryReducer';
+import eventCategory from './common/eventCategoryReducer';
 import modal from './common/modalReducer';
 
 import authentication from './customer/authenticationReducer';
@@ -11,10 +11,12 @@ import question from './customer/questionReducer';
 import review from './customer/reviewReducer';
 import user from './customer/userReducer';
 import userFollow from './customer/userFollowReducer';
+import photo from './customer/photoReducer';
 
 import articles from './location/articleReducer';
 import airports from './location/airportReducer';
-import attractions from './location/attractionReducer';
+import pointOfInterests from './location/pointofinterestsReducer';
+import attractions from './location/attractionsReducer';
 import locationEvents from './location/eventReducer';
 import flights from './location/flightReducer';
 import hotels from './location/hotelReducer';
@@ -37,7 +39,7 @@ const rootReducer = combineReducers({
 
   currency,
   content,
-  categories,
+  eventCategory,
   modal,
 
   authentication,
@@ -46,9 +48,11 @@ const rootReducer = combineReducers({
   review,
   user,
   userFollow,
+  photo,
 
   articles,
   airports,
+  pointOfInterests,
   attractions,
   cms,
   locationEvents,

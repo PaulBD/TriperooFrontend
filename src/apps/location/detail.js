@@ -88,8 +88,6 @@ class LocationDetail extends React.Component {
 
       let editUrl = this.props.location.url + '/edit';
 
-      console.log(this.props.location);
-
       return (
         <div>
           <LocationHeader location={this.props.location} hasLoaded={this.state.hasLoaded} docType={this.props.location.subClass} />
@@ -106,7 +104,7 @@ class LocationDetail extends React.Component {
                     <ReviewButton name="sidePanel" locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType={this.props.location.subClass} pageSize={3} pageNumber={0} />
                   </div>
                   <div className="col-md-3 col-6">
-                    <PhotoButton name="sidePanel" locationId={this.props.locationId} locationName={this.props.location.regionName} locationType="" />
+                    <PhotoButton name="sidePanel" locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType="" />
                   </div>
                   <div className="col-md-3 col-6">
                     <BookmarkButton name="sidePanel" parentLocationId={this.props.location.parentRegionID} parentLocationName={this.props.location.parentRegionName} parentLocationNameLong={this.props.location.parentRegionNameLong} parentLocationImage={this.props.location.parentRegionImage} locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType={this.props.location.subClass} latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0} longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0} />
@@ -118,30 +116,24 @@ class LocationDetail extends React.Component {
                 <Summary location={this.props.location} showMap={false} showHelp={false}/>
               </div>
               <div className="col-md-4 col-12">
-                <Photos photos={this.props.location.photos}/>
+                <Photos photos={this.props.location.photos} basePhoto={this.props.location.image}/>
               </div>
             </div>
           </div>
           <div className="jumbotron maps">
-            <div className="row">
-              <TriperooGoogleMap latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0} longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0} text={this.props.location.regionName} zoom={13} markerArray={markerArray} isLoading={false} locationType={this.props.location.subClass}/>
-            </div>
+            <TriperooGoogleMap latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0} longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0} text={this.props.location.regionName} zoom={13} markerArray={markerArray} isLoading={false} locationType={this.props.location.subClass}/>
           </div>
           <div className="gap gap-small"></div>
-          <div className="row">
-            <div className="container">
-              <div className="col-md-12">
-                <div className="row">
-                  <div className="col-md-8">
-                    <ReviewList hasLoadedLocation={this.state.hasLoaded} locationId={this.props.locationId} locationName={this.props.location.regionName}  locationNameLong={this.props.location.regionNameLong}  locationType="" pageSize={3} pageNumber={0} showTitle={true} />
-                  </div>
-                  <div className="col-md-4">
-                    <QuestionButton locationId={this.props.locationId} locationName={this.props.location.regionNameLong} locationNameShort={this.props.location.regionName} locationType={this.props.location.regionType} pageSize={3} pageNumber={0}/>
-                    <RecentQuestions locationId={this.props.location.parentRegionID} locationName={this.state.location.parentRegionName} pageSize={3} pageNumber={0} locationUrl={this.state.location.url} showTitle={true} isSideComponent={true}/>
-                  </div>
-                  <hr />
-                </div>
+          <div className="container">
+            <div className="row">
+              <div className="col-md-8">
+                <ReviewList hasLoadedLocation={this.state.hasLoaded} locationId={this.props.locationId} locationName={this.props.location.regionName}  locationNameLong={this.props.location.regionNameLong}  locationType="" pageSize={3} pageNumber={0} showTitle={true} />
               </div>
+              <div className="col-md-4">
+                <QuestionButton locationId={this.props.locationId} locationName={this.props.location.regionNameLong} locationNameShort={this.props.location.regionName} locationType={this.props.location.regionType} pageSize={3} pageNumber={0}/>
+                <RecentQuestions locationId={this.props.location.parentRegionID} locationName={this.state.location.parentRegionName} pageSize={3} pageNumber={0} locationUrl={this.state.location.url} showTitle={true} isSideComponent={true}/>
+              </div>
+              <hr />
             </div>
           </div>
           <div className="gap gap-small"></div>

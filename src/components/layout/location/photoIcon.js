@@ -9,15 +9,19 @@ class PhotoIcon extends React.Component {
     this.uploadPhotos = this.uploadPhotos.bind(this);
   }
 
+  componentDidMount() {
+    $(this.refs.photo).tooltip();
+  }
+
   uploadPhotos(e) {
     e.preventDefault();
-    this.props.modalActions.openPhoto(this.props.locationId, this.props.locationName, this.props.locationType);
+    this.props.modalActions.openPhoto(this.props.locationId, this.props.locationName, this.props.locationNameLong, this.props.locationType);
   }
 
   render(){
     return (
         <div>
-          <a className="fa fa-picture-o box-icon-normal round" key={this.props.locationId} href="#" onClick={this.uploadPhotos} title="Upload Photos"></a>
+          <a ref="photo" className="fa fa-picture-o box-icon-normal round" key={this.props.locationId} href="#" onClick={this.uploadPhotos} data-toggle="tooltip" data-placement="top" title="Upload Photo" ></a>
         </div>
       );
     }
@@ -32,6 +36,7 @@ PhotoIcon.defaultProps = {
 PhotoIcon.propTypes = {
   locationId: PropTypes.number.isRequired,
   locationName: PropTypes.string.isRequired,
+  locationNameLong: PropTypes.string.isRequired,
   locationType: PropTypes.string.isRequired,
   modalActions: PropTypes.object.isRequired,
   selectedLocationId: PropTypes.number.isRequired

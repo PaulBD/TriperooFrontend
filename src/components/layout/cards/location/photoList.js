@@ -40,21 +40,36 @@ class Photos extends React.Component {
       );
     }
     else {
-      return (
+      if (this.props.basePhoto) {
+        return (
         <div>
-          <Carousel axis="horizontal" onClickItem={this.onClickItem}  showArrows={true} showStatus={false} showThumbs={false} autoPlay={false} showIndicators={false} >
-            <div key="temp">
-              <img src="/static/img/placeholder-large-center.png"/>
-            </div>
+          <Carousel axis="horizontal" onClickItem={this.onClickItem} showArrows={true} showStatus={false}
+                    showThumbs={false} autoPlay={false} showIndicators={false}>
+            <div key="image1"><img src={this.props.basePhoto}/></div>
           </Carousel>
         </div>
-      );
+        );
+      }
+      else {
+
+        return (
+          <div>
+            <Carousel axis="horizontal" onClickItem={this.onClickItem} showArrows={true} showStatus={false}
+                      showThumbs={false} autoPlay={false} showIndicators={false}>
+              <div key="temp">
+                <img src="/static/img/placeholder-large-center.png"/>
+              </div>
+            </Carousel>
+          </div>
+        );
+      }
     }
   }
 }
 
 Photos.propTypes = {
   photos: PropTypes.object,
+  basePhoto: PropTypes.string,
   modalActions: PropTypes.object.isRequired
 };
 function mapStateToProps(state, ownProps) {

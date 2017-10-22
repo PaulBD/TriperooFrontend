@@ -27,28 +27,25 @@ class Reviews extends React.Component {
     let title = null;
 
     if (this.props.showTitle) {
-      if (reviews.length > 3)
-      {
-        if (this.props.locationType != 'all' && this.props.locationId > 0) {
-          title = (
-            <div className="col-md-12">
-              <h3 className="mb20">Share The Knowledge About {this.props.locationName}...</h3>
-              <p>Community is the heart of everything we do, share tips on where to go and what to do with other<br />like-minded
-                people and help others discover amazing places in {this.props.locationName}!</p>
-              <div className="gap gap-small"></div>
-            </div>
-          );
-        }
-        else {
-          title = (
-            <div className="col-md-12 text-center">
-              <h3 className="mb20">Share The Knowledge</h3>
-              <p>Community is the heart of everything we do, share tips on where to go and what<br />to do with other like-minded
-                people and help others discover amazing places!</p>
-              <div className="gap gap-small"></div>
-            </div>
-          );
-        }
+      if (this.props.locationType != 'all' && this.props.locationId > 0) {
+        title = (
+          <div className="col-md-12">
+            <h3 className="mb20">Share The Knowledge About {this.props.locationName}...</h3>
+            <p>Our travel community is the focus of everything we do. We want to share tips on where to go and what<br />to do with other like-minded
+              travellers and help you to discover {this.props.locationName}!</p>
+            <div className="gap gap-small"></div>
+          </div>
+        );
+      }
+      else {
+        title = (
+          <div className="col-md-12 text-center">
+            <h3 className="mb20">Explore With Triperoo</h3>
+            <p>Our travel community is the focus of everything we do. We want to share tips on where to go and what<br />to do with other like-minded
+              travellers and help you to discover the world!</p>
+            <div className="gap gap-small"></div>
+          </div>
+        );
       }
     }
 
@@ -95,7 +92,7 @@ Reviews.defaultProps = {
   pageNumber: 1,
   isFetching: false,
   reviews: [],
-  cssClass: 'col-md-4',
+  cssClass: 'card-deck',
   showEdit: false
 };
 

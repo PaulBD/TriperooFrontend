@@ -26,7 +26,7 @@ class FilterRestaurants extends React.Component {
       return (
       <div className="profile-usermenu">
         <CategoryFilter title="Cuisine & Dishes" categories={this.props.categories} filterResults={this.filterRestaurant} numberToShow={6} />
-        <ul className="list booking-filters-list">
+        <ul className="list booking-filters-list hide">
           <li><h5>Price</h5></li>
           <li><a href="#"><input type="checkbox" className="form-check-inline" /> Cheap Eats </a></li>
           <li><a href="#"><input type="checkbox" className="form-check-inline" /> Mid-range </a></li>
