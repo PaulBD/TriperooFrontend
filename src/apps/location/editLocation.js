@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as locationActions from '../../actions/location/locationActions';
-import * as cmsActions from '../../actions/location/cmsActions';
+import * as cmsActions from '../../actions/cms/cmsActions';
 import * as modalActions from '../../actions/common/modalActions';
 import * as authenticationActions from '../../actions/customer/authenticationActions';
 import TriperooLoader from '../../components/loaders/globalLoader';

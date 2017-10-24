@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as locationReviewsActions from '../../../../actions/location/locationReviewsActions';
+import * as locationReviewsActions from '../../../../actions/location/reviews/reviewsActions';
 import ReviewCard from './homePageReviewCard';
 import ContentLoader from '../../../loaders/fakeContentLoader';
 

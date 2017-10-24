@@ -10,7 +10,7 @@ import FilterPointOfInterest from '../../components/forms/searchForms/filterPoin
 import Toastr from 'toastr';
 
 import SubPageHeader from '../../components/content/headers/locationCategory';
-import Attractions from '../../components/layout/cards/location/locationListWrapper';
+import PointsOfInterest from '../../components/layout/cards/location/locationListWrapper';
 
 let titleCase = require('title-case');
 
@@ -92,7 +92,7 @@ class PointOfInterestContent extends React.Component {
                     <FilterPointOfInterest categories={this.props.pointOfInterestsCategories} filterPointOfInterests={this.filterPointOfInterests} isFetching={this.state.isLoadingCategoryList}/>
                   </div>
                   <div className="col-md-9 restaurantList">
-                    <Attractions useMinHeight={false} locationId={this.props.locationId} locations={this.props.pointOfInterests} locationCount={this.props.pointOfInterestsCount} changePage={this.changePage} isFetching={this.state.isLoadingPointOfInterestList}/>
+                    <PointsOfInterest useMinHeight={false} locationId={this.props.locationId} locations={this.props.pointOfInterests} locationCount={this.props.pointOfInterestsCount} changePage={this.changePage} isFetching={this.state.isLoadingPointOfInterestList}/>
                   </div>
                 </div>
                 <div className="gap gap-small"></div>
@@ -123,7 +123,7 @@ PointOfInterestContent.propTypes = {
   pointOfInterestsCount: PropTypes.number.isRequired,
   mapPointOfInterests: PropTypes.array.isRequired,
   pointOfInterestsCategories: PropTypes.array.isRequired,
-  pointOfInterests: PropTypes.array.isRequired,
+  pointOfInterests: PropTypes.object.isRequired,
   pointOfInterestType: PropTypes.string
 };
 
@@ -131,7 +131,7 @@ function mapStateToProps(state, ownProps) {
   return {
     location: state.location.location ? state.location.location : {},
     locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0,
-    pointOfInterests: state.pointOfInterests.pointOfInterestsList ? state.pointOfInterests.pointOfInterestsList.locations : [],
+    pointOfInterests: state.pointOfInterests.pointOfInterestsList ? state.pointOfInterests.pointOfInterestsList : {},
     mapPointOfInterests: state.pointOfInterests.pointOfInterestsList ? state.pointOfInterests.pointOfInterestsList.mapLocations : [],
     pointOfInterestsCategories: state.pointOfInterests.pointOfInterestsList ? state.pointOfInterests.pointOfInterestsList.categories : [],
     pointOfInterestsCount:  state.pointOfInterests.pointOfInterestsList ? state.pointOfInterests.pointOfInterestsList.locationCount : 0

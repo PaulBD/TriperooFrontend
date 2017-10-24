@@ -18,7 +18,7 @@ class TripHeader extends React.Component {
       }
 
     if (this.props.hasLoaded) {
-      let tripUrl = this.props.user.profile.profileUrl + "/trips"
+      let tripUrl = this.props.user.profile.profileUrl + "/trips";
       return (
         <div className="top-area show-onload locationPage">
           <div className="bg-holder full text-white">

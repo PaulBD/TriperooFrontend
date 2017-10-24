@@ -111,7 +111,7 @@ RestaurantContent.propTypes = {
   locationActions: PropTypes.object.isRequired,
   restaurantActions: PropTypes.object.isRequired,
   restaurantCount: PropTypes.number.isRequired,
-  restaurants: PropTypes.array.isRequired,
+  restaurants: PropTypes.object.isRequired,
   mapRestaurants: PropTypes.array.isRequired,
   restaurantCategories: PropTypes.array.isRequired,
   restaurantType: PropTypes.string
@@ -121,7 +121,7 @@ function mapStateToProps(state, ownProps) {
   return {
     location: state.location.location ? state.location.location : {},
     locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0,
-    restaurants: state.restaurants.restaurantsList ? state.restaurants.restaurantsList.locations : [],
+    restaurants: state.restaurants.restaurantsList ? state.restaurants.restaurantsList : {},
     mapRestaurants: state.restaurants.restaurantsList ? state.restaurants.restaurantsList.mapLocations : [],
     restaurantCategories: state.restaurants.restaurantsList ? state.restaurants.restaurantsList.categories : [],
     restaurantCount:  state.restaurants.restaurantsList ? state.restaurants.restaurantsList.locationCount : 0

@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as categoryActions from '../../../actions/location/common/categoryActions';
+import * as categoryActions from '../../../actions/legacy/categoryActions';
 import Loader from '../../loaders/contentLoader';
 let _ = require('lodash');
 

@@ -5,7 +5,7 @@ import TagList from '../forms/common/tagList';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as userReviewActions from '../../actions/customer/userReviewActions';
-import * as locationReviewsActions from '../../actions/location/locationReviewsActions';
+import * as locationReviewsActions from '../../actions/location/reviews/reviewsActions';
 let _ = require('lodash');
 
 class ReviewPopup extends React.Component {

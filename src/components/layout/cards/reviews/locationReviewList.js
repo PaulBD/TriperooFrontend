@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as locationReviewsActions from '../../../../actions/location/locationReviewsActions';
+import * as locationReviewsActions from '../../../../actions/location/reviews/reviewsActions';
 import * as modalActions from '../../../../actions/common/modalActions';
 import ReviewList from './locationReviewCard';
 import Pagination from "react-js-pagination";

@@ -11,7 +11,7 @@ class LocationsApi {
   static getLocationsByParentId(parentLocationId, type, pageSize, pageNumber) {
     if (environment) {
       return new Promise((resolve, reject) => {
-        axios.get(baseUrl + '/locations/' + parentLocationId + '?type=' + type + '&pageSize=' + pageSize + '&pageNumber=' + pageNumber)
+        axios.get(baseUrl + '/location/' + parentLocationId + '/' + type + '?pageSize=' + pageSize + '&pageNumber=' + pageNumber)
           .then(function (response) {
             resolve(Object.assign([], response.data));
           })
@@ -22,7 +22,7 @@ class LocationsApi {
     }
     else {
       return new Promise((resolve, reject) => {
-        resolve(Object.assign([], locations));
+        resolve(Object.assign({}, locations));
       });
     }
   }

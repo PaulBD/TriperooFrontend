@@ -1,5 +1,5 @@
-import ArticleApi from '../../api/location/articleApi';
-import * as types from '../../actionTypes/';
+import ArticleApi from '../../api/articles/articleApi';
+import * as types from '../../actionTypes/index';
 
 // ****************************************
 // Update Location

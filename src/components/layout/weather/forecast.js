@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as weatherActions from '../../../actions/location/weatherActions';
+import * as weatherActions from '../../../actions/location/common/weatherActions';
 const Timestamp = require('react-timestamp');
 import Loader from '../../loaders/contentLoader';
 

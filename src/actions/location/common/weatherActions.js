@@ -1,5 +1,5 @@
-import WeatherApi from '../../api/location/weatherApi';
-import * as types from '../../actionTypes/';
+import WeatherApi from '../../../api/location/common/weatherApi';
+import * as types from '../../../actionTypes/index';
 
 // ****************************************
 // Load Weather by latitude / longitude

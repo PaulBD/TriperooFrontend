@@ -55,7 +55,7 @@ class EventHome extends React.Component {
 
   filterEvents(categoryId, categoryName) {
     console.log(categoryName);
-    this.setState({ categoryName: categoryId, friendlyCategory: categoryName })
+    this.setState({ categoryName: categoryId, friendlyCategory: categoryName });
     this.loadEvents(this.props.locationId, categoryId, this.state.pageSize, this.state.pageNumber);
   }
 
@@ -78,7 +78,7 @@ class EventHome extends React.Component {
               <div className="col-md-9">
                 <EventList locationEvents={this.props.locationEvents} isFeature={this.state.categoryName == 'all' || this.state.categoryName == ''  ? true : false} cssClass={this.state.categoryName == 'all' || this.state.categoryName == ''  ? "col-md-4" : "col-md-4"} isFetching={this.state.isLoadingEvents} />
                 <div className="row justify-content-center">
-                  <Pagination innerClass={this.state.categoryName == 'all' || this.state.categoryName == '' ? "hide" : totalItems > this.state.pageSize ? "pagination justify-content-center" : "hide"} activePage={this.state.activePageNumber} itemsCountPerPage={this.props.pageSize} totalItemsCount={this.props.totalItems} pageRangeDisplayed={10} onChange={this.changePage} />
+                  <Pagination innerClass={this.state.categoryName == 'all' || this.state.categoryName == '' ? "hide" : totalItems > this.state.pageSize ? "pagination justify-articles-center" : "hide"} activePage={this.state.activePageNumber} itemsCountPerPage={this.props.pageSize} totalItemsCount={this.props.totalItems} pageRangeDisplayed={10} onChange={this.changePage} />
                 </div>
                 <div className="gap gap-small"></div>
               </div>

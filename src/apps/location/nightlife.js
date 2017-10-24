@@ -119,7 +119,7 @@ NightlifeContent.propTypes = {
   locationActions: PropTypes.object.isRequired,
   nightlifeActions: PropTypes.object.isRequired,
   nightlifeCount: PropTypes.number.isRequired,
-  nightlife: PropTypes.array.isRequired,
+  nightlife: PropTypes.object.isRequired,
   mapNightlife: PropTypes.array.isRequired,
   nightlifeCategories: PropTypes.array.isRequired,
   nightlifeType: PropTypes.string
@@ -129,7 +129,7 @@ function mapStateToProps(state, ownProps) {
   return {
     location: state.location.location ? state.location.location : {},
     locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0,
-    nightlife: state.nightlife.nightlifeList ? state.nightlife.nightlifeList.locations : [],
+    nightlife: state.nightlife.nightlifeList ? state.nightlife.nightlifeList : {},
     mapNightlife: state.nightlife.nightlifeList ? state.nightlife.nightlifeList.mapLocations : [],
     nightlifeCategories: state.nightlife.nightlifeList ? state.nightlife.nightlifeList.categories : [],
     nightlifeCount:  state.nightlife.nightlifeList ? state.nightlife.nightlifeList.locationCount : 0

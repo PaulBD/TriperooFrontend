@@ -1,4 +1,4 @@
-import RestaurantApi from '../../../api/location/travelContent/restaurantApi';
+import ContentApi from '../../../api/location/travelContent/contentApi';
 import * as types from '../../../actionTypes/';
 
 // ****************************************
@@ -19,7 +19,7 @@ export function restaurantsContentError(errorMessage) {
 export function loadRestaurantsByParentLocationId(parentLocationId, categoryName, pageSize, pageNumber) {
 	return dispatch => {
 		dispatch(requestRestaurantsContent());
-		return RestaurantApi.getRestaurantsByParentLocationId(parentLocationId, categoryName, pageSize, pageNumber).then(restaurantsList => {
+		return ContentApi.getContentByParentLocationId(parentLocationId, 'restaurants', categoryName, pageSize, pageNumber).then(restaurantsList => {
 			dispatch(restaurantsContentSuccess(restaurantsList));
 		}).catch(error => {
 			dispatch(restaurantsContentError(error.response.data));

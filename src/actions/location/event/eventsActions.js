@@ -1,4 +1,4 @@
-import EventsApi from '../../../api/location/event/eventsApi';
+import EventsApi from '../../../api/location/events/eventsApi';
 import * as types from '../../../actionTypes/';
 
 // ****************************************
@@ -104,7 +104,7 @@ export function loadEventCategories() {
 			dispatch(loadEventCategoriesSuccess(eventCategories));
 		}).catch(error => {
 			console.log(error);
-			dispatch(eventCategoriesFailure('Unable to load event categories'));
+			dispatch(eventCategoriesFailure('Unable to load events categories'));
 		});
 	};
 }

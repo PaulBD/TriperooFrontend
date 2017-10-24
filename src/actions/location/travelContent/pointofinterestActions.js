@@ -1,4 +1,4 @@
-import PointOfInterestApi from '../../../api/location/travelContent/pointofinterestApi';
+import ContentApi from '../../../api/location/travelContent/contentApi';
 import * as types from '../../../actionTypes/';
 
 // ****************************************
@@ -19,7 +19,7 @@ export function pointOfInterestContentError(errorMessage) {
 export function loadPointOfInterestsByParentLocationId(locationId, categoryName, pointOfInterestName, pageSize, pageNumber) {
 	return dispatch => {
 		dispatch(requestPointOfInterestContent());
-		return PointOfInterestApi.getPointOfInterestsByParentLocationId(locationId, categoryName, pointOfInterestName, pageSize, pageNumber).then(pointOfInterestList => {
+		return ContentApi.getContentByParentLocationId(locationId, 'point-of-interest-shadow', categoryName, pointOfInterestName, pageSize, pageNumber).then(pointOfInterestList => {
 			dispatch(pointOfInterestContentSuccess(pointOfInterestList));
 		}).catch(error => {
 			dispatch(pointOfInterestContentError(error.response.data));

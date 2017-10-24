@@ -1,9 +1,18 @@
 import React, {PropTypes} from 'react';
 
 class NavigationItem extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+  }
+
+  componentDidMount() {
+    if (!this.props.showName) {
+      $(this.refs.locationNav).tooltip();
+    }
+  }
+
 	render(){
 
-		let count = '';
 		let name = '';
 		let navItem = '';
 
@@ -13,12 +22,12 @@ class NavigationItem extends React.Component {
 
 		if (this.props.item !== undefined && this.props.item.length > 0) {
 
-		let className = this.props.isActive ? 'active' : '';
+		let className = this.props.isActive ? 'active' : 'inactive';
 
 		let url = this.props.parentUrl + '/' + this.props.item.replace(' ', '-').replace(' ', '-').toLowerCase();
 
 		navItem = (
-			<a href={url} className={className}>
+			<a ref="locationNav" href={url} className={className} data-toggle="tooltip" data-placement="top" title={this.props.item} key={this.props.item}>
 				<i className={this.props.cssClass}></i>
 				{name}
 			</a>

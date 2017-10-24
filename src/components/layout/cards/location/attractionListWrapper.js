@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import LocationList from './locationList';
+import LocationList from './attractionList';
 import Loader from '../../../loaders/contentLoader';
 import Pagination from "react-js-pagination";
 
@@ -17,7 +17,6 @@ class ByLocation extends React.Component {
   }
 
   render(){
-    console.log(this.props.locations);
     if (!this.props.isFetching) {
       return (
         <div className={this.props.useMinHeight ? "listHeight" : ""}>
@@ -35,13 +34,13 @@ class ByLocation extends React.Component {
 }
 
 ByLocation.defaultProps = {
-  locations: {},
+  locations: [],
   isFetching: false,
   useMinHeight: true
 };
 
 ByLocation.propTypes = {
-  locations: PropTypes.object.isRequired,
+  locations: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
   useMinHeight: PropTypes.bool,
   locationCount: PropTypes.number.isRequired,

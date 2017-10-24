@@ -1,7 +1,7 @@
 import axios from 'axios';
-import baseUrl from '../baseApi';
-import environment from '../environment';
-import locationQuestions from '../json/mock/locationQuestions.json';
+import baseUrl from '../../baseApi';
+import environment from '../../environment';
+import locationQuestions from '../../json/mock/locationQuestions.json';
 
 class LocationQuestionsApi {
   // ****************************************

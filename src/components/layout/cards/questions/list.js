@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as authenticationActions from '../../../../actions/customer/authenticationActions';
-import * as locationQuestionsActions from '../../../../actions/location/locationQuestionsActions';
+import * as locationQuestionsActions from '../../../../actions/location/questions/questionsActions';
 import * as modalActions from '../../../../actions/common/modalActions';
 import * as userQuestionActions from '../../../../actions/customer/userQuestionActions';
 import QuestionList from './listCard';

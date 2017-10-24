@@ -6,14 +6,18 @@ import * as attractionActions from '../../actions/location/travelContent/attract
 import FacebookSignup from '../../components/forms/authentication/facebookSignup';
 import TriperooLoader from '../../components/loaders/globalLoader';
 import Toastr from 'toastr';
+import FilterAttractions from '../../components/forms/searchForms/filterAttractions';
 
 import SubPageHeader from '../../components/content/headers/locationCategory';
+import Attractions from '../../components/layout/cards/location/locationListWrapper';
 
 let titleCase = require('title-case');
 
 class AttractionContent extends React.Component {
   constructor(props, context) {
     super(props, context);
+    this.changePage = this.changePage.bind(this);
+    this.filterAttractions = this.filterAttractions.bind(this);
     this.state = { searchValue: '', isLoadingCategoryList: false, isLoadingLocation: true, isLoadingAttractionList: false, attractionType: '', attractionFriendlyName: '', pageSize: 9, pageNumber: 0, activePage: 1 };
   }
 
@@ -46,6 +50,15 @@ class AttractionContent extends React.Component {
       });
   }
 
+  filterAttractions(attractionCategory) {
+    console.log(attractionCategory);
+    this.setState({ attractionType: attractionCategory, attractionFriendlyName: attractionCategory });
+    this.loadAttractions(this.props.locationId, attractionCategory, '', this.state.pageSize, this.state.pageNumber);
+  }
+
+  changePage(value){
+    this.loadAttractions(this.props.locationId, this.state.attractionType, '', this.state.pageSize, value - 1);
+  }
 
   render(){
     let title = 'Attractions in ' + titleCase(this.props.location.regionName);
@@ -54,8 +67,6 @@ class AttractionContent extends React.Component {
 
     if (! this.state.isLoadingLocation && (!this.state.attractionsList))
     {
-      console.log(this.props.attractions);
-      console.log(this.props.attractionsCategories);
       return (
         <div>
           <SubPageHeader location={this.props.location} contentType="attractions" title={title} />
@@ -65,9 +76,11 @@ class AttractionContent extends React.Component {
               <div className="container">
                 <div className="row">
                   <div className="col-md-3 sideBar">
+                    <FilterAttractions categories={this.props.attractionsCategories} filterAttractions={this.filterAttractions} isFetching={this.state.isLoadingAttractionList}/>
 
                   </div>
                   <div className="col-md-9 restaurantList">
+                    <Attractions useMinHeight={false} locationId={this.props.locationId} locations={this.props.attractions} locationCount={this.props.attractionsCount} changePage={this.changePage} isFetching={this.state.isLoadingAttractionList}/>
 
                   </div>
                 </div>
@@ -98,7 +111,7 @@ AttractionContent.propTypes = {
   attractionsActions: PropTypes.object.isRequired,
   attractionsCount: PropTypes.number.isRequired,
   attractionsCategories: PropTypes.array.isRequired,
-  attractions: PropTypes.array.isRequired,
+  attractions: PropTypes.object.isRequired,
   attractionType: PropTypes.string
 };
 
@@ -106,7 +119,7 @@ function mapStateToProps(state, ownProps) {
   return {
     location: state.location.location ? state.location.location : {},
     locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0,
-    attractions: state.attractions.attractionsList ? state.attractions.attractionsList.attractions : [],
+    attractions: state.attractions.attractionsList ? state.attractions.attractionsList : {},
     attractionsCategories: state.attractions.attractionsList ? state.attractions.attractionsList.categories : [],
     attractionsCount:  state.attractions.attractionsList ? state.attractions.attractionsList.locationCount : 0
   };

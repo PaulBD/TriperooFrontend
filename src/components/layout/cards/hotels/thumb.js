@@ -27,7 +27,7 @@ HotelThumb.propTypes = {
   hotelUrl: PropTypes.string.isRequired,
   queryString: PropTypes.string.isRequired,
   cssClass: PropTypes.string,
-  nameLength: PropTypes.string
+  nameLength: PropTypes.number
 };
 
 export default HotelThumb;

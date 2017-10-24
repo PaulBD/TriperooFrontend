@@ -251,7 +251,7 @@ h3 small { float:right; padding-top:14px;}
 
 /* TODO: Need to fix this for mobile */
 .cityNav .user-profile-statictics-icon,
-.countryNav .user-profile-statictics-icon { font-size: 2rem ; color: #fff; margin-left:15px; }
+.countryNav .user-profile-statictics-icon { font-size: 2rem ; color: #fff; margin-left: 7px; margin-right: 7px }
 
 .hotelSearch i { font-size: 20px; }
 
@@ -1474,7 +1474,7 @@ ul.twPc-Arrange li.location {
 .hotelStarWrapper.orange { color: #ef8f39; }
 .hotelStar { font-size: 40px }
 .hotelStarNumber { color: white; font-size: 14px; }
-.restaurantList { height: 589px; }
+.restaurantList { min-height: 589px; }
 /*.restaurantList .hover-img, .restaurantList .hover-img img { height: 170px !important; }*/
 .jumbotron.maps { padding: 0; margin:0; }
 .jumbotron.hotels { margin: 0; padding:30px 0; }
@@ -1483,7 +1483,7 @@ ul.twPc-Arrange li.location {
 .infoWindowContent .text { width:130px; float:left; }
 .categoryCheck { float: right; padding-top: 3px; }
 .sideBar { border-right: solid 1px #efefef; }
-.bgImage { background-size: 100%; height: 162px; }
+.bgImage { background-size: 100%; height: 142px; }
 .pageTitle { margin: 5px 0px 10px 0px }
 .profileHome.card-columns { column-count: 4; }
 
@@ -1500,3 +1500,4 @@ ul.twPc-Arrange li.location {
 .tripNav { margin: 0; padding: 0; }
 .tripNav a { border-left: solid 1px #cccccc; color: #333333; }
 .tripNav a:hover, .tripNav a.active { color: #ffffff; background-color: #ed8323; }
+.attractionImage { height: 142px; }

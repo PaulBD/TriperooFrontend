@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as weatherActions from '../../../actions/location/weatherActions';
+import * as weatherActions from '../../../actions/location/common/weatherActions';
 
 class Summary extends React.Component {
 	constructor(props, context) {

@@ -1,7 +1,7 @@
-import eventCategories from '../../json/eventCategories.json';
-import attractionCategories from '../../json/attractionCategories.json';
-import restaurantCategories from '../../json/restaurantCategories.json';
-import nightlifeCategories from '../../json/nightlifeCategories.json';
+import eventCategories from '../json/eventCategories.json';
+import attractionCategories from '../json/attractionCategories.json';
+import restaurantCategories from '../json/restaurantCategories.json';
+import nightlifeCategories from '../json/nightlifeCategories.json';
 
 class CategoryApi {
   // ****************************************

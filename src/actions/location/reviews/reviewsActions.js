@@ -1,5 +1,5 @@
-import LocationReviewsApi from '../../api/location/locationReviewsApi';
-import * as types from '../../actionTypes/';
+import LocationReviewsApi from '../../../api/location/reviews/reviewsApi';
+import * as types from '../../../actionTypes/index';
 
 // ****************************************
 // Load Reviews by location Id

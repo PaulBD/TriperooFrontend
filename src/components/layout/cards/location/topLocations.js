@@ -32,9 +32,10 @@ class TopLocations extends React.Component {
   render(){
     if (!this.state.loadingLocations)
     {
+      console.log(this.props.locations);
       return (
         <div>
-          {this.props.locations.length > 0 ? <h3>Popular In {titleCase(this.props.name)}...</h3> : ''}
+          {this.props.locations.locations.length > 0 ? <h3>Things to do in {titleCase(this.props.name)}...</h3> : ''}
           <LocationList locations={this.props.locations} cssClass="col-md-3 col-12" />
         </div>
       );
@@ -53,7 +54,7 @@ TopLocations.defaultProps = {
   name: '',
   searchType: '',
   locationId: 0,
-  locations: [],
+  locations: {},
   isFetching: false
 };
 
@@ -61,7 +62,7 @@ TopLocations.propTypes = {
   locationId: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   locationType: PropTypes.string.isRequired,
-  locations: PropTypes.array.isRequired,
+  locations: PropTypes.object.isRequired,
   locationsActions: PropTypes.object.isRequired,
   isFetching: PropTypes.bool.isRequired
 };
@@ -69,7 +70,7 @@ TopLocations.propTypes = {
 function mapStateToProps(state, ownProps) {
   return {
     isFetching: state.locations.isFetching ? state.locations.isFetching : false,
-    locations: state.locations.locationsList ? state.locations.locationsList : [],
+    locations: state.locations.locationsList ? state.locations.locationsList : {},
     locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0
   };
 }

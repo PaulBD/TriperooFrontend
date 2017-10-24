@@ -20,6 +20,8 @@ import TriperooGoogleMap from '../../components/maps/googleMap';
 import Photos from '../../components/layout/cards/location/photoList';
 import TagList from '../../components/forms/common/tagList';
 import TrustedPartners from '../../components/content/static/trustedPartners';
+import HotelsNearLocation from '../../components/layout/cards/hotels/hotelsNearLocation';
+let moment = require('moment');
 
 let titleCase = require('title-case');
 
@@ -111,6 +113,7 @@ class LocationDetail extends React.Component {
                   </div>
                   <div className="col-md-3 col-6">
                     {this.props.location.regionType == "Restaurant" ? <a href={this.props.location.locationDetail.bookingUrl} className="btn btn-primary questionBtn" target="_blank"><i className="fa fa-calendar"></i> Book Restaurant</a> : ''}
+                    {this.props.location.regionType == "Attractions" ? <a href={this.props.location.locationDetail.bookingUrl} className="btn btn-primary questionBtn" target="_blank"><i className="fa fa-calendar"></i> Book Attraction</a> : ''}
                   </div>
                 </div>
                 <Summary location={this.props.location} showMap={false} showHelp={false}/>
@@ -120,8 +123,23 @@ class LocationDetail extends React.Component {
               </div>
             </div>
           </div>
-          <div className="jumbotron maps">
+          <div className={this.props.location.locationCoordinates.latitude == 0 && this.props.location.locationCoordinates.longitude == 0 ? "hide" : "jumbotron maps"}>
             <TriperooGoogleMap latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0} longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0} text={this.props.location.regionName} zoom={13} markerArray={markerArray} isLoading={false} locationType={this.props.location.subClass}/>
+          </div>
+          <div className={this.props.location.locationCoordinates.latitude != 0 && this.props.location.locationCoordinates.longitude != 0 ? "hide" : "jumbotron maps"}>
+          <HotelsNearLocation
+            locationType={this.props.location.regionType}
+            arrivalDate={moment().add(7, 'days').format('YYYY-MM-DD')}
+            pageNumber={0}
+            currencyCode="GBP"
+            exclude={0}
+            locale="en_en"
+            radius={5}
+            rooms1={1}
+            nights={1}
+            guests={1}
+            sortBy="PROMO"
+            locationId={this.props.locationId} latitude={this.props.location.latitude} longitude={this.props.location.longitude} pageSize={4} locationName={this.props.location.parentRegionNameLong} url={this.props.location.parentUrl}/>
           </div>
           <div className="gap gap-small"></div>
           <div className="container">

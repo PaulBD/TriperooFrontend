@@ -1,5 +1,5 @@
-import LocationQuestionsApi from '../../api/location/locationQuestionsApi';
-import * as types from '../../actionTypes/';
+import LocationQuestionsApi from '../../../api/location/questions/questionsApi';
+import * as types from '../../../actionTypes/index';
 
 // ****************************************
 // List Questions By location id

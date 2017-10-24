@@ -1,5 +1,5 @@
 import ContentApi from '../../../api/location/common/contentApi';
-import * as types from '../../../actionTypes/';
+import * as types from '../../../actionTypes/index';
 
 // ****************************************
 // Load Header Content

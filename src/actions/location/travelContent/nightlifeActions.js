@@ -1,4 +1,4 @@
-import NightlifeApi from '../../../api/location/travelContent/nightlifeApi';
+import ContentApi from '../../../api/location/travelContent/contentApi';
 import * as types from '../../../actionTypes/';
 
 // ****************************************
@@ -19,7 +19,7 @@ export function nightlifeContentError(errorMessage) {
 export function loadNightlifeByParentLocationId(parentLocationId, categoryName, pageSize, pageNumber) {
 	return dispatch => {
 		dispatch(requestNightlifeContent());
-		return NightlifeApi.getNightlifeByParentLocationId(parentLocationId, categoryName, pageSize, pageNumber).then(nightlifeList => {
+		return ContentApi.getContentByParentLocationId(parentLocationId, 'nightlife', categoryName, pageSize, pageNumber).then(nightlifeList => {
 			dispatch(nightlifeContentSuccess(nightlifeList));
 		}).catch(error => {
 			dispatch(nightlifeContentError(error.response.data));

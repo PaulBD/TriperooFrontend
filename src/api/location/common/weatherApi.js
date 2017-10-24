@@ -1,7 +1,7 @@
 import axios from 'axios';
-import baseUrl from '../baseApi';
-import environment from '../environment';
-import mockWeather from '../json/mock/weather.json';
+import baseUrl from '../../baseApi';
+import environment from '../../environment';
+import mockWeather from '../../json/mock/weather.json';
 
 class WeatherApi {
   // ****************************************

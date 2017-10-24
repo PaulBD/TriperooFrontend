@@ -34,7 +34,7 @@ class UploadPhotoPopup extends React.Component {
     this.props.locationActions.uploadPhotos(locationId, files)
       .then(() => {
         let user = localStorage.getItem('id_token') ? JSON.parse(localStorage.getItem('id_token')) : {};
-        this.props.photoActions.getUserPhotos(user.userId)
+        this.props.photoActions.getUserPhotos(user.userId);
         this.setState({wizardStep: 3});
         this.setState({isPostingPhoto: false});
       })

@@ -1,5 +1,5 @@
-import CmsApi from '../../api/location/cmsApi';
-import * as types from '../../actionTypes/';
+import CmsApi from '../../api/cms/cmsApi';
+import * as types from '../../actionTypes/index';
 
 // ****************************************
 // Update Location

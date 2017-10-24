@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as userQuestionActions from '../../actions/customer/userQuestionActions';
-import * as locationQuestionsActions from '../../actions/location/locationQuestionsActions';
+import * as locationQuestionsActions from '../../actions/location/questions/questionsActions';
 
 class AnswerPopup extends React.Component {
   constructor(props, context) {

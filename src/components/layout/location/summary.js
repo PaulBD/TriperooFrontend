@@ -22,10 +22,10 @@ class Overview extends React.Component {
   render(){
 
     let summaryCount = 700;
-    let restaurantInfo = '';
+    let locationInfo = '';
 
     if (this.props.location.regionType == "Restaurant") {
-      restaurantInfo = (
+      locationInfo = (
         <div className="row">
           <div className="col-md-6">
           <p className={this.props.location.locationDetail.averagePriceMainCourse ? "" : "hide"}><strong>Average Main Course Price:</strong><br />{this.props.location.locationDetail.averagePriceMainCourse.text.toFixed(2)} {this.props.location.locationDetail.averagePriceMainCourse.currency} </p>
@@ -33,6 +33,18 @@ class Overview extends React.Component {
           </div>
           <div className="col-md-6">
             <p className={this.props.location.locationDetail.openHours ? "" : "hide"}><strong>Opening Hours:</strong><br /><span dangerouslySetInnerHTML={{__html: this.props.location.locationDetail.openHours}}></span></p>
+          </div>
+        </div>);
+    }
+
+    if (this.props.location.regionType == "Attractions") {
+      locationInfo = (
+        <div className="row">
+          <div className="col-md-6">
+            <p className={this.props.location.locationDetail.pricing ? "" : "hide"}><strong>Price:</strong><br />{this.props.location.locationDetail.pricing.priceGBP} GBP </p>
+          </div>
+          <div className="col-md-6">
+            <p className={this.props.location.locationDetail.duration ? "" : "hide"}><strong>Duration:</strong><br />{this.props.location.locationDetail.duration}</p>
           </div>
         </div>);
     }
@@ -79,7 +91,7 @@ class Overview extends React.Component {
             <p dangerouslySetInnerHTML={{__html: summary}}></p>
             <p><a href="#" onClick={this.onHandleTextClick}>{showMore}</a></p>
 
-            {restaurantInfo}
+            {locationInfo}
             {map}
 
           </div>

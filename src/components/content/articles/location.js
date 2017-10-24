@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as articleActions from '../../../actions/location/articleActions';
+import * as articleActions from '../../../actions/articles/articleActions';
 import Toastr from 'toastr';
 
 class LocationArticles extends React.Component {

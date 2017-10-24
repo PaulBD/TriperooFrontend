@@ -19,44 +19,14 @@ class LocationList extends React.Component {
   }
 
   render() {
-	let i = 0;
+
+    let i = 0;
 	return (
 		<div className="row">
 			{
-			this.props.locations.map(location => {
+			this.props.locations.locations.map(location => {
 
 				i += 1;
-
-				let spacer = '';
-
-				if (this.props.cssClass == 'col-md-4') {
-          switch (i) {
-            case 3:
-            case 6:
-            case 9:
-            case 12:
-            case 15:
-            case 18:
-            case 21:
-            case 24:
-              spacer = <div className="gap gap-small"></div>;
-              break;
-          }
-        }
-        else {
-          switch (i) {
-            case 4:
-            case 7:
-            case 10:
-            case 12:
-            case 15:
-            case 18:
-            case 21:
-            case 24:
-              spacer = <div className="gap gap-small"></div>;
-              break;
-          }
-        }
 
 				let locationType = location.subClass;
 
@@ -119,13 +89,14 @@ class LocationList extends React.Component {
         };
 
 				return (
-					<div className={this.props.cssClass} key={location.regionID}>
+					<div className={this.props.cssClass} key={location.regionType == "Attractions" ? location.locationDetail.productCode : location.regionID}>
 						<div className="hover-img bgImage" style={bgImage}>
 							<div className="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">
                 <a  href={location.url}>
 								<div className="text-small">
 									<h5>{location.regionName.length > 31 ? location.regionName.substring(0,31) + '...' : location.regionName}</h5>
 									<p className={locationType.length == 0 ? "hide" : ""}>{titleCase(locationType)}</p>
+                  <p className={location.regionType == "Attractions" ? "" : "hide"}>{location.regionType == "Attractions" ? location.locationDetail.pricing.priceGBP + ' GBP' : ""}</p>
 								</div>
                 </a>
 							</div>
@@ -155,12 +126,12 @@ class LocationList extends React.Component {
 }
 
 LocationList.defaultProps = {
-  locations: [],
+  locations: {},
   cssClass: 'col-md-4'
 };
 
 LocationList.propTypes = {
-	locations: PropTypes.array.isRequired,
+	locations: PropTypes.object.isRequired,
 	cssClass: PropTypes.string,
   authActions: PropTypes.object.isRequired,
   isAuthenticated: PropTypes.bool.isRequired

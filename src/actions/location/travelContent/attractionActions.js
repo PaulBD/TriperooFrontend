@@ -1,4 +1,4 @@
-import AttractionsApi from '../../../api/location/travelContent/attractionApi';
+import ContentApi from '../../../api/location/travelContent/contentApi';
 import * as types from '../../../actionTypes/';
 
 // ****************************************
@@ -20,7 +20,7 @@ export function attractionsContentError(errorMessage) {
 export function loadAttractionsByParentLocationId(locationId, categoryName, attractiontName, pageSize, pageNumber) {
   return dispatch => {
     dispatch(requestAttractionsContent());
-    return AttractionsApi.getAttractionsByParentLocationId(locationId, categoryName, attractiontName, pageSize, pageNumber).then(attractionsList => {
+    return ContentApi.getContentByParentLocationId(locationId, 'attractions', categoryName, attractiontName, pageSize, pageNumber).then(attractionsList => {
       dispatch(attractionsContentSuccess(attractionsList));
     }).catch(error => {
       dispatch(attractionsContentError(error.response.data));

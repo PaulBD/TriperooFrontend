@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as categoryActions from '../../actions/location/common/categoryActions';
+import * as categoryActions from '../../actions/legacy/categoryActions';
 
 class CategorySideBar extends React.Component {
   constructor(props, context) {
