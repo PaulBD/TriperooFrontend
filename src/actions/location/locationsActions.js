@@ -16,10 +16,10 @@ export function childLocationContentError(errorMessage) {
   return {type: types.CHILD_LOCATION_CONTENT_FAILURE, isFetching: false,  errorMessage};
 }
 
-export function loadLocationsByParentLocationId(parentLocationId, type, pageSize, pageNumber) {
+export function loadLocationsByParentLocationId(parentLocationId, type, name, pageSize, pageNumber) {
   return dispatch => {
     dispatch(requestChildLocationsContent());
-    return LocationsApi.getLocationsByParentId(parentLocationId, type, pageSize, pageNumber).then(locationsList => {
+    return LocationsApi.getLocationsByParentId(parentLocationId, type, name, pageSize, pageNumber).then(locationsList => {
       dispatch(childLocationContentSuccess(locationsList));
     }).catch(error => {
       dispatch(childLocationContentError(error));

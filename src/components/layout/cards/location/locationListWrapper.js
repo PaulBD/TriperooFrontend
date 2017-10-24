@@ -17,7 +17,6 @@ class ByLocation extends React.Component {
   }
 
   render(){
-    console.log(this.props.locations);
     if (!this.props.isFetching) {
       return (
         <div className={this.props.useMinHeight ? "listHeight" : ""}>

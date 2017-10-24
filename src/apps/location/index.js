@@ -95,7 +95,7 @@ class LocationHome extends React.Component {
           <div className="container">
             <div className="row">
               <div className="col-md-12">
-                <TopLocations locationId={this.props.locationId} name={this.state.location.regionName} locationType="Attractions" {...this.props} />
+                <TopLocations locationId={this.props.locationId} name={this.state.location.regionName} locationType="Attractions" pageSize={8} locationName={this.props.location.regionName} showTitle={true}/>
               </div>
               <div className="col-md-8">
                 <Summary location={this.props.location} showMap={true} />

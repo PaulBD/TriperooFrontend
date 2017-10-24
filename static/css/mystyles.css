@@ -1501,3 +1501,4 @@ ul.twPc-Arrange li.location {
 .tripNav a { border-left: solid 1px #cccccc; color: #333333; }
 .tripNav a:hover, .tripNav a.active { color: #ffffff; background-color: #ed8323; }
 .attractionImage { height: 142px; }
+.backup { display: none; }

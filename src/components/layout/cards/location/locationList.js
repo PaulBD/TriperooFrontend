@@ -19,7 +19,7 @@ class LocationList extends React.Component {
   }
 
   render() {
-
+console.log(this.props.locations.locations);
     let i = 0;
 	return (
 		<div className="row">

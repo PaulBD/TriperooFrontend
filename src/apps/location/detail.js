@@ -6,6 +6,7 @@ import * as modalActions from '../../actions/common/modalActions';
 import * as authenticationActions from '../../actions/customer/authenticationActions';
 import TriperooLoader from '../../components/loaders/globalLoader';
 import Toastr from 'toastr';
+import ReactGA from 'react-ga';
 
 import FacebookSignup from '../../components/forms/authentication/facebookSignup';
 import LocationHeader from '../../components/content/headers/locationItem';
@@ -21,6 +22,7 @@ import Photos from '../../components/layout/cards/location/photoList';
 import TagList from '../../components/forms/common/tagList';
 import TrustedPartners from '../../components/content/static/trustedPartners';
 import HotelsNearLocation from '../../components/layout/cards/hotels/hotelsNearLocation';
+import AttractionsNearLocation from '../../components/layout/cards/location/attractionsNearLocation';
 let moment = require('moment');
 
 let titleCase = require('title-case');
@@ -37,11 +39,19 @@ class LocationDetail extends React.Component {
       formattedAddress: [],
       errors:''
     };
+    this.trackClick = this.trackClick.bind(this);
   }
 
   componentWillMount() {
     window.scrollTo(0, 0);
     this.loadLocation();
+  }
+
+  trackClick(e) {
+    e.preventDefault();
+    ReactGA.event({ category: e.currentTarget.getAttribute('data-category'), action: 'Click', label: this.props.location.regionName });
+
+    this.props.modalActions.openBookmark(this.props.location.parentRegionID, this.props.location.parentRegionName, this.props.location.parentRegionNameLong, this.props.location.parentRegionImage, this.props.location.regionID, this.props.location.regionNameLong, this.props.location.regionName, e.currentTarget.getAttribute('data-category'), this.props.location.image, this.props.location.url, false, this.props.location.locationCoordinates.latitude, this.props.location.locationCoordinates.longitude);
   }
 
   loadLocation() {
@@ -112,8 +122,8 @@ class LocationDetail extends React.Component {
                     <BookmarkButton name="sidePanel" parentLocationId={this.props.location.parentRegionID} parentLocationName={this.props.location.parentRegionName} parentLocationNameLong={this.props.location.parentRegionNameLong} parentLocationImage={this.props.location.parentRegionImage} locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType={this.props.location.subClass} latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0} longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0} />
                   </div>
                   <div className="col-md-3 col-6">
-                    {this.props.location.regionType == "Restaurant" ? <a href={this.props.location.locationDetail.bookingUrl} className="btn btn-primary questionBtn" target="_blank"><i className="fa fa-calendar"></i> Book Restaurant</a> : ''}
-                    {this.props.location.regionType == "Attractions" ? <a href={this.props.location.locationDetail.bookingUrl} className="btn btn-primary questionBtn" target="_blank"><i className="fa fa-calendar"></i> Book Attraction</a> : ''}
+                    {this.props.location.regionType == "Restaurant" ? <a href={this.props.location.locationDetail.bookingUrl} className="btn btn-primary questionBtn" target="_blank" onClick={this.trackClick} data-category="Restaurant"><i className="fa fa-calendar"></i> Book Restaurant</a> : ''}
+                    {this.props.location.regionType == "Attractions" ? <a href={this.props.location.locationDetail.bookingUrl} className="btn btn-primary questionBtn" target="_blank" onClick={this.trackClick} data-category="Attraction"><i className="fa fa-calendar"></i> Book Attraction</a> : ''}
                   </div>
                 </div>
                 <Summary location={this.props.location} showMap={false} showHelp={false}/>
@@ -123,10 +133,10 @@ class LocationDetail extends React.Component {
               </div>
             </div>
           </div>
+          <AttractionsNearLocation location={this.props.location} hasLoadedLocation={this.state.hasLoaded} url={this.props.location.parentUrl}/>
           <div className={this.props.location.locationCoordinates.latitude == 0 && this.props.location.locationCoordinates.longitude == 0 ? "hide" : "jumbotron maps"}>
             <TriperooGoogleMap latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0} longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0} text={this.props.location.regionName} zoom={13} markerArray={markerArray} isLoading={false} locationType={this.props.location.subClass}/>
           </div>
-          <div className={this.props.location.locationCoordinates.latitude != 0 && this.props.location.locationCoordinates.longitude != 0 ? "hide" : "jumbotron maps"}>
           <HotelsNearLocation
             locationType={this.props.location.regionType}
             arrivalDate={moment().add(7, 'days').format('YYYY-MM-DD')}
@@ -140,7 +150,8 @@ class LocationDetail extends React.Component {
             guests={1}
             sortBy="PROMO"
             locationId={this.props.locationId} latitude={this.props.location.latitude} longitude={this.props.location.longitude} pageSize={4} locationName={this.props.location.parentRegionNameLong} url={this.props.location.parentUrl}/>
-          </div>
+
+
           <div className="gap gap-small"></div>
           <div className="container">
             <div className="row">

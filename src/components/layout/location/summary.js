@@ -44,7 +44,7 @@ class Overview extends React.Component {
             <p className={this.props.location.locationDetail.pricing ? "" : "hide"}><strong>Price:</strong><br />{this.props.location.locationDetail.pricing.priceGBP} GBP </p>
           </div>
           <div className="col-md-6">
-            <p className={this.props.location.locationDetail.duration ? "" : "hide"}><strong>Duration:</strong><br />{this.props.location.locationDetail.duration}</p>
+            <p className={this.props.location.locationDetail.duration ? "" : "hide"}><strong>Duration:</strong><br /><span dangerouslySetInnerHTML={{__html: this.props.location.locationDetail.duration}}></span></p>
           </div>
         </div>);
     }

@@ -32,6 +32,7 @@ class LocationHeader extends React.Component {
 
       let subNav = '';
       let url = '';
+console.log(this.props.location.subClass);
 
       if (this.props.docType) {
         switch (this.props.docType.toLowerCase()) {
@@ -65,9 +66,17 @@ class LocationHeader extends React.Component {
           case 'casino':
           case 'tree':
           case 'golf':
+            url = this.props.location.parentUrl + '/points-of-interest';
+            subNav = (
+              <li className="breadcrumb-item"><a href={url}>Points Of Interest In {this.props.location.parentRegionName}</a>
+              </li>);
+            break;
+          case 'cultural & theme tours':
+          case 'tours & sightseeing':
+          case 'walking & biking tours':
             url = this.props.location.parentUrl + '/attractions';
             subNav = (
-              <li className="breadcrumb-item"><a href={url}>Things To Do In {this.props.location.parentRegionName}</a>
+              <li className="breadcrumb-item"><a href={url}>Attractions In {this.props.location.parentRegionName}</a>
               </li>);
             break;
         }
@@ -80,25 +89,22 @@ class LocationHeader extends React.Component {
             <div className="bg-img blur" style={style}></div>
             <div className="container">
               <div className="row">
-                <div className="col-md-9 col-xs-7">
+                <div className="col-md-12">
                   <ol className="breadcrumb">
                     <li className="breadcrumb-item"><a href="/">Home</a></li>
                     <li className="breadcrumb-item"><a href={this.props.location.parentUrl}>{this.props.location.parentRegionNameLong}</a></li>
                     {subNav}
-                    <li className="breadcrumb-item active">{this.props.location.regionName}</li>
+                    <li className="breadcrumb-item active">{this.props.location.regionName.length > 60 ? this.props.location.regionName.substr(0, 60) + '...' : this.props.location.regionName}</li>
                   </ol>
-                  <h1>{this.props.location.regionName}</h1>
+                  <h1>{this.props.location.regionName.length > 60 ? this.props.location.regionName.substr(0, 60) + '...' : this.props.location.regionName}</h1>
                   <div className="reviewsHeader">
                     <StarRating starRating={this.props.location.averageReviewScore ? this.props.location.averageReviewScore : 0}
                                 className="icon-list list-inline-block mb0 last-minute-rating"
                                 includeReviewCount={true}
                                 reviewCount={this.props.location.reviewCount ? this.props.location.reviewCount : 0}/>
+                    <img src={this.props.location.image} width="1" height="1" onError={this.backupImage} className="backup"/>
 
                   </div>
-                </div>
-                <div className="col-md-3 col-xs-5 text-right">
-                  <div className="gap gap-small"></div>
-                  <img src={this.props.location.image} width="1" height="1" onError={this.backupImage}/>
                 </div>
               </div>
             </div>

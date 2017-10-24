@@ -8,12 +8,14 @@ class LocationsApi {
   // ****************************************
   // Return child locations using parent id
   // ****************************************
-  static getLocationsByParentId(parentLocationId, type, pageSize, pageNumber) {
+  static getLocationsByParentId(parentLocationId, type, name, pageSize, pageNumber) {
+
     if (environment) {
+      let url = baseUrl + '/location/' + parentLocationId + '/' + type + '?name=' + name + '&pageSize=' + pageSize + '&pageNumber=' + pageNumber;
       return new Promise((resolve, reject) => {
-        axios.get(baseUrl + '/location/' + parentLocationId + '/' + type + '?pageSize=' + pageSize + '&pageNumber=' + pageNumber)
+        axios.get(url)
           .then(function (response) {
-            resolve(Object.assign([], response.data));
+            resolve(Object.assign({}, response.data));
           })
           .catch(function (error) {
             reject(error);
