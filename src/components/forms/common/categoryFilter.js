@@ -63,8 +63,7 @@ class FilterCategoryPopup extends React.Component {
                 <li className={className} key={category.categoryName}>
                   <a href="#" onClick={this.addCategory} data-type={category.categoryName}>
                     <input type="checkbox" className="form-check-inline" checked={this.state.typeFilterList.includes(category.categoryName) ? true : false}/>&nbsp;
-                    {titleCase(category.categoryNameFriendly)} ({category.count})
-                    <i className={this.state.typeFilterList.includes(category.categoryName) ? "fa fa-check categoryCheck" : "hide"} />
+                    {category.categoryNameFriendly} ({category.count})
                   </a>
                 </li>
                 );

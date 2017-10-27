@@ -29,7 +29,7 @@ class AttractionContent extends React.Component {
   loadLocation() {
     this.props.locationActions.loadLocationById(this.props.locationId)
       .then(() => {
-        this.setState({isLoadingCategoryList: true});
+        this.setState({isLoadingAttractionList: true, isLoadingCategoryList: true});
         this.loadAttractions(this.props.locationId, this.state.attractionType, '', this.state.pageSize, this.state.pageNumber);
 
       })
@@ -40,10 +40,10 @@ class AttractionContent extends React.Component {
   }
 
   loadAttractions(locationId, attractionType, attractionName, pageSize, pageNumber) {
-    this.setState({isLoadingLocation: false, isLoadingAttractionList: true});
+    this.setState({isLoadingLocation: false});
 
     this.props.attractionsActions.loadAttractionsByParentLocationId(locationId, attractionType, attractionName, pageSize, pageNumber)
-      .then(() => this.setState({isLoadingAttractionList: false, isLoadingCategoryList:false}))
+      .then(() => this.setState({isLoadingAttractionList: false, isLoadingCategoryList: false}))
       .catch(error => {
         Toastr.error(error);
         this.setState({attractionsList: false});
@@ -52,7 +52,7 @@ class AttractionContent extends React.Component {
 
   filterAttractions(attractionCategory) {
     console.log(attractionCategory);
-    this.setState({ attractionType: attractionCategory, attractionFriendlyName: attractionCategory });
+    this.setState({ attractionType: attractionCategory, attractionFriendlyName: attractionCategory, isLoadingAttractionList: true });
     this.loadAttractions(this.props.locationId, attractionCategory, '', this.state.pageSize, this.state.pageNumber);
   }
 
@@ -76,7 +76,7 @@ class AttractionContent extends React.Component {
               <div className="container">
                 <div className="row">
                   <div className="col-md-3 sideBar">
-                    <FilterAttractions categories={this.props.attractionsCategories} filterAttractions={this.filterAttractions} isFetching={this.state.isLoadingAttractionList}/>
+                    <FilterAttractions categories={this.props.attractionsCategories} filterAttractions={this.filterAttractions} isFetching={this.state.isLoadingCategoryList}/>
 
                   </div>
                   <div className="col-md-9 restaurantList">

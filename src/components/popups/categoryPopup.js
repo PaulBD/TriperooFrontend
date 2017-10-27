@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as modalActions from '../../actions/common/modalActions';
+let titleCase = require('title-case');
 
 class CategoryModel extends React.Component {
   constructor(props, context) {
@@ -65,13 +66,13 @@ class CategoryModel extends React.Component {
                   {
                     this.props.categories.map(function (category, i) {
 
-                      let className = this.state.typeFilterList.includes(category.categoryName) ? 'active col-md-3' : 'col-md-3';
+                      let className = this.state.typeFilterList.includes(category.categoryName) ? 'active col-md-4' : 'col-md-4';
 
                       return (
                         <li className={className} key={category.categoryName}>
                           <a href="#" onClick={this.addCategory} data-type={category.categoryName}>
-                            {category.categoryNameFriendly}
-                            <i className={this.state.typeFilterList.includes(category.categoryName) ? "fa fa-check categoryCheck" : "hide"} />
+                            <input type="checkbox" className="form-check-inline" checked={this.state.typeFilterList.includes(category.categoryName) ? true : false}/>&nbsp;
+                            {category.categoryNameFriendly} ({category.count})
                           </a>
                         </li>
                       );
@@ -84,8 +85,8 @@ class CategoryModel extends React.Component {
             </div>
           </div>
           <div className="modal-footer text-center">
-            <a href="#" onClick={this.updateCategories} className="btn btn-primary">Update Categories</a>
             <a href="#" onClick={this.closeModal}>Close</a>
+            <a href="#" onClick={this.updateCategories} className="btn btn-primary">Update Categories</a>
           </div>
         </div>
       </div>

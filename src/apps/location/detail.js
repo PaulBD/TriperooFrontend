@@ -48,7 +48,6 @@ class LocationDetail extends React.Component {
   }
 
   trackClick(e) {
-    e.preventDefault();
     ReactGA.event({ category: e.currentTarget.getAttribute('data-category'), action: 'Click', label: this.props.location.regionName });
 
     this.props.modalActions.openBookmark(this.props.location.parentRegionID, this.props.location.parentRegionName, this.props.location.parentRegionNameLong, this.props.location.parentRegionImage, this.props.location.regionID, this.props.location.regionNameLong, this.props.location.regionName, e.currentTarget.getAttribute('data-category'), this.props.location.image, this.props.location.url, false, this.props.location.locationCoordinates.latitude, this.props.location.locationCoordinates.longitude);
