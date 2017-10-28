@@ -20,7 +20,7 @@ export default function userReducer(state = { isSending: false, hasPosted: false
     case types.LOAD_ACTIVITIES_REQUEST:
       return Object.assign({}, state, { isSending: true, hasPosted: false});
     case types.LOAD_ACTIVITIES_SUCCESS:
-      return Object.assign({}, state, { isSending: false, hasPosted: true, errorMessage: '', bookmarks: action.bookmarks });
+      return Object.assign({}, state, { isSending: false, hasPosted: true, errorMessage: '', activities: action.activities });
     case types.LOAD_ACTIVITIES_FAILURE:
       return Object.assign({}, state, { isSending: false, hasPosted: false, errorMessage: action.message });
 

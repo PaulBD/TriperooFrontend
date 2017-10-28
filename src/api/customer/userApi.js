@@ -60,7 +60,7 @@ class UserApi {
         }
       })
         .then(response => {
-          resolve(Object.assign([], response.data));
+          resolve(Object.assign({}, response.data));
         })
         .catch(function (error) {
           reject(error);

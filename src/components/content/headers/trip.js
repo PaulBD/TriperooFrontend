@@ -34,7 +34,8 @@ class TripHeader extends React.Component {
                     <li className="breadcrumb-item active">{this.props.trip.tripName}</li>
                   </ol>
                   <h1>{this.props.trip.tripName}</h1>
-                  <p className="tripDate">{moment(this.props.trip.tripStart).format('LL')} to {moment(this.props.trip.tripEnd).format('LL')}</p>
+
+                  <p className="tripDate">{moment(this.props.trip.tripDetails.tripStart).format('LL')} to {moment(this.props.trip.tripDetails.tripEnd).format('LL')}</p>
                 </div>
               </div>
             </div>

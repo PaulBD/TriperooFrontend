@@ -120,6 +120,7 @@ class BookmarkLocation extends React.Component {
 
           if (this.props.errorMessage == '' && this.props.errorMessage.length == 0)
           {
+            this.getTrips();
             this.setState({wizardStep: 'Thank you'});
           }
         })

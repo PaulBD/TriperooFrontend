@@ -15,7 +15,7 @@ import GoogleMaps from '../../components/maps/googleMap';
 class CustomerHome extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { isLoading: true, loadingReviews: false };
+    this.state = { isLoading: true, loadingReviews: false, isLoadingTrips: false };
     this.refreshData = this.refreshData.bind(this);
     this.createTrip = this.createTrip.bind(this);
   }
@@ -24,16 +24,25 @@ class CustomerHome extends React.Component {
     document.title = 'Profile Page';
     window.scrollTo(0, 0);
 
-    this.setState({isLoading: true, loadingReviews: false});
+    this.setState({isLoading: true, isLoadingTrips: true, loadingReviews: true});
     this.props.userActions.getUser(this.props.currentUserId)
       .then(() => {
-        this.setState({isLoading: false, loadingReviews: true});
-        this.loadReviews();
+        this.setState({isLoading: false, isLoadingTrips: true, loadingReviews: true});
+        this.props.userActions.getTrips(this.props.currentUserId)
+          .then(() => {
+            this.setState({isLoading: false, isLoadingTrips: false, loadingReviews: true});
+            this.loadReviews();
+          })
+          .catch(error => {
+            Toastr.error(error);
+            this.setState({isLoading: false, isLoadingTrips: false, loadingReviews: false});
+          });
       })
       .catch(error => {
         Toastr.error(error);
-        this.setState({isLoading: false, loadingReviews: false});
+        this.setState({isLoading: false, isLoadingTrips: false, loadingReviews: false});
       });
+
   }
 
   refreshData() {
@@ -43,11 +52,11 @@ class CustomerHome extends React.Component {
   loadReviews(){
     this.props.userReviewActions.getReviews(this.props.currentUserId, 3, 0)
       .then(() => {
-        this.setState({loading: false, loadingReviews: false});
+        this.setState({loading: false, isLoadingTrips: false, loadingReviews: false});
       })
       .catch(error => {
         Toastr.error(error);
-        this.setState({loading: false, loadingReviews: false});
+        this.setState({loading: false, isLoadingTrips: false, loadingReviews: false});
       });
   }
 
@@ -63,7 +72,7 @@ class CustomerHome extends React.Component {
     let moreReviews = '';
 
     if (this.props.isActiveUser) {
-      if (this.props.trips != null && this.props.trips.length > 0 && this.props.trips.length < 3 ) {
+      if (this.props.tripList != null && this.props.tripList.length > 0 && this.props.tripList.length < 3 ) {
         addTrip = (
           <div className="col-md-4">
               <div className="card text-center createTripBlank">
@@ -79,10 +88,9 @@ class CustomerHome extends React.Component {
       }
     }
 
-
-    if (!this.state.isLoading && this.props.user.profile) {
+    if (!this.state.isLoading && !this.state.isLoadingTrips) {
       let tripUrl = this.props.user.profile.profileUrl + '/trips';
-      if (this.props.trips != null && this.props.trips.length > 0 && this.props.trips.length > 3 ) {
+      if (this.props.tripList != null && this.props.tripList.length > 0 && this.props.tripList.length > 3 ) {
         moreTrip = (<div className="col-md-12 text-center"><p><a href={tripUrl}>Click here to see more trips</a></p></div>);
       }
 
@@ -112,11 +120,10 @@ class CustomerHome extends React.Component {
               <div className="col-md-12">
                 <div className="row">
                     {
-                      this.props.trips != null && this.props.trips.length > 0 ? this.props.trips.map(function(trip, i)
+                      this.props.tripList != null && this.props.tripList.length > 0 ? this.props.tripList.map(function(trip, i)
                       {
                         if (i < 3) {
-                          return (<div className="col-md-4"><TripItem trip={trip} key={trip.id} parentUrl={profileUrl}
-                                                                      cssClass="col-md-12 mb-4" position={i}/></div>);
+                          return (<TripItem trip={trip} key={trip.id} parentUrl={profileUrl} cssClass="col-md-4" position={i}/>);
                         }
                         else {
                           return null;
@@ -168,7 +175,7 @@ CustomerHome.propTypes = {
   isActiveUser: PropTypes.bool.isRequired,
   user: PropTypes.object,
   currentUserId: PropTypes.string,
-  trips: PropTypes.array,
+  tripList: PropTypes.array,
   reviews: PropTypes.array,
   reviewCount: PropTypes.number
 };
@@ -180,7 +187,7 @@ function mapStateToProps(state, ownProps) {
     currentUserId: ownProps.params.guid,
     isActiveUser: user ? ownProps.params.guid == user.userId : false,
     user: state.user.user ? state.user.user : {},
-    trips: state.user.user ? state.user.user.trips : [],
+    tripList: state.user.trips ? state.user.trips : [],
     reviews: state.review.reviews ? state.review.reviews : [],
     reviewCount: state.review.reviewCount ? state.review.reviewCount : 0
   };

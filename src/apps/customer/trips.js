@@ -12,27 +12,36 @@ class CustomerTrips extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    this.state = { loading: true};
+    this.state = { loading: true, isLoadingTrips: false };
   }
 
   componentWillMount() {
     document.title = 'Your Trips';
     window.scrollTo(0, 0);
 
-    this.setState({loading: true});
+    this.setState({loading: true, isLoadingTrips: true});
 
     this.props.userActions.getUser(this.props.currentUserId)
       .then(() => {
-        this.setState({loading: false});
+        this.setState({loading: false, isLoadingTrips: true});
+        this.props.userActions.getTrips(this.props.currentUserId)
+          .then(() => {
+            this.setState({loading: false, isLoadingTrips: false});
+          })
+          .catch(error => {
+            Toastr.error(error);
+            this.setState({loading: false, isLoadingTrips: false});
+          });
       })
       .catch(error => {
         Toastr.error(error);
-        this.setState({loading: false});
+        this.setState({loading: false, isLoadingTrips: false});
       });
   }
 
   render(){
-    if (!this.state.loading) {
+    if ((!this.state.loading) && (!this.state.isLoadingTrips)) {
+      console.log(this.props.tripList);
       let profileUrl = this.props.user && this.props.user.profile ? this.props.user.profile.profileUrl : '';
       return (
         <div>
@@ -42,12 +51,11 @@ class CustomerTrips extends React.Component {
             <div className="gap gap-small"></div>
             <div className="row">
               <div className="col-md-12">
-                <div className="card-columns">
+                <div className="row">
                   {
-                    this.props.user.trips != null && this.props.user.trips.length > 0 ? this.props.user.trips.map(function(trip, i) { return (<TripItem trip={trip} key={trip.id} parentUrl={profileUrl} position={i} />);}) : <p>This user has never been on any trips</p>
+                    this.props.tripList != null && this.props.tripList.length > 0 ? this.props.tripList.map(function(trip, i) { return (<TripItem trip={trip} key={trip.id} parentUrl={profileUrl} position={i} />);}) : <p>This user has never been on any trips</p>
                   }
                 </div>
-                <div className="gap gap-small"></div>
               </div>
             </div>
           </div>
@@ -82,7 +90,7 @@ function mapStateToProps(state, ownProps) {
     currentUserId: ownProps.params.guid,
     isActiveUser: user ? ownProps.params.guid == user.userId : false,
     user: state.user.user ? state.user.user : {},
-    trips: state.user.user ? state.user.user.trips : []
+    tripList: state.user.trips ? state.user.trips : []
   };
 }
 

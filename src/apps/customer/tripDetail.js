@@ -104,9 +104,9 @@ class CustomerTrips extends React.Component {
                         <div className="row">
                           <div className="col-md-6">
                             <p><strong>Things to do in {this.props.location.regionName}</strong><br />
-                              <TagList tags={this.props.location.tags} maxTags={5} /></p>
-                            <p className={this.props.location.suggestedActivity ? "" : "hide"}><strong>Side Trip</strong><br />
-                              <a href={this.props.location.suggestedActivity.regionUrl}>{this.props.location.suggestedActivity.regionName}</a></p>
+                              <TagList tags={this.props.trip.tripDetails.tags} maxTags={5} /></p>
+                            <p className=""><strong>Side Trip</strong><br />
+                              <a href=""></a></p>
                           </div>
                           <div className="col-md-6">
                             <p><strong>Accommodation</strong><br />
@@ -225,7 +225,7 @@ function mapStateToProps(state, ownProps) {
     isActiveUser: user ? ownProps.params.guid == user.userId : false,
     tripId: ownProps.params.tripId,
     user: state.user.user ? state.user.user : null,
-    trip: state.user.trip ? state.user.trip : null,
+    trip: state.user.trip ? state.user.trip : {},
     location: state.location.location ? state.location.location : {}
   };
 }

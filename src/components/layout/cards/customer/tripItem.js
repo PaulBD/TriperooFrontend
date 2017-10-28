@@ -54,6 +54,7 @@ class TripItem extends React.Component {
     };
 
     return (
+      <div className={this.props.cssClass}>
         <div className="card text-xs-left mb-4 text-center" key={this.props.key}>
           <div className="cardBg reviewBg" style={style} ></div>
           <div className="card-block testimonial">
@@ -61,9 +62,6 @@ class TripItem extends React.Component {
               <a href={this.props.trip.url}>{this.props.trip.tripName}</a>
             </h4>
             <h6 className="card-subtitle mb-2 text-muted tripStartDate">{moment(this.props.trip.tripDetails.tripStart).format('YYYY-MM-DD')} to {moment(this.props.trip.tripDetails.tripEnd).format('YYYY-MM-DD')}</h6>
-            <p className={this.props.trip.tripDetails.description ? "card-text" : "hide"}>
-              {this.props.trip.tripDetails.description}
-            </p>
             <hr />
             <div className="date text-center">Share with friends</div>
             <div className="text-center">
@@ -85,7 +83,7 @@ class TripItem extends React.Component {
             <small className="text-muted">{this.props.trip.days && this.props.trip.days.length > 0 ? this.props.trip.days.length : 0} Bookmarks</small>
           </div>
         </div>
-
+      </div>
     );
   }
 }
