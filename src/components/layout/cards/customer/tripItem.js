@@ -29,18 +29,17 @@ class TripItem extends React.Component {
     const TwitterIcon = generateShareIcon('twitter');
     const GooglePlusIcon = generateShareIcon('google');
 
-    let url =  this.props.parentUrl + "/trips/" + this.props.trip.id + '/' + this.props.trip.listName;
 
-    let shareText = 'Hey! I have created a trip on Triperoo which I thought you might like called' + this.props.trip.listName + '. Check it out!';
+    let shareText = 'Hey! I have created a trip on Triperoo which I thought you might like called' + this.props.trip.tripName + '. Check it out!';
 
     let imageUrl = "";
 
-    imageUrl =  this.props.trip.image;
+    imageUrl =  this.props.trip.tripDetails.image;
 
     if (imageUrl == undefined || imageUrl == '') {
       if (this.props.trip.bookmarks && this.props.trip.bookmarks.length > 0) {
         if (this.props.trip.bookmarks[0].image) {
-          imageUrl = this.props.trip.bookmarks[0].image;
+          imageUrl = this.props.trip.days[0].image;
         }
       }
     }
@@ -59,22 +58,22 @@ class TripItem extends React.Component {
           <div className="cardBg reviewBg" style={style} ></div>
           <div className="card-block testimonial">
             <h4 className="card-title">
-              <a href={url}>{this.props.trip.listName}</a>
+              <a href={this.props.trip.url}>{this.props.trip.tripName}</a>
             </h4>
-            <h6 className="card-subtitle mb-2 text-muted tripStartDate">{moment(this.props.trip.startDate).format('YYYY-MM-DD')} to {moment(this.props.trip.endDate).format('YYYY-MM-DD')}</h6>
-            <p className={this.props.trip.description ? "card-text" : "hide"}>
-              {this.props.trip.description}
+            <h6 className="card-subtitle mb-2 text-muted tripStartDate">{moment(this.props.trip.tripDetails.tripStart).format('YYYY-MM-DD')} to {moment(this.props.trip.tripDetails.tripEnd).format('YYYY-MM-DD')}</h6>
+            <p className={this.props.trip.tripDetails.description ? "card-text" : "hide"}>
+              {this.props.trip.tripDetails.description}
             </p>
             <hr />
             <div className="date text-center">Share with friends</div>
             <div className="text-center">
-              <FacebookShareButton className="shareBtn" url={url} title={shareText} picture={this.props.trip.bookmarks && this.props.trip.bookmarks.length > 0 ? this.props.trip.bookmarks[0].image : ''}>
+              <FacebookShareButton className="shareBtn" url={this.props.trip.url} title={shareText} picture={this.props.trip.days && this.props.trip.days.length > 0 ? this.props.trip.days[0].image : ''}>
                 <FacebookIcon size={32} round={true} />
               </FacebookShareButton>
-              <TwitterShareButton className="shareBtn" url={url} title={shareText} picture={this.props.trip.bookmarks && this.props.trip.bookmarks.length > 0 ? this.props.trip.bookmarks[0].image : ''}>
+              <TwitterShareButton className="shareBtn" url={this.props.trip.url} title={shareText} picture={this.props.trip.days && this.props.trip.days.length > 0 ? this.props.trip.days[0].image : ''}>
                 <TwitterIcon size={32} round={true} />
               </TwitterShareButton>
-              <GooglePlusShareButton url={url} className="shareBtn">
+              <GooglePlusShareButton url={this.props.trip.url} className="shareBtn">
                 <GooglePlusIcon
                   size={32}
                   round />
@@ -83,7 +82,7 @@ class TripItem extends React.Component {
 
           </div>
           <div className="card-footer">
-            <small className="text-muted">{this.props.trip.bookmarks && this.props.trip.bookmarks.length > 0 ? this.props.trip.bookmarks.length : 0} Bookmarks</small>
+            <small className="text-muted">{this.props.trip.days && this.props.trip.days.length > 0 ? this.props.trip.days.length : 0} Bookmarks</small>
           </div>
         </div>
 

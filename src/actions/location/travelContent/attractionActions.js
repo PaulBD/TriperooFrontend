@@ -9,7 +9,6 @@ export function requestAttractionsContent() {
 }
 
 export function attractionsContentSuccess(attractionsList) {
-  console.log(attractionsList);
   return {type: types.ATTRACTION_CONTENT_SUCCESS, isFetching: false, attractionsList};
 }
 

@@ -75,7 +75,7 @@ class UserApi {
     return new Promise((resolve, reject) => {
       axios({
         method: 'get',
-        url:  baseUrl + '/customer/trips?reference=' + customerReference,
+        url:  baseUrl + '/customer/' + customerReference + '/trips',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
@@ -93,12 +93,11 @@ class UserApi {
   // ****************************************
   // Post new trip
   // ****************************************
-  static postTrip(trip) {
-    console.log(trip);
+  static postTrip(trip, customerReference) {
     return new Promise((resolve, reject) => {
       axios({
         method: 'post',
-        url:  baseUrl + '/customer/trip',
+        url:  baseUrl + '/customer/' + customerReference + '/trip',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
@@ -142,13 +141,13 @@ class UserApi {
 
 
   // ****************************************
-  // GET bookmarks
+  // GET activities
   // ****************************************
-  static getBookmarks(tripId) {
+  static getActivities(tripId) {
     return new Promise((resolve, reject) => {
       axios({
         method: 'get',
-        url:  baseUrl + '/customer/trip/' + tripId + '/bookmarks',
+        url:  baseUrl + '/customer/trip/' + tripId + '/activities',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
@@ -165,20 +164,20 @@ class UserApi {
   }
 
   // ****************************************
-  // Post new bookmark
+  // Post new activity
   // ****************************************
-  static postBookmark(tripId, location) {
+  static postActivity(tripId, activity) {
     return new Promise((resolve, reject) => {
       axios({
         method: 'post',
-        url:  baseUrl + '/customer/trips/' + tripId + '/bookmark',
+        url:  baseUrl + '/customer/trips/' + tripId + '/activity',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
           'token': JSON.parse(localStorage.getItem('id_token')).token
         },
         data: {
-          location
+          activity
         }
       })
       .then(response => {
@@ -191,13 +190,13 @@ class UserApi {
   }
 
   // ****************************************
-  // Archive bookmark
+  // Archive activity
   // ****************************************
-  static archiveBookmark(tripId, locationId) {
+  static archiveActivity(tripId, locationId) {
     return new Promise((resolve, reject) => {
       axios({
         method: 'delete',
-        url:  baseUrl + '/customer/trips/' + tripId + '/bookmark/' + locationId,
+        url:  baseUrl + '/customer/trips/' + tripId + '/activity/' + locationId,
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',

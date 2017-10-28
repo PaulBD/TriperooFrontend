@@ -20,8 +20,6 @@ class Following extends React.Component {
     document.title = 'Whos following you';
     window.scrollTo(0, 0);
 
-    console.log(this.props.currentUserId);
-
     this.props.userActions.getUser(this.props.currentUserId)
       .then(() => {
         this.setState({loading: false, loadingFollowers: true});

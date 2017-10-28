@@ -51,7 +51,6 @@ class AttractionContent extends React.Component {
   }
 
   filterAttractions(attractionCategory) {
-    console.log(attractionCategory);
     this.setState({ attractionType: attractionCategory, attractionFriendlyName: attractionCategory, isLoadingAttractionList: true });
     this.loadAttractions(this.props.locationId, attractionCategory, '', this.state.pageSize, this.state.pageNumber);
   }

@@ -12,7 +12,7 @@ class BookmarkButton extends React.Component {
 
   openBookmark(e) {
     e.preventDefault();
-    this.props.modalActions.openBookmark(this.props.parentLocationId, this.props.parentLocationName, this.props.parentLocationNameLong, this.props.parentLocationImage, this.props.locationId, this.props.locationNameLong, this.props.locationName, this.props.locationType, this.props.locationImage, this.props.locationUrl, false, this.props.latitude, this.props.longitude);
+    this.props.modalActions.openBookmark(this.props.parentLocationId, this.props.parentLocationName, this.props.parentLocationNameLong, this.props.parentLocationImage, this.props.parentLocationUrl, this.props.locationId, this.props.locationNameLong, this.props.locationName, this.props.locationType, this.props.locationImage, this.props.locationUrl, this.props.locationLength, false, this.props.latitude, this.props.longitude);
   }
 
   render() {
@@ -50,6 +50,7 @@ BookmarkButton.propTypes = {
   parentLocationName: PropTypes.string,
   parentLocationNameLong: PropTypes.string,
   parentLocationImage: PropTypes.string,
+  parentLocationUrl: PropTypes.string,
   name: PropTypes.string.isRequired,
   locationId: PropTypes.number,
   locationName: PropTypes.string,
@@ -59,6 +60,7 @@ BookmarkButton.propTypes = {
   locationType: PropTypes.string,
   locationImage: PropTypes.string,
   locationUrl: PropTypes.string,
+  locationLength: PropTypes.string,
   authenticationActions: PropTypes.object.isRequired,
   modalActions: PropTypes.object.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,

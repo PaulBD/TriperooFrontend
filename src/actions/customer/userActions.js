@@ -50,7 +50,6 @@ export function getUser(userReference) {
     return UserApi.getUser(userReference).then(user => {
       dispatch(getUserSuccess(user.triperooCustomers));
     }).catch(error => {
-      console.log(error);
       dispatch(getUserFailure(error.response.data));
     });
   };
@@ -126,12 +125,12 @@ export function postTripFailure(message) {
   return {type: types.POST_TRIP_FAILURE, isSending: false, hasPosted: false, message};
 }
 
-export function postTrip(trip) {
+export function postTrip(trip, customerReference) {
   return dispatch => {
     dispatch(postTripInitialize(trip));
-    if (trip.regionId > 0)
+    if (trip.tripDetails.regionID > 0)
     {
-      return UserApi.postTrip(trip).then(tripId => {
+      return UserApi.postTrip(trip, customerReference).then(tripId => {
         dispatch(postTripSuccess(tripId));
       }).catch(error => {
         dispatch(postTripFailure(error.response.data));
@@ -172,28 +171,27 @@ export function archiveTrip(tripId) {
 
 
 // ****************************************
-// Get Bookmarks
+// Get Activities
 // ****************************************
-export function getBookmarkInitialize(tripId) {
-  return {type: types.LOAD_BOOKMARK_REQUEST, isSending: true, hasPosted: false, tripId };
+export function getActivityInitialize(tripId) {
+  return {type: types.LOAD_ACTIVITIES_REQUEST, isSending: true, hasPosted: false, tripId };
 }
 
-export function getBookmarkSuccess(bookmarks) {
-  return {type: types.LOAD_BOOKMARK_SUCCESS, isSending: false, hasPosted: true, bookmarks};
+export function getActivitySuccess(activities) {
+  return {type: types.LOAD_ACTIVITIES_SUCCESS, isSending: false, hasPosted: true, activities};
 }
 
-export function getBookmarkFailure(message) {
-  return {type: types.LOAD_BOOKMARK_FAILURE, isSending: false, hasPosted: false, message};
+export function getActivityFailure(message) {
+  return {type: types.LOAD_ACTIVITIES_FAILURE, isSending: false, hasPosted: false, message};
 }
 
-export function getBookmarks(tripId) {
-
+export function getActivities(tripId) {
   return dispatch => {
-    dispatch(getBookmarkInitialize(tripId));
-    return UserApi.getBookmarks(tripId).then(bookmarks => {
-      dispatch(getBookmarkSuccess(bookmarks));
+    dispatch(getActivityInitialize(tripId));
+    return UserApi.getActivities(tripId).then(activities => {
+      dispatch(getActivitySuccess(activities));
     }).catch(error => {
-      dispatch(getBookmarkFailure(error.response.data));
+      dispatch(getActivityFailure(error.response.data));
     });
   };
 }
@@ -201,58 +199,58 @@ export function getBookmarks(tripId) {
 // ****************************************
 // Add new Bookmark
 // ****************************************
-export function postBookmarkInitialize(tripId, bookmark) {
-  return {type: types.POST_BOOKMARK_REQUEST, isSending: true, hasPosted: false, tripId, bookmark};
+export function postActivityInitialize(tripId, activity) {
+  return {type: types.POST_ACTIVITY_REQUEST, isSending: true, hasPosted: false, tripId, activity};
 }
 
-export function postBookmarkSuccess() {
-  return {type: types.POST_BOOKMARK_SUCCESS, isSending: false, hasPosted: true};
+export function postActivitySuccess() {
+  return {type: types.POST_ACTIVITY_SUCCESS, isSending: false, hasPosted: true};
 }
 
-export function postBookmarkFailure(message) {
-  return {type: types.POST_BOOKMARK_FAILURE, isSending: false, hasPosted: false, message};
+export function postActivityFailure(message) {
+  return {type: types.POST_ACTIVITY_FAILURE, isSending: false, hasPosted: false, message};
 }
 
-export function postBookmark(tripId, location) {
+export function postActivity(tripId, activity) {
   return dispatch => {
-    dispatch(postBookmarkInitialize(tripId, location));
-    if (location.regionID > 0)
+    dispatch(postActivityInitialize(tripId, activity));
+    if (activity.regionID > 0)
     {
-      return UserApi.postBookmark(tripId, location).then(bookmark => {
-        dispatch(postBookmarkSuccess());
+      return UserApi.postActivity(tripId, activity).then(activity => {
+        dispatch(postActivitySuccess());
       }).catch(error => {
-        dispatch(postBookmarkFailure(error.response.data));
+        dispatch(postActivityFailure(error.response.data));
       });
     }
     else {
-      dispatch(postBookmarkFailure("An error has occurred whilst trying to bookmark this location"));
+      dispatch(postActivityFailure("An error has occurred whilst trying to bookmark this location"));
     }
   };
 }
 
 
 // ****************************************
-// Archive Bookmark
+// Archive Activity
 // ****************************************
-export function archiveBookmarkInitialize(tripId, locationId) {
-  return {type: types.ARCHIVE_BOOKMARK_REQUEST, isSending: true, hasPosted: false, locationId, tripId};
+export function archiveActivityInitialize(tripId, locationId) {
+  return {type: types.ARCHIVE_ACTIVITY_REQUEST, isSending: true, hasPosted: false, locationId, tripId};
 }
 
-export function archiveBookmarkSuccess() {
-  return {type: types.ARCHIVE_BOOKMARK_SUCCESS, isSending: false, hasPosted: true};
+export function archiveActivitySuccess() {
+  return {type: types.ARCHIVE_ACTIVITY_SUCCESS, isSending: false, hasPosted: true};
 }
 
-export function archiveBookmarkFailure(message) {
-  return {type: types.ARCHIVE_BOOKMARK_FAILURE, isSending: false, hasPosted: false, message};
+export function archiveActivityFailure(message) {
+  return {type: types.ARCHIVE_ACTIVITY_FAILURE, isSending: false, hasPosted: false, message};
 }
 
-export function archiveBookmark(tripId, locationId) {
+export function archiveActivity(tripId, locationId) {
   return dispatch => {
-    dispatch(archiveBookmarkInitialize(tripId, locationId));
-    return UserApi.archiveBookmark(tripId, locationId).then(bookmark => {
-      dispatch(archiveBookmarkSuccess());
+    dispatch(archiveActivityInitialize(tripId, locationId));
+    return UserApi.archiveActivity(tripId, locationId).then(activity => {
+      dispatch(archiveActivitySuccess());
     }).catch(error => {
-      dispatch(archiveBookmarkFailure(error.response.data));
+      dispatch(archiveActivityFailure(error.response.data));
     });
   };
 }

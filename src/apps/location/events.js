@@ -54,7 +54,6 @@ class EventHome extends React.Component {
 
 
   filterEvents(categoryId, categoryName) {
-    console.log(categoryName);
     this.setState({ categoryName: categoryId, friendlyCategory: categoryName });
     this.loadEvents(this.props.locationId, categoryId, this.state.pageSize, this.state.pageNumber);
   }

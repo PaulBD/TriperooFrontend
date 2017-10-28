@@ -9,7 +9,6 @@ export function requestEventCategories() {
 }
 
 export function loadEventCategoriesSuccess(eventCategories) {
-  console.log(eventCategories);
 	return {type: types.EVENT_CATEGORY_SUCCESS, isFetching: false, eventCategories};
 }
 

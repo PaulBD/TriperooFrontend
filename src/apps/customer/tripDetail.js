@@ -66,10 +66,7 @@ class CustomerTrips extends React.Component {
 
   render(){
     if (!this.state.loadingTrip && !this.state.loadingLocation) {
-      console.log(this.props.trip);
-
       document.title = this.props.trip.tripName;
-
       let hotelUrl = this.props.trip.tripDetails.regionUrl + '/hotels';
       let foodUrl = this.props.trip.tripDetails.regionUrl + '/restaurants';
       return (

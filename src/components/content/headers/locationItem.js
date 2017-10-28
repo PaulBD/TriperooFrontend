@@ -32,7 +32,6 @@ class LocationHeader extends React.Component {
 
       let subNav = '';
       let url = '';
-console.log(this.props.location.subClass);
 
       if (this.props.docType) {
         switch (this.props.docType.toLowerCase()) {

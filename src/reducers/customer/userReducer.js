@@ -17,18 +17,25 @@ export default function userReducer(state = { isSending: false, hasPosted: false
     case types.USER_FAILURE:
       return Object.assign({}, state, { isSending: false, hasPosted: false, errorMessage: action.message });
 
-    case types.LOAD_BOOKMARK_REQUEST:
+    case types.LOAD_ACTIVITIES_REQUEST:
       return Object.assign({}, state, { isSending: true, hasPosted: false});
-    case types.LOAD_BOOKMARK_SUCCESS:
+    case types.LOAD_ACTIVITIES_SUCCESS:
       return Object.assign({}, state, { isSending: false, hasPosted: true, errorMessage: '', bookmarks: action.bookmarks });
-    case types.LOAD_BOOKMARK_FAILURE:
+    case types.LOAD_ACTIVITIES_FAILURE:
       return Object.assign({}, state, { isSending: false, hasPosted: false, errorMessage: action.message });
 
-    case types.POST_BOOKMARK_REQUEST:
+    case types.POST_ACTIVITY_REQUEST:
       return Object.assign({}, state, { isSending: true, hasPosted: false});
-    case types.POST_BOOKMARK_SUCCESS:
+    case types.POST_ACTIVITY_SUCCESS:
       return Object.assign({}, state, { isSending: false, hasPosted: true, errorMessage: '' });
-    case types.POST_BOOKMARK_FAILURE:
+    case types.POST_ACTIVITY_FAILURE:
+      return Object.assign({}, state, { isSending: false, hasPosted: false, errorMessage: action.message });
+
+    case types.ARCHIVE_ACTIVITY_REQUEST:
+      return Object.assign({}, state, { isSending: true, hasPosted: false});
+    case types.ARCHIVE_ACTIVITY_SUCCESS:
+      return Object.assign({}, state, { isSending: false, hasPosted: true, errorMessage: '' });
+    case types.ARCHIVE_ACTIVITY_FAILURE:
       return Object.assign({}, state, { isSending: false, hasPosted: false, errorMessage: action.message });
 
     case types.LOAD_TRIPS_REQUEST:

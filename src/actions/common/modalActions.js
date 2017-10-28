@@ -195,17 +195,17 @@ export function openSignup() {
 // ****************************************
 // Add Bookmark
 // ****************************************
-export function openBookmarkModal(parentLocationId, parentLocationName, parentLocationNameLong, parentLocationImage, locationId, locationNameLong, locationName, locationType, locationImage, locationUrl, removeBookmark, latitude, longitude) {
-  return {type: types.OPEN_BOOKMARK_MODEL, parentLocationId: parentLocationId, parentLocationName: parentLocationName, parentLocationNameLong: parentLocationNameLong, parentLocationImage: parentLocationImage, locationId: locationId, locationName: locationName, locationType: locationType, locationNameLong: locationNameLong, locationUrl: locationUrl, locationImage: locationImage, removeBookmark: removeBookmark, latitude:latitude, longitude:longitude, name: 'BookmarkModal' };
+export function openBookmarkModal(parentLocationId, parentLocationName, parentLocationNameLong, parentLocationImage, parentLocationUrl, locationId, locationNameLong, locationName, locationType, locationImage, locationUrl, locationLength, removeBookmark, latitude, longitude) {
+  return {type: types.OPEN_BOOKMARK_MODEL, parentLocationId: parentLocationId, parentLocationName: parentLocationName, parentLocationNameLong: parentLocationNameLong, parentLocationImage: parentLocationImage, parentLocationUrl: parentLocationUrl, locationId: locationId, locationName: locationName, locationType: locationType, locationNameLong: locationNameLong, locationUrl: locationUrl, locationImage: locationImage, locationLength: locationLength, removeBookmark: removeBookmark, latitude:latitude, longitude:longitude, name: 'BookmarkModal' };
 }
 
 export function closeBookmarkModal() {
 	return {type: types.CLOSE_BOOKMARK_MODEL, name: 'BookmarkModal'};
 }
 
-export function openBookmark(parentLocationId, parentLocationName, parentLocationNameLong, parentLocationImage, locationId, locationNameLong, locationName, locationType, locationImage, locationUrl, removeBookmark, latitude, longitude) {
+export function openBookmark(parentLocationId, parentLocationName, parentLocationNameLong, parentLocationImage, parentLocationUrl, locationId, locationNameLong, locationName, locationType, locationImage, locationUrl, locationLength, removeBookmark, latitude, longitude) {
 	return dispatch => {
-		dispatch(openBookmarkModal(parentLocationId, parentLocationName, parentLocationNameLong, parentLocationImage, locationId, locationNameLong, locationName, locationType, locationImage, locationUrl, removeBookmark, latitude, longitude));
+		dispatch(openBookmarkModal(parentLocationId, parentLocationName, parentLocationNameLong, parentLocationImage, parentLocationUrl, locationId, locationNameLong, locationName, locationType, locationImage, locationUrl, locationLength, removeBookmark, latitude, longitude));
 	};
 }
 

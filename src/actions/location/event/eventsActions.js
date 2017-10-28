@@ -76,7 +76,6 @@ export function loadEventsByCategory(locationId, categoryName, pageSize, pageNum
 		return EventsApi.getEventsByLocationId(locationId, categoryName, pageSize, pageNumber).then(locationEvents => {
 			dispatch(eventByCategorySuccess(locationEvents));
 		}).catch(error => {
-			console.log(error);
 			dispatch(eventByCategoryFailure(error.response.data));
 		});
 	};
@@ -103,7 +102,6 @@ export function loadEventCategories() {
 		return EventsApi.getEventCategories().then(eventCategories => {
 			dispatch(loadEventCategoriesSuccess(eventCategories));
 		}).catch(error => {
-			console.log(error);
 			dispatch(eventCategoriesFailure('Unable to load events categories'));
 		});
 	};

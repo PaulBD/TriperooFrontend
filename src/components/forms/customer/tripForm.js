@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import AutoComplete from '../common/autocomplete';
 let DatePicker = require('react-datepicker');
 
-const TripForm = ({listName, description, startDate, endDate, regionName, isCreatingList, onSubmit, onChange, onChangeStartDate, onChangeEndDate, onChangeAutoComplete, errors}) => {
+const TripForm = ({tripName, description, startDate, endDate, regionName, isCreatingList, onSubmit, onChange, onChangeStartDate, onChangeEndDate, onChangeAutoComplete, errors}) => {
   return (
     <div className="col-md-12">
       <div className="row">
@@ -17,7 +17,7 @@ const TripForm = ({listName, description, startDate, endDate, regionName, isCrea
               <AutoComplete onChangeAutoComplete={onChangeAutoComplete} searchValue={regionName} searchType="city" placeholder="Current Location" cssClass="typeahead form-control" />
             </div>
             <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-pencil input-icon input-icon-hightlight"></i>
-              <input className="form-control" placeholder="Enter Trip Name" name="listName" type="text" onChange={onChange} value={listName} />
+              <input className="form-control" placeholder="Enter Trip Name" name="tripName" type="text" onChange={onChange} value={tripName} />
             </div>
             <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-edit input-icon input-icon-hightlight"></i>
               <textarea className="form-control large" placeholder="Enter Description" type="text" name="description" onChange={onChange} value={description} rows="6" />
@@ -47,7 +47,7 @@ const TripForm = ({listName, description, startDate, endDate, regionName, isCrea
 };
 
 TripForm.propTypes = {
-  listName: PropTypes.string.isRequired,
+  tripName: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   startDate: PropTypes.object.isRequired,
   endDate: PropTypes.object.isRequired,

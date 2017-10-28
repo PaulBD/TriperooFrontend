@@ -38,7 +38,6 @@ class RestaurantContent extends React.Component {
   }
 
   filterRestaurant(restaurantCategory) {
-    console.log(restaurantCategory);
     this.setState({ restaurantType: restaurantCategory, restaurantFriendlyName: restaurantCategory });
     this.loadRestaurants(this.props.locationId, restaurantCategory, this.state.pageSize, this.state.pageNumber);
   }

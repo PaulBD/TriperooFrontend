@@ -16,12 +16,8 @@ class FollowButton extends React.Component {
   }
 
   checkFollows() {
-
-    console.log(this.props.followedBy);
-
     if (this.props.followedBy != undefined) {
       for (let i = 0; i < this.props.followedBy.length; i++) {
-        console.log(this.props.followedBy[i].customerReference);
         if (this.props.followedBy[i].customerReference.includes(this.props.activeCustomerReference)) {
           this.setState({isFollowing: true});
         }

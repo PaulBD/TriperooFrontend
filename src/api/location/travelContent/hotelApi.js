@@ -102,8 +102,6 @@ class HotelDealsApi {
       });
     }
     else {
-
-      console.log(hotelList);
       return new Promise((resolve, reject) => {
         resolve(Object.assign({}, hotelList));
       });

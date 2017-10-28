@@ -49,7 +49,6 @@ class UserPhotos extends React.Component {
   }
 
   removeImage(photoReference) {
-    console.log(photoReference);
     this.setState({loading: false, loadingPhotos: true});
     this.props.photoActions.removePhoto(this.props.currentUserId, photoReference)
       .then(() => {

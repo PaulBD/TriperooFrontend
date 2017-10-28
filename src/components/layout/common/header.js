@@ -53,11 +53,13 @@ class Header extends React.Component {
   }
 
   onLogout(e) {
+    e.preventDefault();
     this.props.authActions.logoutUser();
   }
 
   createTrip(e) {
-    this.props.modalActions.openBookmark(0, '', '', 0, '', '', '', '', '');
+    e.preventDefault();
+    this.props.modalActions.openBookmark(0, '', '', '', '', 0, '', '', '', '', '', '', false, 0, 0);
   }
 
   selectCurrency(e) {

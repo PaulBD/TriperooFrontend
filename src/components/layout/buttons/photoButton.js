@@ -13,7 +13,6 @@ class PhotoButton extends React.Component {
 
   uploadPhoto(e) {
     e.preventDefault();
-    console.log(this.props.locationNameLong);
     this.props.modalActions.openPhoto(this.props.locationId, this.props.locationName, this.props.locationNameLong, this.props.locationType);
   }
 

@@ -129,7 +129,6 @@ class LocationEdit extends React.Component {
     if (isValid) {
       this.props.cmsActions.addCMSLocation(this.state.location)
         .then(() => {
-        console.log('Succ');
           this.setState({isUpdating: false, errors: '', wizardStep: 2});
         })
         .catch(error => {

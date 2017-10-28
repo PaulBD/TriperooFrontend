@@ -36,7 +36,7 @@ class UserBookmarks extends React.Component {
 
   loadBookmarks() {
     this.setState({loadingBookmarks: true});
-    this.props.userActions.getBookmarks()
+    this.props.userActions.getActivities()
       .then(() => {
         this.setState({loadingBookmarks: false});
       })
@@ -75,7 +75,7 @@ class UserBookmarks extends React.Component {
 UserBookmarks.propTypes = {
   authActions: PropTypes.object.isRequired,
   userActions: PropTypes.object.isRequired,
-  bookmarks: PropTypes.array,
+  activities: PropTypes.array,
   isAuthenticated: PropTypes.bool.isRequired,
   isActiveUser: PropTypes.bool.isRequired,
   user: PropTypes.object,

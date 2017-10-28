@@ -27,16 +27,25 @@ class BookmarkLocation extends React.Component {
       loadingTrips: false,
       isCreatingList: false,
       trip: {
-        listName: '',
-        description: '',
-        momentStartDate: moment().add(7, 'days'),
-        startDate: moment().add(7, 'days').format('YYYY-MM-DD'),
-        momentEndDate: moment().add(14, 'days'),
-        endDate: moment().add(14, 'days').format('YYYY-MM-DD'),
-        regionName: '',
-        image: '',
-        regionId: 0,
-        bookmarks: []
+        tripName: '',
+        tripDetails: {
+          regionID: 0,
+          regionName: '',
+          regionUrl: '',
+          image: '',
+          description: '',
+          momentStartDate: moment().add(7, 'days'),
+          tripStart: moment().add(7, 'days').format('YYYY-MM-DD'),
+          momentEndDate: moment().add(14, 'days'),
+          tripEnd: moment().add(14, 'days').format('YYYY-MM-DD'),
+          tripLength: 1,
+          adults: 0,
+          children: 0,
+          type: '',
+          tripPace: '',
+          tags: []
+        },
+        days: []
       },
       errors: ''
     };
@@ -44,11 +53,12 @@ class BookmarkLocation extends React.Component {
 
   componentWillMount() {
 
-    const bookmark = {
+    const days = {
       "regionID": this.props.locationId,
-      "subClass": this.props.locationType,
+      "type": this.props.locationType,
       "regionName": this.props.locationName,
       "regionNameLong": this.props.locationNameLong,
+      "lengthValue": this.props.locationLength,
       "image": this.props.locationImage,
       "url": this.props.locationUrl,
       "latitude": this.props.latitude,
@@ -58,10 +68,14 @@ class BookmarkLocation extends React.Component {
     };
 
     let trip = this.state.trip;
-    trip.regionId = this.props.parentLocationId;
-    trip.regionName = this.props.parentLocationNameLong;
-    trip.image = this.props.parentLocationImage;
-    trip.bookmarks.push(bookmark);
+    trip.tripDetails.regionID = this.props.parentLocationId;
+    trip.tripDetails.regionName = this.props.parentLocationNameLong;
+    trip.tripDetails.image = this.props.parentLocationImage;
+    trip.tripDetails.regionUrl = this.props.parentLocationUrl;
+
+    if (this.props.locationId > 0) {
+      trip.days.push(days);
+    }
 
     this.setState({trip: trip});
 
@@ -97,11 +111,10 @@ class BookmarkLocation extends React.Component {
 
   createNewTripForm(e) {
     e.preventDefault();
-    if ((this.state.trip.listName.length > 0) && (this.state.trip.regionId > 0)) {
+    if ((this.state.trip.tripName.length > 0) && (this.state.trip.tripDetails.regionID > 0)) {
 
       this.setState({isCreatingList: true, errors: ''});
-      console.log(this.state.trip);
-      this.props.userActions.postTrip(this.state.trip)
+      this.props.userActions.postTrip(this.state.trip, this.props.customerReference)
         .then(() => {
           this.setState({isCreatingList: false, errors: this.props.errorMessage});
 
@@ -124,31 +137,38 @@ class BookmarkLocation extends React.Component {
     event.preventDefault();
     const field = event.target.name;
     let trip = this.state.trip;
-    trip[field] = event.target.value;
+
+    if (field == 'description')
+    {
+      trip.tripDetails[field] = event.target.value;
+    }
+    else {
+      trip[field] = event.target.value;
+    }
     this.setState({trip: trip});
   }
 
   onChangeAutoComplete(city, cityId, cityUrl, dataType, cityImage)
   {
-    console.log(cityImage);
     let trip = this.state.trip;
-    trip.regionId = cityId;
-    trip.regionName = city;
-    trip.image = cityImage;
+    trip.tripDetails.regionID = cityId;
+    trip.tripDetails.regionName = city;
+    trip.tripDetails.image = cityImage;
+    trip.tripDetails.regionUrl = cityUrl;
     this.setState({trip: trip});
   }
 
   onChangeStartDate(date) {
     let trip = this.state.trip;
-    trip.momentStartDate = date;
-    trip.startDate = date.format('YYYY-MM-DD');
+    trip.tripDetails.momentStartDate = date;
+    trip.tripDetails.tripStart = date.format('YYYY-MM-DD');
     this.setState({trip: trip});
   }
 
   onChangeEndDate(date) {
     let trip = this.state.trip;
-    trip.momentEndDate = date;
-    trip.endDate = date.format('YYYY-MM-DD');
+    trip.tripDetails.momentEndDate = date;
+    trip.tripDetails.tripEnd = date.format('YYYY-MM-DD');
     this.setState({trip: trip});
   }
 
@@ -170,7 +190,7 @@ class BookmarkLocation extends React.Component {
   onSaveBookmark(e) {
 
     this.setState({postingBookmark: true});
-    this.props.userActions.postBookmark(e.target.getAttribute('data-id'), this.state.trip.bookmarks[0])
+    this.props.userActions.postActivity(e.target.getAttribute('data-id'), this.state.trip.days[0])
       .then(() => {
         this.setState({postingBookmark: false, errors: this.props.errorMessage});
 
@@ -200,7 +220,7 @@ class BookmarkLocation extends React.Component {
                         return (
                           <tr key={trip.id}>
                             <td className="tripBtn"><a href={trip.url}><i className="fa fa-external-link"></i></a></td>
-                            <td>{trip.listName}</td>
+                            <td>{trip.tripName}</td>
                             <td className="tripBtn"><input className="btn btn-primary btn-sm" type="submit" onClick={this.onSaveBookmark} key={trip.id} value="Save" data-id={trip.id} /></td>
                           </tr>
                         );
@@ -218,7 +238,7 @@ class BookmarkLocation extends React.Component {
                   <hr />
                   <p>Create a new trip by completing the form below.</p>
                 </div>
-                <TripForm onSubmit={this.createNewTripForm} onChange={this.changeField} regionName={this.state.trip.regionName} endDate={this.state.trip.momentEndDate} isCreatingList={this.state.isCreatingList} listName={this.state.trip.listName} description={this.state.trip.description}  onChangeAutoComplete={this.onChangeAutoComplete} onChangeStartDate={this.onChangeStartDate} onChangeEndDate={this.onChangeEndDate} startDate={this.state.trip.momentStartDate} errors={this.state.errors} />
+                <TripForm onSubmit={this.createNewTripForm} onChange={this.changeField} regionName={this.state.trip.tripDetails.regionName} endDate={this.state.trip.tripDetails.momentEndDate} isCreatingList={this.state.isCreatingList} tripName={this.state.trip.tripName} description={this.state.trip.tripDetails.description}  onChangeAutoComplete={this.onChangeAutoComplete} onChangeStartDate={this.onChangeStartDate} onChangeEndDate={this.onChangeEndDate} startDate={this.state.trip.tripDetails.momentStartDate} errors={this.state.errors} />
               </div>
             <div className={this.state.wizardStep == "Thank you" ? "row" : "hide"}>
               <div className="col-md-12">
@@ -255,12 +275,14 @@ BookmarkLocation.propTypes = {
   parentLocationName: PropTypes.string,
   parentLocationNameLong: PropTypes.string,
   parentLocationImage: PropTypes.string,
+  parentLocationUrl: PropTypes.string,
   locationId: PropTypes.number,
   locationName: PropTypes.string,
   locationType: PropTypes.string,
   locationNameLong: PropTypes.string,
   locationImage: PropTypes.string,
   locationUrl: PropTypes.string,
+  locationLength: PropTypes.string,
   userActions: PropTypes.object.isRequired,
   isSending: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string,

@@ -26,8 +26,7 @@ class RoomList extends React.Component {
 
   trackClick() {
     ReactGA.event({ category: 'Hotels', action: 'Click', label: this.props.hotelName });
-    console.log(this.props.regionNameLong);
-    this.props.modalActions.openBookmark(this.props.parentLocationId, this.props.parentLocationName, this.props.parentLocationNameLong, this.props.parentLocationImage, this.props.locationId, this.props.regionNameLong, this.props.regionName, "hotel", this.props.regionNameImage, this.props.regionUrl, false, this.props.latitude, this.props.longitude);
+    this.props.modalActions.openBookmark(this.props.parentLocationId, this.props.parentLocationName, this.props.parentLocationNameLong, this.props.parentLocationImage, this.props.parentLocationUrl, this.props.locationId, this.props.regionNameLong, this.props.regionName, "hotel", this.props.regionNameImage, this.props.regionUrl, '', false, this.props.latitude, this.props.longitude);
   }
 
   handleFormSubmit(searchUrl, searchId, arrivalDate, nights, rooms, guests) {
@@ -59,7 +58,6 @@ class RoomList extends React.Component {
 
   render() {
     if (!this.state.isLoadingHotelRooms) {
-      console.log(this.props.searchUrl);
       if (this.props.hotelRooms.hotelRoomAvailabilityResponse.size > 0) {
         return (
           <div className="container" id="rooms">
@@ -204,6 +202,7 @@ RoomList.propTypes = {
   parentLocationName: PropTypes.string.isRequired,
   parentLocationNameLong: PropTypes.string.isRequired,
   parentLocationImage: PropTypes.string.isRequired,
+  parentLocationUrl: PropTypes.string.isRequired,
   locationId: PropTypes.number.isRequired,
   hotelId: PropTypes.number.isRequired,
   regionName: PropTypes.string.isRequired,

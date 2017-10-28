@@ -105,7 +105,6 @@ export function registerUser(creds) {
 		dispatch(requestRegistration());
 		if ((creds.name.length > 0) && (creds.cityId > 0) && (creds.emailAddress.length > 0) && (creds.password.length > 0))
 		{
-      console.log(creds);
 			return CustomerApi.registerCustomer(creds.emailAddress, creds.password, creds.name, creds.city, creds.cityId).then(token => {
 				localStorage.setItem('id_token', stringify(transformAuthentication(token)));
 				dispatch(receiveRegistration(token));

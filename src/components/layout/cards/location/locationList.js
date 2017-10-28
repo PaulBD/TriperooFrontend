@@ -114,9 +114,12 @@ class LocationList extends React.Component {
                                     parentLocationName={location.parentRegionName}
                                     parentLocationNameLong={location.parentRegionNameLong}
                                     parentLocationImage={location.parentRegionImage}
+                                    parentLocationUrl={location.parentUrl}
                                     locationNameLong={location.regionNameLong} locationUrl={location.url}
                                     locationImage={location.image} locationId={location.regionID}
-                                    locationName={location.regionName} locationType={location.subClass}
+                                    locationName={location.regionName}
+                                    locationType={location.subClass}
+                                    locationLength=""
                                     key={location.regionID}
                                     latitude={location.locationCoordinates ? location.locationCoordinates.latitude : 0}
                                     longitude={location.locationCoordinates ? location.locationCoordinates.longitude : 0}/>
