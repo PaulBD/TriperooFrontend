@@ -1,6 +1,6 @@
 import * as types from '../../actionTypes/';
 
-export default function pointofinterestsReducer(state = { isFetching: false }, action) {
+export default function pointofinterestsReducer(state = { isFetching: true }, action) {
 	switch(action.type) {
 		case types.POI_CONTENT_REQUEST:
 			return Object.assign({}, state, { isFetching: true });

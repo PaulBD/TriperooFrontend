@@ -87,10 +87,10 @@ class NightlifeContent extends React.Component {
                 <div className="row">
                   <div className="col-md-3 sideBar">
                     <MapSideBar latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0} longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0} text={title} zoom={13} markerArray={this.props.mapNightlife} isLoading={this.state.isLoadingNightlifeList} locationType={this.props.location.subClass} />
-                    <FilterNightlife categories={this.props.nightlifeCategories} filterNightife={this.filterNightlife} isFetching={this.state.isLoadingNightlifeList}/>
+                    <FilterNightlife searchName="" locationId={this.props.locationId} pageSize={this.state.pageSize} pageNumber={this.state.pageNumber} categories={this.props.nightlifeCategories} filterNightife={this.filterNightlife} isFetching={this.state.isLoadingNightlifeList}/>
                   </div>
                   <div className="col-md-9 restaurantList">
-                    <Nightlife useMinHeight={false} locationId={this.props.locationId} locations={this.props.nightlife} locationCount={this.props.nightlifeCount} changePage={this.changePage} isFetching={this.state.isLoadingNightlifeList}/>
+                    <Nightlife useMinHeight={false} locationId={this.props.locationId} locations={this.props.nightlife} locationCount={this.props.nightlifeCount} changePage={this.changePage} isFetching={this.props.isFetching}/>
                   </div>
                 </div>
                 <div className="gap gap-small"></div>
@@ -108,6 +108,10 @@ class NightlifeContent extends React.Component {
 }
 
 NightlifeContent.defaultProps = {
+  searchName: PropTypes.string,
+  locationId: PropTypes.number,
+  pageSize: PropTypes.number,
+  pageNumber: PropTypes.number,
   nightlifeType: '',
   mapNightlife: [],
   nightlifeCategories: []
@@ -122,6 +126,7 @@ NightlifeContent.propTypes = {
   nightlife: PropTypes.object.isRequired,
   mapNightlife: PropTypes.array.isRequired,
   nightlifeCategories: PropTypes.array.isRequired,
+  isFetching: PropTypes.bool.isRequired,
   nightlifeType: PropTypes.string
 };
 
@@ -129,6 +134,7 @@ function mapStateToProps(state, ownProps) {
   return {
     location: state.location.location ? state.location.location : {},
     locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0,
+    isFetching: state.nightlife.isFetching,
     nightlife: state.nightlife.nightlifeList ? state.nightlife.nightlifeList : {},
     mapNightlife: state.nightlife.nightlifeList ? state.nightlife.nightlifeList.mapLocations : [],
     nightlifeCategories: state.nightlife.nightlifeList ? state.nightlife.nightlifeList.categories : [],

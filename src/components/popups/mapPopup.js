@@ -36,7 +36,11 @@ class MapSidebarModal extends React.Component {
 }
 
 MapSidebarModal.defaultProps = {
-  policy: ''
+  policy: '',
+  longitude: 0,
+  latitude: 0,
+  zoom: 0,
+  locationType: ''
 };
 
 MapSidebarModal.propTypes = {

@@ -69,7 +69,7 @@ class PointOfInterestContent extends React.Component {
 
   onSearchPointOfInterest(searchValue) {
     this.setState({searchValue: searchValue});
-      this.loadPointOfInterests(this.props.locationId, this.state.pointOfInterestType, searchValue, this.state.pageSize, this.state.pageNumber);
+    this.loadPointOfInterests(this.props.locationId, this.state.pointOfInterestType, searchValue, this.state.pageSize, this.state.pageNumber);
   }
 
   render(){
@@ -89,10 +89,10 @@ class PointOfInterestContent extends React.Component {
                 <div className="row">
                   <div className="col-md-3 sideBar">
                     <MapSideBar latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0} longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0} text={title} zoom={13} markerArray={this.props.mapPointOfInterests} isLoading={this.state.isLoadingCategoryList} locationType={this.props.location.subClass} />
-                    <FilterPointOfInterest categories={this.props.pointOfInterestsCategories} filterPointOfInterests={this.filterPointOfInterests} isFetching={this.state.isLoadingCategoryList}/>
+                    <FilterPointOfInterest searchName="" locationId={this.props.locationId} pageSize={this.state.pageSize} pageNumber={this.state.pageNumber} categories={this.props.pointOfInterestsCategories} filterPointOfInterests={this.filterPointOfInterests} isFetching={this.state.isLoadingCategoryList}/>
                   </div>
                   <div className="col-md-9 restaurantList">
-                    <PointsOfInterest useMinHeight={false} locationId={this.props.locationId} locations={this.props.pointOfInterests} locationCount={this.props.pointOfInterestsCount} changePage={this.changePage} isFetching={this.state.isLoadingPointOfInterestList}/>
+                    <PointsOfInterest useMinHeight={false} locationId={this.props.locationId} locations={this.props.pointOfInterests} locationCount={this.props.pointOfInterestsCount} changePage={this.changePage} isFetching={this.props.isFetching}/>
                   </div>
                 </div>
                 <div className="gap gap-small"></div>
@@ -124,6 +124,7 @@ PointOfInterestContent.propTypes = {
   mapPointOfInterests: PropTypes.array.isRequired,
   pointOfInterestsCategories: PropTypes.array.isRequired,
   pointOfInterests: PropTypes.object.isRequired,
+  isFetching: PropTypes.bool.isRequired,
   pointOfInterestType: PropTypes.string
 };
 
@@ -131,6 +132,7 @@ function mapStateToProps(state, ownProps) {
   return {
     location: state.location.location ? state.location.location : {},
     locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0,
+    isFetching: state.pointOfInterests.isFetching,
     pointOfInterests: state.pointOfInterests.pointOfInterestsList ? state.pointOfInterests.pointOfInterestsList : {},
     mapPointOfInterests: state.pointOfInterests.pointOfInterestsList ? state.pointOfInterests.pointOfInterestsList.mapLocations : [],
     pointOfInterestsCategories: state.pointOfInterests.pointOfInterestsList ? state.pointOfInterests.pointOfInterestsList.categories : [],

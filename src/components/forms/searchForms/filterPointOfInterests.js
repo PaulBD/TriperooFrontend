@@ -25,7 +25,7 @@ class FilterPointOfInterests extends React.Component {
     if (!this.props.isFetching) {
       return (
       <div className="profile-usermenu">
-        <CategoryFilter title="Point Of Interest Types" categories={this.props.categories} filterResults={this.filterPointOfInterests} numberToShow={6} />
+        <CategoryFilter title="Point Of Interest Types" searchName={this.props.searchName} locationId={this.props.locationId} pageSize={this.props.pageSize} pageNumber={this.props.pageNumber} contentType="PointsOfInterest" categories={this.props.categories} filterResults={this.filterPointOfInterests} numberToShow={6} />
       </div>
       );
     }
@@ -40,6 +40,10 @@ class FilterPointOfInterests extends React.Component {
 }
 
 FilterPointOfInterests.propTypes = {
+  searchName: PropTypes.string,
+  locationId: PropTypes.number,
+  pageSize: PropTypes.number,
+  pageNumber: PropTypes.number,
   categories: PropTypes.array,
   isFetching: PropTypes.bool,
   filterPointOfInterests: PropTypes.func

@@ -2,7 +2,11 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as modalActions from '../../actions/common/modalActions';
-let titleCase = require('title-case');
+import * as attractionActions from '../../actions/location/travelContent/attractionActions';
+import * as pointOfInterestActions from '../../actions/location/travelContent/pointofinterestActions';
+import * as nightlifeActions from '../../actions/location/travelContent/nightlifeActions';
+import * as restaurantActions from '../../actions/location/travelContent/restaurantActions';
+let _ = require('lodash');
 
 class CategoryModel extends React.Component {
   constructor(props, context) {
@@ -11,7 +15,7 @@ class CategoryModel extends React.Component {
     this.addCategory = this.addCategory.bind(this);
     this.updateCategories = this.updateCategories.bind(this);
     this.state = {
-      typeFilterList: this.props.selectedCategories,
+      typeFilterList: _.cloneDeep(this.props.selectedCategories),
       modalIsOpen: false
     };
   }
@@ -46,8 +50,29 @@ class CategoryModel extends React.Component {
 
   updateCategories(e) {
     e.preventDefault();
+    let list = this.state.typeFilterList;
     this.setState({ wizardStep: 1 });
-    this.props.modalActions.updateCategories(this.state.typeFilterList);
+
+console.log(this.props.contentType);
+console.log(list);
+
+    switch(this.props.contentType)
+    {
+      case "Attractions":
+        this.props.attractionsActions.loadAttractionsByParentLocationId(this.props.locationId, list, this.props.searchName, this.props.pageSize, this.props.pageNumber);
+        break;
+      case "Restaurants":
+        this.props.restaurantActions.loadRestaurantsByParentLocationId(this.props.locationId, list, this.props.searchName, this.props.pageSize, this.props.pageNumber);
+        break;
+      case "Nightlife":
+        this.props.nightlifeActions.loadNightlifeByParentLocationId(this.props.locationId, list, this.props.searchName, this.props.pageSize, this.props.pageNumber);
+        break;
+      case "PointsOfInterest":
+        this.props.pointOfInterestActions.loadPointOfInterestsByParentLocationId(this.props.locationId, list, this.props.searchName, this.props.pageSize, this.props.pageNumber);
+        break;
+    }
+
+    this.props.modalActions.updateCategories(list);
     this.props.closeModal();
   }
 
@@ -100,11 +125,18 @@ CategoryModel.defaultProps = {
 };
 
 CategoryModel.propTypes = {
+  contentType: PropTypes.string,
+  searchName: PropTypes.string,
+  locationId: PropTypes.number,
+  pageSize: PropTypes.number,
+  pageNumber: PropTypes.number,
   categories: PropTypes.array.isRequired,
   selectedCategories: PropTypes.array,
   updateCategories: PropTypes.func,
   closeModal: PropTypes.func,
-  modalActions: PropTypes.object.isRequired
+  modalActions: PropTypes.object.isRequired,
+  attractionsActions: PropTypes.object.isRequired,
+  pointOfInterestActions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
@@ -114,7 +146,11 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    modalActions: bindActionCreators(modalActions, dispatch)
+    modalActions: bindActionCreators(modalActions, dispatch),
+    attractionsActions: bindActionCreators(attractionActions, dispatch),
+    pointOfInterestActions: bindActionCreators(pointOfInterestActions, dispatch),
+    restaurantActions: bindActionCreators(restaurantActions, dispatch),
+    nightlifeActions: bindActionCreators(nightlifeActions, dispatch)
   };
 }
 

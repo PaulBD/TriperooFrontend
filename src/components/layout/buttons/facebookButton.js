@@ -3,7 +3,7 @@ import FacebookLogin from 'react-facebook-login';
 
 const FacebookButton = ({onCallback}) => {
   return (
-    <FacebookLogin appId="347205502054817" autoLoad={false} fields="name,email,picture"  cssClass="my-facebook-button-class" textButton="" callback={onCallback} />
+    <FacebookLogin appId="347205502054817" autoLoad={false} fields="name,email,picture" scope="user_location,user_hometown"  cssClass="my-facebook-button-class" textButton="" callback={onCallback} />
   );
 };
 

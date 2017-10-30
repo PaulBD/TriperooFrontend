@@ -25,7 +25,7 @@ class FilterNightlife extends React.Component {
     if (!this.props.isFetching) {
       return (
       <div className="profile-usermenu">
-        <CategoryFilter title="Nightlife" categories={this.props.categories} filterResults={this.filterNightlife} numberToShow={6} />
+        <CategoryFilter title="Nightlife" searchName={this.props.searchName} locationId={this.props.locationId} pageSize={this.props.pageSize} pageNumber={this.props.pageNumber} contentType="Nightlife" categories={this.props.categories} filterResults={this.filterNightlife} numberToShow={6} />
       </div>
       );
     }
@@ -40,6 +40,10 @@ class FilterNightlife extends React.Component {
 }
 
 FilterNightlife.propTypes = {
+  searchName: PropTypes.string,
+  locationId: PropTypes.number,
+  pageSize: PropTypes.number,
+  pageNumber: PropTypes.number,
   categories: PropTypes.array,
   isFetching: PropTypes.bool,
   filterNightlife: PropTypes.func

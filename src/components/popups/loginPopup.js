@@ -36,6 +36,7 @@ class Login extends React.Component {
 
   submitFacebookForm(response) {
     this.setState({creatingUser: true});
+    console.log(response);
     this.props.actions.loginFacebookUser({ emailAddress: response.email, facebookId: response.userID, name: response.name, imageUrl: response.picture.data.url, cityId: 1, city: 'London'})
       .then(() => {
         this.setState({creatingUser: false, errors: this.props.errorMessage});

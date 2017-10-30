@@ -25,7 +25,7 @@ class FilterAttractions extends React.Component {
     if (!this.props.isFetching) {
       return (
         <div className="profile-usermenu">
-          <CategoryFilter title="Attraction Types" categories={this.props.categories} filterResults={this.FilterAttractions} numberToShow={6} />
+          <CategoryFilter title="Attraction Types" searchName={this.props.searchName} locationId={this.props.locationId} pageSize={this.props.pageSize} pageNumber={this.props.pageNumber} contentType="Attractions" categories={this.props.categories} filterResults={this.FilterAttractions} numberToShow={6} />
         </div>
       );
     }
@@ -40,7 +40,12 @@ class FilterAttractions extends React.Component {
 }
 
 FilterAttractions.propTypes = {
+  searchName: PropTypes.string,
+  locationId: PropTypes.number,
+  pageSize: PropTypes.number,
+  pageNumber: PropTypes.number,
   categories: PropTypes.array,
+  selectedCategories: PropTypes.array,
   isFetching: PropTypes.bool,
   filterAttractions: PropTypes.func
 };

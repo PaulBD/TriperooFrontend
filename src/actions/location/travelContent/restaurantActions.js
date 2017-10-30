@@ -16,10 +16,10 @@ export function restaurantsContentError(errorMessage) {
 	return {type: types.RESTAURANT_CONTENT_FAILURE, isFetching: false,  errorMessage};
 }
 
-export function loadRestaurantsByParentLocationId(parentLocationId, categoryName, pageSize, pageNumber) {
+export function loadRestaurantsByParentLocationId(parentLocationId, categoryName, searchName, pageSize, pageNumber) {
 	return dispatch => {
 		dispatch(requestRestaurantsContent());
-		return ContentApi.getContentByParentLocationId(parentLocationId, 'restaurants', categoryName, pageSize, pageNumber).then(restaurantsList => {
+		return ContentApi.getContentByParentLocationId(parentLocationId, 'restaurants', categoryName, searchName, pageSize, pageNumber).then(restaurantsList => {
 			dispatch(restaurantsContentSuccess(restaurantsList));
 		}).catch(error => {
 			dispatch(restaurantsContentError(error.response.data));

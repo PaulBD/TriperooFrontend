@@ -1,6 +1,6 @@
 import * as types from '../../actionTypes/';
 
-export default function nightlifeReducer(state = { isFetching: false }, action) {
+export default function nightlifeReducer(state = { isFetching: true }, action) {
 	switch(action.type) {
 		case types.NIGHTLIFE_CONTENT_REQUEST:
 			return Object.assign({}, state, { isFetching: true });

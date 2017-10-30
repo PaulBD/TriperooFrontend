@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as locationActions from '../../actions/location/locationActions';
 import * as attractionActions from '../../actions/location/travelContent/attractionActions';
+import * as modalActions from '../../actions/common/modalActions';
 import FacebookSignup from '../../components/forms/authentication/facebookSignup';
 import TriperooLoader from '../../components/loaders/globalLoader';
 import Toastr from 'toastr';
@@ -18,7 +19,16 @@ class AttractionContent extends React.Component {
     super(props, context);
     this.changePage = this.changePage.bind(this);
     this.filterAttractions = this.filterAttractions.bind(this);
-    this.state = { searchValue: '', isLoadingCategoryList: false, isLoadingLocation: true, isLoadingAttractionList: false, attractionType: '', attractionFriendlyName: '', pageSize: 9, pageNumber: 0, activePage: 1 };
+    this.state = {
+      searchValue: ''
+      , isLoadingCategoryList: false
+      , isLoadingLocation: true
+      , isLoadingAttractionList: false
+      , attractionType: ''
+      , attractionFriendlyName: ''
+      , pageSize: 9
+      , pageNumber: 0
+      , activePage: 1 };
   }
 
   componentWillMount() {
@@ -63,7 +73,6 @@ class AttractionContent extends React.Component {
     let title = 'Attractions in ' + titleCase(this.props.location.regionName);
 
     document.title = title;
-
     if (! this.state.isLoadingLocation && (!this.state.attractionsList))
     {
       return (
@@ -75,11 +84,11 @@ class AttractionContent extends React.Component {
               <div className="container">
                 <div className="row">
                   <div className="col-md-3 sideBar">
-                    <FilterAttractions categories={this.props.attractionsCategories} filterAttractions={this.filterAttractions} isFetching={this.state.isLoadingCategoryList}/>
+                    <FilterAttractions categories={this.props.attractionsCategories} searchName="" locationId={this.props.locationId} pageSize={this.state.pageSize} pageNumber={this.state.pageNumber} filterAttractions={this.filterAttractions} isFetching={this.state.isLoadingCategoryList}/>
 
                   </div>
                   <div className="col-md-9 restaurantList">
-                    <Attractions useMinHeight={false} locationId={this.props.locationId} locations={this.props.attractions} locationCount={this.props.attractionsCount} changePage={this.changePage} isFetching={this.state.isLoadingAttractionList}/>
+                    <Attractions useMinHeight={false} locationId={this.props.locationId} locations={this.props.attractions} locationCount={this.props.attractionsCount} changePage={this.changePage} isFetching={this.props.isFetching}/>
 
                   </div>
                 </div>
@@ -100,7 +109,9 @@ class AttractionContent extends React.Component {
 AttractionContent.defaultProps = {
   attractionType: '',
   mapAttractions: [],
-  attractionCategories: []
+  attractionCategories: [],
+  selectedCategories: [],
+  isFetching: false
 };
 
 AttractionContent.propTypes = {
@@ -108,9 +119,12 @@ AttractionContent.propTypes = {
   location: PropTypes.object,
   locationActions: PropTypes.object.isRequired,
   attractionsActions: PropTypes.object.isRequired,
+  modalActions: PropTypes.object.isRequired,
   attractionsCount: PropTypes.number.isRequired,
   attractionsCategories: PropTypes.array.isRequired,
+  selectedCategories: PropTypes.array.isRequired,
   attractions: PropTypes.object.isRequired,
+  isFetching: PropTypes.bool.isRequired,
   attractionType: PropTypes.string
 };
 
@@ -118,16 +132,19 @@ function mapStateToProps(state, ownProps) {
   return {
     location: state.location.location ? state.location.location : {},
     locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0,
+    isFetching: state.attractions.isFetching,
     attractions: state.attractions.attractionsList ? state.attractions.attractionsList : {},
     attractionsCategories: state.attractions.attractionsList ? state.attractions.attractionsList.categories : [],
-    attractionsCount:  state.attractions.attractionsList ? state.attractions.attractionsList.locationCount : 0
+    attractionsCount:  state.attractions.attractionsList ? state.attractions.attractionsList.locationCount : 0,
+    selectedCategories: state.modal.modalContent ? state.modal.modalContent.selectedCategories : []
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     locationActions: bindActionCreators(locationActions, dispatch),
-    attractionsActions: bindActionCreators(attractionActions, dispatch)
+    attractionsActions: bindActionCreators(attractionActions, dispatch),
+    modalActions: bindActionCreators(modalActions, dispatch)
   };
 }
 

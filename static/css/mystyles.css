@@ -1479,6 +1479,7 @@ ul.twPc-Arrange li.location {
 .jumbotron.maps { padding: 0; margin:0; }
 .jumbotron.hotels { margin: 0; padding:30px 0; }
 .mapBackground { background-image: url(/static/img/map-bg.png); height: 120px; background-size:100%; text-align: center; vertical-align: middle;   }
+.mapBackground .btn { margin-top: 40px; }
 .infoWindowContent h1 { font-size: 14px; }
 .infoWindowContent .text { width:130px; float:left; }
 .categoryCheck { float: right; padding-top: 3px; }
@@ -1502,3 +1503,12 @@ ul.twPc-Arrange li.location {
 .tripNav a:hover, .tripNav a.active { color: #ffffff; background-color: #ed8323; }
 .attractionImage { height: 142px; }
 .backup { display: none; }
+.inverseBg { background-color: #333; border-color: #333; }
+.radioCustom, .checkCustom { top: .15em; position: absolute; left: 1px; }
+.checkCustom { top: .25em; }
+.tripTitle { font-size: 16px; }
+.calanderSml { border: solid 1px grey; padding: 10px; text-align: center; width: 40px; }
+.calanderSml.active { background-color: #efefef; }
+.tripDetailDate { font-size: 26px; line-height: 18px; font-weight: 400; border-right: solid 1px grey; }
+.tripDetailDate small { font-size: 14px; line-height: 22px; font-weight: normal }
+.tripDetailTitle { margin-top: 20px; }

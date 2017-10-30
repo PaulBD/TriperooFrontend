@@ -25,7 +25,7 @@ class FilterRestaurants extends React.Component {
     if (!this.props.isFetching) {
       return (
       <div className="profile-usermenu">
-        <CategoryFilter title="Cuisine & Dishes" categories={this.props.categories} filterResults={this.filterRestaurant} numberToShow={6} />
+        <CategoryFilter title="Cuisine & Dishes" searchName={this.props.searchName} locationId={this.props.locationId} pageSize={this.props.pageSize} pageNumber={this.props.pageNumber} contentType="Restaurants" categories={this.props.categories} filterResults={this.filterRestaurant} numberToShow={6} />
         <ul className="list booking-filters-list hide">
           <li><h5>Price</h5></li>
           <li><a href="#"><input type="checkbox" className="form-check-inline" /> Cheap Eats </a></li>

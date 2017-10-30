@@ -9,12 +9,16 @@ import Toastr from 'toastr';
 import TripHeader from '../../components/content/headers/trip';
 import Summary from '../../components/layout/location/summary';
 import TagList from '../../components/forms/common/tagList';
+import HotelsNearLocation from '../../components/layout/cards/hotels/hotelsForTrip';
 let titleCase = require('title-case');
+let moment = require('moment');
 
 class CustomerTrips extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.updateNav = this.updateNav.bind(this);
+    this.addActivities = this.addActivities.bind(this);
+    this.showActivity = this.showActivity.bind(this);
 
     this.state = { loading: true, loadingTrip: false, loadingLocation: false, nav: 'overview' };
   }
@@ -37,6 +41,7 @@ class CustomerTrips extends React.Component {
 
   updateNav(e) {
     e.preventDefault();
+    console.log(e.target.getAttribute('data-id'));
     this.setState({nav: e.target.getAttribute('data-id')});
   }
 
@@ -64,8 +69,54 @@ class CustomerTrips extends React.Component {
       });
   }
 
+  addActivities(e) {
+    e.preventDefault();
+    alert('Add Activities');
+  }
+
+  showActivity(e) {
+    e.preventDefault();
+    alert('Show Activities');
+  }
+
   render(){
     if (!this.state.loadingTrip && !this.state.loadingLocation) {
+
+      console.log(this.props.trip);
+
+      let highlightA = '';
+      let highlightB = '';
+
+      if (this.props.trip.days.length > 0)
+      {
+        highlightA = (
+          <div className={this.props.trip.days.length > 0 ? "col-md-6" : "hide"}>
+            <div className="card card-inverse inverseBg">
+              <div className="card-block">
+                <h4 className="card-title">{this.props.trip.days[0].regionName}</h4>
+                <p className="card-text">{this.props.trip.days[0].type}</p>
+                <a href="#" className="btn btn-primary">View</a>
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      if (this.props.trip.days.length > 1)
+      {
+        highlightB = (
+          <div className={this.props.trip.days.length > 1 ? "col-md-6" : "hide"}>
+            <div className="card card-inverse inverseBg">
+              <div className="card-block">
+                <h4 className="card-title">{this.props.trip.days[1].regionName}</h4>
+                <p className="card-text">{this.props.trip.days[1].type}</p>
+                <a href="#" className="btn btn-primary">View</a>
+              </div>
+            </div>
+          </div>
+        );
+      }
+
       document.title = this.props.trip.tripName;
       let hotelUrl = this.props.trip.tripDetails.regionUrl + '/hotels';
       let foodUrl = this.props.trip.tripDetails.regionUrl + '/restaurants';
@@ -76,14 +127,13 @@ class CustomerTrips extends React.Component {
           <div className="jumbotron tripNav">
             <div className="container">
               <nav className="nav">
-                <a className="nav-link active" href="#" onClick={this.updateNav} data-id="overview">Overview</a>
-                <a className="nav-link" href="#" onClick={this.updateNav} data-id="day">Day By Day</a>
-                <a className="nav-link" href="#" onClick={this.updateNav} data-id="stay">Where To Stay</a>
-                <a className="nav-link" href="#" onClick={this.updateNav} data-id="travel">How To Travel</a>
+                <a className={this.state.nav == 'overview' ? "nav-link active" : "nav-link"} href="#" onClick={this.updateNav} data-id="overview">Overview</a>
+                <a className={this.state.nav == 'day' ? "nav-link active" : "nav-link"} href="#" onClick={this.updateNav} data-id="day">Day By Day</a>
+                <a className={this.state.nav == 'stay' ? "nav-link active" : "nav-link"} href="#" onClick={this.updateNav} data-id="stay">Where To Stay</a>
+                <a className={this.state.nav == 'travel' ? "nav-link active" : "nav-link"} href="#" onClick={this.updateNav} data-id="travel">How To Travel</a>
               </nav>
             </div>
           </div>
-
 
           <div className={this.state.nav == 'overview' ? "container" : "hide"}>
             <div className="gap gap-small"></div>
@@ -103,7 +153,7 @@ class CustomerTrips extends React.Component {
                         <Summary location={this.props.location} showMap={false} />
                         <div className="row">
                           <div className="col-md-6">
-                            <p><strong>Things to do in {this.props.location.regionName}</strong><br />
+                            <p className={this.props.trip.tripDetails.tags.length > 0 ? "" : "hide"}><strong>Things to do in {this.props.location.regionName}</strong><br />
                               <TagList tags={this.props.trip.tripDetails.tags} maxTags={5} /></p>
                             <p className=""><strong>Side Trip</strong><br />
                               <a href=""></a></p>
@@ -119,12 +169,29 @@ class CustomerTrips extends React.Component {
                         </div>
                       </div>
                     </div>
-                    <div className={this.props.trip.days ? "row" : "hide"}>
+                    <div className={this.props.trip.days ? this.props.trip.days.length > 0 ? "row" : "hide" : "hide"}>
                       <div className="col-md-12">
+                        <hr />
                         <h5 className="mb-2">Highlights From Your Plan</h5>
                         <hr className="pageTitle"/>
+                        <div className="row">
+                          <div className="col-md-12">
+                            <div className="row">
+                              {highlightA}
+                              {highlightB}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="gap gap-small"></div>
                       </div>
                     </div>
+                    <div className={this.props.trip.days ? this.props.trip.days.length == 0 ? "row" : "hide" : "hide"}>
+                      <div className="col-md-12 text-center">
+                        <hr />
+                        <a href="#" onClick={this.addActivities} className="btn btn-primary"><i className="fa fa-plus" /> Add Activities</a>
+                      </div>
+                    </div>
+                    <div className="gap gap-small"></div>
                   </div>
                 </div>
               </div>
@@ -140,9 +207,55 @@ class CustomerTrips extends React.Component {
                     <h5 className="mb-2">Day By Day</h5>
                     <hr className="pageTitle"/>
                   </div>
+                  <div className="gap gap-small"></div>
                   <div className="col-md-12">
-
+                    <div className="row">
+                      <div className="col-md-3">
+                        <ul className="list-inline">
+                          <li className="list-inline-item calanderSml active"><a href="#" onClick={this.showActivity} data-day="oct-21"><small>Oct</small><br />21</a></li>
+                          <li className="list-inline-item calanderSml"><a href="#" onClick={this.showActivity} data-day="oct-22"><small>Oct</small><br />22</a></li>
+                          <li className="list-inline-item calanderSml"><a href="#" onClick={this.showActivity} data-day="oct-23"><small>Oct</small><br />23</a></li>
+                        </ul>
+                      </div>
+                      <div className="col-md-9">
+                        <div className="row">
+                          <div className="col-md-2 text-center">
+                            <div className="tripDetailDate">
+                              <small>Thursday</small><br />
+                              21<br />
+                              <small>October</small>
+                            </div>
+                          </div>
+                          <div className="col-md-10">
+                            <h4 className="tripDetailTitle">{this.props.trip.tripDetails.regionName}</h4>
+                          </div>
+                        </div>
+                        <div className="gap gap-small"></div>
+                        <div className="row">
+                          <div className="col-md-12">
+                            <div className="card">
+                              <div className="card-block">
+                                <h4 className="card-title">Title</h4>
+                                <p className="card-text">Lorem ipsum</p>
+                                <a href="" className="btn btn-primary">Button</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="gap gap-mini"></div>
+                          <div className="col-md-12">
+                            <div className="card">
+                              <div className="card-block">
+                                <h4 className="card-title">Title</h4>
+                                <p className="card-text">Lorem ipsum</p>
+                                <a href="" className="btn btn-primary">Button</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
+                  <div className="gap gap-small"></div>
                 </div>
               </div>
             </div>
@@ -159,12 +272,20 @@ class CustomerTrips extends React.Component {
                   </div>
                   <div className="col-md-12">
                     <div className="row">
-                      <div className="col-md-6">
+                      <HotelsNearLocation
+                        locationType="activity"
+                        arrivalDate={moment().add(7, 'days').format('YYYY-MM-DD')}
+                        pageNumber={0}
+                        currencyCode="GBP"
+                        exclude={0}
+                        locale="en_en"
+                        radius={5}
+                        rooms1={1}
+                        nights={1}
+                        guests={1}
+                        sortBy="PROMO"
+                        locationId={this.props.trip.tripDetails.regionID} latitude={0} longitude={0} pageSize={8} locationName={this.props.trip.tripDetails.regionName} url=""/>
 
-                      </div>
-                      <div className="col-md-6">
-
-                      </div>
                     </div>
                   </div>
                 </div>

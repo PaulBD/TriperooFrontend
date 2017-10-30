@@ -139,13 +139,40 @@ class BookmarkLocation extends React.Component {
     const field = event.target.name;
     let trip = this.state.trip;
 
-    if (field == 'description')
+    console.log(field);
+    console.log(event.target.value);
+
+    switch (field)
     {
-      trip.tripDetails[field] = event.target.value;
+      case 'description':
+      case 'tripPlace':
+        trip.tripDetails[field] = event.target.value;
+      break;
+      case 'tags':
+
+        let selectedTags = this.state.trip.tripDetails.tags;
+        let isAlreadyInList = false;
+        for (let i = 0; i < selectedTags.length; i++) {
+          if (selectedTags[i] == event.target.value)
+          {
+            isAlreadyInList = true;
+            selectedTags.splice(i, 1);
+          }
+        }
+
+        if (!isAlreadyInList)
+        {
+          selectedTags.push(event.target.value);
+        }
+        trip.tripDetails.tags = selectedTags;
+
+        break;
+      default:
+        trip[field] = event.target.value;
+        break;
     }
-    else {
-      trip[field] = event.target.value;
-    }
+
+    console.log(trip);
     this.setState({trip: trip});
   }
 
@@ -235,11 +262,11 @@ class BookmarkLocation extends React.Component {
               </div>
               <div className={this.state.wizardStep == "Create Trip" ? "row" : "hide"}>
                 <div className="col-md-12">
-                  <h3>Create a new Trip</h3>
+                  <h3>Create a new trip</h3>
                   <hr />
                   <p>Create a new trip by completing the form below.</p>
                 </div>
-                <TripForm onSubmit={this.createNewTripForm} onChange={this.changeField} regionName={this.state.trip.tripDetails.regionName} endDate={this.state.trip.tripDetails.momentEndDate} isCreatingList={this.state.isCreatingList} tripName={this.state.trip.tripName} description={this.state.trip.tripDetails.description}  onChangeAutoComplete={this.onChangeAutoComplete} onChangeStartDate={this.onChangeStartDate} onChangeEndDate={this.onChangeEndDate} startDate={this.state.trip.tripDetails.momentStartDate} errors={this.state.errors} />
+                <TripForm onSubmit={this.createNewTripForm} onChange={this.changeField} regionName={this.state.trip.tripDetails.regionName} endDate={this.state.trip.tripDetails.momentEndDate} isCreatingList={this.state.isCreatingList} tripName={this.state.trip.tripName} description={this.state.trip.tripDetails.description}  onChangeAutoComplete={this.onChangeAutoComplete} onChangeStartDate={this.onChangeStartDate} onChangeEndDate={this.onChangeEndDate} startDate={this.state.trip.tripDetails.momentStartDate} errors={this.state.errors} tags={this.state.trip.tripDetails.tags} tripPace={this.state.trip.tripDetails.tripPace} />
               </div>
             <div className={this.state.wizardStep == "Thank you" ? "row" : "hide"}>
               <div className="col-md-12">

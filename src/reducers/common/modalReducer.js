@@ -74,7 +74,7 @@ export default function modalReducer(state = { isSending: false, hasPosted: fals
       return Object.assign({}, state, { modalIsOpen: false, isSending: false, hasPosted: false, modalName: action.name, modalType: 'MapSidebarModal' });
 
     case types.OPEN_CATEGORY_MODEL:
-      return Object.assign({}, state, { modalIsOpen: true, isSending: true, hasPosted: false, modalContent: { categories: action.categories, selectedCategories: action.selectedCategories }, modalName: action.name, modalType: 'CategoryModal' });
+      return Object.assign({}, state, { modalIsOpen: true, isSending: true, hasPosted: false, modalContent: { categories: action.categories, selectedCategories: action.selectedCategories, contentType: action.contentType, searchName: action.searchName, locationId: action.locationId, pageSize: action.pageSize, pageNumber: action.pageNumber }, modalName: action.name, modalType: 'CategoryModal' });
     case types.CLOSE_CATEGORY_MODEL:
       return Object.assign({}, state, { modalIsOpen: false, isSending: false, hasPosted: false, modalName: action.name, modalType: 'CategoryModal' });
     case types.CHANGE_CATEGORY_MODEL:

@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as modalActions from '../../../actions/common/modalActions';
-let titleCase = require('title-case');
+let _ = require('lodash');
 
 class FilterCategoryPopup extends React.Component {
   constructor(props, context) {
@@ -10,13 +10,13 @@ class FilterCategoryPopup extends React.Component {
     this.addCategory = this.addCategory.bind(this);
     this.showMore = this.showMore.bind(this);
     this.state = {
-      typeFilterList: this.props.selectedCategories
+      typeFilterList: this.props.selectedCategories ? this.props.selectedCategories : []
     };
   }
 
   addCategory(e) {
     e.preventDefault();
-    let typeFilterList = this.state.typeFilterList;
+    let typeFilterList =  _.cloneDeep(this.props.selectedCategories);
     let isAlreadyInList = false;
     let newTag = e.currentTarget.getAttribute('data-type');
 
@@ -34,12 +34,13 @@ class FilterCategoryPopup extends React.Component {
     }
 
     this.setState({typeFilterList: typeFilterList});
+    this.props.modalActions.updateCategories(typeFilterList);
     this.props.filterResults(typeFilterList);
   }
 
   showMore(e) {
     e.preventDefault();
-    this.props.modalActions.openCategoryModel(this.props.categories, this.state.typeFilterList);
+    this.props.modalActions.openCategoryModel(this.props.categories, this.props.selectedCategories, this.props.contentType, this.props.locationId, this.props.searchName, this.props.pageSize, this.props.pageNumber);
   }
 
   render(){
@@ -51,7 +52,7 @@ class FilterCategoryPopup extends React.Component {
           {
               this.props.categories.map(function (category, i) {
 
-                let className = this.state.typeFilterList.includes(category.categoryName) ? 'active' : '';
+                let className = this.props.selectedCategories.includes(category.categoryName) ? 'active' : '';
 
                 if (!this.state.showAll) {
                   if (i > this.props.numberToShow) {
@@ -62,7 +63,7 @@ class FilterCategoryPopup extends React.Component {
                 return (
                 <li className={className} key={category.categoryName}>
                   <a href="#" onClick={this.addCategory} data-type={category.categoryName}>
-                    <input type="checkbox" className="form-check-inline" checked={this.state.typeFilterList.includes(category.categoryName) ? true : false}/>&nbsp;
+                    <input type="checkbox" className="form-check-inline" checked={this.props.selectedCategories.includes(category.categoryName) ? true : false}/>&nbsp;
                     {category.categoryNameFriendly} ({category.count})
                   </a>
                 </li>
@@ -86,6 +87,11 @@ FilterCategoryPopup.defaultProps = {
 
 FilterCategoryPopup.propTypes = {
   title: PropTypes.string.isRequired,
+  contentType: PropTypes.string.isRequired,
+  searchName: PropTypes.string.isRequired,
+  locationId: PropTypes.number.isRequired,
+  pageSize: PropTypes.number.isRequired,
+  pageNumber: PropTypes.number.isRequired,
   numberToShow: PropTypes.number.isRequired,
   categories: PropTypes.array,
   selectedCategories: PropTypes.array,

@@ -267,17 +267,17 @@ export function openMapSideBar(longitude, latitude, text, zoom, markerArray, loc
 // ****************************************
 // Open CategoryModel
 // ****************************************
-export function openCategoryModel(categories, selectedCategories) {
-  return {type: types.OPEN_CATEGORY_MODEL, categories, selectedCategories, name: 'CategoryModal' };
+export function openCategoryModel(categories, selectedCategories, contentType, locationId, searchName, pageSize, pageNumber) {
+  return {type: types.OPEN_CATEGORY_MODEL, categories, selectedCategories, contentType, locationId, searchName, pageSize, pageNumber, name: 'CategoryModal' };
 }
 
 export function closeCategoryModel() {
   return {type: types.CLOSE_CATEGORY_MODEL, name: 'CategoryModal'};
 }
 
-export function openCategory(categories, selectedCategories) {
+export function openCategory(categories, selectedCategories, contentType, locationId, searchName, pageSize, pageNumber) {
   return dispatch => {
-    dispatch(openCategoryModel(categories, selectedCategories));
+    dispatch(openCategoryModel(categories, selectedCategories, contentType, locationId, searchName, pageSize, pageNumber));
   };
 }
 

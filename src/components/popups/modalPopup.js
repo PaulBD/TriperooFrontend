@@ -94,8 +94,10 @@ class Modal extends React.Component {
         break;
       case "CategoryModal":
         cssClass = "CategoryModel";
-        modal = (<CategoryModal hasPosted={false} closeModal={this.props.closeModal} categories={this.props.modalContent.categories} selectedCategories={this.props.modalContent.selectedCategories} />);
+        modal = (<CategoryModal hasPosted={false} closeModal={this.props.closeModal} contentType={this.props.modalContent.contentType} locationId={this.props.modalContent.locationId} searchName={this.props.modalContent.searchName} pageSize={this.props.modalContent.pageSize} pageNumber={this.props.modalContent.pageNumber} categories={this.props.modalContent.categories} selectedCategories={this.props.modalContent.selectedCategories} />);
         break;
+      case "ChangeCategories":
+        return null;
     }
 
     return (

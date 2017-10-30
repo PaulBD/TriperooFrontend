@@ -72,7 +72,7 @@ class CustomerHome extends React.Component {
     let moreReviews = '';
 
     if (this.props.isActiveUser) {
-      if (this.props.tripList != null && this.props.tripList.length > 0 && this.props.tripList.length < 3 ) {
+      if (this.props.tripList != null && this.props.tripList.length < 3 ) {
         addTrip = (
           <div className="col-md-4">
               <div className="card text-center createTripBlank">
@@ -128,7 +128,7 @@ class CustomerHome extends React.Component {
                         else {
                           return null;
                         }
-                      }) : <div className="col-md-12 alert alert-info text-center" role="alert">{this.props.user.profile.name} hasn't created any trips yet.</div>
+                      }) : this.props.isActiveUser ? '' : <div className="col-md-12 alert alert-info text-center" role="alert">{this.props.user.profile.name} hasn't created any trips yet.</div>
                     }
 
                     {addTrip}
