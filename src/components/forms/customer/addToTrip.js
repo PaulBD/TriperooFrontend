@@ -42,7 +42,8 @@ class BookmarkLocation extends React.Component {
           adults: 0,
           children: 0,
           type: '',
-          tripPace: '',
+          tripPace: 'balanced',
+          populateTrip: 'yes',
           tags: []
         },
         days: []
@@ -135,18 +136,16 @@ class BookmarkLocation extends React.Component {
   }
 
   changeField(event) {
-    event.preventDefault();
     const field = event.target.name;
     let trip = this.state.trip;
-
-    console.log(field);
-    console.log(event.target.value);
 
     switch (field)
     {
       case 'description':
-      case 'tripPlace':
+      case 'populateTrip':
+      case 'tripPace':
         trip.tripDetails[field] = event.target.value;
+        console.log(trip.tripDetails);
       break;
       case 'tags':
 
@@ -172,7 +171,6 @@ class BookmarkLocation extends React.Component {
         break;
     }
 
-    console.log(trip);
     this.setState({trip: trip});
   }
 
@@ -249,7 +247,8 @@ class BookmarkLocation extends React.Component {
                           <tr key={trip.id}>
                             <td className="tripBtn"><a href={trip.url}><i className="fa fa-external-link"></i></a></td>
                             <td>{trip.tripName}</td>
-                            <td className="tripBtn"><input className="btn btn-primary btn-sm" type="submit" onClick={this.onSaveBookmark} key={trip.id} value="Save" data-id={trip.id} /></td>
+                            <td>{moment(trip.tripDetails.tripStart).format('LL')} to {moment(trip.tripDetails.tripEnd).format('LL')}</td>
+                            <td className="tripBtn"><input className="btn btn-primary btn-sm" type="submit" onClick={this.onSaveBookmark} key={trip.id} value="Add To Trip" data-id={trip.id} /></td>
                           </tr>
                         );
                       })
@@ -257,7 +256,7 @@ class BookmarkLocation extends React.Component {
                     </tbody>
                   </table>
                   <hr />
-                  <p className="text-right"><a href="#" onClick={this.createNewTrip}>Create a new list</a></p>
+                  <p className="btn priceRight"><a href="#" onClick={this.createNewTrip}>Create a new trip</a></p>
                 </div>
               </div>
               <div className={this.state.wizardStep == "Create Trip" ? "row" : "hide"}>
@@ -266,13 +265,13 @@ class BookmarkLocation extends React.Component {
                   <hr />
                   <p>Create a new trip by completing the form below.</p>
                 </div>
-                <TripForm onSubmit={this.createNewTripForm} onChange={this.changeField} regionName={this.state.trip.tripDetails.regionName} endDate={this.state.trip.tripDetails.momentEndDate} isCreatingList={this.state.isCreatingList} tripName={this.state.trip.tripName} description={this.state.trip.tripDetails.description}  onChangeAutoComplete={this.onChangeAutoComplete} onChangeStartDate={this.onChangeStartDate} onChangeEndDate={this.onChangeEndDate} startDate={this.state.trip.tripDetails.momentStartDate} errors={this.state.errors} tags={this.state.trip.tripDetails.tags} tripPace={this.state.trip.tripDetails.tripPace} />
+                <TripForm trip={this.state.trip} isCreatingList={this.state.isCreatingList} onChangeAutoComplete={this.onChangeAutoComplete} onChangeStartDate={this.onChangeStartDate} onChangeEndDate={this.onChangeEndDate} errors={this.state.errors} onSubmit={this.createNewTripForm} onChange={this.changeField} addToExistingTrip={this.addToExistingTrip} />
               </div>
             <div className={this.state.wizardStep == "Thank you" ? "row" : "hide"}>
               <div className="col-md-12">
                 <h3>Trip Created</h3>
                 <hr />
-                <p>Your Trip has been created and {this.props.locationName} has been added to it.</p>
+                <p>Your Trip has been updated and {this.props.locationName} has been added to it.</p>
               </div>
             </div>
             <div className={this.state.wizardStep == "Loading" ? "row" : "hide"}>

@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as modalActions from '../../../actions/common/modalActions';
+var changeCase = require('change-case')
 let _ = require('lodash');
 
 class FilterCategoryPopup extends React.Component {
@@ -64,7 +65,7 @@ class FilterCategoryPopup extends React.Component {
                 <li className={className} key={category.categoryName}>
                   <a href="#" onClick={this.addCategory} data-type={category.categoryName}>
                     <input type="checkbox" className="form-check-inline" checked={this.props.selectedCategories.includes(category.categoryName) ? true : false}/>&nbsp;
-                    {category.categoryNameFriendly} ({category.count})
+                    {changeCase.upperCaseFirst(category.categoryNameFriendly)} ({category.count})
                   </a>
                 </li>
                 );

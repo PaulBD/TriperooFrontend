@@ -7,6 +7,7 @@ import * as pointOfInterestActions from '../../actions/location/travelContent/po
 import * as nightlifeActions from '../../actions/location/travelContent/nightlifeActions';
 import * as restaurantActions from '../../actions/location/travelContent/restaurantActions';
 let _ = require('lodash');
+var changeCase = require('change-case')
 
 class CategoryModel extends React.Component {
   constructor(props, context) {
@@ -53,9 +54,6 @@ class CategoryModel extends React.Component {
     let list = this.state.typeFilterList;
     this.setState({ wizardStep: 1 });
 
-console.log(this.props.contentType);
-console.log(list);
-
     switch(this.props.contentType)
     {
       case "Attractions":
@@ -97,7 +95,7 @@ console.log(list);
                         <li className={className} key={category.categoryName}>
                           <a href="#" onClick={this.addCategory} data-type={category.categoryName}>
                             <input type="checkbox" className="form-check-inline" checked={this.state.typeFilterList.includes(category.categoryName) ? true : false}/>&nbsp;
-                            {category.categoryNameFriendly} ({category.count})
+                            {changeCase.upperCaseFirst(category.categoryNameFriendly)} ({category.count})
                           </a>
                         </li>
                       );

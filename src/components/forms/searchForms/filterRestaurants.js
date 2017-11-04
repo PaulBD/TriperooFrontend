@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import CategoryFilter from '../common/categoryFilter';
+import NameFilter from '../common/nameFilter';
 import Loader from '../../loaders/contentLoader';
 let _ = require('lodash');
 
@@ -7,18 +8,32 @@ class FilterRestaurants extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      restaurantCategory: []
+      restaurantCategory: [],
+      filteredName: ''
     };
     this.filterRestaurant = this.filterRestaurant.bind(this);
+    this.filterByName = this.filterByName.bind(this);
   }
 
   filterRestaurant(filter) {
     this.setState({restaurantCategory: filter });
-    this.applyFilter(filter);
+    this.applyFilter(filter, this.state.filteredName);
   }
 
-  applyFilter(restaurantCategory) {
-    this.props.filterRestaurant(restaurantCategory);
+  filterByName(filteredName) {
+    this.setState({filteredName: filteredName});
+    if (filteredName.length > 3) {
+      this.applyFilter(this.state.restaurantCategory, filteredName);
+    }
+    else {
+      if (filteredName.length == 0) {
+        this.applyFilter(this.state.restaurantCategory, '');
+      }
+    }
+  }
+
+  applyFilter(restaurantCategory, filteredName) {
+    this.props.filterRestaurant(restaurantCategory, filteredName);
   }
 
   render(){
@@ -26,12 +41,7 @@ class FilterRestaurants extends React.Component {
       return (
       <div className="profile-usermenu">
         <CategoryFilter title="Cuisine & Dishes" searchName={this.props.searchName} locationId={this.props.locationId} pageSize={this.props.pageSize} pageNumber={this.props.pageNumber} contentType="Restaurants" categories={this.props.categories} filterResults={this.filterRestaurant} numberToShow={6} />
-        <ul className="list booking-filters-list hide">
-          <li><h5>Price</h5></li>
-          <li><a href="#"><input type="checkbox" className="form-check-inline" /> Cheap Eats </a></li>
-          <li><a href="#"><input type="checkbox" className="form-check-inline" /> Mid-range </a></li>
-          <li><a href="#"><input type="checkbox" className="form-check-inline" /> Fine Dining </a></li>
-        </ul>
+        <NameFilter placeHolder="Enter Restaurant name" title="Filter by Name" searchName={this.state.filteredName} updateFilter={this.filterByName} />
       </div>
       );
     }

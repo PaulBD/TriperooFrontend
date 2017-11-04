@@ -30,7 +30,6 @@ class EventList extends React.Component {
             {
               this.props.locationEvents.map(locationEvent => {
                 i += 1;
-
                 let spacer = '';
 
                 if (this.props.cssClass == 'col-md-4')

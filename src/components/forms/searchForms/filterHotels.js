@@ -96,7 +96,7 @@ class FilterHotels extends React.Component {
             <h5>Trip Advisor Rating</h5>
             <StarFilter updateFilter={this.updateTripAdvisorFilter} />
           </li>
-          <li>
+          <li className="hide">
             <h5>Facilities</h5>
             <FacilitiesFilter updateFilter={this.updateFacilitiesFilter} />
           </li>

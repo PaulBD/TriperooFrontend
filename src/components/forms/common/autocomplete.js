@@ -89,8 +89,10 @@ class AutoComplete extends React.Component {
                     icon = 'fa fa-bed';
                     break;
                   case 'Restaurant':
+                  case 'Restaurants':
                     icon = 'fa fa-cutlery';
                     break;
+                  case 'Attractions':
                   case 'Attraction':
                     icon = 'fa fa-ticket';
                     break;

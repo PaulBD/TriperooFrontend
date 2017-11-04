@@ -17,11 +17,19 @@ let titleCase = require('title-case');
 class PointOfInterestContent extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.changePointOfInterest = this.changePointOfInterest.bind(this);
     this.changePage = this.changePage.bind(this);
-    this.onSearchPointOfInterest = this.onSearchPointOfInterest.bind(this);
     this.filterPointOfInterests = this.filterPointOfInterests.bind(this);
-    this.state = { searchValue: '', isLoadingCategoryList: false, isLoadingLocation: true, isLoadingPointOfInterestList: false, pointOfInterestType: '', pointOfInterestFriendlyName: '', pageSize: 9, pageNumber: 0, activePage: 1 };
+    this.state = {
+      searchValue: ''
+      , isLoadingCategoryList: false
+      , isLoadingLocation: true
+      , isLoadingPointOfInterestList: false
+      , pointOfInterestType: ''
+      , pointOfInterestFriendlyName: ''
+      , pointOfInterestSearch: ''
+      , pageSize: 9
+      , pageNumber: 0
+      , activePage: 1 };
   }
 
   componentWillMount() {
@@ -33,7 +41,7 @@ class PointOfInterestContent extends React.Component {
     this.props.locationActions.loadLocationById(this.props.locationId)
       .then(() => {
         this.setState({isLoadingCategoryList: true});
-        this.loadPointOfInterests(this.props.locationId, this.state.pointOfInterestType, '', this.state.pageSize, this.state.pageNumber);
+        this.loadPointOfInterests(this.props.locationId, this.state.pointOfInterestType, this.state.pointOfInterestSearch, this.state.pageSize, this.state.pageNumber);
 
       })
       .catch(error => {
@@ -42,13 +50,8 @@ class PointOfInterestContent extends React.Component {
       });
   }
 
-  changePointOfInterest(value, friendlyName) {
-    this.setState({ attractionType: value, pointOfInterestFriendlyName: friendlyName, searchValue: ''  });
-    this.loadPointOfInterests(this.props.locationId, value, '', this.state.pageSize, this.state.pageNumber);
-  }
-
   changePage(value){
-    this.loadPointOfInterests(this.props.locationId, this.state.pointOfInterestType, '', this.state.pageSize, value - 1);
+    this.loadPointOfInterests(this.props.locationId, this.state.pointOfInterestType, this.state.pointOfInterestSearch, this.state.pageSize, value - 1);
   }
 
   loadPointOfInterests(locationId, pointOfInterestType, pointOfInterestName, pageSize, pageNumber) {
@@ -62,14 +65,9 @@ class PointOfInterestContent extends React.Component {
       });
   }
 
-  filterPointOfInterests(pointOfInterestCategory) {
-    this.setState({ pointOfInterestType: pointOfInterestCategory, pointOfInterestFriendlyName: pointOfInterestCategory });
-    this.loadPointOfInterests(this.props.locationId, pointOfInterestCategory, '', this.state.pageSize, this.state.pageNumber);
-  }
-
-  onSearchPointOfInterest(searchValue) {
-    this.setState({searchValue: searchValue});
-    this.loadPointOfInterests(this.props.locationId, this.state.pointOfInterestType, searchValue, this.state.pageSize, this.state.pageNumber);
+  filterPointOfInterests(pointOfInterestCategory, filteredName) {
+    this.setState({ pointOfInterestType: pointOfInterestCategory, pointOfInterestFriendlyName: pointOfInterestCategory, pointOfInterestSearch: filteredName});
+    this.loadPointOfInterests(this.props.locationId, pointOfInterestCategory, filteredName, this.state.pageSize, this.state.pageNumber);
   }
 
   render(){

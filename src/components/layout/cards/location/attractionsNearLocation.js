@@ -22,17 +22,17 @@ class AtractionNearLocation extends React.Component {
           <div className="jumbotron hotels">
             <div className="container">
               <div className="row">
-                <div className="col-md-8">
+                <div className="col-md-7">
                   <h4>{title}</h4>
                 </div>
-                <div className="col-md-4 text-right">
-                  <p><a href={attractionUrl}>Find more attractions in {this.props.location.parentRegionName}</a></p>
+                <div className="col-md-5 text-right">
+                  <p><a href={attractionUrl}>Find more attractions in {this.props.location.parentRegionNameLong}</a></p>
                 </div>
                 <div className="col-md-12">
                   <div className="row">
                     <TopLocations locationId={this.props.location.parentRegionID}
                                   name={this.props.location.parentRegionName} locationType="Attractions" pageSize={4}
-                                  showTitle={false} locationName={this.props.location.regionName}/>
+                                  showTitle={false} locationName={this.props.location.parentRegionName}/>
 
                   </div>
                 </div>

@@ -88,13 +88,20 @@ class RoomList extends React.Component {
                       }
 
                       let style = {
-                        backgroundImage: 'url(' + hotelRoom.roomImages.roomImage[0].highResolutionUrl + ')'
+                        backgroundImage: 'url(/static/img/placeholder.png)'
                       };
 
-                      if (hotelRoom.roomImages.roomImage[0].highResolutionUrl == undefined)
-                      {
-                        style.backgroundImage = 'url(' + hotelRoom.roomImages.roomImage[0].url + ')';
+                      if (hotelRoom.roomImages) {
+                        console.log('high ' + hotelRoom.roomImages.roomImage[0].highResolutionUrl);
+                        console.log('low ' + hotelRoom.roomImages.roomImage[0].url);
+                        if (hotelRoom.roomImages.roomImage[0].highResolutionUrl != undefined) {
+                          style.backgroundImage = 'url(' + hotelRoom.roomImages.roomImage[0].highResolutionUrl + ')';
+                        }
+                        else {
+                          style.backgroundImage = 'url(' + hotelRoom.roomImages.roomImage[0].url + ')';
+                        }
                       }
+
                       return (
                         <div className="col-md-4 mb-4" key={index}>
                           <div className="card text-xs-left">

@@ -183,6 +183,8 @@ class LocationContent extends React.Component {
     document.title = 'Loading Hotels...';
     if (!this.state.isLoadingLocation) {
 
+      console.log(this.props.mapHotels);
+
       let queryString = '?arrivalDate=' + this.state.arrivalDate + '&nights=' + this.state.nights + '&rooms=' + this.state.rooms1 + '&guests=' + this.state.guests;
 
       let title = 'Hotels in ' + titleCase(this.props.location.regionName);
@@ -190,7 +192,7 @@ class LocationContent extends React.Component {
       return (
         <div>
           <SubPageHeader location={this.props.location} contentType="hotels" title={title}/>
-          <div className="row greyBg">
+          <div className="jumbotron hotelSearch">
             <div className="container">
               <div className="row ">
                 <div className="gap gap-mini"></div>
@@ -267,11 +269,13 @@ LocationContent.propTypes = {
   arrivalDate: PropTypes.string,
   searchUrl: PropTypes.string,
   queryString: PropTypes.string,
-  mapHotels: PropTypes.array.isRequired,
-  hotelCategories: PropTypes.array.isRequired
+  mapHotels: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
+
+  console.log(state.hotels);
+
   return {
     isFetching: state.location.isFetching ? state.location.isFetching : false,
     location: state.location.location ? state.location.location : {},
@@ -283,8 +287,7 @@ function mapStateToProps(state, ownProps) {
     hotels: state.hotels.hotels ? state.hotels.hotels : {},
     searchUrl: ownProps.location.pathname,
     queryString: ownProps.location.search,
-    mapHotels: state.hotels.hotels ? state.hotels.hotels.mapLocations : [],
-    hotelCategories: state.hotels.hotels ? state.hotels.hotels.categories : []
+    mapHotels: state.hotels.hotels ? state.hotels.hotels.mapLocations : []
   };
 }
 

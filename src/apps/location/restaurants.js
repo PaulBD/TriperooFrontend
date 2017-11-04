@@ -18,16 +18,15 @@ class RestaurantContent extends React.Component {
     super(props, context);
     this.filterRestaurant = this.filterRestaurant.bind(this);
     this.changePage = this.changePage.bind(this);
-    this.onSearchRestaurant = this.onSearchRestaurant.bind(this);
     this.state = {
       restaurants: []
       , mapRestaurants:[]
-      , searchValue: ''
       , isLoadingLocation: false
       , isLoadingRestaurantCategories: true
       , isLoadingRestaurantList: false
       , restaurantType: ''
       , restaurantFriendlyName: ''
+      , restaurantSearch: ''
       , pageSize: 9
       , pageNumber: 0
       , activePage: 1 };
@@ -41,20 +40,20 @@ class RestaurantContent extends React.Component {
 
   loadLocation() {
     this.props.locationActions.loadLocationById(this.props.locationId)
-      .then(() => this.loadRestaurants(this.props.locationId, this.state.restaurantType, '', this.state.pageSize, this.state.pageNumber))
+      .then(() => this.loadRestaurants(this.props.locationId, this.state.restaurantType, this.state.restaurantSearch, this.state.pageSize, this.state.pageNumber))
       .catch(error => {
         Toastr.error(error);
         this.setState({isLoadingLocation: false});
       });
   }
 
-  filterRestaurant(restaurantCategory) {
-    this.setState({ restaurantType: restaurantCategory, restaurantFriendlyName: restaurantCategory });
-    this.loadRestaurants(this.props.locationId, restaurantCategory, '', this.state.pageSize, this.state.pageNumber);
+  filterRestaurant(restaurantCategory, filteredName) {
+    this.setState({ restaurantType: restaurantCategory, restaurantFriendlyName: restaurantCategory, restaurantSearch: filteredName });
+    this.loadRestaurants(this.props.locationId, restaurantCategory, filteredName, this.state.pageSize, this.state.pageNumber);
   }
 
   changePage(value){
-    this.loadRestaurants(this.props.locationId, this.state.restaurantType, '', this.state.pageSize, value - 1);
+    this.loadRestaurants(this.props.locationId, this.state.restaurantType, this.state.restaurantSearch, this.state.pageSize, value - 1);
   }
 
   loadRestaurants(locationId, restaurantType, searchName, pageSize, pageNumber) {
@@ -65,11 +64,6 @@ class RestaurantContent extends React.Component {
         Toastr.error(error);
         this.setState({isLoadingRestaurantList: false});
       });
-  }
-
-  onSearchRestaurant(searchValue) {
-    this.setState({searchValue: searchValue});
-    this.loadRestaurants(this.props.locationId, this.state.restaurantType, searchValue, this.state.pageSize, this.state.pageNumber);
   }
 
   render(){

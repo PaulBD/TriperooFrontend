@@ -26,6 +26,7 @@ class AttractionContent extends React.Component {
       , isLoadingAttractionList: false
       , attractionType: ''
       , attractionFriendlyName: ''
+      , attractionSearch: ''
       , pageSize: 9
       , pageNumber: 0
       , activePage: 1 };
@@ -40,7 +41,7 @@ class AttractionContent extends React.Component {
     this.props.locationActions.loadLocationById(this.props.locationId)
       .then(() => {
         this.setState({isLoadingAttractionList: true, isLoadingCategoryList: true});
-        this.loadAttractions(this.props.locationId, this.state.attractionType, '', this.state.pageSize, this.state.pageNumber);
+        this.loadAttractions(this.props.locationId, this.state.attractionType, this.state.attractionSearch, this.state.pageSize, this.state.pageNumber);
 
       })
       .catch(error => {
@@ -60,13 +61,13 @@ class AttractionContent extends React.Component {
       });
   }
 
-  filterAttractions(attractionCategory) {
-    this.setState({ attractionType: attractionCategory, attractionFriendlyName: attractionCategory, isLoadingAttractionList: true });
-    this.loadAttractions(this.props.locationId, attractionCategory, '', this.state.pageSize, this.state.pageNumber);
+  filterAttractions(attractionCategory, filteredName) {
+    this.setState({ attractionType: attractionCategory, attractionFriendlyName: attractionCategory, isLoadingAttractionList: true, attractionSearch: filteredName });
+    this.loadAttractions(this.props.locationId, attractionCategory, filteredName, this.state.pageSize, this.state.pageNumber);
   }
 
   changePage(value){
-    this.loadAttractions(this.props.locationId, this.state.attractionType, '', this.state.pageSize, value - 1);
+    this.loadAttractions(this.props.locationId, this.state.attractionType, this.state.attractionSearch, this.state.pageSize, value - 1);
   }
 
   render(){
