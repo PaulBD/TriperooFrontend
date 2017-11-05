@@ -1599,7 +1599,7 @@ a:hover .activityBg { background-color: #333; border-color: #333; }
 
 .timeline-centered .timeline-entry.left-aligned .timeline-entry-inner .timeline-time {
   left: auto;
-  right: -100px;
+  right: -150px;
   text-align: left;
 }
 
@@ -1651,7 +1651,7 @@ a:hover .activityBg { background-color: #333; border-color: #333; }
 
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-time {
   position: absolute;
-  left: -100px;
+  left: -150px;
   text-align: right;
   padding: 10px;
   -webkit-box-sizing: border-box;

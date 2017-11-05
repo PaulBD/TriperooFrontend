@@ -288,3 +288,22 @@ export function updateCategories(selectedCategories) {
     dispatch({type: types.CHANGE_CATEGORY_MODEL, selectedCategories, name: 'ChangeCategories' });
   };
 }
+
+
+// ****************************************
+// Open Facebook Modal
+// ****************************************
+export function openFacebookModel(facebookResponse) {
+  return {type: types.OPEN_FACEBOOK_MODEL, facebookResponse, name: 'FacebookModal' };
+}
+
+export function closeFacebookModel() {
+  return {type: types.CLOSE_FACEBOOK_MODEL, name: 'FacebookModal'};
+}
+
+export function openFacebook(facebookResponse) {
+  return dispatch => {
+    dispatch(openFacebookModel(facebookResponse));
+  };
+}
+

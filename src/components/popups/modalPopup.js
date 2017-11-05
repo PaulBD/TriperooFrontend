@@ -13,6 +13,7 @@ import VisitLocationModal from '../forms/customer/visit';
 import CancellationModal from './cancellationPolicy';
 import MapSidebarModal from './mapPopup';
 import CategoryModal from './categoryPopup';
+import FacebookModal from './facebookPopup';
 
 let customStyles = {
   overlay : {
@@ -99,6 +100,9 @@ class Modal extends React.Component {
         break;
       case "ChangeCategories":
         return null;
+      case "FacebookModal":
+        modal = (<FacebookModal hasPosted={false} closeModal={this.props.closeModal} facebookResponse={this.props.modalContent.facebookResponse} />);
+        break;
     }
 
     return (

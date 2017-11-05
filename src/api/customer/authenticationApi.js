@@ -25,9 +25,10 @@ class AuthenticationApi {
   // Log Customer into platform (via Facebook)
   // and set token
   // ****************************************
-  static loginFacebookCustomer(emailAddress, facebookId, name, imageUrl, currentCity, currentCityId) {
+  static loginFacebookCustomer(accessToken, emailAddress, facebookId, name, imageUrl, currentCity, currentCityId) {
     return new Promise((resolve, reject) => {
       axios.post(baseUrl + '/authorize/facebook', {
+          accessToken,
           emailAddress,
           facebookId,
           name,

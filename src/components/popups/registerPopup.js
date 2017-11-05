@@ -6,6 +6,7 @@ import * as authenticationActions from '../../actions/customer/authenticationAct
 import Loader from '../loaders/contentLoader';
 import SignupForm from '../forms/authentication/signupForm';
 import FacebookButton from '../layout/buttons/facebookButton';
+import FacebookForm from '../forms/authentication/facebookForm';
 import Toastr from 'toastr';
 
 class Register extends React.Component {
@@ -18,22 +19,33 @@ class Register extends React.Component {
     this.changeField = this.changeField.bind(this);
     this.closeSignupModal = this.closeSignupModal.bind(this);
     this.onChangeAutoComplete = this.onChangeAutoComplete.bind(this);
+    this.showFacebookLocationForm = this.showFacebookLocationForm.bind(this);
 
     this.state = {
       creds: {
+        accessToken: '',
         emailAddress: '',
         password: '',
+        facebookId: '',
         name: '',
-        city: '',
-        cityId: 0
+        imageUrl: '',
+        cityId: 0,
+        city: ''
       },
+      useFacebook: false,
       errors:'',
-      creatingUser: false };
+      creatingUser: false
+    };
   }
 
-  submitFacebookForm(response) {
-    this.setState({creatingUser: true});
-    this.props.actions.loginFacebookUser({ emailAddress: response.email, facebookId: response.userID, name: response.name, imageUrl: response.picture.data.url, cityId: 1, city: 'London'})
+  showFacebookLocationForm(response) {
+    this.setState({creatingUser: true, useFacebook: true, creds: { accessToken: response.accessToken, emailAddress: response.email, facebookId: response.userID, name: response.name, imageUrl: response.picture.data.url} });
+  }
+
+  submitFacebookForm(e) {
+    e.preventDefault();
+
+    this.props.actions.loginFacebookUser({accessToken: this.state.creds.accessToken, emailAddress: this.state.creds.emailAddress, facebookId: this.state.creds.facebookId, name: this.state.creds.name, imageUrl: this.state.creds.imageUrl, cityId: this.state.creds.cityId, city: this.state.creds.city})
       .then(() => {
         this.setState({creatingUser: false, errors: this.props.errorMessage});
 
@@ -99,12 +111,12 @@ class Register extends React.Component {
   render(){
     return (
       <div className="modal-dialog modelAuthentication" role="document">
-        <div className={this.props.isFetching ? "modal-content hide" : "modal-content"}>
+        <div className={!this.state.creatingUser && !this.state.isLoggingIn && !this.state.useFacebook  ? "modal-content" : "modal-content hide"}>
           <div className="modal-body">
             <div className="row">
               <div className="gap gap-mini"></div>
               <div className="col-md-12 text-center">
-                <FacebookButton onCallback={this.submitFacebookForm}/>
+                <FacebookButton onCallback={this.showFacebookLocationForm}/>
               </div>
               <div className="gap gap-mini"></div>
               <div className="col-md-12  text-center signupSeperator">
@@ -121,6 +133,13 @@ class Register extends React.Component {
         </div>
         <div className={this.state.isFetching ? "modal-content" : "modal-content hide"}>
           <Loader showLoader={this.props.isFetching} />
+        </div>
+        <div className={this.state.useFacebook ? "modal-dialog modelAuthentication " : "modal-dialog modelAuthentication hide"} role="document"><div className="modal-body">
+          <div className="row">
+            <div className="gap gap-mini"></div>
+            <FacebookForm errors={this.state.errors} isUpdating={this.state.creatingUser} onSubmit={this.submitFacebookForm} onChangeAutoComplete={this.onChangeAutoComplete} city=""/>
+          </div>
+        </div>
         </div>
       </div>
     );

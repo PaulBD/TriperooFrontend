@@ -18,16 +18,11 @@ class DayByDay extends React.Component {
   }
 
   showActivity(e) {
-    console.log(e.target.getAttribute('data-date'));
-    console.log(e.target.getAttribute('data-day'));
     this.setState({ selectedDate: e.target.getAttribute("data-date"), selectedDay: e.target.getAttribute("data-day") });
   }
 
   openMap(e) {
     e.preventDefault();
-    console.log(e.target.getAttribute('data-longitude'));
-    console.log(e.target.getAttribute('data-latitude'));
-    console.log(e.target.getAttribute('data-name'));
 
     let mapMarker = [{
       regionName: e.target.getAttribute('data-name'),
@@ -38,7 +33,8 @@ class DayByDay extends React.Component {
         latitude: parseFloat(e.target.getAttribute('data-latitude')),
         longitude: parseFloat(e.target.getAttribute('data-longitude'))
       }
-    }]
+    }];
+
     this.props.modalActions.openMapSideBar(parseFloat(e.target.getAttribute('data-longitude')), parseFloat(e.target.getAttribute('data-latitude')), e.target.getAttribute('data-name'), 13, mapMarker, "Trip");
   }
 
@@ -78,7 +74,7 @@ class DayByDay extends React.Component {
                   </div>
                 </div>
               </div>
-              <a  name="add"></a>
+              <a name="add"></a>
               <div className="row">
                 <div className="col-md-12 text-center">
                   <hr />
@@ -92,7 +88,7 @@ class DayByDay extends React.Component {
       </div>
     );
   }
-};
+}
 
 
 DayByDay.propTypes = {

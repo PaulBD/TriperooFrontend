@@ -40,7 +40,7 @@ export function loginFacebookUser(creds) {
 		dispatch(requestLogin(creds));
 		if ((creds.emailAddress.length > 0) && (creds.facebookId.length > 0))
 		{
-			return CustomerApi.loginFacebookCustomer(creds.emailAddress, creds.facebookId, creds.name, creds.imageUrl, creds.city, creds.cityId).then(token => {
+			return CustomerApi.loginFacebookCustomer(creds.accessToken, creds.emailAddress, creds.facebookId, creds.name, creds.imageUrl, creds.city, creds.cityId).then(token => {
 				localStorage.setItem('id_token', stringify(transformAuthentication(token)));
 				dispatch(receiveLogin());
 			}).catch(error => {

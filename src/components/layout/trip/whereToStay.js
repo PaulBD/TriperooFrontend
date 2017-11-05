@@ -26,7 +26,6 @@ const WhereToStay = ({trip}) => {
                 guests={1}
                 sortBy="PROMO"
                 locationId={trip.tripDetails.regionID} latitude={0} longitude={0} pageSize={8} locationName={trip.tripDetails.regionName} url={trip.tripDetails.regionUrl}/>
-
             </div>
           </div>
         </div>

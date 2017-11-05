@@ -152,9 +152,12 @@ class CustomerHome extends React.Component {
               <p>Help people discover the best locations by writing reviews about where you've been</p>
               <div className="gap gap-small"></div>
             </div>
-            <div className="row">
+            <div className={this.props.reviews.length > 0 ? "row" : "hide"}>
               <ReviewList currentUserId={this.props.currentUserId} reviews={this.props.reviews} maxTags={5} showEdit={this.props.isActiveUser} cssClass="card-deck" refreshData={this.refreshData}/>
               {moreReviews}
+            </div>
+            <div className={this.props.reviews.length == 0 ? "row" : "hide"}>
+              <div className="col-md-12 alert alert-info text-center" role="alert">{this.props.user.profile.name} hasn't posted any reviews yet.</div>
             </div>
           </div>
         </div>

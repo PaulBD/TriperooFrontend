@@ -79,6 +79,13 @@ export default function modalReducer(state = { isSending: false, hasPosted: fals
       return Object.assign({}, state, { modalIsOpen: false, isSending: false, hasPosted: false, modalName: action.name, modalType: 'CategoryModal' });
     case types.CHANGE_CATEGORY_MODEL:
       return Object.assign({}, state, { modalIsOpen: true, isSending: true, hasPosted: false, modalContent: { selectedCategories: action.selectedCategories }, modalName: action.name, modalType: 'ChangeCategories' });
+
+    case types.OPEN_FACEBOOK_MODEL:
+      return Object.assign({}, state, { modalIsOpen: true, isSending: true, hasPosted: false, modalContent: { facebookResponse: action.facebookResponse }, modalName: action.name, modalType: 'FacebookModal' });
+    case types.CLOSE_FACEBOOK_MODEL:
+      return Object.assign({}, state, { modalIsOpen: false, isSending: false, hasPosted: false, modalName: action.name, modalType: 'FacebookModal' });
+
+
     default:
       return state;
   }

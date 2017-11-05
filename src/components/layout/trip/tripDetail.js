@@ -1,16 +1,15 @@
 import React, {PropTypes} from 'react';
-var changeCase = require('change-case');
+let changeCase = require('change-case');
 let moment = require('moment');
 
 const TripDetail = ({day, leftAlign, openMap}) => {
-  console.log(day);
   return (
     <article className={leftAlign ? "timeline-entry left-aligned" : "timeline-entry"}>
       <div className="timeline-entry-inner">
         <a name={moment(day.visitDate).format("YYYY-MM-DD")}></a>
-        <time className="timeline-time" datetime="2014-01-10T03:45"><span>{changeCase.upperCase(day.startTimePeriod)}</span> <span>{day.visitDate}</span></time>
+        <time className="timeline-time"><span>{changeCase.upperCase(day.startTimePeriod)}</span> <span>{moment(day.visitDate).format("MMMM Do YYYY")}</span></time>
         <div className="timeline-icon">
-          <i className="entypo-feather"></i>
+         <small>Day {day.day + 1}</small>
         </div>
         <div className="timeline-label">
           <div className="row">

@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import Summary from '../../layout/location/summary';
 import TagList from '../../forms/common/tagList';
-var changeCase = require('change-case');
+let changeCase = require('change-case');
 
 const TripSummary = ({location, trip}) => {
 
@@ -10,8 +10,6 @@ const TripSummary = ({location, trip}) => {
   let highlightC = '';
   let highlightD = '';
   let activitiesBlock = '';
-
-
   let attractionsUrl = trip.tripDetails.regionUrl + '/attractions';
   let hotelUrl = trip.tripDetails.regionUrl + '/hotels';
   let foodUrl = trip.tripDetails.regionUrl + '/restaurants';

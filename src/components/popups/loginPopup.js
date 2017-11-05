@@ -6,6 +6,7 @@ import Loader from '../loaders/contentLoader';
 import FacebookButton from '../layout/buttons/facebookButton';
 import ForgotPasswordForm from '../forms/authentication/forgotPasswordForm';
 import LoginForm from '../forms/authentication/loginForm';
+import FacebookForm from '../forms/authentication/facebookForm';
 import Toastr from 'toastr';
 
 class Login extends React.Component {
@@ -18,15 +19,24 @@ class Login extends React.Component {
     this.changeForgotPassword = this.changeForgotPassword.bind(this);
     this.changeLogin = this.changeLogin.bind(this);
     this.closeLoginModal = this.closeLoginModal.bind(this);
-
+    this.showFacebookLocationForm = this.showFacebookLocationForm.bind(this);
     this.changeField = this.changeField.bind(this);
+    this.onChangeAutoComplete = this.onChangeAutoComplete.bind(this);
 
     this.state = {
       creds: {
+        accessToken: '',
         emailAddress: '',
-        password: ''
+        password: '',
+        facebookId: '',
+        name: '',
+        imageUrl: '',
+        cityId: 0,
+        city: ''
       },
       errors:'',
+      creatingUser: false,
+      useFacebook: false,
       isLoggingIn: false,
       isForgotPassword: false,
       isSendingPassword: false,
@@ -34,10 +44,14 @@ class Login extends React.Component {
     };
   }
 
-  submitFacebookForm(response) {
-    this.setState({creatingUser: true});
-    console.log(response);
-    this.props.actions.loginFacebookUser({ emailAddress: response.email, facebookId: response.userID, name: response.name, imageUrl: response.picture.data.url, cityId: 1, city: 'London'})
+  showFacebookLocationForm(response) {
+    this.setState({creatingUser: true, useFacebook: true, creds: { accessToken: response.accessToken, emailAddress: response.email, facebookId: response.userID, name: response.name, imageUrl: response.picture.data.url} });
+  }
+
+  submitFacebookForm(e) {
+    e.preventDefault();
+
+    this.props.actions.loginFacebookUser({accessToken: this.state.creds.accessToken, emailAddress: this.state.creds.emailAddress, facebookId: this.state.creds.facebookId, name: this.state.creds.name, imageUrl: this.state.creds.imageUrl, cityId: this.state.creds.cityId, city: this.state.creds.city})
       .then(() => {
         this.setState({creatingUser: false, errors: this.props.errorMessage});
 
@@ -118,16 +132,25 @@ class Login extends React.Component {
     this.props.closeModal();
   }
 
+  onChangeAutoComplete(city, cityId, cityUrl, dataType)
+  {
+    let creds = this.state.creds;
+    creds.cityId = cityId;
+    creds.city = city;
+    this.setState({creds: creds});
+  }
+
+
   render(){
     return (
       <div>
         <div className={this.state.isForgotPassword ? "modal-dialog modelAuthentication hide" : "modal-dialog modelAuthentication"} role="document">
-          <div className={!this.state.creatingUser && !this.state.isLoggingIn ? "modal-content" : "modal-content hide"}>
+          <div className={!this.state.creatingUser && !this.state.isLoggingIn && !this.state.useFacebook  ? "modal-content" : "modal-content hide"}>
             <div className="modal-body">
               <div className="row">
                 <div className="gap gap-mini"></div>
                 <div className="col-md-12 text-center">
-                  <FacebookButton onCallback={this.submitFacebookForm}/>
+                  <FacebookButton onCallback={this.showFacebookLocationForm}/>
                 </div>
                 <div className="gap gap-mini"></div>
                 <div className="col-md-12 text-center signupSeperator">
@@ -142,8 +165,15 @@ class Login extends React.Component {
               <a href="#" onClick={this.closeLoginModal}>Close</a>
             </div>
           </div>
-          <div className={this.state.creatingUser || this.state.isLoggingIn ? "modal-content" : "modal-content hide"}>
+          <div className={(this.state.creatingUser || this.state.isLoggingIn)  && !this.state.useFacebook ? "modal-content" : "modal-content hide"}>
             <Loader showLoader={true} />
+          </div>
+          <div className={this.state.useFacebook ? "modal-dialog modelAuthentication " : "modal-dialog modelAuthentication hide"} role="document"><div className="modal-body">
+            <div className="row">
+              <div className="gap gap-mini"></div>
+                <FacebookForm errors={this.state.errors} isUpdating={this.state.creatingUser} onSubmit={this.submitFacebookForm} onChangeAutoComplete={this.onChangeAutoComplete} city=""/>
+              </div>
+            </div>
           </div>
         </div>
         <div className={this.state.isForgotPassword ? "modal-dialog modelAuthentication " : "modal-dialog modelAuthentication hide"} role="document">
