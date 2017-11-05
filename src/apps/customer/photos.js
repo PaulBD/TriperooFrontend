@@ -64,8 +64,9 @@ class UserPhotos extends React.Component {
   render(){
     document.title = 'Your Photos';
 
-    if (!this.state.loading && !this.state.loadingPhotos) {
-
+    if (this.props.isAuthenticated && this.props.isActiveUser) {
+      if (!this.state.loading && !this.state.loadingPhotos)
+      {
       return (
         <div>
           <CustomerHeader user={this.props.user} isAuthenticated={this.props.isAuthenticated} isActiveUser={this.props.isActiveUser} pageName={!this.props.isActiveUser ? this.props.user.profile.name + "' Travel Photos" : 'Travel Photos'}/>
@@ -100,6 +101,17 @@ class UserPhotos extends React.Component {
     }
     else {
       return (<TriperooLoader />);
+    }
+  }
+  else {
+      return (
+        <div className="container customerPhotos">
+          <div className="gap gap-small"></div>
+          <div className="row">
+            <div className="col-md-12 alert alert-info text-center" role="alert">You do not have access to this page, please log in and try again.</div>
+          </div>
+        </div>
+      );
     }
   }
 }

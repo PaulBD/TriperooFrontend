@@ -112,25 +112,25 @@ class UpdateProfile extends React.Component {
           <div>
             <CustomerHeader user={this.props.user} isAuthenticated={this.props.isAuthenticated} isActiveUser={this.props.isActiveUser} pageName="Update Profile"/>
             <div className="container">
-            <div className="gap gap-small"></div>
-                <div className="row">
-                    <UserProfileForm name={this.state.creds.name}
-                                     emailAddress={this.state.creds.emailAddress}
-                                     bio={this.state.creds.bio}
-                                     dateOfBirth={this.state.creds.dateOfBirth}
-                                     cityId={this.state.creds.currentLocationId}
-                                     city={this.state.creds.currentLocation}
-                                     password={this.state.creds.pass}
-                                     phoneNumber={this.state.creds.phoneNumber}
-                                     isFacebookSignup={this.state.isFacebookSignup}
-                                     isUpdating={this.state.isUpdating}
-                                     onSubmit={this.submitStandardForm} onChange={this.changeField}
-                                     onChangeAutoComplete={this.onChangeAutoComplete}
-                                     errors={this.props.errorMessage}
-                    />
+              <div className="gap gap-small"></div>
+              <div className="row">
+                <UserProfileForm name={this.state.creds.name}
+                                 emailAddress={this.state.creds.emailAddress}
+                                 bio={this.state.creds.bio}
+                                 dateOfBirth={this.state.creds.dateOfBirth}
+                                 cityId={this.state.creds.currentLocationId}
+                                 city={this.state.creds.currentLocation}
+                                 password={this.state.creds.pass}
+                                 phoneNumber={this.state.creds.phoneNumber}
+                                 isFacebookSignup={this.state.isFacebookSignup}
+                                 isUpdating={this.state.isUpdating}
+                                 onSubmit={this.submitStandardForm} onChange={this.changeField}
+                                 onChangeAutoComplete={this.onChangeAutoComplete}
+                                 errors={this.props.errorMessage}
+                />
+              </div>
+              <div className="gap gap"></div>
             </div>
-            <div className="gap gap"></div>
-          </div>
           </div>
         );
       }
@@ -139,7 +139,14 @@ class UpdateProfile extends React.Component {
       }
     }
     else {
-      return (<p>Unauthenticated!</p>);
+      return (
+        <div className="container customerPhotos">
+          <div className="gap gap-small"></div>
+          <div className="row">
+            <div className="col-md-12 alert alert-info text-center" role="alert">You do not have access to this page, please log in and try again.</div>
+          </div>
+        </div>
+      );
     }
   }
 }
