@@ -18,6 +18,7 @@ class CustomerHome extends React.Component {
     this.state = { isLoading: true, loadingReviews: false, isLoadingTrips: false };
     this.refreshData = this.refreshData.bind(this);
     this.createTrip = this.createTrip.bind(this);
+    this.createReview = this.createReview.bind(this);
   }
 
   componentWillMount() {
@@ -65,6 +66,11 @@ class CustomerHome extends React.Component {
     this.props.modalActions.openBookmark(0, '', '', '', '', 0, '', '', '', '', '', '', false, 0, 0);
   }
 
+  createReview(e) {
+    e.preventDefault();
+    this.props.modalActions.openReview(0, '', '');
+  }
+
   render(){
 
     let addTrip = '';
@@ -72,17 +78,37 @@ class CustomerHome extends React.Component {
     let moreReviews = '';
 
     if (this.props.isActiveUser) {
-      if (this.props.tripList != null && this.props.tripList.length < 3 ) {
+      if (this.props.tripList != null && this.props.tripList.length < 3 && this.props.tripList.length > 0) {
         addTrip = (
           <div className="col-md-4">
               <div className="card text-center createTripBlank">
                 <div className="card-block">
                   <a href="#" onClick={this.createTrip}><i className="fa fa-plus-circle" /></a>
                   <h4 className="card-title">Inspire Someone & Share Experiences</h4>
-                  <p className="card-text">Create a new trip that can be shared<br />with friends and family</p>
+                  <p className="card-text">Share trips with friends and family</p>
                   <a href="#" className="btn btn-primary"  onClick={this.createTrip}>Create Trip</a>
                 </div>
               </div>
+          </div>
+        );
+      }
+      if (this.props.tripList != null && this.props.tripList.length < 3 && this.props.tripList.length == 0) {
+        addTrip = (
+          <div className="col-md-12">
+            <div className="row">
+              <div className="col-md-4">&nbsp;</div>
+                <div className="col-md-4">
+                  <div className="card text-center createPhoto">
+                    <div className="card-block">
+                      <a href="#" onClick={this.createTrip}><i className="fa fa-plus-circle" /></a>
+                      <h4 className="card-title">Inspire Someone & Share Experiences</h4>
+                      <p className="card-text">Share trips with friends and family</p>
+                      <a href="#" className="btn btn-primary"  onClick={this.createTrip}>Create Trip</a>
+                    </div>
+                  </div>
+                </div>
+              <div className="col-md-4">&nbsp;</div>
+            </div>
           </div>
         );
       }
@@ -157,7 +183,23 @@ class CustomerHome extends React.Component {
               {moreReviews}
             </div>
             <div className={this.props.reviews.length == 0 ? "row" : "hide"}>
-              <div className="col-md-12 alert alert-info text-center" role="alert">{this.props.user.profile.name} hasn't posted any reviews yet.</div>
+              <div className="col-md-12">
+                <div className="row">
+                  <div className="col-md-4">&nbsp;</div>
+                  <div className="col-md-4">
+                    <div className="card text-center createPhoto">
+                      <div className="card-block">
+                        <a href="#" onClick={this.createReview}><i className="fa fa-plus-circle" /></a>
+                        <h4 className="card-title">Share Your Experiences</h4>
+                        <p className="card-text">Tell us about the good, the bad and the ugly!</p>
+                        <a href="#" className="btn btn-primary"  onClick={this.createReview}>Add Review</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-4">&nbsp;</div>
+                </div>
+                <div className="gap gap-small"></div>
+              </div>
             </div>
           </div>
         </div>
