@@ -1,32 +1,45 @@
 import React, {PropTypes} from 'react';
 let moment = require('moment');
 
-const SideNav = ({trip, selectedDate, showActivity}) => {
-  let innerNav = [];
+const SideNav = ({tripSummary, selectedDate, showActivity}) => {
 
-  for (let i = 0; i <= trip.tripDetails.tripLength; i++)
-  {
-    let d = moment(trip.tripDetails.tripStart, "YYYY-MM-DD");
-    var newDate = d.add('days', i);
-    innerNav.push(
-      <a href="#" onClick={showActivity} data-day={i} data-date={newDate.format("YYYY-MM-DD")} className={moment(selectedDate).format("YYYY-MM-DD") == newDate.format("YYYY-MM-DD") ? "calanderSml mb-2 list-inline-item active" : "calanderSml mb-2 list-inline-item"} key={i}>
-        <li className="" data-day={i} data-date={newDate.format("YYYY-MM-DD")}>
-          {newDate.format("ddd")}<br />
-          <small>{newDate.format("D")}</small>
-          <br />{newDate.format("MMM")}
-        </li>
-      </a>);
-  }
+  console.log(tripSummary);
 
   return (
     <ul className="list-inline list-center">
-      {innerNav}
+      {
+        tripSummary.map((sum, index) => {
+
+          let d = moment(sum.date);
+          let formattedD = d.format("YYYY-MM-DD");
+
+          let anchor = "#" + formattedD;
+
+          if (sum.count == 0)
+          {
+            anchor = "#add";
+          }
+
+          console.log(formattedD);
+
+          return (
+            <a href={anchor} onClick={showActivity} data-day={sum.Day} data-date={formattedD} className={moment(selectedDate).format("YYYY-MM-DD") == formattedD ? "calanderSml mb-2 list-inline-item active" : "calanderSml mb-2 list-inline-item"} key={index}>
+              <li  data-day={sum.Day} data-date={formattedD}>
+                {d.format("ddd")}<br />
+                <small data-day={sum.Day} data-date={formattedD}>{d.format("D")}</small>
+                <br />{d.format("MMM")}
+              </li>
+            </a>
+          );
+
+        })
+      }
     </ul>
   );
 };
 
 SideNav.propTypes = {
-  trip: PropTypes.object.isRequired,
+  tripSummary: PropTypes.array.isRequired,
   selectedDate: PropTypes.string.isRequired,
   showActivity: PropTypes.func.isRequired
 };

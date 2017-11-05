@@ -1,13 +1,14 @@
 import React, {PropTypes} from 'react';
 import Summary from '../../layout/location/summary';
 import TagList from '../../forms/common/tagList';
-var changeCase = require('change-case')
+var changeCase = require('change-case');
 
 const TripSummary = ({location, trip}) => {
 
   let highlightA = '';
   let highlightB = '';
   let highlightC = '';
+  let highlightD = '';
   let activitiesBlock = '';
 
 
@@ -17,73 +18,76 @@ const TripSummary = ({location, trip}) => {
 
   if (trip.days.length > 0)
   {
-    let styleA = {
-      backgroundImage: 'url(' + trip.days[0].image + ')'
-    };
-
     highlightA = (
-      <div className="col-md-4">
-        <div className="card card-inverse inverseBg activityBg" style={styleA}>
-          <div className="card-block">
-            <h4 className="card-title">{trip.days[0].regionName}</h4>
-            <p className="card-text">{changeCase.upperCaseFirst(trip.days[0].type)}</p>
-            <a href={trip.days[0].url} className="btn btn-primary">View</a>
+      <div className="col-md-3">
+        <a className="hover-img activityBg" href={trip.days[0].url}>
+          <img src={trip.days[0].image} />
+          <div className="hover-inner">
+            <h5>{trip.days[0].regionName}</h5>
+            <p>{changeCase.upperCaseFirst(trip.days[0].type)}</p>
           </div>
-        </div>
+        </a>
       </div>
     );
   }
 
   if (trip.days.length > 1)
   {
-    console.log(trip.days[1]);
-
-    let styleB = {
-      backgroundImage: 'url(' + trip.days[1].image + ')'
-    };
-
     highlightB = (
-      <div className="col-md-4">
-        <div className="card card-inverse inverseBg activityBg" style={styleB}>
-          <div className="card-block">
-            <h4 className="card-title">{trip.days[1].regionName}</h4>
-            <p className="card-text">{changeCase.upperCaseFirst(trip.days[1].type)}</p>
-            <a href={trip.days[1].url} className="btn btn-primary">View</a>
+      <div className="col-md-3">
+        <a className="hover-img activityBg" href={trip.days[1].url}>
+          <img src={trip.days[1].image} />
+          <div className="hover-inner">
+            <h5>{trip.days[1].regionName}</h5>
+            <p>{changeCase.upperCaseFirst(trip.days[1].type)}</p>
           </div>
-        </div>
+        </a>
       </div>
     );
   }
 
   if (trip.days.length > 2)
   {
-    let styleC = {
-      backgroundImage: 'url(' + trip.days[2].image + ')'
-    };
     highlightC = (
-      <div className="col-md-4">
-        <div className="card card-inverse inverseBg activityBg" style={styleC}>
-          <div className="card-block">
-            <h4 className="card-title">{trip.days[2].regionName}</h4>
-            <p className="card-text">{changeCase.upperCaseFirst(trip.days[2].type)}</p>
-            <a href={trip.days[2].url} className="btn btn-primary">View</a>
+      <div className="col-md-3">
+        <a className="hover-img activityBg" href={trip.days[2].url}>
+          <img src={trip.days[2].image} />
+          <div className="hover-inner">
+            <h5>{trip.days[2].regionName}</h5>
+            <p>{changeCase.upperCaseFirst(trip.days[2].type)}</p>
           </div>
-        </div>
+        </a>
       </div>
     );
   }
 
-  if (trip.days.length < 3)
+  if (trip.days.length > 3)
+  {
+    highlightD = (
+      <div className="col-md-3">
+        <a className="hover-img activityBg" href={trip.days[3].url}>
+          <img src={trip.days[3].image} />
+          <div className="hover-inner">
+            <h5>{trip.days[3].regionName}</h5>
+            <p>{changeCase.upperCaseFirst(trip.days[3].type)}</p>
+          </div>
+        </a>
+      </div>
+    );
+  }
+
+  if (trip.days.length < 4)
   {
     activitiesBlock = (
-      <div className="col-md-4">
-        <div className="card card-inverse inverseBg">
-          <div className="card-block">
-            <h4 className="card-title">Add More Attractions</h4>
-            <p className="card-text">Discover more things to do in {location.regionName}</p>
-            <a href={attractionsUrl} className="btn btn-primary">View</a>
+      <div className="col-md-3">
+        <a href={attractionsUrl}>
+          <div className="card card-inverse inverseBg  activityBg">
+            <div className="card-block">
+              <h4 className="card-title">Add More Attractions</h4>
+              <p className="card-text">Discover more things to do in {location.regionName}</p>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
     );
   }
@@ -130,14 +134,14 @@ const TripSummary = ({location, trip}) => {
                       {highlightA}
                       {highlightB}
                       {highlightC}
+                      {highlightD}
                       {activitiesBlock}
                     </div>
                   </div>
                 </div>
-                <div className="gap gap-small"></div>
               </div>
             </div>
-            <div className={trip.days ? trip.days.length == 0 ? "row" : "hide" : "hide"}>
+            <div className="row">
               <div className="col-md-12 text-center">
                 <hr />
                 <a href={attractionsUrl} className="btn btn-primary"><i className="fa fa-plus" /> Add Attractions</a>&nbsp;
