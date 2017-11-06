@@ -2,6 +2,8 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as modalActions from '../../../actions/common/modalActions';
+import * as userActions from '../../../actions/customer/userActions';
+import Toastr from 'toastr';
 
 import SideNav from './sideNav';
 import TripDetail from './tripDetail';
@@ -11,6 +13,7 @@ class DayByDay extends React.Component {
     super(props, context);
     this.showActivity = this.showActivity.bind(this);
     this.openMap = this.openMap.bind(this);
+    this.removeActivity = this.removeActivity.bind(this);
     this.state = {
       selectedDate: this.props.trip.tripDetails.tripStart,
       selectedDay: 0
@@ -38,6 +41,18 @@ class DayByDay extends React.Component {
     this.props.modalActions.openMapSideBar(parseFloat(e.target.getAttribute('data-longitude')), parseFloat(e.target.getAttribute('data-latitude')), e.target.getAttribute('data-name'), 13, mapMarker, "Trip");
   }
 
+  removeActivity(e) {
+    e.preventDefault();
+
+    this.props.userActions.archiveActivity(e.target.getAttribute('data-tripId'), e.target.getAttribute('data-activityId'))
+      .then(() => {
+        Toastr.success("Activity has been removed from your trip");
+      })
+      .catch(error => {
+        Toastr.error(error);
+      });
+  }
+
   render() {
 
     let attractionsUrl = this.props.trip.tripDetails.regionUrl + '/attractions';
@@ -59,11 +74,11 @@ class DayByDay extends React.Component {
                   <div className="row">
                     <div className="timeline-centered">
                       {
-                        this.props.trip.days.map((day, index)=> {
-                          return (<TripDetail day={day} leftAlign={(index%2 ? false:true)} key={index} openMap={this.openMap} />);
-                        })
+                        this.props.trip.days.length > 0 ? this.props.trip.days.map((day, index)=> {
+                          return (<TripDetail tripId={this.props.trip.id} day={day} leftAlign={(index%2 ? false:true)} key={index} openMap={this.openMap} removeActivity={this.removeActivity} />);
+                        }) : "No trips"
                       }
-                      <article className="timeline-entry begin">
+                      <article className={this.props.trip.days.length > 0 ? "timeline-entry begin":"hide"}>
                       <div className="timeline-entry-inner">
                         <div className="timeline-icon">
                           <i className="entypo-flight"></i>
@@ -93,7 +108,8 @@ class DayByDay extends React.Component {
 
 DayByDay.propTypes = {
   trip: PropTypes.object.isRequired,
-  modalActions: PropTypes.object.isRequired
+  modalActions: PropTypes.object.isRequired,
+  userActions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
@@ -103,7 +119,8 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    modalActions: bindActionCreators(modalActions, dispatch)
+    modalActions: bindActionCreators(modalActions, dispatch),
+    userActions: bindActionCreators(userActions, dispatch)
   };
 }
 

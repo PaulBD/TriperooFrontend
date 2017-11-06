@@ -53,7 +53,6 @@ class BookmarkLocation extends React.Component {
   }
 
   componentWillMount() {
-
     const days = {
       "regionID": this.props.locationId,
       "type": this.props.locationType,
@@ -64,6 +63,9 @@ class BookmarkLocation extends React.Component {
       "url": this.props.locationUrl,
       "latitude": this.props.latitude,
       "longitude": this.props.longitude,
+      "price" : this.props.price,
+      "length" : this.props.duration,
+      "bookingUrl": this.props.bookingUrl,
       "id" : 1,
       "dateCreated": moment().format('YYYY-MM-DD')
     };
@@ -84,11 +86,11 @@ class BookmarkLocation extends React.Component {
       this.setState({wizardStep: 'Create Trip'});
     }
     else {
-      this.getTrips();
+      this.getTrips(false);
     }
   }
 
-  getTrips()
+  getTrips(useThankyou)
   {
     this.setState({loadingTrips: true, errors: ''});
     this.props.userActions.getTrips(this.props.customerReference)
@@ -97,10 +99,16 @@ class BookmarkLocation extends React.Component {
 
         if (this.props.errorMessage == '' && this.props.errorMessage.length == 0)
         {
-          if (this.props.tripList.length > 0) {
-            this.setState({wizardStep: 'List Trips'});
-          } else {
-            this.setState({wizardStep: 'Create Trip'});
+          if (useThankyou)
+          {
+
+          }
+          else {
+            if (this.props.tripList.length > 0) {
+              this.setState({wizardStep: 'List Trips'});
+            } else {
+              this.setState({wizardStep: 'Create Trip'});
+            }
           }
         }
       })
@@ -121,7 +129,7 @@ class BookmarkLocation extends React.Component {
 
           if (this.props.errorMessage == '' && this.props.errorMessage.length == 0)
           {
-            this.getTrips();
+            this.getTrips(true);
             this.setState({wizardStep: 'Thank you'});
           }
         })
@@ -145,7 +153,6 @@ class BookmarkLocation extends React.Component {
       case 'populateTrip':
       case 'tripPace':
         trip.tripDetails[field] = event.target.value;
-        console.log(trip.tripDetails);
       break;
       case 'tags':
 
@@ -271,7 +278,8 @@ class BookmarkLocation extends React.Component {
               <div className="col-md-12">
                 <h3>Trip Created</h3>
                 <hr />
-                <p>Your Trip has been updated and {this.props.locationName} has been added to it.</p>
+                <p className={this.props.locationName ? "" : "hide"}>Your Trip has been updated and {this.props.locationName} has been added to it.</p>
+                <p className={this.props.locationName ? "hide" : ""}>Your Trip has been created. You can now build you trip by adding activities to it.</p>
               </div>
             </div>
             <div className={this.state.wizardStep == "Loading" ? "row" : "hide"}>
@@ -317,6 +325,9 @@ BookmarkLocation.propTypes = {
   hasPosted: PropTypes.bool,
   latitude: PropTypes.number,
   longitude: PropTypes.number,
+  price: PropTypes.string,
+  duration: PropTypes.string,
+  bookingUrl: PropTypes.string,
   closeModal: PropTypes.func,
   removeBookmark: PropTypes.bool,
   tripList: PropTypes.array

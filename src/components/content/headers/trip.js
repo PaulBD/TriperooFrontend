@@ -1,5 +1,4 @@
 import React, {PropTypes} from 'react';
-import StarRating from '../../forms/common/starRating';
 import Loader from '../../loaders/contentLoader';
 let moment = require('moment');
 

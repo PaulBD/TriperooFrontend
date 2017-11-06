@@ -90,7 +90,7 @@ class NightlifeContent extends React.Component {
                     <FilterNightlife searchName="" locationId={this.props.locationId} pageSize={this.state.pageSize} pageNumber={this.state.pageNumber} categories={this.props.nightlifeCategories} filterNightife={this.filterNightlife} isFetching={this.state.isLoadingNightlifeList}/>
                   </div>
                   <div className="col-md-9 restaurantList">
-                    <Nightlife useMinHeight={false} locationId={this.props.locationId} locations={this.props.nightlife} locationCount={this.props.nightlifeCount} changePage={this.changePage} isFetching={this.props.isFetching}/>
+                    <Nightlife useMinHeight={false} locationId={this.props.locationId} location={this.props.location} locations={this.props.nightlife} locationCount={this.props.nightlifeCount} changePage={this.changePage} isFetching={this.props.isFetching}/>
                   </div>
                 </div>
                 <div className="gap gap-small"></div>

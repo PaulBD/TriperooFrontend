@@ -90,7 +90,7 @@ class PointOfInterestContent extends React.Component {
                     <FilterPointOfInterest searchName="" locationId={this.props.locationId} pageSize={this.state.pageSize} pageNumber={this.state.pageNumber} categories={this.props.pointOfInterestsCategories} filterPointOfInterests={this.filterPointOfInterests} isFetching={this.state.isLoadingCategoryList}/>
                   </div>
                   <div className="col-md-9 restaurantList">
-                    <PointsOfInterest useMinHeight={false} locationId={this.props.locationId} locations={this.props.pointOfInterests} locationCount={this.props.pointOfInterestsCount} changePage={this.changePage} isFetching={this.props.isFetching}/>
+                    <PointsOfInterest useMinHeight={false} location={this.props.location} locationId={this.props.locationId} locations={this.props.pointOfInterests} locationCount={this.props.pointOfInterestsCount} changePage={this.changePage} isFetching={this.props.isFetching}/>
                   </div>
                 </div>
                 <div className="gap gap-small"></div>

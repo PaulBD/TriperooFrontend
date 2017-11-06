@@ -20,8 +20,6 @@ const SideNav = ({tripSummary, selectedDate, showActivity}) => {
             anchor = "#add";
           }
 
-          console.log(formattedD);
-
           return (
             <a href={anchor} onClick={showActivity} data-day={sum.Day} data-date={formattedD} className={moment(selectedDate).format("YYYY-MM-DD") == formattedD ? "calanderSml mb-2 list-inline-item active" : "calanderSml mb-2 list-inline-item"} key={index}>
               <li  data-day={sum.Day} data-date={formattedD}>

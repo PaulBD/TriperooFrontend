@@ -6,7 +6,7 @@ import ReviewIcon from '../../location/reviewIcon';
 import PhotoIcon from '../../location/photoIcon';
 import BookmarkIcon from '../../location/bookmarkIcon';
 import VisitIcon from '../../location/visitIcon';
-let titleCase = require('title-case');
+let changeCase = require('change-case');
 
 class LocationList extends React.Component {
   constructor(props, context) {
@@ -19,13 +19,10 @@ class LocationList extends React.Component {
   }
 
   render() {
-    let i = 0;
     return (
       <div className="row">
         {
-          this.props.locations.locations.map(location => {
-
-            i += 1;
+          this.props.locations.locations.map((location, index) => {
 
             let locationType = location.subClass;
 
@@ -93,7 +90,7 @@ class LocationList extends React.Component {
                     <a href={location.url}>
                       <div className="text-small">
                         <h5>{location.regionName.length > 31 ? location.regionName.substring(0, 31) + '...' : location.regionName}</h5>
-                        <p className={locationType.length == 0 ? "hide" : ""}>{titleCase(locationType)}</p>
+                        <p className={locationType.length == 0 ? "hide" : ""}>{changeCase.ucFirst(locationType)}</p>
                         <p
                           className={location.regionType == "Attractions" ? "" : "hide"}>{location.regionType == "Attractions" ? location.locationDetail.pricing.priceGBP + ' GBP' : ""}</p>
                       </div>
@@ -110,25 +107,28 @@ class LocationList extends React.Component {
                                  key={location.regionID}/>
                     </li>
                     <li>
-                      <BookmarkIcon parentLocationId={location.parentRegionID}
-                                    parentLocationName={location.parentRegionName}
-                                    parentLocationNameLong={location.parentRegionNameLong}
-                                    parentLocationImage={location.parentRegionImage}
-                                    parentLocationUrl={location.parentUrl}
+                      <BookmarkIcon parentLocationId={this.props.location.regionID}
+                                    parentLocationName={this.props.location.regionName}
+                                    parentLocationNameLong={this.props.location.regionNameLong}
+                                    parentLocationImage={this.props.location.image}
+                                    parentLocationUrl={this.props.location.url}
                                     locationNameLong={location.regionNameLong} locationUrl={location.url}
                                     locationImage={location.image} locationId={location.regionID}
                                     locationName={location.regionName}
                                     locationType={location.subClass}
-                                    locationLength=""
+                                    locationLength={location.locationDetail ? location.locationDetail.duration : ""}
                                     key={location.regionID}
                                     latitude={location.locationCoordinates ? location.locationCoordinates.latitude : 0}
-                                    longitude={location.locationCoordinates ? location.locationCoordinates.longitude : 0}/>
+                                    longitude={location.locationCoordinates ? location.locationCoordinates.longitude : 0}
+                                    price={location.locationDetail && location.locationDetail.pricing ? location.locationDetail.pricing.priceGBP : ""}
+                                    bookingUrl={location.locationDetail ? location.locationDetail.bookingUrl : ""}
+                      />
                     </li>
                     <li>
-                      <VisitIcon parentLocationId={location.parentRegionID}
-                                 parentLocationName={location.parentRegionName}
-                                 parentLocationNameLong={location.parentRegionNameLong}
-                                 parentLocationImage={location.parentRegionImage}
+                      <VisitIcon parentLocationId={this.props.location.regionID}
+                                 parentLocationName={this.props.location.regionName}
+                                 parentLocationNameLong={this.props.location.regionNameLong}
+                                 parentLocationImage={this.props.location.regionImage}
                                  locationNameLong={location.regionNameLong} locationUrl={location.url}
                                  locationImage={location.image} locationId={location.regionID}
                                  locationName={location.regionName} locationType={location.subClass}
@@ -148,11 +148,13 @@ class LocationList extends React.Component {
 }
 
 LocationList.defaultProps = {
+  location: {},
   locations: {},
   cssClass: 'col-md-4'
 };
 
 LocationList.propTypes = {
+  location: PropTypes.object.isRequired,
 	locations: PropTypes.object.isRequired,
 	cssClass: PropTypes.string,
   authActions: PropTypes.object.isRequired,

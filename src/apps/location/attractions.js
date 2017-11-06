@@ -89,7 +89,7 @@ class AttractionContent extends React.Component {
 
                   </div>
                   <div className="col-md-9 restaurantList">
-                    <Attractions useMinHeight={false} locationId={this.props.locationId} locations={this.props.attractions} locationCount={this.props.attractionsCount} changePage={this.changePage} isFetching={this.props.isFetching}/>
+                    <Attractions useMinHeight={false} locationId={this.props.locationId} location={this.props.location} locations={this.props.attractions} locationCount={this.props.attractionsCount} changePage={this.changePage} isFetching={this.props.isFetching}/>
 
                   </div>
                 </div>
