@@ -7,7 +7,7 @@ import * as pointOfInterestActions from '../../actions/location/travelContent/po
 import * as nightlifeActions from '../../actions/location/travelContent/nightlifeActions';
 import * as restaurantActions from '../../actions/location/travelContent/restaurantActions';
 let _ = require('lodash');
-var changeCase = require('change-case')
+let changeCase = require('change-case');
 
 class CategoryModel extends React.Component {
   constructor(props, context) {
@@ -134,6 +134,8 @@ CategoryModel.propTypes = {
   closeModal: PropTypes.func,
   modalActions: PropTypes.object.isRequired,
   attractionsActions: PropTypes.object.isRequired,
+  restaurantActions: PropTypes.object.isRequired,
+  nightlifeActions: PropTypes.object.isRequired,
   pointOfInterestActions: PropTypes.object.isRequired
 };
 

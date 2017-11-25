@@ -10,6 +10,11 @@ const ForgotPasswordForm = ({emailAddress, hasSentPassword, isSendingPassword, o
             {errors}
           </div>
         </div>
+        <div className={hasSentPassword ? 'col-md-12' : 'col-md-12 hide'}>
+          <div className="bg-success form-success">
+            A reset password email has been sent to {emailAddress}
+          </div>
+        </div>
         <form className="modalForm" onSubmit={onSubmit}>
           <div className="col-md-12 text-center">
             <p>Please enter your email address below and we'll send you an email to reset your password.</p>
@@ -27,11 +32,6 @@ const ForgotPasswordForm = ({emailAddress, hasSentPassword, isSendingPassword, o
             <a href="#" onClick={onChangeLogin}>Return to login</a>
           </div>
         </form>
-        <div className={hasSentPassword ? 'col-md-12' : 'col-md-12 hide'}>
-          <div className="bg-success form-success">
-            A reset password email has been sent to {emailAddress}
-          </div>
-        </div>
       </div>
     </div>
   </div>

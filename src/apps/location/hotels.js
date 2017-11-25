@@ -49,6 +49,7 @@ class LocationContent extends React.Component {
       , rooms1: this.props.rooms
       , rooms2: 0
       , rooms3: 0
+      , guests: 2
       , sortBy: 'PROMO'
       , sortByFriendly: 'Recommended'
       , isLoadingLocation: true
@@ -61,7 +62,7 @@ class LocationContent extends React.Component {
   }
 
   loadLocation(locationId) {
-    this.props.locationActions.loadLocationById(locationId)
+    this.props.locationActions.loadLocationById(locationId, false)
       .then(() => this.loadHotels(
         locationId
         , this.props.location.locationCoordinates.latitude

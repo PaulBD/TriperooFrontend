@@ -126,7 +126,7 @@ class LocationEdit extends React.Component {
 
   loadLocation() {
     this.setState({ isLoadingLocation: true });
-    this.props.locationActions.loadLocationById(this.props.locationId)
+    this.props.locationActions.loadLocationById(this.props.locationId, true)
       .then(() => {
         this.setState({
           isLoadingLocation: false

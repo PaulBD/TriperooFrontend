@@ -63,7 +63,7 @@ class CustomerHome extends React.Component {
 
   createTrip(e) {
     e.preventDefault();
-    this.props.modalActions.openBookmark(0, '', '', '', '', 0, '', '', '', '', '', '', false, 0, 0,'','','');
+    this.props.modalActions.openBookmark(0, '', '', '', '', '', 0, '', '', '', '', '', '', false, 0, 0,'','','');
   }
 
   createReview(e) {
@@ -127,7 +127,7 @@ class CustomerHome extends React.Component {
 
       let markerArray = [];
 
-      for (var i = 0; i < this.props.user.visitedLocations.length; i++) {
+      for (let i = 0; i < this.props.user.visitedLocations.length; i++) {
         markerArray.push({"url": this.props.user.visitedLocations[i].url, "regionName":this.props.user.visitedLocations[i].regionName,"subClass":this.props.user.visitedLocations[i].subClass,"locationCoordinates":{"latitude":this.props.user.visitedLocations[i].latitude,"longitude":this.props.user.visitedLocations[i].longitude }});
       }
 

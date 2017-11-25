@@ -48,7 +48,6 @@ class Facebook extends React.Component {
   }
 
   render(){
-    console.log( this.props.facebookResponse);
     return (
         <div className="modal-dialog modelAuthentication" role="document">
           <div className={!this.state.creatingUser && !this.state.isLoggingIn ? "modal-content" : "modal-content hide"}>

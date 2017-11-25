@@ -7,10 +7,10 @@ class LocationApi {
   // ****************************************
   // Return location details by location id
   // ****************************************
-  static getLocation(locationId) {
+  static getLocation(locationId, isCity) {
     if (environment) {
       return new Promise((resolve, reject) => {
-        axios.get(baseUrl + '/location/' + locationId)
+        axios.get(baseUrl + '/location/' + locationId + '?isCity=' + isCity)
           .then(function (response) {
             resolve(Object.assign({}, response.data));
           })
@@ -29,12 +29,12 @@ class LocationApi {
   // ****************************************
   // Like location by id
   // ****************************************
-  static likeLocation(locationId, likeLocation) {
+  static likeLocation(locationId, likeLocation, isCity) {
 
-    let url = baseUrl + '/location/' + locationId + '/unlike';
+    let url = baseUrl + '/location/' + locationId + '/unlike?isCity=' + isCity;
 
     if (likeLocation) {
-      url = baseUrl + '/location/' + locationId + '/like';
+      url = baseUrl + '/location/' + locationId + '/like?isCity=' + isCity;
     }
 
     return new Promise((resolve, reject) => {

@@ -31,26 +31,20 @@ class SimilarHotels extends React.Component {
       if (this.props.hotels.hotelListResponse.hotelList.size > 0)
       {
         return (
-          <div className="row greyBg detailSubHeader">
-            <div className="gap gap-mini"></div>
-            <div className="container">
+          <div className="row">
+            <div className="col-md-12">
               <div className="row">
-                <div className="col-md-12">
-                  <div className="row">
-                    {
-                      this.props.hotels.hotelListResponse.hotelList.hotelSummary.map((hotel, index) => {
-                        if (index < this.props.pageSize) {
-                          return (
-                            <HotelThumb hotel={hotel} hotelUrl={this.props.url} queryString={this.props.queryString} key={hotel.hotelId} cssClass="col-md-6 mb-4" nameLength={20}/>
-                          );
-                        }
-                      })
+                {
+                  this.props.hotels.hotelListResponse.hotelList.hotelSummary.map((hotel, index) => {
+                    if (index < this.props.pageSize) {
+                      return (
+                        <HotelThumb hotel={hotel} hotelUrl={this.props.url} queryString={this.props.queryString} key={hotel.hotelId} cssClass="col-md-4 mb-4" nameLength={20}/>
+                      );
                     }
-                  </div>
-                </div>
+                  })
+                }
               </div>
             </div>
-            <div className="gap"></div>
           </div>
         );
       }
@@ -60,18 +54,12 @@ class SimilarHotels extends React.Component {
     }
     else {
       return (
-        <div className="row greyBg detailSubHeader">
-          <div className="gap"></div>
-          <div className="container">
+        <div className="row">
+          <div className="col-md-12">
             <div className="row">
-              <div className="col-md-12">
-                <div className="row">
-                  <Loader showLoader={true}/>
-                </div>
-              </div>
+              <Loader showLoader={true}/>
             </div>
           </div>
-          <div className="gap"></div>
         </div>
       );
     }

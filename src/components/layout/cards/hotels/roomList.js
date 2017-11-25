@@ -26,7 +26,7 @@ class RoomList extends React.Component {
 
   trackClick() {
     ReactGA.event({ category: 'Hotels', action: 'Click', label: this.props.hotelName });
-    this.props.modalActions.openBookmark(this.props.parentLocationId, this.props.parentLocationName, this.props.parentLocationNameLong, this.props.parentLocationImage, this.props.parentLocationUrl, this.props.locationId, this.props.regionNameLong, this.props.regionName, "hotel", this.props.regionNameImage, this.props.regionUrl, '', false, this.props.latitude, this.props.longitude);
+    this.props.modalActions.openBookmark(this.props.parentLocationId, this.props.parentLocationName, this.props.parentLocationNameLong, this.props.parentLocationImage, this.props.parentLocationUrl, this.props.parentLocationType, this.props.locationId, this.props.regionNameLong, this.props.regionName, "hotel", this.props.regionNameImage, this.props.regionUrl, '', false, this.props.latitude, this.props.longitude);
   }
 
   handleFormSubmit(searchUrl, searchId, arrivalDate, nights, rooms, guests) {
@@ -52,7 +52,8 @@ class RoomList extends React.Component {
 
   cancellationPolicyClick(e) {
     e.preventDefault();
-    let policy = e.target.getAttribute('data-policy');
+    let policy = e.currentTarget.getAttribute('data-policy');
+    console.log(e.currentTarget.getAttribute('data-policy'));
     this.props.modalActions.openCancellationPolicy(policy);
   }
 
@@ -92,8 +93,6 @@ class RoomList extends React.Component {
                       };
 
                       if (hotelRoom.roomImages) {
-                        console.log('high ' + hotelRoom.roomImages.roomImage[0].highResolutionUrl);
-                        console.log('low ' + hotelRoom.roomImages.roomImage[0].url);
                         if (hotelRoom.roomImages.roomImage[0].highResolutionUrl != undefined) {
                           style.backgroundImage = 'url(' + hotelRoom.roomImages.roomImage[0].highResolutionUrl + ')';
                         }
@@ -131,19 +130,18 @@ class RoomList extends React.Component {
                               </div>
                               <div className="row">
                                 <div className="col-md-6">
-                                  <h5
-                                    className="hotelPrice mb-1">{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.total} {hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.currencyCode}</h5>
-
+                                  <h5 className="hotelPrice mb-1">{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.total} {hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.currencyCode}</h5>
                                 </div>
                                 <div className="col-md-6">
                                   <a href={hotelRoom.deepLink} className="btn btn-primary priceRight" target="_blank" onClick={this.trackClick}>Book Room</a>
                                 </div>
                                 <div className="col-md-12">
-                                  <p className="card-subtitle mb-1 text-muted cardAddress">
-                                    <a href="#" onClick={this.cancellationPolicyClick} data-policy={hotelRoom.rateInfos.rateInfo[0].cancellationPolicy}>
+                                  <p className={hotelRoom.rateInfos.rateInfo[0].cancellationPolicy ? 'card-subtitle mb-1 text-muted cardAddress' : 'hide'}>
+                                    <a href="#" onClick={this.cancellationPolicyClick} data-policy={hotelRoom.rateInfos.rateInfo[0].cancellationPolicy} >
                                       {hotelRoom.rateInfos.rateInfo[0].nonRefundable ? <span><i className="fa fa-info"></i> Non-Refundable - Read Cancellation Policy</span> : <span><i className="fa fa-info"></i> Read Cancellation Policy</span>}
                                     </a>
                                   </p>
+                                  <p className={hotelRoom.rateInfos.rateInfo[0].cancellationPolicy ? 'hide' : 'card-subtitle mb-1 text-muted cardAddress'}>&nbsp;</p>
                                 </div>
                               </div>
                             </div>
@@ -205,11 +203,12 @@ SearchForm.defaultProps = {
 };
 
 RoomList.propTypes = {
-  parentRegionId: PropTypes.number.isRequired,
+  parentLocationId: PropTypes.number.isRequired,
   parentLocationName: PropTypes.string.isRequired,
   parentLocationNameLong: PropTypes.string.isRequired,
   parentLocationImage: PropTypes.string.isRequired,
   parentLocationUrl: PropTypes.string.isRequired,
+  parentLocationType: PropTypes.string.isRequired,
   locationId: PropTypes.number.isRequired,
   hotelId: PropTypes.number.isRequired,
   regionName: PropTypes.string.isRequired,

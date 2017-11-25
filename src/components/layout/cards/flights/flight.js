@@ -8,10 +8,10 @@ const Flight = ({route, nights, timeToDestination}) => {
     <div className="row">
       <div className={nights > 0 ? "col-md-3 text-center dottedLineBtm" : "col-md-3 text-center"}>
         <div className="row">
-          <div className="col-md-3">
+          <div className="col-md-4">
             <img src={image} className="logo rounded mx-auto d-block"/>
           </div>
-          <div className="col-md-9 text-left">
+          <div className="col-md-8 text-left">
             <small>{route.airlineName}</small>
           </div>
         </div>

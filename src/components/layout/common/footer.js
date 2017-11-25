@@ -39,7 +39,7 @@ class Footer extends React.Component {
 
   createTrip(e) {
     e.preventDefault();
-    this.props.modalActions.openBookmark(0, '', '', '', '', 0, '', '', '', '', '', '', false, 0, 0, '', '', '');
+    this.props.modalActions.openBookmark(0, '', '', '', '', '', 0, '', '', '', '', '', '', false, 0, 0, '', '', '');
   }
 
   render() {

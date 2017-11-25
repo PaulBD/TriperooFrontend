@@ -23,6 +23,16 @@ class ReviewPopup extends React.Component {
   }
 
   componentWillMount() {
+
+    let isCity = false;
+
+    console.log(this.props.locationType);
+
+    if (this.props.locationType == 'City')
+    {
+      isCity = true;
+    }
+
     if (this.props.isEdit)
     {
       this.setState({
@@ -33,7 +43,8 @@ class ReviewPopup extends React.Component {
         rating: this.props.starRating,
         comment: this.props.comment,
         reviewReference: this.props.reference,
-        wizardStep: 2
+        wizardStep: 2,
+        isCity: isCity
       });
     }
     else {
@@ -42,7 +53,8 @@ class ReviewPopup extends React.Component {
           searchName: this.props.locationName,
           searchId: this.props.locationId,
           searchType: this.props.locationType,
-          wizardStep: 2
+          wizardStep: 2,
+          isCity: isCity
         });
       }
       else {
@@ -87,8 +99,9 @@ class ReviewPopup extends React.Component {
       const editReview = {
         "reviewReference": this.state.reviewReference,
         "inventoryReference": this.state.searchId,
-        "ReviewType": this.state.searchType,
-        "StarRating": this.state.rating,
+        "reviewType": this.state.searchType,
+        "starRating": this.state.rating,
+        "isCity": this.state.isCity,
         "comment": this.refs.comment.value.trim(),
         "tags": _.cloneDeep(this.state.selectedTags)
       };
@@ -103,7 +116,7 @@ class ReviewPopup extends React.Component {
         });
     }
     else {
-      const newReview = { "inventoryReference": this.state.searchId, "ReviewType": this.state.searchType, "StarRating": this.state.rating, "comment": this.refs.comment.value.trim(), "tags": this.state.selectedTags };
+      const newReview = { "inventoryReference": this.state.searchId, "ReviewType": this.state.searchType, "StarRating": this.state.rating, "comment": this.refs.comment.value.trim(), "tags": this.state.selectedTags, "isCity": this.state.isCity };
 
       this.props.userReviewActions.postReview(newReview)
         .then(() => {

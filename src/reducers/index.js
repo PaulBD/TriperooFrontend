@@ -19,6 +19,7 @@ import pointOfInterests from './location/pointofinterestsReducer';
 import attractions from './location/attractionsReducer';
 import locationEvents from './location/eventReducer';
 import flights from './location/flightReducer';
+import deals from './location/dealReducer';
 import hotels from './location/hotelReducer';
 import locationQuestions from './location/locationQuestionsReducer';
 import location from './location/locationReducer';
@@ -57,6 +58,7 @@ const rootReducer = combineReducers({
   cms,
   locationEvents,
   flights,
+  deals,
   hotels,
   locationQuestions,
   location,

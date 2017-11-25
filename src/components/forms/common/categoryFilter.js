@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as modalActions from '../../../actions/common/modalActions';
-var changeCase = require('change-case')
+let changeCase = require('change-case');
 let _ = require('lodash');
 
 class FilterCategoryPopup extends React.Component {

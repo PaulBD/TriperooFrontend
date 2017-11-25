@@ -14,7 +14,7 @@ const FlightCard = ({quote, currency, position}) => {
           <div className="col-md-10">
             <div className="row">
               <div className="col-md-2 text-center flightPrice">
-                {currency}{quote.price.toFixed(2)}
+                {quote.price.toFixed(2)} {currency}
               </div>
               <div className="col-md-10">
                 <Flight route={quote.route[0]} nights={quote.nightsInDest} timeToDestination={quote.duration.departure} />
@@ -23,7 +23,7 @@ const FlightCard = ({quote, currency, position}) => {
             </div>
           </div>
           <div className="col-md-2 text-center">
-            <a href={quote.deep_link} target="_blank" className="btn btn-secondary btnSearch"><small>BOOK FOR</small><br />{currency}{quote.price.toFixed(2)}</a>
+            <a href={quote.deep_link} target="_blank" className="btn btn-secondary btnSearch"><small>BOOK FOR</small><br />{quote.price.toFixed(2)} {currency}</a>
             <br /><br />
             <a href={hashedName} data-toggle="collapse" aria-expanded="false" aria-controls={name}><small>Show Flight Details <i className="fa fa-info-circle"></i></small></a>
           </div>

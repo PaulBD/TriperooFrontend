@@ -39,7 +39,7 @@ class RestaurantContent extends React.Component {
   }
 
   loadLocation() {
-    this.props.locationActions.loadLocationById(this.props.locationId)
+    this.props.locationActions.loadLocationById(this.props.locationId, true)
       .then(() => this.loadRestaurants(this.props.locationId, this.state.restaurantType, this.state.restaurantSearch, this.state.pageSize, this.state.pageNumber))
       .catch(error => {
         Toastr.error(error);

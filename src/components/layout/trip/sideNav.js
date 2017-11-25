@@ -2,9 +2,6 @@ import React, {PropTypes} from 'react';
 let moment = require('moment');
 
 const SideNav = ({tripSummary, selectedDate, showActivity}) => {
-
-  console.log(tripSummary);
-
   return (
     <ul className="list-inline list-center">
       {

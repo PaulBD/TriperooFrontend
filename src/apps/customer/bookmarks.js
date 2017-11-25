@@ -79,7 +79,8 @@ UserBookmarks.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   isActiveUser: PropTypes.bool.isRequired,
   user: PropTypes.object,
-  currentUserId: PropTypes.string
+  currentUserId: PropTypes.string,
+  bookmarks: PropTypes.array
 };
 
 function mapStateToProps(state, ownProps) {

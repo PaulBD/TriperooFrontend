@@ -19,7 +19,7 @@ class NewYorkTravelGuide extends React.Component {
   }
 
   loadLocation() {
-    this.props.locationActions.loadLocationById(this.props.locationId)
+    this.props.locationActions.loadLocationById(this.props.locationId, true)
       .then(() => this.setState({isLoadingLocation: false}))
       .catch(error => {
         Toastr.error(error);

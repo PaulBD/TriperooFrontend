@@ -77,18 +77,23 @@ class Reviews extends React.Component {
   }
 
 
-  render(){
+  render() {
 
     let title = '';
+
+    if (this.props.showTitle) {
+      title = <div className="col-md-12"><h4 className="locationTitle">{this.props.title} <small className="float-right"><a href="#" onClick={this.writeReview}>Add New Review</a></small></h4></div>;
+    }
 
     if (!this.state.isLoadingReviews) {
       return (
         <div className="row">
-          <div className={this.props.locationType != 'all' && this.props.locationId > 0 ? "col-md-12" : "hide"}>
+          {title}
+          <div className={this.props.locationType != 'all' && this.props.locationId > 0 && this.props.reviews.length > 0 ? "col-md-12" : "hide"}>
             <ReviewFilter filterReviews={this.filterReviews}/>
           </div>
           <div className="col-md-12">
-          <ReviewList reviews={this.props.reviews} locationId={this.props.locationId} locationName={this.props.locationName} isUsingFilter={this.state.isUsingFilter} />
+          <ReviewList reviews={this.props.reviews} locationId={this.props.locationId} locationName={this.props.locationName} isUsingFilter={this.state.isUsingFilter} writeReview={this.writeReview} />
 
           <div className="gap gap-small"></div>
           <div className="row justify-content-center">
@@ -114,7 +119,7 @@ class Reviews extends React.Component {
 }
 
 Reviews.defaultProps = {
-  showTitle: true,
+  showTitle: false,
   locationType: 'all',
   locationId: 0,
   pageSize: 0,
@@ -133,6 +138,7 @@ Reviews.propTypes = {
   locationId: PropTypes.number,
   pageSize: PropTypes.number.isRequired,
   pageNumber: PropTypes.number.isRequired,
+  title: PropTypes.string,
   showTitle: PropTypes.bool,
   isFetching: PropTypes.bool.isRequired,
   reviewCount: PropTypes.number.isRequired

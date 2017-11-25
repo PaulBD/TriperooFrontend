@@ -4,7 +4,6 @@ import {bindActionCreators} from 'redux';
 import * as locationsActions from '../../../../actions/location/locationsActions';
 import LocationList from './locationList';
 import Loader from '../../../loaders/contentLoader';
-let titleCase = require('title-case');
 import Toastr from 'toastr';
 
 class TopLocations extends React.Component {
@@ -32,12 +31,16 @@ class TopLocations extends React.Component {
   render(){
     if (!this.state.loadingLocations)
     {
-      return (
-        <div className="col-md-12">
-          {this.props.showTitle ? <h3>Things to do in {titleCase(this.props.name)}...</h3> : ''}
-          <LocationList locations={this.props.locations} cssClass="col-md-3 col-12" />
-        </div>
-      );
+      if (this.props.locations != undefined && this.props.locations.locations != undefined && this.props.locations.locations.length > 0) {
+
+        return (
+          <div className="col-md-12">
+            {this.props.title ? <span><h4>{this.props.title}</h4><hr /></span> : ''}
+            <LocationList locations={this.props.locations} cssClass="col-md-3 col-12" showIcons={this.props.showIcons}/>
+          </div>
+        );
+      }
+      else { return null; }
     }
     else {
       return (
@@ -57,7 +60,9 @@ TopLocations.defaultProps = {
   pageSize: 8,
   locations: {},
   isFetching: false,
-  showTitle: true
+  title: '',
+  showIcons: true
+
 };
 
 TopLocations.propTypes = {
@@ -69,7 +74,8 @@ TopLocations.propTypes = {
   locations: PropTypes.object.isRequired,
   locationsActions: PropTypes.object.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  showTitle: PropTypes.bool
+  showIcons: PropTypes.bool.isRequired,
+  title: PropTypes.string
 };
 
 function mapStateToProps(state, ownProps) {

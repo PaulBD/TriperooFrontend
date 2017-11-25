@@ -28,6 +28,32 @@ export function loadLocationsByParentLocationId(parentLocationId, type, name, pa
 }
 
 // ****************************************
+// Load Other Destinations excluding location id
+// ****************************************
+export function requestOtherLocations() {
+  return {type: types.OTHER_DESTINATIONS_REQUEST, isFetching: true };
+}
+
+export function otherDestinationsSuccess(otherDestinations) {
+  return {type: types.OTHER_DESTINATIONS_SUCCESS, isFetching: false, otherDestinations};
+}
+
+export function otherDestinationsError(errorMessage) {
+  return {type: types.OTHER_DESTINATIONS_FAILURE, isFetching: false,  errorMessage};
+}
+
+export function loadOtherDestinations(parentLocationId, type, name, pageSize, pageNumber) {
+  return dispatch => {
+    dispatch(requestOtherLocations());
+    return LocationsApi.getLocationsByParentId(parentLocationId, type, name, pageSize, pageNumber).then(otherDestinations => {
+      dispatch(otherDestinationsSuccess(otherDestinations));
+    }).catch(error => {
+      dispatch(otherDestinationsError(error));
+    });
+  };
+}
+
+// ****************************************
 // Autocomplete
 // ****************************************
 export function autocompleteRequest() {

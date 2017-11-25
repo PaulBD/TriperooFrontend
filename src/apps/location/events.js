@@ -28,7 +28,7 @@ class EventHome extends React.Component {
   }
 
   loadLocation() {
-    this.props.locationActions.loadLocationById(this.props.locationId)
+    this.props.locationActions.loadLocationById(this.props.locationId, true)
       .then(() => this.loadEvents(this.props.locationId, this.state.categoryName, this.state.pageSize, this.state.pageNumber))
       .catch(error => {
         Toastr.error(error);

@@ -14,67 +14,95 @@ const TripSummary = ({location, trip}) => {
   let hotelUrl = trip.tripDetails.regionUrl + '/hotels';
   let foodUrl = trip.tripDetails.regionUrl + '/restaurants';
 
-  if (trip.days.length > 0)
+  if (trip.tripDetails.tripSummary.length > 0)
   {
-    highlightA = (
-      <div className="col-md-3">
-        <a className="hover-img activityBg" href={trip.days[0].url}>
-          <img src={trip.days[0].image} />
-          <div className="hover-inner">
-            <h5>{trip.days[0].regionName}</h5>
-            <p>{changeCase.upperCaseFirst(trip.days[0].type)}</p>
-          </div>
-        </a>
-      </div>
-    );
+    if (trip.tripDetails.tripSummary[0].activities.length > 0) {
+      let style = {
+        backgroundImage: 'url(' + trip.tripDetails.tripSummary[0].activities[0].image + ')',
+        backgroundSize: '125%'
+      };
+
+      highlightA = (
+        <div className="col-md-3">
+          <a className="hover-img activityBg" href={trip.tripDetails.tripSummary[0].activities[0].url} style={style}>
+            <div className="hover-inner">
+              <h5>{trip.tripDetails.tripSummary[0].activities[0].regionName}</h5>
+              <p>{changeCase.upperCaseFirst(trip.tripDetails.tripSummary[0].activities[0].type)}<br />
+                {changeCase.upperCaseFirst(trip.tripDetails.tripSummary[0].activities[0].date)}</p>
+            </div>
+          </a>
+        </div>
+      );
+    }
   }
 
-  if (trip.days.length > 1)
+  if (trip.tripDetails.tripSummary.length > 0)
   {
-    highlightB = (
-      <div className="col-md-3">
-        <a className="hover-img activityBg" href={trip.days[1].url}>
-          <img src={trip.days[1].image} />
-          <div className="hover-inner">
-            <h5>{trip.days[1].regionName}</h5>
-            <p>{changeCase.upperCaseFirst(trip.days[1].type)}</p>
-          </div>
-        </a>
-      </div>
-    );
+    if (trip.tripDetails.tripSummary[0].activities.length > 1) {
+      let style = {
+        backgroundImage: 'url(' + trip.tripDetails.tripSummary[0].activities[1].image + ')',
+        backgroundSize: '125%'
+      };
+
+      highlightB = (
+        <div className="col-md-3">
+          <a className="hover-img activityBg" href={trip.tripDetails.tripSummary[0].activities[1].url} style={style}>
+            <div className="hover-inner">
+              <h5>{trip.tripDetails.tripSummary[0].activities[1].regionName}</h5>
+              <p>{changeCase.upperCaseFirst(trip.tripDetails.tripSummary[0].activities[1].type)}<br />
+                {changeCase.upperCaseFirst(trip.tripDetails.tripSummary[0].activities[1].date)}</p>
+            </div>
+          </a>
+        </div>
+      );
+    }
   }
 
-  if (trip.days.length > 2)
+  if (trip.tripDetails.tripSummary.length > 1)
   {
-    highlightC = (
-      <div className="col-md-3">
-        <a className="hover-img activityBg" href={trip.days[2].url}>
-          <img src={trip.days[2].image} />
-          <div className="hover-inner">
-            <h5>{trip.days[2].regionName}</h5>
-            <p>{changeCase.upperCaseFirst(trip.days[2].type)}</p>
-          </div>
-        </a>
-      </div>
-    );
+    if (trip.tripDetails.tripSummary[1].activities.length > 0) {
+      let style = {
+        backgroundImage: 'url(' + trip.tripDetails.tripSummary[1].activities[0].image + ')',
+        backgroundSize: '125%'
+      };
+
+      highlightC = (
+        <div className="col-md-3">
+          <a className="hover-img activityBg" href={trip.tripDetails.tripSummary[1].activities[0].url} style={style}>
+            <div className="hover-inner">
+              <h5>{trip.tripDetails.tripSummary[1].activities[0].regionName}</h5>
+              <p>{changeCase.upperCaseFirst(trip.tripDetails.tripSummary[1].activities[0].type)}<br />
+                {changeCase.upperCaseFirst(trip.tripDetails.tripSummary[1].activities[0].date)}</p>
+            </div>
+          </a>
+        </div>
+      );
+    }
   }
 
-  if (trip.days.length > 3)
+  if (trip.tripDetails.tripSummary.length > 2)
   {
-    highlightD = (
-      <div className="col-md-3">
-        <a className="hover-img activityBg" href={trip.days[3].url}>
-          <img src={trip.days[3].image} />
-          <div className="hover-inner">
-            <h5>{trip.days[3].regionName}</h5>
-            <p>{changeCase.upperCaseFirst(trip.days[3].type)}</p>
-          </div>
-        </a>
-      </div>
-    );
+    if (trip.tripDetails.tripSummary[1].activities.length > 1) {
+      let style = {
+        backgroundImage: 'url(' + trip.tripDetails.tripSummary[1].activities[1].image + ')',
+        backgroundSize: '125%'
+      };
+
+      highlightD = (
+        <div className="col-md-3">
+          <a className="hover-img activityBg" href={trip.tripDetails.tripSummary[1].activities[1].url} style={style}>
+            <div className="hover-inner">
+              <h5>{trip.tripDetails.tripSummary[1].activities[1].regionName}</h5>
+              <p>{changeCase.upperCaseFirst(trip.tripDetails.tripSummary[1].activities[1].type)}}<br />
+                {changeCase.upperCaseFirst(trip.tripDetails.tripSummary[1].activities[1].date)}</p>
+            </div>
+          </a>
+        </div>
+      );
+    }
   }
 
-  if (trip.days.length < 4)
+  if (trip.tripDetails.tripSummary.length < 4)
   {
     activitiesBlock = (
       <div className="col-md-3">
@@ -121,7 +149,7 @@ const TripSummary = ({location, trip}) => {
                 </div>
               </div>
             </div>
-            <div className={trip.days ? trip.days.length > 0 ? "row" : "hide" : "hide"}>
+            <div className={trip.tripDetails.tripSummary ? trip.tripDetails.tripSummary.length > 0 ? "row" : "hide" : "hide"}>
               <div className="col-md-12">
                 <hr />
                 <h5 className="mb-2">Highlights From Your Plan</h5>

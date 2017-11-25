@@ -16,10 +16,10 @@ export function locationContentFailure(errorMessage) {
 	return {type: types.LOCATION_CONTENT_FAILURE, isFetching: false,  errorMessage};
 }
 
-export function loadLocationById(locationId) {
+export function loadLocationById(locationId, isCity) {
 	return dispatch => {
 		dispatch(requestLocationContent());
-		return LocationApi.getLocation(locationId).then(location => {
+		return LocationApi.getLocation(locationId, isCity).then(location => {
 			dispatch(loadLocationContentSuccess(location));
 		}).catch(error => {
 			dispatch(locationContentFailure(error.response.data));
@@ -42,10 +42,10 @@ export function likeLocationContentFailure(errorMessage) {
   return {type: types.LIKE_LOCATION_CONTENT_FAILURE, isFetching: false,  errorMessage};
 }
 
-export function likeLocationById(locationId, likeLocation, location) {
+export function likeLocationById(locationId, likeLocation, isCity) {
   return dispatch => {
     dispatch(requestLikeLocationContent());
-    return LocationApi.likeLocation(locationId, likeLocation).then(response => {
+    return LocationApi.likeLocation(locationId, likeLocation, isCity).then(response => {
       dispatch(loadLikeLocationContentSuccess(location));
     }).catch(error => {
       dispatch(likeLocationContentFailure(error.response.data));

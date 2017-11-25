@@ -28,7 +28,13 @@ class AskQuestionButton extends React.Component {
         else {
           if (this.props.locationName.length > 15)
           {
-            message = 'Ask a question about this location';
+            if (this.props.locationType == "hotel")
+            {
+              message = 'Ask a question about this hotel';
+            }
+            else {
+              message = 'Ask a question about this location';
+            }
           }
           else {
             message = 'Ask a question about ' + titleCase(this.props.locationName);

@@ -7,10 +7,10 @@ class WeatherApi {
   // ****************************************
   // Return weather by location
   // ****************************************
-  static getCurrentWeather(locationId, language) {
+  static getCurrentWeather(locationId, isCity, language) {
     if (environment){
       return new Promise((resolve, reject) => {
-        axios.get(baseUrl + '/location/' + locationId + '/weather?lang=' + language)
+        axios.get(baseUrl + '/location/' + locationId + '/weather?lang=' + language + '&isCity=' + isCity)
           .then(function (response) {
             resolve(Object.assign({}, response.data));
           })

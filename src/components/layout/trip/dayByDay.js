@@ -74,11 +74,11 @@ class DayByDay extends React.Component {
                   <div className="row">
                     <div className="timeline-centered">
                       {
-                        this.props.trip.days.length > 0 ? this.props.trip.days.map((day, index)=> {
-                          return (<TripDetail tripId={this.props.trip.id} day={day} leftAlign={(index%2 ? false:true)} key={index} openMap={this.openMap} removeActivity={this.removeActivity} />);
-                        }) : "No trips"
+                        this.props.trip.tripDetails.tripSummary.length > 0 ? this.props.trip.tripDetails.tripSummary.map((day, index)=> {
+                          return ( <TripDetail tripId={this.props.trip.id} day={day} key={index} openMap={this.openMap} removeActivity={this.removeActivity}/>);
+                        }, this) : <div>No trips</div>
                       }
-                      <article className={this.props.trip.days.length > 0 ? "timeline-entry begin":"hide"}>
+                      <article className={this.props.trip.tripDetails.tripSummary.length > 0 ? "timeline-entry begin":"hide"}>
                       <div className="timeline-entry-inner">
                         <div className="timeline-icon">
                           <i className="entypo-flight"></i>

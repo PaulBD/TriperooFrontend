@@ -116,7 +116,7 @@ h4 span { color: #ed8323; }
 a:hover .card { border: solid 1px #ed8323; background-color: #efefef;}
 
 .reviewBg { background-size: 100%; }
-.hotelRoomImageBg { background-size: 100%; height: 230px !important; border-radius: 3px 3px 0px 0px; }
+.hotelRoomImageBg { background-size: 100%; height: 170px !important; border-radius: 3px 3px 0px 0px; }
 h4.card-title { font-size: 18px;}
 
 .last-minute-title { font-weight:bold;}
@@ -132,7 +132,8 @@ h4.card-title { font-size: 18px;}
 .weatherIconSml { width:25px ;}
 
 .weatherTbl tr td { font-size: 12px !important; padding: .50rem; border:none;}
-.weatherTbl tbody { border-top: 1px solid #eceeef !important; }
+.weatherTbl tbody { border-bottom: 1px solid #eceeef !important; }
+.table.weatherTbl tbody+tbody { border:none; }
 
 .weatherSml { font-size: 24px; }
 .weather .units { margin-top: -4px; line-height:16px; }
@@ -161,6 +162,8 @@ h4.card-title { font-size: 18px;}
 .homeSearch { margin: 0 auto 0px auto !important; width:50%; }
 .homeSearch .ui-autocomplete { top: 44px; }
 
+.homeSearch input[type=text] { border-radius: 5px !important; padding: 25px 25px 25px 45px !important;font-size: 18px !important; }
+
 .card-block .commentStar { padding: 10px 0; }
 
 .tagCollection .tag, .tagCollection .tagReadOnly { margin: 0px 5px 4px 0px; padding: 2px 7px; display: inline-block; font-size: 12px; background-color: #ccc; border-radius: 3px; color: #333; font-weight:normal; }
@@ -174,7 +177,10 @@ h4.card-title { font-size: 18px;}
 .cityPage, .holidayPage { height: 500px !important; }
 .travelPage, .infoPageWrapper { height: 300px !important; }
 .cityPage h1, .holidayPage h1, .travelPage h1, .infoPageWrapper h1 { font-size: 600%; width: 70%; }
-.holidayPage .full-center { top: 40% !important;}
+
+.holidayPage { height: 450px !important; overflow: inherit; }
+.holidayPage h1 { font-size: 500%; width: 70%; }
+.holidayPage .full-center { top: 50% !important;}
 
 .infoImg { background-position: center top !important; }
 
@@ -351,11 +357,11 @@ optgroup,option { margin-left:0px;text-align:left;}
   padding: 10px;
 }
 
-.ui-menu-item a { float:left; border-bottom: solid 1px #ccc; width:100%; padding: 3px 0; }
+.ui-menu-item a { float:left; border-bottom: solid 1px #ccc; width:100%; padding: 3px 0; color: #000  }
 .ui-menu-item:last-child a { border-bottom:none; }
-.ui-menu-item span { width:30px; float:left;text-align:center;}
+.ui-menu-item span { width:30px; float:left;text-align:center; color: #000}
 
-.ui-menu-item a:hover { background-color: #efefef; }
+.ui-menu-item a:hover { background-color: #efefef; color: #000  }
 
 .btnSearch { padding: 10px 20px 12px 20px}
 .btnSearch small { line-height: 1; }
@@ -473,7 +479,7 @@ optgroup,option { margin-left:0px;text-align:left;}
 
 .booking-item-details .booking-item-header { padding-top: 0; border-top: none; }
 
-.form-group .input-icon.homeSearchIcon { line-height: 42px; }
+.form-group .input-icon.homeSearchIcon { line-height: 50px; }
 
 .trustedPartner { font-size: 12px;}
 .cards, .cardsLast { width: 30px; margin-left:8px; }
@@ -592,7 +598,7 @@ div.ReactTags__suggestions ul li.active {
 .reviewCard { height: 510px !important; }
 
 .cardBg { width: 100%; height: 150px;}
-.cardBg.hotels { width: 100%; height: 200px;}
+.cardBg.hotels { width: 100%; height: 190px;}
 .card-block.hotels h5 { height: 50px; }
 .tripStartDate { font-size: 12px; font-weight:300; }
 
@@ -1519,6 +1525,11 @@ ul.twPc-Arrange li.location {
 a:hover .activityBg { background-color: #333; border-color: #333; }
 .activityBg h4 { text-shadow: 0px 0px 4px #000; }
 .activityBg .card-text { color: #FFFFFF; opacity: 1; text-shadow: 0px 0px 4px #000;}
+.locationTitle { width: 100%; border-bottom: solid 1px #ccc; }
+.locationTitle small { margin-top:7px; }
+.timelineTitle { width:100%; }
+.timelineTitle h4 { border-top: solid 1px #efefef; border-bottom: solid 1px #efefef; margin-bottom: 20px; text-align:center;background-color:white;}
+
 
 
   /* Timeline */
@@ -1526,6 +1537,7 @@ a:hover .activityBg { background-color: #333; border-color: #333; }
 .timeline-centered {
   position: relative;
   margin-bottom: 30px;
+  width: 100%;
 }
 
 .timeline-centered:before, .timeline-centered:after {
@@ -1651,7 +1663,7 @@ a:hover .activityBg { background-color: #333; border-color: #333; }
 
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-time {
   position: absolute;
-  left: -150px;
+  left: -210px;
   text-align: right;
   padding: 10px;
   -webkit-box-sizing: border-box;
@@ -1764,7 +1776,12 @@ a:hover .activityBg { background-color: #333; border-color: #333; }
 
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 {
   font-size: 16px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
+}
+
+.timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h3 {
+  font-size: 14px;
+  margin-bottom: 0px;
 }
 
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 a {

@@ -9,7 +9,15 @@ export default function locationsReducer(state = { isFetching: false }, action) 
 		case types.CHILD_LOCATION_CONTENT_FAILURE:
 			return Object.assign({}, state, { isFetching: false, errorMessage: action.message });
 
-		case types.AUTOCOMPLETE_CLEAR:
+    case types.OTHER_DESTINATIONS_REQUEST:
+      return Object.assign({}, state, { isFetching: true });
+    case types.OTHER_DESTINATIONS_SUCCESS:
+      return Object.assign({}, state, { isFetching: false, errorMessage: '', otherDestinations: action.otherDestinations });
+    case types.OTHER_DESTINATIONS_FAILURE:
+      return Object.assign({}, state, { isFetching: false, errorMessage: action.message });
+
+
+    case types.AUTOCOMPLETE_CLEAR:
 			return Object.assign({}, state, { isFetching: false, autocompleteList: [] });
 		case types.AUTOCOMPLETE_REQUEST:
 			return Object.assign({}, state, { isFetching: true });

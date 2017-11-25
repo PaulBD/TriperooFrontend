@@ -2,61 +2,91 @@ import React, {PropTypes} from 'react';
 let changeCase = require('change-case');
 let moment = require('moment');
 
-const TripDetail = ({tripId, day, leftAlign, openMap, removeActivity}) => {
-  if (!day.isArchived) {
-    return (
-      <article className={leftAlign ? "timeline-entry left-aligned" : "timeline-entry"}>
-        <div className="timeline-entry-inner">
-          <a name={moment(day.visitDate).format("YYYY-MM-DD")}></a>
-          <time className="timeline-time"><span>{changeCase.upperCase(day.startTimePeriod)}</span>
-            <span>{moment(day.visitDate).format("MMMM Do YYYY")}</span></time>
-          <div className="timeline-icon">
-            <small>Day {day.day + 1}</small>
+const TripDetail = ({tripId, day, openMap, removeActivity}) => {
+
+  let activityList = '';
+  console.log(day.activitiesCount);
+  console.log(day.activities.length);
+  if ((day.activitiesCount > 0 || day.restaurantCount > 0) && day.activities.length > 0)
+  {
+    activityList = day.activities.map((day, index)=> {
+
+      let leftAlign = index % 2 ? false : true;
+
+      let newDay = null;
+
+      if (index == 0)
+      {
+        newDay = (
+          <div className="col-md-12">
+            <a name={moment(day.date).format("YYYY-MM-DD")}></a>
+            <h4>{moment(day.date).format("MMMM Do YYYY")}</h4>
           </div>
-          <div className="timeline-label">
-            <div className="row">
-              <div className={leftAlign ? "col-md-5" : "hide"}>
-                <img src={day.image}/>
+        );
+      }
+
+      return (
+        <article>
+
+          <div className={newDay ? "row timelineTitle" : "hide"}>
+            {newDay}
+          </div>
+          <div className={leftAlign ? "timeline-entry left-aligned" : "timeline-entry"}>
+            <div className="timeline-entry-inner">
+              <time className="timeline-time"><span>{day.regionType}</span>
+                <span>{moment(day.date).format("MMMM Do YYYY")}</span></time>
+              <div className="timeline-icon">
+                <small>{changeCase.upperCase(day.startTimePeriod)}</small>
               </div>
-              <div className="col-md-7">
+              <div className="timeline-label">
                 <div className="row">
-                  <div className="col-md-12">
-                    <h2><a href={day.url}>{day.regionName}</a></h2>
-                    <p><i className="fa fa-map-marker"/> {day.address} &nbsp;
-                      <a href="#" onClick={openMap} data-longitude={day.longitude} data-name={day.regionName}
-                         data-subclass={day.type} data-url={day.url} data-image={day.image} data-latitude={day.latitude}
-                         className={day.latitude == 0 && day.longitude == 0 ? "hide" : ""}>View Map</a></p>
+                  <div className={leftAlign ? "col-md-5" : "hide"}>
+                    <img src={day.image}/>
+                  </div>
+                  <div className="col-md-7">
+                    <div className="row">
+                      <div className="col-md-12">
+                        <h2><span className="float-right"><a href="#" onClick={removeActivity} data-tripId={tripId} data-activityId={day.regionID}>
+                          <i className="fa fa-trash"/></a></span><a href={day.url}>{day.regionName}</a></h2>
+                        <h3>{day.activityType} : {day.regionType}</h3>
+                        <p className={day.latitude == 0 && day.longitude == 0 ? "hide" : ""}><i className="fa fa-map-marker"/> {day.address} &nbsp;
+                          <a href="#" onClick={openMap} data-longitude={day.longitude} data-name={day.regionName}
+                             data-subclass={day.type} data-url={day.url} data-image={day.image}
+                             data-latitude={day.latitude}
+                             className={day.latitude == 0 && day.longitude == 0 ? "hide" : ""}>View Map</a></p>
+                      </div>
+                    </div>
+                    <div className="gap gap-mini"></div>
+                    <div className="row">
+                      <div className={day.price ? 'col-md-6' : 'hide'}>
+                        <p ><strong>Price:</strong><br />{day.price} GBP</p>
+                      </div>
+                      <div className={day.length ? 'col-md-6' : 'hide'}>
+                        <p><strong>Length:</strong><br />{day.length} minutes</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className={leftAlign ? "hide" : "col-md-5"}>
+                    <img src={day.image}/>
                   </div>
                 </div>
-                <div className="gap gap-mini"></div>
-                <div className="row">
-                  <div className="col-md-6">
-                    <p><strong>Price:</strong><br />{day.price} GBP</p>
-                  </div>
-                  <div className="col-md-6">
-                    <p><strong>Length:</strong><br />{day.length}</p>
-                  </div>
-                  <a href="#" onClick={removeActivity} data-tripId={tripId} data-activityId={day.regionID}>Remove</a>
-                </div>
-              </div>
-              <div className={leftAlign ? "hide" : "col-md-5"}>
-                <img src={day.image}/>
               </div>
             </div>
           </div>
-        </div>
-      </article>
-    );
+        </article>
+      );
+    });
   }
   else {
-    return null;
+    activityList = null;
   }
+
+  return (<div>{activityList}</div>);
 };
 
 TripDetail.propTypes = {
   tripId: PropTypes.number.isRequired,
   day: PropTypes.object.isRequired,
-  leftAlign: PropTypes.bool.isRequired,
   openMap: PropTypes.func.isRequired,
   removeActivity: PropTypes.func.isRequired
 };

@@ -56,6 +56,10 @@ class FilterRestaurants extends React.Component {
 }
 
 FilterRestaurants.propTypes = {
+  searchName: PropTypes.string,
+  locationId: PropTypes.number,
+  pageSize: PropTypes.number,
+  pageNumber: PropTypes.number,
   categories: PropTypes.array,
   isFetching: PropTypes.bool,
   filterRestaurant: PropTypes.func

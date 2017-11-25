@@ -55,7 +55,8 @@ class BookmarkLocation extends React.Component {
   componentWillMount() {
     const days = {
       "regionID": this.props.locationId,
-      "type": this.props.locationType,
+      "activityType": this.props.parentLocationType,
+      "regionType": this.props.locationType,
       "regionName": this.props.locationName,
       "regionNameLong": this.props.locationNameLong,
       "lengthValue": this.props.locationLength,
@@ -308,6 +309,7 @@ BookmarkLocation.defaultProps = {
 BookmarkLocation.propTypes = {
   parentLocationId: PropTypes.number,
   parentLocationName: PropTypes.string,
+  parentLocationType: PropTypes.string,
   parentLocationNameLong: PropTypes.string,
   parentLocationImage: PropTypes.string,
   parentLocationUrl: PropTypes.string,

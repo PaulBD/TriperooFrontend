@@ -50,6 +50,7 @@ Visit.propTypes = {
   latitude: PropTypes.number,
   longitude: PropTypes.number,
   locationUrl: PropTypes.string,
+  removeBookmark: PropTypes.bool,
   modalActions: PropTypes.object.isRequired,
   selectedLocationId: PropTypes.number.isRequired
 };

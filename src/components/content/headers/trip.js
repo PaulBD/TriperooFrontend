@@ -10,13 +10,16 @@ class TripHeader extends React.Component {
   render(){
     let style = {};
 
-      if (this.props.trip.tripDetails.image != undefined) {
-        style = {
-          backgroundImage: 'url(' + this.props.trip.tripDetails.image + ')'
-        };
-      }
+    if (this.props.trip.tripDetails.image != undefined) {
+      style = {
+        backgroundImage: 'url(' + this.props.trip.tripDetails.image + ')'
+      };
+    }
 
     if (this.props.hasLoaded) {
+
+      console.log(this.props.user);
+
       let tripUrl = this.props.user.profile.profileUrl + "/trips";
       return (
         <div className="top-area show-onload locationPage">

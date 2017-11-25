@@ -56,7 +56,7 @@ class CustomerTrips extends React.Component {
   }
 
   getLocation() {
-    this.props.locationActions.loadLocationById(this.props.trip.tripDetails.regionID)
+    this.props.locationActions.loadLocationById(this.props.trip.tripDetails.regionID, true)
       .then(() => {
         this.setState({loading: false, loadingTrip: false, loadingLocation: false});
       })
@@ -68,11 +68,6 @@ class CustomerTrips extends React.Component {
 
   render(){
     if (!this.state.loadingTrip && !this.state.loadingLocation) {
-
-      console.log(this.props.trip);
-
-
-
       document.title = this.props.trip.tripName;
       return (
         <div>

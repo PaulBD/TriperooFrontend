@@ -45,16 +45,46 @@ class Login extends React.Component {
   }
 
   showFacebookLocationForm(response) {
-    this.setState({creatingUser: true, useFacebook: true, creds: { accessToken: response.accessToken, emailAddress: response.email, facebookId: response.userID, name: response.name, imageUrl: response.picture.data.url} });
+    this.setState({creatingUser: true, useFacebook: false, creds: { accessToken: response.accessToken, emailAddress: response.email, facebookId: response.userID, name: response.name, imageUrl: response.picture.data.url, city: '', cityId: 0, password: ''}});
+
+    this.props.actions.getFacebookUser({accessToken: this.state.creds.accessToken, emailAddress: this.state.creds.emailAddress, facebookId: this.state.creds.facebookId, name: this.state.creds.name, imageUrl: this.state.creds.imageUrl, cityId: this.state.creds.cityId, city: this.state.creds.city})
+      .then(() => {
+        console.log(this.props.user);
+
+        if (this.props.user != undefined)
+        {
+          if (this.props.user.triperooCustomers != undefined)
+          {
+            if (this.props.user.triperooCustomers.profile.currentLocation == '' || this.props.user.triperooCustomers.profile.currentLocation == 0)
+            {
+              this.setState({useFacebook: true});
+            }
+            else {
+              this.login();
+            }
+          }
+          else {
+            this.setState({useFacebook: true});
+          }
+        } else {
+          this.setState({useFacebook: true});
+        }
+      })
+      .catch(error => {
+        Toastr.error(error);
+        this.setState({creatingUser: false, errors: error});
+      });
   }
 
   submitFacebookForm(e) {
     e.preventDefault();
+    this.login();
+  }
 
+  login() {
     this.props.actions.loginFacebookUser({accessToken: this.state.creds.accessToken, emailAddress: this.state.creds.emailAddress, facebookId: this.state.creds.facebookId, name: this.state.creds.name, imageUrl: this.state.creds.imageUrl, cityId: this.state.creds.cityId, city: this.state.creds.city})
       .then(() => {
         this.setState({creatingUser: false, errors: this.props.errorMessage});
-
         if (this.props.errorMessage == '' && this.props.errorMessage.length == 0)
         {
           this.closeLoginModal(null);
@@ -93,6 +123,8 @@ class Login extends React.Component {
     e.preventDefault();
     if (this.state.creds.emailAddress != '' && this.state.creds.emailAddress.length > 0) {
       this.setState({isSendingPassword: true}); //, creds: { emailAddress: this.state.creds.emailAddress, password: ''}});
+
+      console.log(this.state.creds);
       this.props.actions.resetPassword(this.state.creds)
         .then(() => {
           this.setState({isSendingPassword: false, hasSentPassword: this.props.errorMessage == '' && this.props.errorMessage.length == 0, errors: this.props.errorMessage});
@@ -187,7 +219,8 @@ class Login extends React.Component {
 Login.defaultProps = {
   isAuthenticated: false,
   isFetching: false,
-  hasSentPassword: false
+  hasSentPassword: false,
+  user: {}
 };
 
 Login.propTypes = {
@@ -196,7 +229,8 @@ Login.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   hasSentPassword: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string,
-  closeModal: PropTypes.func
+  closeModal: PropTypes.func,
+  user: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
@@ -204,7 +238,8 @@ function mapStateToProps(state, ownProps) {
     isFetching: state.authentication.isFetching,
     isAuthenticated: state.authentication.isAuthenticated,
     errorMessage: state.authentication.errorMessage,
-    hasSentPassword: state.authentication.hasSentPassword
+    hasSentPassword: state.authentication.hasSentPassword,
+    user: state.authentication.user
   };
 }
 

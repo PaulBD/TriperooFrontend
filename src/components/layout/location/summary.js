@@ -21,6 +21,7 @@ class Overview extends React.Component {
 
   render(){
 
+    console.log(this.props.location.regionType);
     let summaryCount = 700;
     let locationInfo = '';
 

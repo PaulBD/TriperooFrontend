@@ -10,6 +10,14 @@ export default function authenticationReducer(state = { isFetching: false, isAut
     case types.LOGIN_FAILURE:
       return Object.assign({}, state, { isFetching: false, isAuthenticated: false, hasSentPassword: false, errorMessage: action.message });
 
+    case types.FACEBOOK_USER_REQUEST:
+      return Object.assign({}, state, { isFetching: true, isAuthenticated: false, hasSentPassword: false });
+    case types.FACEBOOK_USER_SUCCESS:
+      return Object.assign({}, state, { isFetching: false, isAuthenticated: true, hasSentPassword: false, errorMessage: '', user: action.user });
+    case types.FACEBOOK_USER_FAILURE:
+      return Object.assign({}, state, { isFetching: false, isAuthenticated: false, hasSentPassword: false, errorMessage: action.message });
+
+
     case types.REGISTRATION_REQUEST:
       return Object.assign({}, state, { isFetching: true, isAuthenticated: false, hasSentPassword: false });
     case types.REGISTRATION_SUCCESS:
@@ -26,6 +34,14 @@ export default function authenticationReducer(state = { isFetching: false, isAut
       return Object.assign({}, state, { isFetching: false, isAuthenticated: false, hasSentPassword: true });
     case types.PASSWORD_FAILURE:
       return Object.assign({}, state, { isFetching: false, isAuthenticated: false, hasSentPassword: false, errorMessage: action.message });
+
+    case types.UPDATE_PASSWORD_REQUEST:
+      return Object.assign({}, state, { isFetching: true, isAuthenticated: false, hasUpdatedPassword: false });
+    case types.UPDATE_PASSWORD_SUCCESS:
+      return Object.assign({}, state, { isFetching: false, isAuthenticated: false, hasUpdatedPassword: true });
+    case types.UPDATE_PASSWORD_FAILURE:
+      return Object.assign({}, state, { isFetching: false, isAuthenticated: false, hasUpdatedPassword: false, errorMessage: action.message });
+
 
     default:
       return state;

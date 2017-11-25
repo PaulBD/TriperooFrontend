@@ -6,6 +6,11 @@ import ReviewItem from './locationReviewItem';
 class ReviewList extends React.Component {
   constructor(props, context) {
     super(props, context);
+    this.writeFirstReview = this.writeFirstReview.bind(this);
+  }
+
+  writeFirstReview(e){
+    this.props.writeReview(e);
   }
 
   render() {
@@ -36,7 +41,7 @@ class ReviewList extends React.Component {
           return (
             <div className="row">
               <div className="col-md-12">
-                <p>There are no reviews available for {this.props.locationName}. Be the first to write a review.</p>
+                <p>There are no reviews available for {this.props.locationName}. Be the first to <a href="#" onClick={this.writeFirstReview}>write a review</a>.</p>
               </div>
             </div>);
         }
@@ -56,7 +61,8 @@ ReviewList.propTypes = {
   locationName: PropTypes.string,
   locationId: PropTypes.number,
   reviews: PropTypes.array.isRequired,
-  isUsingFilter: PropTypes.bool
+  isUsingFilter: PropTypes.bool,
+  writeReview: PropTypes.func
 };
 
 

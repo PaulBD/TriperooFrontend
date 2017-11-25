@@ -27,7 +27,7 @@ const FlightDetail = ({route, duration, title}) => {
                 <small>
                   {moment.unix(duration, "seconds").format("H.mm")} hrs<br />
                   <img src={image} className="smallFlightLogo"/>
-                  {route.airlineName} <br />
+                  {route.airlineName ? route.airlineName : route.airline} <br />
                   <i className="fa fa-info-circle"></i> Flight Number: {route.flight_no}
                 </small>
               </div>

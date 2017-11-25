@@ -28,7 +28,7 @@ class ReviewsByLocation extends React.Component {
   }
 
   loadLocation() {
-    this.props.locationActions.loadLocationById(this.props.locationId)
+    this.props.locationActions.loadLocationById(this.props.locationId, true)
       .then(() => this.DoSomething())
       .catch(error => {
         Toastr.error(error);
@@ -54,10 +54,10 @@ class ReviewsByLocation extends React.Component {
               <div className="container">
                 <div className="row">
                   <div className="col-md-8">
-                    <ReviewList locationId={this.props.locationId} locationName={this.props.location.regionName} locationType="" pageSize={3} pageNumber={0} showTitle={false} />
+                    <ReviewList locationId={this.props.locationId} locationName={this.props.location.regionName} locationType={this.props.location.regionType} pageSize={3} pageNumber={0} showTitle={false} />
                   </div>
                   <div className="col-md-4">
-                    <ReviewButton name="sidePanel" locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType="" pageSize={3} pageNumber={0} />
+                    <ReviewButton name="sidePanel" locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType={this.props.location.regionType} pageSize={3} pageNumber={0} />
                     <LocationStats locationId={this.props.locationId} stats={this.props.location.stats} locationUrl={this.props.location.url} locationName={this.props.location.regionName}  />
                     <div className="gap gap-small"></div>
                     <WeatherForcast locationId={this.props.locationId} />

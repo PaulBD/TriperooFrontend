@@ -9,6 +9,14 @@ const port = 8081;
 const app = express();
 const compiler = webpack(config);
 
+if (!config.debug) {
+  app.get('*.js', function (req, res, next) {
+    req.url = req.url + '.gz';
+    res.set('Content-Encoding', 'gzip');
+    next();
+  });
+}
+
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
   publicPath: config.output.publicPath

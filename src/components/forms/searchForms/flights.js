@@ -1,4 +1,4 @@
-import React from "react";
+import React, {PropTypes} from 'react';
 import {browserHistory} from 'react-router';
 let DatePicker = require('react-datepicker');
 let moment = require('moment');
@@ -7,7 +7,7 @@ import AutoComplete from '../common/autocomplete';
 class Search extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = {adults: 2, children: 0, showPassengerPopup: false, error: '', fromCode: '', toCode: '', fromFriendly: '', toFriendly: '', passengers: 2, fromDate: moment(), toDate: moment().add(7, 'days'), formattedFromDate: moment().format('YYYY-MM-DD'), formattedToDate: moment().add(1, 'days').format('YYYY-MM-DD'), journeyType: 'round'};
+    this.state = {adults: 2, children: 0, showPassengerPopup: false, error: '', fromCode: this.props.fromCode, toCode: this.props.toCode, fromFriendly: this.props.fromFriendly, toFriendly: this.props.toFriendly, passengerTotal: 2, adultTotal: 2, childTotal: 0, infantTotal:0, fromDate: moment(this.props.fromDate, "YYYY/MM/DD"), toDate: moment(this.props.toDate, "YYYY/MM/DD"), formattedFromDate: moment(this.props.fromDate, "YYYY/MM/DD").format('YYYY-MM-DD'), formattedToDate: moment(this.props.toDate, "YYYY/MM/DD").format('YYYY-MM-DD'), journeyType: 'round'};
     this.changeForm = this.changeForm.bind(this);
     this.handleFromDateChange = this.handleFromDateChange.bind(this);
     this.handleToDateChange = this.handleToDateChange.bind(this);
@@ -17,6 +17,7 @@ class Search extends React.Component {
     this.showPassengerPopup = this.showPassengerPopup.bind(this);
     this.changeAdult = this.changeAdult.bind(this);
     this.changeChild = this.changeChild.bind(this);
+    this.changeInfant = this.changeInfant.bind(this);
   }
 
   changeForm(e) {
@@ -35,8 +36,9 @@ class Search extends React.Component {
 
   changeAdult(e) {
     e.preventDefault();
-    var childCount = this.state.children;
-    var adultCount = this.state.adults;
+    var childCount = this.state.childTotal;
+    var infantCount = this.state.infantTotal;
+    var adultCount = this.state.adultTotal;
     var type = e.target.getAttribute('data-type');
 
     if (adultCount > 1) {
@@ -52,14 +54,14 @@ class Search extends React.Component {
       }
     }
 
-    this.setState({adults: adultCount, passengers: adultCount + childCount});
-
+    this.setState({childTotal: childCount, infantTotal: infantCount, adultTotal: adultCount, passengerTotal: adultCount + childCount + infantCount});
   }
 
   changeChild(e){
     e.preventDefault();
-    var childCount = this.state.children;
-    var adultCount = this.state.adults;
+    var childCount = this.state.childTotal;
+    var infantCount = this.state.infantTotal;
+    var adultCount = this.state.adultTotal;
     var type = e.target.getAttribute('data-type');
 
     if (childCount > 0) {
@@ -75,8 +77,30 @@ class Search extends React.Component {
       }
     }
 
-    this.setState({children: childCount, passengers: adultCount + childCount});
+    this.setState({childTotal: childCount, infantTotal: infantCount, adultTotal: adultCount, passengerTotal: adultCount + childCount + infantCount});
+  }
 
+  changeInfant(e) {
+    e.preventDefault();
+    var childCount = this.state.childTotal;
+    var infantCount = this.state.infantTotal;
+    var adultCount = this.state.adultTotal;
+    var type = e.target.getAttribute('data-type');
+
+    if (infantCount > 0) {
+      if (type == 'subtract')
+      {
+        infantCount -= 1;
+      }
+    }
+
+    if (infantCount < 9) {
+      if (type == 'add') {
+        infantCount += 1;
+      }
+    }
+
+    this.setState({childTotal: childCount, infantTotal: infantCount, adultTotal: adultCount, passengerTotal: adultCount + childCount + infantCount});
   }
 
   submitForm(e) {
@@ -102,7 +126,9 @@ class Search extends React.Component {
       return;
     }
 
-    browserHistory.push('/flights/searchForms-results?from=' + this.state.fromCode + '&to=' + this.state.toCode  + '&fromDate=' + this.state.formattedFromDate  + '&toDate=' + this.state.formattedToDate  + '&passengers=' + this.state.passengers);
+    this.props.updateSearch(this.state.fromCode, this.state.toCode, this.state.formattedFromDate, this.state.formattedToDate, this.state.passengerTotal, this.state.adultTotal, this.state.childTotal, this.state.infantTotal, this.state.journeyType)
+
+    browserHistory.push('/flights/search-results?from=' + this.state.fromFriendly + '&fromCode=' + this.state.fromCode + '&to=' + this.state.toFriendly  + '&toCode=' + this.state.toCode  + '&fromDate=' + this.state.formattedFromDate  + '&toDate=' + this.state.formattedToDate  + '&passengers=' + this.state.passengerTotal);
   }
 
   onChangeFromAirport(city, cityId, cityUrl, dataType) {
@@ -128,7 +154,7 @@ class Search extends React.Component {
 
     let passengerLabel = '';
 
-    switch (this.state.passengers)
+    switch (this.state.passengerTotal)
     {
       case 1:
         passengerLabel = '1 Adult';
@@ -137,7 +163,7 @@ class Search extends React.Component {
         passengerLabel = '2 Adults';
         break;
       default:
-        passengerLabel = this.state.passengers + ' Passengers';
+        passengerLabel = this.state.passengerTotal + ' Passengers';
         break;
     }
 
@@ -165,13 +191,13 @@ class Search extends React.Component {
                     Adults:
                   </div>
                   <div className="col-md-4 text-center">
-                    {this.state.adults}
+                    {this.state.adultTotal}
                   </div>
                   <div className="col-md-2 text-center passengerCounter">
                     <a href="#" onClick={this.changeAdult} data-type="add">+</a>
                   </div>
                 </div>
-                <div className="row">
+                <div className="row mb-2">
                   <div className="col-md-2 text-center passengerCounter">
                     <a href="#" onClick={this.changeChild} data-type="subtract">-</a>
                   </div>
@@ -179,10 +205,24 @@ class Search extends React.Component {
                     Children:
                   </div>
                   <div className="col-md-4 text-center">
-                    {this.state.children}
+                    {this.state.childTotal}
                   </div>
                   <div className="col-md-2 text-center passengerCounter">
                     <a href="#" onClick={this.changeChild} data-type="add">+</a>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-md-2 text-center passengerCounter">
+                    <a href="#" onClick={this.changeInfant} data-type="subtract">-</a>
+                  </div>
+                  <div className="col-md-4 text-center">
+                    Infants:
+                  </div>
+                  <div className="col-md-4 text-center">
+                    {this.state.infantTotal}
+                  </div>
+                  <div className="col-md-2 text-center passengerCounter">
+                    <a href="#" onClick={this.changeInfant} data-type="add">+</a>
                   </div>
                 </div>
               </div>
@@ -198,7 +238,7 @@ class Search extends React.Component {
                 <div className="col-md-3">
                   <div className="form-group form-group-icon-left">
                     <label>From</label>
-                    <AutoComplete onChangeAutoComplete={this.onChangeFromAirport} searchType="city" placeholder="Enter Destination" cssClass="typeahead form-control" searchValue={this.state.fromFriendly} />
+                    <AutoComplete onChangeAutoComplete={this.onChangeFromAirport} searchType="airport" placeholder="Enter Destination" cssClass="typeahead form-control" searchValue={this.state.fromFriendly}  />
                   </div>
                 </div>
                 <div className="col-md-2">
@@ -210,7 +250,7 @@ class Search extends React.Component {
                 <div className="col-md-3">
                   <div className="form-group form-group-icon-left">
                     <label>To</label>
-                    <AutoComplete onChangeAutoComplete={this.onChangeToAirport} searchType="city" placeholder="To Destination" cssClass={this.state.journeyType == 'single' ? "typeahead form-control disabled" : "typeahead form-control"} searchValue={this.state.toFriendly} disabled={this.state.journeyType == 'single' ? true : false} />
+                    <AutoComplete onChangeAutoComplete={this.onChangeToAirport} searchType="airport" placeholder="To Destination" cssClass="typeahead form-control" searchValue={this.state.toFriendly} />
                   </div>
                 </div>
                 <div className="col-md-2">
@@ -233,5 +273,13 @@ class Search extends React.Component {
   }
 }
 
+Search.propTypes = {
+  toCode: PropTypes.string,
+  toFriendly: PropTypes.string,
+  toDate: PropTypes.string,
+  fromCode: PropTypes.string,
+  fromFriendly: PropTypes.string,
+  fromDate: PropTypes.string
+};
 
 export default Search;

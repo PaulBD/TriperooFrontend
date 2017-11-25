@@ -38,7 +38,7 @@ class AttractionContent extends React.Component {
   }
 
   loadLocation() {
-    this.props.locationActions.loadLocationById(this.props.locationId)
+    this.props.locationActions.loadLocationById(this.props.locationId, true)
       .then(() => {
         this.setState({isLoadingAttractionList: true, isLoadingCategoryList: true});
         this.loadAttractions(this.props.locationId, this.state.attractionType, this.state.attractionSearch, this.state.pageSize, this.state.pageNumber);

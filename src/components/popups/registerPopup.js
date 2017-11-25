@@ -39,16 +39,46 @@ class Register extends React.Component {
   }
 
   showFacebookLocationForm(response) {
-    this.setState({creatingUser: true, useFacebook: true, creds: { accessToken: response.accessToken, emailAddress: response.email, facebookId: response.userID, name: response.name, imageUrl: response.picture.data.url} });
+    this.setState({creatingUser: true, useFacebook: false, creds: { accessToken: response.accessToken, emailAddress: response.email, facebookId: response.userID, name: response.name, imageUrl: response.picture.data.url, city: '', cityId: 0, password: ''}});
+
+    this.props.actions.getFacebookUser({accessToken: this.state.creds.accessToken, emailAddress: this.state.creds.emailAddress, facebookId: this.state.creds.facebookId, name: this.state.creds.name, imageUrl: this.state.creds.imageUrl, cityId: this.state.creds.cityId, city: this.state.creds.city})
+      .then(() => {
+        console.log(this.props.user);
+
+        if (this.props.user != undefined)
+        {
+          if (this.props.user.triperooCustomers != undefined)
+          {
+            if (this.props.user.triperooCustomers.profile.currentLocation == '' || this.props.user.triperooCustomers.profile.currentLocation == 0)
+            {
+              this.setState({useFacebook: true});
+            }
+            else {
+              this.login();
+            }
+          }
+          else {
+            this.setState({useFacebook: true});
+          }
+        } else {
+          this.setState({useFacebook: true});
+        }
+      })
+      .catch(error => {
+        Toastr.error(error);
+        this.setState({creatingUser: false, errors: error});
+      });
   }
 
   submitFacebookForm(e) {
     e.preventDefault();
+    this.login();
+  }
 
+  login() {
     this.props.actions.loginFacebookUser({accessToken: this.state.creds.accessToken, emailAddress: this.state.creds.emailAddress, facebookId: this.state.creds.facebookId, name: this.state.creds.name, imageUrl: this.state.creds.imageUrl, cityId: this.state.creds.cityId, city: this.state.creds.city})
       .then(() => {
         this.setState({creatingUser: false, errors: this.props.errorMessage});
-
         if (this.props.errorMessage == '' && this.props.errorMessage.length == 0)
         {
           this.closeSignupModal(null);
@@ -147,7 +177,8 @@ class Register extends React.Component {
 }
 
 Register.defaultProps = {
-  isAuthenticated: false
+  isAuthenticated: false,
+  user: {}
 };
 
 Register.propTypes = {
@@ -155,14 +186,16 @@ Register.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   isFetching: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string,
-  closeModal: PropTypes.func
+  closeModal: PropTypes.func,
+  user: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
     isAuthenticated: state.authentication.isAuthenticated,
     isFetching: state.authentication.isFetching,
-    errorMessage: state.authentication.errorMessage
+    errorMessage: state.authentication.errorMessage,
+    user: state.authentication.user
   };
 }
 

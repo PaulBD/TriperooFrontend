@@ -11,7 +11,7 @@ class Forecast extends React.Component {
 	}
 
 	componentDidMount() {
-		this.props.actions.loadCurrentWeather(this.props.locationId, 'en');
+		this.props.actions.loadCurrentWeather(this.props.locationId, true, 'en');
 	}
 
 
@@ -65,7 +65,7 @@ class Forecast extends React.Component {
 
       return (
         <div className="sidebar-widget weather">
-          <h4>5 Day Forecast</h4>
+          <h4 className="locationTitle">5 Day Forecast</h4>
           <table className={content != '' ? "table weatherTbl" : "table weatherTbl hide"}>
             {content}
           </table>

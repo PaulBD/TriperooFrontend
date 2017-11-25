@@ -37,13 +37,31 @@ class AuthenticationApi {
           currentCityId
       })
       .then(response => {
+        console.log(response.data);
         resolve(Object.assign([], response.data));
       })
       .catch(function (error) {
+        console.log(error);
         reject(error);
       });
     });
   }
+
+  // ****************************************
+  // Get Facebook User
+  // ****************************************
+  static getFacebookUser(emailAddress, facebookId) {
+    return new Promise((resolve, reject) => {
+      axios.get(baseUrl + '/authorize/facebook?emailAddress=' + emailAddress + '&facebookId=' + facebookId)
+        .then(function (response) {
+          resolve(Object.assign({}, response.data));
+        })
+        .catch(function (error) {
+          reject(error);
+        });
+    });
+  }
+
 
   // ****************************************
   // Register new customer
@@ -67,7 +85,7 @@ class AuthenticationApi {
   }
 
   // ****************************************
-  // Reset password and set customer an email
+  // Reset password and send customer an email
   // ****************************************
   static resetPassword(emailAddress) {
     return new Promise((resolve, reject) => {
@@ -80,6 +98,24 @@ class AuthenticationApi {
       .catch(function (error) {
         reject(error);
       });
+    });
+  }
+
+  // ****************************************
+  // Update password
+  // ****************************************
+  static updatePassword(newPassword, encryptedGuid) {
+    return new Promise((resolve, reject) => {
+      axios.post(baseUrl + '/update-password', {
+        newPassword,
+        encryptedGuid
+      })
+        .then(response => {
+          resolve(Object.assign([], response.data));
+        })
+        .catch(function (error) {
+          reject(error);
+        });
     });
   }
 }

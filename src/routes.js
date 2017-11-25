@@ -37,6 +37,7 @@ import AirportLounges from './apps/travelExtras/airportLounges';
 
 
 import CustomerHome from './apps/customer';
+import ForgotPassword from './apps/customer/forgotPassword';
 import CustomerProfile from './apps/customer/updateProfile';
 import CustomerPhotos from './apps/customer/photos';
 import BookingHistory from './apps/customer/bookingHistory';
@@ -102,6 +103,7 @@ export default (
     <Route path="/travel-extras/airport-hotels" component={AirportHotels}/>
     <Route path="/travel-extras/airport-lounges" component={AirportLounges}/>
 
+    <Route path="/(:guid)/forgot-password" component={ForgotPassword}/>
     <Route path="/profile/(:guid)/(:customerName)" component={CustomerHome}/>
     <Route path="/profile/(:guid)/(:customerName)/profile" component={CustomerProfile}/>
     <Route path="/profile/(:guid)/(:customerName)/photos" component={CustomerPhotos}/>

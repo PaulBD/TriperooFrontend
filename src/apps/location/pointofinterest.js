@@ -38,7 +38,7 @@ class PointOfInterestContent extends React.Component {
   }
 
   loadLocation() {
-    this.props.locationActions.loadLocationById(this.props.locationId)
+    this.props.locationActions.loadLocationById(this.props.locationId, true)
       .then(() => {
         this.setState({isLoadingCategoryList: true});
         this.loadPointOfInterests(this.props.locationId, this.state.pointOfInterestType, this.state.pointOfInterestSearch, this.state.pageSize, this.state.pageNumber);
