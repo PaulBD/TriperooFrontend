@@ -82,7 +82,7 @@ class Reviews extends React.Component {
     let title = '';
 
     if (this.props.showTitle) {
-      title = <div className="col-md-12"><h4 className="locationTitle">{this.props.title} <small className="float-right"><a href="#" onClick={this.writeReview}>Add New Review</a></small></h4></div>;
+      title = <div className="col-md-12"><h4 className="locationTitle">{this.props.title} <small className="float-sm-right floatRight"><a href="#" onClick={this.writeReview}>Add New Review</a></small></h4></div>;
     }
 
     if (!this.state.isLoadingReviews) {

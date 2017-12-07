@@ -15,9 +15,9 @@ class SearchComponent extends React.Component {
 
   render() {
     return (
-      <form>
+      <form className="container">
         <div className="row">
-          <div className="col-md-12 text-center">
+          <div className="col-md-12 text-xs-center">
             <div className="form-group form-group-lg form-group-icon-left homeSearch">
               <AutoComplete onChangeAutoComplete={this.onChangeAutoComplete} searchValue={this.state.city} searchType="all" placeholder="Search anywhere in the world" cssClass="typeahead form-control" />
             </div>

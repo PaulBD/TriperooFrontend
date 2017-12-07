@@ -111,19 +111,19 @@ console.log(this.props.location.regionType);
                 {this.props.location.contactDetails ? this.props.location.contactDetails.formattedPhone ? <p><i className="fa fa-phone"></i> {this.props.location.contactDetails.formattedPhone} </p> : '' : ''}
                 <p><i className="fa fa-pencil"></i> <a href={editUrl}>Edit Details</a></p>
                 <TagList tags={this.props.location.tags} maxTags={5} />
-                <div className="row mb-2">
-                  <div className="col-md-3 col-6">
-                    <ReviewButton name="sidePanel" locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType={this.props.location.subClass} pageSize={3} pageNumber={0} />
-                  </div>
-                  <div className="col-md-3 col-6">
-                    <PhotoButton name="sidePanel" locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType="" />
-                  </div>
-                  <div className="col-md-3 col-6">
-                    <BookmarkButton name="sidePanel" locationImage={this.props.location.image} parentLocationId={this.props.location.parentRegionID} parentLocationName={this.props.location.parentRegionName} parentLocationNameLong={this.props.location.parentRegionNameLong} parentLocationImage={this.props.location.parentRegionImage} parentLocationUrl={this.props.location.parentUrl} parentLocationType={this.props.location.regionType} locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType={this.props.location.subClass} locationUrl={this.props.location.url} locationLength={this.props.location.regionType == "Attractions" ? this.props.location.locationDetail.duration ? this.props.location.locationDetail.duration : "" : ""} latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0} longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0} price={this.props.location.locationDetail.pricing ? this.props.location.locationDetail.pricing.priceGBP : ''} bookingUrl={this.props.location.locationDetail.bookingUrl} />
-                  </div>
-                  <div className="col-md-3 col-6">
+                <div className="row mb-3">
+                  <div className="col-lg-3 col-6 mb-2">
                     {this.props.location.regionType == "Restaurants" ? <a href={this.props.location.locationDetail.bookingUrl} className="btn btn-primary questionBtn" target="_blank" onClick={this.trackClick} data-category="Restaurant"><i className="fa fa-calendar"></i> Book Restaurant</a> : ''}
                     {this.props.location.regionType == "Attractions" ? <a href={this.props.location.locationDetail.bookingUrl} className="btn btn-primary questionBtn" target="_blank" onClick={this.trackClick} data-category="Attraction"><i className="fa fa-calendar"></i> Book Attraction</a> : ''}
+                  </div>
+                  <div className="col-lg-3 col-6 mb-2">
+                    <ReviewButton name="sidePanel" locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType={this.props.location.subClass} pageSize={3} pageNumber={0} />
+                  </div>
+                  <div className="col-lg-3 col-6 mb-0">
+                    <PhotoButton name="sidePanel" locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType="" />
+                  </div>
+                  <div className="col-lg-3 col-6 mb-0">
+                    <BookmarkButton name="sidePanel" locationImage={this.props.location.image} parentLocationId={this.props.location.parentRegionID} parentLocationName={this.props.location.parentRegionName} parentLocationNameLong={this.props.location.parentRegionNameLong} parentLocationImage={this.props.location.parentRegionImage} parentLocationUrl={this.props.location.parentUrl} parentLocationType={this.props.location.regionType} locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType={this.props.location.subClass} locationUrl={this.props.location.url} locationLength={this.props.location.regionType == "Attractions" ? this.props.location.locationDetail.duration ? this.props.location.locationDetail.duration : "" : ""} latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0} longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0} price={this.props.location.locationDetail.pricing ? this.props.location.locationDetail.pricing.priceGBP : ''} bookingUrl={this.props.location.locationDetail.bookingUrl} />
                   </div>
                 </div>
                 <Summary location={this.props.location} showMap={false} showHelp={false}/>
@@ -156,7 +156,7 @@ console.log(this.props.location.regionType);
           <div className="container">
             <div className="row">
               <div className="col-md-8">
-                <ReviewList hasLoadedLocation={this.state.hasLoaded} locationId={this.props.locationId} locationName={this.props.location.regionName}  locationNameLong={this.props.location.regionNameLong}  locationType="" pageSize={3} pageNumber={0} showTitle={true} />
+                <ReviewList hasLoadedLocation={this.state.hasLoaded} locationId={this.props.locationId} locationName={this.props.location.regionName}  locationNameLong={this.props.location.regionNameLong}  locationType="" pageSize={3} pageNumber={0} showTitle={true} title="Reviews" />
               </div>
               <div className="col-md-4">
                 <QuestionButton locationId={this.props.locationId} locationName={this.props.location.regionNameLong} locationNameShort={this.props.location.regionName} locationType={this.props.location.regionType} pageSize={3} pageNumber={0}/>

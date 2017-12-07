@@ -4,7 +4,6 @@ import {bindActionCreators} from 'redux';
 import * as locationsActions from '../../../../actions/location/locationsActions';
 import LocationList from './locationList';
 import Loader from '../../../loaders/contentLoader';
-let titleCase = require('title-case');
 import Toastr from 'toastr';
 
 class NearbyDestinations extends React.Component {
@@ -34,7 +33,7 @@ class NearbyDestinations extends React.Component {
     {
       return (
         <div className="col-md-12">
-          {this.props.title ? <span><h4>{titleCase(this.props.title)}</h4><hr /></span> : ''}
+          {this.props.title ? <span><h4>{this.props.title}</h4><hr /></span> : ''}
           <LocationList locations={this.props.locations} cssClass="col-md-3 col-12" />
         </div>
       );

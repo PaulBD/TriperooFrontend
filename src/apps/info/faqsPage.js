@@ -42,7 +42,7 @@ export default class FAQsPage extends React.Component {
           <h5>What makes Triperoo so great?</h5>
           <p>Triperoo helps you explore, plan and book hotels and flights. At Triperoo you can ask a Local Expert, somebody
           who knows your destination inside out, for a personalized recommendation on where to stay. It is free, fast and fun.
-          On top of that, we find you the lowest prices by partnering with LateRooms.com.</p>
+          On top of that, we find you the lowest prices using our partnerships with Expedia, Kiwi & HolidayExtras.</p>
           <h5>Is Triperoo free?</h5>
           <p>Yes, Triperoo is 100% free. There are no sign-up fees, no subscription fees, no booking fees, and no administration fees.</p>
           <h5>What's the difference between a Triperoo Agent and a Local Expert?</h5>

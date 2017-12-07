@@ -97,7 +97,12 @@ class PointOfInterestContent extends React.Component {
               </div>
             </div>
           </div>
-          <FacebookSignup showLines={false}/>
+          <div className="container">
+            <div className="gap gap-mini"></div>
+            <FacebookSignup />
+            <div className="gap gap-mini"></div>
+          </div>
+
         </div>
       );
     }

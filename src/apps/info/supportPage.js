@@ -1,6 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router';
-import SocialButtons from "../../components/content/static/socialButtons";
 import Destinations from '../../components/content/dynamic/destinations';
 import FacebookSignup from '../../components/forms/authentication/facebookSignup';
 import BulletPoints from '../../components/content/static/bulletPoints';
@@ -12,8 +10,7 @@ const SupportPage = () => {
     document.title = 'Support';
 
     let style = {
-      //backgroundImage: 'url(/static/img/north-wales.jpg)'
-      backgroundColor: 'black'
+      backgroundImage: 'url(/static/img/contact-us.jpg)'
     };
 
     return (
@@ -51,7 +48,7 @@ const SupportPage = () => {
               <p><a href="http://www.holidayextras.com" target="_blank">www.holidayextras.com</a></p>
             </div>
             <div className="col-md-5">
-              <Destinations locationCount={9}  />
+              <Destinations locationCount={6} cssClass="col-md-6"  />
             </div>
           </div>
         </div>

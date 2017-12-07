@@ -22,12 +22,12 @@
   {
     "id": 3,
     "headerType": "flight",
-    "title": "Bangkok Return",
-    "subTitle": "Perfect Christmas Gift",
-    "price": "£499 per person",
-    "url": "/flights",
+    "title": "Compare & Save on Flights",
+    "subTitle": "Great deals from a selection of airlines.",
+    "price": "",
+    "url": "",
     "backgroundImage": "/static/img/flights2.jpg",
-    "buttonText": "Explore"
+    "buttonText": ""
   },
   {
     "id": 4,
@@ -42,12 +42,12 @@
   {
     "id": 5,
     "headerType": "hotel",
-    "title": "Ritz - London",
-    "subTitle": "stay 5 star from",
-    "price": "£99 per night",
-    "url": "/places/united-kingdom/london/hotels/the-ritz",
+    "title": "Compare & Save on Hotels",
+    "subTitle": "Great deals from a selection of hotel companies only a click away",
+    "price": "",
+    "url": "",
     "backgroundImage": "/static/img/hotelroom2.jpg",
-    "buttonText": "Explore"
+    "buttonText": ""
   },
   {
     "id": 6,

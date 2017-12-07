@@ -37,11 +37,9 @@ class AuthenticationApi {
           currentCityId
       })
       .then(response => {
-        console.log(response.data);
         resolve(Object.assign([], response.data));
       })
       .catch(function (error) {
-        console.log(error);
         reject(error);
       });
     });
@@ -66,14 +64,15 @@ class AuthenticationApi {
   // ****************************************
   // Register new customer
   // ****************************************
-  static registerCustomer(emailAddress, password, name, currentCity, currentCityId) {
+  static registerCustomer(emailAddress, password, name, currentCity, currentCityId, optIn) {
     return new Promise((resolve, reject) => {
       axios.post(baseUrl + '/register', {
           emailAddress,
           password,
           name,
           currentCity,
-          currentCityId
+          currentCityId,
+          optIn
       })
       .then(response => {
         resolve(Object.assign([], response.data));
@@ -93,7 +92,7 @@ class AuthenticationApi {
           emailAddress
       })
       .then(response => {
-        resolve(Object.assign([], response.data));
+        resolve(Object.assign({}, response.data));
       })
       .catch(function (error) {
         reject(error);

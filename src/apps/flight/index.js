@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
+import {browserHistory} from 'react-router';
 import FeaturedHeader from '../../components/content/dynamic/featuredHeader';
 import Search from '../../components/forms/searchForms/flights';
 import Destinations from '../../components/content/dynamic/destinations';
@@ -6,11 +7,21 @@ import FacebookSignup from '../../components/forms/authentication/facebookSignup
 import BulletPoints from '../../components/content/static/bulletPoints';
 import TrustedPartners from '../../components/content/static/trustedPartners';
 
-export default class FlightsPage extends React.Component {
+let moment = require('moment');
+
+class FlightsPage extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+    this.updateSearch = this.updateSearch.bind(this);
+  }
 
   componentDidMount() {
     window.scrollTo(0, 0);
     document.title = 'Search for flights';
+  }
+
+  updateSearch(fromCode, fromFriendly, toCode, toFriendly, fromDate, toDate, passengerTotal, adultTotal, childTotal, infantTotal, journeyType, formattedFromDate, formattedToDate) {
+    browserHistory.push('/flights/search-results?from=' + fromFriendly + '&fromCode=' + fromCode + '&to=' + toFriendly  + '&toCode=' + toCode  + '&fromDate=' + formattedFromDate  + '&toDate=' + formattedToDate  + '&passengers=' + passengerTotal);
   }
 
   render(){
@@ -22,9 +33,11 @@ export default class FlightsPage extends React.Component {
             <div className="tabbable">
               <div className="tab-content">
                 <div className="tab-pane active" id="tab-1">
-                  <h2 className="text-center">Compare Cheap Flights</h2>
-                  <p className="text-center">Find great flight deals from hundreds of airlines</p>
-                  <Search />
+                  <Search fromCode=""
+                          fromFriendly=""
+                          toCode=""
+                          toFriendly="" fromDate={this.props.fromDate} toDate={this.props.toDate}
+                    updateSearch={this.updateSearch}/>
                 </div>
               </div>
             </div>
@@ -46,3 +59,16 @@ export default class FlightsPage extends React.Component {
     );
   }
 }
+
+FlightsPage.defaultProps = {
+  fromDate: moment().add(7, 'days').format('YYYY-MM-DD'),
+  toDate: moment().add(14, 'days').format('YYYY-MM-DD')
+};
+
+FlightsPage.propTypes = {
+  fromDate: PropTypes.string.isRequired,
+  toDate: PropTypes.string.isRequired
+};
+
+
+export default FlightsPage;

@@ -3,6 +3,7 @@ import Destinations from '../../components/content/dynamic/destinations';
 import FeaturedHeader from '../../components/content/dynamic/featuredHeader';
 import WorldCities from '../../components/content/static/worldCities';
 import FacebookSignup from '../../components/forms/authentication/facebookSignup';
+import TrustedPartners from '../../components/content/static/trustedPartners';
 
 export default class DestinationHome extends React.Component {
     componentDidMount() {
@@ -45,9 +46,9 @@ export default class DestinationHome extends React.Component {
             <div className="row text-center">
               <Destinations locationCount={3} title="Our Top Destinations" contentType="" />
             </div>
-            <div className="row">
-                <FacebookSignup showLines={true} />
-            </div>
+            <FacebookSignup showLines={true} />
+          <TrustedPartners />
+          <div className="gap gap-mini"></div>
         </div>
       </div>
     );

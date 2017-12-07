@@ -17,7 +17,7 @@ Analytics
 
 AnalyticsHome.propTypes = {
 
-}
+};
 
 
 export default AnalyticsHome;

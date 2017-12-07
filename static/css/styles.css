@@ -1295,7 +1295,6 @@ ul.slimmenu.slimmenu-collapsed li .slimmenu-sub-collapser > i {
   -o-transition: 0.3s;
   -ms-transition: 0.3s;
   transition: 0.3s;
-  height: 88%;
 }
 .hover-img .curved > img {
   -webkit-border-radius: 5px;

@@ -65,10 +65,10 @@ class LocationStats extends React.Component {
       <div className="sidebar-widget">
         <hr className="hrTop"/>
         <div className="row">
-          <div className="col-md-6 col-6">
+          <div className="col-xs-12 col-md-6 text-xs-center">
             <StarRating starRating={this.state.stats.averageReviewScore} className="icon-list list-inline-block mb0 last-minute-rating statStars"/>
           </div>
-          <div className="col-md-6 col-6">
+          <div className="col-xs-12 col-md-6 text-xs-center">
             <p className="statText">
               <a href={reviewUrl}>{this.state.stats.reviewCount} review's</a><br />
               {this.state.stats.likeCount} {this.state.stats.likeCount == 1 ? 'person likes' : 'people like'} {this.props.locationName}<br />

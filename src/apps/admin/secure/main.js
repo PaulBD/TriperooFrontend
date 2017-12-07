@@ -17,7 +17,7 @@ Main Console
 
 AdminSecureHome.propTypes = {
 
-}
+};
 
 
 export default AdminSecureHome;

@@ -38,7 +38,7 @@ class Header extends React.Component {
 
     return (
       <div className="top-area show-onload cityPage">
-        <div className="bg-holder full text-center text-white">
+        <div className="bg-holder full text-lg-center text-xs-center text-white">
           <div className="bg-mask"></div>
           <div className="bg-img" style={style}></div>
           <div className="bg-front full-center">

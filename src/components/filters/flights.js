@@ -138,8 +138,8 @@ class FlightFilter extends React.Component {
               </label>
             </div>
           </li>
-          <li>
-            <h5 className="booking-filters-title">Airlines
+          <li className={this.props.airlines.length > 0 ? "" : "hide"}>
+            <h5 className={this.props.airlines ? "booking-filters-title" : "hide"}>Airlines
             </h5>
             {
               this.props.airlines.map((airline, index) => {

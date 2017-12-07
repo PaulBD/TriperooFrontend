@@ -17,7 +17,7 @@ Feeds
 
 FeedsHome.propTypes = {
 
-}
+};
 
 
 export default FeedsHome;

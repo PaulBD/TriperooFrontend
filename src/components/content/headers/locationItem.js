@@ -52,7 +52,7 @@ class LocationHeader extends React.Component {
           case 'italian':
             url = this.props.location.parentUrl + '/restaurants';
             subNav = (
-              <li className="breadcrumb-item"><a href={url}>Places To Eat In {this.props.location.parentRegionName}</a>
+              <li className="breadcrumb-item"><a href={url}>Places to eat in {this.props.location.parentRegionName}</a>
               </li>);
             break;
           case 'historic':
@@ -67,7 +67,7 @@ class LocationHeader extends React.Component {
           case 'golf':
             url = this.props.location.parentUrl + '/points-of-interest';
             subNav = (
-              <li className="breadcrumb-item"><a href={url}>Points Of Interest In {this.props.location.parentRegionName}</a>
+              <li className="breadcrumb-item"><a href={url}>Points of interest in {this.props.location.parentRegionName}</a>
               </li>);
             break;
           case 'cultural & theme tours':
@@ -75,7 +75,7 @@ class LocationHeader extends React.Component {
           case 'walking & biking tours':
             url = this.props.location.parentUrl + '/attractions';
             subNav = (
-              <li className="breadcrumb-item"><a href={url}>Attractions In {this.props.location.parentRegionName}</a>
+              <li className="breadcrumb-item"><a href={url}>Attractions in {this.props.location.parentRegionName}</a>
               </li>);
             break;
         }
@@ -89,7 +89,7 @@ class LocationHeader extends React.Component {
             <div className="container">
               <div className="row">
                 <div className="col-md-12">
-                  <ol className="breadcrumb">
+                  <ol className="breadcrumb hidden-sm-down">
                     <li className="breadcrumb-item"><a href="/">Home</a></li>
                     <li className="breadcrumb-item"><a href={this.props.location.parentUrl}>{this.props.location.parentRegionNameLong}</a></li>
                     {subNav}

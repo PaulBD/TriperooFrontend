@@ -42,9 +42,8 @@ export function loginFacebookUser(creds) {
 		{
 			return AuthenticationApi.loginFacebookCustomer(creds.accessToken, creds.emailAddress, creds.facebookId, creds.name, creds.imageUrl, creds.city, creds.cityId).then(token => {
 
-			  console.log(token);
+        localStorage.setItem('id_token', stringify(transformAuthentication(token)));
 
-			  localStorage.setItem('id_token', stringify(transformAuthentication(token)));
 				dispatch(receiveLogin());
 			}).catch(error => {
         dispatch(loginFailure(error.response.data));
@@ -81,7 +80,7 @@ export function requestFacebookUser() {
 }
 
 export function receiveFacebookUser(user) {
-  return { type: types.FACEBOOK_USER_SUCCESS, isFetching: false, isAuthenticated: true, user };
+  return { type: types.FACEBOOK_USER_SUCCESS, isFetching: false, isAuthenticated: user.userProfile != undefined, user };
 }
 
 export function facebookUserFailure(message) {
@@ -169,7 +168,7 @@ export function registerUser(creds) {
 		dispatch(requestRegistration());
 		if ((creds.name.length > 0) && (creds.cityId > 0) && (creds.emailAddress.length > 0) && (creds.password.length > 0))
 		{
-			return AuthenticationApi.registerCustomer(creds.emailAddress, creds.password, creds.name, creds.city, creds.cityId).then(token => {
+			return AuthenticationApi.registerCustomer(creds.emailAddress, creds.password, creds.name, creds.city, creds.cityId, creds.optIn).then(token => {
 				localStorage.setItem('id_token', stringify(transformAuthentication(token)));
 				dispatch(receiveRegistration(token));
 			}).catch(error => {
@@ -197,7 +196,7 @@ export function receiveLogout() {
 export function logoutUser() {
 	return dispatch => {
 		dispatch(requestLogout());
-		localStorage.removeItem('id_token');
+		localStorage.setItem('id_token', '');
 		dispatch(receiveLogout());
 	};
 }
@@ -205,7 +204,6 @@ export function logoutUser() {
 // ****************************************
 // Transform Authentication
 // ****************************************
-export function transformAuthentication(response)
-{
-	return  { "token": response.token, "userName": response.userName, "userImage": response.userImage, "userProfile": response.baseUrl, "userId": response.userId };
+export function transformAuthentication(response) {
+	return  { "token": response.token, "userName": response.userName, "userImage": response.userImage, "userProfile": response.baseUrl, "userId": response.userId, "isNewUser": response.isNewUser, "currentLocationId": response.currentLocationId };
 }

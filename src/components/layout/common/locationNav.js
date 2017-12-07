@@ -14,7 +14,7 @@ class NavigationWrapper extends React.Component {
 
     if (this.props.location !== undefined) {
       places = (
-        <ul className="list text-center list-inline user-profile-statictics mb30 list-center">
+        <ul className="list text-xs-center list-inline user-profile-statictics mb30 list-center locationSubNav">
           <Item item="Hotels" parentUrl={this.props.location.url} showCount={true} showName={true} cssClass="fa fa-bed user-profile-statictics-icon" />
           <Item item="Attractions" parentUrl={this.props.location.url} showCount={true} showName={true} cssClass="fa fa-ticket user-profile-statictics-icon" />
           <Item item="Restaurants" parentUrl={this.props.location.url} showCount={true} showName={true} cssClass="fa fa-cutlery user-profile-statictics-icon" />
@@ -29,8 +29,8 @@ class NavigationWrapper extends React.Component {
       <div className="search-tabs search-tabs-bg search-tabs-to-top">
         <div className="tabbable">
           <div className="tab-content">
-            <div className="tab-pane active text-center" id="tab-1">
-              <h2 className="text-center">Explore, Plan &amp; Book Your Visit to {titleCase(this.props.name)}</h2>
+            <div className="tab-pane active text-xs-center" id="tab-1">
+              <h2 className="text-xs-center">Explore, Plan &amp; Book Your Visit to {titleCase(this.props.name)}</h2>
               <div className="gap gap-small"></div>
               {places}
             </div>

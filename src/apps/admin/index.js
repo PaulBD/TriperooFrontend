@@ -43,7 +43,7 @@ class AdminHome extends React.Component {
 
 AdminHome.propTypes = {
 
-}
+};
 
 
 export default AdminHome;

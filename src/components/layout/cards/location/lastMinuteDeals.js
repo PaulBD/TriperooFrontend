@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as dealActions from '../../../../actions/location/travelContent/dealActions';
 import Loader from '../../../loaders/contentLoader';
-let titleCase = require('title-case');
 import Toastr from 'toastr';
 
 class LastMinuteDeals extends React.Component {
@@ -31,7 +30,7 @@ class LastMinuteDeals extends React.Component {
     {
       return (
         <div className="col-md-12">
-          {this.props.title ? <h4 className="locationTitle">{titleCase(this.props.title)}</h4> : ''}
+          {this.props.title ? <h4 className="locationTitle">{this.props.title}</h4> : ''}
           <div className="row">
             {
               this.props.deals.map((deal, index) => {

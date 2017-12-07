@@ -59,7 +59,7 @@ class Questions extends React.Component {
     let title = '';
 
     if (this.props.showTitle) {
-      title = (<div className="col-md-12"><h5>Recent Questions...</h5><hr /></div>);
+      title = (<div className="col-md-12"><h4 className="locationTitle">Recent Questions...</h4></div>);
     }
 
     let questionText = '';

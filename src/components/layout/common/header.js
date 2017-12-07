@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import {browserHistory} from 'react-router';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as currencyActions from '../../../actions/common/currencyActions';
@@ -55,6 +56,7 @@ class Header extends React.Component {
   onLogout(e) {
     e.preventDefault();
     this.props.authActions.logoutUser();
+    browserHistory.push('/');
   }
 
   createTrip(e) {
@@ -69,7 +71,12 @@ class Header extends React.Component {
 
   render() {
 
-      let user = JSON.parse(localStorage.getItem('id_token'));
+    let cookie = localStorage.getItem('id_token');
+    let user = {};
+
+    if (cookie != '') {
+      user = JSON.parse(localStorage.getItem('id_token'));
+    }
 
       return (
         <header id="main-header">
@@ -77,13 +84,13 @@ class Header extends React.Component {
             <div className="container">
               <div className="row">
                 <div className="col-md-12">
-                  <nav className="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+                  <nav className="navbar navbar-toggleable-md navbar-inverse">
                     <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                       <span className="navbar-toggler-icon"></span>
                     </button>
                     <a className="navbar-brand logo" href="/"><img src="/static/img/logo-invert-v3.png" alt="Triperoo - Explore the world" /></a>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                      <ul className="nav navbar-nav ml-auto">
+                      <ul className="nav navbar-nav mr-auto justify-content-end triperooHeader">
                         <li className="nav-item pull-xs-right"><a className="nav-link" href="/explore-destinations" title="Destinations">Destinations</a></li>
                         <li className="nav-item pull-xs-right"><a className="nav-link"href="/hotels" title="Hotels">Hotels</a></li>
                         <li className="nav-item pull-xs-right"><a className="nav-link"href="/flights" title="Flights">Flights</a></li>

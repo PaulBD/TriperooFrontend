@@ -36,10 +36,10 @@ class Search extends React.Component {
 
   changeAdult(e) {
     e.preventDefault();
-    var childCount = this.state.childTotal;
-    var infantCount = this.state.infantTotal;
-    var adultCount = this.state.adultTotal;
-    var type = e.target.getAttribute('data-type');
+    let childCount = this.state.childTotal;
+    let infantCount = this.state.infantTotal;
+    let adultCount = this.state.adultTotal;
+    let type = e.target.getAttribute('data-type');
 
     if (adultCount > 1) {
       if (type == 'subtract')
@@ -59,10 +59,10 @@ class Search extends React.Component {
 
   changeChild(e){
     e.preventDefault();
-    var childCount = this.state.childTotal;
-    var infantCount = this.state.infantTotal;
-    var adultCount = this.state.adultTotal;
-    var type = e.target.getAttribute('data-type');
+    let childCount = this.state.childTotal;
+    let infantCount = this.state.infantTotal;
+    let adultCount = this.state.adultTotal;
+    let type = e.target.getAttribute('data-type');
 
     if (childCount > 0) {
       if (type == 'subtract')
@@ -82,10 +82,10 @@ class Search extends React.Component {
 
   changeInfant(e) {
     e.preventDefault();
-    var childCount = this.state.childTotal;
-    var infantCount = this.state.infantTotal;
-    var adultCount = this.state.adultTotal;
-    var type = e.target.getAttribute('data-type');
+    let childCount = this.state.childTotal;
+    let infantCount = this.state.infantTotal;
+    let adultCount = this.state.adultTotal;
+    let type = e.target.getAttribute('data-type');
 
     if (infantCount > 0) {
       if (type == 'subtract')
@@ -111,7 +111,7 @@ class Search extends React.Component {
       return;
     }
 
-    if (this.state.toCode.length == 0 && this.state.journeyType == 'round') {
+    if (this.state.toCode.length == 0) {
       this.setState({error: 'Please set a to destination'});
       return;
     }
@@ -126,17 +126,19 @@ class Search extends React.Component {
       return;
     }
 
-    this.props.updateSearch(this.state.fromCode, this.state.toCode, this.state.formattedFromDate, this.state.formattedToDate, this.state.passengerTotal, this.state.adultTotal, this.state.childTotal, this.state.infantTotal, this.state.journeyType)
+    this.props.updateSearch(this.state.fromCode, this.state.fromFriendly, this.state.toCode, this.state.toFriendly , this.state.formattedFromDate, this.state.formattedToDate, this.state.passengerTotal, this.state.adultTotal, this.state.childTotal, this.state.infantTotal, this.state.journeyType, this.state.formattedFromDate, this.state.formattedToDate);
 
     browserHistory.push('/flights/search-results?from=' + this.state.fromFriendly + '&fromCode=' + this.state.fromCode + '&to=' + this.state.toFriendly  + '&toCode=' + this.state.toCode  + '&fromDate=' + this.state.formattedFromDate  + '&toDate=' + this.state.formattedToDate  + '&passengers=' + this.state.passengerTotal);
   }
 
-  onChangeFromAirport(city, cityId, cityUrl, dataType) {
-    this.setState({fromCode: city, fromFriendly: city});
+  onChangeFromAirport(city, cityId, cityUrl, dataType, dataImage, airportCode) {
+
+    console.log(airportCode);
+    this.setState({fromCode: airportCode, fromFriendly: city});
   }
 
-  onChangeToAirport(city, cityId, cityUrl, dataType) {
-    this.setState({toCode: city, toFriendly: city});
+  onChangeToAirport(city, cityId, cityUrl, dataType, dataImage, airportCode) {
+    this.setState({toCode: airportCode, toFriendly: city});
   }
 
   showPassengerPopup(e) {
@@ -273,13 +275,16 @@ class Search extends React.Component {
   }
 }
 
+
+
 Search.propTypes = {
   toCode: PropTypes.string,
   toFriendly: PropTypes.string,
   toDate: PropTypes.string,
   fromCode: PropTypes.string,
   fromFriendly: PropTypes.string,
-  fromDate: PropTypes.string
+  fromDate: PropTypes.string,
+  updateSearch:PropTypes.func
 };
 
 export default Search;

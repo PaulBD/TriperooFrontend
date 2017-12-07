@@ -39,7 +39,7 @@ class Reviews extends React.Component {
       }
       else {
         title = (
-          <div className="col-md-12 text-center">
+          <div className="col-md-12 text-sm-center">
             <h3 className="mb20">Explore With Triperoo</h3>
             <p>Our travel community is the focus of everything we do. We want to share tips on where to go and what<br />to do with other like-minded
               travellers and help you to discover the world!</p>

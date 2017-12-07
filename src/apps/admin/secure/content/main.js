@@ -17,7 +17,7 @@ Content
 
 ContentHome.propTypes = {
 
-}
+};
 
 
 export default ContentHome;

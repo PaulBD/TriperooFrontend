@@ -136,7 +136,7 @@ class LocationHome extends React.Component {
               sortBy="PROMO"
               locationId={this.props.locationId} latitude={this.props.location.latitude}
               longitude={this.props.location.longitude} pageSize={4}
-              locationName={this.props.location.regionNameLong}
+              locationName={this.props.location.regionName}
               url={this.props.location.url}/>
             <div className="gap gap-small"></div>
             <div className="container">

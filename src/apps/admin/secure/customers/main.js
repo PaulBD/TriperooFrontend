@@ -17,7 +17,7 @@ Customers
 
 CustomersHome.propTypes = {
 
-}
+};
 
 
 export default CustomersHome;

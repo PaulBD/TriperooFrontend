@@ -26,8 +26,7 @@ const TripDetail = ({tripId, day, openMap, removeActivity}) => {
       }
 
       return (
-        <article>
-
+        <article key={index}>
           <div className={newDay ? "row timelineTitle" : "hide"}>
             {newDay}
           </div>

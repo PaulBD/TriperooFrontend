@@ -1,7 +1,11 @@
 import React, {PropTypes} from 'react';
+import {browserHistory} from 'react-router';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as authenticationActions from '../../actions/customer/authenticationActions';
+
+import * as locationActions from '../../actions/location/locationActions';
+
 import Loader from '../loaders/contentLoader';
 import FacebookButton from '../layout/buttons/facebookButton';
 import ForgotPasswordForm from '../forms/authentication/forgotPasswordForm';
@@ -38,6 +42,7 @@ class Login extends React.Component {
       creatingUser: false,
       useFacebook: false,
       isLoggingIn: false,
+      isLoadingLocation: false,
       isForgotPassword: false,
       isSendingPassword: false,
       hasSentPassword: false
@@ -49,8 +54,6 @@ class Login extends React.Component {
 
     this.props.actions.getFacebookUser({accessToken: this.state.creds.accessToken, emailAddress: this.state.creds.emailAddress, facebookId: this.state.creds.facebookId, name: this.state.creds.name, imageUrl: this.state.creds.imageUrl, cityId: this.state.creds.cityId, city: this.state.creds.city})
       .then(() => {
-        console.log(this.props.user);
-
         if (this.props.user != undefined)
         {
           if (this.props.user.triperooCustomers != undefined)
@@ -84,6 +87,7 @@ class Login extends React.Component {
   login() {
     this.props.actions.loginFacebookUser({accessToken: this.state.creds.accessToken, emailAddress: this.state.creds.emailAddress, facebookId: this.state.creds.facebookId, name: this.state.creds.name, imageUrl: this.state.creds.imageUrl, cityId: this.state.creds.cityId, city: this.state.creds.city})
       .then(() => {
+
         this.setState({creatingUser: false, errors: this.props.errorMessage});
         if (this.props.errorMessage == '' && this.props.errorMessage.length == 0)
         {
@@ -122,12 +126,12 @@ class Login extends React.Component {
   submitResetPasswordForm(e) {
     e.preventDefault();
     if (this.state.creds.emailAddress != '' && this.state.creds.emailAddress.length > 0) {
-      this.setState({isSendingPassword: true}); //, creds: { emailAddress: this.state.creds.emailAddress, password: ''}});
-
-      console.log(this.state.creds);
+      this.setState({isSendingPassword: true, creds: { emailAddress: this.state.creds.emailAddress, password: ''}});
       this.props.actions.resetPassword(this.state.creds)
         .then(() => {
+          Toastr.success('An email with a link to reset your password has been sent to ' + this.state.creds.emailAddress);
           this.setState({isSendingPassword: false, hasSentPassword: this.props.errorMessage == '' && this.props.errorMessage.length == 0, errors: this.props.errorMessage});
+          this.closeLoginModal(null);
         })
         .catch(error => {
           Toastr.error(error);
@@ -161,6 +165,10 @@ class Login extends React.Component {
     if (e != null) {
       e.preventDefault();
     }
+    browserHistory.push("/welcome");
+
+    this.loadLocation();
+
     this.props.closeModal();
   }
 
@@ -172,6 +180,16 @@ class Login extends React.Component {
     this.setState({creds: creds});
   }
 
+  loadLocation() {
+    this.setState({ isLoadingLocation: true });
+    this.props.locationActions.loadLocationById(this.props.user.currentLocationId, true)
+      .then(() => {
+        this.setState({ isLoadingLocation: false });
+      })
+      .catch(error => {
+        this.setState({isLoadingLocation: false});
+      });
+  }
 
   render(){
     return (
@@ -230,7 +248,9 @@ Login.propTypes = {
   hasSentPassword: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string,
   closeModal: PropTypes.func,
-  user: PropTypes.object.isRequired
+  user: PropTypes.object.isRequired,
+  location: PropTypes.object,
+  locationActions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
@@ -239,12 +259,14 @@ function mapStateToProps(state, ownProps) {
     isAuthenticated: state.authentication.isAuthenticated,
     errorMessage: state.authentication.errorMessage,
     hasSentPassword: state.authentication.hasSentPassword,
-    user: state.authentication.user
+    user: state.authentication.user,
+    location: state.location.location ? state.location.location : {}
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
+    locationActions: bindActionCreators(locationActions, dispatch),
     actions: bindActionCreators(authenticationActions, dispatch)
   };
 }

@@ -6,8 +6,6 @@ import FacebookSignup from '../../components/forms/authentication/facebookSignup
 import BulletPoints from '../../components/content/static/bulletPoints';
 import TrustedPartners from '../../components/content/static/trustedPartners';
 
-// Since this component is simple and static, there's no parent container for it.
-
 const ContactPage = () => {
 
     window.scrollTo(0, 0);
@@ -39,14 +37,13 @@ const ContactPage = () => {
               <p>Triperoo is based in the beautiful location of North Wales, just on the boarder of Chester. It is
               an inspiring place to work if ever there was one.</p>
 
-              <p>We have listed most questions you may have in our <Link to="faqs">FAQs</Link>.</p>
-              <p>For any additional questions you can contact us directly at <a href="mailto:feedback@triperoo.co.uk">feedback@triperoo.co.uk</a>.</p>
+              <p>For any questions you can contact us directly at <a href="mailto:feedback@triperoo.co.uk">feedback@triperoo.co.uk</a>.</p>
 
               <p>Or contact us through our social networks:</p>
               <p><SocialButtons /></p>
             </div>
             <div className="col-md-5">
-              <Destinations locationCount={9}  />
+              <Destinations locationCount={6} cssClass="col-md-6"  />
             </div>
           </div>
         </div>

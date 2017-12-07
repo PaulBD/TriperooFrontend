@@ -17,11 +17,11 @@ const LoginForm = ({emailAddress, password, isLoggingIn, onSubmit, onChange, onC
             <input className="form-control" type="password" placeholder="Enter Password" name="password" onChange={onChange} value={password} />
           </div>
         </div>
-        <div className="col-md-12 text-center">
+        <div className="col-md-12 text-sm-right">
           <input className="btn btn-primary" type="submit" value="Login" disabled={isLoggingIn}/>
         </div>
         <div className="gap gap-small"></div>
-        <div className="col-md-12 text-center">
+        <div className="col-md-12 text-sm-center">
           <a href="#" onClick={onChangeLogin}>Forgot Password? Click here</a>
         </div>
       </form>

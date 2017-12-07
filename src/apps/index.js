@@ -8,18 +8,18 @@ import Footer from '../components/layout/common/footer';
 import Modal from '../components/popups/modalPopup';
 
 class App extends React.Component {
-	constructor(props, context) {
-		super(props, context);
-		this.closeModal = this.closeModal.bind(this);
-	}
+  constructor(props, context) {
+    super(props, context);
+    this.closeModal = this.closeModal.bind(this);
+  }
 
-	closeModal() {
-		this.props.modalActions.closeModal();
-	}
+  closeModal() {
+    this.props.modalActions.closeModal();
+  }
 
-	render(){
+  render(){
 
-	  if (this.props.isAdmin)
+    if (this.props.isAdmin)
     {
       return (
         <div className="global-wrap">
@@ -37,25 +37,25 @@ class App extends React.Component {
         </div>
       );
     }
-	}
+  }
 }
 
 App.defaultProps = {
-	modalContent: {},
-	modalName: '',
-	modalType: '',
-	modalIsOpen: false,
-	wizardStep: 1
+  modalContent: {},
+  modalName: '',
+  modalType: '',
+  modalIsOpen: false,
+  wizardStep: 1
 };
 
 App.propTypes = {
   isAdmin: PropTypes.bool,
-	children: PropTypes.element,
-	modalContent: PropTypes.object,
-	modalName: PropTypes.string,
-	modalType: PropTypes.string,
-	modalIsOpen: PropTypes.bool,
-	modalActions: PropTypes.object.isRequired
+  children: PropTypes.element,
+  modalContent: PropTypes.object,
+  modalName: PropTypes.string,
+  modalType: PropTypes.string,
+  modalIsOpen: PropTypes.bool,
+  modalActions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
@@ -66,18 +66,18 @@ function mapStateToProps(state, ownProps) {
     isAdmin = true;
   }
 
-	return {
+  return {
     isAdmin: isAdmin,
-		modalContent: state.modal.modalContent ? state.modal.modalContent : {},
-		modalName: state.modal.modalName ? state.modal.modalName : '',
-		modalType: state.modal.modalType ? state.modal.modalType : '',
-		modalIsOpen: state.modal.modalIsOpen ? state.modal.modalIsOpen : false
-	};
+    modalContent: state.modal.modalContent ? state.modal.modalContent : {},
+    modalName: state.modal.modalName ? state.modal.modalName : '',
+    modalType: state.modal.modalType ? state.modal.modalType : '',
+    modalIsOpen: state.modal.modalIsOpen ? state.modal.modalIsOpen : false
+  };
 }
 
 function mapDispatchToProps(dispatch) {
-	return {
-		modalActions: bindActionCreators(modalActions, dispatch)
-	};
+  return {
+    modalActions: bindActionCreators(modalActions, dispatch)
+  };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);

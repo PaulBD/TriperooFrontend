@@ -111,7 +111,7 @@ class LocationList extends React.Component {
 
                   let fallbackBgImage = {
                     backgroundImage: "url(/static/img/placeholder.png)"
-                  }
+                  };
 
                   return (
                     <div className={this.props.cssClass} key={location.regionType == "Attractions" ? location.locationDetail.productCode : location.regionID} >

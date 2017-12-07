@@ -24,11 +24,11 @@ const ForgotPasswordForm = ({emailAddress, hasSentPassword, isSendingPassword, o
               <input className="form-control" placeholder="Enter Email Address" type="text" onChange={onChange} name="emailAddress" value={emailAddress}/>
             </div>
           </div>
-          <div className="col-md-12 text-center">
+          <div className="col-md-12 text-sm-right">
             <input className="btn btn-primary" type="submit" value="Reset Password" disabled={isSendingPassword} />
           </div>
           <div className="gap gap-small"></div>
-          <div className="col-md-12 text-center">
+          <div className="col-md-12 text-sm-center">
             <a href="#" onClick={onChangeLogin}>Return to login</a>
           </div>
         </form>

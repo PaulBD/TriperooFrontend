@@ -18,7 +18,8 @@ class AutoComplete extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    this.props.onChangeAutoComplete(e.target.text.trim(), parseInt(e.target.getAttribute('data-id')), e.target.getAttribute('data-url'), e.target.getAttribute('data-type'), e.target.getAttribute('data-image'));
+
+    this.props.onChangeAutoComplete(e.target.text.trim(), parseInt(e.target.getAttribute('data-id')), e.target.getAttribute('data-url'), e.target.getAttribute('data-type'), e.target.getAttribute('data-image'), e.target.getAttribute('data-airport'));
 
     if (this.props.isAppSearch)
     {
@@ -67,7 +68,7 @@ class AutoComplete extends React.Component {
         <i className="fa fa-search input-icon homeSearchIcon"></i>
         <input className={this.props.cssClass} placeholder={this.props.placeholder} type="text" onChange={this.onSearchValue} autoComplete="off" value={this.state.searchValue} disabled={this.props.disabled}/>
         <div style={style}>
-          <ul className="ui-autocomplete">
+          <ul className={this.props.searchType == 'airport' ? "ui-autocomplete long" : "ui-autocomplete"}>
             {
               this.props.autocompleteList.map(search => {
                 let icon = '';
@@ -88,6 +89,7 @@ class AutoComplete extends React.Component {
                   case 'Hotel':
                     icon = 'fa fa-bed';
                     break;
+                  case 'Restaurant Shadow':
                   case 'Restaurant':
                   case 'Restaurants':
                     icon = 'fa fa-cutlery';
@@ -103,9 +105,12 @@ class AutoComplete extends React.Component {
                   case 'Point of Interest':
                     icon = 'fa fa-compass';
                     break;
+                  case 'airport':
+                    icon = 'fa fa-plane';
+                    break;
                 }
 
-                return (<li key={search.regionID} className="ui-menu-item"><a href="#" onClick={this.handleClick} data-type={search.regionType} data-name={search.regionNameLong} data-url={search.url} data-id={search.regionID} data-image={search.image}><span><i className={icon}></i></span> {search.regionNameLong}</a></li>);
+                return (<li key={search.regionID} className="ui-menu-item"><a href="#" onClick={this.handleClick} data-type={search.regionType} data-name={search.regionNameLong} data-airport={search.airportCode} data-url={search.url} data-id={search.regionID} data-image={search.image}><span><i className={icon}></i></span> {search.airportCode ? '(' + search.airportCode + ') ' + search.regionName + ', ' + search.countryCode : search.regionNameLong} </a></li>);
               })
             }
           </ul>

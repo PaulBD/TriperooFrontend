@@ -34,7 +34,7 @@ class AnswerQuestionButton extends React.Component {
           message = 'Answer this question';
         }
         else {
-          message = 'Answer this question about ' + titleCase(this.props.locationName);
+          message = 'Answer this question';
         }
       }
 

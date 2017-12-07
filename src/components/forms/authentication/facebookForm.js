@@ -17,7 +17,7 @@ const FacebookForm = ({city, isUpdating, onSubmit, onChangeAutoComplete, errors}
             <AutoComplete onChangeAutoComplete={onChangeAutoComplete} searchValue={city} searchType="city" placeholder="Current Location" cssClass="typeahead form-control" />
           </div>
         </div>
-        <div className="col-md-12 text-right">
+        <div className="col-md-12 text-sm-right">
           <hr />
           <input className="btn btn-primary" type="submit" value="Complete Signup" Disabled={isUpdating}/>
         </div>

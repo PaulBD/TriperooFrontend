@@ -45,7 +45,7 @@ class FeaturedHeader extends React.Component {
     if (!this.state.isLoading) {
 
       return (
-        <div className="bg-holder full text-center text-white holidayPage">
+        <div className="bg-holder full text-center text-white travelExtras">
           <div className="bg-mask"></div>
           <div className="bg-img" style={style}></div>
           <div className={header.title ? "bg-front full-center" : "bg-front full-center hide"}>
@@ -63,7 +63,7 @@ class FeaturedHeader extends React.Component {
     }
     else {
       return (
-        <div className="bg-holder full text-center text-white holidayPage">
+        <div className="bg-holder full text-sm-center text-white holidayPage">
           <Loader showLoader={true}/>
         </div>);
     }

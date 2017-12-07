@@ -35,7 +35,7 @@ const ProfileForm = ({name, emailAddress, bio, dateOfBirth, city, password, phon
             <input className="form-control" placeholder="Enter New Password" name="pass" type="password" onChange={onChange}  />
           </div>
         </div>
-        <div className="col-md-12 text-right">
+        <div className="col-md-12 text-sm-right">
           <hr />
           <input className="btn btn-primary" type="submit" value="Update Profile" Disabled={isUpdating}/>
         </div>

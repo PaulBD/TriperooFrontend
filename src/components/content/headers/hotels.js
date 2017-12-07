@@ -19,9 +19,6 @@ class Search extends React.Component {
             <div className="tabbable">
               <div className="tab-content">
                   <div className="tab-pane active" id="tab-1">
-                      <h2 className="text-center">Compare & Save on Hotels</h2>
-                      <p className="text-center">Great deals from a selection of hotel companies only a click away</p>
-                      <p>&nbsp;</p>
                       <SearchForm useFunction={false} handleFormSubmit={this.handleFormSubmit} buttonName="Search Hotels" />
                     </div>
                 </div>

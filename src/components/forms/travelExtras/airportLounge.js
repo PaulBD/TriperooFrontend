@@ -54,7 +54,7 @@ class AirportLoungeSearchForm extends React.Component {
     };
       return (
       <div>
-        <div className="bg-holder full text-center text-white holidayPage">
+        <div className="bg-holder full text-center text-white travelExtras">
           <div className="bg-mask"></div>
           <div className="bg-img" style={style}></div>
           <div className="bg-front full-center">
@@ -73,17 +73,17 @@ class AirportLoungeSearchForm extends React.Component {
               <div className="tab-pane active" id="tab-1">
                 <form onSubmit={this.submitForm} className="searchForm">
                   <div className="row">
-                    <div className="col-md-3">
+                    <div className="col-lg-3 col-md-12">
                       <div className="row">
                         <div className="col-md-12">
-                          <div className="form-group form-group-icon-left"><i className="fa fa-map-marker input-icon hide"></i>
+                          <div className="form-group form-group-icon-left"><i className="fa fa-map-marker input-icon hidden-lg-up"></i>
                             <label>Flying from?</label>
                               <AirportList cssClass="form-control searchSelect" name="airport" selectedValue={this.state.airport} changeValue={this.handleAirportChange} />
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className="col-md-9">
+                    <div className="col-lg-9 col-md-12">
                       <div className="row">
                         <div className="col-md-9">
                           <div className="row">

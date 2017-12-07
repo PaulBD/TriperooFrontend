@@ -4,7 +4,6 @@ import {bindActionCreators} from 'redux';
 import * as pointOfInterestActions from '../../../../actions/location/travelContent/pointofinterestActions';
 import LocationList from './locationList';
 import Loader from '../../../loaders/contentLoader';
-let titleCase = require('title-case');
 import Toastr from 'toastr';
 
 class TopPointOfInterest extends React.Component {
@@ -37,7 +36,7 @@ class TopPointOfInterest extends React.Component {
 
       return (
         <div className="col-md-12">
-          {this.props.title ? <h4 className="locationTitle">{titleCase(this.props.title)} <small><a href={this.props.url} className="float-right">See all</a></small></h4> : ''}
+          {this.props.title ? <h4 className="locationTitle">{this.props.title} <small className="float-sm-right"><a href={this.props.url} >See all</a></small></h4> : ''}
           <LocationList locations={this.props.pointOfInterests} cssClass="col-md-6 col-12" />
         </div>
       );

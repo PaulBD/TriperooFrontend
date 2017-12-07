@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import {browserHistory} from 'react-router';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as modalActions from '../../../actions/common/modalActions';
@@ -35,6 +36,7 @@ class Footer extends React.Component {
   onLogout(e) {
     e.preventDefault();
     this.props.authActions.logoutUser();
+    browserHistory.push('/');
   }
 
   createTrip(e) {
@@ -49,7 +51,7 @@ class Footer extends React.Component {
                 <div className="row row-wrap">
                     <div className="col-md-4 col-sm-12">
                         <div className="row">
-                            <div className="col-md-6 col-sm-6">
+                            <div className="col-lg-6 col-md-6 col-6 mb-0">
                               <ul className="list list-footer">
                                 <li><a href="/explore-destinations" title="Destinations">Destinations</a></li>
                                 <li><a href="/hotels" title="Hotels">Hotels</a></li>
@@ -63,11 +65,11 @@ class Footer extends React.Component {
                                 <li className={!this.props.isAuthenticated ? "" : "hide"}><a href="#" onClick={this.login} title="Log In">Log In</a></li>
                               </ul>
                             </div>
-                            <div className="col-md-6 col-sm-6">
+                            <div className="col-lg-6 col-md-6 col-6 mb-0">
                                 <ul className="list list-footer">
                                     <li><a href="/about-us">About Us</a></li>
                                     <li><a href="/support">Support</a></li>
-                                    <li><a href="/faqs">FAQs</a></li>
+                                    <li className="hide"><a href="/faqs">FAQs</a></li>
                                     <li><a href="/privacy-policy">Privacy Policy</a></li>
                                     <li><a href="/contact">Contact</a></li>
                                 </ul>

@@ -15,6 +15,7 @@ const AboutPage = () => {
     };
 
     return (
+
       <div>
         <div className="bg-holder full text-center text-white infoPageWrapper">
             <div className="bg-mask"></div>
@@ -29,10 +30,9 @@ const AboutPage = () => {
         <div className="row row-wrap">
             <div className="gap gap-small"></div>
             <div className="col-md-12 text-center">
-              <h2 className="title">Triperoo's mission is to help people<br />explore, plan and book vacation's.</h2>
-              <p>We want to distrupt the travel space by helping our customers explore the world!</p>
+              <h2 className="title">Triperoo's mission is to help travellers explore the world.</h2>
 
-              <p>We also believe that
+              <p>We believe that
               being able to plan and book your trip without any stress is important. We have partnered with many travel companies
                 to do the hard work for you and using our unique technology, we try and recommend useful products that you may
                 need during your trip. On top of that, before you

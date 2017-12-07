@@ -17,7 +17,7 @@ const NewPasswordForm = ({isUpdating, onSubmit, onChange, errors}) => {
             <input className="form-control" placeholder="Confirm New Password" name="newPasswordB" type="password" onChange={onChange} />
           </div>
         </div>
-        <div className="col-md-12 text-right">
+        <div className="col-md-12 text-sm-right">
           <input className="btn btn-primary" type="submit" value="Update Password" Disabled={isUpdating}/>
         </div>
       </form>

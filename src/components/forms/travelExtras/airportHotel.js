@@ -89,7 +89,7 @@ class AirportHotelSearchForm extends React.Component {
     };
     return (
       <div>
-        <div className="bg-holder full text-center text-white holidayPage">
+        <div className="bg-holder full text-center text-white travelExtras">
           <div className="bg-mask"></div>
           <div className="bg-img" style={style}></div>
           <div className="bg-front full-center">
@@ -108,16 +108,16 @@ class AirportHotelSearchForm extends React.Component {
                 <div className="tab-pane active" id="tab-1">
                   <form onSubmit={this.submitForm} className="searchForm">
                     <div className="row">
-                      <div className="col-md-3">
+                      <div className="col-lg-3 col-md-12">
                         <div className="row">
-                          <div className="col-md-12">
-                            <div className="form-group form-group-icon-left"><i className="fa fa-map-marker input-icon hide"></i>
+                          <div className="col-lg-12 col-md-6">
+                            <div className="form-group form-group-icon-left"><i className="fa fa-map-marker input-icon hidden-lg-up"></i>
                               <label>Flying From?</label>
                               <AirportList cssClass="form-control searchSelect" name="airport" selectedValue={this.state.airport} changeValue={this.handleAirportChange} />
                             </div>
                           </div>
-                          <div className="col-md-12">
-                            <div className="form-group form-group-icon-left"><i className="fa fa-car input-icon input-icon-hightlight hide"></i>
+                          <div className="col-lg-12 col-md-6">
+                            <div className="form-group form-group-icon-left"><i className="fa fa-car input-icon input-icon-hightlight hidden-lg-up"></i>
                               <label>Include Parking?</label>
                               <select defaultValue="Yes" className="form-control" onChange={this.handleHideCollectCar}>
                                 <option key="Yes">Yes</option>
@@ -127,7 +127,7 @@ class AirportHotelSearchForm extends React.Component {
                           </div>
                         </div>
                       </div>
-                      <div className="col-md-9">
+                      <div className="col-lg-9 col-md-12">
                         <div className="row">
                           <div className="col-md-9">
                             <div className="row">

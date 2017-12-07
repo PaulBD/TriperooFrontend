@@ -5,7 +5,7 @@ const fs = require('fs');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const babelConfig = JSON.parse(fs.readFileSync('.babelrc'));
-var CompressionPlugin = require('compression-webpack-plugin');
+let CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
   debug: false,
@@ -18,7 +18,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'production'),
     filename: 'bundle.js',
-    publicPath: '/static/',
+    publicPath: '/static/'
   },
   plugins: [
     new webpack.DefinePlugin({

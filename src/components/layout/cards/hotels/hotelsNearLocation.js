@@ -39,10 +39,10 @@ class HotelsNearLocation extends React.Component {
   render()
   {
     let searchHotels = this.props.url + '/hotels';
-    let title = "Top Hotels";
+    let title = "Top hotels";
 
     if (this.props.locationType != 'Country') {
-      title = "Top Hotels Near " + this.props.locationName;
+      title = "Top hotels near " + this.props.locationName;
     }
 
     if (!this.state.isLoading) {

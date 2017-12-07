@@ -1,6 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router';
-import SocialButtons from "../../components/content/static/socialButtons";
 
 const PrivacyPage = () => {
 
@@ -8,32 +6,33 @@ const PrivacyPage = () => {
     document.title = 'Privacy Policy';
 
     let style = {
-      //backgroundImage: 'url(/static/img/north-wales.jpg)'
-      backgroundColor: 'black'
+      backgroundImage: 'url(/static/img/contact-us.jpg)'
     };
 
 
     return (
       <div>
         <div className="bg-holder full text-center text-white infoPageWrapper">
-            <div className="bg-mask"></div>
-            <div style={style} className="bg-img infoImg" ></div>
-            <div className="bg-front full-center">
-                <div className="owl-cap">
-                    <h1 className="owl-cap-title fittext">Privacy Policy</h1>
-                </div>
+          <div className="bg-mask"></div>
+          <div style={style} className="bg-img infoImg" ></div>
+          <div className="bg-front full-center">
+            <div className="owl-cap">
+              <h1 className="owl-cap-title fittext">Privacy Policy</h1>
+              <div className="owl-cap-price">
+                <small>We Take Your Security Very Seriously</small>
+              </div>
             </div>
+          </div>
         </div>
       <div className="container">
         <div className="row row-wrap">
             <div className="gap gap-small"></div>
             <div className="col-md-12">
-              <h2 className="title">We Take Your Security Very Seriously</h2>
               <p>We understand that making purchases online involves your trust. Retaining your trust is a
               responsibility that we take very seriously. We are committed to safeguarding the privacy of our
               website visitors; this policy sets out how we will treat your personal information.</p>
 
-              <p>By disclosing your personal information to us by using our website or over the telephone, you consent to the
+              <p>By disclosing your personal information to us by using our website, you consent to the
               collection, storage and processing of your personal information as stated in this policy.</p>
 
               <p>The personal information that we collect from you shall be obtained, processed and transmitted in
@@ -116,7 +115,7 @@ const PrivacyPage = () => {
               <h5>Access to your information</h5>
               <p>You may request details of personal information which we hold about you under the Data
               Protection Act. A small fee will be payable. If you would like a copy of the information
-              held on you please write to Triperoo, 3 Lion Court, Chester CH4 0GN.</p>
+              held on you please write to Triperoo UK Ltd, 3 Lion Court, Chester CH4 0GN.</p>
 
               <h5>Contact</h5>
 

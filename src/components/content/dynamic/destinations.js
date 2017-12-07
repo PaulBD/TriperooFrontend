@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as locationsActions from '../../../actions/location/locationsActions';
 import Loader from '../../loaders/contentLoader';
+let moment = require('moment');
 
 class Destinations extends React.Component {
   constructor(props, context) {
@@ -34,9 +35,13 @@ class Destinations extends React.Component {
               this.props.locationList.map(item => {
                 let url = item.url;
 
-                if (this.props.contentType == "hotels")
-                {
+                if (this.props.contentType == "hotels") {
                   url += '/hotels';
+                }
+
+                if (this.props.contentType == "flights") {
+                  url = '/flights/search-results?from=' + item.fromAirportFriendly + '&fromCode=' + item.fromAirportCode + '&to=' + item.toAirportFriendly  + '&toCode=' + item.toAirportCode  + '&fromDate=' + moment().add(7, 'days').format('YYYY-MM-DD')  + '&toDate=' + moment().add(14, 'days').format('YYYY-MM-DD') + '&passengers=2';
+
                 }
 
                 return (

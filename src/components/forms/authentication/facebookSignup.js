@@ -30,19 +30,21 @@ class FacebookSignup extends React.Component {
   render(){
     if (!this.props.isAuthenticated) {
       return (
-        <div>
-          <hr className={this.props.showLines ? '' : 'hide'}/>
+        <div className="row">
+          <hr className={this.props.showLines ? 'signupHR' : 'hide'}/>
           <div className="gap"></div>
-          <div className="row">
-            <div className="col-md-6 text-right">
-              <h5 className="signupText">Join Now to get started</h5>
-            </div>
-            <div className="col-md-6 text-xs-left">
-              <FacebookButton onCallback={this.submitFacebookForm}/>
+          <div className="col-md-12">
+            <div className="row">
+              <div className="col-md-6 text-lg-right text-xs-center">
+                <h5 className="signupText">Join Now to get started</h5>
+              </div>
+              <div className="col-md-6 text-lg-left text-xs-center ">
+                <FacebookButton onCallback={this.submitFacebookForm}/>
+              </div>
             </div>
           </div>
           <div className="gap"></div>
-          <hr className={this.props.showLines ? '' : 'hide'}/>
+          <hr className={this.props.showLines ? 'signupHR' : 'hide'}/>
         </div>
       );
     }

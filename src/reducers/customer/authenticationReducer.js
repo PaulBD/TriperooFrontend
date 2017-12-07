@@ -11,12 +11,11 @@ export default function authenticationReducer(state = { isFetching: false, isAut
       return Object.assign({}, state, { isFetching: false, isAuthenticated: false, hasSentPassword: false, errorMessage: action.message });
 
     case types.FACEBOOK_USER_REQUEST:
-      return Object.assign({}, state, { isFetching: true, isAuthenticated: false, hasSentPassword: false });
+      return Object.assign({}, state, { isFetching: true, isAuthenticated: action.isAuthenticated, hasSentPassword: false });
     case types.FACEBOOK_USER_SUCCESS:
-      return Object.assign({}, state, { isFetching: false, isAuthenticated: true, hasSentPassword: false, errorMessage: '', user: action.user });
+      return Object.assign({}, state, { isFetching: false, isAuthenticated: action.isAuthenticated, hasSentPassword: false, errorMessage: '', user: action.user });
     case types.FACEBOOK_USER_FAILURE:
-      return Object.assign({}, state, { isFetching: false, isAuthenticated: false, hasSentPassword: false, errorMessage: action.message });
-
+      return Object.assign({}, state, { isFetching: false, isAuthenticated: action.isAuthenticated, hasSentPassword: false, errorMessage: action.message });
 
     case types.REGISTRATION_REQUEST:
       return Object.assign({}, state, { isFetching: true, isAuthenticated: false, hasSentPassword: false });

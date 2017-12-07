@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import FacebookLogin from 'react-facebook-login';
+import {browserHistory} from 'react-router';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as authenticationActions from '../../actions/customer/authenticationActions';
@@ -30,7 +30,8 @@ class Register extends React.Component {
         name: '',
         imageUrl: '',
         cityId: 0,
-        city: ''
+        city: '',
+        optIn: 0
       },
       useFacebook: false,
       errors:'',
@@ -118,6 +119,9 @@ class Register extends React.Component {
     if (e != null) {
       e.preventDefault();
     }
+
+    browserHistory.push("/welcome");
+
     this.props.closeModal();
   }
 
@@ -126,6 +130,20 @@ class Register extends React.Component {
     const field = event.target.name;
     let creds = this.state.creds;
     creds[field] = event.target.value;
+
+    if (field == 'optIn')
+    {
+      if (event.target.value == 'on')
+      {
+        creds[field] = 1;
+      }
+      else {
+        creds[field] = 0;
+      }
+    }
+    console.log(event.target.value);
+    console.log(creds[field]);
+
     this.setState({creds: creds});
   }
 
@@ -136,7 +154,6 @@ class Register extends React.Component {
     creds.city = city;
     this.setState({creds: creds});
   }
-
 
   render(){
     return (
@@ -154,7 +171,7 @@ class Register extends React.Component {
                 <hr />
               </div>
               <div className="gap gap-mini"></div>
-              <SignupForm name={this.state.creds.name} emailAddress={this.state.creds.emailAddress} password={this.state.creds.password} cityId={this.state.creds.cityId} city={this.state.creds.city} isSigningUp={this.state.creatingUser} onSubmit={this.submitStandardForm} onChange={this.changeField} onChangeAutoComplete={this.onChangeAutoComplete} errors={this.state.errors} />
+              <SignupForm name={this.state.creds.name} emailAddress={this.state.creds.emailAddress} password={this.state.creds.password} cityId={this.state.creds.cityId} city={this.state.creds.city} optIn={this.state.creds.optIn} isSigningUp={this.state.creatingUser} onSubmit={this.submitStandardForm} onChange={this.changeField} onChangeAutoComplete={this.onChangeAutoComplete} errors={this.state.errors} />
             </div>
           </div>
           <div className="modal-footer text-center">

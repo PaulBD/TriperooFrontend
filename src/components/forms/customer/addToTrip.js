@@ -100,8 +100,7 @@ class BookmarkLocation extends React.Component {
 
         if (this.props.errorMessage == '' && this.props.errorMessage.length == 0)
         {
-          if (useThankyou)
-          {
+          if (useThankyou) {
 
           }
           else {
@@ -154,25 +153,9 @@ class BookmarkLocation extends React.Component {
       case 'populateTrip':
       case 'tripPace':
         trip.tripDetails[field] = event.target.value;
-      break;
+        break;
       case 'tags':
-
-        let selectedTags = this.state.trip.tripDetails.tags;
-        let isAlreadyInList = false;
-        for (let i = 0; i < selectedTags.length; i++) {
-          if (selectedTags[i] == event.target.value)
-          {
-            isAlreadyInList = true;
-            selectedTags.splice(i, 1);
-          }
-        }
-
-        if (!isAlreadyInList)
-        {
-          selectedTags.push(event.target.value);
-        }
-        trip.tripDetails.tags = selectedTags;
-
+        this.addTags(trip);
         break;
       default:
         trip[field] = event.target.value;
@@ -180,6 +163,24 @@ class BookmarkLocation extends React.Component {
     }
 
     this.setState({trip: trip});
+  }
+
+  addTags(trip) {
+    let selectedTags = this.state.trip.tripDetails.tags;
+    let isAlreadyInList = false;
+    for (let i = 0; i < selectedTags.length; i++) {
+      if (selectedTags[i] == event.target.value)
+      {
+        isAlreadyInList = true;
+        selectedTags.splice(i, 1);
+      }
+    }
+
+    if (!isAlreadyInList)
+    {
+      selectedTags.push(event.target.value);
+    }
+    trip.tripDetails.tags = selectedTags;
   }
 
   onChangeAutoComplete(city, cityId, cityUrl, dataType, cityImage)
