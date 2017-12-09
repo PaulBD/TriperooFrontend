@@ -110,7 +110,7 @@ class AutoComplete extends React.Component {
                     break;
                 }
 
-                return (<li key={search.regionID} className="ui-menu-item"><a href="#" onClick={this.handleClick} data-type={search.regionType} data-name={search.regionNameLong} data-airport={search.airportCode} data-url={search.url} data-id={search.regionID} data-image={search.image}><span><i className={icon}></i></span> {search.airportCode ? '(' + search.airportCode + ') ' + search.regionName + ', ' + search.countryCode : search.regionNameLong} </a></li>);
+                return (<li key={search.regionID} className="ui-menu-item"><a href="#" onClick={this.handleClick} data-type={search.regionType} data-name={search.regionNameLong} data-airport={search.airportCode} data-url={search.url} data-id={search.regionID} data-image={search.image}><span><i className={icon}></i></span> {search.airportCode ? search.regionName + ' (' + search.airportCode + '), ' + search.countryCode : search.regionNameLong} </a></li>);
               })
             }
           </ul>

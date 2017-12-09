@@ -2,55 +2,74 @@ import React, {PropTypes} from 'react';
 let moment = require('moment');
 require("moment-duration-format");
 
-const FlightDetail = ({route, duration, title}) => {
-  let image = 'https://images.kiwi.com/airlines/32/' + route.airline + '.png';
+const FlightDetail = ({route, isLast}) => {
 
-  return (
-          <div className="col-md-6">
-            <h5>{title} <small>{moment.unix(duration, "seconds").format("H.mm")} hrs</small></h5>
-            <div className="row">
-              <div className="col-md-1">
-                <i className="fa fa-circle"></i>
-              </div>
-              <div className="col-md-5 flightDetailLineBtm">
-                <span className="text-small"><strong>{route.dTimeFriendly} </strong>{moment.unix(route.dTime, "seconds").format("ddd DD MMM")}</span>
-              </div>
-              <div className="col-md-6 flightDetailLineBtm text-right">
-                <span className="text-small">{route.cityFrom} ({route.flyFrom})</span>
-              </div>
+  if (route != null && route != undefined) {
+
+    let image = 'https://images.kiwi.com/airlines/32/' + route.airline + '.png';
+
+    return (
+      <div className="row">
+        <div className="col-md-12">
+          <div className="row">
+            <div className="col-md-1">
+              <i className="fa fa-circle"></i>
             </div>
-            <div className="row">
-              <div className="col-md-1">
-                <span className="Part"></span>
-              </div>
-              <div className="col-md-10">
-                <small>
-                  {moment.unix(duration, "seconds").format("H.mm")} hrs<br />
-                  <img src={image} className="smallFlightLogo"/>
-                  {route.airlineName ? route.airlineName : route.airline} <br />
-                  <i className="fa fa-info-circle"></i> Flight Number: {route.flight_no}
-                </small>
-              </div>
+            <div className="col-md-11 flightDetailLineBtm">
+              <span
+                className="text-small"><strong>{moment.unix(route.dTime, "seconds").format("ddd DD MMM")}</strong></span>
             </div>
-            <div className="row">
-              <div className="col-md-1">
-                <i className="fa fa-circle"></i>
-              </div>
-              <div className="col-md-5 flightDetailLineTop">
-                <span className="text-small"><strong>{route.aTimeFriendly} </strong>{route.aTime == route.dTime ? moment.unix(route.aTime, "seconds").format("ddd DD MMM") : <span className="red">{moment.unix(route.aTime, "seconds").format("ddd DD MMM")}</span>}</span>
-              </div>
-              <div className="col-md-6 flightDetailLineTop text-right">
-                <span className="text-small">{route.cityTo} ({route.flyTo})</span>
+          </div>
+          <div className="row">
+            <div className="col-md-1">
+              <span className="Part"></span>
+            </div>
+            <div className="col-md-10">
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="row">
+                    <div className="col-md-12">
+                      <small>
+                        <strong>{moment.unix(route.dTime, "seconds").format("HH.mm")}</strong> {route.cityFrom}
+                        ({route.flyFrom})
+                      </small>
+                    </div>
+                    <div className="col-md-12">
+                      <small>
+                        <strong>{moment.unix(route.aTime, "seconds").format("HH.mm")}</strong> {route.cityTo}
+                        ({route.flyTo})
+                      </small>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <small>
+                    <img src={image} className="smallFlightLogo"/>
+                    {route.airlineName ? route.airlineName : route.airline} <br />
+                    <i className="fa fa-info-circle"></i> Flight Number: {route.flight_no}
+                  </small>
+                </div>
               </div>
             </div>
           </div>
-  );
+          <div className={isLast ? "row" : "hide"}>
+            <div className="col-md-1">
+              <i className="fa fa-circle"></i>
+            </div>
+            <div className="col-md-11">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  else {
+    return null;
+  }
 };
 
 FlightDetail.propTypes = {
   route: PropTypes.object.isRequired,
-  duration: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired
+  isLast: PropTypes.bool.isRequired
 };
 
 export default FlightDetail;

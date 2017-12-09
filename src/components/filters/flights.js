@@ -4,7 +4,17 @@ let _ = require('lodash');
 class FlightFilter extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { sort: this.props.sort, isDirectFlights: this.props.isDirectFlights, selectedAirlines: _.cloneDeep(this.props.selectedAirlines), departureTimeFrom: this.props.departureTimeFrom, departureTimeTo: this.props.departureTimeTo, returnTimeFrom: this.props.returnTimeFrom, returnTimeTo: this.props.returnTimeTo, deperatureTime: 0, returnTime: 0};
+    this.state = {
+      sort: this.props.sort
+      , isDirectFlights: this.props.isDirectFlights
+      , selectedAirlines: _.cloneDeep(this.props.selectedAirlines)
+      , departureTimeFrom: this.props.departureTimeFrom
+      , departureTimeTo: this.props.departureTimeTo
+      , returnTimeFrom: this.props.returnTimeFrom
+      , returnTimeTo: this.props.returnTimeTo
+      , departureSelection: '0'
+      , returnSelection: '0'
+    };
     this.handleSortFlights = this.handleSortFlights.bind(this);
     this.handleFilterDepartureTime = this.handleFilterDepartureTime.bind(this);
     this.handleFilterReturnTime = this.handleFilterReturnTime.bind(this);
@@ -24,24 +34,25 @@ class FlightFilter extends React.Component {
 
     switch(e.target.value)
     {
-      case 0:
+      case '0':
         departureTimeFrom = '00:00';
         departureTimeTo = '00:00';
         break;
-      case 1:
+      case '1':
         departureTimeFrom = '05:00';
         departureTimeTo = '11:59';
         break;
-      case 2:
+      case '2':
         departureTimeFrom = '12:00';
         departureTimeTo = '17:59';
         break;
-      case 3:
+      case '3':
         departureTimeFrom = '18:00';
         departureTimeTo = '23:59';
         break;
     }
-    this.setState({departureTimeFrom: departureTimeFrom, departureTimeTo: departureTimeTo});
+
+    this.setState({departureTimeFrom: departureTimeFrom, departureTimeTo: departureTimeTo, departureSelection: e.target.value});
     this.props.filterFlights(this.state.sort, this.state.isDirectFlights, this.state.selectedAirlines, departureTimeFrom, departureTimeTo, this.state.returnTimeFrom, this.state.returnTimeTo);
   }
 
@@ -52,25 +63,25 @@ class FlightFilter extends React.Component {
 
     switch(e.target.value)
     {
-      case 0:
+      case '0':
         returnTimeFrom = '00:00';
         returnTimeTo = '00:00';
         break;
-      case 1:
+      case '1':
         returnTimeFrom = '05:00';
         returnTimeTo = '11:59';
         break;
-      case 2:
+      case '2':
         returnTimeFrom = '12:00';
         returnTimeTo = '17:59';
         break;
-      case 3:
+      case '3':
         returnTimeFrom = '18:00';
         returnTimeTo = '23:59';
         break;
     }
 
-    this.setState({returnTimeFrom: returnTimeFrom, returnTimeTo: returnTimeTo});
+    this.setState({returnTimeFrom: returnTimeFrom, returnTimeTo: returnTimeTo, returnSelection: e.target.value});
     this.props.filterFlights(this.state.sort, this.state.isDirectFlights, this.state.selectedAirlines, this.state.departureTimeFrom, this.state.departureTimeTo, returnTimeFrom, returnTimeTo);
   }
 
@@ -158,46 +169,46 @@ class FlightFilter extends React.Component {
             </h5>
             <div className="checkbox">
               <label>
-                <input className="i-check" type="radio" checked={this.state.deperatureTime == 0 ? true : false} radioGroup="departureTime" value="0" onChange={this.handleFilterDepartureTime}/>Any
+                <input className="i-check" type="radio" checked={this.state.departureSelection == '0' ? true : false} radioGroup="departureTime" value="0" onChange={this.handleFilterDepartureTime}/>Any
               </label>
             </div>
             <div className="checkbox">
               <label>
-                <input className="i-check" type="radio" checked={this.state.deperatureTime == 1 ? true : false} radioGroup="departureTime" value="1" onChange={this.handleFilterDepartureTime}/>Morning (5:00am - 11:59am)
+                <input className="i-check" type="radio" checked={this.state.departureSelection == '1' ? true : false} radioGroup="departureTime" value="1" onChange={this.handleFilterDepartureTime}/>Morning (5:00am - 11:59am)
               </label>
             </div>
             <div className="checkbox">
               <label>
-                <input className="i-check" type="radio" checked={this.state.deperatureTime == 2 ? true : false} radioGroup="departureTime" value="2" onChange={this.handleFilterDepartureTime}/>Afternoon (12:00pm - 5:59pm)
+                <input className="i-check" type="radio" checked={this.state.departureSelection == '2' ? true : false} radioGroup="departureTime" value="2" onChange={this.handleFilterDepartureTime}/>Afternoon (12:00pm - 5:59pm)
               </label>
             </div>
             <div className="checkbox">
               <label>
-                <input className="i-check" type="radio" checked={this.state.deperatureTime == 3 ? true : false} radioGroup="departureTime" value="3" onChange={this.handleFilterDepartureTime}/>Evening (6:00pm - 11:59pm)
+                <input className="i-check" type="radio" checked={this.state.departureSelection == '3' ? true : false} radioGroup="departureTime" value="3" onChange={this.handleFilterDepartureTime}/>Evening (6:00pm - 11:59pm)
               </label>
             </div>
           </li>
-          <li>
+          <li className={this.props.journeyType != 'round' ? "hide" : ""}>
             <h5 className="booking-filters-title">Return Time</h5>
 
             <div className="checkbox">
               <label>
-                <input className="i-check" type="radio" checked={this.state.returnTime == 0 ? true : false} radioGroup="returnTime" value="0" onChange={this.handleFilterReturnTime}/>Any
+                <input className="i-check" type="radio" checked={this.state.returnSelection == '0' ? true : false} radioGroup="returnTime" value="0" onChange={this.handleFilterReturnTime}/>Any
               </label>
             </div>
             <div className="checkbox">
               <label>
-                <input className="i-check" type="radio" checked={this.state.returnTime == 1 ? true : false} radioGroup="returnTime" value="1" onChange={this.handleFilterReturnTime}/>Morning (5:00am - 11:59am)
+                <input className="i-check" type="radio" checked={this.state.returnSelection == '1' ? true : false} radioGroup="returnTime" value="1" onChange={this.handleFilterReturnTime}/>Morning (5:00am - 11:59am)
               </label>
             </div>
             <div className="checkbox">
               <label>
-                <input className="i-check" type="radio" checked={this.state.returnTime == 2 ? true : false} radioGroup="returnTime" value="2" onChange={this.handleFilterReturnTime}/>Afternoon (12:00pm - 5:59pm)
+                <input className="i-check" type="radio" checked={this.state.returnSelection == '2' ? true : false} radioGroup="returnTime" value="2" onChange={this.handleFilterReturnTime}/>Afternoon (12:00pm - 5:59pm)
               </label>
             </div>
             <div className="checkbox">
               <label>
-                <input className="i-check" type="radio" checked={this.state.returnTime == 3 ? true : false} radioGroup="returnTime" value="3" onChange={this.handleFilterReturnTime}/>Evening (6:00pm - 11:59pm)
+                <input className="i-check" type="radio" checked={this.state.returnSelection == '3' ? true : false} radioGroup="returnTime" value="3" onChange={this.handleFilterReturnTime}/>Evening (6:00pm - 11:59pm)
               </label>
             </div>
           </li>
@@ -217,6 +228,7 @@ FlightFilter.propTypes = {
   departureTimeTo: PropTypes.string.isRequired,
   returnTimeFrom: PropTypes.string.isRequired,
   returnTimeTo: PropTypes.string.isRequired,
+  journeyType: PropTypes.string.isRequired,
   filterFlights: PropTypes.func
 };
 

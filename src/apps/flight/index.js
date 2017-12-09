@@ -21,7 +21,7 @@ class FlightsPage extends React.Component {
   }
 
   updateSearch(fromCode, fromFriendly, toCode, toFriendly, fromDate, toDate, passengerTotal, adultTotal, childTotal, infantTotal, journeyType, formattedFromDate, formattedToDate) {
-    browserHistory.push('/flights/search-results?from=' + fromFriendly + '&fromCode=' + fromCode + '&to=' + toFriendly  + '&toCode=' + toCode  + '&fromDate=' + formattedFromDate  + '&toDate=' + formattedToDate  + '&passengers=' + passengerTotal);
+    browserHistory.push('/flights/search-results?from=' + fromFriendly + '&fromCode=' + fromCode + '&to=' + toFriendly  + '&toCode=' + toCode  + '&fromDate=' + formattedFromDate  + '&toDate=' + formattedToDate  + '&passengers=' + passengerTotal + '&journeyType=' + journeyType);
   }
 
   render(){

@@ -618,12 +618,17 @@ div.ReactTags__suggestions ul li.active {
 
 /* Flights */
 .flightWrapper { border: solid 1px #efefef; padding:20px; }
-.flightWrapper .logo { width:30px !important; }
+.flightWrapper .logo { width:25px !important; }
+.flightWrapper .logo.sml  { width:15px !important; float:left; margin:0px 5px 5px 0px !important; display:inline-block; }
 
 .points-list {
   position: relative;
   display: inline-block;
   width:100%;
+}
+
+.moreStops:before {
+
 }
 
 .dotted-route {
@@ -665,10 +670,14 @@ div.ReactTags__suggestions ul li.active {
   margin-bottom: 20px;
 }
 
+.dottedLineBtm.sml {
+  padding-bottom: 10px;
+}
+
 .flightDetailLineBtm {
   border-bottom: dotted 1px #ccc;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
+  padding-top: 10px;
+  margin-bottom: 5px;
 }
 
 .smallFlightLogo {
@@ -680,7 +689,7 @@ div.ReactTags__suggestions ul li.active {
   position: absolute;
   border-left: 4px solid #777;
   margin-left: 4px;
-  height: 110px;
+  height: 90px;
   top: -30px;
 }
 
@@ -702,6 +711,10 @@ div.ReactTags__suggestions ul li.active {
   color: #ed8323;
   margin-top: 39px;
   font-weight: 500;
+}
+
+.flightPrice.single {
+  margin-top: 9px;
 }
 
 .flightDetails {

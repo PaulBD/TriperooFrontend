@@ -25,7 +25,7 @@ class SearchResults extends React.Component {
       , adultTotal: 2
       , childTotal: 0
       , infantTotal: 0
-      , journeyType: 'round'
+      , journeyType: this.props.journeyType
       , sort: 'quality'
       , currency: 'GBP'
       , isDirectFlights: 0
@@ -55,15 +55,15 @@ class SearchResults extends React.Component {
       });
   }
 
-  updateSearch(fromCode, toCode, fromDate, toDate, passengerTotal, adultTotal, childTotal, infantTotal, journeyType) {
-    this.setState({isLoadingResults: true, isLoadingPage: false, fromCode: fromCode, toCode: toCode, fromDate: fromDate, toDate: toDate, passengerTotal:passengerTotal, adultTotal:adultTotal, childTotal:childTotal, infantTotal:infantTotal, journeyType:journeyType});
-    this.loadFlights(fromCode, toCode, fromDate, fromDate, toDate, toDate, 'en', 'en', this.state.currency, journeyType, passengerTotal, adultTotal, childTotal, infantTotal, this.state.isDirectFlights, 1, 10000, this.state.departureTimeFrom, this.state.departureTimeTo, this.state.returnTimeFrom, this.state.returnTimeTo, '00:00', '00:00', '00:00', '00:00', '00:00', '00:00', this.state.selectedAirlines, 0, 30, this.state.sort, 1);
+  updateSearch(fromCode, fromFriendly, toCode, toFriendly, fromDate, toDate, passengerTotal, adultTotal, childTotal, infantTotal, journeyType, formattedFromDate, formattedToDate) {
+    this.setState({isLoadingResults: true, isLoadingPage: false, fromCode: fromCode, toCode: toCode, fromDate: formattedFromDate, toDate: formattedToDate, passengerTotal:passengerTotal, adultTotal:adultTotal, childTotal:childTotal, infantTotal:infantTotal, journeyType:journeyType});
+    this.loadFlights(fromCode, toCode, fromDate, fromDate, toDate, toDate, 'en', 'en', this.state.currency, journeyType, passengerTotal, adultTotal, childTotal, infantTotal, this.state.isDirectFlights, 1, 10000, this.state.departureTimeFrom, this.state.departureTimeTo, '00:00', '00:00', this.state.returnTimeFrom, this.state.returnTimeTo, '00:00', '00:00', '00:00', '00:00', this.state.selectedAirlines, 0, 30, this.state.sort, 1);
 
   }
 
-  filterFlights(sort, isDirectFlights, selectedAirlines) {
-    this.setState({isLoadingResults: true, isLoadingPage: false, sort: sort, isDirectFlights: isDirectFlights, selectedAirlines: selectedAirlines});
-    this.loadFlights(this.state.fromCode, this.state.toCode, this.state.fromDate, this.state.fromDate, this.state.toDate, this.state.toDate, 'en', 'en', 'GBP', this.state.journeyType, this.state.passengerTotal, this.state.adultTotal, this.state.childTotal, this.state.infantTotal, isDirectFlights, 1, 10000, '00:00', '00:00', '00:00', '00:00', '00:00', '00:00', '00:00', '00:00', '00:00', '00:00', selectedAirlines, 0, 30, sort, 1);
+  filterFlights(sort, isDirectFlights, selectedAirlines, departureTimeFrom, departureTimeTo, returnTimeFrom, returnTimeTo) {
+    this.setState({isLoadingResults: true, isLoadingPage: false, sort: sort, isDirectFlights: isDirectFlights, selectedAirlines: selectedAirlines, departureTimeFrom: departureTimeFrom, departureTimeTo: departureTimeTo, returnTimeFrom: returnTimeFrom, returnTimeTo: returnTimeTo});
+    this.loadFlights(this.state.fromCode, this.state.toCode, this.state.fromDate, this.state.fromDate, this.state.toDate, this.state.toDate, 'en', 'en', 'GBP', this.state.journeyType, this.state.passengerTotal, this.state.adultTotal, this.state.childTotal, this.state.infantTotal, isDirectFlights, 1, 10000, departureTimeFrom, departureTimeTo, '00:00', '00:00', returnTimeFrom, returnTimeTo,  '00:00', '00:00', '00:00', '00:00', selectedAirlines, 0, 30, sort, 1);
 
   }
 
@@ -74,17 +74,26 @@ class SearchResults extends React.Component {
     if (!this.state.isLoadingResults) {
       console.log(this.props.flights);
 
-      if (this.props.flights.data.length > 0) {
-        flightContent = (
-          <div className="col-md-9 flightResults">
-            {
-              this.props.flights.data.map((quote, index) => {
-                return (
-                  <FlightCard quote={quote} currency={this.state.currency} position={index} key={index}/>
-                );
-              })
-            }
-          </div>);
+      if (this.props.flights != null) {
+        if (this.props.flights.data.length > 0) {
+          flightContent = (
+            <div className="col-md-9 flightResults">
+              {
+                this.props.flights.data.map((quote, index) => {
+                  return (
+                    <FlightCard quote={quote} currency={this.state.currency} journeyType={this.state.journeyType}
+                                position={index} key={index}/>
+                  );
+                })
+              }
+            </div>);
+        }
+        else {
+          flightContent = (
+            <div className="col-md-9 flightResults">
+              <p>There are no results. Please change your filter criteria.</p>
+            </div>);
+        }
       }
       else {
         flightContent = (
@@ -102,7 +111,7 @@ class SearchResults extends React.Component {
     }
 
 
-    document.title = 'Search results for flights to xxx';
+    document.title = 'Search results for flights to ' + this.props.fromFriendly;
 
     let currency = 'GBP';
 
@@ -154,7 +163,7 @@ class SearchResults extends React.Component {
                   <Search fromCode={this.props.fromCode} fromFriendly={this.props.fromFriendly}
                           toCode={this.props.toCode}
                           toFriendly={this.props.toFriendly} fromDate={this.props.fromDate} toDate={this.props.toDate}
-
+                          journeyType={this.props.journeyType}
                           updateSearch={this.updateSearch}/>
                 </div>
               </div>
@@ -174,7 +183,8 @@ class SearchResults extends React.Component {
                                   returnTimeFrom={this.state.returnTimeFrom}
                                   returnTimeTo={this.state.returnTimeTo}
                                   airlines={this.props.flights.all_airlines_friendly}
-                                  selectedAirlines={this.state.selectedAirlines}/>
+                                  selectedAirlines={this.state.selectedAirlines}
+                                  journeyType={this.state.journeyType}/>
                   </div>
                   {flightContent}
                 </div>
@@ -204,7 +214,8 @@ SearchResults.propTypes = {
   toDate: PropTypes.string,
   fromCode: PropTypes.string,
   fromFriendly: PropTypes.string,
-  fromDate: PropTypes.string
+  fromDate: PropTypes.string,
+  journeyType: PropTypes.string
 };
 
 function mapStateToProps(state, ownProps) {
@@ -216,7 +227,8 @@ function mapStateToProps(state, ownProps) {
     fromCode: ownProps.location.query.fromCode !== undefined ? ownProps.location.query.fromCode : '',
     fromFriendly: ownProps.location.query.from !== undefined ? ownProps.location.query.from : '',
     fromDate: ownProps.location.query.from !== undefined ? ownProps.location.query.fromDate : '',
-    toDate: ownProps.location.query.from !== undefined ? ownProps.location.query.toDate : ''
+    toDate: ownProps.location.query.from !== undefined ? ownProps.location.query.toDate : '',
+    journeyType: ownProps.location.query.from !== undefined ? ownProps.location.query.journeyType : ''
   };
 }
 
