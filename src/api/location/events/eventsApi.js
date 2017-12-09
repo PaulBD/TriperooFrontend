@@ -1,7 +1,5 @@
 import axios from 'axios';
 import baseUrl from '../../baseApi';
-import environment from '../../environment';
-import mockEvents from '../../json/mock/events.json';
 
 class EventsApi {
   // ****************************************
@@ -9,7 +7,6 @@ class EventsApi {
   // location id
   // ****************************************
   static getEventsByLocationId(locationId, categoryName, pageSize, pageNumber) {
-    if (environment) {
       return new Promise((resolve, reject) => {
         axios({
           method: 'get',
@@ -22,12 +19,6 @@ class EventsApi {
           reject(error);
         });
       });
-    }
-    else {
-      return new Promise((resolve, reject) => {
-        resolve(Object.assign({}, mockEvents));
-      });
-    }
   }
 
   // ****************************************

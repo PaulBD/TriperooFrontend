@@ -1,36 +1,26 @@
 import axios from 'axios';
 import baseUrl from '../baseApi';
-import environment from '../environment';
-import location from '../json/mock/location.json';
 
 class LocationApi {
   // ****************************************
   // Return location details by location id
   // ****************************************
   static getLocation(locationId, isCity) {
-    if (environment) {
-      return new Promise((resolve, reject) => {
-        axios.get(baseUrl + '/location/' + locationId + '?isCity=' + isCity)
-          .then(function (response) {
-            resolve(Object.assign({}, response.data));
-          })
-          .catch(function (error) {
-            reject(error);
-          });
-      });
-    }
-    else {
-      return new Promise((resolve, reject) => {
-        resolve(Object.assign({}, location));
-      });
-    }
+    return new Promise((resolve, reject) => {
+      axios.get(baseUrl + '/location/' + locationId + '?isCity=' + isCity)
+        .then(function (response) {
+          resolve(Object.assign({}, response.data));
+        })
+        .catch(function (error) {
+          reject(error);
+        });
+    });
   }
 
   // ****************************************
   // Like location by id
   // ****************************************
   static likeLocation(locationId, likeLocation, isCity) {
-
     let url = baseUrl + '/location/' + locationId + '/unlike?isCity=' + isCity;
 
     if (likeLocation) {
