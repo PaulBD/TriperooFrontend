@@ -9,6 +9,7 @@ import SubPageHeader from '../../components/content/headers/locationCategory';
 import Restaurants from '../../components/layout/cards/location/locationListWrapper';
 import FilterRestaurants from '../../components/forms/searchForms/filterRestaurants';
 import MapSideBar from '../../components/maps/mapSideBar';
+import TrustedPartners from '../../components/content/static/trustedPartners';
 
 let titleCase = require('title-case');
 import Toastr from 'toastr';
@@ -27,7 +28,7 @@ class RestaurantContent extends React.Component {
       , restaurantType: ''
       , restaurantFriendlyName: ''
       , restaurantSearch: ''
-      , pageSize: 9
+      , pageSize: 24
       , pageNumber: 0
       , activePage: 1 };
   }
@@ -93,7 +94,12 @@ class RestaurantContent extends React.Component {
               </div>
             </div>
           </div>
-          <FacebookSignup showLines={false}/>
+          <div className="container">
+            <div className="gap gap-mini"></div>
+            <FacebookSignup showLines={true} />
+            <TrustedPartners />
+            <div className="gap gap-mini"></div>
+          </div>
         </div>
       );
     }

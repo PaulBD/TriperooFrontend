@@ -19,7 +19,7 @@ export function restaurantsContentError(errorMessage) {
 export function loadRestaurantsByParentLocationId(parentLocationId, categoryName, searchName, pageSize, pageNumber) {
 	return dispatch => {
 		dispatch(requestRestaurantsContent());
-		return ContentApi.getContentByParentLocationId(parentLocationId, 'restaurants', categoryName, searchName, pageSize, pageNumber).then(restaurantsList => {
+		return ContentApi.getContentByParentLocationId(parentLocationId, 'restaurant', categoryName, searchName, pageSize, pageNumber).then(restaurantsList => {
 			dispatch(restaurantsContentSuccess(restaurantsList));
 		}).catch(error => {
 			dispatch(restaurantsContentError(error.response.data));

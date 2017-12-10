@@ -67,90 +67,114 @@ class RoomList extends React.Component {
                 <h2>Room Availability</h2>
                 <p>Showing rooms available <strong>{this.state.formattedArrivalDate}</strong> for <strong>{this.state.nights}</strong> {this.state.nights == 1 ? 'night' : 'nights'}</p>
                 <SearchForm searchUrl={this.props.searchUrl} buttonName="Search Rooms" rooms={this.state.rooms} nights={this.state.nights} arrivalDate={this.state.arrivalDate} guests={this.state.guests} useFunction={true} handleFormSubmit={this.handleFormSubmit} isSideBar={false} city={this.props.hotelName} lockLocation={true}/>
-                <div className="row">
-                  {
-                    this.props.hotelRooms.hotelRoomAvailabilityResponse.hotelRoomResponse.map((hotelRoom, index) => {
 
-                      let roomOccupancy = <i className="fa fa-user"></i>;
+                  <ul className="booking-list">
+                    {
+                      this.props.hotelRooms.hotelRoomAvailabilityResponse.hotelRoomResponse.map((hotelRoom, index) => {
 
-                      switch (hotelRoom.rateOccupancyPerRoom) {
-                        case 1:
-                          roomOccupancy = <i className="fa fa-user"></i>;
-                          break;
-                        case 2:
-                          roomOccupancy = <span><i className="fa fa-user"></i> <i className="fa fa-user"></i></span>;
-                          break;
-                        case 3:
-                          roomOccupancy = <span><i className="fa fa-user"></i> <i className="fa fa-user"></i> <i className="fa fa-user"></i></span>;
-                          break;
-                        case 4:
-                          roomOccupancy = <span><i className="fa fa-user"></i> <i className="fa fa-user"></i> <i className="fa fa-user"></i> <i className="fa fa-user"></i></span>;
-                          break;
-                      }
+                        let roomOccupancy = <i className="fa fa-user"></i>;
 
-                      let style = {
-                        backgroundImage: 'url(/static/img/placeholder.png)'
-                      };
-
-                      if (hotelRoom.roomImages) {
-                        if (hotelRoom.roomImages.roomImage[0].highResolutionUrl != undefined) {
-                          style.backgroundImage = 'url(' + hotelRoom.roomImages.roomImage[0].highResolutionUrl + ')';
+                        switch (hotelRoom.rateOccupancyPerRoom) {
+                          case 1:
+                            roomOccupancy = <i className="fa fa-user"></i>;
+                            break;
+                          case 2:
+                            roomOccupancy = <span><i className="fa fa-user"></i> <i className="fa fa-user"></i></span>;
+                            break;
+                          case 3:
+                            roomOccupancy = <span><i className="fa fa-user"></i> <i className="fa fa-user"></i> <i className="fa fa-user"></i></span>;
+                            break;
+                          case 4:
+                            roomOccupancy = <span><i className="fa fa-user"></i> <i className="fa fa-user"></i> <i className="fa fa-user"></i> <i className="fa fa-user"></i></span>;
+                            break;
                         }
-                        else {
-                          style.backgroundImage = 'url(' + hotelRoom.roomImages.roomImage[0].url + ')';
-                        }
-                      }
 
-                      return (
-                        <div className="col-md-4 mb-4" key={index}>
-                          <div className="card text-xs-left">
-                            <div className="cardBg hotelRoomImageBg" style={style}>
-                              <div className={hotelRoom.rateInfos.rateInfo[0].promo ? "card-img-overlay promotion" : "hide"}>
-                                <h4 className="card-title ">{hotelRoom.rateInfos.rateInfo[0].promoDescription}</h4>
+                        let url = hotelRoom.roomImages.roomImage[0].url;
+
+                        if (hotelRoom.roomImages) {
+                          if (hotelRoom.roomImages.roomImage[0].highResolutionUrl != undefined) {
+                            url = hotelRoom.roomImages.roomImage[0].highResolutionUrl;
+                          }
+                        }
+
+                        let roomCount = "";
+
+                        if (hotelRoom.rateInfos.rateInfo[0].currentAllotment != undefined)
+                        {
+                          if (hotelRoom.rateInfos.rateInfo[0].currentAllotment == 0)
+                          {
+                            roomCount = 'Sold out';
+                          }
+                          else {
+                            if (hotelRoom.rateInfos.rateInfo[0].currentAllotment < 5)
+                            {
+                              roomCount = 'Less than ' + hotelRoom.rateInfos.rateInfo[0].currentAllotment + ' rooms left!';
+                            }
+                          }
+                        }
+
+                        let currency = '£';
+
+                        if (hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.currencyCode == 'GBP')
+                        {
+                          currency = '£';
+                        }
+
+                        return (
+                        <li>
+                          <a className="booking-item">
+                            <div className="row">
+                              <div className="col-md-3">
+                                <img src={url}/>
                               </div>
-                            </div>
-                            <div className="card-block">
-                              <h4 className="card-title mb-2">{titleCase(hotelRoom.roomTypeDescription)}</h4>
+                              <div className="col-md-7">
+                                <h5 className="booking-item-title">{titleCase(hotelRoom.roomTypeDescription)}</h5>
+                                <p className={hotelRoom.rateInfos.rateInfo[0].promo ? "text-small" : "hide"}>
+                                  {hotelRoom.rateInfos.rateInfo[0].promoDescription}
+                                </p>
+                                <p className="text-small">{hotelRoom.rateInfos.rateInfo[0].cancellationPolicy}</p>
 
-                              <div className="row">
-                                <div className="col-md-12">
+                                <div className="row">
+                                  <div className="col-md-4">
                                     <ul className="nav card-text mb-2">
                                       <li className="nav-item bedType">Sleeps: {roomOccupancy}</li>
                                     </ul>
-                                  <ul className="nav card-text mb-2">
+                                  </div>
+                                  <div className="col-md-4">
+                                    <ul className="nav card-text mb-2">
                                       {
                                         hotelRoom.bedTypes.bedType.map((bedType, bedIndex) => {
                                           return (
-                                            <li className="nav-item bedType" key={bedIndex}>{bedType.description} <i className="fa fa-bed"></i></li>
+                                            <li className="nav-item bedType" key={bedIndex}><i className="fa fa-bed"></i> {bedType.description}</li>
                                           );
                                         })
                                       }
                                     </ul>
+                                  </div>
+                                  <div className="col-md-4">
+                                    {roomCount}
+                                  </div>
                                 </div>
                               </div>
-                              <div className="row">
-                                <div className="col-md-6">
-                                  <h5 className="hotelPrice mb-1">{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.total} {hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.currencyCode}</h5>
-                                </div>
-                                <div className="col-md-6">
-                                  <a href={hotelRoom.deepLink} className="btn btn-primary priceRight" target="_blank" onClick={this.trackClick}>Book Room</a>
-                                </div>
-                                <div className="col-md-12">
-                                  <p className={hotelRoom.rateInfos.rateInfo[0].cancellationPolicy ? 'card-subtitle mb-1 text-muted cardAddress' : 'hide'}>
-                                    <a href="#" onClick={this.cancellationPolicyClick} data-policy={hotelRoom.rateInfos.rateInfo[0].cancellationPolicy} >
-                                      {hotelRoom.rateInfos.rateInfo[0].nonRefundable ? <span><i className="fa fa-info"></i> Non-Refundable - Read Cancellation Policy</span> : <span><i className="fa fa-info"></i> Read Cancellation Policy</span>}
-                                    </a>
-                                  </p>
-                                  <p className={hotelRoom.rateInfos.rateInfo[0].cancellationPolicy ? 'hide' : 'card-subtitle mb-1 text-muted cardAddress'}>&nbsp;</p>
-                                </div>
+                              <div className="col-md-2 ">
+                                <h5 className="hotelPrice mb-1 priceRight">{currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.total} </h5>
+<br />
+                                <a href={hotelRoom.deepLink} className="btn btn-primary mb-1 priceRight" target="_blank" onClick={this.trackClick}>Book Room</a>
+<br />
+                                <small className="priceBreakdown priceRight">
+                                  <span><strong>Breakdown:</strong></span>
+                                  <span>Nightly Rate: {currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.nightlyRateTotal}</span>
+                                  <span>Tax & Service Fees: {currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.surchargeTotal}</span>
+                                  <span>Total: {currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.total}</span>
+                                </small>
                               </div>
                             </div>
-                          </div>
-                        </div>
-                      );
+                          </a>
+                        </li>
+                        );
                     })
-                  }
-                </div>
+                    }
+                  </ul>
               </div>
             </div>
           </div>

@@ -6,6 +6,7 @@ import * as locationActions from '../../actions/location/locationActions';
 import * as hotelActions from '../../actions/location/travelContent/hotelActions';
 
 import FacebookSignup from '../../components/forms/authentication/facebookSignup';
+import TrustedPartners from '../../components/content/static/trustedPartners';
 import SubPageHeader from '../../components/content/headers/locationCategory';
 import TriperooLoader from '../../components/loaders/globalLoader';
 import LastMinuteDeal from '../../components/content/dynamic/lastMinuteDeal';
@@ -40,7 +41,7 @@ class LocationContent extends React.Component {
       }
       , openSortBy: false
       , showFilters: false
-      , pageSize: 20
+      , pageSize: 24
       , pageNumber: 0
       , radius: 5
       , arrivalDate: arrivalDate
@@ -237,9 +238,13 @@ class LocationContent extends React.Component {
               </div>
             </div>
           </div>
-          <FacebookSignup showLines={false}/>
           <LastMinuteDeal locationId={this.props.locationId} />
-          <FacebookSignup showLines={false}/>
+          <div className="container">
+              <div className="gap gap-mini"></div>
+              <FacebookSignup showLines={false} />
+              <TrustedPartners />
+              <div className="gap gap-mini"></div>
+          </div>
         </div>
       );
     }

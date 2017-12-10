@@ -7,6 +7,7 @@ import FacebookSignup from '../../components/forms/authentication/facebookSignup
 import TriperooLoader from '../../components/loaders/globalLoader';
 import MapSideBar from '../../components/maps/mapSideBar';
 import FilterPointOfInterest from '../../components/forms/searchForms/filterPointOfInterests';
+import TrustedPartners from '../../components/content/static/trustedPartners';
 import Toastr from 'toastr';
 
 import SubPageHeader from '../../components/content/headers/locationCategory';
@@ -27,7 +28,7 @@ class PointOfInterestContent extends React.Component {
       , pointOfInterestType: ''
       , pointOfInterestFriendlyName: ''
       , pointOfInterestSearch: ''
-      , pageSize: 9
+      , pageSize: 24
       , pageNumber: 0
       , activePage: 1 };
   }
@@ -99,7 +100,8 @@ class PointOfInterestContent extends React.Component {
           </div>
           <div className="container">
             <div className="gap gap-mini"></div>
-            <FacebookSignup />
+            <FacebookSignup showLines={true} />
+            <TrustedPartners />
             <div className="gap gap-mini"></div>
           </div>
 

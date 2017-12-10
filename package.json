@@ -44,6 +44,7 @@
     "react-images": "^0.5.5",
     "react-input-range": "^1.2.1",
     "react-js-pagination": "^2.0.2",
+    "react-localize-redux": "^2.13.7",
     "react-modal": "^1.7.7",
     "react-rating": "^0.6.5",
     "react-redux": "4.4.5",

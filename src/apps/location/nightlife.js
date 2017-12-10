@@ -6,6 +6,7 @@ import * as nightlifeActions from '../../actions/location/travelContent/nightlif
 import FacebookSignup from '../../components/forms/authentication/facebookSignup';
 
 import TriperooLoader from '../../components/loaders/globalLoader';
+import TrustedPartners from '../../components/content/static/trustedPartners';
 import Toastr from 'toastr';
 
 import SubPageHeader from '../../components/content/headers/locationCategory';
@@ -97,7 +98,12 @@ class NightlifeContent extends React.Component {
               </div>
             </div>
           </div>
-          <FacebookSignup showLines={false}/>
+          <div className="container">
+            <div className="gap gap-mini"></div>
+            <FacebookSignup showLines={true} />
+            <TrustedPartners />
+            <div className="gap gap-mini"></div>
+          </div>
         </div>
       );
     }

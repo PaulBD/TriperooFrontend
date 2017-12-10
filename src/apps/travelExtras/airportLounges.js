@@ -19,7 +19,7 @@ class AirportLounge extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0);
 
-    this.loadAirportLounges(this.state.airport, moment().add(1, 'days').format('YYYY-MM-DD'), moment().add(5, 'days').format('YYYY-MM-DD'), moment().add(1, 'days').format('YYYY-MM-DD'), 4, 'T20', '', 4, 'en');
+    //this.loadAirportLounges(this.state.airport, moment().add(1, 'days').format('YYYY-MM-DD'), moment().add(5, 'days').format('YYYY-MM-DD'), moment().add(1, 'days').format('YYYY-MM-DD'), 4, 'T20', '', 4, 'en');
   }
 
   loadAirportLounges(airport, arrivalDate, arrivalTime, flightTime, adultCount, childCount, infantCount) {
@@ -44,7 +44,7 @@ class AirportLounge extends React.Component {
         <div className="gap"></div>
         <div className="container">
           <div className="row">
-            <div className="col-md-12">
+            <div className="card-group">
               {
                 this.props.isError ? <p>{this.props.error}</p> :
                   this.props.airportLounge.apI_Reply != undefined && !this.props.isFetching && !this.props.error ?

@@ -33,6 +33,7 @@ import weather from './location/weatherReducer';
 import airportParking from './travelExtras/airportParkingReducer';
 import airportHotel from './travelExtras/airportHotelReducer';
 import airportLounge from './travelExtras/airportLoungeReducer';
+import { localeReducer } from 'react-localize-redux';
 
 import {routerReducer} from 'react-router-redux';
 
@@ -71,6 +72,7 @@ const rootReducer = combineReducers({
   airportParking,
   airportHotel,
   airportLounge,
+  locale: localeReducer,
   routing: routerReducer
 });
 

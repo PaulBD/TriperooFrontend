@@ -1411,6 +1411,8 @@ ul.twPc-Arrange li.location {
   .locationPage h1 { margin-top: 5px; }
   .locationSubNav { display:table; }
   .locationSubNav > li { height: 90px; }
+  .infoPage h1 { margin-top:15px; }
+  .list-inline > li { margin-left: 10px; margin-right: 0px; }
 }
 
 @media (min-width:1px) and (max-width:576px) {
@@ -1574,7 +1576,8 @@ a:hover .activityBg { background-color: #333; border-color: #333; }
 .locationTitle small { margin-top:7px; }
 .timelineTitle { width:100%; }
 .timelineTitle h4 { border-top: solid 1px #efefef; border-bottom: solid 1px #efefef; margin-bottom: 20px; text-align:center;background-color:white;}
-
+.priceBreakdown { margin-top:20px; }
+.priceBreakdown span { width:100%; float:right; text-align: right;}
 
 
   /* Timeline */

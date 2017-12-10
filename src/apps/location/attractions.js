@@ -8,6 +8,7 @@ import FacebookSignup from '../../components/forms/authentication/facebookSignup
 import TriperooLoader from '../../components/loaders/globalLoader';
 import Toastr from 'toastr';
 import FilterAttractions from '../../components/forms/searchForms/filterAttractions';
+import TrustedPartners from '../../components/content/static/trustedPartners';
 
 import SubPageHeader from '../../components/content/headers/locationCategory';
 import Attractions from '../../components/layout/cards/location/locationListWrapper';
@@ -27,7 +28,7 @@ class AttractionContent extends React.Component {
       , attractionType: ''
       , attractionFriendlyName: ''
       , attractionSearch: ''
-      , pageSize: 9
+      , pageSize: 24
       , pageNumber: 0
       , activePage: 1 };
   }
@@ -97,7 +98,12 @@ class AttractionContent extends React.Component {
               </div>
             </div>
           </div>
-          <FacebookSignup showLines={false}/>
+          <div className="container">
+            <div className="gap gap-mini"></div>
+            <FacebookSignup showLines={true} />
+            <TrustedPartners />
+            <div className="gap gap-mini"></div>
+          </div>
         </div>
       );
     }

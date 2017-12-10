@@ -18,7 +18,7 @@ class AirportHotels extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    this.loadAirportHotels(this.state.airport, moment().add(1, 'days').format('YYYY-MM-DD'), moment().add(5, 'days').format('YYYY-MM-DD'), moment().add(1, 'days').format('YYYY-MM-DD'), 4, 'T20', '', 4, 'en');
+   // this.loadAirportHotels(this.state.airport, moment().add(1, 'days').format('YYYY-MM-DD'), moment().add(5, 'days').format('YYYY-MM-DD'), moment().add(1, 'days').format('YYYY-MM-DD'), 4, 'T20', '', 4, 'en');
   }
 
   loadAirportHotels(airport, arrivalDate, departDate, dropOffCarDate, collectCarDate, nights, roomType, secondRoomType, parkingDays) {
@@ -43,7 +43,7 @@ class AirportHotels extends React.Component {
         <div className="gap"></div>
         <div className="container">
           <div className="row">
-            <div className="col-md-12">
+            <div className="card-group">
               {
                 this.props.airportHotel.apI_Reply != undefined && !this.state.isLoading ?
                   this.props.airportHotel.apI_Reply.hotel.map(quote => {

@@ -37,6 +37,7 @@ class FlightsPage extends React.Component {
                           fromFriendly=""
                           toCode=""
                           toFriendly="" fromDate={this.props.fromDate} toDate={this.props.toDate}
+                          journeyType="round"
                     updateSearch={this.updateSearch}/>
                 </div>
               </div>

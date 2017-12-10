@@ -19,7 +19,7 @@ class AirportParking extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0);
 
-    this.loadAirportParking(this.state.airport, moment().add(1, 'days').format('YYYY-MM-DD'), '00:30', moment().add(7, 'days').format('YYYY-MM-DD'), '22:00', 'en');
+    //this.loadAirportParking(this.state.airport, moment().add(1, 'days').format('YYYY-MM-DD'), '00:30', moment().add(7, 'days').format('YYYY-MM-DD'), '22:00', 'en');
   }
 
   loadAirportParking(airport, dropOffDate, dropOffTime, pickUpDate, pickUpTime, language) {
@@ -44,7 +44,7 @@ class AirportParking extends React.Component {
         <div className="gap"></div>
         <div className="container">
           <div className="row">
-            <div className="col-md-12">
+            <div className="card-group">
               {
                 this.props.airportParking.apI_Reply != undefined && !this.props.isFetching ?
                   this.props.airportParking.apI_Reply.carPark.map(quote => {

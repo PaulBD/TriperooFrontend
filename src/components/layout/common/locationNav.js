@@ -29,7 +29,7 @@ class NavigationWrapper extends React.Component {
       <div className="search-tabs search-tabs-bg search-tabs-to-top">
         <div className="tabbable">
           <div className="tab-content">
-            <div className="tab-pane active text-xs-center text-lg-center" id="tab-1">
+            <div className="tab-pane active text-xs-center text-md-center text-lg-center" id="tab-1">
               <h2 className="text-xs-center text-lg-center">Explore, Plan &amp; Book Your Visit to {titleCase(this.props.name)}</h2>
               <div className="gap gap-small"></div>
               {places}

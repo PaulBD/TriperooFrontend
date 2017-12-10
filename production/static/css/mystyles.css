@@ -1,6 +1,8 @@
 /*YOUR CUSTOM STYLES*/
 body { margin: 0; }
 
+.triperooHeader { float:right; width: 100%; }
+.floatRight { float: right !important; }
 .navbar { padding: 0px !important; }
 .navbar .nav-link { color: white !important; outline: none; }
 
@@ -20,7 +22,7 @@ body { margin: 0; }
 }
 
 .pageNotFound {
-  height: 300px;
+  height: 500px;
 }
 
 .passengerPopup {
@@ -159,7 +161,7 @@ h4.card-title { font-size: 18px;}
 .infoImg { background-position: bottom; width:50%;}
 
 .homeSearchIcon { top:0 !important; }
-.homeSearch { margin: 0 auto 0px auto !important; width:50%; }
+.homeSearch { margin: 0 auto 0px auto !important; width:70%; }
 .homeSearch .ui-autocomplete { top: 44px; }
 
 .homeSearch input[type=text] { border-radius: 5px !important; padding: 25px 25px 25px 45px !important;font-size: 18px !important; }
@@ -172,22 +174,27 @@ h4.card-title { font-size: 18px;}
 
 .facebookBtn { width: 280px; }
 
-.signupText { font-size: 30px;font-weight:bold; padding-top:10px;}
+.signupText { font-size: 28px;font-weight:bold; padding-top:10px;}
 
-.cityPage, .holidayPage { height: 500px !important; }
+.cityPage, .holidayPage, .travelExtras { height: 500px !important; }
 .travelPage, .infoPageWrapper { height: 300px !important; }
 .cityPage h1, .holidayPage h1, .travelPage h1, .infoPageWrapper h1 { font-size: 600%; width: 70%; }
 
-.holidayPage { height: 450px !important; overflow: inherit; }
-.holidayPage h1 { font-size: 500%; width: 70%; }
+.holidayPage { height: 350px !important; overflow: inherit; }
+.holidayPage h1 { font-size: 450%; width: 70%; }
 .holidayPage .full-center { top: 50% !important;}
+
+
+.travelExtras { height: 550px !important; overflow: inherit; }
+.travelExtras h1 { font-size: 450%; width: 70%; }
+.travelExtras .full-center { top: 40% !important;}
 
 .infoImg { background-position: center top !important; }
 
 .userProfile { height: 200px !important; }
 .locationPage { height: 120px !important; }
 .infoPage { height: 100px !important; }
-.infoPage h1, userProfile h1, .locationPage h1 { font-size: 28px; text-align: left; margin-top: 40px; z-index: 999; position: absolute; font-weight: bold; }
+.infoPage h1, userProfile h1, .locationPage h1 { left: 0; font-size: 28px; text-align: left; margin-top: 40px; z-index: 999; position: relative; font-weight: bold; }
 .infoPage .breadcrumb, .locationPage .breadcrumb { position: absolute; z-index: 999; }
 .im {  display: inline-block; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
@@ -253,7 +260,7 @@ h3 small { float:right; padding-top:14px;}
   justify-content: center;
 }
 
-.cityNav, .countryNav { color: #fff; position:absolute;z-index:999; float:right; right: 0; margin-top:34px; }
+.cityNav, .countryNav { color: #fff; position:relative;z-index:999; float:right; right: 0; margin-top:34px; }
 
 /* TODO: Need to fix this for mobile */
 .cityNav .user-profile-statictics-icon,
@@ -326,6 +333,7 @@ optgroup,option { margin-left:0px;text-align:left;}
 .booking-item.booking-item-small .booking-item-subtitle { font-size: 14px; }
 .booking-item.booking-item-small .last-minute-rating { font-size: 16px; }
 .booking-item.booking-item-small .last-minute-rating.icon-list .fa { margin-right: 4px; }
+.signupHR { width:100%;}
 
 .ui-autocomplete {
   position: absolute;
@@ -357,6 +365,10 @@ optgroup,option { margin-left:0px;text-align:left;}
   padding: 10px;
 }
 
+.ui-autocomplete.long {
+  width:150%;
+}
+
 .ui-menu-item a { float:left; border-bottom: solid 1px #ccc; width:100%; padding: 3px 0; color: #000  }
 .ui-menu-item:last-child a { border-bottom:none; }
 .ui-menu-item span { width:30px; float:left;text-align:center; color: #000}
@@ -364,7 +376,7 @@ optgroup,option { margin-left:0px;text-align:left;}
 .ui-menu-item a:hover { background-color: #efefef; color: #000  }
 
 .btnSearch { padding: 10px 20px 12px 20px}
-.btnSearch small { line-height: 1; }
+.btnSearch small, .btnSearch span { line-height: 1.2; width:100%; text-align: center; color: #000; float:left; }
 /* Spinner */
 .spinner {
   margin: 100px auto;
@@ -479,7 +491,7 @@ optgroup,option { margin-left:0px;text-align:left;}
 
 .booking-item-details .booking-item-header { padding-top: 0; border-top: none; }
 
-.form-group .input-icon.homeSearchIcon { line-height: 50px; }
+.form-group .input-icon.homeSearchIcon { line-height: 42px; }
 
 .trustedPartner { font-size: 12px;}
 .cards, .cardsLast { width: 30px; margin-left:8px; }
@@ -606,12 +618,17 @@ div.ReactTags__suggestions ul li.active {
 
 /* Flights */
 .flightWrapper { border: solid 1px #efefef; padding:20px; }
-.flightWrapper .logo { width:30px !important; }
+.flightWrapper .logo { width:25px !important; }
+.flightWrapper .logo.sml  { width:15px !important; float:left; margin:0px 5px 5px 0px !important; display:inline-block; }
 
 .points-list {
   position: relative;
   display: inline-block;
   width:100%;
+}
+
+.moreStops:before {
+
 }
 
 .dotted-route {
@@ -653,10 +670,14 @@ div.ReactTags__suggestions ul li.active {
   margin-bottom: 20px;
 }
 
+.dottedLineBtm.sml {
+  padding-bottom: 10px;
+}
+
 .flightDetailLineBtm {
   border-bottom: dotted 1px #ccc;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
+  padding-top: 10px;
+  margin-bottom: 5px;
 }
 
 .smallFlightLogo {
@@ -668,7 +689,7 @@ div.ReactTags__suggestions ul li.active {
   position: absolute;
   border-left: 4px solid #777;
   margin-left: 4px;
-  height: 110px;
+  height: 90px;
   top: -30px;
 }
 
@@ -690,6 +711,10 @@ div.ReactTags__suggestions ul li.active {
   color: #ed8323;
   margin-top: 39px;
   font-weight: 500;
+}
+
+.flightPrice.single {
+  margin-top: 9px;
 }
 
 .flightDetails {
@@ -1358,7 +1383,10 @@ ul.twPc-Arrange li.location {
 .dropdown-menu { min-width: 12rem; }
 
 @media (max-width: 991px) {
-  .cityPage h1, .holidayPage h1, .travelPage h1, .infoPageWrapper h1 { font-size: 300%; }
+  .holidayPage { height: 200px !important; }
+  .cityPage { height: 400px !important; }
+  .holidayPage h1 { font-size: 200%; width:90%; }
+  .cityPage h1, .travelPage h1, .infoPageWrapper h1 { font-size: 300%; width:90%; }
   .homeSearch { width:100%; }
   .worldMap { display:none; }
   .user-profile-statictics > li { text-align: center; padding: 10px; border: 1px solid #e6e6e6; -webkit-border-radius: 5px; border-radius: 5px; width: 30%; margin-bottom: 10px; margin-right:3.3%; }
@@ -1368,10 +1396,27 @@ ul.twPc-Arrange li.location {
   .infoPage { height: 150px !important; }
   .infoPage .breadcrumb { display: none; }
 
-  .infoPage .cityNav, .infoPage .countryNav { margin-top: 84px;}
-  .infoPage h1 { width: 92%; text-align: center; }
+  .infoPage .cityNav, .infoPage .countryNav { margin-top: 4px;
+    float: none;}
+  .infoPage h1 { width: 100%; text-align: center; }
 
   .CategoryModel.ReactModal__Content { left: 2%; right: 2%; width: 96%;}
+
+  ul.twPc-Arrange li.location {
+    width: 50%;
+  }
+}
+
+@media (max-width:576px) {
+  .locationPage h1 { margin-top: 5px; }
+  .locationSubNav { display:table; }
+  .locationSubNav > li { height: 90px; }
+}
+
+@media (min-width:1px) and (max-width:576px) {
+  .text-xs-left{text-align:left!important}
+  .text-xs-right{text-align:right!important}
+  .text-xs-center{text-align:center!important}
 }
 
 /* Hotel Detail */
@@ -1527,6 +1572,8 @@ a:hover .activityBg { background-color: #333; border-color: #333; }
 .activityBg .card-text { color: #FFFFFF; opacity: 1; text-shadow: 0px 0px 4px #000;}
 .locationTitle { width: 100%; border-bottom: solid 1px #ccc; }
 .locationTitle small { margin-top:7px; }
+.timelineTitle { width:100%; }
+.timelineTitle h4 { border-top: solid 1px #efefef; border-bottom: solid 1px #efefef; margin-bottom: 20px; text-align:center;background-color:white;}
 
 
 
@@ -1535,6 +1582,7 @@ a:hover .activityBg { background-color: #333; border-color: #333; }
 .timeline-centered {
   position: relative;
   margin-bottom: 30px;
+  width: 100%;
 }
 
 .timeline-centered:before, .timeline-centered:after {
@@ -1660,7 +1708,7 @@ a:hover .activityBg { background-color: #333; border-color: #333; }
 
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-time {
   position: absolute;
-  left: -150px;
+  left: -210px;
   text-align: right;
   padding: 10px;
   -webkit-box-sizing: border-box;
@@ -1773,7 +1821,12 @@ a:hover .activityBg { background-color: #333; border-color: #333; }
 
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 {
   font-size: 16px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
+}
+
+.timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h3 {
+  font-size: 14px;
+  margin-bottom: 0px;
 }
 
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 a {

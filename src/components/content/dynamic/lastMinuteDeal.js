@@ -50,7 +50,7 @@ class LastMinuteDeal extends React.Component {
               <div className="bg-parallax" style={style}></div>
               <div className="bg-content">
                 <div className="container">
-                  <div className="gap gap-big text-lg-center text-white">
+                  <div className="gap gap-big text-md-center text-xs-center text-lg-center text-white">
                     <h5 className="last-minute-title">{deals[0].product_name}</h5>
                     <h3>{deals[0].description}</h3>
                     {price}

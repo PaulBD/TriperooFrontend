@@ -25,11 +25,14 @@ const SignupForm = ({name, emailAddress, password, optIn, cityId, city, isSignin
           <div className="form-group form-group-lg form-group-icon-left">
             <AutoComplete onChangeAutoComplete={onChangeAutoComplete} searchValue={city} searchType="city" placeholder="Current Location" cssClass="typeahead form-control" />
           </div>
-          <div className="form-group form-group-lg form-group-icon-left">
-            <input className="form-control checkbox-inline" type="checkbox" checked={optIn} name="optIn" onChange={onChange}  />
-            <label>Click here to receive marketing emails from Triperoo</label>
+
+          <div className="form-group form-group-lg form-check form-check-inline">
+            <label className="form-check-label">
+              <input className="form-check-input" type="checkbox" checked={optIn} name="optIn" onChange={onChange}  /><span className="smlText">Click here to receive marketing emails from Triperoo</span>
+            </label>
+            <p className="smlText">By clicking "Create My Account," you are agreeing to the Terms of Service and the Privacy Policy..</p>
           </div>
-          <p className="smlText">By clicking "Create My Account," you are agreeing to the Terms of Service and the Privacy Policy..</p>
+
         </div>
         <div className="col-md-12 text-center">
           <input className="btn btn-primary" type="submit" value="Create My Account" Disabled={isSigningUp}/>

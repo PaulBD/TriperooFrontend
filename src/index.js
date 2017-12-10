@@ -9,8 +9,14 @@ import cookie from 'react-cookie';
 const uuidV4 = require('uuid/v4');
 import ReactGA from 'react-ga';
 ReactGA.initialize('UA-61218289-1');
+import { initialize, addTranslationForLanguage } from 'react-localize-redux';
+const languages = ['en', 'fr', 'es'];
 
 const store = configureStore();
+store.dispatch(initialize(languages));
+
+const json = require('./translations/en.json');
+store.dispatch(addTranslationForLanguage(json, 'en'));
 
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store);

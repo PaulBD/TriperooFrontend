@@ -7,6 +7,7 @@ import Search from '../../components/forms/searchForms/homePage';
 import Destinations from '../../components/content/dynamic/destinations';
 import ReviewList from '../../components/layout/cards/reviews/homePageReviewList';
 import FacebookSignup from '../../components/forms/authentication/facebookSignup';
+import { getTranslate } from 'react-localize-redux';
 
 
 class HomePage extends React.Component {

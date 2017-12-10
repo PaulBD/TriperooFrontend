@@ -31,21 +31,24 @@ const SupportPage = () => {
               <p>For any customer support questions related to your booking, these
               are handled direclty by Expedia.com, Kiwi.com or HolidayExtras.  </p>
               <h5>Expedia.com Customer Service</h5>
-              <p>For questions related to your Expedia.com booking, please see your confirmation email. You
+              <p>For questions related to your Expedia.com hotel booking, please see your confirmation email. You
               can use the self-service tool provided in the email through the link “Manage your booking online” to
               cancel your booking. To make changes to your booking, please use the customer service
               number below. Lines are open 24 hours, 7 days a week.</p>
-              <p>+44 20 3024 8211</p>
-              <p><a href="http://www.expedia.com" target="_blank">www.expedia.com</a></p>
+              <p><strong>Tel:</strong> +44 20 3024 8211</p>
+              <p><a href="http://www.expedia.com" target="_blank">http://www.expedia.com</a><br />
+                Click <a href="http://developer.ean.com/terms/en/" target="_blank">here</a> to read Expedia's terms & conditions</p>
               <h5>Kiwi.com </h5>
               <p>For any customer support questions related to a flight booking, these will be handled directly with the company
               you booked your flight with.</p>
-              <p>+44 20 3808 5910</p>
-              <p><a href="http://www.kiwi.com" target="_blank">www.kiwi.com</a></p>
+              <p><strong>Tel:</strong> +44 20 3808 5910</p>
+              <p><a href="http://www.kiwi.com" target="_blank">www.kiwi.com</a><br />
+                Click <a href="https://www.kiwi.com/en/pages/content/legal" target="_blank">here</a> to read Kiwi's terms & conditions</p>
               <h5>HolidayExtras.com </h5>
               <p>For any customer support questions related to a airport transfers, airport lounge or airport hotels, please use the customer service number below.</p>
-              <p>0871 360 1051</p>
-              <p><a href="http://www.holidayextras.com" target="_blank">www.holidayextras.com</a></p>
+              <p><strong>Tel:</strong> 0871 360 1051</p>
+              <p><a href="http://www.holidayextras.com" target="_blank">www.holidayextras.com</a><br />
+                Click <a href="http://www.holidayextras.co.uk/about-us/terms-and-conditions.html" target="_blank">here</a> to read holiday extra's terms & conditions</p>
             </div>
             <div className="col-md-5">
               <Destinations locationCount={6} cssClass="col-md-6"  />
