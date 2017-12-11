@@ -22,9 +22,9 @@ class PointOfInterestContent extends React.Component {
     this.filterPointOfInterests = this.filterPointOfInterests.bind(this);
     this.state = {
       searchValue: ''
-      , isLoadingCategoryList: false
+      , isLoadingCategoryList: true
       , isLoadingLocation: true
-      , isLoadingPointOfInterestList: false
+      , isLoadingPointOfInterestList: true
       , pointOfInterestType: ''
       , pointOfInterestFriendlyName: ''
       , pointOfInterestSearch: ''
@@ -76,37 +76,76 @@ class PointOfInterestContent extends React.Component {
 
     document.title = title;
 
-    if (! this.state.isLoadingLocation)
+    if (! this.state.isLoadingLocation && !this.props.isLoadingPointOfInterestList)
     {
-      return (
-        <div>
-          <SubPageHeader location={this.props.location} contentType="pointOfInterest" title={title} />
-          <div className="gap gap-small"></div>
-          <div className="container">
-            <div className="row row-wrap">
-              <div className="container">
-                <div className="row">
-                  <div className="col-md-3 sideBar">
-                    <MapSideBar latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0} longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0} text={title} zoom={13} markerArray={this.props.mapPointOfInterests} isLoading={this.state.isLoadingCategoryList} locationType={this.props.location.subClass} />
-                    <FilterPointOfInterest searchName="" locationId={this.props.locationId} pageSize={this.state.pageSize} pageNumber={this.state.pageNumber} categories={this.props.pointOfInterestsCategories} filterPointOfInterests={this.filterPointOfInterests} isFetching={this.state.isLoadingCategoryList}/>
+      if (this.props.pointOfInterests.length > 0)
+      {
+        return (
+          <div>
+            <SubPageHeader location={this.props.location} contentType="pointOfInterest" title={title} />
+            <div className="gap gap-small"></div>
+            <div className="container">
+              <div className="row row-wrap">
+                <div className="container">
+                  <div className="row">
+                    <div className="col-md-3 sideBar">
+                      <MapSideBar latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0} longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0} text={title} zoom={13} markerArray={this.props.mapPointOfInterests} isLoading={this.state.isLoadingCategoryList} locationType={this.props.location.subClass} />
+                      <FilterPointOfInterest searchName="" locationId={this.props.locationId} pageSize={this.state.pageSize} pageNumber={this.state.pageNumber} categories={this.props.pointOfInterestsCategories} filterPointOfInterests={this.filterPointOfInterests} isFetching={this.state.isLoadingCategoryList}/>
+                    </div>
+                    <div className="col-md-9 restaurantList">
+                      <PointsOfInterest useMinHeight={false} location={this.props.location} locationId={this.props.locationId} locations={this.props.pointOfInterests} locationCount={this.props.pointOfInterestsCount} changePage={this.changePage} isFetching={this.props.isFetching}/>
+                    </div>
                   </div>
-                  <div className="col-md-9 restaurantList">
-                    <PointsOfInterest useMinHeight={false} location={this.props.location} locationId={this.props.locationId} locations={this.props.pointOfInterests} locationCount={this.props.pointOfInterestsCount} changePage={this.changePage} isFetching={this.props.isFetching}/>
-                  </div>
+                  <div className="gap gap-small"></div>
                 </div>
-                <div className="gap gap-small"></div>
               </div>
             </div>
-          </div>
-          <div className="container">
-            <div className="gap gap-mini"></div>
-            <FacebookSignup showLines={true} />
-            <TrustedPartners />
-            <div className="gap gap-mini"></div>
-          </div>
+            <div className="container">
+              <div className="gap gap-mini"></div>
+              <FacebookSignup showLines={true} />
+              <TrustedPartners />
+              <div className="gap gap-mini"></div>
+            </div>
 
-        </div>
-      );
+          </div>
+        );
+      }
+      else {
+
+        let editUrl = this.props.location.url + '/add';
+
+        return (
+          <div>
+            <SubPageHeader location={this.props.location} contentType="restaurants" title={title}/>
+            <div className="gap gap-small"></div>
+            <div className="container">
+              <div className="row row-wrap">
+                <div className="container">
+                  <div className="row">
+                    <div className="col-md-12">
+                      <h4>We Need Your Help!!</h4>
+                      <p>We want to supply the best local content for {titleCase(this.props.location.regionName)} so we
+                        need you
+                        to submit the best attractions, hotels and restaurants to Triperoo!</p>
+                      <p>Simply, click the button below and add your favourite location so we can review and add to our
+                        growing
+                        database. Our mission is provide the best guide
+                        to {titleCase(this.props.location.regionName)}.</p>
+                      <p><a href={editUrl} className="btn btn-primary" title="Suggest Location">Suggest Location</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="container">
+              <div className="gap gap-mini"></div>
+              <FacebookSignup showLines={true}/>
+              <TrustedPartners />
+              <div className="gap gap-mini"></div>
+            </div>
+          </div>
+        );
+      }
     }
     else {
       return (<TriperooLoader />);

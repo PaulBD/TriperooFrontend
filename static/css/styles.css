@@ -9226,7 +9226,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   margin-right: 15px;
   min-height: 32px;
 }
-.owl-cap-weather span:after {
+.owl-cap-weather span.icon:after {
   content: '';
   height: 7px;
   width: 7px;

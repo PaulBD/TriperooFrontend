@@ -106,7 +106,7 @@ class Overview extends React.Component {
             <div className="col-md-12">
               <h4>We Need Your Help!!</h4>
               <p>We want to supply the best local content for {titleCase(this.props.location.regionName)} so we need you
-                to submit the best attractions, pubs and restaurants to Triperoo!</p>
+                to submit the best attractions, hotels and restaurants to Triperoo!</p>
               <p>Simply, click the button below and add your favourite location so we can review and add to our growing
                 database. Our mission is provide the best guide to {titleCase(this.props.location.regionName)}.</p>
               <p><a href={editUrl} className="btn btn-primary" title="Suggest Location">Suggest Location</a></p>

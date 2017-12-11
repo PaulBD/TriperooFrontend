@@ -16,12 +16,14 @@ class Summary extends React.Component {
 	{
 		if ((this.props.weather != undefined) && (this.props.weather.currently != undefined))
 		{
+		  console.log(this.props.weather.currently);
 			let imageUrl = "/static/img/weather-icons/" + this.props.weather.currently.icon + ".png";
 
 			return (
 				<div className="owl-cap-weather">
-					<span>{this.props.weather.currently.temperature}</span>
-					<img src={imageUrl} width="32" height="32" className="weatherIcon" />
+          <img src={imageUrl} width="32" height="32" className="weatherIcon" />&nbsp;
+					<span className="icon">{Math.round(this.props.weather.currently.temperature)}</span>
+          <span>{this.props.weather.currently.summary}</span>
 				</div>
 			);
 		}
