@@ -212,7 +212,6 @@ export function postActivityFailure(message) {
 }
 
 export function postActivity(tripId, activity) {
-  console.log(activity);
   return dispatch => {
     dispatch(postActivityInitialize(tripId, activity));
     if (activity.regionID > 0)

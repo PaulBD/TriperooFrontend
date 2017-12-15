@@ -150,8 +150,6 @@ class Search extends React.Component {
   }
 
   onChangeFromAirport(city, cityId, cityUrl, dataType, dataImage, airportCode) {
-
-    console.log(airportCode);
     this.setState({fromCode: airportCode, fromFriendly: city});
   }
 

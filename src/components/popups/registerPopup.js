@@ -44,8 +44,6 @@ class Register extends React.Component {
 
     this.props.actions.getFacebookUser({accessToken: this.state.creds.accessToken, emailAddress: this.state.creds.emailAddress, facebookId: this.state.creds.facebookId, name: this.state.creds.name, imageUrl: this.state.creds.imageUrl, cityId: this.state.creds.cityId, city: this.state.creds.city})
       .then(() => {
-        console.log(this.props.user);
-
         if (this.props.user != undefined)
         {
           if (this.props.user.triperooCustomers != undefined)
@@ -126,14 +124,14 @@ class Register extends React.Component {
   }
 
   changeField(event) {
-    event.preventDefault();
+    //event.preventDefault();
     const field = event.target.name;
     let creds = this.state.creds;
-    creds[field] = event.target.value;
+
 
     if (field == 'optIn')
     {
-      if (event.target.value == 'on')
+      if (this.state.creds.optIn == 0)
       {
         creds[field] = 1;
       }
@@ -141,8 +139,9 @@ class Register extends React.Component {
         creds[field] = 0;
       }
     }
-    console.log(event.target.value);
-    console.log(creds[field]);
+    else {
+      creds[field] = event.target.value;
+    }
 
     this.setState({creds: creds});
   }

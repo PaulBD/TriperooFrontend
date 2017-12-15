@@ -5,8 +5,6 @@ require("moment-duration-format");
 const Flight = ({routeList, nights, timeToDestination, fromLocation, fromCode, toLocation, toCode}) => {
 
   if (routeList != null && routeList != undefined) {
-    console.log(routeList);
-
     let airlines = routeList.map((route, index) => {
       return route.airlineName;
     });

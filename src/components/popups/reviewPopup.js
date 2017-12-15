@@ -23,10 +23,7 @@ class ReviewPopup extends React.Component {
   }
 
   componentWillMount() {
-
     let isCity = false;
-
-    console.log(this.props.locationType);
 
     if (this.props.locationType == 'City')
     {

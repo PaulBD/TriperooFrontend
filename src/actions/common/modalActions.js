@@ -258,8 +258,6 @@ export function closeMapSideBarModal() {
 }
 
 export function openMapSideBar(longitude, latitude, text, zoom, markerArray, locationType) {
-  console.log(longitude);
-  console.log(latitude);
   return dispatch => {
     dispatch(openMapSideBarModal(longitude, latitude, text, zoom, markerArray, locationType));
   };

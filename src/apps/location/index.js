@@ -82,7 +82,6 @@ class LocationHome extends React.Component {
 
   render(){
     if (!this.state.isLoadingLocation) {
-      console.log(this.state.location);
 
       document.title = 'Explore, Plan, Book in ' + titleCase(this.state.location.regionName);
 

@@ -67,7 +67,6 @@ class CustomerTrips extends React.Component {
     }
 
     if ((!this.state.loading) && (!this.state.isLoadingTrips)) {
-      console.log(this.props.tripList);
       let profileUrl = this.props.user && this.props.user.profile ? this.props.user.profile.profileUrl : '';
       return (
         <div>

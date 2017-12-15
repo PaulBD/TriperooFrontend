@@ -5,8 +5,6 @@ let moment = require('moment');
 const TripDetail = ({tripId, day, openMap, removeActivity}) => {
 
   let activityList = '';
-  console.log(day.activitiesCount);
-  console.log(day.activities.length);
   if ((day.activitiesCount > 0 || day.restaurantCount > 0) && day.activities.length > 0)
   {
     activityList = day.activities.map((day, index)=> {

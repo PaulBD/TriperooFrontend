@@ -98,7 +98,6 @@ class LocationDetail extends React.Component {
       }
 
       let editUrl = this.props.location.url + '/edit';
-console.log(this.props.location.regionType);
 
       return (
         <div>

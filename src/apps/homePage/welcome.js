@@ -31,8 +31,6 @@ class WelcomePage extends React.Component {
   }
 
   componentWillMount() {
-    console.log(this.props.currentUserId);
-
     if (this.props.currentUserId != undefined) {
       this.loadUser();
     }
@@ -42,8 +40,6 @@ class WelcomePage extends React.Component {
   }
 
   loadUser() {
-    console.log(this.props.currentUserId);
-
     if (this.props.currentUserId != '') {
       this.setState({isLoading: true, isLoadingLocation: true});
       this.props.userActions.getUser(this.props.currentUserId)

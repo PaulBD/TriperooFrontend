@@ -71,7 +71,7 @@ class FilterCategoryPopup extends React.Component {
                 );
               }, this)
             }
-            <li className={this.state.showAll ? "hide" : "text-xs-right text-lg-right"}>
+            <li className={this.props.categories.length > 6 ? "hide" : this.state.showAll ? "hide" : "text-xs-right text-lg-right"}>
               <a href="#" onClick={this.showMore}>More <i className="fa fa-arrow-down"></i></a>
             </li>
           </ul>

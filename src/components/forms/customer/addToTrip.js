@@ -155,7 +155,7 @@ class BookmarkLocation extends React.Component {
         trip.tripDetails[field] = event.target.value;
         break;
       case 'tags':
-        this.addTags(trip);
+        this.addTags(trip, event);
         break;
       default:
         trip[field] = event.target.value;
@@ -165,7 +165,7 @@ class BookmarkLocation extends React.Component {
     this.setState({trip: trip});
   }
 
-  addTags(trip) {
+  addTags(trip, event) {
     let selectedTags = this.state.trip.tripDetails.tags;
     let isAlreadyInList = false;
     for (let i = 0; i < selectedTags.length; i++) {

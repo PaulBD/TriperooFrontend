@@ -185,8 +185,6 @@ class LocationContent extends React.Component {
     document.title = 'Loading Hotels...';
     if (!this.state.isLoadingLocation) {
 
-      console.log(this.props.mapHotels);
-
       let queryString = '?arrivalDate=' + this.state.arrivalDate + '&nights=' + this.state.nights + '&rooms=' + this.state.rooms1 + '&guests=' + this.state.guests;
 
       let title = 'Hotels in ' + titleCase(this.props.location.regionName);
@@ -279,8 +277,6 @@ LocationContent.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-
-  console.log(state.hotels);
 
   return {
     isFetching: state.location.isFetching ? state.location.isFetching : false,

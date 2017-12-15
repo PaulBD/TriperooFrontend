@@ -17,8 +17,6 @@ class TopPointOfInterest extends React.Component {
   }
 
   loadPointOfInterests(locationId, pointOfInterestType, pointOfInterestName, pageSize, pageNumber) {
-
-    console.log(locationId);
     this.setState({isLoadingPointOfInterestList: true});
 
     this.props.pointOfInterestActions.loadPointOfInterestsByParentLocationId(locationId, pointOfInterestType, pointOfInterestName, pageSize, pageNumber)
@@ -32,8 +30,6 @@ class TopPointOfInterest extends React.Component {
   render(){
     if (!this.state.isLoadingPointOfInterestList)
     {
-      console.log(this.props.pointOfInterests);
-
       return (
         <div className="col-md-12">
           {this.props.title ? <h4 className="locationTitle">{this.props.title} <small className="float-sm-right"><a href={this.props.url} >See all</a></small></h4> : ''}

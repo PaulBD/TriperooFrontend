@@ -2,8 +2,6 @@ import React, {PropTypes} from 'react';
 import AutoComplete from '../common/autocomplete';
 
 const SignupForm = ({name, emailAddress, password, optIn, cityId, city, isSigningUp, onSubmit, onChange, onChangeAutoComplete, errors}) => {
-  console.log(optIn);
-
   return (
     <div className="col-md-12">
       <div className={errors && errors.length > 0 ? 'col-md-12' : 'col-md-12 hide'}>
@@ -28,7 +26,7 @@ const SignupForm = ({name, emailAddress, password, optIn, cityId, city, isSignin
 
           <div className="form-group form-group-lg form-check form-check-inline">
             <label className="form-check-label">
-              <input className="form-check-input" type="checkbox" checked={optIn} name="optIn" onChange={onChange}  /><span className="smlText">Click here to receive marketing emails from Triperoo</span>
+              <input className="form-check-input" type="checkbox"  name="optIn" onChange={onChange} checked={optIn == 1 ? true : false} value={optIn == 1 ? true : false}/><span className="smlText">Click here to receive marketing emails from Triperoo</span>
             </label>
             <p className="smlText">By clicking "Create My Account," you are agreeing to the Terms of Service and the Privacy Policy..</p>
           </div>

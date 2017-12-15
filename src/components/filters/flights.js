@@ -108,8 +108,6 @@ class FlightFilter extends React.Component {
       selectedAirlines.push(newAirline);
     }
 
-    console.log(selectedAirlines);
-
     this.setState({selectedAirlines: selectedAirlines});
     this.props.filterFlights(this.state.sort, this.state.isDirectFlights, selectedAirlines);
   }

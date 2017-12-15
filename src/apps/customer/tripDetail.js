@@ -38,7 +38,6 @@ class CustomerTrips extends React.Component {
 
   updateNav(e) {
     e.preventDefault();
-    console.log(e.target.getAttribute('data-id'));
     this.setState({nav: e.target.getAttribute('data-id')});
   }
 

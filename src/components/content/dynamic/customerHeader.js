@@ -19,8 +19,6 @@ class CustomerHeader extends React.Component {
         }
       }
 
-      console.log(this.props.userDetails);
-
       return (
         <div className="bg-holder full text-center text-white holidayPage">
           <div className="bg-mask"></div>

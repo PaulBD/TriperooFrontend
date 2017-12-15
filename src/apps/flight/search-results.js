@@ -72,7 +72,6 @@ class SearchResults extends React.Component {
     let flightContent = '';
 
     if (!this.state.isLoadingResults) {
-      console.log(this.props.flights);
 
       if (this.props.flights != null) {
         if (this.props.flights.data.length > 0) {

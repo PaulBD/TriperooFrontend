@@ -53,7 +53,6 @@ class RoomList extends React.Component {
   cancellationPolicyClick(e) {
     e.preventDefault();
     let policy = e.currentTarget.getAttribute('data-policy');
-    console.log(e.currentTarget.getAttribute('data-policy'));
     this.props.modalActions.openCancellationPolicy(policy);
   }
 

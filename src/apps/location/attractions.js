@@ -75,80 +75,89 @@ class AttractionContent extends React.Component {
     let title = 'Attractions in ' + titleCase(this.props.location.regionName);
 
     document.title = title;
-    if (! this.state.isLoadingLocation && !this.state.isLoadingAttractionList) {
-      if (this.props.attractionsCount > 0) {
-        return (
-          <div>
-            <SubPageHeader location={this.props.location} contentType="attractions" title={title}/>
-            <div className="gap gap-small"></div>
-            <div className="container">
-              <div className="row row-wrap">
-                <div className="container">
-                  <div className="row">
-                    <div className="col-md-3 sideBar">
-                      <FilterAttractions categories={this.props.attractionsCategories} searchName=""
-                                         locationId={this.props.locationId} pageSize={this.state.pageSize}
-                                         pageNumber={this.state.pageNumber} filterAttractions={this.filterAttractions}
-                                         isFetching={this.state.isLoadingCategoryList}/>
+    if (! this.state.isLoadingLocation) {
+      if (!this.state.isLoadingCategoryList) {
 
-                    </div>
-                    <div className="col-md-9 restaurantList">
-                      <Attractions useMinHeight={false} locationId={this.props.locationId}
-                                   location={this.props.location} locations={this.props.attractions}
-                                   locationCount={this.props.attractionsCount} changePage={this.changePage}
-                                   isFetching={this.props.isFetching}/>
+        if (this.props.attractionsCount > 0) {
+          return (
+            <div>
+              <SubPageHeader location={this.props.location} contentType="attractions" title={title}/>
+              <div className="gap gap-small"></div>
+              <div className="container">
+                <div className="row row-wrap">
+                  <div className="container">
+                    <div className="row">
+                      <div className="col-md-3 sideBar">
+                        <FilterAttractions categories={this.props.attractionsCategories} searchName=""
+                                           locationId={this.props.locationId} pageSize={this.state.pageSize}
+                                           pageNumber={this.state.pageNumber} filterAttractions={this.filterAttractions}
+                                           isFetching={this.state.isLoadingCategoryList}/>
 
+                      </div>
+                      <div className="col-md-9 restaurantList">
+                        <Attractions useMinHeight={false} locationId={this.props.locationId}
+                                     location={this.props.location} locations={this.props.attractions}
+                                     locationCount={this.props.attractionsCount} changePage={this.changePage}
+                                     isFetching={this.props.isFetching}/>
+
+                      </div>
                     </div>
+                    <div className="gap gap-small"></div>
                   </div>
-                  <div className="gap gap-small"></div>
                 </div>
               </div>
+              <div className="container">
+                <div className="gap gap-mini"></div>
+                <FacebookSignup showLines={true}/>
+                <TrustedPartners />
+                <div className="gap gap-mini"></div>
+              </div>
             </div>
-            <div className="container">
-              <div className="gap gap-mini"></div>
-              <FacebookSignup showLines={true}/>
-              <TrustedPartners />
-              <div className="gap gap-mini"></div>
-            </div>
-          </div>
-        );
+          );
 
+        }
+        else {
+
+          let editUrl = this.props.location.url + '/add';
+
+          return (
+            <div>
+              <SubPageHeader location={this.props.location} contentType="attractions" title={title}/>
+              <div className="gap gap-small"></div>
+              <div className="container">
+                <div className="row row-wrap">
+                  <div className="container">
+                    <div className="row">
+                      <div className="col-md-12">
+                        <h4>We Need Your Help!!</h4>
+                        <p>We want to supply the best local content for {titleCase(this.props.location.regionName)} so
+                          we
+                          need you
+                          to submit the best attractions, hotels and restaurants to Triperoo!</p>
+                        <p>Simply, click the button below and add your favourite location so we can review and add to
+                          our
+                          growing
+                          database. Our mission is provide the best guide
+                          to {titleCase(this.props.location.regionName)}.</p>
+                        <p><a href={editUrl} className="btn btn-primary" title="Suggest Location">Suggest Location</a>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="container">
+                <div className="gap gap-mini"></div>
+                <FacebookSignup showLines={true}/>
+                <TrustedPartners />
+                <div className="gap gap-mini"></div>
+              </div>
+            </div>
+          );
+        }
       }
       else {
-
-        let editUrl = this.props.location.url + '/add';
-
-        return (
-          <div>
-            <SubPageHeader location={this.props.location} contentType="restaurants" title={title}/>
-            <div className="gap gap-small"></div>
-            <div className="container">
-              <div className="row row-wrap">
-                <div className="container">
-                  <div className="row">
-                    <div className="col-md-12">
-                      <h4>We Need Your Help!!</h4>
-                      <p>We want to supply the best local content for {titleCase(this.props.location.regionName)} so we
-                        need you
-                        to submit the best attractions, hotels and restaurants to Triperoo!</p>
-                      <p>Simply, click the button below and add your favourite location so we can review and add to our
-                        growing
-                        database. Our mission is provide the best guide
-                        to {titleCase(this.props.location.regionName)}.</p>
-                      <p><a href={editUrl} className="btn btn-primary" title="Suggest Location">Suggest Location</a></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="container">
-              <div className="gap gap-mini"></div>
-              <FacebookSignup showLines={true}/>
-              <TrustedPartners />
-              <div className="gap gap-mini"></div>
-            </div>
-          </div>
-        );
+        return (<TriperooLoader />);
       }
     }
     else {
