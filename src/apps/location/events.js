@@ -64,10 +64,11 @@ class EventHome extends React.Component {
     if (! this.state.isLoadingLocation)
     {
       let totalItems = this.props.totalItems;
+      let title = 'Events in ' + titleCase(this.props.location.regionName);
 
       return (
         <div>
-          <SubPageHeader location={this.props.location} contentType="events" title="events" />
+          <SubPageHeader location={this.props.location} contentType="events" title={title} />
           <div className="gap gap-small"></div>
           <div className="container">
             <div className="row row-wrap">

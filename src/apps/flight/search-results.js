@@ -74,18 +74,26 @@ class SearchResults extends React.Component {
     if (!this.state.isLoadingResults) {
 
       if (this.props.flights != null) {
-        if (this.props.flights.data.length > 0) {
-          flightContent = (
-            <div className="col-md-9 flightResults">
-              {
-                this.props.flights.data.map((quote, index) => {
-                  return (
-                    <FlightCard quote={quote} currency={this.state.currency} journeyType={this.state.journeyType}
-                                position={index} key={index}/>
-                  );
-                })
-              }
-            </div>);
+        if (this.props.flights.data != null) {
+          if (this.props.flights.data.length > 0) {
+            flightContent = (
+              <div className="col-md-9 flightResults">
+                {
+                  this.props.flights.data.map((quote, index) => {
+                    return (
+                      <FlightCard quote={quote} currency={this.state.currency} journeyType={this.state.journeyType}
+                                  position={index} key={index}/>
+                    );
+                  })
+                }
+              </div>);
+          }
+          else {
+            flightContent = (
+              <div className="col-md-9 flightResults">
+                <p>There are no results. Please change your filter criteria.</p>
+              </div>);
+          }
         }
         else {
           flightContent = (
@@ -201,7 +209,8 @@ class SearchResults extends React.Component {
 
 SearchResults.defaultProps = {
   isFetching: false,
-  flights: {}
+  flights: {},
+  journeyType: 'round'
 };
 
 SearchResults.propTypes = {

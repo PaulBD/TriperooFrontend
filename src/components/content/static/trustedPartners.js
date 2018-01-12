@@ -9,7 +9,8 @@ const TrustedPartners = () => {
         <img src="/static/img/kiwi.png" className="partners"/>
         <img src="/static/img/holidayextras.png" className="partners"/>
         <img src="/static/img/wikipedia.png" className="partners"/>
-        <img src="/static/img/bookatable.png" className="partners"/>
+        <img src="/static/img/Bookatable.png" className="partners"/>
+        <img src="/static/img/viator.png" className="partners"/>
       </div>
       <div className="col-md-6 text-sm-right hidden-md-down">
         <h5 className="trustedPartner">Partner's Payment Providers</h5>
@@ -26,7 +27,8 @@ const TrustedPartners = () => {
         <img src="/static/img/skyscanner.png" className="partners"/>
         <img src="/static/img/holidayextras.png" className="partners"/>
         <img src="/static/img/wikipedia.png" className="partners"/>
-        <img src="/static/img/bookatable.png" className="partners"/>
+        <img src="/static/img/Bookatable.png" className="partners"/>
+        <img src="/static/img/viator.png" className="partners"/>
       </div>
       <div className="col-md-6 text-sm-center hidden-md-up">
         <div className="gap"></div>

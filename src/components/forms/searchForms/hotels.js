@@ -72,7 +72,7 @@ class SearchForm extends React.Component {
   render(){
     let searchValue = this.props.searchValue !== undefined && this.props.searchValue != '' ? titleCase(this.props.searchValue) : this.props.city;
     return (
-      <form className="hotelSearch" onSubmit={this.submitForm}>
+      <form className="hotelSearch mb-3" onSubmit={this.submitForm}>
         <div className="row">
           <div className={this.props.isSideBar ? "col-md-12" : "col-md-5"}>
             <div className="input-daterange" data-date-format="MM d, D">

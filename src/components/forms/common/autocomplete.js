@@ -39,14 +39,15 @@ class AutoComplete extends React.Component {
 
     this.setState({ searchValue: event.target.value });
 
-    if (event.target.value.length > 2) {
-      this.setState({ isLoading: true });
-      this.props.locationsActions.searchLocations(event.target.value, this.props.searchType);
-      this.setState({ selected: false, cssStyle: 'block', isOpen: true, isLoading: false });
-    }
-    else {
-      this.setState({ selected: false, cssStyle: 'none', isOpen: false, isLoading: false });
-    }
+      if (event.target.value.length > 2) {
+        this.setState({isLoading: true});
+        this.props.locationsActions.searchLocations(event.target.value, this.props.searchType);
+        this.setState({selected: false, cssStyle: 'block', isOpen: true, isLoading: false});
+      }
+      else {
+        this.props.locationsActions.clearLocations();
+        this.setState({selected: false, cssStyle: 'none', isOpen: false, isLoading: false});
+      }
   }
 
   render() {

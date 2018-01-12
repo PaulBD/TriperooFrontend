@@ -9,7 +9,7 @@ class AirportLoungeApi {
     return new Promise((resolve, reject) => {
       axios({
         method: 'get',
-        url:  baseUrl + '/airport/' + airportName + '/lounges?arrivalDate=' + arrivalDate + '&arrivalTime=' + arrivalTime  + '&flightTime=' + flightTime + '&adultCount=' + adultCount + '&childCount=' + childCount + '&infantCount=' + infantCount+ '&language=' + language
+        url:  baseUrl + '/airport/lounges/' + airportName + '?arrivalDate=' + arrivalDate + '&arrivalTime=' + arrivalTime  + '&flightTime=' + flightTime + '&adultCount=' + adultCount + '&childCount=' + childCount + '&infantCount=' + infantCount+ '&language=' + language
       })
       .then(response => {
         resolve(Object.assign({}, response.data));

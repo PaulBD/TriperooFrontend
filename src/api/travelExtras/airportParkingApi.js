@@ -9,7 +9,7 @@ class AirportParkingApi {
     return new Promise((resolve, reject) => {
       axios({
         method: 'get',
-        url:  baseUrl + '/airport/' + airportName + '/parking?dropoffDate=' + dropoffDate + '&dropoffTime=' + dropoffTime + '&pickupDate=' + pickupDate + '&pickupTime=' + pickupTime + '&language=' + language
+        url:  baseUrl + '/airport/parking/' + airportName + '?dropoffDate=' + dropoffDate + '&dropoffTime=' + dropoffTime + '&pickupDate=' + pickupDate + '&pickupTime=' + pickupTime + '&language=' + language
       })
       .then(response => {
         resolve(Object.assign({}, response.data));

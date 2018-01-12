@@ -53,8 +53,6 @@ class LocationOverview extends React.Component {
                         className="fa fa-ticket user-profile-statictics-icon"/> Attractions</a></li>
                       <li className="location"><a href={restaurantUrl}><i
                         className="fa fa-cutlery user-profile-statictics-icon"/> Restaurants</a></li>
-                      <li className="location"><a href={nightlifeUrl}><i
-                        className="fa fa-glass user-profile-statictics-icon"/> Nightlife</a></li>
                       <li className="location"><a href={eventUrl}><i
                         className="fa fa-calendar-o user-profile-statictics-icon"/> Events</a></li>
                       <li className="location"><a href={reviewUrl}><i

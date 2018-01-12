@@ -63,7 +63,7 @@ class UserReviews extends React.Component {
           <div className="gap gap-small"></div>
           <div className="row customerPhotos">
             <div className="col-md-12">
-              <div className="row customerPhotos">
+              <div className={this.props.reviews.length == 0 ? "row customerPhotos" : "hide"}>
                 <div className="col-md-4">
                   <div className="card text-center createPhoto">
                     <div className="card-block">
@@ -107,7 +107,7 @@ function mapStateToProps(state, ownProps) {
   return {
     isAuthenticated: state.authentication.isAuthenticated,
     currentUserId: ownProps.params.guid,
-    isActiveUser: user ? ownProps.params.guid == user.userId : false,
+    isActiveUser: user ? ownProps.params.guid.trim() == user.userId.trim() : false,
     user: state.user.user ? state.user.user : null,
     reviews: state.review.reviews ? state.review.reviews : [],
     reviewCount: state.review.reviewCount ? state.review.reviewCount : 0

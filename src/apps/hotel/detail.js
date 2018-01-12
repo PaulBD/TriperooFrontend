@@ -32,6 +32,7 @@ class HotelDetail extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.showImage = this.showImage.bind(this);
+    this.showTab = this.showTab.bind(this);
 
     let arrivalDate = this.props.arrivalDate == undefined ? moment().add(7, 'days').format('YYYY-MM-DD') : this.props.arrivalDate;
     this.state = {
@@ -41,6 +42,9 @@ class HotelDetail extends React.Component {
       , nights: this.props.nights
       , rooms: this.props.rooms
       , guests: this.props.guests
+      , showRooms: true
+      , showAbout: false
+      , showUseful: false
     };
   }
 
@@ -76,6 +80,26 @@ class HotelDetail extends React.Component {
       });
   }
 
+  showTab(e) {
+    e.preventDefault();
+
+    let tab = e.target.getAttribute("data-tab");
+
+    switch(tab) {
+      case 'room':
+        this.setState({ showRooms: true, showAbout: false, showUseful: false });
+        break;
+      case 'about':
+        this.setState({ showRooms: false, showAbout: true, showUseful: false });
+        break;
+      case 'useful':
+        this.setState({ showRooms: false, showAbout: false, showUseful: true });
+        break;
+    }
+
+
+  }
+
   showImage(position) {
     this.props.modalActions.openHotelImage(this.props.hotel.hotelInformationResponse.hotelImages.hotelImage, position, titleCase(this.props.hotel.hotelInformationResponse.hotelSummary.name));
   }
@@ -104,7 +128,8 @@ class HotelDetail extends React.Component {
           <div>
             <HotelHeader location={this.props.location}
                          hotelName={this.props.hotel.hotelInformationResponse.hotelSummary.name}
-                         hotelImage={this.props.hotel.hotelInformationResponse.hotelImages.hotelImage[0].highResolutionUrl}/>
+                         hotelImage={this.props.hotel.hotelInformationResponse.hotelImages.hotelImage[0].highResolutionUrl}
+                         contentType="hotels"/>
             <HotelSubNav />
             <div className="gap gap-small"></div>
             <div className="container">
@@ -142,22 +167,103 @@ class HotelDetail extends React.Component {
                 <div className="gap gap-small"></div>
 
               </div>
-              <div className="gap gap-small"></div>
             </div>
-            <RoomList regionName={this.props.hotel.hotelInformationResponse.hotelSummary.name}
-                      regionNameImage={this.props.hotel.hotelInformationResponse.hotelImages.hotelImage[0].highResolutionUrl}
-                      regionUrl={this.props.searchUrl} parentLocationId={this.props.location.regionID}
-                      parentLocationName={this.props.location.regionName}
-                      parentLocationImage={this.props.location.image} parentLocationUrl={this.props.location.url}
-                      parentLocationNameLong={this.props.location.regionNameLong}
-                      longitude={this.props.hotel.hotelInformationResponse.hotelSummary.longitude}
-                      latitude={this.props.hotel.hotelInformationResponse.hotelSummary.latitude}
-                      searchUrl={this.props.searchUrl} guests={this.props.guests} arrivalDate={this.props.arrivalDate}
-                      nights={this.props.nights} rooms={this.props.rooms} locationId={this.props.locationId}
-                      hotelId={this.props.hotelId}
-                      regionNameLong={this.props.hotel.hotelInformationResponse.hotelSummary.name + ', ' + this.props.hotel.hotelInformationResponse.hotelSummary.city}
-                      hotelName={this.props.hotel.hotelInformationResponse.hotelSummary.name}/>
+            <div className="container">
+              <div className="row">
+                <div className="col-md-8">
+                  <ul className="nav nav-pills">
+                    <li className="nav-item text-center">
+                      <a className={this.state.showRooms ? "nav-link active" : "nav-link"} href="#" onClick={this.showTab} data-tab="room">Room Availability</a>
+                    </li>
+                    <li className="nav-item text-center">
+                      <a className={this.state.showAbout ? "nav-link active" : "nav-link"} href="#" onClick={this.showTab} data-tab="about">About the Hotel / Facilities</a>
+                    </li>
+                    <li className="nav-item text-center">
+                      <a className={this.state.showUseful ? "nav-link active" : "nav-link"} href="#"  onClick={this.showTab} data-tab="useful">Useful Information</a>
+                    </li>
+                  </ul>
+                </div>
+                <div className="col-md-4 hidden-sm-down">
+                  <span className="float-right text-right"><small>Supplied By</small><br />
+                    <img src="/static/img/Expedia_logo_lrge.png" className="affiliateLogo"/>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className={this.state.showAbout ? "about" : "hide"}>
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-12" id="about">
+                    <div className="gap gap-small"></div>
+                    <div className="row">
+                      <div className="col-md-7">
+                        <h4>About the Hotel</h4>
+                        <hr />
+                        <p
+                          dangerouslySetInnerHTML={{__html: this.props.hotel.hotelInformationResponse.hotelDetails.propertyDescription}}/>
+                      </div>
+                      <div className="col-md-5">
+                        <h4>Facilities</h4>
+                        <hr />
+                        <p>{this.props.hotel.hotelInformationResponse.hotelDetails.amenitiesDescription}</p>
+                        <ul className="facilities">
+                          {
+                            this.props.hotel.hotelInformationResponse.propertyAmenities.propertyAmenity.map(propertyAmenity => {
+                              return (
+                                <li key={propertyAmenity.amenityId}>{propertyAmenity.amenity}</li>
+                              );
+                            })
+                          }
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
+            <div className={this.state.showUseful ? "useful" : "hide"}>
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-12"  id="policies">
+                    <div className="gap gap-small"></div>
+                    <h4>Useful Information</h4>
+                    <hr />
+                    <p>
+                      {striptags(this.props.hotel.hotelInformationResponse.hotelDetails.checkInInstructions)}
+                    </p>
+                    <p>
+                      {this.props.hotel.hotelInformationResponse.hotelDetails.propertyInformation}
+                    </p>
+                    <h6>Important</h6>
+                    <p>
+                      {striptags(this.props.hotel.hotelInformationResponse.hotelDetails.knowBeforeYouGoDescription)}
+                    </p>
+                    <p
+                      dangerouslySetInnerHTML={{__html: this.props.hotel.hotelInformationResponse.hotelDetails.roomInformation}}/>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="gap gap-small"></div>
+
+            <div className={this.state.showRooms ? "rooms" : "hide"}>
+              <div className="container" id="rooms">
+                <RoomList regionName={this.props.hotel.hotelInformationResponse.hotelSummary.name}
+                          regionNameImage={this.props.hotel.hotelInformationResponse.hotelImages.hotelImage[0].highResolutionUrl}
+                          regionUrl={this.props.searchUrl} parentLocationId={this.props.location.regionID}
+                          parentLocationName={this.props.location.regionName}
+                          parentLocationImage={this.props.location.image} parentLocationUrl={this.props.location.url}
+                          parentLocationNameLong={this.props.location.regionNameLong}
+                          longitude={this.props.hotel.hotelInformationResponse.hotelSummary.longitude}
+                          latitude={this.props.hotel.hotelInformationResponse.hotelSummary.latitude}
+                          searchUrl={this.props.searchUrl} guests={this.props.guests} arrivalDate={this.props.arrivalDate}
+                          nights={this.props.nights} rooms={this.props.rooms} locationId={this.props.locationId}
+                          hotelId={this.props.hotelId}
+                          regionNameLong={this.props.hotel.hotelInformationResponse.hotelSummary.name + ', ' + this.props.hotel.hotelInformationResponse.hotelSummary.city}
+                          hotelName={this.props.hotel.hotelInformationResponse.hotelSummary.name}/>
+              </div>
+            </div>
 
             <div className="row row-nowrap greyBg events">
               <div className="container">
@@ -192,65 +298,21 @@ class HotelDetail extends React.Component {
                         longitude={this.props.hotel.hotelInformationResponse.hotelSummary.longitude}
                         text={this.props.hotel.hotelInformationResponse.hotelSummary.name} zoom={15}
                         isLoading={this.state.isLoadingHotel} markerArray={markerArray}/>
+
+            <div className="gap gap-small"></div>
+
             <div className="row">
               <div className="container">
-                <div className="row" id="about">
-                  <div className="gap gap-small"></div>
-                  <div className="col-md-7">
-                    <h4>About The Hotel</h4>
-                    <hr />
-                    <span
-                      dangerouslySetInnerHTML={{__html: this.props.hotel.hotelInformationResponse.hotelDetails.propertyDescription}}/>
-                  </div>
-                  <div className="col-md-5">
-                    <h4>Facilities</h4>
-                    <hr />
-                    <p>{this.props.hotel.hotelInformationResponse.hotelDetails.amenitiesDescription}</p>
-                    <ul className="facilities">
-                      {
-                        this.props.hotel.hotelInformationResponse.propertyAmenities.propertyAmenity.map(propertyAmenity => {
-                          return (
-                            <li key={propertyAmenity.amenityId}>{propertyAmenity.amenity}</li>
-                          );
-                        })
-                      }
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="gap gap-small"></div>
-            <div className="row hotelInfo" id="policies">
-              <div className="container">
-                <div className="row">
-                  <div className="col-md-12">
-                    <h5>Useful Information</h5>
-                    <hr />
-                    <p>
-                      <small>{striptags(this.props.hotel.hotelInformationResponse.hotelDetails.checkInInstructions)}</small>
-                    </p>
-                    <p>
-                      <small>{this.props.hotel.hotelInformationResponse.hotelDetails.propertyInformation}</small>
-                    </p>
-                    <h6>Important</h6>
-                    <p>
-                      <small>{striptags(this.props.hotel.hotelInformationResponse.hotelDetails.knowBeforeYouGoDescription)}</small>
-                    </p>
-                    <small
-                      dangerouslySetInnerHTML={{__html: this.props.hotel.hotelInformationResponse.hotelDetails.roomInformation}}/>
-                  </div>
-                  <div className="gap gap-small"></div>
-                  <div className="col-md-12">
-                    <h5>Other Hotels Close To {this.props.hotel.hotelInformationResponse.hotelSummary.name}</h5>
-                    <hr />
-                    <SimilarHotels exclude={this.props.hotelId} locationId={this.props.locationId}
-                                   locationName={this.props.location.regionName} currencyCode="GBP" locale="en_en"
-                                   arrivalDate={this.state.arrivalDate} nights={this.state.nights}
-                                   rooms1={this.state.guests} radius={10} pageSize={3}
-                                   latitude={this.props.hotel.hotelInformationResponse.hotelSummary.latitude}
-                                   longitude={this.props.hotel.hotelInformationResponse.hotelSummary.longitude}
-                                   url={this.props.location.url} queryString={queryString} sortBy="PROXIMITY"/>
-                  </div>
+                <div className="col-md-12">
+                  <h5>Other Hotels Close To {this.props.hotel.hotelInformationResponse.hotelSummary.name}</h5>
+                  <hr />
+                  <SimilarHotels exclude={this.props.hotelId} locationId={this.props.locationId}
+                                 locationName={this.props.location.regionName} currencyCode="GBP" locale="en_en"
+                                 arrivalDate={this.state.arrivalDate} nights={this.state.nights}
+                                 rooms1={this.state.guests} radius={10} pageSize={3}
+                                 latitude={this.props.hotel.hotelInformationResponse.hotelSummary.latitude}
+                                 longitude={this.props.hotel.hotelInformationResponse.hotelSummary.longitude}
+                                 url={this.props.location.url} queryString={queryString} sortBy="PROXIMITY"/>
                 </div>
               </div>
             </div>

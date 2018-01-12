@@ -14,70 +14,70 @@
 		"url": "/6053839/visit/dubai-united-arab-emirates",
 		"image": "/static/img/locations/dubai-united-arab-emirates.png",
 		"contentType": "flights, hotels, homePage",
-    "fromAirportFriendly": "",
-    "fromAirportCode": "",
-    "toAirportFriendly": "",
-    "toAirportCode": ""
+    "fromAirportFriendly": "London Heathrow Airport (LHR)",
+    "fromAirportCode": "LHR",
+    "toAirportFriendly": "Dubai International Airport (DXB)",
+    "toAirportCode": "DXB"
 	},
 	{
 		"name": "New York",
 		"url": "/2621/visit/new-york-new-york-united-states-of-america",
 		"image": "/static/img/locations/new-york-new-york-united-states-of-america.png",
 		"contentType": "flights, hotels, homePage",
-    "fromAirportFriendly": "",
-    "fromAirportCode": "",
-    "toAirportFriendly": "",
-    "toAirportCode": ""
+    "fromAirportFriendly": "London Heathrow Airport (LHR)",
+    "fromAirportCode": "LHR",
+    "toAirportFriendly": "John F. Kennedy International Airport",
+    "toAirportCode": "JFK"
 	},
 	{
 		"name": "Rome",
 		"url": "/3023/visit/rome-italy",
 		"image": "/static/img/locations/rome-italy.png",
 		"contentType": "hotels",
-    "fromAirportFriendly": "",
-    "fromAirportCode": "",
-    "toAirportFriendly": "",
-    "toAirportCode": ""
+    "fromAirportFriendly": "London Gatwick Airport",
+    "fromAirportCode": "LGW",
+    "toAirportFriendly": "Fiumicino - Leonardo da Vinci International Airport",
+    "toAirportCode": "FCN"
 	},
 	{
 		"name": "Barcelona",
 		"url": "/513/visit/barcelona-spain",
 		"image": "/static/img/locations/barcelona-spain.png",
 		"contentType": "flights",
-    "fromAirportFriendly": "",
-    "fromAirportCode": "",
-    "toAirportFriendly": "",
-    "toAirportCode": ""
+    "fromAirportFriendly": "Manchester Airport",
+    "fromAirportCode": "MAN",
+    "toAirportFriendly": "Barcelona International Airport",
+    "toAirportCode": "BCN"
 	},
   {
     "name": "Las Vegas",
     "url": "/2008/visit/las-vegas-nevada-united-states-of-america",
     "image": "/static/img/locations/las-vegas-nevada-united-states-of-america.png",
     "contentType": "flights",
-    "fromAirportFriendly": "",
-    "fromAirportCode": "",
-    "toAirportFriendly": "",
-    "toAirportCode": ""
+    "fromAirportFriendly": "Manchester Airport",
+    "fromAirportCode": "MAN",
+    "toAirportFriendly": "McCarran International Airport",
+    "toAirportCode": "LAS"
   },
   {
     "name": "Ibiza",
     "url": "/1559/visit/ibiza-spain",
     "image": "/static/img/locations/dublin-ireland.png",
     "contentType": "flights",
-    "fromAirportFriendly": "",
-    "fromAirportCode": "",
-    "toAirportFriendly": "",
-    "toAirportCode": ""
+    "fromAirportFriendly": "London Gatwick Airport",
+    "fromAirportCode": "LGW",
+    "toAirportFriendly": "IBZ Airport",
+    "toAirportCode": "IBZ"
   },
   {
 		"name": "Paris",
 		"url": "/2734/visit/paris-france",
 		"image": "/static/img/locations/paris-france.png",
 		"contentType": "flights",
-    "fromAirportFriendly": "",
-    "fromAirportCode": "",
-    "toAirportFriendly": "",
-    "toAirportCode": ""
+    "fromAirportFriendly": "London Gatwick Airport",
+    "fromAirportCode": "LGW",
+    "toAirportFriendly": "Le Bourget Airport",
+    "toAirportCode": "LBG"
 	},
 	{
 		"name": "Madrid",

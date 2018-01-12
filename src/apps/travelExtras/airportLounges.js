@@ -38,19 +38,22 @@ class AirportLounge extends React.Component {
 
   render(){
     document.title = 'Compare and Save with 38 Lounges at 22 UK Airports. Compare deals today - Triperoo';
+
+
+
     return (
       <div>
         <AirportLoungeSearchForm airport={this.state.defaultAirport} handleFormSubmit={this.loadAirportLounges} contentType="airportLoungeV2" headerTitle="Airport Lounges" subHeaderTitle="Pre-book your UK airport lounge from just £15"/>
         <div className="gap"></div>
         <div className="container">
           <div className="row">
-            <div className="card-group">
+            <div className="card-group cardGroupLong">
               {
                 this.props.isError ? <p>{this.props.error}</p> :
                   this.props.airportLounge.apI_Reply != undefined && !this.props.isFetching && !this.props.error ?
                     this.props.airportLounge.apI_Reply.lounge.map(quote => {
-                      return (<AirportLoungeCard location={this.state.airport} airportLounge={quote} searchRequest={this.props.airportLounge.apI_Reply.apI_Header.request} css="col-md-3" key={quote.code} adults={this.state.adults} children={this.state.children} infants={this.state.infants} />);
-                    }) : this.state.airport == '' ? <AirportLoungeBulletPoints /> : <Loader showLoader={true} />
+                      return (<AirportLoungeCard location={this.state.airport} airportLounge={quote} searchRequest={this.props.airportLounge.apI_Reply.apI_Header.request} css="col-md-3 mb-3" key={quote.code} adults={this.state.adults} children={this.state.children} infants={this.state.infants} />);
+                    }) : this.state.airport == '' ? <div className="col-md-12"><AirportLoungeBulletPoints /></div> : <div className="col-md-12 text-center text-xs-center"><Loader showLoader={true} /></div>
               }
             </div>
           </div>

@@ -43,12 +43,12 @@ class AirportHotels extends React.Component {
         <div className="gap"></div>
         <div className="container">
           <div className="row">
-            <div className="card-group">
+            <div className="card-group cardGroupLong">
               {
                 this.props.airportHotel.apI_Reply != undefined && !this.state.isLoading ?
                   this.props.airportHotel.apI_Reply.hotel.map(quote => {
-                    return (<AirportHotelCard location={this.state.airport} airportHotel={quote} searchRequest={this.props.airportHotel.apI_Reply.apI_Header.request} css="col-md-3" key={quote.code} />);
-                  }) : this.state.airport == '' ? <AirportHotelBulletPoints /> : <Loader showLoader={true} />
+                    return (<AirportHotelCard location={this.state.airport} airportHotel={quote} searchRequest={this.props.airportHotel.apI_Reply.apI_Header.request} css="col-md-3 mb-3" key={quote.code} />);
+                  }) : this.state.airport == '' ? <div className="col-md-12"><AirportHotelBulletPoints /></div> : <div className="col-md-12 text-center text-xs-center"><Loader showLoader={true} /></div>
               }
             </div>
           </div>

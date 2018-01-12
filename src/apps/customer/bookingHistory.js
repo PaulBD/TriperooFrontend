@@ -208,7 +208,7 @@ function mapStateToProps(state, ownProps) {
   return {
     isAuthenticated: state.authentication.isAuthenticated,
     currentUserId: ownProps.params.guid,
-    isActiveUser: user ? ownProps.params.guid == user.userId : false,
+    isActiveUser: user ? ownProps.params.guid.trim() == user.userId.trim() : false,
     user: state.user.user ? state.user.user : null
   };
 }

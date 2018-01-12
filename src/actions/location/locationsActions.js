@@ -85,6 +85,20 @@ export function searchLocations(value, searchType) {
 }
 
 // ****************************************
+// Autocomplete
+// ****************************************
+
+export function autoclearSuccess(autocompleteList) {
+  return {type: types.AUTOCOMPLETE_CLEAR, autocompleteList: []};
+}
+
+export function clearLocations() {
+  return dispatch => {
+    dispatch(autoclearSuccess());
+  };
+}
+
+// ****************************************
 // Load Destination from hard coded json
 // ****************************************
 export function topLocationRequest() {

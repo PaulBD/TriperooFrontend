@@ -56,7 +56,7 @@ class HotelImages extends React.Component {
             <i className="fa fa-plus round box-icon-small hover-icon i round"></i>
           </a>
         </div>
-        <div className="col-md-4">
+        <div className="col-md-4 hidden-sm-down">
           <a href="#" className="hover-img featureHotelImage" data-type={1} onClick={this.onClickHotelImage}>
             <img className="featureHotelImage" data-type={1}
                  src={this.props.hotelImage[1].highResolutionUrl && this.props.hotelImage[1].highResolutionUrl.length > 0 ? this.props.hotelImage[1].highResolutionUrl : this.props.hotelImage[1].url}/>

@@ -60,10 +60,10 @@ class RoomList extends React.Component {
     if (!this.state.isLoadingHotelRooms) {
       if (this.props.hotelRooms.hotelRoomAvailabilityResponse.size > 0) {
         return (
-          <div className="container" id="rooms">
             <div className="row">
               <div className="col-md-12" id="rooms">
-                <h2>Room Availability</h2>
+                <h4>Room Availability</h4>
+                <hr />
                 <p>Showing rooms available <strong>{this.state.formattedArrivalDate}</strong> for <strong>{this.state.nights}</strong> {this.state.nights == 1 ? 'night' : 'nights'}</p>
                 <SearchForm searchUrl={this.props.searchUrl} buttonName="Search Rooms" rooms={this.state.rooms} nights={this.state.nights} arrivalDate={this.state.arrivalDate} guests={this.state.guests} useFunction={true} handleFormSubmit={this.handleFormSubmit} isSideBar={false} city={this.props.hotelName} lockLocation={true}/>
 
@@ -88,11 +88,18 @@ class RoomList extends React.Component {
                             break;
                         }
 
-                        let url = hotelRoom.roomImages.roomImage[0].url;
+                        let url = '/static/img/placeholder.png';
 
-                        if (hotelRoom.roomImages) {
-                          if (hotelRoom.roomImages.roomImage[0].highResolutionUrl != undefined) {
-                            url = hotelRoom.roomImages.roomImage[0].highResolutionUrl;
+                        if (hotelRoom.roomImages != undefined) {
+                          if (hotelRoom.roomImages.roomImage != undefined) {
+
+                            url = hotelRoom.roomImages.roomImage[0].url;
+
+                            if (hotelRoom.roomImages) {
+                              if (hotelRoom.roomImages.roomImage[0].highResolutionUrl != undefined) {
+                                url = hotelRoom.roomImages.roomImage[0].highResolutionUrl;
+                              }
+                            }
                           }
                         }
 
@@ -123,17 +130,17 @@ class RoomList extends React.Component {
                         <li>
                           <a className="booking-item">
                             <div className="row">
-                              <div className="col-md-3">
+                              <div className="col-md-3 mb-3">
                                 <img src={url}/>
                               </div>
                               <div className="col-md-7">
                                 <h5 className="booking-item-title">{titleCase(hotelRoom.roomTypeDescription)}</h5>
-                                <p className={hotelRoom.rateInfos.rateInfo[0].promo ? "text-small" : "hide"}>
+                                <p className={hotelRoom.rateInfos.rateInfo[0].promo ? "text-small sale" : "hide"}>
                                   {hotelRoom.rateInfos.rateInfo[0].promoDescription}
                                 </p>
                                 <p className="text-small">{hotelRoom.rateInfos.rateInfo[0].cancellationPolicy}</p>
 
-                                <div className="row">
+                                <div className="row hidden-sm-down">
                                   <div className="col-md-4">
                                     <ul className="nav card-text mb-2">
                                       <li className="nav-item bedType">Sleeps: {roomOccupancy}</li>
@@ -155,7 +162,7 @@ class RoomList extends React.Component {
                                   </div>
                                 </div>
                               </div>
-                              <div className="col-md-2 ">
+                              <div className="col-md-2 hidden-sm-down">
                                 <h5 className="hotelPrice mb-1 priceRight">{currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.total} </h5>
 <br />
                                 <a href={hotelRoom.deepLink} className="btn btn-primary mb-1 priceRight" target="_blank" onClick={this.trackClick}>Book Room</a>
@@ -167,6 +174,41 @@ class RoomList extends React.Component {
                                   <span>Total: {currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.total}</span>
                                 </small>
                               </div>
+
+                              <div className="col-md-12 hidden-sm-up">
+                                <div className="row">
+                                  <div className="col-6">
+                                    <ul className="nav card-text mb-2">
+                                      <li className="nav-item bedType">Sleeps: {roomOccupancy}</li>
+                                    </ul>
+
+                                    <ul className="nav card-text mb-2">
+                                      {
+                                        hotelRoom.bedTypes.bedType.map((bedType, bedIndex) => {
+                                          return (
+                                            <li className="nav-item bedType" key={bedIndex}><i className="fa fa-bed"></i> {bedType.description}</li>
+                                          );
+                                        })
+                                      }
+                                    </ul>
+
+                                    {roomCount}
+                                  </div>
+                                  <div className="col-6">
+                                    <h5 className="hotelPrice mb-1 priceRight">{currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.total} </h5>
+                                    <br />
+                                    <a href={hotelRoom.deepLink} className="btn btn-primary mb-1 priceRight" target="_blank" onClick={this.trackClick}>Book Room</a>
+                                  </div>
+                                  <div className="col-12">
+                                    <small className="priceBreakdownMobile">
+                                      <span><strong>Breakdown:</strong><br />
+                                        Nightly Rate: {currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.nightlyRateTotal}  &bull;
+                                        Tax & Service Fees: {currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.surchargeTotal} &bull;
+                                        Total: {currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.total}</span>
+                                    </small>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                           </a>
                         </li>
@@ -176,15 +218,15 @@ class RoomList extends React.Component {
                   </ul>
               </div>
             </div>
-          </div>
         );
       }
       else {
         return (
-          <div className="container" id="rooms">
             <div className="row">
               <div className="col-md-12" id="rooms">
-                <h2>Room Availability</h2>
+                <div className="gap gap-small"></div>
+                <h4>Room Availability</h4>
+                <hr />
                 <p>Showing rooms available between <strong>{this.state.formattedArrivalDate}</strong> and <strong>{this.state.formattedDepartureDate}</strong></p>
                 <SearchForm searchUrl={this.props.searchUrl} buttonName="Search Rooms" rooms={this.state.rooms} nights={this.state.nights} arrivalDate={this.state.arrivalDate} guests={this.state.guests} useFunction={true} handleFormSubmit={this.handleFormSubmit} isSideBar={false} city={this.props.hotelName} lockLocation={true}/>
                 <div className="row">
@@ -196,16 +238,15 @@ class RoomList extends React.Component {
                 </div>
               </div>
             </div>
-          </div>
         );
       }
     }
     else {
       return (
-        <div className="container" id="rooms">
           <div className="row">
             <div className="col-md-12" id="rooms">
-              <h2>Room Availability</h2>
+              <h4>Room Availability</h4>
+              <hr />
               <p>Showing rooms available between <strong>{this.state.formattedArrivalDate}</strong> and <strong>{this.state.formattedDepartureDate}</strong></p>
               <SearchForm searchUrl={this.props.searchUrl} buttonName="Search Rooms" rooms={this.state.rooms} nights={this.state.nights} arrivalDate={this.state.arrivalDate} guests={this.state.guests} useFunction={true} handleFormSubmit={this.handleFormSubmit} isSideBar={false} city={this.props.hotelName} lockLocation={true}/>
               <div className="row">
@@ -213,7 +254,6 @@ class RoomList extends React.Component {
               </div>
             </div>
           </div>
-        </div>
       );
     }
   }

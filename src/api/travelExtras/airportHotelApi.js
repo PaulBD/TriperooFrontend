@@ -7,7 +7,7 @@ class AirportHotelApi {
   // ****************************************
   static loadAirportHotels(airportName, arrivalDate, departDate, dropOffCarDate, collectCarDate, nights, roomType, secondRoomType, parkingDays, language) {
     return new Promise((resolve, reject) => {
-      let url = baseUrl + '/airport/' + airportName + '/hotels?arrivalDate=' + arrivalDate + '&departDate=' + departDate + '&nights=' + nights  + '&roomType=' + roomType  + '&secondRoomType=' + secondRoomType + '&parkingDays=' + parkingDays + '&language=' + language;
+      let url = baseUrl + '/airport/hotels/' + airportName + '?arrivalDate=' + arrivalDate + '&departDate=' + departDate + '&nights=' + nights  + '&roomType=' + roomType  + '&secondRoomType=' + secondRoomType + '&parkingDays=' + parkingDays + '&language=' + language;
       if (collectCarDate != null)
       {
         url += '&dropOffCarDate=' + dropOffCarDate + '&collectCarDate=' + collectCarDate;

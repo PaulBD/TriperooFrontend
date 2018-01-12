@@ -71,7 +71,6 @@ class LastMinuteDeal extends React.Component {
     else
     {
       return (
-        <div className="col-md-12">
           <div className="bg-holder">
             <div className="bg-mask"></div>
             <div className="bg-parallax"></div>
@@ -83,7 +82,6 @@ class LastMinuteDeal extends React.Component {
               </div>
             </div>
           </div>
-        </div>
       );
     }
   }

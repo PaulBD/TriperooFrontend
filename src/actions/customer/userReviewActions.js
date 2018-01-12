@@ -21,6 +21,8 @@ export function postReview(review) {
     dispatch(postReviewInitialize(review));
     if ((review.comment.length > 0) && (review.inventoryReference > 0))
     {
+      console.log(review);
+
       return ReviewApi.postReview(review).then(review => {
         dispatch(postReviewSuccess());
       }).catch(error => {

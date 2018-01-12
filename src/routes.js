@@ -8,6 +8,7 @@ import DestinationPage from './apps/destinations';
 import AboutPage from './apps/info/aboutPage';
 import TermsPage from './apps/info/termsPage';
 import PrivacyPage from './apps/info/privacyPage';
+import CommunityPage from './apps/info/communityPage';
 import ContactPage from './apps/info/contactPage';
 import FAQsPage from './apps/info/faqsPage';
 import LocalExpertPage from './apps/info/localExpertPage';
@@ -71,7 +72,8 @@ export default (
     <Route path="/welcome" component={WelcomePage}/>
     <Route path="/explore-destinations" component={DestinationPage}/>
     <Route path="/about-us" component={AboutPage}/>
-    <Route path="/terms" component={TermsPage}/>
+    <Route path="/terms-of-use" component={TermsPage}/>
+    <Route path="/community-guidelines" component={CommunityPage}/>
     <Route path="/privacy-policy" component={PrivacyPage}/>
     <Route path="/contact" component={ContactPage}/>
     <Route path="/faqs" component={FAQsPage}/>

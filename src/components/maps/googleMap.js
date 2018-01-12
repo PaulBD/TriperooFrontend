@@ -28,10 +28,9 @@ class TriperooGoogleMap extends React.Component {
         let markers = this.props.markerArray.map(function (location, i) {
 
           let infowindow = new window.google.maps.InfoWindow({
-            content: '<div class="infoWindowContent"><div class="pic"><div class="text">' +
+            content: '<div class="infoWindowContent"><a href="' + location.url + '"><div class="pic"><div class="text">' +
             '<p class="mb-0"><strong>' + location.regionName + '</strong></p>' +
-            '<p class="mb-0"><small>' + location.subClass + '</small></p>' +
-            '<p class="mb-0"><small><a href="' + location.url + '">View</a></small></p></div>' +
+            '<p class="mb-0"><small>' + location.subClass + '</small></p></div></a>' +
             '</div>'
           });
 

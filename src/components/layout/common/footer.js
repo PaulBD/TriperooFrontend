@@ -71,6 +71,8 @@ class Footer extends React.Component {
                                     <li><a href="/support">Support</a></li>
                                     <li className="hide"><a href="/faqs">FAQs</a></li>
                                     <li><a href="/privacy-policy">Privacy Policy</a></li>
+                                    <li><a href="/terms-of-use">Terms of Use</a></li>
+                                  <li><a href="/community-guidelines">Community Guidelines</a></li>
                                     <li><a href="/contact">Contact</a></li>
                                 </ul>
                             </div>

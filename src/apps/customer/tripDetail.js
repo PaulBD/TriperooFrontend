@@ -134,7 +134,7 @@ function mapStateToProps(state, ownProps) {
   return {
     isAuthenticated: state.authentication.isAuthenticated,
     currentUserId: ownProps.params.guid,
-    isActiveUser: user ? ownProps.params.guid == user.userId : false,
+    isActiveUser: user ? ownProps.params.guid.trim() == user.userId.trim() : false,
     tripId: ownProps.params.tripId,
     user: state.user.user ? state.user.user : null,
     trip: state.user.trip ? state.user.trip : {},

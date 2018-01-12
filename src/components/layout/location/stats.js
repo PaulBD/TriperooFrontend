@@ -15,7 +15,6 @@ class LocationStats extends React.Component {
   }
 
   checkLike() {
-
     let triperooCommon = JSON.parse(localStorage.getItem('triperoo_common'));
 
     if (triperooCommon != undefined && triperooCommon.likes != undefined) {

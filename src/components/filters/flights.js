@@ -95,11 +95,12 @@ class FlightFilter extends React.Component {
     let isAlreadyInList = false;
     let newAirline = e.target.getAttribute('data-airline');
 
-    for (let i = 0; i < selectedAirlines.length; i++) {
-      if (selectedAirlines[i] == newAirline)
-      {
-        isAlreadyInList = true;
-        selectedAirlines.splice(i, 1);
+    if (selectedAirlines != null) {
+      for (let i = 0; i < selectedAirlines.length; i++) {
+        if (selectedAirlines[i] == newAirline) {
+          isAlreadyInList = true;
+          selectedAirlines.splice(i, 1);
+        }
       }
     }
 
@@ -147,11 +148,11 @@ class FlightFilter extends React.Component {
               </label>
             </div>
           </li>
-          <li className={this.props.airlines.length > 0 ? "" : "hide"}>
+          <li className={this.props.airlines != undefined ? this.props.airlines.length > 0 ? "" : "hide" : "hide"}>
             <h5 className={this.props.airlines ? "booking-filters-title" : "hide"}>Airlines
             </h5>
             {
-              this.props.airlines.map((airline, index) => {
+              this.props.airlines ? this.props.airlines.map((airline, index) => {
                 return (
                   <div className="checkbox" key={index}>
                     <label>
@@ -159,7 +160,7 @@ class FlightFilter extends React.Component {
                     </label>
                   </div>
                 );
-              })
+              }) : ''
             }
           </li>
           <li>

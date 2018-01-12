@@ -115,6 +115,8 @@ class ReviewPopup extends React.Component {
     else {
       const newReview = { "inventoryReference": this.state.searchId, "ReviewType": this.state.searchType, "StarRating": this.state.rating, "comment": this.refs.comment.value.trim(), "tags": this.state.selectedTags, "isCity": this.state.isCity };
 
+      console.log(newReview);
+
       this.props.userReviewActions.postReview(newReview)
         .then(() => {
           this.setState({isPostingReview: false, isLoadingReviews: true});
@@ -147,7 +149,7 @@ class ReviewPopup extends React.Component {
               </div>
             </div>
             <div className="modal-footer text-center">
-              <a href="#" onClick={this.closeModal}>Close</a>
+              <p className="closeText mb-0"><a href="#" onClick={this.closeModal}>Close</a></p>
             </div>
           </div>
           <div className={this.state.wizardStep == 2 ? "modal-body" : "modal-body hide"}>
@@ -186,9 +188,9 @@ class ReviewPopup extends React.Component {
                 <div className="gap gap-small"></div>
               </form>
             </div>
-            <div className="modal-footer text-center">
-              <a href="#" onClick={this.undoReviewSelection} className="hide">Review a different location</a><a href="#" onClick={this.closeModal}>Close</a>
-            </div>
+          </div>
+          <div className="modal-footer text-center">
+            <p className="closeText mb-0"><a href="#" onClick={this.undoReviewSelection} className="hide">Review a different location</a><a href="#" onClick={this.closeModal}>Close</a></p>
           </div>
           <div className={this.state.wizardStep == 3 ? "modal-body" : "modal-body hide"}>
             <div className="row">

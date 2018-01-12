@@ -33,7 +33,7 @@ class TopAttractions extends React.Component {
       return (
         <div className="col-md-12">
           {this.props.title ? <h4 className="locationTitle">{this.props.title} <small className="float-sm-right"><a href={this.props.url} >See all</a></small></h4> : ''}
-          <LocationList locations={this.props.attractions} cssClass="col-md-6 col-12" />
+          <LocationList locations={this.props.attractions} cssClass="col-md-3 col-12" />
         </div>
       );
     }

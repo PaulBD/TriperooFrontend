@@ -26,7 +26,7 @@ class AtractionNearLocation extends React.Component {
                   <h4>{title}</h4>
                 </div>
                 <div className="col-md-5 text-right">
-                  <p><a href={attractionUrl}>Find more attractions in {this.props.location.parentRegionNameLong}</a></p>
+                  <p><a href={attractionUrl}>Find more attractions in {this.props.location.parentRegionName}</a></p>
                 </div>
                 <div className="col-md-12">
                   <div className="row">

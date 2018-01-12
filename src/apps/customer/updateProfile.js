@@ -106,6 +106,7 @@ class UpdateProfile extends React.Component {
   }
 
   render(){
+    console.log(this.props.isActiveUser);
     if (this.props.isAuthenticated && this.props.isActiveUser) {
       if (!this.state.loading) {
         return (
@@ -143,7 +144,11 @@ class UpdateProfile extends React.Component {
         <div className="container customerPhotos">
           <div className="gap gap-small"></div>
           <div className="row">
-            <div className="col-md-12 alert alert-info text-center" role="alert">You do not have access to this page, please log in and try again.</div>
+            <div className="col-md-12 text-center" role="alert">
+              <p  className="alert alert-info text-center">
+                You do not have access to this page, please log in and try again.
+              </p>
+            </div>
           </div>
         </div>
       );
@@ -172,7 +177,7 @@ function mapStateToProps(state, ownProps) {
   return {
     isAuthenticated: state.authentication.isAuthenticated,
     currentUserId: ownProps.params.guid,
-    isActiveUser: user ? ownProps.params.guid == user.userId : false,
+    isActiveUser: user ? ownProps.params.guid.trim() == user.userId.trim() : false,
     user: state.user.user ? state.user.user : null,
     errorMessage: state.user.errorMessage
   };

@@ -58,7 +58,7 @@ class Facebook extends React.Component {
               </div>
             </div>
             <div className="modal-footer text-center">
-              <a href="#" onClick={this.closeLoginModal}>Close</a>
+              <p className="closeText mb-0"><a href="#" onClick={this.closeLoginModal}>Close</a></p>
             </div>
           </div>
           <div className={this.state.creatingUser || this.state.isLoggingIn ? "modal-content" : "modal-content hide"}>

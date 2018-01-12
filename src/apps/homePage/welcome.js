@@ -4,14 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as userActions from '../../actions/customer/userActions';
 import * as locationActions from '../../actions/location/locationActions';
-
-import BulletPoints from '../../components/content/static/bulletPoints';
-import TrustedPartners from '../../components/content/static/trustedPartners';
-import LastMinuteDeal from '../../components/content/dynamic/lastMinuteDeal';
 import Search from '../../components/forms/searchForms/homePage';
-import Destinations from '../../components/content/dynamic/destinations';
-import ReviewList from '../../components/layout/cards/reviews/homePageReviewList';
-import FacebookSignup from '../../components/forms/authentication/facebookSignup';
 
 
 import RecentQuestions from '../../components/layout/cards/questions/list';
@@ -137,7 +130,7 @@ class WelcomePage extends React.Component {
                   <div className="row">
                     <LastMinuteDeals title={lastMinuteTitle} locationId={this.props.location.regionID}
                                      name={this.props.location.regionName} locationType="Point of Interest"
-                                     pageSize={4} locationName={this.props.location.regionName}/>
+                                     pageSize={2} locationName={this.props.location.regionName}/>
                   </div>
                 </div>
                 <div className="col-md-4">

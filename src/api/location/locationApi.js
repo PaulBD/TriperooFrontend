@@ -57,6 +57,9 @@ class LocationApi {
       data.append('name', file.name);
     });
 
+    console.log(data);
+    console.log(photos);
+
     return new Promise((resolve, reject) => {
       axios({
         method: 'post',

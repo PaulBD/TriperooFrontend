@@ -251,7 +251,7 @@ class BookmarkLocation extends React.Component {
                   <table className="table">
                     <tbody>
                     {
-                      this.props.tripList.map(trip => {
+                      this.props.tripList.length > 0 ? this.props.tripList.map(trip => {
                         return (
                           <tr key={trip.id}>
                             <td className="tripBtn"><a href={trip.url}><i className="fa fa-external-link"></i></a></td>
@@ -260,7 +260,7 @@ class BookmarkLocation extends React.Component {
                             <td className="tripBtn"><input className="btn btn-primary btn-sm" type="submit" onClick={this.onSaveBookmark} key={trip.id} value="Add To Trip" data-id={trip.id} /></td>
                           </tr>
                         );
-                      })
+                      }) : <p>You have no trips.</p>
                     }
                     </tbody>
                   </table>
@@ -291,7 +291,7 @@ class BookmarkLocation extends React.Component {
             </div>
             </div>
             <div className="modal-footer text-center">
-              <a href="#" onClick={this.closeModal}>Close</a>
+              <p className="closeText mb-0"><a href="#" onClick={this.closeModal}>Close</a></p>
             </div>
           </div>
         </div>

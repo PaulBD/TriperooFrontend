@@ -37,6 +37,8 @@ body { margin: 0; }
   display: inline-block;
   padding: 5px 20px;
   background-color: white;
+  box-shadow: 0px 0px 5px #000;
+  margin-top: 4px;
 }
 
 .passengerCounter {
@@ -1382,44 +1384,6 @@ ul.twPc-Arrange li.location {
 
 .dropdown-menu { min-width: 12rem; }
 
-@media (max-width: 991px) {
-  .holidayPage { height: 200px !important; }
-  .cityPage { height: 400px !important; }
-  .holidayPage h1 { font-size: 200%; width:90%; }
-  .cityPage h1, .travelPage h1, .infoPageWrapper h1 { font-size: 300%; width:90%; }
-  .homeSearch { width:100%; }
-  .worldMap { display:none; }
-  .user-profile-statictics > li { text-align: center; padding: 10px; border: 1px solid #e6e6e6; -webkit-border-radius: 5px; border-radius: 5px; width: 30%; margin-bottom: 10px; margin-right:3.3%; }
-  .user-profile-statictics > li .user-profile-statictics-icon { font-size: 200%; display: inline-block; margin-bottom: 10px; color: #8c8c8c; }
-  .l30 { margin-left:0px; }
-  .ReactModal__Content { position: absolute; top: 10%; left: 3%; right: 3%; background: #fff; WebkitOverflowScrolling: touch; outline: none; padding: 0px; border-radius: 5px; width: 94% }
-  .infoPage { height: 150px !important; }
-  .infoPage .breadcrumb { display: none; }
-
-  .infoPage .cityNav, .infoPage .countryNav { margin-top: 4px;
-    float: none;}
-  .infoPage h1 { width: 100%; text-align: center; }
-
-  .CategoryModel.ReactModal__Content { left: 2%; right: 2%; width: 96%;}
-
-  ul.twPc-Arrange li.location {
-    width: 50%;
-  }
-}
-
-@media (max-width:576px) {
-  .locationPage h1 { margin-top: 5px; }
-  .locationSubNav { display:table; }
-  .locationSubNav > li { height: 90px; }
-  .infoPage h1 { margin-top:15px; }
-  .list-inline > li { margin-left: 10px; margin-right: 0px; }
-}
-
-@media (min-width:1px) and (max-width:576px) {
-  .text-xs-left{text-align:left!important}
-  .text-xs-right{text-align:right!important}
-  .text-xs-center{text-align:center!important}
-}
 
 /* Hotel Detail */
 
@@ -1546,7 +1510,7 @@ ul.twPc-Arrange li.location {
 .customerHeader h3, .customerHeader h4 { position: absolute; z-index: 999; width:100%; top:30px; }
 .customerHeader h4 { top:65px; font-size: 18px;}
 
-.createPhoto { height: 252px; }
+.createPhoto { height: 292px; }
 .createTripBlank { height: 379px; }
 .createTripBlank .fa, .createPhoto .fa { font-size: 70px; margin: 40px 0; }
 .createPhoto .fa { margin: 10px 0px }
@@ -1578,6 +1542,11 @@ a:hover .activityBg { background-color: #333; border-color: #333; }
 .timelineTitle h4 { border-top: solid 1px #efefef; border-bottom: solid 1px #efefef; margin-bottom: 20px; text-align:center;background-color:white;}
 .priceBreakdown { margin-top:20px; }
 .priceBreakdown span { width:100%; float:right; text-align: right;}
+.priceBreakdownMobile span { width:100%; float:left; text-align: left;}
+.cardGroupLong { width:100%; }
+.closeText { width:100%; text-align: center !important; }
+.sale { color: #ed8323; font-weight: bold; }
+.affiliateLogo { width:100px; float: right; }
 
 
   /* Timeline */
@@ -1842,4 +1811,64 @@ a:hover .activityBg { background-color: #333; border-color: #333; }
   opacity: .6;
   -ms-filter: alpha(opacity=60);
   filter: alpha(opacity=60);
+}
+
+
+@media (max-width: 991px) {
+  .holidayPage { height: 200px !important; }
+  .cityPage { height: 400px !important; }
+  .holidayPage h1 { font-size: 200%; width:90%; }
+  .cityPage h1, .travelPage h1, .infoPageWrapper h1 { font-size: 300%; width:90%; }
+  .homeSearch { width:100%; }
+  .worldMap { display:none; }
+  .user-profile-statictics > li { text-align: center; padding: 10px; border: 1px solid #e6e6e6; -webkit-border-radius: 5px; border-radius: 5px; width: 30%; margin-bottom: 10px; margin-right:3.3%; }
+  .user-profile-statictics > li .user-profile-statictics-icon { font-size: 200%; display: inline-block; margin-bottom: 10px; color: #8c8c8c; }
+  .l30 { margin-left:0px; }
+  .ReactModal__Content { position: absolute; top: 10%; left: 2%; right: 2%; background: #fff; WebkitOverflowScrolling: touch; outline: none; padding: 0px; border-radius: 5px; width: 92% }
+  .infoPage { height: 150px !important; }
+  .infoPage .breadcrumb { display: none; }
+
+  .infoPage .cityNav, .infoPage .countryNav { margin-top: 4px;
+    float: none;}
+  .infoPage h1 { width: 100%; text-align: center; }
+
+  .CategoryModel.ReactModal__Content { left: 2%; right: 2%; width: 96%;}
+
+  ul.twPc-Arrange li.location {
+    width: 50%;
+  }
+}
+
+@media (max-width:576px) {
+  .locationPage h1 { margin-top: 5px; }
+  .locationSubNav { display:table; }
+  .locationSubNav > li { height: 90px; }
+  .infoPage h1 { margin-top:15px; }
+  .list-inline > li { margin-left: 6px; margin-right: 0px; }
+  .owl-cap-price small { font-size: 100%; }
+  .ReactModal__Content { width:96%; top:2%; left: 2%; right: 2%; }
+  .CategoryModel.ReactModal__Content { width:96%; left: 2%; right: 2%; }
+  .ReactModal__Content .modal-content { height:600px; }
+  .ReactModal__Content .modal-body { overflow-y: scroll; }
+  .featureLocation { margin-bottom: 0px; }
+  .travelExtras { height: 350px !important; }
+  .travelExtras .full-center { top: 35% !important; }
+  .travelExtras h1 { font-size: 300%; }
+  .travelExtras .owl-cap-price { width:100%; padding-left: 20px; padding-right: 20px; }
+  .cityList { margin-top: 100px; }
+  .MapModel.ReactModal__Content.MapModel, .PhotoModel.ReactModal__Content { width:96%; left: 2%; right: 2%; }
+  .mapSideBar .googleMapWrapper { height:440px; }
+  .cityNav { margin-left: 20px; }
+  .hotelInfo.subNav { display: none; }
+  .booking-item-details .booking-item-header-price { text-align: left; }
+  .booking-item-header-price .priceRight { margin-top: 10px; }
+  .featureHotelImage:nth-child(2) { display: none; }
+
+  .form-group .input-icon.homeSearchIcon { line-height: 48px; }
+}
+
+@media (min-width:1px) and (max-width:576px) {
+  .text-xs-left{text-align:left!important}
+  .text-xs-right{text-align:right!important}
+  .text-xs-center{text-align:center!important}
 }

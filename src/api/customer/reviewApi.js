@@ -6,6 +6,9 @@ class ReviewApi {
   // Post new review
   // ****************************************
   static postReview(review) {
+    let url = baseUrl + '/review';
+    console.log(url);
+
     return new Promise((resolve, reject) => {
       axios({
         method: 'post',
@@ -84,14 +87,11 @@ class ReviewApi {
     return new Promise((resolve, reject) => {
       axios({
         method: 'put',
-        url:  baseUrl + '/review/like',
+        url:  baseUrl + '/review/' + reviewReference + '/like',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
           'token': JSON.parse(localStorage.getItem('id_token')).token
-        },
-        data: {
-          reviewReference
         }
       })
       .then(response => {
@@ -107,10 +107,15 @@ class ReviewApi {
   // Get Reviews
   // ****************************************
   static getReviews(customerReference, pageSize, pageNumber) {
+
+    let url = baseUrl + '/customer/' + customerReference + '/reviews?pageSize=' + pageSize + '&pageNumber=' + pageNumber;
+
+    console.log(url);
+
     return new Promise((resolve, reject) => {
       axios({
         method: 'get',
-        url:  baseUrl + '/customer/' + customerReference + '/reviews?pageSize=' + pageSize + '&pageNumber=' + pageNumber,
+        url:  url,
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'

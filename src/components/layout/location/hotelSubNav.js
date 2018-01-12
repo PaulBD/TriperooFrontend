@@ -7,7 +7,7 @@ class HotelSubNav extends React.Component {
 
   render(){
     return (
-      <div className="row row-nowrap greyBg hotelInfo">
+      <div className="row row-nowrap greyBg hotelInfo subNav">
         <div className="container">
           <div className="row">
             <div className="col-md-12">

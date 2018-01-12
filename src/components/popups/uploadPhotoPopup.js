@@ -95,7 +95,7 @@ class UploadPhotoPopup extends React.Component {
             </div>
           </div>
           <div className="modal-footer text-center">
-            <a href="#" onClick={this.closeModal}>Close</a>
+            <p className="closeText mb-0"><a href="#" onClick={this.closeModal}>Close</a></p>
           </div>
         </div>
       </div>

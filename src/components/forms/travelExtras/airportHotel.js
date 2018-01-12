@@ -111,7 +111,7 @@ class AirportHotelSearchForm extends React.Component {
                       <div className="col-lg-3 col-md-12">
                         <div className="row">
                           <div className="col-lg-12 col-md-6">
-                            <div className="form-group form-group-icon-left"><i className="fa fa-map-marker input-icon hidden-lg-up"></i>
+                            <div className="form-group form-group-icon-left"><i className="fa fa-map-marker input-icon hidden-lg-down"></i>
                               <label>Flying From?</label>
                               <AirportList cssClass="form-control searchSelect" name="airport" selectedValue={this.state.airport} changeValue={this.handleAirportChange} />
                             </div>

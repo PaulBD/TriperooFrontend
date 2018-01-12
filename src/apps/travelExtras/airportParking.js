@@ -18,13 +18,11 @@ class AirportParking extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
+}
 
-    //this.loadAirportParking(this.state.airport, moment().add(1, 'days').format('YYYY-MM-DD'), '00:30', moment().add(7, 'days').format('YYYY-MM-DD'), '22:00', 'en');
-  }
-
-  loadAirportParking(airport, dropOffDate, dropOffTime, pickUpDate, pickUpTime, language) {
+  loadAirportParking(airport, dropOffDate, dropOffTime, pickUpDate, pickUpTime) {
     this.setState({ airport: airport, showSmallHeader: true, isLoading: true });
-    this.props.airportParkingActions.loadAirportParking(airport, dropOffDate, dropOffTime, pickUpDate, pickUpTime, language)
+    this.props.airportParkingActions.loadAirportParking(airport, dropOffDate, dropOffTime, pickUpDate, pickUpTime, 'en')
       .then(() => this.DoSomething())
       .catch(error => {
         Toastr.error(error);
@@ -44,12 +42,12 @@ class AirportParking extends React.Component {
         <div className="gap"></div>
         <div className="container">
           <div className="row">
-            <div className="card-group">
+            <div className="card-group cardGroupLong">
               {
                 this.props.airportParking.apI_Reply != undefined && !this.props.isFetching ?
                   this.props.airportParking.apI_Reply.carPark.map(quote => {
-                    return (<AirportParkingCard location={this.state.airport} airportParking={quote} searchRequest={this.props.airportParking.apI_Reply.apI_Header.request} css="col-md-3" key={quote.code} />);
-                  }) : this.state.airport == '' ? <AirportParkingBulletPoints /> : <Loader showLoader={true} />
+                    return (<AirportParkingCard location={this.state.airport} airportParking={quote} searchRequest={this.props.airportParking.apI_Reply.apI_Header.request} css="col-md-3 mb-3" key={quote.code} />);
+                  }) : this.state.airport == '' ? <div className="col-md-12"><AirportParkingBulletPoints /></div> : <div className="col-md-12 text-center text-xs-center"><Loader showLoader={true} /></div>
               }
             </div>
           </div>

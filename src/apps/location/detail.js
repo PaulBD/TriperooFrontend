@@ -98,6 +98,7 @@ class LocationDetail extends React.Component {
       }
 
       let editUrl = this.props.location.url + '/edit';
+console.log(this.props.location.regionType);
 
       return (
         <div>
@@ -112,7 +113,7 @@ class LocationDetail extends React.Component {
                 <TagList tags={this.props.location.tags} maxTags={5} />
                 <div className="row mb-3">
                   <div className="col-lg-3 col-6 mb-2">
-                    {this.props.location.regionType == "Restaurants" ? <a href={this.props.location.locationDetail.bookingUrl} className="btn btn-primary questionBtn" target="_blank" onClick={this.trackClick} data-category="Restaurant"><i className="fa fa-calendar"></i> Book Restaurant</a> : ''}
+                    {this.props.location.regionType == "Restaurant" ? <a href={this.props.location.locationDetail.bookingUrl} className="btn btn-primary questionBtn" target="_blank" onClick={this.trackClick} data-category="Restaurant"><i className="fa fa-calendar"></i> Book Restaurant</a> : ''}
                     {this.props.location.regionType == "Attractions" ? <a href={this.props.location.locationDetail.bookingUrl} className="btn btn-primary questionBtn" target="_blank" onClick={this.trackClick} data-category="Attraction"><i className="fa fa-calendar"></i> Book Attraction</a> : ''}
                   </div>
                   <div className="col-lg-3 col-6 mb-2">
@@ -148,7 +149,7 @@ class LocationDetail extends React.Component {
             nights={1}
             guests={1}
             sortBy="PROMO"
-            locationId={this.props.locationId} latitude={this.props.location.latitude} longitude={this.props.location.longitude} pageSize={4} locationName={this.props.location.parentRegionNameLong} url={this.props.location.parentUrl}/>
+            locationId={this.props.locationId} latitude={this.props.location.latitude} longitude={this.props.location.longitude} pageSize={4} locationName={this.props.location.parentRegionName} url={this.props.location.parentUrl}/>
 
 
           <div className="gap gap-small"></div>

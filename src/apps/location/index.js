@@ -64,6 +64,8 @@ class LocationHome extends React.Component {
       location.stats.likeCount -= 1;
     }
 
+    console.log(location);
+
     this.setState({ isUpdatingLike: true, location: location });
 
     this.props.locationActions.likeLocationById(this.props.locationId, likeLocation, true)
@@ -102,7 +104,7 @@ class LocationHome extends React.Component {
                               locationName={this.props.location.regionName} showTitle={true}/>
 
                 <div className="col-md-8">
-                  <Summary location={this.props.location} showMap={true}/>
+                  <Summary location={this.state.location} showMap={true}/>
                 </div>
                 <div className="col-md-4">
                   <LocationStats showLike={this.state.showLike} likeLocation={this.likeLocation}
@@ -145,28 +147,22 @@ class LocationHome extends React.Component {
                   <hr/>
                 </div>
                 <div className="col-md-8">
-                  <LocationReviews cssClass="col-md-6" showTitle={false} locationId={this.props.locationId}
-                                   locationName={this.state.location.regionName}
-                                   locationType={this.state.location.subClass} pageSize={4} pageNumber={0}/>
+                  <LocationReviews cssClass="col-md-6" showTitle={false} locationId={this.props.locationId} locationName={this.state.location.regionName} locationType={this.state.location.subClass} pageSize={4} pageNumber={0}/>
                 </div>
                 <div className="col-md-4">
-                  <ReviewButton locationId={this.props.locationId} locationName={this.state.location.regionName}
-                                locationNameLong={this.state.location.regionNameLong}
-                                locationType={this.state.location.regionType} pageSize={4} pageNumber={0}/>
+                  <ReviewButton locationId={this.props.locationId} locationName={this.state.location.regionName} locationNameLong={this.state.location.regionNameLong} locationType={this.state.location.regionType} pageSize={4} pageNumber={0}/>
                   <div className="gap gap-small"></div>
                   <LocationOverview location={this.props.location}/>
                   <div className={this.state.location.regionType == 'Country' ? "hide" : "gap gap-small"}></div>
                   <WeatherForcast locationId={this.props.locationId} locationType={this.state.location.regionType}/>
                   <div className="gap gap-small"></div>
-                  <LocationArticles locationId={this.props.locationId}
-                                    locationName={this.state.location.regionName}/>
+                  <LocationArticles locationId={this.props.locationId} locationName={this.state.location.regionName}/>
                 </div>
               </div>
             </div>
             <div className="gap"></div>
-            <TopEvents locationId={this.props.locationId} locationName={this.state.location.regionName}
-                       baseUrl={this.state.location.url}/>
-            <FacebookSignup />
+            <TopEvents locationId={this.props.locationId} locationName={this.state.location.regionName} baseUrl={this.state.location.url}/>
+            <FacebookSignup showLines={false} />
           </div>
         );
       }

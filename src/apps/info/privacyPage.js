@@ -9,7 +9,6 @@ const PrivacyPage = () => {
       backgroundImage: 'url(/static/img/contact-us.jpg)'
     };
 
-
     return (
       <div>
         <div className="bg-holder full text-center text-white infoPageWrapper">
