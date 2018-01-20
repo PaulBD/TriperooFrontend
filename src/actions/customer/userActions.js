@@ -26,7 +26,32 @@ export function updateUser(user) {
       dispatch(updateUserFailure(error.response.data));
     });
   };
+}
 
+// ****************************************
+// Update Marketing Preferences
+// ****************************************
+export function updateMarketingPreferencesInitialize(marketingPreferences) {
+  return {type: types.UPDATE_MP_REQUEST, isSending: true, hasPosted: false, marketingPreferences};
+}
+
+export function updateMarketingPreferencesSuccess(user) {
+  return {type: types.UPDATE_MP_SUCCESS, isSending: false, hasPosted: true, user};
+}
+
+export function updateMarketingPreferencesFailure(message) {
+  return {type: types.UPDATE_MP_FAILURE, isSending: false, hasPosted: false, message};
+}
+
+export function updateMarketingPreferences(marketingPreferences) {
+  return dispatch => {
+    dispatch(updateMarketingPreferencesInitialize(marketingPreferences));
+    return UserApi.updateMarketingPreferences(marketingPreferences).then(updatedUser => {
+      dispatch(updateMarketingPreferencesSuccess(updatedUser.triperooCustomers));
+    }).catch(error => {
+      dispatch(updateMarketingPreferencesFailure(error.response.data));
+    });
+  };
 }
 
 // ****************************************
@@ -232,8 +257,8 @@ export function postActivity(tripId, activity) {
 // ****************************************
 // Archive Activity
 // ****************************************
-export function archiveActivityInitialize(tripId, locationId) {
-  return {type: types.ARCHIVE_ACTIVITY_REQUEST, isSending: true, hasPosted: false, locationId, tripId};
+export function archiveActivityInitialize(tripId, activityId) {
+  return {type: types.ARCHIVE_ACTIVITY_REQUEST, isSending: true, hasPosted: false, activityId, tripId};
 }
 
 export function archiveActivitySuccess() {
@@ -244,10 +269,12 @@ export function archiveActivityFailure(message) {
   return {type: types.ARCHIVE_ACTIVITY_FAILURE, isSending: false, hasPosted: false, message};
 }
 
-export function archiveActivity(tripId, locationId) {
+export function archiveActivity(tripId, activityId) {
+  console.log(tripId);
+  console.log(activityId);
   return dispatch => {
-    dispatch(archiveActivityInitialize(tripId, locationId));
-    return UserApi.archiveActivity(tripId, locationId).then(activity => {
+    dispatch(archiveActivityInitialize(tripId, activityId));
+    return UserApi.archiveActivity(tripId, activityId).then(activity => {
       dispatch(archiveActivitySuccess());
     }).catch(error => {
       dispatch(archiveActivityFailure(error.response.data));

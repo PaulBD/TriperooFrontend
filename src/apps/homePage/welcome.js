@@ -72,9 +72,9 @@ class WelcomePage extends React.Component {
       backgroundImage: 'url(/static/img/holiday.jpg)'
     };
 
-    if (!this.state.isLoadingLocation) {
+    if (!this.props.loadingLocation) {
 
-      if (this.props.user != undefined && this.props.user != null) {
+      if (this.props.testuser) {
         let premiumActivitiesTitle = 'Attractions in ' + this.props.location.regionName;
         let premiumActivitiesUrl = this.props.location.url + '/attractions';
 
@@ -95,7 +95,7 @@ class WelcomePage extends React.Component {
               <div className="bg-img" style={style}></div>
               <div className="bg-front full-center text-xs-center">
                 <div className="owl-cap">
-                  <span>Welcome back {this.props.user.profile.name}</span>
+                  <span>Welcome back {this.props.testuser.profile.name}</span>
                   <h1 className="owl-cap-title fittext">Explore - Plan - Book</h1>
                   <div className="owl-cap-price hidden-md-down">
                     <small>Get the best deals from the top travel websites, plus reviews on the <br />best hotels,
@@ -163,7 +163,8 @@ WelcomePage.defaultProps = {
   isActiveUser: false,
   user: {},
   currentUserId: '',
-  currentLocationId: 0
+  currentLocationId: 0,
+  loadingLocation: true
 };
 
 WelcomePage.propTypes = {
@@ -172,10 +173,12 @@ WelcomePage.propTypes = {
   currentUserId: PropTypes.string.isRequired,
   isActiveUser: PropTypes.bool.isRequired,
   user: PropTypes.object,
+  testuser: PropTypes.object,
   errorMessage: PropTypes.string,
   location: PropTypes.object,
   locationActions: PropTypes.object.isRequired,
-  userActions: PropTypes.object.isRequired
+  userActions: PropTypes.object.isRequired,
+  loadingLocation: PropTypes.bool
 };
 
 function mapStateToProps(state, ownProps) {
@@ -186,8 +189,10 @@ function mapStateToProps(state, ownProps) {
     currentLocationId: state.authentication.user ? state.authentication.user.triperooCustomers.currentLocationId : user.currentLocationId ? user.currentLocationId : 0,
     isActiveUser: user ? ownProps.params.guid == user.userId : false,
     user: state.authentication.user ? state.authentication.user : state.user ? state.user.user : null,
+    testuser: state.user ? state.user.user : null,
     errorMessage: state.authentication.errorMessage,
-    location: state.location.location ? state.location.location : {}
+    location: state.location.location ? state.location.location : {},
+    loadingLocation: state.location.isFetching
   };
 }
 

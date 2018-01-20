@@ -59,6 +59,9 @@ class RoomList extends React.Component {
   render() {
     if (!this.state.isLoadingHotelRooms) {
       if (this.props.hotelRooms.hotelRoomAvailabilityResponse.size > 0) {
+
+        console.log(this.props.hotelRooms);
+
         return (
             <div className="row">
               <div className="col-md-12" id="rooms">

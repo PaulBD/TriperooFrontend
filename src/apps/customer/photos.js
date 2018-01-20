@@ -67,43 +67,43 @@ class UserPhotos extends React.Component {
     if (this.props.isAuthenticated && this.props.isActiveUser) {
       if (!this.state.loading && !this.state.loadingPhotos)
       {
-      return (
-        <div>
-          <CustomerHeader user={this.props.user} isAuthenticated={this.props.isAuthenticated} isActiveUser={this.props.isActiveUser} pageName={!this.props.isActiveUser ? this.props.user.profile.name + "' Travel Photos" : 'Travel Photos'}/>
+        return (
+          <div>
+            <CustomerHeader user={this.props.user} isAuthenticated={this.props.isAuthenticated} isActiveUser={this.props.isActiveUser} pageName={!this.props.isActiveUser ? this.props.user.profile.name + "' Travel Photos" : 'Travel Photos'}/>
             <div className="container">
-            <div className="gap gap-small"></div>
-            <div className="row">
-              <div className="col-md-12">
-                <div className="row customerPhotos">
-                  <div className="col-md-4">
-                    <div className="card text-center createPhoto">
-                      <div className="card-block">
-                        <a href="#" onClick={this.uploadImage}><i className="fa fa-plus-circle" /></a>
-                        <h4 className="card-title">A picture tells a thousand words</h4>
-                        <p className="card-text">Upload your photos and share your experiences</p>
-                        <a href="#" className="btn btn-primary"  onClick={this.uploadImage}>Upload Photos</a>
+              <div className="gap gap-small"></div>
+              <div className="row">
+                <div className="col-md-12">
+                  <div className="row customerPhotos">
+                    <div className="card-columns">
+                      <div className="card text-center createPhoto">
+                        <div className="card-block">
+                          <a href="#" onClick={this.uploadImage}><i className="fa fa-plus-circle" /></a>
+                          <h4 className="card-title">A picture tells a thousand words</h4>
+                          <p className="card-text">Upload your photos and share your experiences</p>
+                          <a href="#" className="btn btn-primary"  onClick={this.uploadImage}>Upload Photos</a>
+                        </div>
                       </div>
+                      {
+                        (this.props.photos.photoList.length > 0) ? this.props.photos.photoList.map(photo => {
+                          return (
+                            <PhotoList likeCount={photo.likeCount} imageUrl={photo.url} key={photo.photoReference} imageReference={photo.photoReference} isActiveUser={this.props.isActiveUser} removeImage={this.removeImage}/>
+                          );
+                        }) : ""
+                      }
                     </div>
                   </div>
-                  {
-                      (this.props.photos.photoList.length > 0) ? this.props.photos.photoList.map(photo => {
-                        return (
-                          <PhotoList imageUrl={photo.url} key={photo.photoReference} imageReference={photo.photoReference} isActiveUser={this.props.isActiveUser} removeImage={this.removeImage}/>
-                        );
-                      }) : ""
-                    }
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      );
+        );
+      }
+      else {
+        return (<TriperooLoader />);
+      }
     }
     else {
-      return (<TriperooLoader />);
-    }
-  }
-  else {
       return (
         <div className="container customerPhotos">
           <div className="gap gap-small"></div>

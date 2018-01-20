@@ -93,7 +93,7 @@ class Reviews extends React.Component {
             <ReviewFilter filterReviews={this.filterReviews}/>
           </div>
           <div className="col-md-12">
-          <ReviewList reviews={this.props.reviews} locationId={this.props.locationId} locationName={this.props.locationName} isUsingFilter={this.state.isUsingFilter} writeReview={this.writeReview} />
+          <ReviewList reviews={this.props.reviews} locationId={this.props.locationId} locationName={this.props.locationName} isUsingFilter={this.state.isUsingFilter} writeReview={this.writeReview} showLocation={this.props.showLocation}/>
 
           <div className="gap gap-small"></div>
           <div className="row justify-content-center">
@@ -125,7 +125,8 @@ Reviews.defaultProps = {
   pageSize: 0,
   pageNumber: 0,
   isFetching: false,
-  reviews: []
+  reviews: [],
+  showLocation: false
 };
 
 Reviews.propTypes = {
@@ -141,7 +142,8 @@ Reviews.propTypes = {
   title: PropTypes.string,
   showTitle: PropTypes.bool,
   isFetching: PropTypes.bool.isRequired,
-  reviewCount: PropTypes.number.isRequired
+  reviewCount: PropTypes.number.isRequired,
+  showLocation: PropTypes.bool
 };
 
 function mapStateToProps(state, ownProps) {

@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import AutoComplete from '../common/autocomplete';
 
-const FacebookForm = ({city, isUpdating, onSubmit, onChangeAutoComplete, errors}) => {
+const FacebookForm = ({city, optIn, isUpdating, onSubmit, onChangeAutoComplete, onChange, errors}) => {
   return (
     <div className="col-md-12">
       <div className={errors && errors.length > 0 ? 'col-md-12' : 'col-md-12 hide'}>
@@ -16,6 +16,12 @@ const FacebookForm = ({city, isUpdating, onSubmit, onChangeAutoComplete, errors}
           <div className="form-group form-group-lg form-group-icon-left">
             <AutoComplete onChangeAutoComplete={onChangeAutoComplete} searchValue={city} searchType="city" placeholder="Current Location" cssClass="typeahead form-control" />
           </div>
+          <div className="form-group form-group-lg form-check form-check-inline">
+            <label className="form-check-label">
+              <input className="form-check-input" type="checkbox"  name="optIn" onChange={onChange} checked={optIn == 1 ? true : false} value={optIn == 1 ? true : false}/><span className="smlText">Click here to receive marketing emails from Triperoo</span>
+            </label>
+            <p className="smlText">By clicking "Create My Account," you are agreeing to the Terms of Use and the Privacy Policy.</p>
+          </div>
         </div>
         <div className="col-md-12 text-sm-right">
           <hr />
@@ -29,9 +35,11 @@ const FacebookForm = ({city, isUpdating, onSubmit, onChangeAutoComplete, errors}
 FacebookForm.propTypes = {
 
   city: PropTypes.string.isRequired,
+  optIn: PropTypes.number.isRequired,
   isUpdating: PropTypes.bool.isRequired,
   errors: PropTypes.string,
   onSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
   onChangeAutoComplete: PropTypes.func.isRequired
 };
 

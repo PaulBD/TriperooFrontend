@@ -36,7 +36,7 @@ class FacebookSignup extends React.Component {
           <div className="col-md-12">
             <div className="row">
               <div className="col-md-6 text-lg-right text-xs-center">
-                <h5 className="signupText">Join Now to get started</h5>
+                <h5 className="signupText">Join now to get started</h5>
               </div>
               <div className="col-md-6 text-lg-left text-xs-center ">
                 <FacebookButton onCallback={this.submitFacebookForm}/>

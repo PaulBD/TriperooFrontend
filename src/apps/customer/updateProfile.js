@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import * as authenticationActions from '../../actions/customer/authenticationActions';
 import * as userActions from '../../actions/customer/userActions';
 import UserProfileForm from '../../components/forms/authentication/profileForm';
+import MarketingPreferencesForm from '../../components/forms/authentication/marketingPreferences';
 import TriperooLoader from '../../components/loaders/globalLoader';
 import CustomerHeader from '../../components/layout/customer/customerNavigation';
 import Toastr from 'toastr';
@@ -12,12 +13,15 @@ class UpdateProfile extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.changeField = this.changeField.bind(this);
+    this.changeMarketingField = this.changeMarketingField.bind(this);
     this.onChangeAutoComplete = this.onChangeAutoComplete.bind(this);
     this.submitStandardForm = this.submitStandardForm.bind(this);
+    this.submitMarketingForm = this.submitMarketingForm.bind(this);
 
     this.state = {
       loading: true,
       isUpdating: false,
+      isUpdatingMarketing: false,
       isUpdatingPassword: false,
       isFacebookSignup: false,
       creds: {
@@ -30,6 +34,13 @@ class UpdateProfile extends React.Component {
         pass: '',
         phoneNumber: ''
       },
+      marketing: {
+        optInEmail: 0,
+        optInPost: 0,
+        optInTelephone: 0,
+        optInText: 0,
+        gdprConsent: 0
+      },
       errors:''
     };
   }
@@ -40,6 +51,9 @@ class UpdateProfile extends React.Component {
 
     this.props.userActions.getUser(this.props.currentUserId)
       .then(() => {
+
+      console.log(this.props.user);
+
         if (this.props.user.profile) {
           this.setState({
             loading: false,
@@ -53,6 +67,13 @@ class UpdateProfile extends React.Component {
               dateOfBirth: this.props.user.profile.dateOfBirth,
               pass: this.props.user.profile.pass,
               phoneNumber: this.props.user.profile.phoneNumber
+            },
+            marketing: {
+              optInEmail: this.props.user.marketing.optInEmail ? 1 : 0,
+              optInPost: this.props.user.marketing.optInPost ? 1 : 0,
+              optInTelephone: this.props.user.marketing.optInTelephone ? 1 : 0,
+              optInText: this.props.user.marketing.optInText ? 1 : 0,
+              gdprConsent: this.props.user.marketing.gdprConsent ? 1 : 0
             },
             errors: ''
           });
@@ -89,6 +110,24 @@ class UpdateProfile extends React.Component {
 
   }
 
+  submitMarketingForm(e) {
+    e.preventDefault();
+    console.log(this.state.marketing);
+    this.setState({isUpdatingMarketing: true});
+    this.props.userActions.updateMarketingPreferences(this.state.marketing)
+      .then(() => {
+        this.setState({isUpdatingMarketing: false, errors: this.props.errorMessage});
+        if (this.props.errorMessage == '' && this.props.errorMessage.length == 0)
+        {
+          Toastr.success('Marketing preferences saved');
+        }
+      })
+      .catch(error => {
+        Toastr.error(error);
+        this.setState({isUpdatingMarketing: false, errors: error});
+      });
+  }
+
   onChangeAutoComplete(city, cityId, cityUrl, dataType)
   {
     let creds = this.state.creds;
@@ -105,8 +144,24 @@ class UpdateProfile extends React.Component {
     this.setState({creds: creds});
   }
 
+  changeMarketingField(event){
+
+    const field = event.target.name;
+    let marketing = this.state.marketing;
+
+    if (!marketing[field])
+    {
+      marketing[field] = 1;
+    }
+    else {
+      marketing[field] = 0;
+    }
+
+    console.log(marketing);
+    this.setState({marketing: marketing});
+  }
+
   render(){
-    console.log(this.props.isActiveUser);
     if (this.props.isAuthenticated && this.props.isActiveUser) {
       if (!this.state.loading) {
         return (
@@ -125,10 +180,24 @@ class UpdateProfile extends React.Component {
                                  phoneNumber={this.state.creds.phoneNumber}
                                  isFacebookSignup={this.state.isFacebookSignup}
                                  isUpdating={this.state.isUpdating}
-                                 onSubmit={this.submitStandardForm} onChange={this.changeField}
+                                 onSubmit={this.submitStandardForm}
+                                 onChange={this.changeField}
                                  onChangeAutoComplete={this.onChangeAutoComplete}
                                  errors={this.props.errorMessage}
                 />
+              </div>
+              <div className="gap gap-small"></div>
+              <div className="row">
+                <MarketingPreferencesForm optInEmail={this.state.marketing.optInEmail}
+                                          optInPost={this.state.marketing.optInPost}
+                                          optInTelephone={this.state.marketing.optInTelephone}
+                                          optInText={this.state.marketing.optInText}
+                                          gdprConsent={this.state.marketing.gdprConsent}
+                                          isUpdating={this.state.isUpdatingMarketing}
+                                          onSubmit={this.submitMarketingForm}
+                                          onChange={this.changeMarketingField}
+                                          errors={this.props.marketingErrorMessage}
+                                          />
               </div>
               <div className="gap gap"></div>
             </div>
@@ -168,7 +237,8 @@ UpdateProfile.propTypes = {
   isActiveUser: PropTypes.bool.isRequired,
   user: PropTypes.object,
   currentUserId: PropTypes.string,
-  errorMessage: PropTypes.string
+  errorMessage: PropTypes.string,
+  marketingErrorMessage: PropTypes.string
 };
 
 function mapStateToProps(state, ownProps) {

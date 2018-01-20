@@ -10,7 +10,7 @@ export default function modalReducer(state = { isSending: false, hasPosted: fals
 
 
     case types.OPEN_REVIEW_MODEL:
-      return Object.assign({}, state, { modalIsOpen: true, isSending: true, hasPosted: false, modalContent: { locationId: action.locationId, locationName: action.locationName, locationType: action.locationType, pageSize: action.pageSize, pageNumber: action.pageNumber }, modalName: action.name, modalType: 'Review' });
+      return Object.assign({}, state, { modalIsOpen: true, isSending: true, hasPosted: false, modalContent: { locationId: action.locationId, locationName: action.locationName, locationType: action.locationType, pageSize: action.pageSize, pageNumber: action.pageNumber, currentUserId: action.currentUserId }, modalName: action.name, modalType: 'Review' });
     case types.CLOSE_REVIEW_MODEL:
       return Object.assign({}, state, { modalIsOpen: false, isSending: false, hasPosted: false, modalName: action.name, modalType: 'Review' });
 

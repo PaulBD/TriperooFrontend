@@ -10,6 +10,7 @@ import FlightCard from '../../components/layout/cards/flights/flightCard';
 import FlightFilter from '../../components/filters/flights';
 let moment = require('moment');
 require("moment-duration-format");
+import ReactGA from 'react-ga';
 
 class SearchResults extends React.Component {
   constructor(props, context) {
@@ -31,17 +32,18 @@ class SearchResults extends React.Component {
       , isDirectFlights: 0
       , selectedAirlines: []
       , departureTimeFrom: '00:00'
-      , departureTimeTo: '00:00'
+      , departureTimeTo: '23:59'
       , returnTimeFrom: '00:00'
-      , returnTimeTo: '00:00'
+      , returnTimeTo: '23:59'
     };
     this.updateSearch = this.updateSearch.bind(this);
     this.filterFlights = this.filterFlights.bind(this);
+    this.trackClick = this.trackClick.bind(this);
   }
 
   componentWillMount() {
     window.scrollTo(0, 0);
-    this.loadFlights(this.props.toCode, this.props.fromCode, this.props.fromDate, this.props.fromDate, this.props.toDate, this.props.toDate, 'en', 'en', this.state.currency, this.state.journeyType, this.state.passengerTotal, this.state.adultTotal, this.state.childTotal, this.state.infantTotal, this.state.isDirectFlights, 1, 10000, this.state.departureTimeFrom, this.state.departureTimeTo, this.state.returnTimeFrom, this.state.returnTimeTo, '00:00', '00:00', '00:00', '00:00', '00:00', '00:00',this.state.selectedAirlines, 0, 30, this.state.sort, 1);
+    this.loadFlights(this.props.fromCode, this.props.toCode, this.props.fromDate, this.props.fromDate, this.props.toDate, this.props.toDate, 'en', 'en', this.state.currency, this.state.journeyType, this.state.passengerTotal, this.state.adultTotal, this.state.childTotal, this.state.infantTotal, this.state.isDirectFlights, 1, 10000, this.state.departureTimeFrom, this.state.departureTimeTo, this.state.returnTimeFrom, this.state.returnTimeTo, '00:00', '00:00', '00:00', '00:00', '00:00', '00:00',this.state.selectedAirlines, 0, 30, this.state.sort, 1);
   }
 
   loadFlights(flyFrom, flyTo, dateFrom, dateTo, returnFrom, returnTo, market, locale, currency, flightType, passengerTotal, adultTotal, childTotal, infantTotal, directFlightsOnly, priceFrom, priceTo, departureTimeFrom, departureTimeTo, arrivalTimeFrom, arrivalTimeTo, returnDeperatureTimeFrom, returnDepartureTimeTo, returnArrivalTimeFrom, returnArrivalTimeTo, stopOverFrom, stopOverTo, selectedAirlines, offset, limit, sort, asc){
@@ -57,13 +59,18 @@ class SearchResults extends React.Component {
 
   updateSearch(fromCode, fromFriendly, toCode, toFriendly, fromDate, toDate, passengerTotal, adultTotal, childTotal, infantTotal, journeyType, formattedFromDate, formattedToDate) {
     this.setState({isLoadingResults: true, isLoadingPage: false, fromCode: fromCode, toCode: toCode, fromDate: formattedFromDate, toDate: formattedToDate, passengerTotal:passengerTotal, adultTotal:adultTotal, childTotal:childTotal, infantTotal:infantTotal, journeyType:journeyType});
-    this.loadFlights(fromCode, toCode, fromDate, fromDate, toDate, toDate, 'en', 'en', this.state.currency, journeyType, passengerTotal, adultTotal, childTotal, infantTotal, this.state.isDirectFlights, 1, 10000, this.state.departureTimeFrom, this.state.departureTimeTo, '00:00', '00:00', this.state.returnTimeFrom, this.state.returnTimeTo, '00:00', '00:00', '00:00', '00:00', this.state.selectedAirlines, 0, 30, this.state.sort, 1);
+    this.loadFlights(fromCode, toCode, fromDate, fromDate, toDate, toDate, 'en', 'en', this.state.currency, journeyType, passengerTotal, adultTotal, childTotal, infantTotal, this.state.isDirectFlights, 1, 10000, this.state.departureTimeFrom, this.state.departureTimeTo, '00:00', '23:59', this.state.returnTimeFrom, this.state.returnTimeTo, '00:00', '23:59', '00:00', '23:59', this.state.selectedAirlines, 0, 30, this.state.sort, 1);
 
   }
 
   filterFlights(sort, isDirectFlights, selectedAirlines, departureTimeFrom, departureTimeTo, returnTimeFrom, returnTimeTo) {
     this.setState({isLoadingResults: true, isLoadingPage: false, sort: sort, isDirectFlights: isDirectFlights, selectedAirlines: selectedAirlines, departureTimeFrom: departureTimeFrom, departureTimeTo: departureTimeTo, returnTimeFrom: returnTimeFrom, returnTimeTo: returnTimeTo});
-    this.loadFlights(this.state.fromCode, this.state.toCode, this.state.fromDate, this.state.fromDate, this.state.toDate, this.state.toDate, 'en', 'en', 'GBP', this.state.journeyType, this.state.passengerTotal, this.state.adultTotal, this.state.childTotal, this.state.infantTotal, isDirectFlights, 1, 10000, departureTimeFrom, departureTimeTo, '00:00', '00:00', returnTimeFrom, returnTimeTo,  '00:00', '00:00', '00:00', '00:00', selectedAirlines, 0, 30, sort, 1);
+    this.loadFlights(this.state.fromCode, this.state.toCode, this.state.fromDate, this.state.fromDate, this.state.toDate, this.state.toDate, 'en', 'en', 'GBP', this.state.journeyType, this.state.passengerTotal, this.state.adultTotal, this.state.childTotal, this.state.infantTotal, isDirectFlights, 1, 10000, departureTimeFrom, departureTimeTo, '00:00', '23:59', returnTimeFrom, returnTimeTo,  '00:00', '23:59', '00:00', '23:59', selectedAirlines, 0, 30, sort, 1);
+
+  }
+
+  trackClick(e) {
+    ReactGA.event({ category: e.currentTarget.getAttribute('data-category'), action: 'Click', label: e.currentTarget.getAttribute('data-label') });
 
   }
 
@@ -82,7 +89,7 @@ class SearchResults extends React.Component {
                   this.props.flights.data.map((quote, index) => {
                     return (
                       <FlightCard quote={quote} currency={this.state.currency} journeyType={this.state.journeyType}
-                                  position={index} key={index}/>
+                                  position={index} key={index} trackClick={this.trackClick}/>
                     );
                   })
                 }
@@ -91,21 +98,27 @@ class SearchResults extends React.Component {
           else {
             flightContent = (
               <div className="col-md-9 flightResults">
-                <p>There are no results. Please change your filter criteria.</p>
+                <div className="alert alert-warning text-center" role="alert">
+                  There are no results. Please change your filter criteria.
+                </div>
               </div>);
           }
         }
         else {
           flightContent = (
             <div className="col-md-9 flightResults">
-              <p>There are no results. Please change your filter criteria.</p>
+              <div className="alert alert-warning text-center" role="alert">
+                There are no results. Please change your filter criteria.
+              </div>
             </div>);
         }
       }
       else {
         flightContent = (
           <div className="col-md-9 flightResults">
-            <p>There are no results. Please change your filter criteria.</p>
+            <div className="alert alert-warning text-center" role="alert">
+              There are no results. Please change your filter criteria.
+            </div>
           </div>);
       }
     }
@@ -162,8 +175,8 @@ class SearchResults extends React.Component {
               </div>
             </div>
           </div>
-          <div className="row greyBg">
-            <div className="container">
+          <div className="jumbotron flights">
+          <div className="container">
               <div className="row ">
                 <div className="gap gap-mini"></div>
                 <div className="col-md-12">
@@ -174,7 +187,7 @@ class SearchResults extends React.Component {
                           updateSearch={this.updateSearch}/>
                 </div>
               </div>
-            </div>
+          </div>
           </div>
           <div className="gap gap-small"></div>
 

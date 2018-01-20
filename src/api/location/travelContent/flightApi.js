@@ -19,6 +19,24 @@ class FlightApi {
         });
     });
   }
+
+  // ****************************************
+  // Return airports using Kiwi
+  // ****************************************
+  static searchAirports(term, locale) {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'get',
+        url: baseUrl + '/airports?term=' + term + '&locale=' + locale
+      })
+        .then(response => {
+          resolve(Object.assign({}, response.data));
+        })
+        .catch(function (error) {
+          reject(error);
+        });
+    });
+  }
 }
 
 export default FlightApi;

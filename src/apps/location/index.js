@@ -147,7 +147,7 @@ class LocationHome extends React.Component {
                   <hr/>
                 </div>
                 <div className="col-md-8">
-                  <LocationReviews cssClass="col-md-6" showTitle={false} locationId={this.props.locationId} locationName={this.state.location.regionName} locationType={this.state.location.subClass} pageSize={4} pageNumber={0}/>
+                  <LocationReviews cssClass="col-md-6" showTitle={false} locationId={this.props.locationId} locationName={this.state.location.regionName} locationType={this.state.location.subClass} pageSize={4} pageNumber={0} showLocation={true}/>
                 </div>
                 <div className="col-md-4">
                   <ReviewButton locationId={this.props.locationId} locationName={this.state.location.regionName} locationNameLong={this.state.location.regionNameLong} locationType={this.state.location.regionType} pageSize={4} pageNumber={0}/>

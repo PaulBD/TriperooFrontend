@@ -52,6 +52,13 @@ class ReviewItem extends React.Component {
       );
     }
 
+    let locationName = '';
+
+    if (this.props.showLocation)
+    {
+      locationName = (<h3 className="locationReviewTitle">{review.placeName}</h3>);
+    }
+
 
     return (
       <li>
@@ -69,6 +76,7 @@ class ReviewItem extends React.Component {
             </div>
             <div className="col-md-10 col-10">
                 <div className="booking-item-review-content">
+                  {locationName}
                     <StarRating starRating={review.starRating} className="icon-list list-inline-block mb0 last-minute-rating"/>
                     <div className="gap gap-small"></div>
                     <p>{comment}</p>
@@ -85,8 +93,13 @@ class ReviewItem extends React.Component {
   }
 }
 
+ReviewItem.defaultProps = {
+  showLocation: false
+};
+
 ReviewItem.propTypes = {
-  review: PropTypes.object.isRequired
+  review: PropTypes.object.isRequired,
+  showLocation: PropTypes.bool
 };
 
 

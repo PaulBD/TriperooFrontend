@@ -67,7 +67,7 @@ class AutoComplete extends React.Component {
     return (
       <div className="input-group">
         <i className="fa fa-search input-icon homeSearchIcon"></i>
-        <input className={this.props.cssClass} placeholder={this.props.placeholder} type="text" onChange={this.onSearchValue} autoComplete="off" value={this.state.searchValue} disabled={this.props.disabled}/>
+        <input className={this.props.cssClass} placeholder={this.props.placeholder} type="text" onChange={this.onSearchValue} autoComplete="off" value={this.state.searchValue} disabled={this.props.disabled} autocomplete="off"/>
         <div style={style}>
           <ul className={this.props.searchType == 'airport' ? "ui-autocomplete long" : "ui-autocomplete"}>
             {

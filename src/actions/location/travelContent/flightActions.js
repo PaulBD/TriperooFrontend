@@ -26,3 +26,45 @@ export function searchFlights(flyFrom, flyTo, dateFrom, dateTo, returnFrom, retu
 		});
 	};
 }
+
+
+// ****************************************
+// Load Airports (Kiwi)
+// ****************************************
+export function searchAirportsRequest() {
+  return {type: types.SEARCH_AIRPORTS_REQUEST, isFetching: true, airports: []};
+}
+
+export function searchAirportsSuccess(airports) {
+  return {type: types.SEARCH_AIRPORTS_SUCCESS, airports};
+}
+
+export function searchAirportsFailure(errorMessage) {
+  return {type: types.SEARCH_AIRPORTS_FAILURE, isFetching:false, errorMessage};
+}
+
+export function searchAirports(term, locale) {
+  return dispatch => {
+    dispatch(searchAirportsRequest());
+    return FlightApi.searchAirports(term, locale).then(airports => {
+      dispatch(searchAirportsSuccess(airports));
+    }).catch(error => {
+      dispatch(searchAirportsFailure(error.response.data));
+    });
+  };
+}
+
+
+// ****************************************
+// Clear Airport Autocomplete
+// ****************************************
+
+export function autoclearSuccess(autocompleteList) {
+  return {type: types.AUTOCOMPLETE_AIRPORTS_CLEAR, airports: []};
+}
+
+export function clearAirports() {
+  return dispatch => {
+    dispatch(autoclearSuccess());
+  };
+}

@@ -101,7 +101,7 @@ class RestaurantContent extends React.Component {
                       <div className="col-md-9 restaurantList">
                         <Restaurants useMinHeight={false} locationId={this.props.locationId}
                                      locations={this.props.restaurants} locationCount={this.props.restaurantCount}
-                                     changePage={this.changePage} isFetching={this.props.isFetching}/>
+                                     changePage={this.changePage} isFetching={this.props.isFetching} contentType="restaurants"/>
                       </div>
                     </div>
                     <div className="gap gap-small"></div>

@@ -17,35 +17,43 @@ const TripForm = ({trip, isCreatingList, onSubmit, onChange, onChangeStartDate, 
               <div className="col-md-6">
                 <div className="row">
                   <div className="col-md-12">
+                    <p className="mb-0">Trip Name</p>
                     <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-pencil input-icon input-icon-hightlight"></i>
-                      <input className="form-control" placeholder="Enter Trip Name" name="tripName" type="text" onChange={onChange} value={trip.tripName} />
+                      <input className="form-control" placeholder="e.g Trip to Rome" name="tripName" type="text" onChange={onChange} value={trip.tripName} />
                     </div>
+                    <p className="mb-0">Destination</p>
                     <div className="form-group form-group-lg form-group-icon-left">
                       <AutoComplete onChangeAutoComplete={onChangeAutoComplete} searchValue={trip.tripDetails.regionName} searchType="city" placeholder="Destination" cssClass="typeahead form-control" />
                     </div>
+                    <p className="mb-0">Description (optional)</p>
                     <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-edit input-icon input-icon-hightlight"></i>
-                      <textarea className="form-control large" placeholder="Enter Description (optional)" type="text" name="description" onChange={onChange} value={trip.tripDetails.description} rows="6" />
+                      <textarea className="form-control large" placeholder="e.g Family holiday to Rome" type="text" name="description" onChange={onChange} value={trip.tripDetails.description} rows="4" />
                     </div>
                   </div>
-                  <div className="col-md-12">
-                    <div className="row">
-                      <div className="col-md-6 col-6">
-                        <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
-                          <DatePicker name="startDate" dateFormat="DD/MM/YYYY"  selected={trip.tripDetails.momentStartDate} onChange={onChangeStartDate} className="form-control" />
-                        </div>
-                      </div>
-                      <div className="col-md-6 col-6">
-                        <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
-                          <DatePicker name="endDate" dateFormat="DD/MM/YYYY"  selected={trip.tripDetails.momentEndDate} onChange={onChangeEndDate} className="form-control" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+
                 </div>
               </div>
               <div className="col-md-6">
                 <div className="row">
                   <div className="col-md-12">
+                    <div className="row">
+                      <div className="col-md-6 col-6">
+                        <p className="mb-0">From</p>
+                        <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
+                          <DatePicker name="startDate" dateFormat="DD/MM/YYYY"  selected={trip.tripDetails.momentStartDate} onChange={onChangeStartDate} className="form-control" />
+                        </div>
+                      </div>
+                      <div className="col-md-6 col-6">
+                        <p className="mb-0">To</p>
+                        <div className="form-group form-group-lg form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
+                          <DatePicker name="endDate" dateFormat="DD/MM/YYYY"  selected={trip.tripDetails.momentEndDate} onChange={onChangeEndDate} className="form-control" />
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+                <div className="row">
+                  <div className="col-md-12 hide">
                     <p>Populate my trip for me based upon recommendations?</p>
                     <div className="form-group form-group-lg form-group-icon-left">
                       <label className="custom-control custom-radio">

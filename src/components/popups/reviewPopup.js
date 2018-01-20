@@ -91,6 +91,8 @@ class ReviewPopup extends React.Component {
     e.preventDefault();
     this.setState({isPostingReview: true});
 
+    console.log(this.props.isEdit);
+
     if (this.props.isEdit)
     {
       const editReview = {
@@ -103,9 +105,14 @@ class ReviewPopup extends React.Component {
         "tags": _.cloneDeep(this.state.selectedTags)
       };
 
-      this.props.userReviewActions.updateReview(_.cloneDeep(editReview))
+      console.log(editReview);
+      console.log(this.props.currentUserId);
+
+      this.props.userReviewActions.updateReview(editReview)
         .then(() => {
-          this.props.userReviewActions.getReviews(this.props.currentUserId);
+          if (this.props.currentUserId != '') {
+            this.props.userReviewActions.getReviews(this.props.currentUserId, 8, 0);
+          }
           this.setState({isPostingReview: false, isLoadingReviews: false, wizardStep: 3});
         })
         .catch(error => {
@@ -114,11 +121,13 @@ class ReviewPopup extends React.Component {
     }
     else {
       const newReview = { "inventoryReference": this.state.searchId, "ReviewType": this.state.searchType, "StarRating": this.state.rating, "comment": this.refs.comment.value.trim(), "tags": this.state.selectedTags, "isCity": this.state.isCity };
-
-      console.log(newReview);
-
       this.props.userReviewActions.postReview(newReview)
         .then(() => {
+
+          if (this.props.currentUserId != '') {
+            this.props.userReviewActions.getReviews(this.props.currentUserId, 8, 0);
+          }
+
           this.setState({isPostingReview: false, isLoadingReviews: true});
           this.props.locationReviewsActions.loadReviewsByLocationId(this.props.locationId, this.props.pageSize, this.props.pageNumber)
             .then(() => this.setState({isLoadingReviews: false, wizardStep: 3}))
@@ -188,9 +197,9 @@ class ReviewPopup extends React.Component {
                 <div className="gap gap-small"></div>
               </form>
             </div>
-          </div>
-          <div className="modal-footer text-center">
-            <p className="closeText mb-0"><a href="#" onClick={this.undoReviewSelection} className="hide">Review a different location</a><a href="#" onClick={this.closeModal}>Close</a></p>
+            <div className="modal-footer text-center">
+              <p className="closeText mb-0"><a href="#" onClick={this.undoReviewSelection} className="hide">Review a different location</a><a href="#" onClick={this.closeModal}>Close</a></p>
+            </div>
           </div>
           <div className={this.state.wizardStep == 3 ? "modal-body" : "modal-body hide"}>
             <div className="row">

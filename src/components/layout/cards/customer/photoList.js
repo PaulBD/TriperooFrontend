@@ -16,18 +16,11 @@ class PhotoList extends React.Component {
   }
 
   render() {
-
-    let style = {
-      backgroundImage: 'url(' +  this.props.imageUrl + ')'
-    };
-
-
     return (
-      <div className="col-md-4" key={this.props.key}>
-        <div className="hover-img bgImage" style={style}>
-          <ul className={this.props.isActiveUser ? "hover-icon-group-center-top" : "hide"}>
-            <li><a href="#" ref="removePhoto" onClick={this.removeImage} data-id={this.props.imageReference} className="removePhoto" data-toggle="tooltip" data-placement="top" title="Remove Photo" ><i className="fa fa-remove" /></a></li>
-          </ul>
+      <div className="card" key={this.props.key}>
+        <img class="card-img-top" src={this.props.imageUrl} />
+        <div className="card-footer">
+          <small className="text-muted">Likes {this.props.likeCount} &bull; <a href="#" ref="removePhoto" onClick={this.removeImage} data-id={this.props.imageReference} className={this.props.isActiveUser ? "removePhoto" : "hide"} data-toggle="tooltip" data-placement="top" title="Remove Photo" >Remove Photo</a></small>
         </div>
       </div>
     );
@@ -39,6 +32,7 @@ PhotoList.defaultProps = {
 };
 
 PhotoList.propTypes = {
+  likeCount: PropTypes.number,
   key: PropTypes.string,
   imageUrl: PropTypes.string.isRequired,
   imageReference: PropTypes.string.isRequired,

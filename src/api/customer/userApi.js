@@ -30,6 +30,32 @@ class UserApi {
   }
 
   // ****************************************
+  // Update Marketigg Preferences
+  // ****************************************
+  static updateMarketingPreferences(marketing) {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'put',
+        url:  baseUrl + '/customer/marketing',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'token': JSON.parse(localStorage.getItem('id_token')).token
+        },
+        data: {
+          marketing
+        }
+      })
+        .then(response => {
+          resolve(Object.assign([], response.data));
+        })
+        .catch(function (error) {
+          reject(error);
+        });
+    });
+  }
+
+  // ****************************************
   // Get User
   // ****************************************
   static getUser(customerReference) {
@@ -192,11 +218,11 @@ class UserApi {
   // ****************************************
   // Archive activity
   // ****************************************
-  static archiveActivity(tripId, locationId) {
+  static archiveActivity(tripId, activityId) {
     return new Promise((resolve, reject) => {
       axios({
         method: 'delete',
-        url:  baseUrl + '/customer/trips/' + tripId + '/activity/' + locationId,
+        url:  baseUrl + '/customer/trips/' + tripId + '/activity/' + activityId,
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',

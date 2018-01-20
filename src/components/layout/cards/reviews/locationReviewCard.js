@@ -21,8 +21,8 @@ class ReviewList extends React.Component {
           <ul className="booking-item-reviews list">
             {
               this.props.reviews.map(function (review, i) {
-                return (<ReviewItem key={i} review={review} />);
-              })
+                return (<ReviewItem key={i} review={review} showLocation={this.props.showLocation}/>);
+              }, this)
             }
           </ul>
         );
@@ -54,7 +54,8 @@ class ReviewList extends React.Component {
 }
 
 ReviewList.defaultProps = {
-  reviews: []
+  reviews: [],
+  showLocation: false
 };
 
 ReviewList.propTypes = {
@@ -62,7 +63,8 @@ ReviewList.propTypes = {
   locationId: PropTypes.number,
   reviews: PropTypes.array.isRequired,
   isUsingFilter: PropTypes.bool,
-  writeReview: PropTypes.func
+  writeReview: PropTypes.func,
+  showLocation: PropTypes.bool
 };
 
 

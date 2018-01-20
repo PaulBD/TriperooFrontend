@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {browserHistory} from 'react-router';
 let DatePicker = require('react-datepicker');
 let moment = require('moment');
-import AutoComplete from '../common/autocomplete';
+import AutoComplete from '../common/flightAutocomplete';
 
 class Search extends React.Component {
   constructor(props, context) {
@@ -191,13 +191,13 @@ class Search extends React.Component {
       <form onSubmit={this.submitForm}>
         <div className="tabbable">
           <div className="row">
-            <div className="col-md-9">
+            <div className="col-8 col-md-9">
               <ul className="nav nav-pills nav-sm nav-no-br mb10" id="flightChooseTab">
                 <li className={this.state.journeyType == 'round' ? "active" : ""}><a href="#" onClick={this.changeForm} data-toggle="tab" data-type="round">Round Trip</a></li>
                 <li className={this.state.journeyType == 'single' ? "active" : ""}><a href="#" onClick={this.changeForm} data-toggle="tab" data-type="single">One Way</a> </li>
               </ul>
             </div>
-            <div className="col-md-3 text-right">
+            <div className="col-4 col-md-3 text-right">
               <a href="#" onClick={this.showPassengerPopup}><i className="fa fa-group"></i> {passengerLabel} {this.state.showPassengerPopup ? <i className="fa fa-arrow-up"></i> : <i className="fa fa-arrow-down"></i>}</a>
               <div className={this.state.showPassengerPopup ? "passengerPopup" : "passengerPopup hide"}>
 
@@ -246,22 +246,22 @@ class Search extends React.Component {
               </div>
             </div>
           </div>
-          <div className="tab-content">
+          <div className="tab-content flightSearch">
             <div className="tab-pane active">
               <div className="row">
                 <div className={this.state.error.length > 0 ? "col-md-12" : "hide"}>
                   {this.state.error}
                 </div>
 
-                <div className="col-md-5">
+                <div className="col-12 col-md-5">
                   <div className="row">
-                    <div className="col-md-8">
+                    <div className="col-7 col-md-8">
                       <div className="form-group form-group-icon-left">
                         <label>From</label>
                         <AutoComplete onChangeAutoComplete={this.onChangeFromAirport} searchType="airport" placeholder="Enter Destination" cssClass="typeahead form-control" searchValue={this.state.fromFriendly}  />
                       </div>
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-5 col-md-4">
                       <div className="form-group form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-highlight"></i>
                         <label>Departure Date</label>
                         <DatePicker name="from" dateFormat="DD/MM/YYYY"  selected={this.state.fromDate} onChange={this.handleFromDateChange} className="form-control" />
@@ -269,15 +269,15 @@ class Search extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className="col-md-5">
+                <div className="col-12 col-md-5">
                   <div className="row">
-                    <div className="col-md-8">
+                    <div className="col-7 col-md-8">
                       <div className="form-group form-group-icon-left">
                         <label>To</label>
                         <AutoComplete onChangeAutoComplete={this.onChangeToAirport} searchType="airport" placeholder="To Destination" cssClass="typeahead form-control" searchValue={this.state.toFriendly} />
                       </div>
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-5 col-md-4">
                       <div className="form-group form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-highlight"></i>
                         <label>Return Date</label>
                         <DatePicker name="to" dateFormat="DD/MM/YYYY"  selected={this.state.toDate} onChange={this.handleToDateChange} className={this.state.journeyType == 'single' ? "form-control disabled" : "form-control"} disabled={this.state.journeyType == 'single' ? true : false} />
@@ -285,8 +285,8 @@ class Search extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className="col-md-2">
-                  <button className="btn btn-primary btn-lg formBtn" type="submit">
+                <div className="col-12 col-md-2">
+                  <button className="btn btn-primary btn-lg formBtn mb-3" type="submit">
                     <i className="fa fa-search"></i>Search
                   </button>
                 </div>

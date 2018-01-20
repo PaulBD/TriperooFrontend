@@ -92,17 +92,17 @@ export function openHotelImage(imageList, imagePosition, hotelName) {
 // ****************************************
 // Open review
 // ****************************************
-export function openReviewModal(locationId, locationName, locationType, pageSize, pageNumber) {
-	return {type: types.OPEN_REVIEW_MODEL, locationId: locationId, locationName: locationName, locationType: locationType, name: 'ReviewModal', pageSize, pageNumber };
+export function openReviewModal(locationId, locationName, locationType, pageSize, pageNumber, currentUserId) {
+	return {type: types.OPEN_REVIEW_MODEL, locationId: locationId, locationName: locationName, locationType: locationType, name: 'ReviewModal', pageSize, pageNumber, currentUserId};
 }
 
 export function closeReviewModal() {
 	return {type: types.CLOSE_REVIEW_MODEL, name: 'ReviewModal'};
 }
 
-export function openReview(locationId, locationName, locationType, pageSize, pageNumber) {
+export function openReview(locationId, locationName, locationType, pageSize, pageNumber, currentUserId) {
 	return dispatch => {
-		dispatch(openReviewModal(locationId, locationName, locationType, pageSize, pageNumber));
+		dispatch(openReviewModal(locationId, locationName, locationType, pageSize, pageNumber, currentUserId));
 	};
 }
 

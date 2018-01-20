@@ -55,6 +55,7 @@ class DayByDay extends React.Component {
 
   render() {
 
+    let poiUrl = this.props.trip.tripDetails.regionUrl + '/points-of-interest';
     let attractionsUrl = this.props.trip.tripDetails.regionUrl + '/attractions';
     let hotelUrl = this.props.trip.tripDetails.regionUrl + '/hotels';
     let foodUrl = this.props.trip.tripDetails.regionUrl + '/restaurants';
@@ -79,7 +80,7 @@ class DayByDay extends React.Component {
                         }, this) : <div>No trips</div>
                       }
                       <article className={this.props.trip.tripDetails.tripSummary.length > 0 ? "timeline-entry begin":"hide"}>
-                      <div className="timeline-entry-inner">
+                      <div className="timeline-entry-inner endCircle">
                         <div className="timeline-icon">
                           <i className="entypo-flight"></i>
                         </div>
@@ -91,15 +92,25 @@ class DayByDay extends React.Component {
               </div>
               <a name="add"></a>
               <div className="row">
-                <div className="col-md-12 text-center">
+                <div className="gap gap-small"></div>
+                <div className="col-md-12">
                   <hr />
-                  <a href={attractionsUrl} className="btn btn-primary"><i className="fa fa-plus" /> Add Attractions</a>&nbsp;
-                  <a href={foodUrl} className="btn btn-primary"><i className="fa fa-plus" /> Add Places to Eat</a>&nbsp;
-                  <a href={hotelUrl} className="btn btn-primary"><i className="fa fa-plus" /> Add a Place to Stay</a>
+                </div>
+                <div className="col-md-3 col-6 mb-2">
+                  <a href={attractionsUrl} className="btn btn-secondary questionBtn mb-3"><i className="fa fa-plus" /> Attractions</a>
+                </div>
+                <div className="col-md-3 col-6 mb-2">
+                  <a href={poiUrl} className="btn btn-secondary questionBtn mb-3"><i className="fa fa-plus" /> Points of Interest</a>
+                </div>
+                <div className="col-md-3 col-6 mb-2">
+                  <a href={foodUrl} className="btn btn-secondary questionBtn mb-3"><i className="fa fa-plus" /> Places to Eat</a>
+                </div>
+                <div className="col-md-3 col-6 mb-2">
+                  <a href={hotelUrl} className="btn btn-secondary questionBtn mb-3"><i className="fa fa-plus" /> Places to Stay</a>
                 </div>
               </div>
+              <div className="gap gap-small"></div>
             </div>
-            <div className="gap gap-small"></div>
       </div>
     );
   }

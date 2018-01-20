@@ -120,10 +120,9 @@ class LocationList extends React.Component {
                           <div className="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">
                             <a href={location.url}>
                               <div className="text-small">
-                                <h5>{location.regionName.length > 47 ? location.regionName.substring(0, 47) + '...' : location.regionName}</h5>
+                                <h5>{location.regionName}</h5>
                                 <p className={locationType.length == 0 ? "hide" : ""}>{changeCase.ucFirst(locationType)}</p>
-                                <p
-                                  className={location.regionType == "Attractions" ? "" : "hide"}>{location.regionType == "Attractions" ? location.locationDetail.pricing.priceGBP + ' GBP' : ""}</p>
+                                <p className={location.regionType == "Attractions" ? "" : "hide"}>{location.regionType == "Attractions" ? location.locationDetail.pricing.priceGBP + ' GBP' : ""}</p>
                               </div>
                             </a>
                           </div>

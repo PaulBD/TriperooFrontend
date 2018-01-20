@@ -14,12 +14,23 @@ class FlightFilter extends React.Component {
       , returnTimeTo: this.props.returnTimeTo
       , departureSelection: '0'
       , returnSelection: '0'
+      , filterState: 'Show Filters'
     };
     this.handleSortFlights = this.handleSortFlights.bind(this);
     this.handleFilterDepartureTime = this.handleFilterDepartureTime.bind(this);
     this.handleFilterReturnTime = this.handleFilterReturnTime.bind(this);
     this.handleFilterStopsFlights = this.handleFilterStopsFlights.bind(this);
     this.handleFilterAirlines = this.handleFilterAirlines.bind(this);
+    this.showFilter = this.showFilter.bind(this);
+  }
+
+  showFilter(e) {
+    if (this.state.filterState == 'Show Filters') {
+      this.setState({filterState: 'Hide Filters'});
+    }
+    else {
+      this.setState({filterState: 'Show Filters'});
+    }
   }
 
   handleSortFlights(e) {
@@ -30,13 +41,13 @@ class FlightFilter extends React.Component {
   handleFilterDepartureTime(e) {
 
     let departureTimeFrom = '00:00';
-    let departureTimeTo = '00:00';
+    let departureTimeTo = '23:59';
 
     switch(e.target.value)
     {
       case '0':
         departureTimeFrom = '00:00';
-        departureTimeTo = '00:00';
+        departureTimeTo = '23:59';
         break;
       case '1':
         departureTimeFrom = '05:00';
@@ -59,13 +70,13 @@ class FlightFilter extends React.Component {
   handleFilterReturnTime(e) {
 
     let returnTimeFrom = '00:00';
-    let returnTimeTo = '00:00';
+    let returnTimeTo = '23:59';
 
     switch(e.target.value)
     {
       case '0':
         returnTimeFrom = '00:00';
-        returnTimeTo = '00:00';
+        returnTimeTo = '23:59';
         break;
       case '1':
         returnTimeFrom = '05:00';
@@ -116,6 +127,10 @@ class FlightFilter extends React.Component {
   render() {
     return (
       <div className="profile-usermenu">
+        <div className="col-md-12 hidden-md-up mb-3 text-center">
+        <a onClick={this.showFilter} data-toggle="collapse" href="#flightFilter" aria-expanded="false" aria-controls="flightFilter">{this.state.filterState}</a>
+        </div>
+        <div className="collapse flightFilter" id="flightFilter">
         <h5>Filter Flights</h5>
         <ul className="nav flex-column list booking-filters-list">
           <li>
@@ -212,7 +227,7 @@ class FlightFilter extends React.Component {
             </div>
           </li>
         </ul>
-
+        </div>
       </div>
     );
   }

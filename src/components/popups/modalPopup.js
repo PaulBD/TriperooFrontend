@@ -53,7 +53,7 @@ class Modal extends React.Component {
     switch(this.props.modalType)
     {
       case "Review":
-        modal = (<ReviewModal hasPosted={false} isEdit={false} closeModal={this.props.closeModal} locationId={this.props.modalContent.locationId} locationName={this.props.modalContent.locationName} locationType={this.props.modalContent.locationType} pageSize={this.props.modalContent.pageSize} pageNumber={this.props.modalContent.pageNumber} />);
+        modal = (<ReviewModal hasPosted={false} isEdit={false} closeModal={this.props.closeModal} locationId={this.props.modalContent.locationId} locationName={this.props.modalContent.locationName} locationType={this.props.modalContent.locationType} pageSize={this.props.modalContent.pageSize} pageNumber={this.props.modalContent.pageNumber} currentUserId={this.props.modalContent.currentUserId} />);
         break;
       case "EditReview":
         modal = (<ReviewModal hasPosted={false} isEdit={true} closeModal={this.props.closeModal} locationId={this.props.modalContent.locationId} reference={this.props.modalContent.reference} locationName={this.props.modalContent.locationName} locationType={this.props.modalContent.locationType} locationAddress={this.props.modalContent.locationAddress} starRating={this.props.modalContent.starRating} comment={this.props.modalContent.comment} tags={this.props.modalContent.tags} currentUserId={this.props.modalContent.currentUserId} />);
@@ -65,9 +65,11 @@ class Modal extends React.Component {
         modal = (<QuestionAnswerModal question={this.props.modalContent.question} hasPosted={false} closeModal={this.props.closeModal} questionReference={this.props.modalContent.questionReference} locationId={this.props.modalContent.locationId} pageSize={this.props.modalContent.pageSize} pageNumber={this.props.modalContent.pageNumber} />);
         break;
       case "Login":
+        cssClass = "Modal LoginModal";
         modal = (<LoginModal hasPosted={false} closeModal={this.props.closeModal} />);
         break;
       case "Signup":
+        cssClass = "Modal SignupModal";
         modal = (<SignupModal hasPosted={false} closeModal={this.props.closeModal} />);
         break;
       case "Bookmark":
@@ -81,6 +83,7 @@ class Modal extends React.Component {
         modal = (<LocationUploadImageModal hasPosted={false} closeModal={this.props.closeModal} locationId={this.props.modalContent.locationId} locationName={this.props.modalContent.locationName} locationNameLong={this.props.modalContent.locationNameLong} locationType={this.props.modalContent.locationType} />);
         break;
       case "LocationImage":
+        cssClass = "Modal LocationImageModal";
         modal = (<LocationImageModal hasPosted={false} closeModal={this.props.closeModal} imageList={this.props.modalContent.imageList} imagePosition={this.props.modalContent.imagePosition} />);
         break;
       case "HotelImage":
@@ -101,6 +104,7 @@ class Modal extends React.Component {
       case "ChangeCategories":
         return null;
       case "FacebookModal":
+        cssClass = "Modal FacebookModal";
         modal = (<FacebookModal hasPosted={false} closeModal={this.props.closeModal} facebookResponse={this.props.modalContent.facebookResponse} />);
         break;
     }

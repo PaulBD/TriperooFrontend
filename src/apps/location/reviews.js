@@ -47,14 +47,14 @@ class ReviewsByLocation extends React.Component {
     {
       return (
         <div>
-          <Header location={this.props.location} contentType="reviews" title="reviews" />
+          <Header location={this.props.location} contentType="reviews" title="Reviews" />
           <div className="container">
             <div className="row row-wrap">
               <div className="gap gap-small"></div>
               <div className="container">
                 <div className="row">
                   <div className="col-md-8">
-                    <ReviewList locationId={this.props.locationId} locationName={this.props.location.regionName} locationType={this.props.location.regionType} pageSize={3} pageNumber={0} showTitle={false} />
+                    <ReviewList locationId={this.props.locationId} locationName={this.props.location.regionName} locationType={this.props.location.regionType} pageSize={3} pageNumber={0} showTitle={false} showLocation={true}/>
                   </div>
                   <div className="col-md-4">
                     <ReviewButton name="sidePanel" locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType={this.props.location.regionType} pageSize={3} pageNumber={0} />

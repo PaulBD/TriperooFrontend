@@ -15,7 +15,7 @@ const Flight = ({routeList, nights, timeToDestination, fromLocation, fromCode, t
     return (
       <div className="row">
         <div
-          className={nights > 0 ? routeList.length == 1 ? "col-md-3 text-center dottedLineBtm" : "col-md-3 text-center dottedLineBtm sml" : "col-md-3 text-center"}>
+          className={nights > 0 ? routeList.length == 1 ? "col-2 col-md-3 text-center dottedLineBtm" : "col-2 col-md-3 text-center dottedLineBtm sml" : "col-2 col-md-3 text-center"}>
           <div className="row">
             <div className="col-md-12 text-left">
               {
@@ -25,18 +25,18 @@ const Flight = ({routeList, nights, timeToDestination, fromLocation, fromCode, t
                 })
               }
             </div>
-            <div className="col-md-12 text-left">
+            <div className="col-md-12 text-left airlineNames">
               <small>{routeList.length == 1 ? airlines.toString() : airlines.toString().substring(0, 20) + '...'}</small>
             </div>
           </div>
         </div>
-        <div className="col-md-4">
+        <div className="col-5 col-md-4">
         <span className="mb-0 d-block flightTime">
           {moment.unix(routeList[0].dTime, "seconds").format("HH.mm")} - {moment.unix(routeList[routeList.length - 1].aTime, "seconds").format("HH.mm")}
           <br /><small>{moment.unix(routeList[0].dTime, "seconds").format("ddd DD MMM")}</small></span>
           <span className={nights > 0 ? "flightNights" : "hide"}><i>{nights} nights in {toLocation}</i></span>
         </div>
-        <div className={nights > 0 ? "col-md-5 dottedLineBtm" : "col-md-5"}>
+        <div className={nights > 0 ? "col-5 col-md-5 dottedLineBtm" : "col-5 col-md-5"}>
         <span className="mb-0 d-block flightTime">{time.split(".")[0]}h {time.split(".")[1]}m
         <br /><small>{fromLocation} ({fromCode}) {routeList.length == 1 ? <i className="fa fa-long-arrow-right"></i> :
             <span><i className="fa fa-long-arrow-right"></i> <i

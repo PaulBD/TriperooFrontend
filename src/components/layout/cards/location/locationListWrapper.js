@@ -20,7 +20,7 @@ class ByLocation extends React.Component {
     if (!this.props.isFetching) {
       return (
         <div className={this.props.useMinHeight ? "listHeight" : ""}>
-          <LocationList location={this.props.location} locations={this.props.locations} cssClass="col-md-4" />
+          <LocationList location={this.props.location} locations={this.props.locations} cssClass={this.props.contentType == 'attractions' || this.props.contentType == 'restaurants' ? "col-12 col-md-4" : "col-6 col-md-4"} />
           <div className="row justify-content-center">
             <Pagination innerClass={this.props.locationCount > 24 ? "pagination justify-content-center" : "hide"} activePage={this.state.activePage} itemsCountPerPage={this.state.limit} totalItemsCount={this.props.locationCount} pageRangeDisplayed={5} onChange={this.changePage} />
           </div>
@@ -46,7 +46,8 @@ ByLocation.propTypes = {
   useMinHeight: PropTypes.bool,
   locationCount: PropTypes.number.isRequired,
   categoryFilter: PropTypes.string,
-  changePage: PropTypes.func
+  changePage: PropTypes.func,
+  contentType: PropTypes.string,
 };
 
 export default ByLocation;

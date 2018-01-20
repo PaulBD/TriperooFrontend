@@ -28,9 +28,9 @@ const TripDetail = ({tripId, day, openMap, removeActivity}) => {
           <div className={newDay ? "row timelineTitle" : "hide"}>
             {newDay}
           </div>
-          <div className={leftAlign ? "timeline-entry left-aligned" : "timeline-entry"}>
+          <div className={leftAlign ? "timeline-entry left-aligned " : "timeline-entry"}>
             <div className="timeline-entry-inner">
-              <time className="timeline-time"><span>{day.regionType}</span>
+              <time className="timeline-time"><span>{changeCase.sentenceCase(day.regionType)}</span>
                 <span>{moment(day.date).format("MMMM Do YYYY")}</span></time>
               <div className="timeline-icon">
                 <small>{changeCase.upperCase(day.startTimePeriod)}</small>
@@ -44,8 +44,8 @@ const TripDetail = ({tripId, day, openMap, removeActivity}) => {
                     <div className="row">
                       <div className="col-md-12">
                         <h2><span className="float-right"><a href="#" onClick={removeActivity} data-tripId={tripId} data-activityId={day.regionID}>
-                          <i className="fa fa-trash"/></a></span><a href={day.url}>{day.regionName}</a></h2>
-                        <h3>{day.activityType} : {day.regionType}</h3>
+                          <i className="fa fa-trash" data-tripId={tripId} data-activityId={day.regionID}/></a></span><a href={day.url}>{day.regionName}</a></h2>
+                        <h4 class="mb-2">{day.activityType == 'Point of Interest Shadow' ? 'Activity' : day.activityType == 'Attractions' ? 'Attraction' : day.activityType} : {changeCase.sentenceCase(day.regionType)}</h4>
                         <p className={day.latitude == 0 && day.longitude == 0 ? "hide" : ""}><i className="fa fa-map-marker"/> {day.address} &nbsp;
                           <a href="#" onClick={openMap} data-longitude={day.longitude} data-name={day.regionName}
                              data-subclass={day.type} data-url={day.url} data-image={day.image}
@@ -55,10 +55,10 @@ const TripDetail = ({tripId, day, openMap, removeActivity}) => {
                     </div>
                     <div className="gap gap-mini"></div>
                     <div className="row">
-                      <div className={day.price ? 'col-md-6' : 'hide'}>
+                      <div className={day.price ? 'col-6 col-md-6 mb-3' : 'hide'}>
                         <p ><strong>Price:</strong><br />{day.price} GBP</p>
                       </div>
-                      <div className={day.length ? 'col-md-6' : 'hide'}>
+                      <div className={day.length ? 'col-6   col-md-6 mb-3' : 'hide'}>
                         <p><strong>Length:</strong><br />{day.length} minutes</p>
                       </div>
                     </div>

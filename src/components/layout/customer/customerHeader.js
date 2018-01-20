@@ -36,13 +36,13 @@ class UserHeader extends React.Component {
     if (this.props.user && this.props.user.profile) {
       return (
         <div>
-          <div className="top-area show-onload locationPage">
+          <div className="top-area show-onload userProfile">
             <div className="bg-holder full text-white">
               <div className="bg-mask"></div>
               <div className="bg-img blur" style={style}></div>
               <div className="container">
                 <div className="row">
-                  <div className="col-md-8 col-xs-7">
+                  <div className="col-md-8 col-xs-12">
                     <a href={this.props.user.profile.profileUrl} className="twPc-avatarLink header">
                       <img src={this.props.user.profile.imageUrl ? this.props.user.profile.imageUrl : '/static/img/userProfileImg.png'} className="twPc-avatarImg"/>
                     </a>
@@ -55,7 +55,7 @@ class UserHeader extends React.Component {
 
                     </div>
                   </div>
-                  <div className="col-md-4 col-xs-5 text-right">
+                  <div className="col-md-4 hidden-sm-down text-right">
                     <div className="row customerHeader">
                       <div className="col-md-3 text-center">
                         <h3>{this.state.stats ? this.state.stats.likeCount : 0}</h3>
@@ -79,6 +79,29 @@ class UserHeader extends React.Component {
               </div>
             </div>
           </div>
+          <div className="jumbotron customerSubHeader hidden-sm-up">
+            <div className="container">
+              <div className="row">
+                <div className="gap gap-mini"></div>
+                <div className="col-3 text-center">
+                  <h4>{this.state.stats ? this.state.stats.likeCount : 0}</h4>
+                  <small>{this.state.stats ? this.state.stats.likeCount == 1 ? 'like' : 'likes' : 'likes'}</small>
+                </div>
+                <div className="col-3 text-center">
+                  <h4>{this.state.stats ? this.state.stats.reviewCount : 0}</h4>
+                  <small>{this.state.stats ? this.state.stats.reviewCount == 1 ? 'review' : 'reviews' : 'reviews'}</small>
+                </div>
+                <div className="col-3 text-center">
+                  <h4>{this.state.stats ? this.state.stats.followerCount : 0}</h4>
+                  <small>{this.state.stats ? this.state.stats.followerCount == 1 ? 'follower' : 'followers' : 'followers'}</small>
+                </div>
+                <div className="col-3 text-center">
+                  <h4>{this.state.stats ? this.state.stats.followingCount : 0}</h4>
+                  <small>following</small>
+                </div>
+              </div>
+            </div>
+          </div>
           <div className={this.props.isActiveUser ? "jumbotron customerSubHeader" : "hide"}>
             <div className="container">
               <div className="row">
@@ -91,9 +114,9 @@ class UserHeader extends React.Component {
                 </div>
                 <div className="col-md-6">
                   <div className="row">
-                    <div className="gap gap-mini"></div>
                     <div className="col-md-4 text-right">
                       <TripButton name="sidePanel" locationId={0} locationName="" locationNameLong="" locationType=""  />
+                      <div className="gap gap-mini"></div>
                     </div>
                     <div className="col-md-4 text-right">
                       <QuestionButton name="sidePanel" locationId={0} locationName="" locationNameLong="" locationType="" pageSize={3} pageNumber={0} />
@@ -103,7 +126,7 @@ class UserHeader extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className="gap gap-mini"></div>
+                <div className="gap gap-mini hidden-sm-up"></div>
               </div>
             </div>
           </div>

@@ -50,7 +50,7 @@ class UserReviews extends React.Component {
 
   createReview(e) {
     e.preventDefault();
-    this.props.modalActions.openReview(0, '', '');
+    this.props.modalActions.openReview(0, '', '', 8, 0, this.props.currentUserId);
   }
 
   render(){

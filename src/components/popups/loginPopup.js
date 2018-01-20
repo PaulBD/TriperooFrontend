@@ -23,6 +23,7 @@ class Login extends React.Component {
     this.changeForgotPassword = this.changeForgotPassword.bind(this);
     this.changeLogin = this.changeLogin.bind(this);
     this.closeLoginModal = this.closeLoginModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
     this.showFacebookLocationForm = this.showFacebookLocationForm.bind(this);
     this.changeField = this.changeField.bind(this);
     this.onChangeAutoComplete = this.onChangeAutoComplete.bind(this);
@@ -36,7 +37,8 @@ class Login extends React.Component {
         name: '',
         imageUrl: '',
         cityId: 0,
-        city: ''
+        city: '',
+        optIn: 1
       },
       errors:'',
       creatingUser: false,
@@ -50,10 +52,11 @@ class Login extends React.Component {
   }
 
   showFacebookLocationForm(response) {
-    this.setState({creatingUser: true, useFacebook: false, creds: { accessToken: response.accessToken, emailAddress: response.email, facebookId: response.userID, name: response.name, imageUrl: response.picture.data.url, city: '', cityId: 0, password: ''}});
+    this.setState({creatingUser: true, useFacebook: false, creds: { accessToken: response.accessToken, emailAddress: response.email, facebookId: response.userID, name: response.name, imageUrl: response.picture.data.url, city: '', cityId: 0, password: '', optIn: 1}});
 
     this.props.actions.getFacebookUser({accessToken: this.state.creds.accessToken, emailAddress: this.state.creds.emailAddress, facebookId: this.state.creds.facebookId, name: this.state.creds.name, imageUrl: this.state.creds.imageUrl, cityId: this.state.creds.cityId, city: this.state.creds.city})
       .then(() => {
+
         if (this.props.user != undefined)
         {
           if (this.props.user.triperooCustomers != undefined)
@@ -63,6 +66,11 @@ class Login extends React.Component {
               this.setState({useFacebook: true});
             }
             else {
+              let creds = this.state.creds;
+              creds.cityId = this.props.user.triperooCustomers.profile.currentLocationId;
+              creds.city = this.props.user.triperooCustomers.profile.currentLocation;
+              this.setState({creds: creds});
+
               this.login();
             }
           }
@@ -85,9 +93,8 @@ class Login extends React.Component {
   }
 
   login() {
-    this.props.actions.loginFacebookUser({accessToken: this.state.creds.accessToken, emailAddress: this.state.creds.emailAddress, facebookId: this.state.creds.facebookId, name: this.state.creds.name, imageUrl: this.state.creds.imageUrl, cityId: this.state.creds.cityId, city: this.state.creds.city})
+    this.props.actions.loginFacebookUser({accessToken: this.state.creds.accessToken, emailAddress: this.state.creds.emailAddress, facebookId: this.state.creds.facebookId, name: this.state.creds.name, imageUrl: this.state.creds.imageUrl, cityId: this.state.creds.cityId, city: this.state.creds.city, optIn: this.state.creds.optIn})
       .then(() => {
-
         this.setState({creatingUser: false, errors: this.props.errorMessage});
         if (this.props.errorMessage == '' && this.props.errorMessage.length == 0)
         {
@@ -144,10 +151,25 @@ class Login extends React.Component {
   }
 
   changeField(event) {
-    event.preventDefault();
+    //event.preventDefault();
     const field = event.target.name;
     let creds = this.state.creds;
-    creds[field] = event.target.value;
+
+
+    if (field == 'optIn')
+    {
+      if (this.state.creds.optIn == 0)
+      {
+        creds[field] = 1;
+      }
+      else {
+        creds[field] = 0;
+      }
+    }
+    else {
+      creds[field] = event.target.value;
+    }
+
     this.setState({creds: creds});
   }
 
@@ -172,6 +194,11 @@ class Login extends React.Component {
     this.props.closeModal();
   }
 
+  closeModal(e) {
+    e.preventDefault();
+    this.props.closeModal();
+  }
+
   onChangeAutoComplete(city, cityId, cityUrl, dataType)
   {
     let creds = this.state.creds;
@@ -182,7 +209,7 @@ class Login extends React.Component {
 
   loadLocation() {
     this.setState({ isLoadingLocation: true });
-    this.props.locationActions.loadLocationById(this.props.user.currentLocationId, true)
+    this.props.locationActions.loadLocationById(this.props.cityId, true)
       .then(() => {
         this.setState({ isLoadingLocation: false });
       })
@@ -212,7 +239,7 @@ class Login extends React.Component {
               </div>
             </div>
             <div className="modal-footer text-center">
-              <a href="#" onClick={this.closeLoginModal}>Close</a>
+              <p className="closeText mb-0"><a href="#" onClick={this.closeModal}>Close</a></p>
             </div>
           </div>
           <div className={(this.state.creatingUser || this.state.isLoggingIn)  && !this.state.useFacebook ? "modal-content" : "modal-content hide"}>
@@ -221,7 +248,7 @@ class Login extends React.Component {
           <div className={this.state.useFacebook ? "modal-dialog modelAuthentication " : "modal-dialog modelAuthentication hide"} role="document"><div className="modal-body">
             <div className="row">
               <div className="gap gap-mini"></div>
-                <FacebookForm errors={this.state.errors} isUpdating={this.state.creatingUser} onSubmit={this.submitFacebookForm} onChangeAutoComplete={this.onChangeAutoComplete} city=""/>
+                <FacebookForm errors={this.state.errors} isUpdating={this.state.creatingUser} onSubmit={this.submitFacebookForm} onChangeAutoComplete={this.onChangeAutoComplete} city="" optIn={this.state.creds.optIn} onChange={this.changeField}/>
               </div>
             </div>
           </div>
@@ -238,7 +265,8 @@ Login.defaultProps = {
   isAuthenticated: false,
   isFetching: false,
   hasSentPassword: false,
-  user: {}
+  user: {},
+  cityId: 2114
 };
 
 Login.propTypes = {
@@ -250,7 +278,8 @@ Login.propTypes = {
   closeModal: PropTypes.func,
   user: PropTypes.object.isRequired,
   location: PropTypes.object,
-  locationActions: PropTypes.object.isRequired
+  locationActions: PropTypes.object.isRequired,
+  cityId: PropTypes.number
 };
 
 function mapStateToProps(state, ownProps) {
@@ -259,6 +288,7 @@ function mapStateToProps(state, ownProps) {
     isAuthenticated: state.authentication.isAuthenticated,
     errorMessage: state.authentication.errorMessage,
     hasSentPassword: state.authentication.hasSentPassword,
+    cityId: state.authentication.currentLocationId,
     user: state.authentication.user,
     location: state.location.location ? state.location.location : {}
   };

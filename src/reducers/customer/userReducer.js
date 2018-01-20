@@ -10,6 +10,13 @@ export default function userReducer(state = { isSending: false, hasPosted: false
     case types.UPDATE_USER_FAILURE:
       return Object.assign({}, state, { isSending: false, hasPosted: false, isUpdating: false, errorMessage: action.message });
 
+    case types.UPDATE_MP_REQUEST:
+      return Object.assign({}, state, { isSending: true, hasPosted: false, isUpdating: true, marketingPreferences: action.marketingPreferences});
+    case types.UPDATE_MP_SUCCESS:
+      return Object.assign({}, state, { isSending: false, hasPosted: true, isUpdating: true, errorMessage: '', user: action.user });
+    case types.UPDATE_MP_FAILURE:
+      return Object.assign({}, state, { isSending: false, hasPosted: false, isUpdating: false, errorMessage: action.message });
+
     case types.USER_REQUEST:
       return Object.assign({}, state, { isSending: true, hasPosted: false});
     case types.USER_SUCCESS:

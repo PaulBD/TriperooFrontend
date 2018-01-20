@@ -105,7 +105,7 @@ class PointOfInterestContent extends React.Component {
                         <PointsOfInterest useMinHeight={false} location={this.props.location}
                                           locationId={this.props.locationId} locations={this.props.pointOfInterests}
                                           locationCount={this.props.pointOfInterestsCount} changePage={this.changePage}
-                                          isFetching={this.props.isFetching}/>
+                                          isFetching={this.props.isFetching} contentType="pointOfInterest"/>
                       </div>
                     </div>
                     <div className="gap gap-small"></div>

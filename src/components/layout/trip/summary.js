@@ -11,6 +11,7 @@ const TripSummary = ({location, trip}) => {
   let highlightD = '';
   let activitiesBlock = '';
   let attractionsUrl = trip.tripDetails.regionUrl + '/attractions';
+  let poiUrl = trip.tripDetails.regionUrl + '/points-of-interest';
   let hotelUrl = trip.tripDetails.regionUrl + '/hotels';
   let foodUrl = trip.tripDetails.regionUrl + '/restaurants';
 
@@ -36,6 +37,8 @@ const TripSummary = ({location, trip}) => {
     }
   }
 
+  let showHighlights = false;
+
   if (trip.tripDetails.tripSummary.length > 0)
   {
     if (trip.tripDetails.tripSummary[0].activities.length > 1) {
@@ -43,6 +46,8 @@ const TripSummary = ({location, trip}) => {
         backgroundImage: 'url(' + trip.tripDetails.tripSummary[0].activities[1].image + ')',
         backgroundSize: '125%'
       };
+
+      showHighlights = true;
 
       highlightB = (
         <div className="col-md-3">
@@ -66,6 +71,8 @@ const TripSummary = ({location, trip}) => {
         backgroundSize: '125%'
       };
 
+      showHighlights = true;
+
       highlightC = (
         <div className="col-md-3">
           <a className="hover-img activityBg" href={trip.tripDetails.tripSummary[1].activities[0].url} style={style}>
@@ -87,6 +94,8 @@ const TripSummary = ({location, trip}) => {
         backgroundImage: 'url(' + trip.tripDetails.tripSummary[1].activities[1].image + ')',
         backgroundSize: '125%'
       };
+
+      showHighlights = true;
 
       highlightD = (
         <div className="col-md-3">
@@ -129,7 +138,7 @@ const TripSummary = ({location, trip}) => {
           <div className="col-md-12">
             <div className="row">
               <div className="col-md-5">
-                <img src={trip.tripDetails.image} />
+                <img src={trip.tripDetails.image} className="mb-3"/>
               </div>
               <div className="col-md-7">
                 <Summary location={location} showMap={false} />
@@ -149,10 +158,10 @@ const TripSummary = ({location, trip}) => {
                 </div>
               </div>
             </div>
-            <div className={trip.tripDetails.tripSummary ? trip.tripDetails.tripSummary.length > 0 ? "row" : "hide" : "hide"}>
+            <div className={showHighlights ? "row highlights" : "hide"}>
               <div className="col-md-12">
                 <hr />
-                <h5 className="mb-2">Highlights From Your Plan</h5>
+                <h5 className="mb-2">Highlights from your plan</h5>
                 <hr className="pageTitle"/>
                 <div className="row">
                   <div className="col-md-12">
@@ -168,11 +177,22 @@ const TripSummary = ({location, trip}) => {
               </div>
             </div>
             <div className="row">
-              <div className="col-md-12 text-center">
+              <div className="col-md-12">
                 <hr />
-                <a href={attractionsUrl} className="btn btn-primary"><i className="fa fa-plus" /> Add Attractions</a>&nbsp;
-                <a href={foodUrl} className="btn btn-primary"><i className="fa fa-plus" /> Add Places to Eat</a>&nbsp;
-                <a href={hotelUrl} className="btn btn-primary"><i className="fa fa-plus" /> Add a Place to Stay</a>
+                <h5 className="mb-2">See more of {location.regionName}...</h5>
+                <hr className="pageTitle"/>
+              </div>
+              <div className="col-md-3 col-6 mb-2">
+                <a href={attractionsUrl} className="btn btn-secondary questionBtn mb-3"><i className="fa fa-plus" /> Attractions</a>
+              </div>
+              <div className="col-md-3 col-6 mb-2">
+                <a href={poiUrl} className="btn btn-secondary questionBtn mb-3"><i className="fa fa-plus" /> Points of Interest</a>
+              </div>
+              <div className="col-md-3 col-6 mb-2">
+                <a href={foodUrl} className="btn btn-secondary questionBtn mb-3"><i className="fa fa-plus" /> Places to Eat</a>
+              </div>
+              <div className="col-md-3 col-6 mb-2">
+                <a href={hotelUrl} className="btn btn-secondary questionBtn mb-3"><i className="fa fa-plus" /> Places to Stay</a>
               </div>
             </div>
             <div className="gap gap-small"></div>

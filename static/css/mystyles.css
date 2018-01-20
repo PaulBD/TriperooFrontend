@@ -115,7 +115,7 @@ h4 span { color: #ed8323; }
 #eventModal h5 { color: orange }
 #eventModal p { font-size: 12px; }
 .eventTitle { line-height:1.2em !important; font-size:1.2em;}
-.reviewsHeader { color: #fff; z-index: 999; position: absolute; width: 100%; right: 0;top: 80px; padding-left: 15px;}
+.reviewsHeader { color: #fff; z-index: 999; position: absolute; width: 100%; right: 0; padding-left: 15px;}
 
 a:hover .card { border: solid 1px #ed8323; background-color: #efefef;}
 
@@ -193,11 +193,10 @@ h4.card-title { font-size: 18px;}
 
 .infoImg { background-position: center top !important; }
 
-.userProfile { height: 200px !important; }
-.locationPage { height: 120px !important; }
+.userProfile, .locationPage { height: 130px !important; }
 .infoPage { height: 100px !important; }
-.infoPage h1, userProfile h1, .locationPage h1 { left: 0; font-size: 28px; text-align: left; margin-top: 40px; z-index: 999; position: relative; font-weight: bold; }
-.infoPage .breadcrumb, .locationPage .breadcrumb { position: absolute; z-index: 999; }
+.infoPage h1, .userProfile h1, .locationPage h1 { left: 0; font-size: 28px; text-align: left; margin-top: 40px; z-index: 999; position: relative; font-weight: bold; }
+.infoPage .breadcrumb, .userProfile .breadcrumb, .locationPage .breadcrumb { position: absolute; z-index: 999; }
 .im {  display: inline-block; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
 h3 small { float:right; padding-top:14px;}
@@ -1495,6 +1494,7 @@ ul.twPc-Arrange li.location {
 /*.restaurantList .hover-img, .restaurantList .hover-img img { height: 170px !important; }*/
 .jumbotron.maps { padding: 0; margin:0; }
 .jumbotron.hotels { margin: 0; padding:30px 0; }
+.jumbotron.flights { margin: 0; padding:0px 0; }
 .jumbotron.hotelSearch { margin: 0; padding: 0; }
 .mapBackground { background-image: url(/static/img/map-bg.png); height: 120px; background-size:100%; text-align: center; vertical-align: middle;   }
 .mapBackground .btn { margin-top: 40px; }
@@ -1502,7 +1502,7 @@ ul.twPc-Arrange li.location {
 .infoWindowContent .text { width:130px; float:left; }
 .categoryCheck { float: right; padding-top: 3px; }
 .sideBar { border-right: solid 1px #efefef; }
-.bgImage { background-size: 100%; height: 142px; }
+.bgImage { background-size: 100%; height: 142px; background-position-y: center; }
 .pageTitle { margin: 5px 0px 10px 0px }
 .profileHome.card-columns { column-count: 4; }
 
@@ -1539,7 +1539,7 @@ a:hover .activityBg { background-color: #333; border-color: #333; }
 .locationTitle { width: 100%; border-bottom: solid 1px #ccc; }
 .locationTitle small { margin-top:7px; }
 .timelineTitle { width:100%; }
-.timelineTitle h4 { border-top: solid 1px #efefef; border-bottom: solid 1px #efefef; margin-bottom: 20px; text-align:center;background-color:white;}
+.timelineTitle h4 { border-top: solid 1px #efefef; border-bottom: solid 1px #efefef; margin-bottom: 20px; text-align:center;background-color:white; padding: 10px 0px; }
 .priceBreakdown { margin-top:20px; }
 .priceBreakdown span { width:100%; float:right; text-align: right;}
 .priceBreakdownMobile span { width:100%; float:left; text-align: left;}
@@ -1547,6 +1547,7 @@ a:hover .activityBg { background-color: #333; border-color: #333; }
 .closeText { width:100%; text-align: center !important; }
 .sale { color: #ed8323; font-weight: bold; }
 .affiliateLogo { width:100px; float: right; }
+.locationReviewTitle { font-size: 14px; font-weight: bold; }
 
 
   /* Timeline */
@@ -1628,7 +1629,7 @@ a:hover .activityBg { background-color: #333; border-color: #333; }
 
 .timeline-centered .timeline-entry.left-aligned .timeline-entry-inner .timeline-time {
   left: auto;
-  right: -150px;
+  right: -200px;
   text-align: left;
 }
 
@@ -1796,13 +1797,14 @@ a:hover .activityBg { background-color: #333; border-color: #333; }
   margin-bottom: 0px;
 }
 
-.timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h3 {
-  font-size: 14px;
+.timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h4 {
+  font-size: 12px;
   margin-bottom: 0px;
 }
 
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 a {
   color: #303641;
+  margin-right: 10px;
 }
 
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 span {
@@ -1839,8 +1841,9 @@ a:hover .activityBg { background-color: #333; border-color: #333; }
   }
 }
 
+.flightFilter { display: block;}
+
 @media (max-width:576px) {
-  .locationPage h1 { margin-top: 5px; }
   .locationSubNav { display:table; }
   .locationSubNav > li { height: 90px; }
   .infoPage h1 { margin-top:15px; }
@@ -1849,6 +1852,8 @@ a:hover .activityBg { background-color: #333; border-color: #333; }
   .ReactModal__Content { width:96%; top:2%; left: 2%; right: 2%; }
   .CategoryModel.ReactModal__Content { width:96%; left: 2%; right: 2%; }
   .ReactModal__Content .modal-content { height:600px; }
+  .MapModel.ReactModal__Content .modal-content, .CategoryModel.ReactModal__Content .modal-content { height:520px; }
+  .LoginModal.ReactModal__Content .modal-content { height:420px; }
   .ReactModal__Content .modal-body { overflow-y: scroll; }
   .featureLocation { margin-bottom: 0px; }
   .travelExtras { height: 350px !important; }
@@ -1863,8 +1868,33 @@ a:hover .activityBg { background-color: #333; border-color: #333; }
   .booking-item-details .booking-item-header-price { text-align: left; }
   .booking-item-header-price .priceRight { margin-top: 10px; }
   .featureHotelImage:nth-child(2) { display: none; }
-
   .form-group .input-icon.homeSearchIcon { line-height: 48px; }
+  .highlights { display: none;}
+  .timeline-centered .timeline-entry { width:90%; }
+  .timeline-centered:before { left: 90%;}
+  .timeline-centered .timeline-entry { float:left; }
+  .timeline-centered .timeline-entry .timeline-entry-inner .timeline-time,
+  .timeline-centered .timeline-entry.left-aligned .timeline-entry-inner .timeline-time{ display: none; }
+  .timeline-centered .timeline-entry.left-aligned .timeline-entry-inner,
+  .timeline-centered .timeline-entry .timeline-entry-inner { margin-left: 10px; margin-right: -18px; }
+  .timeline-centered .timeline-entry .timeline-entry-inner.endCircle { margin-left:0px; }
+  .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 { margin: 10px 0px; }
+  .timeline-centered .timeline-entry .timeline-entry-inner .timeline-time { left: auto; right: -200px; text-align: left; }
+  .timeline-centered .timeline-entry .timeline-entry-inner .timeline-icon { float: right;  }
+  .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label { margin-left: 0;  margin-right: 70px }
+  .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label:after { -moz-transform: rotate(180deg); -o-transform: rotate(180deg); -webkit-transform: rotate(180deg); -ms-transform: rotate(180deg);  transform: rotate(180deg);}
+
+  .locationPage { height: 180px !important; }
+  .locationPage h1 { margin-top: 20px; }
+  .flightFilter, .flightPrice, .airlineNames { display:none; }
+  .flightFilter.in { display: block; }
+  .btnFlightSearch { width:100%; margin-top:20px; margin-bottom:10px; }
+  .flightNights { margin-top:15px; }
+  .flightReturn { margin-top: 12px; }
+  .flightSearch .form-group .input-icon.homeSearchIcon { line-height: 42px; }
+  .flightSearch .formBtn { margin-top: 0px; }
+
+  .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label:after { left: auto; right: 0; margin-left: 0; margin-right: -9px; }
 }
 
 @media (min-width:1px) and (max-width:576px) {

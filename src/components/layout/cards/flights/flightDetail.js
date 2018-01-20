@@ -10,23 +10,23 @@ const FlightDetail = ({route, isLast}) => {
 
     return (
       <div className="row">
-        <div className="col-md-12">
+        <div className="col-12 col-md-12">
           <div className="row">
-            <div className="col-md-1">
+            <div className="col-2 col-md-1">
               <i className="fa fa-circle"></i>
             </div>
-            <div className="col-md-11 flightDetailLineBtm">
+            <div className="col-10 col-md-11 flightDetailLineBtm">
               <span
                 className="text-small"><strong>{moment.unix(route.dTime, "seconds").format("ddd DD MMM")}</strong></span>
             </div>
           </div>
           <div className="row">
-            <div className="col-md-1">
+            <div className="col-2 col-md-1">
               <span className="Part"></span>
             </div>
-            <div className="col-md-10">
+            <div className="col-10 col-md-10">
               <div className="row">
-                <div className="col-md-6">
+                <div className="col-6 col-md-6">
                   <div className="row">
                     <div className="col-md-12">
                       <small>
@@ -42,7 +42,7 @@ const FlightDetail = ({route, isLast}) => {
                     </div>
                   </div>
                 </div>
-                <div className="col-md-6">
+                <div className="col-6 col-md-6">
                   <small>
                     <img src={image} className="smallFlightLogo"/>
                     {route.airlineName ? route.airlineName : route.airline} <br />
@@ -53,10 +53,10 @@ const FlightDetail = ({route, isLast}) => {
             </div>
           </div>
           <div className={isLast ? "row" : "hide"}>
-            <div className="col-md-1">
+            <div className="col-2 col-md-1">
               <i className="fa fa-circle"></i>
             </div>
-            <div className="col-md-11">&nbsp;</div>
+            <div className="col-10 col-md-11">&nbsp;</div>
           </div>
         </div>
       </div>

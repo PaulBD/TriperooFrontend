@@ -98,7 +98,7 @@ class AttractionContent extends React.Component {
                         <Attractions useMinHeight={false} locationId={this.props.locationId}
                                      location={this.props.location} locations={this.props.attractions}
                                      locationCount={this.props.attractionsCount} changePage={this.changePage}
-                                     isFetching={this.props.isFetching}/>
+                                     isFetching={this.props.isFetching} contentType="attractions"/>
 
                       </div>
                     </div>
