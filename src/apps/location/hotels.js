@@ -102,7 +102,7 @@ class LocationContent extends React.Component {
 
     this.setState({arrivalDate: arrivalDate, formattedArrivalDate: new moment(arrivalDate).format('LL'), nights: nights, rooms1: rooms1, guests: guests});
     this.setState({isLoadingLocation: true, isLoadingHotelList: true });
-    browserHistory.push(searchUrl + '/hotels?arrivalDate=' + arrivalDate + '&nights=' + nights + '&rooms1=' + rooms1 + '&guests=' + guests);
+    browserHistory.push(searchUrl.replace('/hotels', '') + '/hotels?arrivalDate=' + arrivalDate + '&nights=' + nights + '&rooms1=' + rooms1 + '&guests=' + guests);
     this.loadLocation(searchId);
   }
 

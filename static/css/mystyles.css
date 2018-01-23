@@ -1842,6 +1842,11 @@ a:hover .activityBg { background-color: #333; border-color: #333; }
 }
 
 .flightFilter { display: block;}
+.emptyEmail { height: 102px; }
+.addressEmpty { height: 70px; }
+.infoPage p { position: relative; z-index: 999 }
+.alert.bookingForm { padding: .4rem 1.25rem; }
+.alert.bookingForm small { color: #a94442; }
 
 @media (max-width:576px) {
   .locationSubNav { display:table; }
@@ -1892,9 +1897,10 @@ a:hover .activityBg { background-color: #333; border-color: #333; }
   .flightNights { margin-top:15px; }
   .flightReturn { margin-top: 12px; }
   .flightSearch .form-group .input-icon.homeSearchIcon { line-height: 42px; }
-  .flightSearch .formBtn { margin-top: 0px; }
+  .formBtn { margin-top: 0px; }
 
   .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label:after { left: auto; right: 0; margin-left: 0; margin-right: -9px; }
+  .addressEmpty { height:auto; display: none; }
 }
 
 @media (min-width:1px) and (max-width:576px) {

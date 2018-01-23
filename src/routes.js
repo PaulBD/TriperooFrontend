@@ -64,6 +64,7 @@ import AdminFeeds from './apps/admin/secure/feeds/main';
 // Hotels
 import Hotels from './apps/hotel';
 import HotelSearchResults from './apps/hotel/search-results';
+import HotelCheckout from './apps/hotel/reservations';
 import HotelDetail from './apps/hotel/detail';
 
 export default (
@@ -98,6 +99,7 @@ export default (
     <Route path="/holidays" component={Holidays}/>
     <Route path="/hotels" component={Hotels}/>
     <Route path="/hotels/search-results" component={HotelSearchResults}/>
+    <Route path="/(:placeId)/visit/(:placeName)/hotels/(:hotelId)/hotel-checkout" component={HotelCheckout}/>
     <Route path="/(:placeId)/visit/(:placeName)/hotels/(:hotelId)" component={HotelDetail}/>
     <Route path="/flights" component={Flights}/>
     <Route path="/flights/search-results" component={FlightSearchResults} />

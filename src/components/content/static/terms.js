@@ -233,6 +233,15 @@ const Terms = () => {
         without our prior written consent. We may assign or delegate these Terms, in whole or in part, at any time without notice.</p>
 
       <p>To contact us regarding any questions about these Terms, please complete the form on the <a href="/contact-us">Contact Us</a> page.</p>
+      <hr />
+      <h5>Affiliate Terms & Conditions</h5>
+      <p>Terms & Conditions for all our affiliates can be found on the links below.</p>
+      <p><strong>Expedia:</strong> <a href="http://developer.ean.com/terms/en/" target="_blank">http://developer.ean.com/terms/en/</a></p>
+      <p><strong>Kiwi:</strong> <a href="https://www.kiwi.com/en/pages/content/legal" target="_blank">https://www.kiwi.com/en/pages/content/legal</a></p>
+      <p><strong>Viator:</strong> <a href="http://www.holidayextras.co.uk/about-us/terms-and-conditions.html" target="_blank">http://www.holidayextras.co.uk/about-us/terms-and-conditions.html</a></p>
+      <p><strong>BookATable:</strong> <a href="https://www.bookatable.co.uk/legal" target="_blank">https://www.bookatable.co.uk/legal</a></p>
+      <p><strong>HolidayExtras:</strong> <a href="http://www.holidayextras.co.uk/about-us/terms-and-conditions.html" target="_blank">http://www.holidayextras.co.uk/about-us/terms-and-conditions.html</a></p>
+      <hr />
     </div>
   );
 };

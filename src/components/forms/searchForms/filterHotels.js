@@ -76,13 +76,13 @@ class FilterHotels extends React.Component {
           <li>
             <h5>Price Range</h5>
             <div className="row">
-              <div className="col-md-5">
+              <div className="col-5 col-md-5">
                 <input type="number" className="form-control" value={this.state.minPrice} min="1" max="100000" onChange={this.changeMinprice}/>
               </div>
-              <div className="col-md-2">
+              <div className="col-2 col-md-2">
                 to
               </div>
-              <div className="col-md-5">
+              <div className="col-5 col-md-5">
                 <input type="number" className="form-control" value={this.state.maxPrice} min="1" max="100000" onChange={this.changeMaxprice}/>
               </div>
               <div className="gap gap-mini"></div>

@@ -14,13 +14,8 @@ import RoomList from '../../components/layout/cards/hotels/roomList';
 import SimilarHotels from '../../components/layout/cards/hotels/similarHotels';
 import HotelSubNav from '../../components/layout/location/hotelSubNav';
 import Destinations from '../../components/content/dynamic/destinations';
-
-
-
 import RecentQuestions from '../../components/layout/cards/questions/list';
 import QuestionButton from '../../components/layout/buttons/questionButton';
-
-
 import ReviewList from '../../components/layout/cards/reviews/locationReviewList';
 
 let titleCase = require('title-case');
@@ -123,7 +118,6 @@ class HotelDetail extends React.Component {
           }
         });
 
-
         return (
           <div>
             <HotelHeader location={this.props.location}
@@ -170,7 +164,7 @@ class HotelDetail extends React.Component {
             </div>
             <div className="container">
               <div className="row">
-                <div className="col-md-8">
+                <div className="col-md-12">
                   <ul className="nav nav-pills">
                     <li className="nav-item text-center">
                       <a className={this.state.showRooms ? "nav-link active" : "nav-link"} href="#" onClick={this.showTab} data-tab="room">Room Availability</a>
@@ -182,11 +176,6 @@ class HotelDetail extends React.Component {
                       <a className={this.state.showUseful ? "nav-link active" : "nav-link"} href="#"  onClick={this.showTab} data-tab="useful">Useful Information</a>
                     </li>
                   </ul>
-                </div>
-                <div className="col-md-4 hidden-sm-down">
-                  <span className="float-right text-right"><small>Supplied By</small><br />
-                    <img src="/static/img/Expedia_logo_lrge.png" className="affiliateLogo"/>
-                  </span>
                 </div>
               </div>
             </div>
@@ -261,7 +250,9 @@ class HotelDetail extends React.Component {
                           nights={this.props.nights} rooms={this.props.rooms} locationId={this.props.locationId}
                           hotelId={this.props.hotelId}
                           regionNameLong={this.props.hotel.hotelInformationResponse.hotelSummary.name + ', ' + this.props.hotel.hotelInformationResponse.hotelSummary.city}
-                          hotelName={this.props.hotel.hotelInformationResponse.hotelSummary.name}/>
+                          hotelName={this.props.hotel.hotelInformationResponse.hotelSummary.name}
+                          parentLocationType={this.props.location.parentRegionType}
+                />
               </div>
             </div>
 

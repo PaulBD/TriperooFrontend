@@ -16,17 +16,24 @@ class RoomList extends React.Component {
     super(props, context);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.cancellationPolicyClick = this.cancellationPolicyClick.bind(this);
-    this.state = { isLoadingHotelRooms: true, arrivalDate: this.props.arrivalDate, formattedArrivalDate: new moment(this.props.arrivalDate).format('LL'), nights: this.props.nights, guests: this.props.guests, rooms: this.props.rooms };
+    this.state = {
+      isLoadingHotelRooms: true
+      , arrivalDate: this.props.arrivalDate
+      , formattedArrivalDate: new moment(this.props.arrivalDate).format('LL')
+      , nights: this.props.nights
+      , guests: this.props.guests
+      , rooms: this.props.rooms
+    };
     this.trackClick = this.trackClick.bind(this);
   }
 
   componentWillMount() {
-    this.loadHotelRooms(this.props.locationId, this.props.hotelId, this.state.arrivalDate, this.state.nights);
+    this.loadHotelRooms(this.props.locationId, this.props.hotelId, this.state.arrivalDate, this.state.nights, this.state.rooms, this.state.guests);
   }
 
   trackClick() {
     ReactGA.event({ category: 'Hotels', action: 'Click', label: this.props.hotelName });
-    this.props.modalActions.openBookmark(this.props.parentLocationId, this.props.parentLocationName, this.props.parentLocationNameLong, this.props.parentLocationImage, this.props.parentLocationUrl, this.props.parentLocationType, this.props.locationId, this.props.regionNameLong, this.props.regionName, "hotel", this.props.regionNameImage, this.props.regionUrl, '', false, this.props.latitude, this.props.longitude);
+    //this.props.modalActions.openBookmark(this.props.parentLocationId, this.props.parentLocationName, this.props.parentLocationNameLong, this.props.parentLocationImage, this.props.parentLocationUrl, this.props.parentLocationType, this.props.locationId, this.props.regionNameLong, this.props.regionName, "hotel", this.props.regionNameImage, this.props.regionUrl, '', false, this.props.latitude, this.props.longitude);
   }
 
   handleFormSubmit(searchUrl, searchId, arrivalDate, nights, rooms, guests) {
@@ -60,203 +67,213 @@ class RoomList extends React.Component {
     if (!this.state.isLoadingHotelRooms) {
       if (this.props.hotelRooms.hotelRoomAvailabilityResponse.size > 0) {
 
-        console.log(this.props.hotelRooms);
-
         return (
-            <div className="row">
-              <div className="col-md-12" id="rooms">
-                <h4>Room Availability</h4>
-                <hr />
-                <p>Showing rooms available <strong>{this.state.formattedArrivalDate}</strong> for <strong>{this.state.nights}</strong> {this.state.nights == 1 ? 'night' : 'nights'}</p>
-                <SearchForm searchUrl={this.props.searchUrl} buttonName="Search Rooms" rooms={this.state.rooms} nights={this.state.nights} arrivalDate={this.state.arrivalDate} guests={this.state.guests} useFunction={true} handleFormSubmit={this.handleFormSubmit} isSideBar={false} city={this.props.hotelName} lockLocation={true}/>
+          <div className="row">
+            <div className="col-md-12" id="rooms">
+              <h4>Room Availability</h4>
+              <hr />
+              <p>Showing rooms available <strong>{this.state.formattedArrivalDate}</strong> for <strong>{this.state.nights}</strong> {this.state.nights == 1 ? 'night' : 'nights'}</p>
+              <SearchForm searchUrl={this.props.searchUrl} buttonName="Search Rooms" rooms={this.state.rooms} nights={this.state.nights} arrivalDate={this.state.arrivalDate} guests={this.state.guests} useFunction={true} handleFormSubmit={this.handleFormSubmit} isSideBar={false} city={this.props.hotelName} lockLocation={true}/>
 
-                  <ul className="booking-list">
-                    {
-                      this.props.hotelRooms.hotelRoomAvailabilityResponse.hotelRoomResponse.map((hotelRoom, index) => {
+              <ul className="booking-list">
+                {
+                  this.props.hotelRooms.hotelRoomAvailabilityResponse.hotelRoomResponse.map((hotelRoom, index) => {
 
-                        let roomOccupancy = <i className="fa fa-user"></i>;
+                    let roomOccupancy = <i className="fa fa-user"></i>;
 
-                        switch (hotelRoom.rateOccupancyPerRoom) {
-                          case 1:
-                            roomOccupancy = <i className="fa fa-user"></i>;
-                            break;
-                          case 2:
-                            roomOccupancy = <span><i className="fa fa-user"></i> <i className="fa fa-user"></i></span>;
-                            break;
-                          case 3:
-                            roomOccupancy = <span><i className="fa fa-user"></i> <i className="fa fa-user"></i> <i className="fa fa-user"></i></span>;
-                            break;
-                          case 4:
-                            roomOccupancy = <span><i className="fa fa-user"></i> <i className="fa fa-user"></i> <i className="fa fa-user"></i> <i className="fa fa-user"></i></span>;
-                            break;
-                        }
+                    switch (hotelRoom.rateOccupancyPerRoom) {
+                      case 1:
+                        roomOccupancy = <i className="fa fa-user"></i>;
+                        break;
+                      case 2:
+                        roomOccupancy = <span><i className="fa fa-user"></i> <i className="fa fa-user"></i></span>;
+                        break;
+                      case 3:
+                        roomOccupancy = <span><i className="fa fa-user"></i> <i className="fa fa-user"></i> <i className="fa fa-user"></i></span>;
+                        break;
+                      case 4:
+                        roomOccupancy = <span><i className="fa fa-user"></i> <i className="fa fa-user"></i> <i className="fa fa-user"></i> <i className="fa fa-user"></i></span>;
+                        break;
+                    }
 
-                        let url = '/static/img/placeholder.png';
+                    let url = '/static/img/placeholder.png';
 
-                        if (hotelRoom.roomImages != undefined) {
-                          if (hotelRoom.roomImages.roomImage != undefined) {
+                    if (hotelRoom.roomImages != undefined) {
+                      if (hotelRoom.roomImages.roomImage != undefined) {
 
-                            url = hotelRoom.roomImages.roomImage[0].url;
+                        url = hotelRoom.roomImages.roomImage[0].url;
 
-                            if (hotelRoom.roomImages) {
-                              if (hotelRoom.roomImages.roomImage[0].highResolutionUrl != undefined) {
-                                url = hotelRoom.roomImages.roomImage[0].highResolutionUrl;
-                              }
-                            }
+                        if (hotelRoom.roomImages) {
+                          if (hotelRoom.roomImages.roomImage[0].highResolutionUrl != undefined) {
+                            url = hotelRoom.roomImages.roomImage[0].highResolutionUrl;
                           }
                         }
+                      }
+                    }
 
-                        let roomCount = "";
+                    let roomCount = "";
 
-                        if (hotelRoom.rateInfos.rateInfo[0].currentAllotment != undefined)
+                    if (hotelRoom.rateInfos.rateInfo[0].currentAllotment != undefined)
+                    {
+                      if (hotelRoom.rateInfos.rateInfo[0].currentAllotment == 0)
+                      {
+                        roomCount = 'Sold out';
+                      }
+                      else {
+                        if (hotelRoom.rateInfos.rateInfo[0].currentAllotment < 5)
                         {
-                          if (hotelRoom.rateInfos.rateInfo[0].currentAllotment == 0)
-                          {
-                            roomCount = 'Sold out';
+                          if (hotelRoom.rateInfos.rateInfo[0].currentAllotment == 1) {
+                            roomCount = 'Less than ' + hotelRoom.rateInfos.rateInfo[0].currentAllotment + ' room left!';
                           }
                           else {
-                            if (hotelRoom.rateInfos.rateInfo[0].currentAllotment < 5)
-                            {
-                              roomCount = 'Less than ' + hotelRoom.rateInfos.rateInfo[0].currentAllotment + ' rooms left!';
-                            }
+                            roomCount = 'Less than ' + hotelRoom.rateInfos.rateInfo[0].currentAllotment + ' rooms left!';
                           }
                         }
+                      }
+                    }
 
-                        let currency = '£';
+                    let currency = '£';
 
-                        if (hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.currencyCode == 'GBP')
-                        {
-                          currency = '£';
-                        }
+                    if (hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.currencyCode == 'GBP')
+                    {
+                      currency = '£';
+                    }
 
-                        return (
-                        <li>
-                          <a className="booking-item">
-                            <div className="row">
-                              <div className="col-md-3 mb-3">
-                                <img src={url}/>
-                              </div>
-                              <div className="col-md-7">
-                                <h5 className="booking-item-title">{titleCase(hotelRoom.roomTypeDescription)}</h5>
-                                <p className={hotelRoom.rateInfos.rateInfo[0].promo ? "text-small sale" : "hide"}>
-                                  {hotelRoom.rateInfos.rateInfo[0].promoDescription}
-                                </p>
-                                <p className="text-small">{hotelRoom.rateInfos.rateInfo[0].cancellationPolicy}</p>
+                    let reservationsLink = this.props.searchUrl + '/hotel-checkout?arrivalDate=' + this.props.arrivalDate + '&nights=' + this.props.nights + '&rooms=' + this.props.rooms + '&guests=' + this.props.guests + '&propId=' + hotelRoom.propertyId + '&rateCode=' + hotelRoom.rateCode + '&roomTypeCode=' + hotelRoom.roomTypeCode + '&supplierType=' + hotelRoom.supplierType;
 
-                                <div className="row hidden-sm-down">
-                                  <div className="col-md-4">
-                                    <ul className="nav card-text mb-2">
-                                      <li className="nav-item bedType">Sleeps: {roomOccupancy}</li>
-                                    </ul>
-                                  </div>
-                                  <div className="col-md-4">
-                                    <ul className="nav card-text mb-2">
-                                      {
-                                        hotelRoom.bedTypes.bedType.map((bedType, bedIndex) => {
-                                          return (
-                                            <li className="nav-item bedType" key={bedIndex}><i className="fa fa-bed"></i> {bedType.description}</li>
-                                          );
-                                        })
-                                      }
-                                    </ul>
-                                  </div>
-                                  <div className="col-md-4">
-                                    {roomCount}
-                                  </div>
+                    return (
+                      <li>
+                        <a className="booking-item">
+                          <div className="row">
+                            <div className="col-md-3 mb-3">
+                              <img src={url}/>
+                            </div>
+                            <div className="col-md-6">
+                              <h5 className="booking-item-title">{titleCase(hotelRoom.roomTypeDescription)}</h5>
+                              <p className={hotelRoom.rateInfos.rateInfo[0].promo ? "text-small sale" : "hide"}>
+                                {hotelRoom.rateInfos.rateInfo[0].promoDescription}
+                              </p>
+
+                              <div className="row hidden-sm-down">
+                                <div className="col-md-4">
+                                  <ul className="nav card-text mb-2">
+                                    <li className="nav-item bedType">Sleeps: {roomOccupancy}</li>
+                                  </ul>
+                                </div>
+                                <div className="col-md-4">
+                                  <ul className="nav card-text mb-2">
+                                    {
+                                      hotelRoom.bedTypes.bedType.map((bedType, bedIndex) => {
+                                        return (
+                                          <li className="nav-item bedType" key={bedIndex}><i className="fa fa-bed"></i> {bedType.description}</li>
+                                        );
+                                      })
+                                    }
+                                  </ul>
+                                </div>
+                                <div className="col-md-4">
+                                  {roomCount}
                                 </div>
                               </div>
-                              <div className="col-md-2 hidden-sm-down">
-                                <h5 className="hotelPrice mb-1 priceRight">{currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.total} </h5>
-<br />
-                                <a href={hotelRoom.deepLink} className="btn btn-primary mb-1 priceRight" target="_blank" onClick={this.trackClick}>Book Room</a>
-<br />
-                                <small className="priceBreakdown priceRight">
-                                  <span><strong>Breakdown:</strong></span>
-                                  <span>Nightly Rate: {currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.nightlyRateTotal}</span>
-                                  <span>Tax & Service Fees: {currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.surchargeTotal}</span>
-                                  <span>Total: {currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.total}</span>
-                                </small>
-                              </div>
+                              <p className={hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.nonRefundable ? 'mb-3' : 'hide'}>Non-Refundable</p>
+                              <p className="text-small">Cancellation Policy:<br />{hotelRoom.rateInfos.rateInfo[0].cancellationPolicy}</p>
 
-                              <div className="col-md-12 hidden-sm-up">
-                                <div className="row">
-                                  <div className="col-6">
-                                    <ul className="nav card-text mb-2">
-                                      <li className="nav-item bedType">Sleeps: {roomOccupancy}</li>
-                                    </ul>
+                            </div>
+                            <div className="col-md-3 hidden-sm-down">
+                              <h5 className="hotelPrice mb-1 priceRight">{currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.total} </h5>
+                              <br /><br />
+                              <a href={reservationsLink} className="btn btn-primary mb-1 priceRight" onClick={this.trackClick}>Book Room</a>
+                              <br />
+                              <small className="priceBreakdown priceRight">
+                                <span><strong>Breakdown:</strong></span>
+                                <span>Nightly Rate: {currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.nightlyRateTotal}</span>
+                                <span>Tax & Service Fees: {currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.surchargeTotal}</span>
+                                <span className="mb-3"><strong>Total: {currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.total}</strong></span>
+                                <span className={hotelRoom.rateInfos.rateInfo[0].hotelFees != null && hotelRoom.rateInfos.rateInfo[0].hotelFees.hotelFee != null? '' : 'hide'}>Due at Hotel (City/local Tax): {currency}{hotelRoom.rateInfos.rateInfo[0].hotelFees != null ? hotelRoom.rateInfos.rateInfo[0].hotelFees.hotelFee != null ? hotelRoom.rateInfos.rateInfo[0].hotelFees.hotelFee[0].amount : '' : ''}</span>
+                              </small>
+                            </div>
 
-                                    <ul className="nav card-text mb-2">
-                                      {
-                                        hotelRoom.bedTypes.bedType.map((bedType, bedIndex) => {
-                                          return (
-                                            <li className="nav-item bedType" key={bedIndex}><i className="fa fa-bed"></i> {bedType.description}</li>
-                                          );
-                                        })
-                                      }
-                                    </ul>
+                            <div className="col-md-12 hidden-sm-up">
+                              <div className="row">
+                                <div className="col-6">
+                                  <ul className="nav card-text mb-2">
+                                    <li className="nav-item bedType">Sleeps: {roomOccupancy}</li>
+                                  </ul>
 
-                                    {roomCount}
-                                  </div>
-                                  <div className="col-6">
-                                    <h5 className="hotelPrice mb-1 priceRight">{currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.total} </h5>
-                                    <br />
-                                    <a href={hotelRoom.deepLink} className="btn btn-primary mb-1 priceRight" target="_blank" onClick={this.trackClick}>Book Room</a>
-                                  </div>
-                                  <div className="col-12">
-                                    <small className="priceBreakdownMobile">
+                                  <ul className="nav card-text mb-2">
+                                    {
+                                      hotelRoom.bedTypes.bedType.map((bedType, bedIndex) => {
+                                        return (
+                                          <li className="nav-item bedType" key={bedIndex}><i className="fa fa-bed"></i> {bedType.description}</li>
+                                        );
+                                      })
+                                    }
+                                  </ul>
+
+                                  {roomCount}
+                                </div>
+                                <div className="col-6">
+                                  <h5 className="hotelPrice mb-1 priceRight">{currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.total} </h5>
+                                  <br />
+                                  <a href={reservationsLink} className="btn btn-primary mb-1 priceRight" onClick={this.trackClick}>Book Room</a>
+                                </div>
+                                <div className="col-12">
+                                  <small className="priceBreakdownMobile">
                                       <span><strong>Breakdown:</strong><br />
                                         Nightly Rate: {currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.nightlyRateTotal}  &bull;
-                                        Tax & Service Fees: {currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.surchargeTotal} &bull;
-                                        Total: {currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.total}</span>
-                                    </small>
-                                  </div>
+                                        Tax Recovery Charges: {currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.surchargeTotal}</span>
+                                    <span className="mb-3"><strong>Total: {currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.total}</strong></span>
+                                    <span className={hotelRoom.rateInfos.rateInfo[0].hotelFees != null && hotelRoom.rateInfos.rateInfo[0].hotelFees.hotelFee != null ? '' : 'hide'}>Due at Hotel (City/local Tax): {currency}{hotelRoom.rateInfos.rateInfo[0].hotelFees != null ? hotelRoom.rateInfos.rateInfo[0].hotelFees.hotelFee != null ? hotelRoom.rateInfos.rateInfo[0].hotelFees.hotelFee[0].amount : '' : ''}</span>
+
+                                  </small>
                                 </div>
                               </div>
                             </div>
-                          </a>
-                        </li>
-                        );
-                    })
-                    }
-                  </ul>
-              </div>
+                          </div>
+                        </a>
+                      </li>
+                    );
+                  })
+                }
+              </ul>
             </div>
+          </div>
         );
       }
       else {
         return (
-            <div className="row">
-              <div className="col-md-12" id="rooms">
-                <div className="gap gap-small"></div>
-                <h4>Room Availability</h4>
-                <hr />
-                <p>Showing rooms available between <strong>{this.state.formattedArrivalDate}</strong> and <strong>{this.state.formattedDepartureDate}</strong></p>
-                <SearchForm searchUrl={this.props.searchUrl} buttonName="Search Rooms" rooms={this.state.rooms} nights={this.state.nights} arrivalDate={this.state.arrivalDate} guests={this.state.guests} useFunction={true} handleFormSubmit={this.handleFormSubmit} isSideBar={false} city={this.props.hotelName} lockLocation={true}/>
-                <div className="row">
-                  <div className="col-md-12">
-                    <div className="alert alert-danger" role="alert">
-                      There are no rooms available for your selected dates.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-        );
-      }
-    }
-    else {
-      return (
           <div className="row">
             <div className="col-md-12" id="rooms">
+              <div className="gap gap-small"></div>
               <h4>Room Availability</h4>
               <hr />
               <p>Showing rooms available between <strong>{this.state.formattedArrivalDate}</strong> and <strong>{this.state.formattedDepartureDate}</strong></p>
               <SearchForm searchUrl={this.props.searchUrl} buttonName="Search Rooms" rooms={this.state.rooms} nights={this.state.nights} arrivalDate={this.state.arrivalDate} guests={this.state.guests} useFunction={true} handleFormSubmit={this.handleFormSubmit} isSideBar={false} city={this.props.hotelName} lockLocation={true}/>
               <div className="row">
-                <Loader showLoader={true} />
+                <div className="col-md-12">
+                  <div className="alert alert-danger" role="alert">
+                    There are no rooms available for your selected dates.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+        );
+      }
+    }
+    else {
+      return (
+        <div className="row">
+          <div className="col-md-12" id="rooms">
+            <h4>Room Availability</h4>
+            <hr />
+            <p>Showing rooms available between <strong>{this.state.formattedArrivalDate}</strong> and <strong>{this.state.formattedDepartureDate}</strong></p>
+            <SearchForm searchUrl={this.props.searchUrl} buttonName="Search Rooms" rooms={this.state.rooms} nights={this.state.nights} arrivalDate={this.state.arrivalDate} guests={this.state.guests} useFunction={true} handleFormSubmit={this.handleFormSubmit} isSideBar={false} city={this.props.hotelName} lockLocation={true}/>
+            <div className="row">
+              <Loader showLoader={true} />
+            </div>
+          </div>
+        </div>
       );
     }
   }

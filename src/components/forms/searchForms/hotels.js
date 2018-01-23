@@ -77,13 +77,13 @@ class SearchForm extends React.Component {
           <div className={this.props.isSideBar ? "col-md-12" : "col-md-5"}>
             <div className="input-daterange" data-date-format="MM d, D">
               <div className="row">
-                <div className={this.props.isSideBar ? "col-md-12" : "col-md-8"}>
+                <div className={this.props.isSideBar ? "col-md-12" : "col-7 col-md-8"}>
                   <div className="form-group form-group-icon-left">
                     <label>Destination</label>
                     <AutoComplete disabled={this.props.lockLocation} onChangeAutoComplete={this.onChangeAutoComplete} searchType="city" placeholder="Enter Destination" cssClass="typeahead form-control" searchValue={searchValue} />
                   </div>
                 </div>
-                <div className={this.props.isSideBar ? "col-md-6" : "col-md-4"}>
+                <div className={this.props.isSideBar ? "col-md-6" : "col-5 col-md-4"}>
                   <div className="form-group form-group-icon-left"><i className="fa fa-calendar input-icon input-icon-hightlight"></i>
                     <label>Check in</label>
                     <DatePicker name="start" dateFormat="DD/MM/YYYY"  selected={this.state.arrivalDate} onChange={this.handleArrivalDateChange} className="form-control" />
@@ -94,7 +94,7 @@ class SearchForm extends React.Component {
           </div>
           <div className={this.props.isSideBar ? "col-md-12" : "col-md-7"}>
             <div className="row">
-              <div className={this.props.isSideBar ? "col-md-6" : "col-md-2"}>
+              <div className={this.props.isSideBar ? "col-md-6" : "col-4 col-md-2"}>
                 <div className="form-group form-group-icon-left">
                   <label>Nights</label>
                   <select className="form-control searchSelect" value={this.state.nights} onChange={this.handleNightChange} ref="nights" name="nights">
@@ -115,7 +115,7 @@ class SearchForm extends React.Component {
                   </select></div>
               </div>
 
-              <div className={this.props.isSideBar ? "col-md-6" : "col-md-2"}>
+              <div className={this.props.isSideBar ? "col-md-6" : "col-4 col-md-2"}>
                 <div className="form-group form-group-select-plus">
                   <label>Rooms</label>
                   <select className="form-control searchSelect" value={this.state.rooms} onChange={this.handleRoomChange} ref="rooms" name="rooms">
@@ -136,7 +136,7 @@ class SearchForm extends React.Component {
                   </select>
                 </div>
               </div>
-              <div className={this.props.isSideBar ? "col-md-6" : "col-md-2"}>
+              <div className={this.props.isSideBar ? "col-md-6" : "col-4 col-md-2"}>
                 <div className="form-group form-group- form-group-select-plus">
                   <label>Guests</label>
                   <select className="form-control searchSelect" value={this.state.guests} onChange={this.handleGuestChange} ref="guests" name="guests">

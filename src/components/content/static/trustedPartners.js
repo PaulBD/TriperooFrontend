@@ -5,7 +5,6 @@ const TrustedPartners = () => {
     <div className="row">
       <div className="col-md-6 col-xs-12 text-sm-left text-xs-left hidden-md-down">
         <h5 className="trustedPartner">Trusted Providers</h5>
-        <img src="/static/img/expedia.png" className="partners"/>
         <img src="/static/img/kiwi.png" className="partners"/>
         <img src="/static/img/holidayextras.png" className="partners"/>
         <img src="/static/img/wikipedia.png" className="partners"/>
@@ -23,7 +22,6 @@ const TrustedPartners = () => {
 
       <div className="col-md-6 col-xs-12 text-xs-small text-sm-center hidden-md-up">
         <h5 className="trustedPartner">Trusted Providers</h5>
-        <img src="/static/img/expedia.png" className="partners"/>
         <img src="/static/img/skyscanner.png" className="partners"/>
         <img src="/static/img/holidayextras.png" className="partners"/>
         <img src="/static/img/wikipedia.png" className="partners"/>

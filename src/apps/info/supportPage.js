@@ -50,6 +50,12 @@ const SupportPage = () => {
               <p><a href="http://www.viator.com" target="_blank">www.viator.com</a><br />
                 Click <a href="http://www.holidayextras.co.uk/about-us/terms-and-conditions.html" target="_blank">here</a> to read Viators's terms & conditions</p>
 
+              <h5>BookATable.co.uk </h5>
+              <p>For any customer support questions related to restaurant bookings, please use the customer service number below.</p>
+              <p><strong>Tel:</strong> 0871 360 1051</p>
+              <p><a href="http://www.bookatable.co.uk" target="_blank">www.bookatable.co.uk</a><br />
+                Click <a href="https://www.bookatable.co.uk/legal" target="_blank">here</a> to read BookATable's terms & conditions</p>
+
               <h5>HolidayExtras.com </h5>
               <p>For any customer support questions related to a airport transfers, airport lounge or airport hotels, please use the customer service number below.</p>
               <p><strong>Tel:</strong> 0871 360 1051</p>

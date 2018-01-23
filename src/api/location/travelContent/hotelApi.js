@@ -5,6 +5,71 @@ import baseUrl from '../../baseApi';
 class HotelDealsApi {
 
   // ****************************************
+  // Book hotel
+  // ****************************************
+  static bookHotel(locationId, hotelId, arrivalDate, nights, supplierType, rateKey, roomTypeCode, rateCode, chargeableRate, numberOfAdults1, firstNameRoom1, lastNameRoom1, bedTypeIdRoom1, numberOfAdults2, firstNameRoom2, lastNameRoom2, bedTypeIdRoom2, numberOfAdults3, firstNameRoom3, lastNameRoom3, bedTypeIdRoom3, emailAddress, firstName, lastName, homePhone, workPhone, creditCardType, creditCardNumber, creditCardIdentifier, creditCardExpiryMonth, creditCardExpiryYear, address1, city, stateProvince, countryCode, postalCode) {
+
+    let url = baseUrl + '/location/' + locationId + '/hotel/' + hotelId + '/book';
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'post',
+        url: url,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        data: {
+          arrivalDate: arrivalDate,
+          nights: nights,
+          supplierType: supplierType,
+          rateKey: rateKey,
+          roomTypeCode: roomTypeCode,
+          rateCode: rateCode,
+          chargeableRate: chargeableRate,
+          numberOfAdults1: numberOfAdults1,
+          firstNameRoom1: firstNameRoom1,
+          lastNameRoom1: lastNameRoom1,
+          bedTypeIdRoom1: bedTypeIdRoom1,
+
+          numberOfAdults2: numberOfAdults2,
+          firstNameRoom2: firstNameRoom2,
+          lastNameRoom2: lastNameRoom2,
+          bedTypeIdRoom2: bedTypeIdRoom2,
+
+          numberOfAdults3: numberOfAdults3,
+          firstNameRoom3: firstNameRoom3,
+          lastNameRoom3: lastNameRoom3,
+          bedTypeIdRoom3: bedTypeIdRoom3,
+
+          emailAddress: emailAddress,
+          firstName: firstName,
+          lastName: lastName,
+          homePhone: homePhone,
+          workPhone: workPhone,
+
+          creditCardType: creditCardType,
+          creditCardNumber: creditCardNumber,
+          creditCardIdentifier: creditCardIdentifier,
+          creditCardExpiryMonth: creditCardExpiryMonth,
+          creditCardExpiryYear: creditCardExpiryYear,
+          address1: address1,
+          city: city,
+          stateProvince: stateProvince,
+          countryCode: countryCode,
+          postalCode: postalCode
+
+        }
+      })
+        .then(response => {
+          resolve(Object.assign({}, response.data));
+        })
+        .catch(function (error) {
+          reject(error);
+        });
+    });
+  }
+
+  // ****************************************
   // Return hotel by id
   // ****************************************
   static getHotelById(locationId, hotelId, locale, currencyCode) {
@@ -25,6 +90,22 @@ class HotelDealsApi {
   static getHotelRoomsById(locationId, hotelId, arrivalDate, nights, rooms, guests, locale, currencyCode) {
     return new Promise((resolve, reject) => {
       let url = baseUrl + '/location/' + locationId + '/hotel/' + hotelId + '/rooms/' + arrivalDate + '/' + nights + '/?locale=' + locale + '&currencyCode=' + currencyCode + '&rooms=' + rooms + '&guests=' + guests;
+      axios.get(url)
+        .then(function (response) {
+          resolve(Object.assign({}, response.data));
+        })
+        .catch(function (error) {
+          reject(error);
+        });
+    });
+  }
+
+  // ****************************************
+  // Return hotel room by room code
+  // ****************************************
+  static getHotelRoomByRoomCode(locationId, hotelId, arrivalDate, nights, rooms, guests, locale, currencyCode, roomTypeCode) {
+    return new Promise((resolve, reject) => {
+      let url = baseUrl + '/location/' + locationId + '/hotel/' + hotelId + '/room/' + arrivalDate + '/' + nights + '?roomTypeCode=' + roomTypeCode + '&locale=' + locale + '&currencyCode=' + currencyCode + '&rooms=' + rooms + '&guests=' + guests;
       axios.get(url)
         .then(function (response) {
           resolve(Object.assign({}, response.data));
