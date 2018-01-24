@@ -171,8 +171,8 @@ export function bookHotelRequest() {
   return {type: types.BOOK_HOTEL_REQUEST, isFetching: true, hotelRoom: {}};
 }
 
-export function bookHotelSuccess() {
-  return {type: types.BOOK_HOTEL_SUCCESS, };
+export function bookHotelSuccess(reservation) {
+  return {type: types.BOOK_HOTEL_SUCCESS, reservation};
 }
 
 export function bookHotelFailure(errorMessage) {
@@ -182,8 +182,8 @@ export function bookHotelFailure(errorMessage) {
 export function bookHotelRoom(locationId, hotelId, arrivalDate, nights, supplierType, rateKey, roomTypeCode, rateCode, chargeableRate, numberOfAdults1, firstNameRoom1, lastNameRoom1, bedTypeIdRoom1, numberOfAdults2, firstNameRoom2, lastNameRoom2, bedTypeIdRoom2, numberOfAdults3, firstNameRoom3, lastNameRoom3, bedTypeIdRoom3, emailAddress, firstName, lastName, homePhone, workPhone, creditCardType, creditCardNumber, creditCardIdentifier, creditCardExpiryMonth, creditCardExpiryYear, address1, city, stateProvince, countryCode, postalCode) {
   return dispatch => {
     dispatch(bookHotelRequest());
-    return HotelApi.bookHotel(locationId, hotelId, arrivalDate, nights, supplierType, rateKey, roomTypeCode, rateCode, chargeableRate, numberOfAdults1, firstNameRoom1, lastNameRoom1, bedTypeIdRoom1, numberOfAdults2, firstNameRoom2, lastNameRoom2, bedTypeIdRoom2, numberOfAdults3, firstNameRoom3, lastNameRoom3, bedTypeIdRoom3, emailAddress, firstName, lastName, homePhone, workPhone, creditCardType, creditCardNumber, creditCardIdentifier, creditCardExpiryMonth, creditCardExpiryYear, address1, city, stateProvince, countryCode, postalCode).then(hotelRoom => {
-      dispatch(bookHotelSuccess());
+    return HotelApi.bookHotel(locationId, hotelId, arrivalDate, nights, supplierType, rateKey, roomTypeCode, rateCode, chargeableRate, numberOfAdults1, firstNameRoom1, lastNameRoom1, bedTypeIdRoom1, numberOfAdults2, firstNameRoom2, lastNameRoom2, bedTypeIdRoom2, numberOfAdults3, firstNameRoom3, lastNameRoom3, bedTypeIdRoom3, emailAddress, firstName, lastName, homePhone, workPhone, creditCardType, creditCardNumber, creditCardIdentifier, creditCardExpiryMonth, creditCardExpiryYear, address1, city, stateProvince, countryCode, postalCode).then(reservation => {
+      dispatch(bookHotelSuccess(reservation));
     }).catch(error => {
       dispatch(bookHotelFailure(error.response.data));
     });
