@@ -75,22 +75,24 @@ class UserPhotos extends React.Component {
               <div className="row">
                 <div className="col-md-12">
                   <div className="row customerPhotos">
-                    <div className="card-columns">
-                      <div className="card text-center createPhoto">
-                        <div className="card-block">
-                          <a href="#" onClick={this.uploadImage}><i className="fa fa-plus-circle" /></a>
-                          <h4 className="card-title">A picture tells a thousand words</h4>
-                          <p className="card-text">Upload your photos and share your experiences</p>
-                          <a href="#" className="btn btn-primary"  onClick={this.uploadImage}>Upload Photos</a>
+                    <div className="col-md-12">
+                      <div className="card-columns">
+                        <div className="card text-center createPhoto mb-3">
+                          <div className="card-block">
+                            <a href="#" onClick={this.uploadImage}><i className="fa fa-plus-circle" /></a>
+                            <h4 className="card-title">A picture tells a thousand words</h4>
+                            <p className="card-text">Upload your photos and share your experiences</p>
+                            <a href="#" className="btn btn-primary"  onClick={this.uploadImage}>Upload Photos</a>
+                          </div>
                         </div>
+                        {
+                          (this.props.photos.photoList.length > 0) ? this.props.photos.photoList.map(photo => {
+                            return (
+                              <PhotoList likeCount={photo.likeCount} imageUrl={photo.url} key={photo.photoReference} imageReference={photo.photoReference} isActiveUser={this.props.isActiveUser} removeImage={this.removeImage}/>
+                            );
+                          }) : ""
+                        }
                       </div>
-                      {
-                        (this.props.photos.photoList.length > 0) ? this.props.photos.photoList.map(photo => {
-                          return (
-                            <PhotoList likeCount={photo.likeCount} imageUrl={photo.url} key={photo.photoReference} imageReference={photo.photoReference} isActiveUser={this.props.isActiveUser} removeImage={this.removeImage}/>
-                          );
-                        }) : ""
-                      }
                     </div>
                   </div>
                 </div>

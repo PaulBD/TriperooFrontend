@@ -1515,7 +1515,7 @@ ul.twPc-Arrange li.location {
 .createTripBlank .fa, .createPhoto .fa { font-size: 70px; margin: 40px 0; }
 .createPhoto .fa { margin: 10px 0px }
 .removePhoto .fa { font-size: 30px; }
-.tripDate { font-size: 14px; text-align: left; margin-top: 80px; z-index: 999; position: absolute;}
+.tripDate { font-size: 14px; text-align: left; margin-top: 0px; z-index: 999; position: absolute;}
 .tripNav { margin: 0; padding: 0; }
 .tripNav a { border-left: solid 1px #cccccc; color: #333333; }
 .tripNav a:hover, .tripNav a.active { color: #ffffff; background-color: #ed8323; }
@@ -1542,7 +1542,7 @@ a:hover .activityBg { background-color: #333; border-color: #333; }
 .timelineTitle h4 { border-top: solid 1px #efefef; border-bottom: solid 1px #efefef; margin-bottom: 20px; text-align:center;background-color:white; padding: 10px 0px; }
 .priceBreakdown { margin-top:20px; }
 .priceBreakdown span { width:100%; float:right; text-align: right;}
-.priceBreakdownMobile span { width:100%; float:left; text-align: left;}
+.priceBreakdownMobile span { width:100%; float:left; text-align: left;margin-top:10px;}
 .cardGroupLong { width:100%; }
 .closeText { width:100%; text-align: center !important; }
 .sale { color: #ed8323; font-weight: bold; }
@@ -1847,6 +1847,7 @@ a:hover .activityBg { background-color: #333; border-color: #333; }
 .infoPage p { position: relative; z-index: 999 }
 .alert.bookingForm { padding: .4rem 1.25rem; }
 .alert.bookingForm small { color: #a94442; }
+.checkIn br { line-height: 36px; }
 
 @media (max-width:576px) {
   .locationSubNav { display:table; }
@@ -1901,6 +1902,7 @@ a:hover .activityBg { background-color: #333; border-color: #333; }
 
   .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label:after { left: auto; right: 0; margin-left: 0; margin-right: -9px; }
   .addressEmpty { height:auto; display: none; }
+  .sideBar { border: none; }
 }
 
 @media (min-width:1px) and (max-width:576px) {

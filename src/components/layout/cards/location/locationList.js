@@ -106,7 +106,7 @@ class LocationList extends React.Component {
                   }
 
                   const bgImage = {
-                    backgroundImage: "url(" + fallbackImage + ")"
+                    backgroundImage: "url(" + fallbackImage.replace('http://', 'https://') + ")"
                   };
 
                   let fallbackBgImage = {

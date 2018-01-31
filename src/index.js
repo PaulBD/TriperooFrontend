@@ -9,8 +9,13 @@ import cookie from 'react-cookie';
 const uuidV4 = require('uuid/v4');
 import ReactGA from 'react-ga';
 
+
+if (process.env.NODE_ENV === 'production') {
+  ReactGA.initialize('UA-61218289-2'); // Product GA Account
+}
+else {
   ReactGA.initialize('UA-61218289-1'); // Dev GA Account
-//ReactGA.initialize('UA-61218289-2'); // Product GA Account
+}
 
 
 

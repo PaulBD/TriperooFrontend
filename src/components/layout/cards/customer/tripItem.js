@@ -32,9 +32,7 @@ class TripItem extends React.Component {
 
     let shareText = 'Hey! I have created a trip on Triperoo which I thought you might like called' + this.props.trip.tripName + '. Check it out!';
 
-    let imageUrl = "";
-
-    imageUrl =  this.props.trip.tripDetails.image;
+    let imageUrl = this.props.trip.tripDetails.image;
 
     if (imageUrl == undefined || imageUrl == '') {
       if (this.props.trip.bookmarks && this.props.trip.bookmarks.length > 0) {
@@ -48,10 +46,11 @@ class TripItem extends React.Component {
       imageUrl = "/static/img/placeholder.png";
     }
 
-
     let style = {
       backgroundImage: 'url(' + imageUrl + ')'
     };
+
+    let shareUrl = 'https://www.triperoo.co.uk' + this.props.trip.url
 
     return (
       <div className={this.props.cssClass}>
@@ -61,17 +60,17 @@ class TripItem extends React.Component {
             <h4 className="card-title">
               <a href={this.props.trip.url}>{this.props.trip.tripName}</a>
             </h4>
-            <h6 className="card-subtitle mb-2 text-muted tripStartDate">{moment(this.props.trip.tripDetails.tripStart).format('YYYY-MM-DD')} to {moment(this.props.trip.tripDetails.tripEnd).format('YYYY-MM-DD')}</h6>
+            <h6 className="card-subtitle mb-2 text-muted tripStartDate">{moment(this.props.trip.tripDetails.tripStart).format('LL')} to {moment(this.props.trip.tripDetails.tripEnd).format('LL')}</h6>
             <hr />
             <div className="date text-center">Share with friends</div>
             <div className="text-center">
-              <FacebookShareButton className="shareBtn" url={this.props.trip.url} title={shareText} picture={this.props.trip.days && this.props.trip.days.length > 0 ? this.props.trip.days[0].image : ''}>
+              <FacebookShareButton className="shareBtn" url={shareUrl} title={shareText} picture={this.props.trip.tripDetails ? this.props.trip.tripDetails.image : ''}>
                 <FacebookIcon size={32} round={true} />
               </FacebookShareButton>
-              <TwitterShareButton className="shareBtn" url={this.props.trip.url} title={shareText} picture={this.props.trip.days && this.props.trip.days.length > 0 ? this.props.trip.days[0].image : ''}>
+              <TwitterShareButton className="shareBtn" url={shareUrl} title={shareText} picture={this.props.trip.tripDetails ? this.props.trip.tripDetails.image : ''}>
                 <TwitterIcon size={32} round={true} />
               </TwitterShareButton>
-              <GooglePlusShareButton url={this.props.trip.url} className="shareBtn">
+              <GooglePlusShareButton url={shareUrl} className="shareBtn">
                 <GooglePlusIcon
                   size={32}
                   round />
@@ -80,7 +79,7 @@ class TripItem extends React.Component {
 
           </div>
           <div className="card-footer">
-            <small className="text-muted">{this.props.trip.days && this.props.trip.days.length > 0 ? this.props.trip.days.length : 0} Bookmarks</small>
+            <small className="text-muted">{this.props.trip.tripDetails ? this.props.trip.tripDetails.totalLocations : 0} Bookmarks</small>
           </div>
         </div>
       </div>

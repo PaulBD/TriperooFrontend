@@ -100,7 +100,7 @@ class LocationContent extends React.Component {
       searchId = this.props.location.regionID;
     }
 
-    this.setState({arrivalDate: arrivalDate, formattedArrivalDate: new moment(arrivalDate).format('LL'), nights: nights, rooms1: rooms1, guests: guests});
+    this.setState({arrivalDate: arrivalDate, formattedArrivalDate: new moment(arrivalDate).format('LL'), nights: nights, rooms1: guests, guests: guests});
     this.setState({isLoadingLocation: true, isLoadingHotelList: true });
     browserHistory.push(searchUrl.replace('/hotels', '') + '/hotels?arrivalDate=' + arrivalDate + '&nights=' + nights + '&rooms1=' + rooms1 + '&guests=' + guests);
     this.loadLocation(searchId);
@@ -203,15 +203,13 @@ class LocationContent extends React.Component {
             </div>
           </div>
           <div className="gap gap-mini"></div>
-          <div className="container">
-            <div className="row row-wrap">
               <div className="container">
                 <div className="row">
-                  <div className="col-md-3 sideBar">
+                  <div className="col-12 col-md-3 sideBar">
                     <MapSideBar latitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.latitude : 0} longitude={this.props.location.locationCoordinates ? this.props.location.locationCoordinates.longitude : 0} text={title} zoom={13} markerArray={this.props.mapHotels} isLoading={this.state.isLoadingRestaurantList} locationType={this.props.location.subClass} />
                     <FilterHotels minPrice={0} maxPrice={300} facilityList={[]} accommodationTypeList={[]} filterHotels={this.filterHotels} />
                   </div>
-                  <div className="col-md-9">
+                  <div className="col-12 col-md-9">
                     <div className={this.state.isLoadingHotelList ? "hide" : "row"}>
                       <div className="col-md-8">
                         <p className="text-left">
@@ -227,15 +225,13 @@ class LocationContent extends React.Component {
                       {
                         !this.state.isLoadingHotelList ? this.props.hotels.hotelListResponse ? this.props.hotels.hotelListResponse.hotelList.hotelSummary.map(function (hotel, i) {
                           return(<HotelThumb hotel={hotel} hotelUrl={this.props.location.url} queryString={queryString} key={hotel.hotelId} cssClass="col-md-4 mb-4" nameLength={40}/>);
-                        }, this) : (<Loader showLoader={true}/>) : (<Loader showLoader={true}/>)
+                        }, this) : (<div className="col-md-12"><Loader showLoader={true}/></div>) : (<div className="col-md-12"><Loader showLoader={true}/></div>)
                       }
                     </div>
                   </div>
                 </div>
                 <div className="gap gap-mini"></div>
               </div>
-            </div>
-          </div>
           <LastMinuteDeal locationId={this.props.locationId} />
           <div className="container">
               <div className="gap gap-mini"></div>
@@ -283,7 +279,7 @@ function mapStateToProps(state, ownProps) {
     location: state.location.location ? state.location.location : {},
     locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0,
     arrivalDate: ownProps.location !== undefined ? ownProps.location.query.arrivalDate : moment().add(7, 'days').format('YYYY-MM-DD'),
-    rooms: ownProps.location.query.rooms !== undefined ? parseInt(ownProps.location.query.rooms) : 1,
+    rooms: ownProps.location.query.guests !== undefined ? parseInt(ownProps.location.query.guests) : 1,
     guests: ownProps.location.query.guests !== undefined ? parseInt(ownProps.location.query.guests) : 1,
     nights: ownProps.location.query.nights !== undefined ? parseInt(ownProps.location.query.nights) : 1,
     hotels: state.hotels.hotels ? state.hotels.hotels : {},

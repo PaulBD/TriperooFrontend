@@ -18,7 +18,7 @@ class EventCard extends React.Component {
 
     if (this.props.locationEvent != undefined)
     {
-      let image = this.props.locationEvent.image ? this.props.locationEvent.image.block200.url.replace('small', 'block100') : '/static/img/100x100.png';
+      let image = this.props.locationEvent.image ? this.props.locationEvent.image.block200.url.replace('small', 'block100').replace('http://', 'https://') : '/static/img/100x100.png';
       let price = this.props.locationEvent.price;
       let ticketLink = '';
 

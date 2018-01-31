@@ -32,8 +32,8 @@ class HotelBooking extends React.Component {
                     className="breadcrumb-item"><a href={hotelDetailUrl}>{titleCase(this.props.hotelName)}</a></li>
                   <li className="breadcrumb-item active">Book</li>
                 </ol>
-                <h1>Book {titleCase(this.props.hotelName)}</h1>
-                <p className="text-center hidden-sm-up">Secure booking - only takes 2 minutes</p>
+                <h1>{this.props.title}</h1>
+                <p className={this.props.showSubTitle ? "text-center hidden-sm-up" : "hide"}>Secure booking - only takes 2 minutes</p>
               </div>
             </div>
           </div>
@@ -46,10 +46,12 @@ class HotelBooking extends React.Component {
 HotelBooking.propTypes = {
   location: PropTypes.object,
   hotelId: PropTypes.number.isRequired,
+  showSubTitle: PropTypes.bool.isRequired,
   arrivalDate: PropTypes.string.isRequired,
   nights: PropTypes.number.isRequired,
   guests: PropTypes.number.isRequired,
   hotelImage: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   hotelName: PropTypes.string.isRequired,
   contentType: PropTypes.string.isRequired
 

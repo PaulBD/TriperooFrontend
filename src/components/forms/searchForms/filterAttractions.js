@@ -8,11 +8,13 @@ class FilterAttractions extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      attractionCategory: [],
-      filteredName: ''
+      attractionCategory: []
+      , filteredName: ''
+      , filterState: 'Show Filters'
     };
     this.filterAttractions = this.filterAttractions.bind(this);
     this.filterByName = this.filterByName.bind(this);
+    this.showFilter = this.showFilter.bind(this);
   }
 
   filterAttractions(filter) {
@@ -36,12 +38,26 @@ class FilterAttractions extends React.Component {
     this.props.filterAttractions(attractionCategory, filteredName);
   }
 
+  showFilter(e) {
+    if (this.state.filterState == 'Show Filters') {
+      this.setState({filterState: 'Hide Filters'});
+    }
+    else {
+      this.setState({filterState: 'Show Filters'});
+    }
+  }
+
   render(){
     if (!this.props.isFetching) {
       return (
         <div className="profile-usermenu">
-          <CategoryFilter title="Attraction Types" searchName={this.props.searchName} locationId={this.props.locationId} pageSize={this.props.pageSize} pageNumber={this.props.pageNumber} contentType="Attractions" categories={this.props.categories} filterResults={this.filterAttractions} numberToShow={6} />
-          <NameFilter placeHolder="Enter Attraction name" title="Filter by Name" searchName={this.state.filteredName} updateFilter={this.filterByName} />
+          <div className="col-md-12 hidden-md-up mb-3 text-center">
+            <a onClick={this.showFilter} data-toggle="collapse" href="#flightFilter" aria-expanded="false" aria-controls="flightFilter">{this.state.filterState}</a>
+          </div>
+          <div className="collapse flightFilter" id="flightFilter">
+            <CategoryFilter title="Attraction Types" searchName={this.props.searchName} locationId={this.props.locationId} pageSize={this.props.pageSize} pageNumber={this.props.pageNumber} contentType="Attractions" categories={this.props.categories} filterResults={this.filterAttractions} numberToShow={6} />
+            <NameFilter placeHolder="Enter Attraction name" title="Filter by Name" searchName={this.state.filteredName} updateFilter={this.filterByName} />
+          </div>
         </div>
       );
     }

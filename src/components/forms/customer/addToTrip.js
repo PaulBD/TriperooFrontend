@@ -44,16 +44,17 @@ class BookmarkLocation extends React.Component {
           type: '',
           tripPace: 'balanced',
           populateTrip: 'yes',
-          tags: []
-        },
-        days: []
+          tags: [],
+          totalLocations: 0,
+          tripSummary: []
+        }
       },
       errors: ''
     };
   }
 
   componentWillMount() {
-    const days = {
+    const activities = {
       "regionID": this.props.locationId,
       "activityType": this.props.parentLocationType,
       "regionType": this.props.locationType,
@@ -71,6 +72,15 @@ class BookmarkLocation extends React.Component {
       "dateCreated": moment().format('YYYY-MM-DD')
     };
 
+    const tripSummary = {
+      "day": 0,
+      "date": null,
+      "restaurantCount": 0,
+      "activitiesCount": 0,
+      "totalDuration": 0,
+      "activities": []
+    };
+
     let trip = this.state.trip;
     trip.tripDetails.regionID = this.props.parentLocationId;
     trip.tripDetails.regionName = this.props.parentLocationNameLong;
@@ -78,7 +88,9 @@ class BookmarkLocation extends React.Component {
     trip.tripDetails.regionUrl = this.props.parentLocationUrl;
 
     if (this.props.locationId > 0) {
-      trip.days.push(days);
+      trip.tripDetails.totalLocations = 1;
+      trip.tripDetails.tripSummary.push(tripSummary);
+      trip.tripDetails.tripSummary[0].activities.push(activities);
     }
 
     this.setState({trip: trip});
@@ -122,6 +134,7 @@ class BookmarkLocation extends React.Component {
     e.preventDefault();
     if ((this.state.trip.tripName.length > 0) && (this.state.trip.tripDetails.regionID > 0)) {
 
+      console.log(this.state.trip);
       this.setState({isCreatingList: true, errors: ''});
       this.props.userActions.postTrip(this.state.trip, this.props.customerReference)
         .then(() => {
@@ -225,7 +238,7 @@ class BookmarkLocation extends React.Component {
   onSaveBookmark(e) {
 
     this.setState({postingBookmark: true});
-    this.props.userActions.postActivity(e.target.getAttribute('data-id'), this.state.trip.days[0])
+    this.props.userActions.postActivity(e.target.getAttribute('data-id'), this.state.trip.tripDetails.tripSummary[0].activities[0])
       .then(() => {
         this.setState({postingBookmark: false, errors: this.props.errorMessage});
 
@@ -274,7 +287,7 @@ class BookmarkLocation extends React.Component {
                   <hr />
                   <p>Create a new trip by completing the form below.</p>
                 </div>
-                <TripForm trip={this.state.trip} isCreatingList={this.state.isCreatingList} onChangeAutoComplete={this.onChangeAutoComplete} onChangeStartDate={this.onChangeStartDate} onChangeEndDate={this.onChangeEndDate} errors={this.state.errors} onSubmit={this.createNewTripForm} onChange={this.changeField} addToExistingTrip={this.addToExistingTrip} />
+                <TripForm trip={this.state.trip} isCreatingList={this.state.isCreatingList} onChangeAutoComplete={this.onChangeAutoComplete} onChangeStartDate={this.onChangeStartDate} onChangeEndDate={this.onChangeEndDate} errors={this.state.errors} onSubmit={this.createNewTripForm} onChange={this.changeField} addToExistingTrip={this.addToExistingTrip}  />
               </div>
             <div className={this.state.wizardStep == "Thank you" ? "row" : "hide"}>
               <div className="col-md-12">

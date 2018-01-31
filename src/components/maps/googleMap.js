@@ -25,13 +25,28 @@ class TriperooGoogleMap extends React.Component {
       };
 
       if (this.props.markerArray.length > 0) {
+
         let markers = this.props.markerArray.map(function (location, i) {
 
+          let boxContent = '';
+
+          if (location.url == '') {
+            boxContent = '<div class="infoWindowContent"><div class="pic"><div class="text">' +
+              '<p class="mb-0"><strong>' + location.regionName + '</strong></p>' +
+              '<p class="mb-0"><small>' + location.subClass + '</small></p></div>' +
+              '</div>';
+          }
+          else {
+            boxContent = '<div class="infoWindowContent"><a href="' + location.url + '"><div class="pic"><div class="text">' +
+              '<p class="mb-0"><strong>' + location.regionName + '</strong></p>' +
+              '<p class="mb-0"><small>' + location.subClass + '</small></p></div></a>' +
+              '</div>';
+          }
+
+
+
           let infowindow = new window.google.maps.InfoWindow({
-            content: '<div class="infoWindowContent"><a href="' + location.url + '"><div class="pic"><div class="text">' +
-            '<p class="mb-0"><strong>' + location.regionName + '</strong></p>' +
-            '<p class="mb-0"><small>' + location.subClass + '</small></p></div></a>' +
-            '</div>'
+            content: boxContent
           });
 
           let marker = new window.google.maps.Marker({

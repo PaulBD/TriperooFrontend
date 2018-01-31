@@ -8,14 +8,15 @@ class FilterHotels extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      minPrice: this.props.minPrice,
-      maxPrice: this.props.maxPrice,
-      minStarRating: 1,
-      maxStarRating: 5,
-      minTripAdvisorRating: 0,
-      maxTripAdvisorRating: 0,
-      facilityList: [],
-      propertyCategory: []
+      minPrice: this.props.minPrice
+      , maxPrice: this.props.maxPrice
+      , minStarRating: 1
+      , maxStarRating: 5
+      , minTripAdvisorRating: 0
+      , maxTripAdvisorRating: 0
+      , facilityList: []
+      , propertyCategory: []
+      , filterState: 'Show Filters'
     };
     this.updateStarFilter = this.updateStarFilter.bind(this);
     this.updateTripAdvisorFilter = this.updateTripAdvisorFilter.bind(this);
@@ -23,6 +24,7 @@ class FilterHotels extends React.Component {
     this.changeMaxprice = this.changeMaxprice.bind(this);
     this.updateFacilitiesFilter = this.updateFacilitiesFilter.bind(this);
     this.updatePropertyCategoryFilter = this.updatePropertyCategoryFilter.bind(this);
+    this.showFilter = this.showFilter.bind(this);
   }
 
   updateStarFilter(filter) {
@@ -69,42 +71,56 @@ class FilterHotels extends React.Component {
     this.props.filterHotels(minPrice, maxPrice, minStarRating, maxStarRating, minTripAdvisorRating, maxTripAdvisorRating, facilityList, propertyCategory);
   }
 
+  showFilter(e) {
+    if (this.state.filterState == 'Show Filters') {
+      this.setState({filterState: 'Hide Filters'});
+    }
+    else {
+      this.setState({filterState: 'Show Filters'});
+    }
+  }
+
   render(){
     return (
       <div className="profile-usermenu">
-        <ul className="list booking-filters-list">
-          <li>
-            <h5>Price Range</h5>
-            <div className="row">
-              <div className="col-5 col-md-5">
-                <input type="number" className="form-control" value={this.state.minPrice} min="1" max="100000" onChange={this.changeMinprice}/>
+        <div className="col-md-12 hidden-md-up mb-3 text-center">
+          <a onClick={this.showFilter} data-toggle="collapse" href="#flightFilter" aria-expanded="false" aria-controls="flightFilter">{this.state.filterState}</a>
+        </div>
+        <div className="collapse flightFilter" id="flightFilter">
+          <ul className="list booking-filters-list">
+            <li>
+              <h5>Price Range</h5>
+              <div className="row">
+                <div className="col-5 col-md-5">
+                  <input type="number" className="form-control" value={this.state.minPrice} min="1" max="100000" onChange={this.changeMinprice}/>
+                </div>
+                <div className="col-2 col-md-2">
+                  to
+                </div>
+                <div className="col-5 col-md-5">
+                  <input type="number" className="form-control" value={this.state.maxPrice} min="1" max="100000" onChange={this.changeMaxprice}/>
+                </div>
+                <div className="gap gap-mini"></div>
               </div>
-              <div className="col-2 col-md-2">
-                to
-              </div>
-              <div className="col-5 col-md-5">
-                <input type="number" className="form-control" value={this.state.maxPrice} min="1" max="100000" onChange={this.changeMaxprice}/>
-              </div>
-              <div className="gap gap-mini"></div>
-            </div>
-          </li>
-          <li>
-            <h5>Star Rating</h5>
-            <StarFilter updateFilter={this.updateStarFilter} />
-          </li>
-          <li>
-            <h5>Trip Advisor Rating</h5>
-            <StarFilter updateFilter={this.updateTripAdvisorFilter} />
-          </li>
-          <li className="hide">
-            <h5>Facilities</h5>
-            <FacilitiesFilter updateFilter={this.updateFacilitiesFilter} />
-          </li>
-          <li>
-            <h5>Accommodation Type</h5>
-            <PropertyCategoryFilter updateFilter={this.updatePropertyCategoryFilter} />
-          </li>
-        </ul>
+            </li>
+            <li>
+              <h5>Star Rating</h5>
+              <StarFilter updateFilter={this.updateStarFilter} />
+            </li>
+            <li>
+              <h5>Trip Advisor Rating</h5>
+              <StarFilter updateFilter={this.updateTripAdvisorFilter} />
+            </li>
+            <li className="hide">
+              <h5>Facilities</h5>
+              <FacilitiesFilter updateFilter={this.updateFacilitiesFilter} />
+            </li>
+            <li>
+              <h5>Accommodation Type</h5>
+              <PropertyCategoryFilter updateFilter={this.updatePropertyCategoryFilter} />
+            </li>
+          </ul>
+        </div>
       </div>
     );
   }

@@ -8,11 +8,13 @@ class FilterRestaurants extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      restaurantCategory: [],
-      filteredName: ''
+      restaurantCategory: []
+      , filteredName: ''
+      , filterState: 'Show Filters'
     };
     this.filterRestaurant = this.filterRestaurant.bind(this);
     this.filterByName = this.filterByName.bind(this);
+    this.showFilter = this.showFilter.bind(this);
   }
 
   filterRestaurant(filter) {
@@ -36,12 +38,26 @@ class FilterRestaurants extends React.Component {
     this.props.filterRestaurant(restaurantCategory, filteredName);
   }
 
+  showFilter(e) {
+    if (this.state.filterState == 'Show Filters') {
+      this.setState({filterState: 'Hide Filters'});
+    }
+    else {
+      this.setState({filterState: 'Show Filters'});
+    }
+  }
+
   render(){
     if (!this.props.isFetching) {
       return (
       <div className="profile-usermenu">
-        <CategoryFilter title="Cuisine & Dishes" searchName={this.props.searchName} locationId={this.props.locationId} pageSize={this.props.pageSize} pageNumber={this.props.pageNumber} contentType="Restaurants" categories={this.props.categories} filterResults={this.filterRestaurant} numberToShow={6} />
-        <NameFilter placeHolder="Enter Restaurant name" title="Filter by Name" searchName={this.state.filteredName} updateFilter={this.filterByName} />
+        <div className="col-md-12 hidden-md-up mb-3 text-center">
+          <a onClick={this.showFilter} data-toggle="collapse" href="#flightFilter" aria-expanded="false" aria-controls="flightFilter">{this.state.filterState}</a>
+        </div>
+        <div className="collapse flightFilter" id="flightFilter">
+          <CategoryFilter title="Cuisine & Dishes" searchName={this.props.searchName} locationId={this.props.locationId} pageSize={this.props.pageSize} pageNumber={this.props.pageNumber} contentType="Restaurants" categories={this.props.categories} filterResults={this.filterRestaurant} numberToShow={6} />
+          <NameFilter placeHolder="Enter Restaurant name" title="Filter by Name" searchName={this.state.filteredName} updateFilter={this.filterByName} />
+        </div>
       </div>
       );
     }

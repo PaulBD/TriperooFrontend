@@ -74,7 +74,7 @@ class SearchForm extends React.Component {
     return (
       <form className="hotelSearch mb-3" onSubmit={this.submitForm}>
         <div className="row">
-          <div className={this.props.isSideBar ? "col-md-12" : "col-md-5"}>
+          <div className={this.props.isSideBar ? "col-md-12" : "col-md-7"}>
             <div className="input-daterange" data-date-format="MM d, D">
               <div className="row">
                 <div className={this.props.isSideBar ? "col-md-12" : "col-7 col-md-8"}>
@@ -92,9 +92,9 @@ class SearchForm extends React.Component {
               </div>
             </div>
           </div>
-          <div className={this.props.isSideBar ? "col-md-12" : "col-md-7"}>
+          <div className={this.props.isSideBar ? "col-md-12" : "col-md-5"}>
             <div className="row">
-              <div className={this.props.isSideBar ? "col-md-6" : "col-4 col-md-2"}>
+              <div className={this.props.isSideBar ? "col-md-6" : "col-4 col-md-3"}>
                 <div className="form-group form-group-icon-left">
                   <label>Nights</label>
                   <select className="form-control searchSelect" value={this.state.nights} onChange={this.handleNightChange} ref="nights" name="nights">
@@ -115,7 +115,7 @@ class SearchForm extends React.Component {
                   </select></div>
               </div>
 
-              <div className={this.props.isSideBar ? "col-md-6" : "col-4 col-md-2"}>
+              <div className={this.props.isSideBar ? "col-md-6 hide" : "col-4 col-md-2 hide"}>
                 <div className="form-group form-group-select-plus">
                   <label>Rooms</label>
                   <select className="form-control searchSelect" value={this.state.rooms} onChange={this.handleRoomChange} ref="rooms" name="rooms">
@@ -136,7 +136,7 @@ class SearchForm extends React.Component {
                   </select>
                 </div>
               </div>
-              <div className={this.props.isSideBar ? "col-md-6" : "col-4 col-md-2"}>
+              <div className={this.props.isSideBar ? "col-md-6" : "col-4 col-md-3"}>
                 <div className="form-group form-group- form-group-select-plus">
                   <label>Guests</label>
                   <select className="form-control searchSelect" value={this.state.guests} onChange={this.handleGuestChange} ref="guests" name="guests">

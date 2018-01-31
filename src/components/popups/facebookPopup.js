@@ -11,20 +11,22 @@ class Facebook extends React.Component {
     super(props, context);
     this.closeLoginModal = this.closeLoginModal.bind(this);
     this.submitForm = this.submitForm.bind(this);
+    this.changeField = this.changeField.bind(this);
     this.onChangeAutoComplete = this.onChangeAutoComplete.bind(this);
     this.state = {
       errors:'',
       isLoggingIn: false,
       creatingUser: false,
       city: '',
-      cityId: 0
+      cityId: 0,
+      optIn: 1
     };
   }
 
   submitForm(e) {
     e.preventDefault();
 
-    this.props.actions.loginFacebookUser({ accessToken: this.props.facebookResponse.accessToken, emailAddress: this.props.facebookResponse.email, facebookId: this.props.facebookResponse.userID, name: this.props.facebookResponse.name, imageUrl: this.props.facebookResponse.picture.data.url, cityId: this.state.cityId, city: this.state.city})
+    this.props.actions.loginFacebookUser({ accessToken: this.props.facebookResponse.accessToken, emailAddress: this.props.facebookResponse.email, facebookId: this.props.facebookResponse.userID, name: this.props.facebookResponse.name, imageUrl: this.props.facebookResponse.picture.data.url, cityId: this.state.cityId, city: this.state.city, optIn: this.state.optIn})
       .then(() => {
         this.setState({creatingUser: false});
         this.props.closeModal();
@@ -42,29 +44,43 @@ class Facebook extends React.Component {
     this.props.closeModal();
   }
 
-  onChangeAutoComplete(city, cityId, cityUrl, dataType)
-  {
+  onChangeAutoComplete(city, cityId, cityUrl, dataType) {
     this.setState({city: city, cityId: cityId});
+  }
+
+  changeField(event) {
+    const field = event.target.name;
+    let optIn = this.state.optIn;
+
+    if (this.state.optIn == 0)
+    {
+      optIn = 1;
+    }
+    else {
+      optIn = 0;
+    }
+
+    this.setState({optIn: optIn});
   }
 
   render(){
     return (
-        <div className="modal-dialog modelAuthentication" role="document">
-          <div className={!this.state.creatingUser && !this.state.isLoggingIn ? "modal-content" : "modal-content hide"}>
-            <div className="modal-body">
-              <div className="row">
-                <div className="gap gap-mini"></div>
-                <FacebookForm errors={this.state.errors} isUpdating={this.state.creatingUser} onSubmit={this.submitForm} onChangeAutoComplete={this.onChangeAutoComplete} city=""/>
-              </div>
-            </div>
-            <div className="modal-footer text-center">
-              <p className="closeText mb-0"><a href="#" onClick={this.closeLoginModal}>Close</a></p>
+      <div className="modal-dialog modelAuthentication" role="document">
+        <div className={!this.state.creatingUser && !this.state.isLoggingIn ? "modal-content" : "modal-content hide"}>
+          <div className="modal-body">
+            <div className="row">
+              <div className="gap gap-mini"></div>
+              <FacebookForm errors={this.state.errors} isUpdating={this.state.creatingUser} onSubmit={this.submitForm} onChangeAutoComplete={this.onChangeAutoComplete} city={this.state.city} optIn={this.state.optIn} onChange={this.changeField}/>
             </div>
           </div>
-          <div className={this.state.creatingUser || this.state.isLoggingIn ? "modal-content" : "modal-content hide"}>
-            <Loader showLoader={true} />
+          <div className="modal-footer text-center">
+            <p className="closeText mb-0"><a href="#" onClick={this.closeLoginModal}>Close</a></p>
           </div>
         </div>
+        <div className={this.state.creatingUser || this.state.isLoggingIn ? "modal-content" : "modal-content hide"}>
+          <Loader showLoader={true} />
+        </div>
+      </div>
     );
   }
 }

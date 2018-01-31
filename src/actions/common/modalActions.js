@@ -17,6 +17,7 @@ export function closeModal() {
     dispatch(closeMapSideBarModal());
     dispatch(closeCategoryModel());
     dispatch(closeVisitModal());
+    dispatch(closeCancelHotelModal());
 	};
 }
 
@@ -287,6 +288,23 @@ export function updateCategories(selectedCategories) {
   };
 }
 
+
+// ****************************************
+// Open Cancel Hotel Model
+// ****************************************
+export function openCancelHotelModel(hotelName, itineryId, confirmationId) {
+  return {type: types.OPEN_CANCEL_HOTEL_MODEL, hotelName, itineryId, confirmationId, name: 'CancelHotelModal' };
+}
+
+export function closeCancelHotelModal() {
+  return {type: types.CLOSE_CANCEL_HOTEL_MODEL, name: 'CancelHotelModal'};
+}
+
+export function openCancelHotel(hotelName, itineryId, confirmationId) {
+  return dispatch => {
+    dispatch(openCancelHotelModel(hotelName, itineryId, confirmationId));
+  };
+}
 
 // ****************************************
 // Open Facebook Modal

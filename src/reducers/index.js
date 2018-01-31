@@ -12,6 +12,7 @@ import review from './customer/reviewReducer';
 import user from './customer/userReducer';
 import userFollow from './customer/userFollowReducer';
 import photo from './customer/photoReducer';
+import reservation from './customer/reservationReducer';
 
 import articles from './location/articleReducer';
 import airports from './location/airportReducer';
@@ -51,6 +52,7 @@ const rootReducer = combineReducers({
   user,
   userFollow,
   photo,
+  reservation,
 
   articles,
   airports,

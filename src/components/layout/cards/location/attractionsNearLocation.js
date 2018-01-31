@@ -26,13 +26,13 @@ class AtractionNearLocation extends React.Component {
                   <h4>{title}</h4>
                 </div>
                 <div className="col-md-5 text-right">
-                  <p><a href={attractionUrl}>Find more attractions in {this.props.location.parentRegionName}</a></p>
+                  <p><a href={attractionUrl}>Find more attractions in {this.props.useParent ? this.props.location.parentRegionName : this.props.location.regionName}</a></p>
                 </div>
                 <div className="col-md-12">
                   <div className="row">
-                    <TopLocations locationId={this.props.location.parentRegionID}
-                                  name={this.props.location.parentRegionName} locationType="Attractions" pageSize={4}
-                                  showTitle={false} locationName={this.props.location.parentRegionName}/>
+                    <TopLocations locationId={this.props.useParent ? this.props.location.parentRegionID : this.props.location.regionID}
+                                  name={this.props.useParent ? this.props.location.parentRegionName : this.props.location.regionName} locationType="Attractions" pageSize={4}
+                                  showTitle={false} locationName={this.props.useParent ? this.props.location.parentRegionName : this.props.location.regionName}/>
 
                   </div>
                 </div>
@@ -61,10 +61,12 @@ class AtractionNearLocation extends React.Component {
 }
 
 AtractionNearLocation.defaultProps = {
+  useParent: true
 
 };
 
 AtractionNearLocation.propTypes = {
+  useParent: PropTypes.bool.isRequired,
   url: PropTypes.string.isRequired,
   location: PropTypes.object.isRequired,
   hasLoadedLocation: PropTypes.bool.isRequired

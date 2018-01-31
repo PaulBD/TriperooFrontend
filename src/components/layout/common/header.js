@@ -107,6 +107,7 @@ class Header extends React.Component {
                           <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a className="dropdown-item" href={user ? user.userProfile : ""}>Profile Home <span className="pull-right"><i className="fa fa-home"></i></span></a>
                             <a className="dropdown-item" href={user ? user.userProfile + "/profile" : ""}>Update Profile <span className="pull-right"><i className="fa fa-user"></i></span></a>
+                            <a className="dropdown-item" href={user ? user.userProfile + "/bookings" : ""}>Bookings <span className="pull-right"><i className="fa fa-calendar-check-o"></i></span></a>
                             <a className="dropdown-item" href={user ? user.userProfile + "/trips" : ""}>Trips <span className="pull-right"><i className="fa fa-heart-o"></i></span></a>
                             <a className="dropdown-item" href={user ? user.userProfile + "/reviews" : ""}>Reviews <span className="pull-right"><i className="fa fa-pencil"></i></span></a>
                             <a className="dropdown-item" href={user ? user.userProfile + "/photos" : ""}>Travel Photos <span className="pull-right"><i className="fa fa-camera"></i></span></a>

@@ -9,13 +9,15 @@ class FilterEvents extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      categoryName: '',
-      eventCategory: [],
-      typeFilterList: [],
-      eventCategoryId: 0,
-      isLoadingCategories: true
+      categoryName: ''
+      , eventCategory: []
+      , typeFilterList: []
+      , eventCategoryId: 0
+      , isLoadingCategories: true
+      , filterState: 'Show Filters'
     };
     this.addCategory = this.addCategory.bind(this);
+    this.showFilter = this.showFilter.bind(this);
   }
 
   componentWillMount() {
@@ -53,29 +55,43 @@ class FilterEvents extends React.Component {
       });
   }
 
+  showFilter(e) {
+    if (this.state.filterState == 'Show Filters') {
+      this.setState({filterState: 'Hide Filters'});
+    }
+    else {
+      this.setState({filterState: 'Show Filters'});
+    }
+  }
+
   render(){
     if (!this.state.isLoadingCategories) {
       return (
         <div className="profile-usermenu">
-          <ul className="list booking-filters-list">
-                {
-                  this.props.categories.map(category => {
+          <div className="col-md-12 hidden-md-up mb-3 text-center">
+            <a onClick={this.showFilter} data-toggle="collapse" href="#flightFilter" aria-expanded="false" aria-controls="flightFilter">{this.state.filterState}</a>
+          </div>
+          <div className="collapse flightFilter" id="flightFilter">
+            <ul className="list booking-filters-list">
+                  {
+                    this.props.categories.map(category => {
 
-                    let className = this.state.categoryName == category.name ? 'eventOptions active' : 'eventOptions';
+                      let className = this.state.categoryName == category.name ? 'eventOptions active' : 'eventOptions';
 
-                    return (
-                      <li className={className} key={category.name}>
-                        <a href="#" onClick={this.addCategory} data-id={category.id} data-name={category.name}>
-                          <input type="checkbox" className="form-check-inline" checked={this.state.typeFilterList.includes(category.name) ? true : false}/>&nbsp;
+                      return (
+                        <li className={className} key={category.name}>
+                          <a href="#" onClick={this.addCategory} data-id={category.id} data-name={category.name}>
+                            <input type="checkbox" className="form-check-inline" checked={this.state.typeFilterList.includes(category.name) ? true : false}/>&nbsp;
 
-                          {category.name}
-                          <i className={this.state.typeFilterList.includes(category.name) ? "fa fa-check categoryCheck" : "hide"} />
-                        </a>
-                      </li>
-                    );
-                  })
-                }
-            </ul>
+                            {category.name}
+                            <i className={this.state.typeFilterList.includes(category.name) ? "fa fa-check categoryCheck" : "hide"} />
+                          </a>
+                        </li>
+                      );
+                    })
+                  }
+              </ul>
+          </div>
         </div>
       );
     }

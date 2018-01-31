@@ -179,8 +179,10 @@ class CustomerHome extends React.Component {
               <div className="gap gap-small"></div>
             </div>
             <div className={this.props.reviews.length > 0 ? "row" : "hide"}>
-              <ReviewList currentUserId={this.props.currentUserId} reviews={this.props.reviews} maxTags={5} showEdit={this.props.isActiveUser} cssClass="card-deck" refreshData={this.refreshData}/>
-              {moreReviews}
+              <div className="col-md-12">
+                <ReviewList currentUserId={this.props.currentUserId} reviews={this.props.reviews} maxTags={5} showEdit={this.props.isActiveUser} cssClass="card-deck" refreshData={this.refreshData}/>
+                {moreReviews}
+              </div>
             </div>
             <div className={this.props.reviews.length == 0 ? "row" : "hide"}>
               <div className="col-md-12">

@@ -42,7 +42,7 @@ import CustomerHome from './apps/customer';
 import ForgotPassword from './apps/customer/forgotPassword';
 import CustomerProfile from './apps/customer/updateProfile';
 import CustomerPhotos from './apps/customer/photos';
-import BookingHistory from './apps/customer/bookingHistory';
+import Bookings from './apps/customer/bookings';
 import CustomerReviews from './apps/customer/reviews';
 import CustomerTrips from './apps/customer/trips';
 import CustomerTripDetail from './apps/customer/tripDetail';
@@ -52,14 +52,6 @@ import CustomerFollowing from './apps/customer/following';
 // Articles
 import LondonArticle from './apps/location/travelguides/united-kingdom/london';
 import NewYorkArticle from './apps/location/travelguides/united-states/new-york';
-
-//Admin
-import Admin from './apps/admin/index';
-import AdminSecure from './apps/admin/secure/main';
-import AdminContent from './apps/admin/secure/content/main';
-import AdminCustomers from './apps/admin/secure/customers/main';
-import AdminAnalytics from './apps/admin/secure/analytics/main';
-import AdminFeeds from './apps/admin/secure/feeds/main';
 
 // Hotels
 import Hotels from './apps/hotel';
@@ -113,7 +105,7 @@ export default (
     <Route path="/profile/(:guid)/(:customerName)" component={CustomerHome}/>
     <Route path="/profile/(:guid)/(:customerName)/profile" component={CustomerProfile}/>
     <Route path="/profile/(:guid)/(:customerName)/photos" component={CustomerPhotos}/>
-    <Route path="/profile/(:guid)/(:customerName)/booking-history" component={BookingHistory}/>
+    <Route path="/profile/(:guid)/(:customerName)/bookings" component={Bookings}/>
     <Route path="/profile/(:guid)/(:customerName)/reviews" component={CustomerReviews}/>
     <Route path="/profile/(:guid)/(:customerName)/trips" component={CustomerTrips}/>
     <Route path="/profile/(:guid)/(:customerName)/followers" component={CustomerFollowers}/>
@@ -123,14 +115,6 @@ export default (
 
     <Route path="/(:placeId)/visit/(:placeName)/article/take-a-fabulous-vacation-in-london" component={LondonArticle}/>
     <Route path="/(:placeId)/visit/(:placeName)/article/discover-new-york" component={NewYorkArticle}/>
-
-
-    <Route path="/admin-console" component={Admin}/>
-    <Route path="/admin-console/secure" component={AdminSecure}/>
-    <Route path="/admin-console/secure/analytics" component={AdminAnalytics}/>
-    <Route path="/admin-console/secure/content" component={AdminContent}/>
-    <Route path="/admin-console/secure/customers" component={AdminCustomers}/>
-    <Route path="/admin-console/secure/feeds" component={AdminFeeds}/>
 
     <Route path="*" component={NotFoundPage}/>
   </Route>

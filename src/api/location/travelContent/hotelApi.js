@@ -7,7 +7,7 @@ class HotelDealsApi {
   // ****************************************
   // Book hotel
   // ****************************************
-  static bookHotel(locationId, hotelId, arrivalDate, nights, supplierType, rateKey, roomTypeCode, rateCode, chargeableRate, numberOfAdults1, firstNameRoom1, lastNameRoom1, bedTypeIdRoom1, numberOfAdults2, firstNameRoom2, lastNameRoom2, bedTypeIdRoom2, numberOfAdults3, firstNameRoom3, lastNameRoom3, bedTypeIdRoom3, emailAddress, firstName, lastName, homePhone, workPhone, creditCardType, creditCardNumber, creditCardIdentifier, creditCardExpiryMonth, creditCardExpiryYear, address1, city, stateProvince, countryCode, postalCode) {
+  static bookHotel(locationId, hotelId, arrivalDate, nights, supplierType, rateKey, roomTypeCode, rateCode, chargeableRate, numberOfAdults1, firstNameRoom1, lastNameRoom1, bedTypeIdRoom1, numberOfAdults2, firstNameRoom2, lastNameRoom2, bedTypeIdRoom2, numberOfAdults3, firstNameRoom3, lastNameRoom3, bedTypeIdRoom3, emailAddress, firstName, lastName, homePhone, workPhone, creditCardType, creditCardNumber, creditCardIdentifier, creditCardExpiryMonth, creditCardExpiryYear, address1, city, stateProvince, countryCode, postalCode, specialInstructions) {
 
     let url = baseUrl + '/location/' + locationId + '/hotel/' + hotelId + '/book';
     return new Promise((resolve, reject) => {
@@ -56,7 +56,8 @@ class HotelDealsApi {
           city: city,
           stateProvince: stateProvince,
           countryCode: countryCode,
-          postalCode: postalCode
+          postalCode: postalCode,
+          specialInstructions: specialInstructions
 
         }
       })

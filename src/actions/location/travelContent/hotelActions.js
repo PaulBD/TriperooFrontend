@@ -179,10 +179,10 @@ export function bookHotelFailure(errorMessage) {
   return {type: types.BOOK_HOTEL_FAILURE, isFetching: false, errorMessage};
 }
 
-export function bookHotelRoom(locationId, hotelId, arrivalDate, nights, supplierType, rateKey, roomTypeCode, rateCode, chargeableRate, numberOfAdults1, firstNameRoom1, lastNameRoom1, bedTypeIdRoom1, numberOfAdults2, firstNameRoom2, lastNameRoom2, bedTypeIdRoom2, numberOfAdults3, firstNameRoom3, lastNameRoom3, bedTypeIdRoom3, emailAddress, firstName, lastName, homePhone, workPhone, creditCardType, creditCardNumber, creditCardIdentifier, creditCardExpiryMonth, creditCardExpiryYear, address1, city, stateProvince, countryCode, postalCode) {
+export function bookHotelRoom(locationId, hotelId, arrivalDate, nights, supplierType, rateKey, roomTypeCode, rateCode, chargeableRate, numberOfAdults1, firstNameRoom1, lastNameRoom1, bedTypeIdRoom1, numberOfAdults2, firstNameRoom2, lastNameRoom2, bedTypeIdRoom2, numberOfAdults3, firstNameRoom3, lastNameRoom3, bedTypeIdRoom3, emailAddress, firstName, lastName, homePhone, workPhone, creditCardType, creditCardNumber, creditCardIdentifier, creditCardExpiryMonth, creditCardExpiryYear, address1, city, stateProvince, countryCode, postalCode, specialInstructions) {
   return dispatch => {
     dispatch(bookHotelRequest());
-    return HotelApi.bookHotel(locationId, hotelId, arrivalDate, nights, supplierType, rateKey, roomTypeCode, rateCode, chargeableRate, numberOfAdults1, firstNameRoom1, lastNameRoom1, bedTypeIdRoom1, numberOfAdults2, firstNameRoom2, lastNameRoom2, bedTypeIdRoom2, numberOfAdults3, firstNameRoom3, lastNameRoom3, bedTypeIdRoom3, emailAddress, firstName, lastName, homePhone, workPhone, creditCardType, creditCardNumber, creditCardIdentifier, creditCardExpiryMonth, creditCardExpiryYear, address1, city, stateProvince, countryCode, postalCode).then(reservation => {
+    return HotelApi.bookHotel(locationId, hotelId, arrivalDate, nights, supplierType, rateKey, roomTypeCode, rateCode, chargeableRate, numberOfAdults1, firstNameRoom1, lastNameRoom1, bedTypeIdRoom1, numberOfAdults2, firstNameRoom2, lastNameRoom2, bedTypeIdRoom2, numberOfAdults3, firstNameRoom3, lastNameRoom3, bedTypeIdRoom3, emailAddress, firstName, lastName, homePhone, workPhone, creditCardType, creditCardNumber, creditCardIdentifier, creditCardExpiryMonth, creditCardExpiryYear, address1, city, stateProvince, countryCode, postalCode, specialInstructions).then(reservation => {
       dispatch(bookHotelSuccess(reservation));
     }).catch(error => {
       dispatch(bookHotelFailure(error.response.data));

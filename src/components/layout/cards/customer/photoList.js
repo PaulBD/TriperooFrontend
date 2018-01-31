@@ -17,7 +17,7 @@ class PhotoList extends React.Component {
 
   render() {
     return (
-      <div className="card" key={this.props.key}>
+      <div className="card mb-3" key={this.props.key}>
         <img class="card-img-top" src={this.props.imageUrl} />
         <div className="card-footer">
           <small className="text-muted">Likes {this.props.likeCount} &bull; <a href="#" ref="removePhoto" onClick={this.removeImage} data-id={this.props.imageReference} className={this.props.isActiveUser ? "removePhoto" : "hide"} data-toggle="tooltip" data-placement="top" title="Remove Photo" >Remove Photo</a></small>

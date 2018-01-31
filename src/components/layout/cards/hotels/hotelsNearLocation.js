@@ -68,7 +68,7 @@ class HotelsNearLocation extends React.Component {
                         this.props.hotels.hotelListResponse.hotelList.hotelSummary.map((hotel, index) => {
                           if (index < this.props.pageSize) {
                             return (
-                              <HotelThumb hotel={hotel} hotelUrl={this.props.url} queryString={this.props.queryString} key={hotel.hotelId} cssClass="col-md-3 mb-2" nameLength={20}/>
+                              <HotelThumb hotel={hotel} hotelUrl={this.props.url} queryString={this.props.queryString} key={hotel.hotelId} cssClass="col-md-3 mb-2" nameLength={40}/>
                             );
                           }
                         })

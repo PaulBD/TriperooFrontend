@@ -160,7 +160,7 @@ class RoomList extends React.Component {
                                     <li className="nav-item bedType">Sleeps: {roomOccupancy}</li>
                                   </ul>
                                 </div>
-                                <div className="col-md-4">
+                                <div className="col-md-8">
                                   <ul className="nav card-text mb-2">
                                     {
                                       hotelRoom.bedTypes.bedType.map((bedType, bedIndex) => {
@@ -171,8 +171,13 @@ class RoomList extends React.Component {
                                     }
                                   </ul>
                                 </div>
-                                <div className="col-md-4">
-                                  {roomCount}
+                                <div className={roomCount ? "col-md-12 mb-2" : "hide"}>
+                                  <strong>{roomCount}</strong>
+                                </div>
+                                <div className={hotelRoom.valueAdds && hotelRoom.valueAdds.valueAdd ? 'col-md-12' : 'hide'}>
+                                  <ul className="nav card-text mb-2">
+                                    <li className="nav-item bedType"><i className="fa fa-check-square-o" aria-hidden="true"></i> Includes {hotelRoom.valueAdds && hotelRoom.valueAdds.valueAdd ? hotelRoom.valueAdds.valueAdd.description : ''}</li>
+                                  </ul>
                                 </div>
                               </div>
                               <p className={hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.nonRefundable ? 'mb-3' : 'hide'}>Non-Refundable</p>
@@ -182,7 +187,7 @@ class RoomList extends React.Component {
                             <div className="col-md-3 hidden-sm-down">
                               <h5 className="hotelPrice mb-1 priceRight">{currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.total} </h5>
                               <br /><br />
-                              <a href={reservationsLink} className="btn btn-primary mb-1 priceRight" onClick={this.trackClick}>Book Room</a>
+                              <a href={hotelRoom.rateInfos.rateInfo[0].currentAllotment > 0 ? reservationsLink : ''} className="btn btn-primary mb-1 priceRight" onClick={this.trackClick}>{hotelRoom.rateInfos.rateInfo[0].currentAllotment > 0 ? 'Book Room' : 'Sold Out'}</a>
                               <br />
                               <small className="priceBreakdown priceRight">
                                 <span><strong>Breakdown:</strong></span>
@@ -195,7 +200,7 @@ class RoomList extends React.Component {
 
                             <div className="col-md-12 hidden-sm-up">
                               <div className="row">
-                                <div className="col-6">
+                                <div className="col-12">
                                   <ul className="nav card-text mb-2">
                                     <li className="nav-item bedType">Sleeps: {roomOccupancy}</li>
                                   </ul>
@@ -209,15 +214,16 @@ class RoomList extends React.Component {
                                       })
                                     }
                                   </ul>
-
+                                </div>
+                                <div className={roomCount ? "col-md-12 mb-2" : "hide"}>
                                   {roomCount}
                                 </div>
-                                <div className="col-6">
-                                  <h5 className="hotelPrice mb-1 priceRight">{currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.total} </h5>
-                                  <br />
-                                  <a href={reservationsLink} className="btn btn-primary mb-1 priceRight" onClick={this.trackClick}>Book Room</a>
+                                <div className={hotelRoom.valueAdds && hotelRoom.valueAdds.valueAdd ? 'col-12' : 'hide'}>
+                                  <ul className="nav card-text mb-2">
+                                    <li className="nav-item bedType"><i className="fa fa-check-square-o" aria-hidden="true"></i> Includes {hotelRoom.valueAdds && hotelRoom.valueAdds.valueAdd ? hotelRoom.valueAdds.valueAdd.description : ''}</li>
+                                  </ul>
                                 </div>
-                                <div className="col-12">
+                                <div className="col-6">
                                   <small className="priceBreakdownMobile">
                                       <span><strong>Breakdown:</strong><br />
                                         Nightly Rate: {currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.nightlyRateTotal}  &bull;
@@ -226,6 +232,11 @@ class RoomList extends React.Component {
                                     <span className={hotelRoom.rateInfos.rateInfo[0].hotelFees != null && hotelRoom.rateInfos.rateInfo[0].hotelFees.hotelFee != null ? '' : 'hide'}>Due at Hotel (City/local Tax): {currency}{hotelRoom.rateInfos.rateInfo[0].hotelFees != null ? hotelRoom.rateInfos.rateInfo[0].hotelFees.hotelFee != null ? hotelRoom.rateInfos.rateInfo[0].hotelFees.hotelFee[0].amount : '' : ''}</span>
 
                                   </small>
+                                </div>
+                                <div className="col-6">
+                                  <h5 className="hotelPrice mb-1 priceRight">{currency}{hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.total} </h5>
+                                  <br />
+                                  <a href={hotelRoom.rateInfos.rateInfo[0].currentAllotment > 0 ? reservationsLink : ''} className="btn btn-primary mb-1 priceRight" onClick={this.trackClick}>{hotelRoom.rateInfos.rateInfo[0].currentAllotment > 0 ? 'Book Room' : 'Sold Out'}</a>
                                 </div>
                               </div>
                             </div>

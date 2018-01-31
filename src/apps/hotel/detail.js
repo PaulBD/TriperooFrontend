@@ -130,7 +130,7 @@ class HotelDetail extends React.Component {
               <div className="booking-item-details">
                 <header className="booking-item-header">
                   <div className="row">
-                    <div className="col-md-8">
+                    <div className="col-md-8 col-6">
                       <p className="lh1em text-small hotelAddress"><i
                         className="fa fa-map-marker"></i> {this.props.hotel.hotelInformationResponse.hotelSummary.address1}, {this.props.hotel.hotelInformationResponse.hotelSummary.city}, {this.props.hotel.hotelInformationResponse.hotelSummary.postalCode}
                       </p>
@@ -139,15 +139,15 @@ class HotelDetail extends React.Component {
                         className="icon-list list-inline-block mb0 last-minute-rating" includeReviewCount={false}
                         reviewCount={0}/>
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-md-4 col-6">
                       <p className="booking-item-header-price">
                         <a href="#rooms" className="btn btn-primary priceRight">View Rooms</a>
                         <span
-                          className={this.props.hotel.hotelInformationResponse.hotelSummary.lowRate == 0 ? 'hide' : ''}>
+                          className={this.props.hotel.hotelInformationResponse.hotelSummary.lowRate == 0 ? 'hide' : 'hide'}>
                       <small>rooms from</small>
                       <br />
                       <span
-                        className="hotelPrice"><strong>{this.props.hotel.hotelInformationResponse.hotelSummary.lowRate.toFixed(2)}
+                        className="hotelPrice hide"><strong>{this.props.hotel.hotelInformationResponse.hotelSummary.lowRate.toFixed(2)}
                         GBP</strong></span>
                       <br />
                       <small>per night</small>
