@@ -90,6 +90,11 @@ export default function modalReducer(state = { isSending: false, hasPosted: fals
     case types.CLOSE_CANCEL_HOTEL_MODEL:
       return Object.assign({}, state, { modalIsOpen: false, isSending: false, hasPosted: false, modalName: action.name, modalType: 'CancelHotelModal' });
 
+    case types.OPEN_RESTAURANT_MODEL:
+      return Object.assign({}, state, { modalIsOpen: true, isSending: true, hasPosted: false, modalContent: { locationId: action.locationId }, modalName: action.name, modalType: 'RestaurantModal' });
+    case types.CLOSE_RESTAURANT_MODEL:
+      return Object.assign({}, state, { modalIsOpen: false, isSending: false, hasPosted: false, modalName: action.name, modalType: 'RestaurantModal' });
+
     default:
       return state;
   }

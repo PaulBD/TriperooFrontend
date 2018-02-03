@@ -51,9 +51,6 @@ class UpdateProfile extends React.Component {
 
     this.props.userActions.getUser(this.props.currentUserId)
       .then(() => {
-
-      console.log(this.props.user);
-
         if (this.props.user.profile) {
           this.setState({
             loading: false,
@@ -112,7 +109,6 @@ class UpdateProfile extends React.Component {
 
   submitMarketingForm(e) {
     e.preventDefault();
-    console.log(this.state.marketing);
     this.setState({isUpdatingMarketing: true});
     this.props.userActions.updateMarketingPreferences(this.state.marketing)
       .then(() => {
@@ -156,8 +152,6 @@ class UpdateProfile extends React.Component {
     else {
       marketing[field] = 0;
     }
-
-    console.log(marketing);
     this.setState({marketing: marketing});
   }
 

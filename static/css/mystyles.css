@@ -1548,7 +1548,9 @@ a:hover .activityBg { background-color: #333; border-color: #333; }
 .sale { color: #ed8323; font-weight: bold; }
 .affiliateLogo { width:100px; float: right; }
 .locationReviewTitle { font-size: 14px; font-weight: bold; }
-
+.externalWindow { width: 100%; height: 530px; }
+.RestaurantPopupModal { left: 35%; right: 35%; width: 30%; height: 620px; }
+.RestaurantPopupModal .modal-dialog { text-align: center; }
 
   /* Timeline */
 
@@ -1860,6 +1862,7 @@ a:hover .activityBg { background-color: #333; border-color: #333; }
   .ReactModal__Content .modal-content { height:600px; }
   .MapModel.ReactModal__Content .modal-content, .CategoryModel.ReactModal__Content .modal-content { height:520px; }
   .LoginModal.ReactModal__Content .modal-content { height:420px; }
+  .RestaurantPopupModal.ReactModal__Content .modal-content { height:560px; }
   .ReactModal__Content .modal-body { overflow-y: scroll; }
   .featureLocation { margin-bottom: 0px; }
   .travelExtras { height: 350px !important; }

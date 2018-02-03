@@ -40,6 +40,7 @@ class LocationDetail extends React.Component {
       errors:''
     };
     this.trackClick = this.trackClick.bind(this);
+    this.openRestaurantModal = this.openRestaurantModal.bind(this);
   }
 
   componentWillMount() {
@@ -51,6 +52,16 @@ class LocationDetail extends React.Component {
     ReactGA.event({ category: e.currentTarget.getAttribute('data-category'), action: 'Click', label: this.props.location.regionName });
 
     this.props.modalActions.openBookmark(this.props.location.parentRegionID, this.props.location.parentRegionName, this.props.location.parentRegionNameLong, this.props.location.parentRegionImage, this.props.location.parentUrl, this.props.location.regionID, this.props.location.regionNameLong, this.props.location.regionName, e.currentTarget.getAttribute('data-category'), this.props.location.image, this.props.location.url, '', false, this.props.location.locationCoordinates.latitude, this.props.location.locationCoordinates.longitude, this.props.location.locationDetail.pricing ? this.props.location.locationDetail.pricing.priceGBP : "", this.props.location.locationDetail ? this.props.location.locationDetail.duration : "", this.props.location.locationDetail ? this.props.location.locationDetail.bookingUrl : "");
+  }
+
+  openRestaurantModal(e) {
+    ReactGA.event({
+      category: e.currentTarget.getAttribute('data-category'),
+      action: 'Click',
+      label: this.props.location.regionName
+    });
+
+    this.props.modalActions.openRestaurant(this.props.location.regionID);
   }
 
   loadLocation() {
@@ -112,8 +123,8 @@ class LocationDetail extends React.Component {
                 <TagList tags={this.props.location.tags} maxTags={5} />
                 <div className="row mb-3">
                   <div className="col-lg-3 col-6 mb-2">
-                    {this.props.location.regionType == "Restaurant" ? <a href={this.props.location.locationDetail.bookingUrl} className="btn btn-primary questionBtn" target="_blank" onClick={this.trackClick} data-category="Restaurants"><i className="fa fa-calendar"></i> Book Restaurant</a> : ''}
-                    {this.props.location.regionType == "Attractions" ? <a href={this.props.location.locationDetail.bookingUrl.replace('/25552/', '/62347/')} className="btn btn-primary questionBtn" target="_blank" onClick={this.trackClick} data-category="Attractions"><i className="fa fa-calendar"></i> Book Attraction</a> : ''}
+                    {this.props.location.regionType == "Restaurant" ? <a href="#" className="btn btn-primary questionBtn"  onClick={this.openRestaurantModal} data-category="Restaurants"><i className="fa fa-calendar"></i> Book Table</a> : ''}
+                    {this.props.location.regionType == "Attractions" ? <a href={this.props.location.locationDetail.bookingUrl.replace('/25552/', '/62347/')} className="btn btn-primary questionBtn" target="_blank" onClick={this.trackClick} data-category="Attractions"><i className="fa fa-calendar"></i> Book</a> : ''}
                   </div>
                   <div className="col-lg-3 col-6 mb-2">
                     <ReviewButton name="sidePanel" locationId={this.props.locationId} locationName={this.props.location.regionName} locationNameLong={this.props.location.regionNameLong} locationType={this.props.location.subClass} pageSize={3} pageNumber={0} />

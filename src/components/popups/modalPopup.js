@@ -15,6 +15,7 @@ import MapSidebarModal from './mapPopup';
 import CategoryModal from './categoryPopup';
 import FacebookModal from './facebookPopup';
 import CancelHotelModal from './cancelHotelPopup';
+import RestaurantModal from './restaurantPopup';
 
 let customStyles = {
   overlay : {
@@ -111,6 +112,10 @@ class Modal extends React.Component {
       case "CancelHotelModal":
         cssClass = "Modal FacebookModal";
         modal = (<CancelHotelModal hasPosted={false} closeModal={this.props.closeModal} hotelName={this.props.modalContent.hotelName} itineryId={this.props.modalContent.itineryId} confirmationId={this.props.modalContent.confirmationId}/>);
+        break;
+      case "RestaurantModal":
+        cssClass = "Modal RestaurantPopupModal";
+        modal = (<RestaurantModal hasPosted={false} closeModal={this.props.closeModal} locationId={this.props.modalContent.locationId} />);
         break;
     }
 

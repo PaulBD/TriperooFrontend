@@ -8,8 +8,8 @@ class CardTypeDropDownList extends React.Component {
 
   handleChange(e)
   {
-    e.preventDefault();
-    this.props.changeValue(e.target.value);
+    //e.preventDefault();
+    this.props.changeValue(e.target.value, e.target.name);
   }
 
   render(){
@@ -28,7 +28,7 @@ class CardTypeDropDownList extends React.Component {
 
 CardTypeDropDownList.defaultProps = {
   cssClass: 'form-control',
-  name: 'MonthDropdown',
+  name: 'cardType',
   value: ''
 };
 

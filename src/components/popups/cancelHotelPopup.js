@@ -121,8 +121,6 @@ CancelHotelPopup.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-
-  console.log(state.reservation);
   return {
     isSending: state.reservation.isFetching,
     errorMessage: state.reservation.cancelReservation ? state.reservation.cancelReservation.hotelRoomCancellationResponse.eanWsError ? state.reservation.cancelReservation.hotelRoomCancellationResponse.eanWsError.presentationMessage : '' : '',

@@ -18,6 +18,7 @@ export function closeModal() {
     dispatch(closeCategoryModel());
     dispatch(closeVisitModal());
     dispatch(closeCancelHotelModal());
+    dispatch(closeRestaurantModel());
 	};
 }
 
@@ -323,3 +324,20 @@ export function openFacebook(facebookResponse) {
   };
 }
 
+
+// ****************************************
+// Open Restaurant Modal
+// ****************************************
+export function openRestaurantModel(locationId) {
+  return {type: types.OPEN_RESTAURANT_MODEL, locationId, name: 'RestaurantModal' };
+}
+
+export function closeRestaurantModel() {
+  return {type: types.CLOSE_RESTAURANT_MODEL, name: 'RestaurantModal'};
+}
+
+export function openRestaurant(locationId) {
+  return dispatch => {
+    dispatch(openRestaurantModel(locationId));
+  };
+}

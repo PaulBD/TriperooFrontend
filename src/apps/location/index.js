@@ -64,8 +64,6 @@ class LocationHome extends React.Component {
       location.stats.likeCount -= 1;
     }
 
-    console.log(location);
-
     this.setState({ isUpdatingLike: true, location: location });
 
     this.props.locationActions.likeLocationById(this.props.locationId, likeLocation, true)

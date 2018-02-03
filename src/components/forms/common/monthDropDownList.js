@@ -9,7 +9,7 @@ class MonthDropDownList extends React.Component {
   handleChange(e)
   {
     e.preventDefault();
-    this.props.changeValue(e.target.value);
+    this.props.changeValue(e.target.value, e.target.name);
   }
 
   render(){
@@ -35,7 +35,7 @@ class MonthDropDownList extends React.Component {
 
 MonthDropDownList.defaultProps = {
   cssClass: 'form-control',
-  name: 'MonthDropdown',
+  name: 'expirationDateMonth',
   value: ''
 };
 

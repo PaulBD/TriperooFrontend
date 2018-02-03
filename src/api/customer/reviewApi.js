@@ -7,7 +7,6 @@ class ReviewApi {
   // ****************************************
   static postReview(review) {
     let url = baseUrl + '/review';
-    console.log(url);
 
     return new Promise((resolve, reject) => {
       axios({
@@ -107,11 +106,7 @@ class ReviewApi {
   // Get Reviews
   // ****************************************
   static getReviews(customerReference, pageSize, pageNumber) {
-
     let url = baseUrl + '/customer/' + customerReference + '/reviews?pageSize=' + pageSize + '&pageNumber=' + pageNumber;
-
-    console.log(url);
-
     return new Promise((resolve, reject) => {
       axios({
         method: 'get',

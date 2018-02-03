@@ -9,7 +9,7 @@ class YearDropDownList extends React.Component {
   handleChange(e)
   {
     e.preventDefault();
-    this.props.changeValue(e.target.value);
+    this.props.changeValue(e.target.value, e.target.name);
   }
 
   render(){
@@ -43,7 +43,7 @@ class YearDropDownList extends React.Component {
 
 YearDropDownList.defaultProps = {
   cssClass: 'form-control',
-  name: 'YearDropdown',
+  name: 'expirationDateYear',
   value: ''
 };
 

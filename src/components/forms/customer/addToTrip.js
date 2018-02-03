@@ -133,8 +133,6 @@ class BookmarkLocation extends React.Component {
   createNewTripForm(e) {
     e.preventDefault();
     if ((this.state.trip.tripName.length > 0) && (this.state.trip.tripDetails.regionID > 0)) {
-
-      console.log(this.state.trip);
       this.setState({isCreatingList: true, errors: ''});
       this.props.userActions.postTrip(this.state.trip, this.props.customerReference)
         .then(() => {

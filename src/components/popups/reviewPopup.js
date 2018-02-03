@@ -91,8 +91,6 @@ class ReviewPopup extends React.Component {
     e.preventDefault();
     this.setState({isPostingReview: true});
 
-    console.log(this.props.isEdit);
-
     if (this.props.isEdit)
     {
       const editReview = {
@@ -104,9 +102,6 @@ class ReviewPopup extends React.Component {
         "comment": this.refs.comment.value.trim(),
         "tags": _.cloneDeep(this.state.selectedTags)
       };
-
-      console.log(editReview);
-      console.log(this.props.currentUserId);
 
       this.props.userReviewActions.updateReview(editReview)
         .then(() => {

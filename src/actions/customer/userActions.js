@@ -270,8 +270,6 @@ export function archiveActivityFailure(message) {
 }
 
 export function archiveActivity(tripId, activityId) {
-  console.log(tripId);
-  console.log(activityId);
   return dispatch => {
     dispatch(archiveActivityInitialize(tripId, activityId));
     return UserApi.archiveActivity(tripId, activityId).then(activity => {

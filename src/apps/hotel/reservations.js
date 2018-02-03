@@ -2,6 +2,8 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import * as modalActions from '../../actions/common/modalActions';
 import {bindActionCreators} from 'redux';
+import * as userActions from '../../actions/customer/userActions';
+import * as authenticationActions from '../../actions/customer/authenticationActions';
 import * as hotelActions from '../../actions/location/travelContent/hotelActions';
 import * as locationActions from '../../actions/location/locationActions';
 import HotelBookingHeader from '../../components/content/headers/hotelBooking';
@@ -10,6 +12,10 @@ import CardTypeDownList from '../../components/forms/common/cardTypeDropDownList
 import MonthDropDownList from '../../components/forms/common/monthDropDownList';
 import YearDropDownList from '../../components/forms/common/yearDropDownList';
 import CountryDropDownList from '../../components/forms/common/countryDropDownList';
+import CardTypeCountryDownList from '../../components/forms/common/creditCardCountryDropDownList';
+import AUCountyDownList from '../../components/forms/common/australiaCountyDropDownList';
+import USCountyDownList from '../../components/forms/common/unitedStatesCountyDropDownList';
+import CACountyDownList from '../../components/forms/common/canadianCountyDropDownList';
 import Loader from '../../components/loaders/globalLoader';
 import GoogleMaps from '../../components/maps/googleMap';
 import AttractionsNearLocation from '../../components/layout/cards/location/attractionsNearLocation';
@@ -24,6 +30,7 @@ class HotelReservation extends React.Component {
 
     this.state = {
       isBookingRoom: false
+      , loadingUser: false
       , bookingError: false
       , showConfirmation: false
       , isLoadingHotel: true
@@ -52,10 +59,15 @@ class HotelReservation extends React.Component {
         , securityCode:  '123'
         , specialInstructions: ''
       }
+      , showUSCounty: false
+      , showAUCounty: false
+      , showCACounty: false
       , error: ''
     };
     this.bookHotel = this.bookHotel.bind(this);
     this.changeField = this.changeField.bind(this);
+    this.changeDropDownField = this.changeDropDownField.bind(this);
+
     if (process.env.NODE_ENV === 'production') {
       let booking = this.state.booking;
       booking.firstName = '';
@@ -72,7 +84,7 @@ class HotelReservation extends React.Component {
       booking.expirationDateMonth = '';
       booking.expirationDateYear = '';
       booking.securityCode = '';
-
+      this.setState({booking: booking});
     }
   }
 
@@ -82,6 +94,20 @@ class HotelReservation extends React.Component {
 
     if (typeof window !== 'undefined' && window.location && window.location.protocol === 'http:' && !this.isLocalHost(window.location.hostname)) {
       window.location.href = window.location.href.replace(/^http(?!s)/, 'https');
+    }
+
+    this.getUser();
+  }
+
+  getUser() {
+    if (this.props.isAuthenticated) {
+      this.props.userActions.getUser(this.props.currentUserId)
+        .then(() => {
+          this.setState({loadingUser: false});
+        })
+        .catch(error => {
+          this.setState({loadingUser: false});
+        });
     }
   }
 
@@ -136,90 +162,144 @@ class HotelReservation extends React.Component {
     this.setState({booking: booking});
   }
 
+  changeDropDownField(value, name) {
+    let booking = this.state.booking;
+    booking[name] = value;
+
+    if (name == 'addressCountry')
+    {
+      switch(value) {
+        case "CA":
+          this.setState({showUSCounty: false, showCACounty: true, showAUCounty: false});
+          break;
+        case "US":
+          this.setState({showUSCounty: true, showCACounty: false, showAUCounty: false});
+          break;
+        case "AU":
+          this.setState({showUSCounty: false, showCACounty: false, showAUCounty: true});
+          break;
+        default:
+          booking.addressState = '';
+          break;
+
+      }
+    }
+    else {
+      switch(name) {
+        case "addressStateCA":
+        case "addressStateUS":
+        case "addressStateAU":
+          booking.addressState = value;
+          break;
+        default:
+          booking.addressState = '';
+          break;
+
+      }
+    }
+
+    this.setState({booking: booking});
+  }
+
   bookHotel(e) {
     e.preventDefault();
     this.setState({error: ''});
-    this.validateForm();
+    if (this.validateForm()) {
 
-    this.setState({isBookingRoom: true, bookingError: false });
+      this.setState({isBookingRoom: true, bookingError: false});
 
-    this.props.hotelActions.bookHotelRoom(this.props.locationId, this.props.hotelId, this.props.arrivalDate, this.props.nights, this.props.hotelRoom.supplierType, this.props.hotelRoom.rateInfos.rateInfo[0].roomGroup.room.rateKey, this.props.hotelRoom.roomTypeCode, this.props.hotelRoom.rateCode, this.props.hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.total, this.props.guests, this.state.booking.firstName, this.state.booking.lastName, this.props.hotelRoom.bedTypes.bedType[0].id, 0, '', '', 0,  0, '', '', 0, this.state.booking.emailAddress, this.state.booking.firstName, this.state.booking.lastName, this.state.booking.homePhone, this.state.booking.workPhone, this.state.booking.cardType, this.state.booking.cardNumber, this.state.booking.securityCode, this.state.booking.expirationDateMonth, this.state.booking.expirationDateYear, this.state.booking.addressLine1, this.state.booking.addressCity, this.state.booking.addressState, this.state.booking.addressCountry, this.state.booking.addressPostcode, this.state.booking.specialInstructions)
-      .then(() => {
-        if (this.props.reservation.hotelRoomReservationResponse.eanWsError)
-        {
-          this.setState({error: this.props.reservation.hotelRoomReservationResponse.eanWsError.presentationMessage});
-          this.setState({isBookingRoom: false, bookingError: true});
-        }
-        else {
-          if (this.props.reservation.hotelRoomReservationResponse.confirmationNumbers > 0) {
-            this.setState({isBookingRoom: false, bookingError: false, showConfirmation: true});
+      this.props.hotelActions.bookHotelRoom(this.props.locationId, this.props.hotelId, this.props.arrivalDate, this.props.nights, this.props.hotelRoom.supplierType, this.props.hotelRoom.rateInfos.rateInfo[0].roomGroup.room.rateKey, this.props.hotelRoom.roomTypeCode, this.props.hotelRoom.rateCode, this.props.hotelRoom.rateInfos.rateInfo[0].chargeableRateInfo.total, this.props.guests, this.state.booking.firstName, this.state.booking.lastName, this.props.hotelRoom.bedTypes.bedType[0].id, 0, '', '', 0, 0, '', '', 0, this.state.booking.emailAddress, this.state.booking.firstName, this.state.booking.lastName, this.state.booking.homePhone, this.state.booking.workPhone, this.state.booking.cardType, this.state.booking.cardNumber, this.state.booking.securityCode, this.state.booking.expirationDateMonth, this.state.booking.expirationDateYear, this.state.booking.addressLine1, this.state.booking.addressCity, this.state.booking.addressState, this.state.booking.addressCountry, this.state.booking.addressPostcode, this.state.booking.specialInstructions)
+        .then(() => {
+          if (this.props.reservation.hotelRoomReservationResponse.eanWsError) {
+            this.setState({error: this.props.reservation.hotelRoomReservationResponse.eanWsError.presentationMessage});
+            this.setState({isBookingRoom: false, bookingError: true});
           }
           else {
-            this.setState({isBookingRoom: false, bookingError: false});
+            if (this.props.reservation.hotelRoomReservationResponse.confirmationNumbers > 0) {
+              this.setState({isBookingRoom: false, bookingError: false, showConfirmation: true});
+            }
+            else {
+              this.setState({isBookingRoom: false, bookingError: false});
+            }
           }
-        }
-      })
-      .catch(error => {
-        this.setState({error: error});
-        this.setState({isBookingRoom: false, bookingError: true});
-      });
+        })
+        .catch(error => {
+          this.setState({error: error});
+          this.setState({isBookingRoom: false, bookingError: true});
+        });
+    }
   }
 
   validateForm() {
     if (this.state.booking.firstName == '') {
       this.setState({error: 'Please enter your first name'});
-      return;
+      return false;
     }
     if (this.state.booking.lastName == '') {
       this.setState({error: 'Please enter your last name'});
-      return;
+      return false;
     }
     if (this.state.booking.emailAddress == '') {
       this.setState({error: 'Please enter your email address'});
-      return;
+      return false;
     } else {
       let emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       if (!emailRegEx.test(this.state.booking.emailAddress.toLowerCase())) {
         this.setState({error: 'Please enter a valid email address'});
-        return;
+        return false;
       }
     }
     if (this.state.booking.addressLine1 == '') {
       this.setState({error: 'Please enter the first line of your address'});
-      return;
+      return false;
     }
     if (this.state.booking.addressCity == '') {
-      this.setState({error: 'Please enter your town/city'});
-      return;
+      this.setState({error: 'Please enter your city'});
+      return false;
     }
     if (this.state.booking.addressCountry == '') {
       this.setState({error: 'Please select your country'});
-      return;
+      return false;
+    }
+    else {
+      if (this.state.booking.addressCountry == 'AU' || this.state.booking.addressCountry == 'CA' || this.state.booking.addressCountry == 'US') {
+        if (this.state.booking.addressState == '') {
+          this.setState({error: 'Please select your state / province'});
+          return false;
+        }
+      }
     }
 
-    if (this.state.booking.cardName == '') {
+    if (this.state.booking.addressPostcode == '') {
+      this.setState({error: 'Please enter your zip / postal code'});
+      return false;
+    }
+
+    if (this.state.booking.firstName == '' || this.state.booking.lastName == '') {
       this.setState({error: 'Please enter the name on your debit/credit card'});
-      return;
+      return false;
     }
     if (this.state.booking.cardNumber == '') {
       this.setState({error: 'Please enter the long 16 digit number on your debit/credit card'});
-      return;
+      return false;
     }
     else {
       let cardRegex = /^[0-9]{16}$/;
       if (!cardRegex.test(this.state.booking.cardNumber.toLowerCase())) {
         this.setState({error: 'Please enter a valid debit/credit card number'});
-        return;
+        return false;
       }
     }
     if (this.state.booking.expirationDateMonth == '' || this.state.booking.expirationDateYear == '') {
       this.setState({error: 'Please select your debit/credit card expiry date'});
-      return;
+      return false;
     }
     if (this.state.booking.securityCode == '') {
       this.setState({error: 'Please enter the 3 digit security number on the back of your card'});
-      return;
+      return false;
     }
+
+    return true;
   }
 
   render() {
@@ -276,7 +356,7 @@ class HotelReservation extends React.Component {
                           <label htmlFor="emailAddress">Email address (*)</label>
                           <input type="email" className="form-control" id="emailAddress" name="emailAddress"
                                  placeholder="" aria-describedby="emailHelp" onChange={this.changeField} maxLength={50}
-                                 value={this.state.booking.emailAddress}/>
+                                 value={this.props.isAuthenticated && !this.state.loadingUser ? this.props.user.profile.emailAddress : this.state.booking.emailAddress}  disabled={this.props.isAuthenticated}/>
                           <small id="emailHelp" className="form-text text-muted">Please enter the email address where
                             you would like to receive your confirmation.
                           </small>
@@ -284,18 +364,6 @@ class HotelReservation extends React.Component {
                       </div>
                       <div className="col-md-12 hide">
                         <hr />
-                      </div>
-                      <div className="col-md-6 hide">
-                        <div className="form-group">
-                          <label htmlFor="addressState">County / State / Province</label>
-                          <input type="text" className="form-control" id="addressState" name="addressState"
-                                 placeholder="County / State / Provincety" onChange={this.changeField} maxLength={10}
-                                 value={this.state.booking.addressState}/>
-                        </div>
-                        <div className="form-group">
-                          <label htmlFor="addressCountry">Country (*)</label>
-                          <CountryDropDownList value={this.state.booking.addressCountry} cssClass="form-control" name="addressCountry" changeValue={this.changeField} />
-                        </div>
                       </div>
                       <div className="col-md-12">
                         <hr />
@@ -305,17 +373,17 @@ class HotelReservation extends React.Component {
                       </div>
                       <div className="col-md-6">
                         <div className="form-group">
-                          <label htmlFor="firstName">Cardholder first name (*)</label>
+                          <label htmlFor="firstName">First Name (*)</label>
                           <input type="text" className="form-control" id="firstName" name="firstName"
-                                 placeholder="First name" onChange={this.changeField} maxLength={20}
+                                 placeholder="First Name" onChange={this.changeField} maxLength={20}
                                  value={this.state.booking.firstName}/>
                         </div>
                       </div>
                       <div className="col-md-6">
                         <div className="form-group">
-                          <label htmlFor="lastName">Cardholder last name (*)</label>
+                          <label htmlFor="lastName">Last Name (*)</label>
                           <input type="text" className="form-control" id="lastName" name="lastName"
-                                 placeholder="Last name" onChange={this.changeField} maxLength={20}
+                                 placeholder="Last Name" onChange={this.changeField} maxLength={20}
                                  value={this.state.booking.lastName}/>
                         </div>
                       </div>
@@ -323,26 +391,44 @@ class HotelReservation extends React.Component {
                         <div className="row">
                           <div className="col-md-6">
                             <div className="form-group">
-                              <label htmlFor="addressLine1">Billing address line 1 (*)</label>
+                              <label htmlFor="addressLine1">Address (*)</label>
                               <input type="text" className="form-control" id="addressLine1" name="addressLine1"
-                                     placeholder="Address line 1" onChange={this.changeField} maxLength={20}
+                                     placeholder="Address" onChange={this.changeField} maxLength={20}
                                      value={this.state.booking.addressLine1}/>
                             </div>
                           </div>
 
-                          <div className="col-md-3">
+                          <div className="col-md-6">
                             <div className="form-group">
-                              <label htmlFor="addressCity">Billing city (*)</label>
+                              <label htmlFor="addressPostcode">Country</label>
+                              <CardTypeCountryDownList value={this.state.booking.addressCountry} cssClass="form-control" name="addressCountry" changeValue={this.changeDropDownField} />
+                            </div>
+                          </div>
+                          <div className="col-md-4">
+                            <div className="form-group">
+                              <label htmlFor="addressCity">City (*)</label>
                               <input type="text" className="form-control" id="addressCity" name="addressCity"
                                      placeholder="City" onChange={this.changeField} maxLength={20}
                                      value={this.state.booking.addressCity}/>
                             </div>
                           </div>
-                          <div className="col-md-3">
+                          <div className="col-md-4">
                             <div className="form-group">
-                              <label htmlFor="addressPostcode">Billing Zip/Post code</label>
+                              <label htmlFor="addressCity">{this.state.booking.addressCountry == 'CA' || this.state.booking.addressCountry == 'AU' || this.state.booking.addressCountry == 'US' ? 'State / Province (*)' : 'County / Province'}</label>
+                              <input type="text" className={this.state.booking.addressCountry == 'CA' || this.state.booking.addressCountry == 'AU' || this.state.booking.addressCountry == 'US' ? 'hide' : 'form-control'} id="addressState" name="addressState"
+                                     placeholder="County / Province" onChange={this.changeField} maxLength={20}
+                                     value={this.state.booking.addressState}/>
+                              <AUCountyDownList value={this.state.booking.addressState} cssClass={this.state.booking.addressCountry == 'AU' ? 'form-control' : 'hide'} name="addressStateAU" changeValue={this.changeDropDownField} />
+                              <USCountyDownList value={this.state.booking.addressState} cssClass={this.state.booking.addressCountry == 'US' ? 'form-control' : 'hide'} name="addressStateUS" changeValue={this.changeDropDownField} />
+                              <CACountyDownList value={this.state.booking.addressState} cssClass={this.state.booking.addressCountry == 'CA' ? 'form-control' : 'hide'} name="addressStateCA" changeValue={this.changeDropDownField} />
+
+                            </div>
+                          </div>
+                          <div className="col-md-4">
+                            <div className="form-group">
+                              <label htmlFor="addressPostcode">Zip / Postal Code</label>
                               <input type="text" className="form-control" id="addressPostcode" name="addressPostcode"
-                                     placeholder="Zip/Post code" onChange={this.changeField} maxLength={10}
+                                     placeholder="Zip / Postal Code" onChange={this.changeField} maxLength={10}
                                      value={this.state.booking.addressPostcode}/>
                             </div>
                           </div>
@@ -350,30 +436,30 @@ class HotelReservation extends React.Component {
                       </div>
                       <div className="col-md-6">
                         <div className="form-group">
-                          <label htmlFor="expirationDateMonth">Credit card type (*)</label>
-                          <CardTypeDownList value={this.state.booking.cardType} cssClass="form-control" name="cardType" changeValue={this.changeField} />
+                          <label htmlFor="expirationDateMonth">Payment Method (*)</label>
+                          <CardTypeDownList value={this.state.booking.cardType} cssClass="form-control" name="cardType" changeValue={this.changeDropDownField} />
                         </div>
                         <div className="form-group">
-                          <label htmlFor="cardNumber">Debit/Credit card number (*)</label>
+                          <label htmlFor="cardNumber">Card Number (*)</label>
                           <input type="number" className="form-control" id="cardNumber" name="cardNumber" placeholder=""
                                  onChange={this.changeField} maxLength={16} value={this.state.booking.cardNumber}/>
                         </div>
                         <div className="row">
                           <div className="col-md-6 col-6">
                             <div className="form-group">
-                              <label htmlFor="expirationDateMonth">Expiration date (*)</label>
-                              <MonthDropDownList value={this.state.booking.expirationDateMonth} cssClass="form-control" name="expirationDateMonth" changeValue={this.changeField} />
+                              <label htmlFor="expirationDateMonth">Expiration Date (*)</label>
+                              <MonthDropDownList value={this.state.booking.expirationDateMonth} cssClass="form-control" name="expirationDateMonth" changeValue={this.changeDropDownField} />
                             </div>
                           </div>
                           <div className="col-md-6 col-6">
                             <div className="form-group">
                               <label htmlFor="expirationDateYear">&nbsp;</label>
-                              <YearDropDownList value={this.state.booking.expirationDateYear} cssClass="form-control" name="expirationDateYear" changeValue={this.changeField} />
+                              <YearDropDownList value={this.state.booking.expirationDateYear} cssClass="form-control" name="expirationDateYear" changeValue={this.changeDropDownField} />
                             </div>
                           </div>
                           <div className="col-md-6 col-6">
                             <div className="form-group">
-                              <label htmlFor="exampleInputEmail1">Security code (*)</label>
+                              <label htmlFor="exampleInputEmail1">Security Code (*)</label>
                               <input type="password" className="form-control" id="securityCode" name="securityCode"
                                      placeholder="" aria-describedby="securityCodeHelp" onChange={this.changeField}
                                      maxLength={3} value={this.state.booking.securityCode}/>
@@ -435,7 +521,7 @@ class HotelReservation extends React.Component {
                 </div>
                 <div className="col-md-4">
                   <HotelOverview loadingHotels={this.state.isLoadingHotel && this.state.isBookingRoom} currency={currency} hotel={this.props.hotel} hotelRoom={this.props.hotelRoom}
-                                 guests={this.state.guests} arrivalDate={this.state.formattedArrivalDate} nights={this.state.nights} departureDate={this.state.formattedDepartDate}
+                                 guests={this.state.guests.toString()} arrivalDate={this.state.formattedArrivalDate} nights={this.state.nights.toString()} departureDate={this.state.formattedDepartDate}
                   />
                 </div>
               </div>
@@ -487,7 +573,7 @@ class HotelReservation extends React.Component {
                 </div>
                 <div className="col-md-4">
                   <HotelOverview loadingHotels={this.state.isLoadingHotel && this.state.isBookingRoom} currency={currency} hotel={this.props.hotel} hotelRoom={this.props.hotelRoom}
-                                 guests={this.state.guests} arrivalDate={this.state.formattedArrivalDate} nights={this.state.nights} departureDate={this.state.formattedDepartDate}
+                                 guests={this.state.guests.toString()} arrivalDate={this.state.formattedArrivalDate} nights={this.state.nights.toString()} departureDate={this.state.formattedDepartDate}
                   />
                 </div>
               </div>
@@ -526,11 +612,22 @@ HotelReservation.propTypes = {
   roomTypeCode: PropTypes.string,
   hotelRoom: PropTypes.object,
   reservation: PropTypes.object,
-  supplierType: PropTypes.string
+  supplierType: PropTypes.string,
+
+  authActions: PropTypes.object.isRequired,
+  userActions: PropTypes.object.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  user: PropTypes.object,
+  currentUserId: PropTypes.string
 };
 
 function mapStateToProps(state, ownProps) {
+  let user = localStorage.getItem('id_token') ? JSON.parse(localStorage.getItem('id_token')) : {};
+
   return {
+    isAuthenticated: state.authentication.isAuthenticated,
+    user: state.user.user ? state.user.user : null,
+    currentUserId: user.userId,
     isFetching: state.location.isFetching ? state.location.isFetching : false,
     location: state.location.location ? state.location.location : {},
     locationId: ownProps.params.placeId ? parseInt(ownProps.params.placeId) : 0,
@@ -553,6 +650,8 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
+    userActions: bindActionCreators(userActions, dispatch),
+    authActions: bindActionCreators(authenticationActions, dispatch),
     hotelActions: bindActionCreators(hotelActions, dispatch),
     locationActions: bindActionCreators(locationActions, dispatch),
     modalActions: bindActionCreators(modalActions, dispatch)
