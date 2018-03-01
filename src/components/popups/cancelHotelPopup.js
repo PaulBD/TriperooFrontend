@@ -15,6 +15,7 @@ class CancelHotelPopup extends React.Component {
       , confirmationId: this.props.confirmationId
       , postingCancellation: false
       , errorMessage: ''
+      , showCancellationThankyou: false
     };
   }
 
@@ -40,7 +41,7 @@ class CancelHotelPopup extends React.Component {
       this.props.reservationActions.cancelHotelItinery(this.state.itineryId, this.state.confirmationId, this.state.cancellation)
         .then(() => {
           this.loadBookings();
-          this.setState({postingCancellation: false});
+          this.setState({postingCancellation: false, showCancellationThankyou:true});
         })
         .catch(error => {
           this.setState({postingCancellation: false});
@@ -79,7 +80,16 @@ class CancelHotelPopup extends React.Component {
                 </div>
                 <div className="col-md-12">
                   <div className="form-group">
-                    <textarea ref="cancellation" className="form-control" rows="6" value={this.state.cancellation} onChange={this.handleCancellationChange}></textarea>
+                    <select className="form-control" ref="cancellation" name="cancellation" value={this.state.cancellation} onChange={this.handleCancellationChange}>
+                      <option value="">Choose cancellation reason</option>
+                      <option value="HOC">Hotel asked me to cancel</option>
+                      <option value="COP">Change of plans</option>
+                      <option value="FBP">Found a better price</option>
+                      <option value="FBH">Found a better hotel</option>
+                      <option value="CNL">Decided to cancel my plans</option>
+                      <option value="NSY">Rather not say</option>
+                      <option value="OTH">Other</option>
+                    </select>
                   </div>
                 </div>
                 <div className="col-md-12 text-center">
@@ -88,7 +98,7 @@ class CancelHotelPopup extends React.Component {
               </form>
             </div>
           </div>
-          <div className={this.props.hasPostedAnswer ? "modal-body" : "modal-body hide"}>
+          <div className={this.props.showCancellationThankyou ? "modal-body" : "modal-body hide"}>
             <div className="row">
               <div className="col-md-12">
                 <h3>Cancellation Received!</h3>

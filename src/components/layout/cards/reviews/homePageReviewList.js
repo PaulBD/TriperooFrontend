@@ -56,7 +56,7 @@ class Reviews extends React.Component {
           {title}
           <div className="row">
             <div className="col-md-12">
-              <ReviewCard reviews={reviews} maxTags={5} cssClass={this.props.cssClass} showEdit={this.props.showEdit}/>
+              <ReviewCard reviews={reviews} maxTags={5} cssClass={this.props.cssClass} showEdit={this.props.showEdit} showAllReview={this.props.showAllReview}/>
             </div>
           </div>
         </div>
@@ -93,7 +93,8 @@ Reviews.defaultProps = {
   isFetching: false,
   reviews: [],
   cssClass: 'card-deck',
-  showEdit: false
+  showEdit: false,
+  showAllReview: false
 };
 
 Reviews.propTypes = {
@@ -107,7 +108,8 @@ Reviews.propTypes = {
   showTitle: PropTypes.bool,
   isFetching: PropTypes.bool.isRequired,
   showEdit: PropTypes.bool,
-  cssClass: PropTypes.string.isRequired
+  cssClass: PropTypes.string.isRequired,
+  showAllReview: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state, ownProps) {

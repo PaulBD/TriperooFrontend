@@ -104,9 +104,9 @@ class HotelDealsApi {
   // ****************************************
   // Return hotel room by room code
   // ****************************************
-  static getHotelRoomByRoomCode(locationId, hotelId, arrivalDate, nights, rooms, guests, locale, currencyCode, roomTypeCode) {
+  static getHotelRoomByRoomCode(locationId, hotelId, arrivalDate, nights, rooms, guests, locale, currencyCode, roomTypeCode, rateCode) {
     return new Promise((resolve, reject) => {
-      let url = baseUrl + '/location/' + locationId + '/hotel/' + hotelId + '/room/' + arrivalDate + '/' + nights + '?roomTypeCode=' + roomTypeCode + '&locale=' + locale + '&currencyCode=' + currencyCode + '&rooms=' + rooms + '&guests=' + guests;
+      let url = baseUrl + '/location/' + locationId + '/hotel/' + hotelId + '/room/' + arrivalDate + '/' + nights + '?roomTypeCode=' + roomTypeCode + '&locale=' + locale + '&currencyCode=' + currencyCode + '&rooms=' + rooms + '&guests=' + guests + '&rateCode=' + rateCode;
       axios.get(url)
         .then(function (response) {
           resolve(Object.assign({}, response.data));

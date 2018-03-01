@@ -151,10 +151,10 @@ export function hotelRoomByIdFailure(errorMessage) {
   return {type: types.HOTEL_ROOM_BY_ID_FAILURE, isFetching: false, errorMessage};
 }
 
-export function loadHotelRoomByRoomCode(locationId, hotelId, arrivalDate, nights, rooms, guests, locale, currencyCode, roomTypeCode) {
+export function loadHotelRoomByRoomCode(locationId, hotelId, arrivalDate, nights, rooms, guests, locale, currencyCode, roomTypeCode, rateCode) {
   return dispatch => {
     dispatch(hotelRoomByIdRequest());
-    return HotelApi.getHotelRoomByRoomCode(locationId, hotelId, arrivalDate, nights, rooms, guests, locale, currencyCode, roomTypeCode).then(hotelRooms => {
+    return HotelApi.getHotelRoomByRoomCode(locationId, hotelId, arrivalDate, nights, rooms, guests, locale, currencyCode, roomTypeCode, rateCode).then(hotelRooms => {
       dispatch(hotelRoomByIdSuccess(hotelRooms));
     }).catch(error => {
       dispatch(hotelRoomByIdFailure(error.response.data));

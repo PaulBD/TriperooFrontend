@@ -55,8 +55,8 @@ class ReviewCard extends React.Component {
                     <p className="testimonial-author-name"><a href={review.customerProfileUrl}>{review.customerName}</a>'s review</p>
                     <StarRating starRating={review.starRating} className="icon-list list-inline-block mb0 last-minute-rating"/>
                   </div>
-                  <p className="card-text">
-                    {review.comment.length > 220 ? review.comment.substring(0, 220) + '...' : review.comment}
+                  <p className="card-text" dangerouslySetInnerHTML={{__html:this.props.showAllReview ? review.comment.replace('\n', '<br /><br />') : review.comment.length > 220 ? review.comment.substring(0, 220) + '...' : review.comment.replace('\n', '<br /><br />')}}>
+
                   </p>
                   <TagList tags={review.tags} maxTags={this.props.maxTags} readOnly={true} />
                 </div>
@@ -77,7 +77,8 @@ ReviewCard.defaultProps = {
   reviews: [],
   maxTags: 5,
   cssClass: 'card-deck',
-  showEdit: false
+  showEdit: false,
+  showAllReview: false
 };
 
 ReviewCard.propTypes = {
@@ -88,7 +89,8 @@ ReviewCard.propTypes = {
   userReviewActions: PropTypes.object.isRequired,
   showEdit: PropTypes.bool,
   refreshData: PropTypes.func,
-  currentUserId: PropTypes.string
+  currentUserId: PropTypes.string,
+  showAllReview: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state, ownProps) {

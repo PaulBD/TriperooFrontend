@@ -75,7 +75,7 @@ class UserReviews extends React.Component {
                   </div>
                 </div>
               </div>
-              <ReviewList currentUserId={this.props.currentUserId} reviews={this.props.reviews} maxTags={5} showEdit={this.props.isActiveUser} cssClass="card-columns" refreshData={this.refreshData}/>
+              <ReviewList currentUserId={this.props.currentUserId} reviews={this.props.reviews} maxTags={5} showEdit={this.props.isActiveUser} cssClass="card-columns" refreshData={this.refreshData} showAllReview={true}/>
               <div className="gap gap-small"></div>
             </div>
           </div>

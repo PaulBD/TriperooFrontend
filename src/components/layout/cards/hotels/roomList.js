@@ -142,7 +142,7 @@ class RoomList extends React.Component {
                     let reservationsLink = this.props.searchUrl + '/hotel-checkout?arrivalDate=' + this.props.arrivalDate + '&nights=' + this.props.nights + '&rooms=' + this.props.rooms + '&guests=' + this.props.guests + '&propId=' + hotelRoom.propertyId + '&rateCode=' + hotelRoom.rateCode + '&roomTypeCode=' + hotelRoom.roomTypeCode + '&supplierType=' + hotelRoom.supplierType;
 
                     return (
-                      <li>
+                      <li key={index}>
                         <a className="booking-item">
                           <div className="row">
                             <div className="col-md-3 mb-3">

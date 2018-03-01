@@ -20,7 +20,7 @@ class MonthDropDownList extends React.Component {
         <option value="02">February</option>
         <option value="03">March</option>
         <option value="04">April</option>
-        <option value="05">Map</option>
+        <option value="05">May</option>
         <option value="06">June</option>
         <option value="07">July</option>
         <option value="08">August</option>

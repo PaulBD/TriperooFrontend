@@ -92,18 +92,17 @@ class HotelReservation extends React.Component {
     window.scrollTo(0, 0);
     this.loadLocation();
 
-    if (typeof window !== 'undefined' && window.location && window.location.protocol === 'http:' && !this.isLocalHost(window.location.hostname)) {
-      window.location.href = window.location.href.replace(/^http(?!s)/, 'https');
-    }
-
     this.getUser();
   }
 
   getUser() {
     if (this.props.isAuthenticated) {
+      this.setState({loadingUser: true});
       this.props.userActions.getUser(this.props.currentUserId)
         .then(() => {
-          this.setState({loadingUser: false});
+          let booking = this.state.booking;
+          booking.emailAddress = this.props.isAuthenticated && !this.state.loadingUser ? this.props.user.profile.emailAddress : '';
+          this.setState({loadingUser: false, booking: booking});
         })
         .catch(error => {
           this.setState({loadingUser: false});
@@ -145,7 +144,7 @@ class HotelReservation extends React.Component {
 
   loadRoom() {
     this.setState({isLoadingRoom: true});
-    this.props.hotelActions.loadHotelRoomByRoomCode(this.props.locationId, this.props.hotelId, this.props.arrivalDate, this.props.nights, this.props.rooms, this.props.guests, 'en_en', 'GBP', this.props.roomTypeCode)
+    this.props.hotelActions.loadHotelRoomByRoomCode(this.props.locationId, this.props.hotelId, this.props.arrivalDate, this.props.nights, this.props.rooms, this.props.guests, 'en_en', 'GBP', this.props.roomTypeCode, this.props.rateCode)
       .then(() => {
         this.setState({ isLoadingRoom: false });
       })
