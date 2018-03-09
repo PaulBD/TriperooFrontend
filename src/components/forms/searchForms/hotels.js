@@ -11,8 +11,8 @@ class SearchForm extends React.Component {
     super(props, context);
     this.handleArrivalDateChange = this.handleArrivalDateChange.bind(this);
     this.handleNightChange = this.handleNightChange.bind(this);
-    this.handleGuestChange = this.handleGuestChange.bind(this);
-    this.handleRoomChange = this.handleRoomChange.bind(this);
+    this.handleAdultChange = this.handleAdultChange.bind(this);
+    this.handleChildrenChange = this.handleChildrenChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
     this.onChangeAutoComplete = this.onChangeAutoComplete.bind(this);
   }
@@ -30,14 +30,21 @@ class SearchForm extends React.Component {
       arrivalDate = new moment(this.props.arrivalDate);
     }
 
-    if (searchValue == '')
-    {
+    if (searchValue == '') {
       searchValue = this.props.city;
     }
 
     searchUrl = this.props.searchUrl;
 
-    this.state = { searchValue: searchValue, searchUrl: searchUrl, arrivalDate: arrivalDate, formattedArrivalDate: arrivalDate.format('YYYY-MM-DD'), nights: this.props.nights, guests: this.props.guests, rooms: this.props.rooms  };
+    this.state = {
+      searchValue: searchValue
+      , searchUrl: searchUrl
+      , arrivalDate: arrivalDate
+      , formattedArrivalDate: arrivalDate.format('YYYY-MM-DD')
+      , nights: this.props.nights
+      , adults: this.props.adults
+      , children: this.props.children
+    };
   }
 
   onChangeAutoComplete(city, cityId, cityUrl, dataType) {
@@ -54,19 +61,19 @@ class SearchForm extends React.Component {
     this.setState({ nights: parseInt(event.target.value) });
   }
 
-  handleGuestChange(event) {
+  handleAdultChange(event) {
     event.preventDefault();
-    this.setState({ guests: parseInt(event.target.value) });
+    this.setState({ adults: parseInt(event.target.value) });
   }
 
-  handleRoomChange(event) {
+  handleChildrenChange(event) {
     event.preventDefault();
-    this.setState({ rooms: parseInt(event.target.value) });
+    this.setState({ children: parseInt(event.target.value) });
   }
 
   submitForm(event) {
     event.preventDefault();
-    this.props.handleFormSubmit(this.state.searchUrl, this.state.searchId,  this.state.formattedArrivalDate, this.state.nights, this.state.rooms, this.state.guests);
+    this.props.handleFormSubmit(this.state.searchUrl, this.state.searchId,  this.state.formattedArrivalDate, this.state.nights, this.state.adults, this.state.children);
   }
 
   render(){
@@ -74,7 +81,7 @@ class SearchForm extends React.Component {
     return (
       <form className="hotelSearch mb-3" onSubmit={this.submitForm}>
         <div className="row">
-          <div className={this.props.isSideBar ? "col-md-12" : "col-md-7"}>
+          <div className={this.props.isSideBar ? "col-md-12" : "col-md-6"}>
             <div className="input-daterange" data-date-format="MM d, D">
               <div className="row">
                 <div className={this.props.isSideBar ? "col-md-12" : "col-7 col-md-8"}>
@@ -92,9 +99,9 @@ class SearchForm extends React.Component {
               </div>
             </div>
           </div>
-          <div className={this.props.isSideBar ? "col-md-12" : "col-md-5"}>
+          <div className={this.props.isSideBar ? "col-md-12" : "col-md-6"}>
             <div className="row">
-              <div className={this.props.isSideBar ? "col-md-6" : "col-4 col-md-3"}>
+              <div className={this.props.isSideBar ? "col-md-6" : "col-2 col-md-2"}>
                 <div className="form-group form-group-icon-left">
                   <label>Nights</label>
                   <select className="form-control searchSelect" value={this.state.nights} onChange={this.handleNightChange} ref="nights" name="nights">
@@ -115,31 +122,15 @@ class SearchForm extends React.Component {
                   </select></div>
               </div>
 
-              <div className={this.props.isSideBar ? "col-md-6 hide" : "col-4 col-md-2 hide"}>
+              <div className={this.props.isSideBar ? "col-md-6 hide" : "col-2 col-md-2"}>
                 <div className="form-group form-group-select-plus">
-                  <label>Rooms</label>
-                  <select className="form-control searchSelect" value={this.state.rooms} onChange={this.handleRoomChange} ref="rooms" name="rooms">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                    <option>11</option>
-                    <option>12</option>
-                    <option>13</option>
-                    <option>14</option>
-                  </select>
+                  <span className="roomSleeps">Room Sleeps</span>
                 </div>
               </div>
-              <div className={this.props.isSideBar ? "col-md-6" : "col-4 col-md-3"}>
+              <div className={this.props.isSideBar ? "col-md-6" : "col-2 col-md-2"}>
                 <div className="form-group form-group- form-group-select-plus">
-                  <label>Guests</label>
-                  <select className="form-control searchSelect" value={this.state.guests} onChange={this.handleGuestChange} ref="guests" name="guests">
+                  <label>Adults</label>
+                  <select className="form-control searchSelect" value={this.state.adults} onChange={this.handleAdultChange} ref="adults" name="adults">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -157,7 +148,28 @@ class SearchForm extends React.Component {
                   </select>
                 </div>
               </div>
-              <div className={this.props.isSideBar ? "col-md-12" : "col-md-6"}>
+              <div className={this.props.isSideBar ? "col-md-6" : "col-2 col-md-2"}>
+                <div className="form-group form-group- form-group-select-plus">
+                  <label>Children</label>
+                  <select className="form-control searchSelect" value={this.state.children} onChange={this.handleChildrenChange} ref="children" name="children">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                  </select>
+                </div>
+              </div>
+              <div className={this.props.isSideBar ? "col-md-12" : "col-md-4"}>
                 <button className="btn btn-primary btn-lg formBtn" type="submit">
                   <i className="fa fa-search"></i>{this.props.buttonName}
                 </button>
@@ -176,7 +188,9 @@ SearchForm.defaultProps = {
   useFunction: false,
   isSideBar: false,
   lockLocation: false,
-  buttonName: 'Search Hotels'
+  buttonName: 'Search Hotels',
+  adults: 0,
+  children: 0
 };
 
 SearchForm.propTypes = {
@@ -186,7 +200,8 @@ SearchForm.propTypes = {
   arrivalDate: PropTypes.string.isRequired,
   nights: PropTypes.number.isRequired,
   rooms: PropTypes.number.isRequired,
-  guests: PropTypes.number.isRequired,
+  adults: PropTypes.number.isRequired,
+  children: PropTypes.number.isRequired,
   city: PropTypes.string,
   searchUrl: PropTypes.string,
   useFunction: PropTypes.bool,

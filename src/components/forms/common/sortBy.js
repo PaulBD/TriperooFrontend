@@ -36,7 +36,6 @@ class SortBy extends React.Component {
           <li><a href="#" data-type="QUALITY" data-type-friendly="Ranking (high to low)" onClick={this.updateSortBy}>Ranking (high to low)</a></li>
           <li><a href="#" data-type="QUALITY_REVERSE" data-type-friendly="Ranking (how to high)" onClick={this.updateSortBy}>Ranking (low to high)</a></li>
           <li><a href="#" data-type="PROXIMITY" data-type-friendly="Distance" onClick={this.updateSortBy}>Distance</a></li>
-          <li><a href="#" data-type="TRIP_ADVISOR" data-type-friendly="Number Of Reviews" onClick={this.updateSortBy}>Number of Reviews</a></li>
         </ul>
       </div>
     );

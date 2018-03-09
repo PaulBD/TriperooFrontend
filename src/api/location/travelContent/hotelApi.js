@@ -120,39 +120,29 @@ class HotelDealsApi {
   // ****************************************
   // Return hotels by location Id
   // ****************************************
-  static getHotelsByLocation(locationId, arrivalDate, nights, locale, currencyCode, rooms1, rooms2, rooms3, location, filters, sortBy, pageSize, pageNumber, exclude) {
+  static getHotelsByLocation(cityCode, rooms, arrivalDate, leaveDate, nationality, currency, minRate, maxRate, starRating, sortBy) {
 
-    let url = baseUrl + '/location/' + locationId + '/hotels';
+    let url = baseUrl + '/hotels';
     return new Promise((resolve, reject) => {
       axios({
         method: 'post',
         url: url,
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'TriperooUserCookie': '12346754765675'
         },
         data: {
-          locale: locale,
-          currencyCode: currencyCode,
-          location: location,
-          propertyCategory: filters.propertyCategory,
-          minRate: filters.minRate,
-          maxRate: filters.maxRate,
-          minStarRating: filters.minStarRating,
-          maxStarRating: filters.maxStarRating,
-          minTripAdvisorRating: filters.minTripAdvisorRating,
-          maxTripAdvisorRating: filters.maxTripAdvisorRating,
-          facilityList: filters.facilityList,
+          cityCode: cityCode,
+          rooms: rooms,
           arrivalDate: arrivalDate,
-          nights: nights,
-          rooms1: rooms1,
-          rooms2: rooms2,
-          rooms3: rooms3,
-          sortBy: sortBy,
-          exclude: exclude,
-          checkDates: true,
-          pageSize: pageSize,
-          pageNumber: pageNumber
+          leaveDate: leaveDate,
+          nationality: nationality,
+          currency: currency,
+          minRate: minRate,
+          maxRate: maxRate,
+          starRating: starRating,
+          sortBy: sortBy
         }
       })
         .then(response => {

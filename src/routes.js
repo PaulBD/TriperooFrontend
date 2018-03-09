@@ -55,7 +55,6 @@ import NewYorkArticle from './apps/location/travelguides/united-states/new-york'
 
 // Hotels
 import Hotels from './apps/hotel';
-import HotelSearchResults from './apps/hotel/search-results';
 import HotelCheckout from './apps/hotel/reservations';
 import HotelDetail from './apps/hotel/detail';
 
@@ -90,7 +89,6 @@ export default (
 
     <Route path="/holidays" component={Holidays}/>
     <Route path="/hotels" component={Hotels}/>
-    <Route path="/hotels/search-results" component={HotelSearchResults}/>
     <Route path="/(:placeId)/visit/(:placeName)/hotels/(:hotelId)/hotel-checkout" component={HotelCheckout}/>
     <Route path="/(:placeId)/visit/(:placeName)/hotels/(:hotelId)" component={HotelDetail}/>
     <Route path="/flights" component={Flights}/>

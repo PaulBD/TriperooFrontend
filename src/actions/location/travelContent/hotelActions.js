@@ -43,10 +43,10 @@ export function hotelsByLocationFailure(errorMessage) {
   return {type: types.HOTELS_BY_LOCATION_FAILURE, isFetching: false, errorMessage};
 }
 
-export function loadHotelsByLocation(locationId, arrivalDate, nights, locale, currencyCode, rooms1, rooms2, rooms3, location, filters, sortBy, pageSize, pageNumber, exclude) {
+export function loadHotelsByLocation(cityCode, rooms, arrivalDate, leaveDate, nationality, currency, minRate, maxRate, starRating, sortBy) {
   return dispatch => {
     dispatch(hotelsByLocationRequest());
-    return HotelApi.getHotelsByLocation(locationId, arrivalDate, nights, locale, currencyCode, rooms1, rooms2, rooms3, location, filters, sortBy, pageSize, pageNumber, exclude).then(hotels => {
+    return HotelApi.getHotelsByLocation(cityCode, rooms, arrivalDate, leaveDate, nationality, currency, minRate, maxRate, starRating, sortBy).then(hotels => {
       dispatch(hotelsByLocationSuccess(hotels));
     }).catch(error => {
       dispatch(hotelsByLocationFailure(error.response.data));

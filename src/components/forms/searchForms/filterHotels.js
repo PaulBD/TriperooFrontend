@@ -1,7 +1,6 @@
 import React, {PropTypes} from 'react';
 import StarFilter from '../../../components/forms/common/starFilter';
-import FacilitiesFilter from '../../../components/forms/common/facilitiesFilter';
-import PropertyCategoryFilter from '../../../components/forms/common/propertyCategoryFilter';
+import InputRange from 'react-input-range';
 let _ = require('lodash');
 
 class FilterHotels extends React.Component {
@@ -10,65 +9,34 @@ class FilterHotels extends React.Component {
     this.state = {
       minPrice: this.props.minPrice
       , maxPrice: this.props.maxPrice
-      , minStarRating: 1
-      , maxStarRating: 5
-      , minTripAdvisorRating: 0
-      , maxTripAdvisorRating: 0
-      , facilityList: []
-      , propertyCategory: []
+      , starRating: ['1','2','3','4','5']
       , filterState: 'Show Filters'
+      , value: { min: this.props.minPrice, max: this.props.maxPrice }
     };
     this.updateStarFilter = this.updateStarFilter.bind(this);
-    this.updateTripAdvisorFilter = this.updateTripAdvisorFilter.bind(this);
-    this.changeMinprice = this.changeMinprice.bind(this);
-    this.changeMaxprice = this.changeMaxprice.bind(this);
-    this.updateFacilitiesFilter = this.updateFacilitiesFilter.bind(this);
-    this.updatePropertyCategoryFilter = this.updatePropertyCategoryFilter.bind(this);
+    this.changePrice = this.changePrice.bind(this);
+    this.onChangeComplete = this.onChangeComplete.bind(this);
     this.showFilter = this.showFilter.bind(this);
   }
 
   updateStarFilter(filter) {
-    let orderedFilter = _.sortBy(filter);
-    let minStarRating = orderedFilter[0];
-    let maxStarRating = orderedFilter[orderedFilter.length-1];
+    let starRating = _.sortBy(filter);
 
-    this.setState({minStarRating: minStarRating, maxStarRating: maxStarRating });
-    this.applyFilter(this.state.minPrice, this.state.maxPrice, minStarRating, maxStarRating, this.state.minTripAdvisorRating, this.state.maxTripAdvisorRating, this.state.facilityList, this.state.propertyCategory);
+    this.setState({starRating: starRating });
+    this.applyFilter(this.state.minPrice, this.state.maxPrice, starRating);
   }
 
-  updateTripAdvisorFilter(filter) {
-    let orderedFilter = _.sortBy(filter);
-    let minTripAdvisorRating = orderedFilter[0];
-    let maxTripAdvisorRating = orderedFilter[orderedFilter.length-1];
 
-    this.setState({minTripAdvisorRating: minTripAdvisorRating, maxTripAdvisorRating: maxTripAdvisorRating });
-    this.applyFilter(this.state.minPrice, this.state.maxPrice, this.state.minStarRating, this.state.maxStarRating, minTripAdvisorRating, maxTripAdvisorRating, this.state.facilityList, this.state.propertyCategory);
+  changePrice(value) {
+    this.setState({ value });
   }
 
-  changeMinprice(event) {
-    event.preventDefault();
-    this.setState({minPrice: event.target.value });
-    this.applyFilter(event.target.value, this.state.maxPrice, this.state.minStarRating, this.state.maxStarRating, this.state.minTripAdvisorRating, this.state.maxTripAdvisorRating, this.state.facilityList, this.state.propertyCategory);
+  onChangeComplete(value) {
+    this.applyFilter(this.state.value.min, this.state.value.max, this.state.starRating);
   }
 
-  changeMaxprice(event) {
-    event.preventDefault();
-    this.setState({maxPrice: event.target.value });
-    this.applyFilter(this.state.minPrice, event.target.value, this.state.minStarRating, this.state.maxStarRating, this.state.minTripAdvisorRating, this.state.maxTripAdvisorRating, this.state.facilityList, this.state.propertyCategory);
-  }
-
-  updateFacilitiesFilter(filter) {
-    this.setState({facilityList: filter });
-    this.applyFilter(this.state.minPrice, this.state.maxPrice, this.state.minStarRating, this.state.maxStarRating, this.state.minTripAdvisorRating, this.state.maxTripAdvisorRating, filter, this.state.propertyCategory);
-  }
-
-  updatePropertyCategoryFilter(filter) {
-    this.setState({propertyCategory: filter });
-    this.applyFilter(this.state.minPrice, this.state.maxPrice, this.state.minStarRating, this.state.maxStarRating, this.state.minTripAdvisorRating, this.state.maxTripAdvisorRating, this.state.facilityList, filter);
-  }
-
-  applyFilter(minPrice, maxPrice, minStarRating, maxStarRating,  minTripAdvisorRating, maxTripAdvisorRating, facilityList, propertyCategory) {
-    this.props.filterHotels(minPrice, maxPrice, minStarRating, maxStarRating, minTripAdvisorRating, maxTripAdvisorRating, facilityList, propertyCategory);
+  applyFilter(minPrice, maxPrice, starRating) {
+    this.props.filterHotels(minPrice, maxPrice, starRating);
   }
 
   showFilter(e) {
@@ -88,17 +56,11 @@ class FilterHotels extends React.Component {
         </div>
         <div className="collapse flightFilter" id="flightFilter">
           <ul className="list booking-filters-list">
-            <li>
-              <h5>Price Range</h5>
+            <li className="mb-3">
+              <h5 className="mb-2">Your Budget<small className="float-right">Price per night</small></h5>
               <div className="row">
-                <div className="col-5 col-md-5">
-                  <input type="number" className="form-control" value={this.state.minPrice} min="1" max="100000" onChange={this.changeMinprice}/>
-                </div>
-                <div className="col-2 col-md-2">
-                  to
-                </div>
-                <div className="col-5 col-md-5">
-                  <input type="number" className="form-control" value={this.state.maxPrice} min="1" max="100000" onChange={this.changeMaxprice}/>
+                <div className="col-12 col-md-12">
+                  <InputRange maxValue={500} minValue={0} value={this.state.value} onChange={this.changePrice} onChangeComplete={this.onChangeComplete} name="Price per night" formatLabel={value => `£${value}`}/>
                 </div>
                 <div className="gap gap-mini"></div>
               </div>
@@ -106,18 +68,6 @@ class FilterHotels extends React.Component {
             <li>
               <h5>Star Rating</h5>
               <StarFilter updateFilter={this.updateStarFilter} />
-            </li>
-            <li>
-              <h5>Trip Advisor Rating</h5>
-              <StarFilter updateFilter={this.updateTripAdvisorFilter} />
-            </li>
-            <li className="hide">
-              <h5>Facilities</h5>
-              <FacilitiesFilter updateFilter={this.updateFacilitiesFilter} />
-            </li>
-            <li>
-              <h5>Accommodation Type</h5>
-              <PropertyCategoryFilter updateFilter={this.updatePropertyCategoryFilter} />
             </li>
           </ul>
         </div>
