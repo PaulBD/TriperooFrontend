@@ -18,19 +18,29 @@ class ReviewIcon extends React.Component {
     this.props.modalActions.openReview(this.props.locationId, this.props.locationName, this.props.locationType);
   }
 
-  render(){
-    return (
+  render() {
+    if (this.props.useIcon) {
+      return (
         <div>
-          <a ref="review" className="fa fa-comments box-icon-normal round" key={this.props.locationId} href="#" onClick={this.writeReview} data-toggle="tooltip" data-placement="top" title="Write Review"></a>
+          <a ref="review" className="fa fa-comments box-icon-normal round" key={this.props.locationId} href="#"
+             onClick={this.writeReview} data-toggle="tooltip" data-placement="top" title="Write Review"></a>
         </div>
       );
     }
+    else {
+      return (
+          <a ref="review" key={this.props.locationId} href="#"
+             onClick={this.writeReview} title="Write Review"><i className="fa fa-comments"></i> Review</a>
+      );
+    }
+  }
 }
 
 ReviewIcon.defaultProps = {
   locationId: 0,
   locationName: '',
-  locationType: ''
+  locationType: '',
+  useIcon: true
 };
 
 ReviewIcon.propTypes = {
@@ -38,7 +48,8 @@ ReviewIcon.propTypes = {
   locationName: PropTypes.string.isRequired,
   locationType: PropTypes.string.isRequired,
   modalActions: PropTypes.object.isRequired,
-  selectedLocationId: PropTypes.number.isRequired
+  selectedLocationId: PropTypes.number.isRequired,
+  useIcon: PropTypes.bool
 };
 
 function mapStateToProps(state, ownProps) {

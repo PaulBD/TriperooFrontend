@@ -27,7 +27,7 @@ class LocationsApi {
     return new Promise((resolve, reject) => {
       axios.get(baseUrl + '/locations/search?searchvalue=' + value + '&searchtype=' + searchType)
         .then(function (response) {
-          resolve(Object.assign([], response.data.locations));
+          resolve(Object.assign([], response.data.value));
         })
         .catch(function (error) {
           reject(error);

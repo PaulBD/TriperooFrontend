@@ -13,7 +13,7 @@ class AskQuestionButton extends React.Component {
 
   askQuestion(e) {
     e.preventDefault();
-    this.props.modalActions.openQuestion(this.props.locationId, this.props.locationNameLong, this.props.locationType, this.props.pageSize, this.props.pageNumber);
+    this.props.modalActions.openQuestion(this.props.locationId, this.props.parentLocationId, this.props.locationNameLong, this.props.locationType, this.props.pageSize, this.props.pageNumber);
   }
 
   render(){
@@ -41,6 +41,7 @@ AskQuestionButton.defaultProps = {
 
 AskQuestionButton.propTypes = {
   locationId: PropTypes.number.isRequired,
+  parentLocationId: PropTypes.number.isRequired,
   pageSize: PropTypes.number.isRequired,
   pageNumber: PropTypes.number.isRequired,
   locationNameLong: PropTypes.string,

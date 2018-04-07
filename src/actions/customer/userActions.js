@@ -73,7 +73,7 @@ export function getUser(userReference) {
   return dispatch => {
     dispatch(getUserInitialize());
     return UserApi.getUser(userReference).then(user => {
-      dispatch(getUserSuccess(user.triperooCustomers));
+      dispatch(getUserSuccess(user));
     }).catch(error => {
       dispatch(getUserFailure(error.response.data));
     });

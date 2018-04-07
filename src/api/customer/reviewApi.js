@@ -37,7 +37,7 @@ class ReviewApi {
     return new Promise((resolve, reject) => {
       axios({
         method: 'put',
-        url:  baseUrl + '/review/' + reviewReference.replace('review:', ''),
+        url:  baseUrl + '/review/' + reviewReference,
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ class ReviewApi {
     return new Promise((resolve, reject) => {
       axios({
         method: 'delete',
-        url:  baseUrl + '/review/' + reference.replace('review:', ''),
+        url:  baseUrl + '/review/' + reference,
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',

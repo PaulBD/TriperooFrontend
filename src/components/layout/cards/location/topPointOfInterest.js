@@ -13,7 +13,9 @@ class TopPointOfInterest extends React.Component {
   }
 
   componentWillMount() {
-    this.loadPointOfInterests(this.props.locationId, '', '', this.props.pageSize, 0);
+    if (this.props.locationId > 0) {
+      this.loadPointOfInterests(this.props.locationId, '', '', this.props.pageSize, 0);
+    }
   }
 
   loadPointOfInterests(locationId, pointOfInterestType, pointOfInterestName, pageSize, pageNumber) {
@@ -32,7 +34,7 @@ class TopPointOfInterest extends React.Component {
     {
       return (
         <div className="col-md-12">
-          {this.props.title ? <h4 className="locationTitle">{this.props.title} <small className="float-sm-right"><a href={this.props.url} >See all</a></small></h4> : ''}
+          {this.props.title ? <h4 className="locationTitle">{this.props.title} <small className="float-right"><a href={this.props.url} >See all things to do</a></small></h4> : ''}
           <LocationList locations={this.props.pointOfInterests} cssClass="col-md-3 col-12" />
         </div>
       );

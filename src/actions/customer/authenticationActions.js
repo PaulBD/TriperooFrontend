@@ -42,6 +42,7 @@ export function loginFacebookUser(creds) {
 		{
 			return AuthenticationApi.loginFacebookCustomer(creds.accessToken, creds.emailAddress, creds.facebookId, creds.name, creds.imageUrl, creds.city, creds.cityId, creds.optIn).then(token => {
 
+
         localStorage.setItem('id_token', stringify(transformAuthentication(token)));
 
 				dispatch(receiveLogin());

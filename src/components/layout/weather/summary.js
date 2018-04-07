@@ -9,7 +9,9 @@ class Summary extends React.Component {
   }
 
   componentDidMount() {
-    this.props.actions.loadCurrentWeather(this.props.locationId, true, 'en');
+    if (this.props.locationId > 0) {
+      this.props.actions.loadCurrentWeather(this.props.locationId, true, 'en');
+    }
   }
 
   render()

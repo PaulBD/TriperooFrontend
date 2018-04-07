@@ -5,17 +5,12 @@ import {bindActionCreators} from 'redux';
 import * as userActions from '../../actions/customer/userActions';
 import * as locationActions from '../../actions/location/locationActions';
 import Search from '../../components/forms/searchForms/homePage';
-
-
-import RecentQuestions from '../../components/layout/cards/questions/list';
-import WeatherForcast from '../../components/layout/weather/forecast';
 import TopEvents from '../../components/layout/cards/events/topEvents';
 import TriperooLoader from '../../components/loaders/globalLoader';
 import TopRestaurants from '../../components/layout/cards/location/topRestaurants';
 import TopAttractions from '../../components/layout/cards/location/topAttractions';
 import TopPointsOfInterest from '../../components/layout/cards/location/topPointOfInterest';
 import LastMinuteDeals from '../../components/layout/cards/location/lastMinuteDeals';
-
 
 class WelcomePage extends React.Component {
   constructor(props, context) {
@@ -51,6 +46,8 @@ class WelcomePage extends React.Component {
   }
 
   loadLocation() {
+    console.log(this.props.currentLocationId);
+
     if (this.props.currentLocationId > 0) {
       this.setState({isLoadingLocation: true});
       this.props.locationActions.loadLocationById(this.props.currentLocationId, true)
@@ -74,7 +71,7 @@ class WelcomePage extends React.Component {
 
     if (!this.props.loadingLocation) {
 
-      if (this.props.testuser) {
+      if (this.props.stateUser) {
         let premiumActivitiesTitle = 'Attractions in ' + this.props.location.regionName;
         let premiumActivitiesUrl = this.props.location.url + '/attractions';
 
@@ -82,7 +79,7 @@ class WelcomePage extends React.Component {
         let thingsToDoUrl = this.props.location.url + '/activities';
 
         let topRestaurantTitle = 'Places to eat in ' + this.props.location.regionName;
-        let restaurantUrl = this.props.location.url + '/activities';
+        let restaurantUrl = this.props.location.url + '/restaurants';
 
 
         let lastMinuteTitle = 'Last minute deals outside of ' + this.props.location.regionName;
@@ -95,7 +92,7 @@ class WelcomePage extends React.Component {
               <div className="bg-img" style={style}></div>
               <div className="bg-front full-center text-xs-center">
                 <div className="owl-cap">
-                  <span>Welcome back {this.props.testuser.profile.name}</span>
+                  <span>Welcome back {this.props.stateUser.profile.name}</span>
                   <h1 className="owl-cap-title fittext">Explore - Plan - Book</h1>
                   <div className="owl-cap-price hidden-md-down">
                     <small>Get the best deals from the top travel websites, plus reviews on the <br />best hotels,
@@ -106,45 +103,26 @@ class WelcomePage extends React.Component {
                 </div>
               </div>
             </div>
-
             <div className="container">
               <div className="gap gap-mini"></div>
               <div className="row">
-                <div className="col-md-8">
+                <div className="col-md-12">
                   <div className="row">
-                    <TopRestaurants title={topRestaurantTitle} locationId={this.props.location.regionID}
-                                    name={this.props.location.regionName} locationType="Restaurants" pageSize={4}
-                                    locationName={this.props.location.regionName} url={restaurantUrl}/>
+                    <TopRestaurants title={topRestaurantTitle} locationId={this.props.location.regionID} name={this.props.location.regionName} locationType="Restaurants" pageSize={4} locationName={this.props.location.regionName} url={restaurantUrl}/>
                   </div>
                   <div className="row">
-                    <TopAttractions title={premiumActivitiesTitle} locationId={this.props.location.regionID}
-                                    name={this.props.location.regionName} locationType="Attractions" pageSize={4}
-                                    locationName={this.props.location.regionName} url={premiumActivitiesUrl}/>
+                    <TopAttractions title={premiumActivitiesTitle} locationId={this.props.location.regionID} name={this.props.location.regionName} locationType="Attractions" pageSize={4} locationName={this.props.location.regionName} url={premiumActivitiesUrl}/>
                   </div>
                   <div className="row">
-                    <TopPointsOfInterest title={topThingsToDoTitle} locationId={this.props.location.regionID}
-                                         name={this.props.location.regionName} locationType="Point of Interest"
-                                         pageSize={4} locationName={this.props.location.regionName}
-                                         url={thingsToDoUrl}/>
+                    <TopPointsOfInterest title={topThingsToDoTitle} locationId={this.props.location.regionID} name={this.props.location.regionName} locationType="Point of Interest" pageSize={4} locationName={this.props.location.regionName} url={thingsToDoUrl}/>
                   </div>
                   <div className="row">
-                    <LastMinuteDeals title={lastMinuteTitle} locationId={this.props.location.regionID}
-                                     name={this.props.location.regionName} locationType="Point of Interest"
-                                     pageSize={2} locationName={this.props.location.regionName}/>
+                    <LastMinuteDeals title={lastMinuteTitle} locationId={this.props.location.regionID} name={this.props.location.regionName} locationType="Point of Interest" pageSize={4} locationName={this.props.location.regionName}/>
                   </div>
-                </div>
-                <div className="col-md-4">
-                  <WeatherForcast locationId={this.props.location.regionID}
-                                  locationType={this.props.location.regionType}/>
-                  <div className="gap gap-mini"></div>
-                  <RecentQuestions locationId={this.props.location.regionID}
-                                   locationName={this.props.location.regionName} pageSize={3} pageNumber={0}
-                                   locationUrl={this.props.location.url} showTitle={true} isSideComponent={true}/>
                 </div>
               </div>
             </div>
-            <TopEvents locationId={this.props.location.regionID} locationName={this.props.location.regionName}
-                       baseUrl={this.props.location.url}/>
+            <TopEvents locationId={this.props.location.regionID} locationName={this.props.location.regionName} baseUrl={this.props.location.url}/>
           </div>
         );
       }
@@ -173,7 +151,7 @@ WelcomePage.propTypes = {
   currentUserId: PropTypes.string.isRequired,
   isActiveUser: PropTypes.bool.isRequired,
   user: PropTypes.object,
-  testuser: PropTypes.object,
+  stateUser: PropTypes.object,
   errorMessage: PropTypes.string,
   location: PropTypes.object,
   locationActions: PropTypes.object.isRequired,
@@ -183,13 +161,14 @@ WelcomePage.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   let user = localStorage.getItem('id_token') ? JSON.parse(localStorage.getItem('id_token')) : {};
+
   return {
     isAuthenticated: state.authentication.isAuthenticated,
-    currentUserId: state.authentication.user ? state.authentication.user.triperooCustomers.customerReference : user.userId ? user.userId : '',
-    currentLocationId: state.authentication.user ? state.authentication.user.triperooCustomers.currentLocationId : user.currentLocationId ? user.currentLocationId : 0,
+    currentUserId: state.authentication.user ? state.authentication.user.customerReference : user.userId ? user.userId : '',
+    currentLocationId: user.currentLocationId ? user.currentLocationId : 0,
     isActiveUser: user ? ownProps.params.guid == user.userId : false,
     user: state.authentication.user ? state.authentication.user : state.user ? state.user.user : null,
-    testuser: state.user ? state.user.user : null,
+    stateUser: state.user ? state.user.user : null,
     errorMessage: state.authentication.errorMessage,
     location: state.location.location ? state.location.location : {},
     loadingLocation: state.location.isFetching

@@ -98,10 +98,10 @@ export function hotelByIdFailure(errorMessage) {
   return {type: types.HOTELS_BY_ID_FAILURE, isFetching: false, errorMessage};
 }
 
-export function loadHotelById(locationId, hotelId, locale, currencyCode) {
+export function loadHotelById(hotelId, locale, currencyCode) {
   return dispatch => {
     dispatch(hotelByIdRequest());
-    return HotelApi.getHotelById(locationId, hotelId, locale, currencyCode).then(hotel => {
+    return HotelApi.getHotelById(hotelId, locale, currencyCode).then(hotel => {
       dispatch(hotelByIdSuccess(hotel));
     }).catch(error => {
       dispatch(hotelByIdFailure(error.response.data));

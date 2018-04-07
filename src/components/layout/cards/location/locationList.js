@@ -6,6 +6,7 @@ import ReviewIcon from '../../location/reviewIcon';
 import PhotoIcon from '../../location/photoIcon';
 import BookmarkIcon from '../../location/bookmarkIcon';
 import VisitIcon from '../../location/visitIcon';
+import StarRating from '../../../forms/common/starRating';
 let changeCase = require('change-case');
 
 class LocationList extends React.Component {
@@ -105,8 +106,10 @@ class LocationList extends React.Component {
                     }
                   }
 
+                  fallbackImage = fallbackImage.replace('http://', 'https://');
+
                   const bgImage = {
-                    backgroundImage: "url(" + fallbackImage.replace('http://', 'https://') + ")"
+                    backgroundImage: "url(" + fallbackImage + ")"
                   };
 
                   let fallbackBgImage = {
@@ -115,61 +118,76 @@ class LocationList extends React.Component {
 
                   return (
                     <div className={this.props.cssClass} key={location.regionType == "Attractions" ? location.locationDetail.productCode : location.regionID} >
-                      <div className="hover-img bgImage" style={fallbackBgImage}>
-                        <div className="hover-img bgImage" style={bgImage}>
-                          <div className="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">
-                            <a href={location.url}>
-                              <div className="text-small">
-                                <h5>{location.regionName}</h5>
-                                <p className={locationType.length == 0 ? "hide" : ""}>{changeCase.ucFirst(locationType)}</p>
-                                <p className={location.regionType == "Attractions" ? "" : "hide"}>{location.regionType == "Attractions" ? location.locationDetail.pricing.priceGBP + ' GBP' : ""}</p>
+                      <div className="card locationCardWrapper">
+                        <a href={location.url}><div className="cardBgImage" style={bgImage}>
+
+                        </div>
+                        </a>
+                          <div className="card-body cardPadding">
+                            <h5 className="card-title locationCard"><a href={location.url}>{location.regionName.length > 30 ? location.regionName.substring(0, 27) + '...' : location.regionName}</a></h5>
+                            <p className={location.regionType == "Attractions" ? "card-text" : "hide"}>{location.regionType == "Attractions" ? location.locationDetail.pricing.priceGBP + ' GBP' : ""}</p>
+                            <p className={locationType.length == 0 ? "hide" : "tagCollection"}>
+                              <div className="row">
+                                <div className="col-md-5">
+                                  <StarRating starRating={location.stats.reviewCount} className="icon-list list-inline-block mb0 last-minute-rating"/>
+                                </div>
+                                <div className="col-md-7 text-right">
+                                  <span className="tagReadOnly tag-default">{changeCase.ucFirst(locationType)}</span>
+                                </div>
                               </div>
-                            </a>
-                          </div>
-                          <ul className={this.props.isAuthenticated && this.props.showIcons ? "hover-icon-group-center-top" : "hide"}>
-                            <li>
-                              <ReviewIcon locationId={location.regionID} locationName={location.regionNameLong}
-                                          locationType={location.subClass} key={location.regionID}/>
-                            </li>
-                            <li>
-                              <PhotoIcon locationId={location.regionID} locationName={location.regionName}
-                                         locationNameLong={location.regionNameLong} locationType={location.subClass}
-                                         key={location.regionID}/>
-                            </li>
-                            <li>
-                              <BookmarkIcon parentLocationId={this.props.location.regionID}
-                                            parentLocationName={this.props.location.regionName}
-                                            parentLocationNameLong={this.props.location.regionNameLong}
-                                            parentLocationImage={this.props.location.image}
-                                            parentLocationUrl={this.props.location.url}
-                                            parentLocationType={location.regionType}
-                                            locationNameLong={location.regionNameLong} locationUrl={location.url}
-                                            locationImage={location.image} locationId={location.regionID}
-                                            locationName={location.regionName}
-                                            locationType={location.subClass}
-                                            locationLength={location.locationDetail ? location.locationDetail.duration : ""}
-                                            key={location.regionID}
-                                            latitude={location.locationCoordinates ? location.locationCoordinates.latitude : 0}
-                                            longitude={location.locationCoordinates ? location.locationCoordinates.longitude : 0}
-                                            price={location.locationDetail && location.locationDetail.pricing ? location.locationDetail.pricing.priceGBP : ""}
-                                            bookingUrl={location.locationDetail ? location.locationDetail.bookingUrl : ""}
-                              />
-                            </li>
-                            <li>
-                              <VisitIcon parentLocationId={this.props.location.regionID}
-                                         parentLocationName={this.props.location.regionName}
-                                         parentLocationNameLong={this.props.location.regionNameLong}
-                                         parentLocationImage={this.props.location.regionImage}
-                                         locationNameLong={location.regionNameLong} locationUrl={location.url}
-                                         locationImage={location.image} locationId={location.regionID}
-                                         locationName={location.regionName} locationType={location.subClass}
-                                         key={location.regionID}
-                                         latitude={location.locationCoordinates ? location.locationCoordinates.latitude : 0}
-                                         longitude={location.locationCoordinates ? location.locationCoordinates.longitude : 0}/>
-                            </li>
-                          </ul>
+                            </p>
+
+                            <ul className={this.props.isAuthenticated && this.props.showIcons ? "list-inline cardIconList" : "hide"}>
+                              <li className="list-inline-item">
+                                <ReviewIcon locationId={location.regionID} locationName={location.regionNameLong}
+                                            locationType={location.subClass} key={location.regionID}
+                                            useIcon={false}/> &bull;
+                              </li>
+                              <li className="list-inline-item">
+                                <PhotoIcon locationId={location.regionID} locationName={location.regionName}
+                                           locationNameLong={location.regionNameLong} locationType={location.subClass}
+                                           key={location.regionID}
+                                           useIcon={false}/> &bull;
+                              </li>
+                              <li className="list-inline-item">
+                                <BookmarkIcon parentLocationId={this.props.location.regionID}
+                                              parentLocationName={this.props.location.regionName}
+                                              parentLocationNameLong={this.props.location.regionNameLong}
+                                              parentLocationImage={this.props.location.image}
+                                              parentLocationUrl={this.props.location.url}
+                                              parentLocationType={location.regionType}
+                                              locationNameLong={location.regionNameLong} locationUrl={location.url}
+                                              locationImage={location.image} locationId={location.regionID}
+                                              locationName={location.regionName}
+                                              locationType={location.subClass}
+                                              locationLength={location.locationDetail ? location.locationDetail.duration : ""}
+                                              key={location.regionID}
+                                              useIcon={false}
+                                              latitude={location.locationCoordinates ? location.locationCoordinates.latitude : 0}
+                                              longitude={location.locationCoordinates ? location.locationCoordinates.longitude : 0}
+                                              price={location.locationDetail && location.locationDetail.pricing ? location.locationDetail.pricing.priceGBP : ""}
+                                              bookingUrl={location.locationDetail ? location.locationDetail.bookingUrl : ""}
+                                /> &bull;
+                              </li>
+                              <li className="list-inline-item">
+                                <VisitIcon parentLocationId={this.props.location.regionID}
+                                           parentLocationName={this.props.location.regionName}
+                                           parentLocationNameLong={this.props.location.regionNameLong}
+                                           parentLocationImage={this.props.location.regionImage}
+                                           locationNameLong={location.regionNameLong} locationUrl={location.url}
+                                           locationImage={location.image} locationId={location.regionID}
+                                           locationName={location.regionName} locationType={location.subClass}
+                                           key={location.regionID}
+                                           useIcon={false}
+                                           latitude={location.locationCoordinates ? location.locationCoordinates.latitude : 0}
+                                           longitude={location.locationCoordinates ? location.locationCoordinates.longitude : 0}/>
+
+                              </li>
+                            </ul>
                           </div>
                       </div>
+
+
                     </div>
                   );
                 })

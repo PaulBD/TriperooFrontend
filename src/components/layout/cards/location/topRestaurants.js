@@ -13,7 +13,9 @@ class TopRestaurants extends React.Component {
   }
 
   componentWillMount() {
-    this.loadRestaurants(this.props.locationId, '', '', this.props.pageSize, 0);
+    if (this.props.locationId > 0) {
+      this.loadRestaurants(this.props.locationId, '', '', this.props.pageSize, 0);
+    }
   }
 
   loadRestaurants(locationId, restaurantType, searchName, pageSize, pageNumber) {
@@ -31,7 +33,7 @@ class TopRestaurants extends React.Component {
     {
       return (
         <div className="col-md-12">
-          {this.props.title ? <h4 className="locationTitle">{this.props.title} <small className="float-sm-right"><a href={this.props.url} >See all</a></small></h4> : ''}
+          {this.props.title ? <h4 className="locationTitle">{this.props.title} <small className="float-right"><a href={this.props.url} >See all restaurants</a></small></h4> : ''}
           <LocationList locations={this.props.restaurants} cssClass="col-md-3 col-12" />
         </div>
       );

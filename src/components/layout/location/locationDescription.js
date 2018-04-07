@@ -9,7 +9,7 @@ class LocationOverview extends React.Component {
     let hotelUrl = this.props.location.url + '/hotels';
     let attractionUrl = this.props.location.url  + '/attractions';
     let restaurantUrl = this.props.location.url  + '/restaurants';
-    let nightlifeUrl = this.props.location.url  + '/nightlife';
+    let pointsOfInterestUrl = this.props.location.url  + '/points-of-interest';
     let eventUrl = this.props.location.url  + '/events';
     let reviewUrl = this.props.location.url  + '/reviews';
 
@@ -47,12 +47,12 @@ class LocationOverview extends React.Component {
                   </div>
                   <div className="twPc-divStats">
                     <ul className="twPc-Arrange">
-                      <li className="location"><a href={hotelUrl}><i
-                        className="fa fa-bed user-profile-statictics-icon"/> Hotels</a></li>
                       <li className="location"><a href={attractionUrl}><i
                         className="fa fa-ticket user-profile-statictics-icon"/> Attractions</a></li>
                       <li className="location"><a href={restaurantUrl}><i
                         className="fa fa-cutlery user-profile-statictics-icon"/> Restaurants</a></li>
+                      <li className="location"><a href={pointsOfInterestUrl}><i
+                        className="fa fa-map user-profile-statictics-icon"/> Points of Interest</a></li>
                       <li className="location"><a href={eventUrl}><i
                         className="fa fa-calendar-o user-profile-statictics-icon"/> Events</a></li>
                       <li className="location"><a href={reviewUrl}><i

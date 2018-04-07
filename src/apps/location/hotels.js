@@ -123,7 +123,7 @@ class LocationContent extends React.Component {
     document.title = 'Loading Hotels...';
     if (!this.state.isLoadingLocation) {
 
-      let queryString = '?arrivalDate=' + this.state.formData.arrivalDate + '&nights=' + this.state.formData.nights + '&adults=' + this.state.formData.adults + '&children=' + this.state.formData.children + '&cityCode=' + this.state.formData.cityCode;
+      let queryString = '?arrivalDate=' + this.state.formData.arrivalDate + '&nights=' + this.state.formData.nights + '&adults=' + this.state.formData.rooms[0].adults + '&children=' + this.state.formData.rooms[0].children + '&cityCode=' + this.state.formData.cityCode;
 
       let title = 'Hotels in ' + titleCase(this.props.location.regionName);
       document.title = title;

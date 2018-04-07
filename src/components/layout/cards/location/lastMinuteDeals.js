@@ -12,7 +12,9 @@ class LastMinuteDeals extends React.Component {
   }
 
   componentWillMount() {
-    this.loadDeals(this.props.locationId, this.props.pageSize, 0);
+    if (this.props.locationId > 0) {
+      this.loadDeals(this.props.locationId, this.props.pageSize, 0);
+    }
   }
 
   loadDeals(locationId, pageSize, pageNumber) {
@@ -28,32 +30,32 @@ class LastMinuteDeals extends React.Component {
   render(){
     if (!this.state.isLoadingDeals)
     {
+      console.log(this.props.deals);
       return (
         <div className="col-md-12">
           {this.props.title ? <h4 className="locationTitle">{this.props.title}</h4> : ''}
           <div className="row">
             {
               this.props.deals.map((deal, index) => {
-
                 const bgImage = {
                   backgroundImage: "url(" + deal.merchant_image_url + ")"
                 };
 
                 return (
-                  <div className="col-md-6" key={deal.product_name}>
-                    <div className="hover-img bgImage" style={bgImage}>
-                      <div className="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">
-                        <a href={deal.aw_deep_link} target="_blank">
-                          <div className="text-small">
-                            <h5>{deal.product_name}</h5>
-                            <p>{deal.description}</p>
-                            <p>{deal.search_price > 0 ? deal.search_price + ' ' + deal.currency : ''}</p>
-                          </div>
-                        </a>
+                  <div className="col-md-3" key={index}>
+                    <div className="card locationCardWrapper">
+                      <div className="cardBgImage" style={bgImage}>
+
+                      </div>
+                      <div className="card-body cardPadding">
+                        <h5 className="card-title locationCard">{deal.product_name.length > 30 ? deal.product_name.substring(0, 27) + '...' : deal.product_name}</h5>
+
+                        <p className="card-text">{deal.description}</p>
+                        <p className="card-text">{deal.search_price > 0 ? deal.search_price + ' ' + deal.currency : ''}</p>
+                        <a href={deal.aw_deep_link} target="_blank" className="btn btn-primary btn-sm">View Deal</a>
                       </div>
                     </div>
                   </div>
-
                 );
               })
             }

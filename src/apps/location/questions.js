@@ -61,10 +61,10 @@ class QuestionsByLocation extends React.Component {
                     <hr/>
                   </div>
                   <div className="col-md-8">
-                    <QuestionList locationId={this.props.locationId} locationName={this.state.location.regionName} locationType={this.state.location.subClass} pageSize={5} pageNumber={0} showTitle={false} isSideComponent={false} />
+                    <QuestionList locationId={this.props.locationId} parentLocationId={this.props.location.parentRegionID} locationName={this.state.location.regionName} locationType={this.state.location.subClass} pageSize={5} pageNumber={0} showTitle={false} isSideComponent={false} />
                   </div>
                   <div className="col-md-4">
-                    <QuestionButton locationId={this.props.locationId} locationName={this.state.location.regionName} locationNameLong={this.state.location.regionNameLong} locationType={this.state.location.regionType} pageSize={15} pageNumber={0} />
+                    <QuestionButton locationId={this.props.locationId} parentLocationId={this.props.location.parentRegionID} locationName={this.state.location.regionName} locationNameLong={this.state.location.regionNameLong} locationType={this.state.location.regionType} pageSize={15} pageNumber={0} />
                     <div className="gap gap-small"></div>
                     <LocationOverview location={this.props.location} />
                     <LocationStats locationId={this.props.locationId} stats={this.props.location.stats} locationUrl={this.props.location.url} locationName={this.props.location.regionName}  />

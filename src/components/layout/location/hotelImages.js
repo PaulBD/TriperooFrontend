@@ -1,4 +1,6 @@
 import React, {PropTypes} from 'react';
+import Gallery from 'react-grid-gallery';
+import Slider from 'react-slick';
 
 class HotelImages extends React.Component {
   constructor(props, context) {
@@ -14,76 +16,36 @@ class HotelImages extends React.Component {
 
   render(){
 
-    if (this.props.hotelImage.count > 40) {
-      return (
-        <div className="row no-gutters" id="photos">
-          <div className="col-md-4">
-            <a href="#" className="hover-img featureHotelImage" data-type={0} onClick={this.onClickHotelImage}>
-              <img className="featureHotelImage" data-type={0}
-                   src={this.props.hotelImage[0].highResolutionUrl && this.props.hotelImage[0].highResolutionUrl.length > 0 ? this.props.hotelImage[0].highResolutionUrl : this.props.hotelImage[0].url}/>
-              <div className="overlay"></div>
-              <i className="fa fa-plus round box-icon-small hover-icon i round"></i>
-            </a>
-          </div>
-          <div className="col-md-8">
-            <div className="row no-gutters" id="hotelPhotos">
-              {
-                this.props.hotelImage.map((hotelImage, index) => {
-                  if (index > 0 && index < 41) {
-                    return (
-                      <a href="#" className="hover-img" data-type={index} onClick={this.onClickHotelImage} key={index}>
-                        <img src={hotelImage.thumbnailUrl} data-type={index} data-image={hotelImage.highResolutionUrl}
-                             data-name={hotelImage.name}/>
-                        <div className="overlay" data-type={index}></div>
-                        <i className="fa fa-plus round box-icon-small hover-icon i round" data-type={index}></i>
-                      </a>
-                    );
-                  }
-                })
-              }
-            </div>
-          </div>
-        </div>
-      );
+    let newImages = [];
+
+    for(var i = 0; i < this.props.hotelImage.length; i++)
+    {
+      newImages.push({ src: this.props.hotelImage[i], thumbnail: this.props.hotelImage[i], isSelected: false, thumbnailWidth: 200, thumbnailHeight:100})
     }
-    else {
-      return (<div className="row no-gutters" id="photos">
-        <div className="col-md-4">
-          <a href="#" className="hover-img featureHotelImage" data-type={0} onClick={this.onClickHotelImage}>
-            <img className="featureHotelImage" data-type={0}
-                 src={this.props.hotelImage[0].highResolutionUrl && this.props.hotelImage[0].highResolutionUrl.length > 0 ? this.props.hotelImage[0].highResolutionUrl : this.props.hotelImage[0].url}/>
-            <div className="overlay"></div>
-            <i className="fa fa-plus round box-icon-small hover-icon i round"></i>
-          </a>
-        </div>
-        <div className="col-md-4 hidden-sm-down">
-          <a href="#" className="hover-img featureHotelImage" data-type={1} onClick={this.onClickHotelImage}>
-            <img className="featureHotelImage" data-type={1}
-                 src={this.props.hotelImage[1].highResolutionUrl && this.props.hotelImage[1].highResolutionUrl.length > 0 ? this.props.hotelImage[1].highResolutionUrl : this.props.hotelImage[1].url}/>
-            <div className="overlay"></div>
-            <i className="fa fa-plus round box-icon-small hover-icon i round"></i>
-          </a>
-        </div>
-        <div className="col-md-4">
-          <div className="row no-gutters" id="hotelPhotosAlt">
-            {
-              this.props.hotelImage.map((hotelImage, index) => {
-                if (index > 1 && index < 22) {
-                  return (
-                    <a href="#" className="hover-img" data-type={index} onClick={this.onClickHotelImage} key={index}>
-                      <img src={hotelImage.thumbnailUrl} data-type={index} data-image={hotelImage.highResolutionUrl}
-                           data-name={hotelImage.name}/>
-                      <div className="overlay" data-type={index}></div>
-                      <i className="fa fa-plus round box-icon-small hover-icon i round" data-type={index}></i>
-                    </a>
-                  );
-                }
-              })
-            }
-          </div>
-        </div>
-      </div>);
-    }
+
+    var settings = {
+      infinite: true,
+      speed: 500,
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      slidesPerRow: 4,
+      variableWidth: false,
+      variableHeight: false,
+      adaptiveHeight: false,
+      rows: 2
+    };
+
+    return(<Gallery images={newImages} enableImageSelection={false} maxRows={2}/>);
+   /* return(<Slider {...settings}>
+      {
+        this.props.hotelImage.map((image, index) => {
+          return (
+            <div><img src={image} /></div>
+          );
+        })
+      }
+    </Slider>);
+    */
   }
 }
 

@@ -18,7 +18,7 @@ class Bookmark extends React.Component {
     this.props.modalActions.openBookmark(this.props.parentLocationId, this.props.parentLocationName, this.props.parentLocationNameLong, this.props.parentLocationImage, this.props.parentLocationUrl, this.props.parentLocationType, this.props.locationId, this.props.locationNameLong, this.props.locationName, this.props.locationType, this.props.locationImage, this.props.locationUrl, this.props.locationLength, this.props.removeBookmark, this.props.latitude, this.props.longitude, this.props.price, this.props.locationLength, this.props.bookingUrl);
   }
 
-  render(){
+  render() {
 
     let cssClass = "fa fa-bookmark box-icon-normal round";
 
@@ -26,19 +26,29 @@ class Bookmark extends React.Component {
       cssClass = "fa fa-minus-circle box-icon-normal round";
     }
 
-    return (
+    if (this.props.useIcon) {
+      return (
         <div>
-          <a className={cssClass} ref="bookmark" key={this.props.locationId} href="#" onClick={this.bookmarkLocation} data-toggle="tooltip" data-placement="top" title="Add to Trips" ></a>
+          <a className={cssClass} ref="bookmark" key={this.props.locationId} href="#" onClick={this.bookmarkLocation}
+             data-toggle="tooltip" data-placement="top" title="Add to Trips"></a>
         </div>
       );
     }
+    else {
+      return (
+          <a ref="bookmark" key={this.props.locationId} href="#" onClick={this.bookmarkLocation}
+             title="Add to Trips"><i className="fa fa-bookmark"></i> Add to Trip</a>
+      );
+    }
+  }
 }
 
 Bookmark.defaultProps = {
   locationId: 0,
   locationName: '',
   locationType: '',
-  removeBookmark: false
+  removeBookmark: false,
+  useIcon: true
 };
 
 Bookmark.propTypes = {
@@ -61,7 +71,8 @@ Bookmark.propTypes = {
   locationUrl: PropTypes.string,
   modalActions: PropTypes.object.isRequired,
   selectedLocationId: PropTypes.number.isRequired,
-  removeBookmark: PropTypes.bool
+  removeBookmark: PropTypes.bool,
+  useIcon: PropTypes.bool
 };
 
 function mapStateToProps(state, ownProps) {

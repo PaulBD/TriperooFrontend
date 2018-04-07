@@ -18,23 +18,33 @@ class Visit extends React.Component {
     this.props.modalActions.openVisit(this.props.parentLocationId, this.props.parentLocationName, this.props.parentLocationNameLong, this.props.parentLocationImage, this.props.locationId, this.props.locationNameLong, this.props.locationName, this.props.locationType, this.props.locationImage, this.props.locationUrl, this.props.removeBookmark, this.props.latitude, this.props.longitude);
   }
 
-  render(){
+  render() {
 
-    let cssClass = "fa fa-map box-icon-normal round";
+    let cssClass = "fa fa-map-pin box-icon-normal round";
 
 
-    return (
+    if (this.props.useIcon) {
+      return (
         <div>
-          <a className={cssClass} ref="visit" key={this.props.locationId} href="#" onClick={this.visitLocation} data-toggle="tooltip" data-placement="top" title="Been Here" ></a>
+          <a className={cssClass} ref="visit" key={this.props.locationId} href="#" onClick={this.visitLocation}
+             data-toggle="tooltip" data-placement="top" title="Visited Before?"></a>
         </div>
       );
     }
+    else {
+      return (
+          <a ref="visit" key={this.props.locationId} href="#" onClick={this.visitLocation}
+             title="Visited Before?"><i className="fa fa-map-pin"></i> Visited?</a>
+      );
+    }
+  }
 }
 
 Visit.defaultProps = {
   locationId: 0,
   locationName: '',
-  locationType: ''
+  locationType: '',
+  useIcon: true
 };
 
 Visit.propTypes = {
@@ -52,7 +62,8 @@ Visit.propTypes = {
   locationUrl: PropTypes.string,
   removeBookmark: PropTypes.bool,
   modalActions: PropTypes.object.isRequired,
-  selectedLocationId: PropTypes.number.isRequired
+  selectedLocationId: PropTypes.number.isRequired,
+  useIcon: PropTypes.bool
 };
 
 function mapStateToProps(state, ownProps) {

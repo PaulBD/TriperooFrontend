@@ -1,4 +1,6 @@
 import React, {PropTypes} from 'react';
+import {browserHistory} from 'react-router';
+import {connect} from 'react-redux';
 
 import BulletPoints from '../../components/content/static/bulletPoints';
 import TrustedPartners from '../../components/content/static/trustedPartners';
@@ -7,10 +9,18 @@ import Search from '../../components/forms/searchForms/homePage';
 import Destinations from '../../components/content/dynamic/destinations';
 import ReviewList from '../../components/layout/cards/reviews/homePageReviewList';
 import FacebookSignup from '../../components/forms/authentication/facebookSignup';
-import { getTranslate } from 'react-localize-redux';
 
 
 class HomePage extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+  }
+
+  componentWillMount() {
+    if (this.props.isAuthenticated) {
+      browserHistory.push('/welcome');
+    }
+  }
 
   render() {
 
@@ -65,4 +75,25 @@ class HomePage extends React.Component {
   }
 }
 
-export default HomePage;
+
+HomePage.defaultProps = {
+  isAuthenticated: false
+};
+
+HomePage.propTypes = {
+  isAuthenticated: PropTypes.bool.isRequired
+};
+
+function mapStateToProps(state, ownProps) {
+  let user = localStorage.getItem('id_token') ? JSON.parse(localStorage.getItem('id_token')) : {};
+  return {
+    isAuthenticated: state.authentication.isAuthenticated
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

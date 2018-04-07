@@ -169,8 +169,8 @@ class LocationDetail extends React.Component {
                 <ReviewList hasLoadedLocation={this.state.hasLoaded} locationId={this.props.locationId} locationName={this.props.location.regionName}  locationNameLong={this.props.location.regionNameLong}  locationType="" pageSize={3} pageNumber={0} showTitle={true} title="Reviews" />
               </div>
               <div className="col-md-4">
-                <QuestionButton locationId={this.props.locationId} locationName={this.props.location.regionNameLong} locationNameShort={this.props.location.regionName} locationType={this.props.location.regionType} pageSize={3} pageNumber={0}/>
-                <RecentQuestions locationId={this.props.location.parentRegionID} locationName={this.state.location.parentRegionName} pageSize={3} pageNumber={0} locationUrl={this.state.location.url} showTitle={true} isSideComponent={true}/>
+                <QuestionButton parentLocationId={this.props.location.parentRegionID} locationId={this.props.location.locationId} locationName={this.props.location.regionNameLong} locationNameShort={this.props.location.regionName} locationType={this.props.location.regionType} pageSize={3} pageNumber={0}/>
+                <RecentQuestions parentLocationId={this.props.location.parentRegionID} locationId={this.props.location.locationId} locationName={this.state.location.parentRegionName} pageSize={3} pageNumber={0} locationUrl={this.state.location.url} showTitle={true} isSideComponent={true}/>
               </div>
               <hr />
             </div>

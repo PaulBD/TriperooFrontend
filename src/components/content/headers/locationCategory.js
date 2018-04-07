@@ -31,7 +31,6 @@ class SubHeader extends React.Component {
                             </div>
                             <div className="col-lg-6 col-sm-12">
                               <ul className="list text-right list-inline cityNav">
-                                <Item item="Hotels" parentUrl={this.props.location.url} showCount={false} showName={false} isActive={this.props.contentType == 'hotels' ? true : false} cssClass="fa fa-bed user-profile-statictics-icon" />
                                 <Item item="Attractions" parentUrl={this.props.location.url} showCount={false} showName={false} isActive={this.props.contentType == 'attractions' ? true : false} cssClass="fa fa-ticket user-profile-statictics-icon" />
                                 <Item item="Restaurants" parentUrl={this.props.location.url} showCount={false} showName={false} isActive={this.props.contentType == 'restaurants' ? true : false} cssClass="fa fa-cutlery user-profile-statictics-icon" />
                                 <Item item="Points of Interest" parentUrl={this.props.location.url} showCount={false} showName={false} isActive={this.props.contentType == 'pointOfInterest' ? true : false} cssClass="fa fa-map user-profile-statictics-icon" />

@@ -289,7 +289,7 @@ class RoomList extends React.Component {
     }
   }
 }
-SearchForm.defaultProps = {
+RoomList.defaultProps = {
   arrivalDate: moment().add(7, 'days').format('YYYY-MM-DD'),
   rooms: 1,
   guests: 1,

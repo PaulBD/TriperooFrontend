@@ -41,7 +41,7 @@ class ReviewCard extends React.Component {
           this.props.reviews.map(function (review, i) {
 
             let style = {
-              backgroundImage: 'url(' + review.imageUrl + ')'
+              backgroundImage: 'url(' + review.place.imageUrl + ')'
             };
 
             return (
@@ -51,8 +51,8 @@ class ReviewCard extends React.Component {
                   <h4 className="card-title"><a href={review.placeUrl}>{review.placeNameShort != null && review.placeNameShort.length > 35 ? review.placeNameShort.substring(0, 35) + '...' : review.placeNameShort}</a></h4>
                   <p className="card-subtitle text-muted cardAddress">{review.placeAddress}</p>
                   <div className="testimonial-author commentCardTestimonial">
-                    <img src={review.customerImageUrl ? review.customerImageUrl : '/static/img/userProfileImg.png'} alt={review.customerName} className="origin round profileImgLge" onError={this.handleMissingImage} />
-                    <p className="testimonial-author-name"><a href={review.customerProfileUrl}>{review.customerName}</a>'s review</p>
+                    <img src={review.profile.imageUrl ? review.profile.imageUrl : '/static/img/userProfileImg.png'} alt={review.profile.name} className="origin round profileImgLge" onError={this.handleMissingImage} />
+                    <p className="testimonial-author-name"><a href={review.customerProfileUrl}>{review.profile.name ? review.profile.name + '\'s' : 'Anonymous'}</a> review</p>
                     <StarRating starRating={review.starRating} className="icon-list list-inline-block mb0 last-minute-rating"/>
                   </div>
                   <p className="card-text" dangerouslySetInnerHTML={{__html:this.props.showAllReview ? review.comment.replace('\n', '<br /><br />') : review.comment.length > 220 ? review.comment.substring(0, 220) + '...' : review.comment.replace('\n', '<br /><br />')}}>

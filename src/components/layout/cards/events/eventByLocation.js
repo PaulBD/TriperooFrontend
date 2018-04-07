@@ -2,7 +2,6 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as eventsActions from '../../../../actions/location/event/eventsActions';
-import EventList from './eventList';
 
 class EventByLocation extends React.Component {
   constructor(props, context) {
@@ -10,7 +9,9 @@ class EventByLocation extends React.Component {
   }
 
   componentWillMount() {
-    this.props.actions.loadEventsByKeyword(this.props.locationId, this.props.keyword, 1, 0);
+    if (this.props.locationId > 0) {
+      this.props.actions.loadEventsByKeyword(this.props.locationId, this.props.keyword, 1, 0);
+    }
   }
 
   render(){

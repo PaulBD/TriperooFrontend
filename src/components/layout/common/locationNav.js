@@ -15,7 +15,6 @@ class NavigationWrapper extends React.Component {
     if (this.props.location !== undefined) {
       places = (
         <ul className="list text-xs-center list-inline user-profile-statictics mb30 list-center locationSubNav">
-          <Item item="Hotels" parentUrl={this.props.location.url} showCount={true} showName={true} cssClass="fa fa-bed user-profile-statictics-icon" />
           <Item item="Attractions" parentUrl={this.props.location.url} showCount={true} showName={true} cssClass="fa fa-ticket user-profile-statictics-icon" />
           <Item item="Restaurants" parentUrl={this.props.location.url} showCount={true} showName={true} cssClass="fa fa-cutlery user-profile-statictics-icon" />
           <Item item="Points Of Interest" parentUrl={this.props.location.url} showCount={true} showName={true} cssClass="fa fa-map user-profile-statictics-icon" />

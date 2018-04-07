@@ -11,13 +11,15 @@ class ByLocation extends React.Component {
   }
 
   componentWillMount() {
-    this.props.actions.loadEvents(this.props.locationId, 6, 0)
-      .then(() => {
-        this.setState({ isLoadingEvents: false });
-      })
-      .catch(error => {
-        this.setState({isLoadingEvents: false});
-      });
+    if (this.props.locationId > 0) {
+      this.props.actions.loadEvents(this.props.locationId, 6, 0)
+        .then(() => {
+          this.setState({isLoadingEvents: false});
+        })
+        .catch(error => {
+          this.setState({isLoadingEvents: false});
+        });
+    }
   }
 
   render(){
@@ -37,7 +39,7 @@ class ByLocation extends React.Component {
                   <h3>Events This Week</h3>
                 </div>
                 <div className="col-md-6">
-                <p>Discover the best events happening in <strong>{this.props.locationName}</strong> every week.</p>
+                <p>Discover the best events happening in and around <strong>{this.props.locationName}</strong> every week.</p>
                 </div>
                 <div className="col-md-6 text-right">
                   <p><a href={allEventsUrl}>View all events</a></p>

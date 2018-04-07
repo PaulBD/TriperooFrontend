@@ -17,7 +17,7 @@ class AnswerHelpful extends React.Component {
   likeAnswer(e)
   {
     e.preventDefault();
-    this.props.userQuestionActions.likeAnswer(this.props.questionRef.replace("question:", ""), this.props.answerRef.replace("answer:", ""));
+    this.props.userQuestionActions.likeAnswer(this.props.questionRef, this.props.answerRef);
     this.setState({ likeCount: this.state.likeCount + 1, hasClicked: true });
   }
 

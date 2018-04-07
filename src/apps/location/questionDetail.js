@@ -37,7 +37,7 @@ class QuestionDetail extends React.Component {
     let question = e.target.getAttribute('data-question');
 
     this.props.userQuestionActions.resetAnswer();
-    this.props.modalActions.openQuestionAnswer(ref, question, this.props.locationId, 3, 0);
+    this.props.modalActions.openQuestionAnswer(ref, question, this.props.locationId, this.props.location.parentRegionID, 3, 0);
   }
 
   handleMissingImage(e) {
@@ -75,17 +75,18 @@ class QuestionDetail extends React.Component {
     {
       let question = this.props.question;
 
-      document.title = question.customerName + ' is looking for advice...';
+      let questionTitle = 'A question about ' + this.props.location.regionName;
+      document.title = question.profile.name + ' is looking for advice...';
       return (
         <div>
-          <Header location={this.props.location} contentType="questions" title="questions" />
+          <Header location={this.props.location} contentType="questions" title={questionTitle} />
           <div className="container">
             <div className="row row-wrap">
               <div className="gap gap-small"></div>
               <div className="container">
                 <div className="row">
                   <div className="col-md-12">
-                    <h4><a href={question.customerProfileUrl}>{question.customerName}</a>  is looking for advice...</h4>
+                    <h4><a href={question.profile.profileUrl}>{question.profile.name}</a>  is looking for advice...</h4>
                     <hr/>
                   </div>
                   <div className="col-md-8">

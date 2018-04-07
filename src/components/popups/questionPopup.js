@@ -26,11 +26,11 @@ class QuestionPopup extends React.Component {
     e.preventDefault();
 
     this.setState({isPostingQuestion: true});
-    const question = { "inventoryReference": this.props.locationId, "question": this.refs.question.value.trim() };
+    const question = { "regionID": this.props.locationId, "parentRegionID": this.props.parentLocationId, "question": this.refs.question.value.trim() };
     this.props.userQuestionActions.postQuestion(question)
       .then(() =>{
         this.setState({isPostingQuestion: false});
-        this.props.locationQuestionsActions.loadQuestionsByLocationId(this.props.locationId, this.props.pageSize, this.props.pageNumber);
+        this.props.locationQuestionsActions.loadQuestionsByLocationId(this.props.locationId, this.props.parentLocationId, this.props.pageSize, this.props.pageNumber);
       })
       .catch(error => {
         Toastr.error(error);
@@ -92,6 +92,7 @@ QuestionPopup.defaultProps = {
 
 QuestionPopup.propTypes = {
   locationId: PropTypes.number.isRequired,
+  parentLocationId: PropTypes.number.isRequired,
   pageSize: PropTypes.number.isRequired,
   pageNumber: PropTypes.number.isRequired,
   locationName: PropTypes.string.isRequired,

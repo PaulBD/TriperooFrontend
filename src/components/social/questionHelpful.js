@@ -17,7 +17,7 @@ class ReviewHelpful extends React.Component {
   likeQuestion(e)
   {
     e.preventDefault();
-    this.props.userQuestionActions.likeQuestion(this.props.questionRef.replace("question:", ""));
+    this.props.userQuestionActions.likeQuestion(this.props.questionRef);
     this.setState({ likeCount: this.state.likeCount + 1, hasClicked: true });
   }
 

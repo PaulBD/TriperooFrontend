@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react';
 import AutoComplete from '../common/autocomplete';
 
 const SignupForm = ({name, emailAddress, password, optIn, cityId, city, isSigningUp, onSubmit, onChange, onChangeAutoComplete, errors}) => {
+  console.log(errors);
   return (
     <div className="col-md-12">
       <div className={errors && errors.length > 0 ? 'col-md-12' : 'col-md-12 hide'}>

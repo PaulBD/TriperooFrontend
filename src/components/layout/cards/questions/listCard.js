@@ -48,6 +48,7 @@ ListCard.defaultProps = {
 ListCard.propTypes = {
   locationName: PropTypes.string,
   locationId: PropTypes.number.isRequired,
+  parentLocationId: PropTypes.number.isRequired,
   questions: PropTypes.array.isRequired,
   pageSize: PropTypes.number.isRequired,
   pageNumber: PropTypes.number.isRequired,

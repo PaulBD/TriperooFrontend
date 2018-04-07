@@ -56,21 +56,15 @@ class Login extends React.Component {
 
     this.props.actions.getFacebookUser({accessToken: this.state.creds.accessToken, emailAddress: this.state.creds.emailAddress, facebookId: this.state.creds.facebookId, name: this.state.creds.name, imageUrl: this.state.creds.imageUrl, cityId: this.state.creds.cityId, city: this.state.creds.city})
       .then(() => {
-
         if (this.props.user != undefined)
         {
-          if (this.props.user.triperooCustomers != undefined)
+          if (this.props.user != undefined)
           {
-            if (this.props.user.triperooCustomers.profile.currentLocation == '' || this.props.user.triperooCustomers.profile.currentLocation == 0)
+            if (this.props.user.profile.currentLocation == '' || this.props.user.profile.currentLocation == 0)
             {
               this.setState({useFacebook: true});
             }
             else {
-              let creds = this.state.creds;
-              creds.cityId = this.props.user.triperooCustomers.profile.currentLocationId;
-              creds.city = this.props.user.triperooCustomers.profile.currentLocation;
-              this.setState({creds: creds});
-
               this.login();
             }
           }

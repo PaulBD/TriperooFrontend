@@ -13,7 +13,9 @@ class NearbyDestinations extends React.Component {
   }
 
   componentWillMount() {
-    this.loadLocations();
+    if (this.props.locationId > 0) {
+      this.loadLocations();
+    }
   }
 
   loadLocations() {

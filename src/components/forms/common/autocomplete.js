@@ -141,7 +141,6 @@ AutoComplete.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-
   return {
     isFetching: state.locations.isFetching ? state.locations.isFetching : false,
     autocompleteList: state.locations.autocompleteList ? state.locations.autocompleteList : []

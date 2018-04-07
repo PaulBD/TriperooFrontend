@@ -73,9 +73,18 @@ class HotelDealsApi {
   // ****************************************
   // Return hotel by id
   // ****************************************
-  static getHotelById(locationId, hotelId, locale, currencyCode) {
+  static getHotelById(hotelId, locale, currencyCode) {
     return new Promise((resolve, reject) => {
-      axios.get(baseUrl + '/location/' + locationId + '/hotel/' + hotelId + '/?locale=' + locale + '&currencyCode=' + currencyCode)
+      let url = baseUrl + '/hotel/' + hotelId + '?locale=' + locale + '&currencyCode=' + currencyCode;
+      axios({
+        method: 'get',
+        url: url,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'TriperooUserCookie': '12346754765675'
+        }
+      })
         .then(function (response) {
           resolve(Object.assign({}, response.data));
         })
@@ -91,7 +100,15 @@ class HotelDealsApi {
   static getHotelRoomsById(locationId, hotelId, arrivalDate, nights, rooms, guests, locale, currencyCode) {
     return new Promise((resolve, reject) => {
       let url = baseUrl + '/location/' + locationId + '/hotel/' + hotelId + '/rooms/' + arrivalDate + '/' + nights + '/?locale=' + locale + '&currencyCode=' + currencyCode + '&rooms=' + rooms + '&guests=' + guests;
-      axios.get(url)
+      axios({
+        method: 'get',
+        url: url,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'TriperooUserCookie': '12346754765675'
+        }
+      })
         .then(function (response) {
           resolve(Object.assign({}, response.data));
         })

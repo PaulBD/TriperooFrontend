@@ -92,8 +92,10 @@ class Header extends React.Component {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                       <ul className="nav navbar-nav mr-auto justify-content-end triperooHeader">
                         <li className="nav-item pull-xs-right"><a className="nav-link" href="/explore-destinations" title="Destinations">Destinations</a></li>
-                        <li className="nav-item pull-xs-right"><a className="nav-link"href="/hotels" title="Hotels">Hotels</a></li>
+                        <li className="nav-item pull-xs-right hide"><a className="nav-link"href="/hotels" title="Hotels">Hotels</a></li>
                         <li className="nav-item pull-xs-right"><a className="nav-link"href="/flights" title="Flights">Flights</a></li>
+                        <li className="nav-item pull-xs-right hide"><a className="nav-link"href="/restaurants" title="Restaurants">Restaurants</a></li>
+                        <li className="nav-item pull-xs-right hide"><a className="nav-link"href="/things-to-do" title="Things To Do">Things To Do</a></li>
                         <li className="nav-item pull-xs-right"><a className="nav-link"href="/travel-extras" title="Travel Extras">Travel Extras</a></li>
                         <li className={this.props.isAuthenticated ? "nav-item pull-xs-right" : "hide"}><a className="nav-link"href="#" onClick={this.createTrip} title="Create a Trip">Create a Trip</a></li>
                         <li className={!this.props.isAuthenticated ? "nav-item pull-xs-right" : "hide"}><a className="nav-link"href="#" onClick={this.signup} title="Sign Up">Sign Up</a></li>

@@ -10,7 +10,7 @@ import HotelHeader from '../../components/content/headers/hotelDetail';
 import StarRating from '../../components/forms/common/starRating';
 import GoogleMaps from '../../components/maps/googleMap';
 import HotelPhotos from '../../components/layout/location/hotelImages';
-import RoomList from '../../components/layout/cards/hotels/roomList';
+import Room from '../../components/layout/cards/hotels/room';
 import SimilarHotels from '../../components/layout/cards/hotels/similarHotels';
 import HotelSubNav from '../../components/layout/location/hotelSubNav';
 import Destinations from '../../components/content/dynamic/destinations';
@@ -63,7 +63,7 @@ class HotelDetail extends React.Component {
 
   loadHotel() {
     this.setState({isLoadingHotel: true});
-    this.props.hotelActions.loadHotelById(this.props.locationId, this.props.hotelId, 'en_en', 'GBP')
+    this.props.hotelActions.loadHotelById(this.props.hotelId, 'en_en', 'GBP')
       .then(() => {
         this.setState({
           isLoadingHotel: false
@@ -96,33 +96,33 @@ class HotelDetail extends React.Component {
   }
 
   showImage(position) {
-    this.props.modalActions.openHotelImage(this.props.hotel.hotelInformationResponse.hotelImages.hotelImage, position, titleCase(this.props.hotel.hotelInformationResponse.hotelSummary.name));
+    this.props.modalActions.openHotelImage('', position, titleCase(this.props.hotel.hotelDetails.hotelName));
   }
 
   render() {
 
     if (!this.state.isLoadingLocation && !this.state.isLoadingHotel) {
 
-      if (this.props.hotel.hotelInformationResponse != undefined && this.props.hotel.hotelInformationResponse.hotelSummary != undefined) {
-        document.title = 'Book to stay in ' + this.props.hotel.hotelInformationResponse.hotelSummary.name;
+      if (this.props.hotel.hotelDetails != undefined && this.props.hotel.hotelDetails.hotelName != undefined) {
+        document.title = 'Book to stay in ' + this.props.hotel.hotelDetails.hotelName;
         let queryString = this.props.queryString;
 
         let markerArray = [];
         markerArray.push({
           "url": this.props.searchUrl,
-          "regionName": this.props.hotel.hotelInformationResponse.hotelSummary.name,
+          "regionName": this.props.hotel.hotelDetails.hotelName,
           "subClass": "Hotel",
           "locationCoordinates": {
-            "latitude": this.props.hotel.hotelInformationResponse.hotelSummary.latitude,
-            "longitude": this.props.hotel.hotelInformationResponse.hotelSummary.longitude
+            "latitude": 0,
+            "longitude": 0
           }
         });
 
         return (
           <div>
             <HotelHeader location={this.props.location}
-                         hotelName={this.props.hotel.hotelInformationResponse.hotelSummary.name}
-                         hotelImage={this.props.hotel.hotelInformationResponse.hotelImages.hotelImage[0].highResolutionUrl}
+                         hotelName={this.props.hotel.hotelDetails.hotelName}
+                         hotelImage={this.props.hotel.hotelDetails.photos[0]}
                          contentType="hotels"/>
             <HotelSubNav />
             <div className="gap gap-small"></div>
@@ -132,10 +132,10 @@ class HotelDetail extends React.Component {
                   <div className="row">
                     <div className="col-md-8 col-6">
                       <p className="lh1em text-small hotelAddress"><i
-                        className="fa fa-map-marker"></i> {this.props.hotel.hotelInformationResponse.hotelSummary.address1}, {this.props.hotel.hotelInformationResponse.hotelSummary.city}, {this.props.hotel.hotelInformationResponse.hotelSummary.postalCode}
+                        className="fa fa-map-marker"></i> {this.props.hotel.hotelDetails.location.address}
                       </p>
                       <StarRating
-                        starRating={this.props.hotel.hotelInformationResponse.hotelSummary.hotelRating ? this.props.hotel.hotelInformationResponse.hotelSummary.hotelRating : 0}
+                        starRating={this.props.hotel.hotelDetails.stars ? this.props.hotel.hotelDetails.stars : 0}
                         className="icon-list list-inline-block mb0 last-minute-rating" includeReviewCount={false}
                         reviewCount={0}/>
                     </div>
@@ -143,11 +143,11 @@ class HotelDetail extends React.Component {
                       <p className="booking-item-header-price">
                         <a href="#rooms" className="btn btn-primary priceRight">View Rooms</a>
                         <span
-                          className={this.props.hotel.hotelInformationResponse.hotelSummary.lowRate == 0 ? 'hide' : 'hide'}>
+                          className={this.props.hotel.hotelDetails.price.minimum == 0 ? 'hide' : 'hide'}>
                       <small>rooms from</small>
                       <br />
                       <span
-                        className="hotelPrice hide"><strong>{this.props.hotel.hotelInformationResponse.hotelSummary.lowRate.toFixed(2)}
+                        className="hotelPrice hide"><strong>{this.props.hotel.hotelDetails.price.minimum.toFixed(2)}
                         GBP</strong></span>
                       <br />
                       <small>per night</small>
@@ -157,7 +157,7 @@ class HotelDetail extends React.Component {
                   </div>
                 </header>
                 <HotelPhotos showImage={this.showImage}
-                             hotelImage={this.props.hotel.hotelInformationResponse.hotelImages.hotelImage}/>
+                             hotelImage={this.props.hotel.hotelDetails.photos}/>
                 <div className="gap gap-small"></div>
 
               </div>
@@ -189,18 +189,17 @@ class HotelDetail extends React.Component {
                         <h4>About the Hotel</h4>
                         <hr />
                         <p
-                          dangerouslySetInnerHTML={{__html: this.props.hotel.hotelInformationResponse.hotelDetails.propertyDescription}}/>
+                          dangerouslySetInnerHTML={{__html: this.props.hotel.hotelDetails.description}}/>
                       </div>
                       <div className="col-md-5">
                         <h4>Facilities</h4>
                         <hr />
-                        <p>{this.props.hotel.hotelInformationResponse.hotelDetails.amenitiesDescription}</p>
-                        <ul className="facilities">
+                        <ul>
                           {
-                            this.props.hotel.hotelInformationResponse.propertyAmenities.propertyAmenity.map(propertyAmenity => {
-                              return (
-                                <li key={propertyAmenity.amenityId}>{propertyAmenity.amenity}</li>
-                              );
+                            this.props.hotel.hotelDetails.amenities.map((amenity, index) => {
+                                return (
+                                  <li>{amenity.name} {amenity.includes}</li>
+                                );
                             })
                           }
                         </ul>
@@ -218,18 +217,6 @@ class HotelDetail extends React.Component {
                     <div className="gap gap-small"></div>
                     <h4>Useful Information</h4>
                     <hr />
-                    <p>
-                      {striptags(this.props.hotel.hotelInformationResponse.hotelDetails.checkInInstructions)}
-                    </p>
-                    <p>
-                      {this.props.hotel.hotelInformationResponse.hotelDetails.propertyInformation}
-                    </p>
-                    <h6>Important</h6>
-                    <p>
-                      {striptags(this.props.hotel.hotelInformationResponse.hotelDetails.knowBeforeYouGoDescription)}
-                    </p>
-                    <p
-                      dangerouslySetInnerHTML={{__html: this.props.hotel.hotelInformationResponse.hotelDetails.roomInformation}}/>
                   </div>
                 </div>
               </div>
@@ -238,21 +225,21 @@ class HotelDetail extends React.Component {
 
             <div className={this.state.showRooms ? "rooms" : "hide"}>
               <div className="container" id="rooms">
-                <RoomList regionName={this.props.hotel.hotelInformationResponse.hotelSummary.name}
-                          regionNameImage={this.props.hotel.hotelInformationResponse.hotelImages.hotelImage[0].highResolutionUrl}
-                          regionUrl={this.props.searchUrl} parentLocationId={this.props.location.regionID}
-                          parentLocationName={this.props.location.regionName}
-                          parentLocationImage={this.props.location.image} parentLocationUrl={this.props.location.url}
-                          parentLocationNameLong={this.props.location.regionNameLong}
-                          longitude={this.props.hotel.hotelInformationResponse.hotelSummary.longitude}
-                          latitude={this.props.hotel.hotelInformationResponse.hotelSummary.latitude}
-                          searchUrl={this.props.searchUrl} guests={this.props.guests} arrivalDate={this.props.arrivalDate}
-                          nights={this.props.nights} rooms={this.props.rooms} locationId={this.props.locationId}
-                          hotelId={this.props.hotelId}
-                          regionNameLong={this.props.hotel.hotelInformationResponse.hotelSummary.name + ', ' + this.props.hotel.hotelInformationResponse.hotelSummary.city}
-                          hotelName={this.props.hotel.hotelInformationResponse.hotelSummary.name}
-                          parentLocationType={this.props.location.parentRegionType}
-                />
+                <div className="row">
+                  <div className="col-md-12" id="rooms">
+                    <h4>Room Availability</h4>
+                    <hr />
+                    <ul className="booking-list">
+                      {
+                        this.props.hotel.hotelDetails.rooms.map((hotelRoom, index) => {
+                          return (
+                            <Room hotelRoom={hotelRoom} key={index} />
+                          );
+                        })
+                      }
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -264,18 +251,18 @@ class HotelDetail extends React.Component {
                     <div className="row">
                       <div className="col-md-8">
                         <ReviewList hasLoadedLocation={this.state.isLoadingHotel} locationId={this.props.hotelId}
-                                    locationName={this.props.hotel.hotelInformationResponse.hotelSummary.name}
-                                    locationNameLong={this.props.hotel.hotelInformationResponse.hotelSummary.name}
+                                    locationName={this.props.hotel.hotelDetails.hotelName}
+                                    locationNameLong={this.props.hotel.hotelDetails.hotelName}
                                     locationType="hotel" pageSize={3} pageNumber={0} showTitle={true} title="Reviews"/>
                       </div>
                       <div className="col-md-4">
                         <QuestionButton locationId={this.props.hotelId}
-                                        locationName={this.props.hotel.hotelInformationResponse.hotelSummary.name}
+                                        locationName={this.props.hotel.hotelDetails.hotelName}
                                         pageSize={3} pageNumber={0}
-                                        locationNameLong={this.props.hotel.hotelInformationResponse.hotelSummary.name}
+                                        locationNameLong={this.props.hotel.hotelDetails.hotelName}
                                         locationType="hotel"/>
                         <RecentQuestions locationId={this.props.hotelId}
-                                         locationName={this.props.hotel.hotelInformationResponse.hotelSummary.name}
+                                         locationName={this.props.hotel.hotelDetails.hotelName}
                                          pageSize={3} pageNumber={0} locationUrl={this.props.searchUrl} showTitle={true}
                                          isSideComponent={true}/>
                       </div>
@@ -285,9 +272,9 @@ class HotelDetail extends React.Component {
                 </div>
               </div>
             </div>
-            <GoogleMaps locationType="Hotel" latitude={this.props.hotel.hotelInformationResponse.hotelSummary.latitude}
-                        longitude={this.props.hotel.hotelInformationResponse.hotelSummary.longitude}
-                        text={this.props.hotel.hotelInformationResponse.hotelSummary.name} zoom={15}
+            <GoogleMaps locationType="Hotel" latitude={0}
+                        longitude={0}
+                        text={this.props.hotel.hotelDetails.hotelName} zoom={15}
                         isLoading={this.state.isLoadingHotel} markerArray={markerArray}/>
 
             <div className="gap gap-small"></div>
@@ -295,15 +282,8 @@ class HotelDetail extends React.Component {
             <div className="row">
               <div className="container">
                 <div className="col-md-12">
-                  <h5>Other Hotels Close To {this.props.hotel.hotelInformationResponse.hotelSummary.name}</h5>
+                  <h5>Other Hotels Close To {this.props.hotel.hotelDetails.hotelName}</h5>
                   <hr />
-                  <SimilarHotels exclude={this.props.hotelId} locationId={this.props.locationId}
-                                 locationName={this.props.location.regionName} currencyCode="GBP" locale="en_en"
-                                 arrivalDate={this.state.arrivalDate} nights={this.state.nights}
-                                 rooms1={this.state.guests} radius={10} pageSize={3}
-                                 latitude={this.props.hotel.hotelInformationResponse.hotelSummary.latitude}
-                                 longitude={this.props.hotel.hotelInformationResponse.hotelSummary.longitude}
-                                 url={this.props.location.url} queryString={queryString} sortBy="PROXIMITY"/>
                 </div>
               </div>
             </div>
@@ -354,6 +334,9 @@ HotelDetail.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
+
+  console.log(state.hotels.hotel);
+
   return {
     isFetching: state.location.isFetching ? state.location.isFetching : false,
     location: state.location.location ? state.location.location : {},

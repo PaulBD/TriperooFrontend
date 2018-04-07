@@ -20,12 +20,14 @@ class Questions extends React.Component {
   }
 
   componentWillMount() {
-    this.loadReviews();
+    if (this.props.locationId > 0) {
+      this.loadReviews();
+    }
   }
 
   loadReviews() {
     this.setState({isLoadingQuestions: true});
-    this.props.locationQuestionsActions.loadQuestionsByLocationId(this.props.locationId, this.props.pageSize, this.props.pageNumber)
+    this.props.locationQuestionsActions.loadQuestionsByLocationId(this.props.locationId, this.props.parentLocationId, this.props.pageSize, this.props.pageNumber)
       .then(() => this.setState({isLoadingQuestions: false}))
       .catch(error => {
         Toastr.error(error);
@@ -35,14 +37,14 @@ class Questions extends React.Component {
 
   postQuestion(e) {
     e.preventDefault();
-    this.props.modalActions.openQuestion(this.props.locationId, this.props.locationNameLong, this.props.locationType);
+    this.props.modalActions.openQuestion(this.props.locationId, this.props.parentLocationId, this.props.locationNameLong, this.props.locationType);
   }
 
   changePage(value) {
     this.setState({ activePage: value });
 
     this.setState({isLoadingQuestions: true});
-    this.props.locationQuestionsActions.loadQuestionsByLocationId(this.props.locationId, this.props.pageSize, value - 1)
+    this.props.locationQuestionsActions.loadQuestionsByLocationId(this.props.locationId, this.props.parentLocationId, this.props.pageSize, value - 1)
       .then(() => this.setState({isLoadingQuestions: false}))
       .catch(error => {
         Toastr.error(error);
@@ -52,7 +54,7 @@ class Questions extends React.Component {
 
   showAnswerPopup(ref, question) {
     this.props.userQuestionActions.resetAnswer();
-    this.props.modalActions.openQuestionAnswer(ref, question, this.props.locationId, this.props.pageSize, this.props.pageNumber);
+    this.props.modalActions.openQuestionAnswer(ref, question, this.props.locationId, this.props.parentLocationId, this.props.pageSize, this.props.pageNumber);
   }
 
   render(){
@@ -77,7 +79,7 @@ class Questions extends React.Component {
       return (
         <div className="row">
           {title}
-          <QuestionList questions={this.props.questionList} locationId={this.props.locationId} locationName={this.props.locationName} pageSize={this.props.pageSize} pageNumber={this.props.pageNumber} isAuthenticated={this.props.isAuthenticated} isSideComponent={this.props.isSideComponent} showAnswerPopup={this.showAnswerPopup}/>
+          <QuestionList questions={this.props.questionList} locationId={this.props.locationId} prentLocationId={this.props.parentLocationId} locationName={this.props.locationName} pageSize={this.props.pageSize} pageNumber={this.props.pageNumber} isAuthenticated={this.props.isAuthenticated} isSideComponent={this.props.isSideComponent} showAnswerPopup={this.showAnswerPopup}/>
 
           <div className={this.props.isSideComponent ? "hide" : "row text-center"}>
             <div className="gap gap-small"></div>
@@ -104,6 +106,7 @@ Questions.defaultProps = {
   showTitle: true,
   locationType: 'all',
   locationId: 0,
+  parentLocationId: 0,
   pageSize: 0,
   pageNumber: 0,
   isFetching: false,
@@ -122,6 +125,7 @@ Questions.propTypes = {
   locationUrl: PropTypes.string,
   locationNameLong: PropTypes.string,
   locationId: PropTypes.number,
+  parentLocationId: PropTypes.number,
   pageSize: PropTypes.number.isRequired,
   pageNumber: PropTypes.number.isRequired,
   showTitle: PropTypes.bool,

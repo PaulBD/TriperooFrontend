@@ -48,7 +48,7 @@ class FilterCategoryPopup extends React.Component {
     if (!this.props.isFetching) {
       if (this.props.categories != undefined) {
       return (
-        <ul className="list booking-filters-list">
+        <ul className="list booking-filters-list mb-3">
           <li><h5>{this.props.title}</h5></li>
           {
               this.props.categories.map(function (category, i) {

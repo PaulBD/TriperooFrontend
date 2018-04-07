@@ -51,7 +51,7 @@ export function postQuestion(question) {
 
   return dispatch => {
     dispatch(postQuestionInitialize(true, question));
-    if ((question.question.length > 0) && (question.inventoryReference > 0))
+    if ((question.question.length > 0) && (question.regionID > 0) && (question.parentRegionID > 0))
     {
       return QuestionApi.postQuestion(question).then(question => {
         dispatch(postQuestionSuccess(question));

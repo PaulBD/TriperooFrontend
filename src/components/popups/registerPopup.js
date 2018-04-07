@@ -47,9 +47,9 @@ class Register extends React.Component {
       .then(() => {
         if (this.props.user != undefined)
         {
-          if (this.props.user.triperooCustomers != undefined)
+          if (this.props.user != undefined)
           {
-            if (this.props.user.triperooCustomers.profile.currentLocation == '' || this.props.user.triperooCustomers.profile.currentLocation == 0)
+            if (this.props.user.profile.currentLocation == '' || this.props.user.profile.currentLocation == 0)
             {
               this.setState({useFacebook: true});
             }
@@ -65,6 +65,7 @@ class Register extends React.Component {
         }
       })
       .catch(error => {
+        console.log(error);
         Toastr.error(error);
         this.setState({creatingUser: false, errors: error});
       });
@@ -76,6 +77,7 @@ class Register extends React.Component {
   }
 
   login() {
+
     this.props.actions.loginFacebookUser({accessToken: this.state.creds.accessToken, emailAddress: this.state.creds.emailAddress, facebookId: this.state.creds.facebookId, name: this.state.creds.name, imageUrl: this.state.creds.imageUrl, cityId: this.state.creds.cityId, city: this.state.creds.city, optIn: this.state.creds.optIn})
       .then(() => {
         this.setState({creatingUser: false, errors: this.props.errorMessage});
@@ -85,6 +87,7 @@ class Register extends React.Component {
         }
       })
       .catch(error => {
+        console.log(error);
         Toastr.error(error);
         this.setState({creatingUser: false, errors: error});
       });
@@ -105,6 +108,7 @@ class Register extends React.Component {
           }
         })
         .catch(error => {
+          console.log(error);
           Toastr.error(error);
           this.setState({creatingUser: false, errors: error});
         });

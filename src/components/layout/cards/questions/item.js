@@ -20,17 +20,17 @@ class QuestionItem extends React.Component {
 
   render() {
     let question = this.props.question;
-
+console.log(question);
     return (
       <div className="col-md-12">
         <div className="row">
           <div className="col-md-2 col-2">
-            <a className="booking-item-review-person-avatar round" href={question.customerProfileUrl}>
-              <img src={question.customerImageUrl ? question.customerImageUrl : '/static/img/userProfileImg.png'} alt={question.customerName} onError={this.handleMissingImage} />
+            <a className="booking-item-review-person-avatar round" href={question.profile.profileUrl}>
+              <img src={question.profile.imageUrl ? question.profile.imageUrl : '/static/img/userProfileImg.png'} alt={question.profile.name} onError={this.handleMissingImage} />
             </a>
           </div>
           <div className={this.props.isSideComponent ? "col-md-10 col-10" : "col-md-8 col-8"}>
-            <a href={question.customerProfileUrl}>{question.customerName}</a> is looking for advice...
+            <a href={question.profile.profileUrl}>{question.profile.name}</a> is looking for advice...
             {this.props.isSideComponent ? <p className="smlText">Added {question.friendlyDate}</p> : ''}
             <p><i>"{question.question}"</i></p>
             <p className="questionActions">{this.props.isAuthenticated ? (<span><a href="#" onClick={this.answerQuestion} data-ref={question.questionReference} data-question={question.question}>Answer Question</a> &bull;</span>) : ""}  {question.answers.length} {question.answers.length == 1 ? 'Answer' : 'Answers'} {!this.props.isSideComponent ? <span>&bull; Added {question.friendlyDate}</span> : ''}</p>

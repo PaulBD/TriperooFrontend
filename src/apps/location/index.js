@@ -21,6 +21,9 @@ import TopEvents from '../../components/layout/cards/events/topEvents';
 import LocationOverview from '../../components/layout/location/locationDescription';
 import Toastr from 'toastr';
 import HotelsNearLocation from '../../components/layout/cards/hotels/hotelsNearLocation';
+import TopRestaurants from '../../components/layout/cards/location/topRestaurants';
+import TopAttractions from '../../components/layout/cards/location/topAttractions';
+import TopPointsOfInterest from '../../components/layout/cards/location/topPointOfInterest';
 
 let titleCase = require('title-case');
 let _ = require('lodash');
@@ -86,7 +89,14 @@ class LocationHome extends React.Component {
       document.title = 'Explore, Plan, Book in ' + titleCase(this.state.location.regionName);
 
       if (this.state.location.regionType == 'City') {
-        let topLocationTitle = 'Top things to do in and around ' + this.state.location.regionName;
+        let premiumActivitiesTitle = 'Attractions in ' + this.props.location.regionName;
+        let premiumActivitiesUrl = this.props.location.url + '/attractions';
+
+        let topThingsToDoTitle = 'Things to do in ' + this.props.location.regionName;
+        let thingsToDoUrl = this.props.location.url + '/activities';
+
+        let topRestaurantTitle = 'Places to eat in ' + this.props.location.regionName;
+        let restaurantUrl = this.props.location.url + '/restaurants';
 
         return (
           <div>
@@ -96,11 +106,17 @@ class LocationHome extends React.Component {
               <div className="gap gap-small"></div>
             </div>
             <div className="container">
-              <div className="row">
-                <TopLocations title={topLocationTitle} locationId={this.props.locationId}
-                              name={this.state.location.regionName} locationType="Attractions" pageSize={8}
-                              locationName={this.props.location.regionName} showTitle={true}/>
+                <div className="row">
+                  <TopRestaurants title={topRestaurantTitle} locationId={this.props.location.regionID} name={this.props.location.regionName} locationType="Restaurants" pageSize={4} locationName={this.props.location.regionName} url={restaurantUrl}/>
+                </div>
+                <div className="row">
+                  <TopAttractions title={premiumActivitiesTitle} locationId={this.props.location.regionID} name={this.props.location.regionName} locationType="Attractions" pageSize={4} locationName={this.props.location.regionName} url={premiumActivitiesUrl}/>
+                </div>
+                <div className="row">
+                  <TopPointsOfInterest title={topThingsToDoTitle} locationId={this.props.location.regionID} name={this.props.location.regionName} locationType="Point of Interest" pageSize={4} locationName={this.props.location.regionName} url={thingsToDoUrl}/>
+                </div>
 
+              <div className="row">
                 <div className="col-md-8">
                   <Summary location={this.state.location} showMap={true}/>
                 </div>
@@ -109,10 +125,10 @@ class LocationHome extends React.Component {
                                  locationId={this.props.locationId} stats={this.state.location.stats}
                                  locationUrl={this.state.location.url}
                                  locationName={this.state.location.regionName}/>
-                  <QuestionButton locationId={this.props.locationId} locationName={this.state.location.regionName}
+                  <QuestionButton locationId={this.props.locationId} parentLocationId={this.props.location.parentRegionID} locationName={this.state.location.regionName}
                                   pageSize={3} pageNumber={0} locationNameLong={this.state.location.regionNameLong}
                                   locationType={this.state.location.regionType}/>
-                  <RecentQuestions locationId={this.props.locationId} locationName={this.state.location.regionName}
+                  <RecentQuestions locationId={this.props.locationId} parentLocationId={this.props.location.parentRegionID} locationName={this.state.location.regionName}
                                    pageSize={3} pageNumber={0} locationUrl={this.state.location.url}
                                    showTitle={true}
                                    isSideComponent={true}/>
