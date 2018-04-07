@@ -1856,8 +1856,9 @@ a:hover .activityBg { background-color: #333; border-color: #333; }
 .cardPadding { padding: 10px 0px 10px 0px; }
 .cardPadding .tagCollection .tagReadOnly { font-size: 11px; }
 .cardBgImage { width: 100%; height: 150px; background-size: 100% 100%;}
-.locationCardWrapper { border:none; margin-bottom: 30px; }
+.locationCardWrapper { border:none; margin-bottom: 30px; background-color: transparent; }
 .locationCard { font-size: 16px; margin-bottom: 5px; }
+.locationCardWrapper .affiliatePrice { margin-bottom: 5px; }
 .locationCardWrapper .last-minute-rating { font-size: 14px; margin-bottom: 10px; margin-top: 2px; }
 .locationCardWrapper .tagCollection { font-size: 9px; margin-bottom: 5px; }
 .locationCardWrapper .cardPadding .tagCollection .tagReadOnly { font-size: 9px; padding: 2px 5px; }

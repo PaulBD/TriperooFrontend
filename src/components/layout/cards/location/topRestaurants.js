@@ -31,12 +31,19 @@ class TopRestaurants extends React.Component {
   render(){
     if (!this.state.isLoadingRestaurantList)
     {
-      return (
-        <div className="col-md-12">
-          {this.props.title ? <h4 className="locationTitle">{this.props.title} <small className="float-right"><a href={this.props.url} >See all restaurants</a></small></h4> : ''}
-          <LocationList locations={this.props.restaurants} cssClass="col-md-3 col-12" />
-        </div>
-      );
+      if (this.props.restaurants.locations.length > 0) {
+        return (
+          <div className="col-md-12">
+            {this.props.title ? <h4 className="locationTitle">{this.props.title}
+              <small className="float-right"><a href={this.props.url}>See all restaurants</a></small>
+            </h4> : ''}
+            <LocationList locations={this.props.restaurants} cssClass="col-md-3 col-12"/>
+          </div>
+        );
+      }
+      else{
+        return null;
+      }
     }
     else {
       return (

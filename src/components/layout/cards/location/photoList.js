@@ -8,6 +8,12 @@ class Photos extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.onClickItem = this.onClickItem.bind(this);
+    this.handleMissingImage = this.handleMissingImage.bind(this);
+  }
+
+
+  handleMissingImage(e) {
+    e.target.src='/static/img/placeholder250.png';
   }
 
   onClickItem(position){
@@ -45,7 +51,7 @@ class Photos extends React.Component {
         <div>
           <Carousel axis="horizontal" onClickItem={this.onClickItem} showArrows={true} showStatus={false}
                     showThumbs={false} autoPlay={false} showIndicators={false}>
-            <div key="image1"><img src={this.props.basePhoto}/></div>
+            <div key="image1"><img src={this.props.basePhoto} className="basePhoto"  onError={this.handleMissingImage}/></div>
           </Carousel>
         </div>
         );

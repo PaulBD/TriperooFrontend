@@ -125,7 +125,7 @@ class LocationList extends React.Component {
                         </a>
                           <div className="card-body cardPadding">
                             <h5 className="card-title locationCard"><a href={location.url}>{location.regionName.length > 30 ? location.regionName.substring(0, 27) + '...' : location.regionName}</a></h5>
-                            <p className={location.regionType == "Attractions" ? "card-text" : "hide"}>{location.regionType == "Attractions" ? location.locationDetail.pricing.priceGBP + ' GBP' : ""}</p>
+                            <p className={location.regionType == "Attractions" ? "card-text affiliatePrice" : "hide"}>{location.regionType == "Attractions" ? location.locationDetail.pricing.priceGBP + ' GBP' : ""}</p>
                             <p className={locationType.length == 0 ? "hide" : "tagCollection"}>
                               <div className="row">
                                 <div className="col-md-5">
